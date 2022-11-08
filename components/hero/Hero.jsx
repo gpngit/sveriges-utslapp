@@ -1,22 +1,22 @@
-import styled, {css} from 'styled-components'
+//CSS
+import styled from 'styled-components'
+import { flex, colors } from '../../styles/partials'
 
 const Container = styled.header`
+    ${flex()};
+    gap: 40px;
     min-height: 100vh;
     padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    background-color: #f2cebd; //primaryLight
-    color: #540707; // primaryDark
+    background-color: ${colors.primaryLight};
+    color: ${colors.primaryDarK};
 `
 const Crumble = styled.div`
     align-self: center;
 `
 const TextContent = styled.div`
-    width: 70%;
-    display: flex;
-    flex-direction: column;
+    ${flex()}
     gap: 20px;
+    width: 70%;
 
     h1 {
         font-size: 36px;
