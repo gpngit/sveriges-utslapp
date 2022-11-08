@@ -7,6 +7,7 @@ import { getDatabase, ref, child, get } from "firebase/database"
 import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
 //components
 import Hero from '../components/hero/Hero'
+import Footer from '../components/footer/Footer'
 
 
 export async function getServerSideProps(){
@@ -43,6 +44,7 @@ export default function Home({ sections, bioEmissions }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Hero sectionDetails={sections.heropage[0]} />
+    <Footer />
     </>
   )
 }
