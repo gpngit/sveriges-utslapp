@@ -33,9 +33,6 @@ export async function getServerSideProps(){
 
 export default function Home({ sections, bioEmissions }) {
 
-  // console.log(bioEmissions)
-  // console.log(sections)
-
   return (
     <>
     <Head>
