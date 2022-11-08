@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, fontSizes } from '../../styles/partials'
 
 const Container = styled.header`
     ${flex()};
@@ -19,11 +19,11 @@ const TextContent = styled.div`
     width: 70%;
 
     h1 {
-        font-size: 36px;
+        font-size: ${fontSizes.heading};
     }
 
     p {
-        font-size: 24px;
+        font-size: ${fontSizes.subheading};
     }
 `
 

@@ -7,6 +7,11 @@ export const colors = {
     primaryDarK: '#540707'
 }
 
+export const fontSizes = {
+    heading: '36px',
+    subheading: '24px'
+}
+
 
 // mixins
 
