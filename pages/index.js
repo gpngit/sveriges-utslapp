@@ -1,6 +1,41 @@
+//Nextjs components
 import Head from 'next/head'
+//Firebase
+import initFirebase from '../firebase/initFirebase'
+import { getDatabase, ref, child, get } from "firebase/database"
+//SCB
+import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
 
-export default function Home() {
+
+export async function getServerSideProps(){
+  initFirebase()
+  const db = getDatabase()
+  const dbRef = ref(db)
+
+  let adminData = await get(child(dbRef, 'admin/'))
+  let scbData = await get(child(dbRef, 'scb/'))
+
+  let rightNow = new Date()
+  let timeSinceUpdate = new Date(scbData.val().date) 
+  let daysBetween =  ((((((rightNow.getTime()) - (timeSinceUpdate.getTime())) / 1000) / 60) / 60) / 24)
+
+  if (daysBetween > 7) {
+      getDataFromScbAndTransferToFirebase()
+  }
+
+  return {
+    props: {
+        sections: adminData.val(),
+        bioEmissions: scbData.val(),
+    }
+  }
+}
+
+export default function Home({ sections, bioEmissions }) {
+
+  // console.log(bioEmissions)
+  // console.log(sections)
+
   return (
     <>
     <Head>
