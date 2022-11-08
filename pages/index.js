@@ -5,21 +5,38 @@ import initFirebase from '../firebase/initFirebase'
 import { getDatabase, ref, child, get } from "firebase/database"
 
 export async function getServerSideProps(){
-
   initFirebase()
   const db = getDatabase()
   const dbRef = ref(db)
+
   let adminData = await get(child(dbRef, 'admin/'))
   let scbData = await get(child(dbRef, 'scb/'))
-  return {
+
+  let rightNow = new Date()
+  let timeSinceUpdate = new Date(scbData.val().date) 
+  let daysBetween =  ((((((rightNow.getTime()) - (timeSinceUpdate.getTime())) / 1000) / 60) / 60) / 24)
+
+  if (daysBetween < 7) { //check if data older than one week
+    return {
       props: {
-         pages: Object.values(adminData.val()),
-         scb: Object.values(scbData.val())
+         sections: adminData.val(),
+         bioEmissions: scbData.val(),
       }
+    }
+  } else {
+    return {
+      props: {
+        sections: 'data too old',
+        bioEmissions: 'data too old'
+      }
+    }
   }
 }
 
-export default function Home({ pages, scb }) {
+export default function Home({ sections, bioEmissions }) {
+
+  // console.log(bioEmissions)
+  // console.log(sections)
 
   return (
     <>
