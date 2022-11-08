@@ -3,6 +3,9 @@ import Head from 'next/head'
 //Firebase
 import initFirebase from '../firebase/initFirebase'
 import { getDatabase, ref, child, get } from "firebase/database"
+//SCB
+import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
+
 
 export async function getServerSideProps(){
   initFirebase()
@@ -16,19 +19,14 @@ export async function getServerSideProps(){
   let timeSinceUpdate = new Date(scbData.val().date) 
   let daysBetween =  ((((((rightNow.getTime()) - (timeSinceUpdate.getTime())) / 1000) / 60) / 60) / 24)
 
-  if (daysBetween < 7) { //check if data older than one week
-    return {
-      props: {
-         sections: adminData.val(),
-         bioEmissions: scbData.val(),
-      }
-    }
-  } else {
-    return {
-      props: {
-        sections: 'data too old',
-        bioEmissions: 'data too old'
-      }
+  if (daysBetween > 7) {
+      getDataFromScbAndTransferToFirebase()
+  }
+
+  return {
+    props: {
+        sections: adminData.val(),
+        bioEmissions: scbData.val(),
     }
   }
 }
