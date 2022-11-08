@@ -56,9 +56,9 @@ const Hero = ({ sectionDetails }) => {
             <TextContent>
                 <p>{subheading.heading.toUpperCase()}</p>
                 <h1>{title.heading}</h1>
-                {articles.map(article => {
+                {articles.map((article,i) => {
                     return (
-                        <p>{article.article}</p>
+                        <p key={i}>{article.article}</p>
                     )
                 })}
             </TextContent>
