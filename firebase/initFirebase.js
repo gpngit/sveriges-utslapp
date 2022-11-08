@@ -17,7 +17,6 @@ const initFirebase = () => {
     const app = initializeApp(clientCredentials)
     const auth = getAuth(app)
     const db = getDatabase(app)
-    console.log('initializing firebase')
 }
 
 export default initFirebase
