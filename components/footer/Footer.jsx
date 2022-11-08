@@ -37,7 +37,7 @@ const Footer = () => {
                 <Link href='/admin'><p>Admin</p></Link>
             </div>
             <ImageContainer>
-                <Image src={LogoLight} />
+                <Image src={LogoLight} alt='Greenpeace logo' />
             </ImageContainer>
         </Container>
     )
