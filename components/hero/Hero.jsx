@@ -37,7 +37,7 @@ const Hero = ({ sectionDetails }) => {
                 <p>En sammanställning av <span>GREENPEACE</span></p>
             </Crumble>
             <TextContent>
-                <p>{subheading.heading}</p>
+                <p>{subheading.heading.toUpperCase()}</p>
                 <h1>{title.heading}</h1>
                 {articles.map(article => {
                     return (
