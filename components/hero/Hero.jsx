@@ -4,7 +4,7 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import Logo from '../../public/images/Greenpeace-logo-primarydark.png'
+import LogoDark from '../../public/images/Greenpeace-logo-primarydark.png'
 
 const Container = styled.header`
     ${flex()};
@@ -50,7 +50,7 @@ const Hero = ({ sectionDetails }) => {
             <Crumble>
                 <p>En sammanställning av</p>
                 <ImageContainer>
-                    <Image src={Logo} alt='Greenpeace logo'/>
+                    <Image src={LogoDark} alt='Greenpeace logo'/>
                 </ImageContainer>
             </Crumble>
             <TextContent>
