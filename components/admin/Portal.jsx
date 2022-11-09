@@ -29,19 +29,17 @@ const Portal = () => {
         getDataFromFirebase('admin/')
     }, [])
 
-    if (sections){
-        console.log(Object.entries(sections))
-    }
+    console.log(sections)
 
     return (
         <Container>
             <h2>Adminportal</h2>
-            {/* {sections && sections.map(section => {
+            {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
                     </InputForm>
                 )
-            })} */}
+            })}
         </Container>
     )
 }
