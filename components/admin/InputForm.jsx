@@ -1,22 +1,15 @@
 //CSS
 import styled from "styled-components"
 import { flex, colors, fontSizes } from '../../styles/partials'
+//components
+import InputContainer from "./InputContainer"
 
 const Form = styled.form`
     ${flex()};
+    gap: 5px;
     width: 100%;
 `
-const InputContainer = styled.div`
-    ${flex()};
-    width: 100%;
-`
-const Input = styled.input`
-    width: 100%;
-    padding: 10px;
-`
-const Label = styled.label`
 
-`
 
 const InputForm = ({ pageElements }) => {
 
@@ -27,20 +20,11 @@ const InputForm = ({ pageElements }) => {
     return (
         <Form>
             <h3>{name}</h3>
-            <InputContainer>
-                <Label htmlFor={`${name}-title`}>Rubrik</Label>
-                <Input id={`${name}-title`} type="text" defaultValue={title.text} />
-            </InputContainer>
-            <InputContainer>
-                <Label htmlFor={`${name}-subheading`}>Underrubrik</Label>
-                <Input id={`${name}-subheading`} type="text" defaultValue={subheading.text} />
-            </InputContainer>
-            {body.map((section, i) => {
+            <InputContainer name={name} input={title} label={'Rubrik'} />
+            <InputContainer name={name} input={subheading} label={'Underrubrik'} />
+            {body.map((body, i) => {
                 return (
-                    <InputContainer>
-                        <Label htmlFor={`${name}-body${i}`}>Brödtext {i+1}</Label>
-                        <Input key={i} id={`${name}-body${i}`} type="text" defaultValue={section.text} />
-                    </InputContainer>
+                    <InputContainer name={name} input={body} label={`Brödtext ${i+1}`} />
                 )
             })}
 

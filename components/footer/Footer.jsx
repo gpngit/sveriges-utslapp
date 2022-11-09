@@ -9,6 +9,7 @@ import LogoLight from '../../public/images/Greenpeace-logo-primarylight.png'
 
 const Container = styled.footer`
     ${flex('column')}
+    margin-top: 100px;
     gap: 20px;
     height: 200px;
     padding: 30px;
