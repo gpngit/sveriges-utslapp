@@ -1,5 +1,6 @@
 //CSS
 import styled from 'styled-components'
+import { flex, colors, fontSizes } from '../../styles/partials'
 //react hooks
 import { useEffect, useState } from 'react'
 //firebase
@@ -9,7 +10,10 @@ import { getDatabase, ref, onValue } from "firebase/database"
 import InputForm from './InputForm'
 
 const Container = styled.main`
+    ${flex()};
+    gap: 20px;
     min-height: 100vh;
+    padding: 30px;
 `
 
 const Portal = () => {
