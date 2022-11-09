@@ -1,7 +1,8 @@
 
 const InputForm = ({ pageElements }) => {
 
-    const {articles, show, subheading, title, pageId} = pageElements
+    console.Console.log(pageElements)
+    const {show} = pageElements
 
     return (
         <form>

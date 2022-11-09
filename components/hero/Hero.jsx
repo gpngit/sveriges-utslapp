@@ -43,9 +43,9 @@ const TextContent = styled.div`
 
 const Hero = ({ pageElements }) => {
 
-    const {id, sections, show} = pageElements
-    const {title, subheading, body} = sections
-    console.log(body)
+    const {id, details, name} = pageElements
+    const {show, sections} = details
+    const {body, title, subheading} = sections
 
     return (
         <Container>

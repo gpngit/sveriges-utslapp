@@ -14,14 +14,13 @@ const Container = styled.main`
 
 const Portal = () => {
 
-    const [pages, setPages] = useState(null)
-    const [heropage, setHeroPage] = useState(null)
+    const [sections, setSections] = useState(null)
 
     const getDataFromFirebase = (route) => {
         const db = getDatabase()
         const dbRef = ref(db, route)
         onValue(dbRef, (snapshot) => {
-          setHeroPage(snapshot.val().heropage)
+          setSections(snapshot.val())
         })
     }
 
@@ -30,16 +29,19 @@ const Portal = () => {
         getDataFromFirebase('admin/')
     }, [])
 
+    if (sections){
+        console.log(Object.entries(sections))
+    }
+
     return (
         <Container>
             <h2>Adminportal</h2>
-            {heropage && heropage.map(page => {
-                console.log(page)
+            {/* {sections && sections.map(section => {
                 return (
-                    <InputForm key={page.pageId} pageElements={page}>
+                    <InputForm key={section.id} pageElements={section}>
                     </InputForm>
                 )
-            })}
+            })} */}
         </Container>
     )
 }
