@@ -61,7 +61,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
             <div className="input-and-edit">
                 <Input readOnly={!editable} id={`${sectionName}-${input.name}`} type="text" defaultValue={input.text} />
                 {!editable ? (
-                    <button onClick={(e) => handleEditClick(e)}>Edit</button>
+                    <button onClick={(e) => handleEditClick(e)}>Redigera</button>
                 ) : (
                     <>
                     <button onClick={(e) => handleDiscard(e)}>Ångra ändring</button>
