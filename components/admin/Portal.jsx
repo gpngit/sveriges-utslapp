@@ -36,7 +36,7 @@ const Portal = ({ setAuthenticated }) => {
     useEffect(() => {
         initFirebase()
         getDataFromFirebase('admin/')
-    }, [sections])
+    }, [])
 
     return (
         <Container>

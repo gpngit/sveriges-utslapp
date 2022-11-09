@@ -89,8 +89,8 @@ const InputForm = ({ pageElements }) => {
     }
 
     const handleVisibility = (index) => {
-        setVisible(!visible)
         showOrHidePage(index, !visible)
+        setVisible(!visible)
     } 
 
     return (
