@@ -1,6 +1,8 @@
 //CSS
 import styled from "styled-components"
 import { flex, colors, fontSizes } from '../../styles/partials'
+//react hooks
+import { useState } from "react"
 
 const Container = styled.div`
     ${flex()};
@@ -21,6 +23,8 @@ const Label = styled.label`
 
 const InputContainer = ({ name, input, label }) => {
 
+    const [editable, setEditable] = useState(false)
+    
     return (
         <Container>
             <Label htmlFor={`${name}-title`}>{label}</Label>
