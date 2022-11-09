@@ -8,6 +8,7 @@ import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
 //components
 import Hero from '../components/hero/Hero'
 import Footer from '../components/footer/Footer'
+import LineChart from '../components/lineChart/LineChart'
 
 
 export async function getServerSideProps(){
@@ -44,6 +45,7 @@ export default function Home({ siteSections, emissions }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
+    <LineChart />
     <Footer />
     </>
   )
