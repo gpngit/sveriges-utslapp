@@ -14,6 +14,11 @@ const Container = styled.main`
     gap: 20px;
     min-height: 100vh;
     padding: 30px;
+
+    .header-and-logout {
+        ${flex('row', 'space-between', 'center')}
+        width: 100%;
+    }
 `
 
 const Portal = ({ setAuthenticated }) => {
@@ -37,8 +42,10 @@ const Portal = ({ setAuthenticated }) => {
 
     return (
         <Container>
-            <h2>Adminportal</h2>
-            <button onClick={() => setAuthenticated(false)}>Logga ut</button>
+            <div className='header-and-logout'>
+                <h2>Adminportal</h2>
+                <button onClick={() => setAuthenticated(false)}>Logga ut</button>
+            </div>
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
