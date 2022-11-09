@@ -105,11 +105,11 @@ const InputForm = ({ pageElements }) => {
             </ToggleSwitch>
             {showSection && (
                 <>
-                <InputContainer name={name} input={title} label={'Rubrik'} />
-                <InputContainer name={name} input={subheading} label={'Underrubrik'} />
+                <InputContainer pageElements={pageElements} input={title} label={'Rubrik'} />
+                <InputContainer pageElements={pageElements} input={subheading} label={'Underrubrik'} />
                 {body.map((body, i) => {
                     return (
-                        <InputContainer name={name} input={body} label={`Brödtext ${i+1}`} />
+                        <InputContainer pageElements={pageElements} input={body} label={`Brödtext ${i+1}`} bodyIndex={i} />
                     )
                 })}
                 </>

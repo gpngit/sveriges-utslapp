@@ -24,26 +24,40 @@ const Label = styled.label`
 
 `
 
-const InputContainer = ({ name, input, label }) => {
+const InputContainer = ({ pageElements, label, input, bodyIndex }) => {
+
+    const {id, name, details} = pageElements
 
     const [editable, setEditable] = useState(false)
+    const targetId = id-1
+
+    console.log(details)
 
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
     }
 
-    const sendEditToFirebase = (sectionIndex, inputType, inputValue) => {
+    const sendEditToFirebase = (inputType, inputValue, index) => {
         const db = getDatabase()
-        const dbRef = ref(db, `/admin/${sectionIndex}/details/sections/${inputType}`)
-        update(dbRef, {text: inputValue})
+        if (!bodyIndex) {
+            const dbRef = ref(db, `/admin/${targetId}/details/sections/${inputType}`)
+            // update(dbRef, {text: inputValue})
+        } else {
+            const dbRef = ref(db, `/admin/${sectionIndex}/details/sections/${inputType}/${index}`)
+            // update(dbRef, {text: inputValue})
+        }
     }
 
-    console.log(index)
+    const handleSave = (e, test) => {
+        e.preventDefault()
+        console.log(test)
+    }
     
     return (
         <Container>
             <Label htmlFor={`${name}-title`}>{label}</Label>
+            <p>{targetId}</p>
             <div className="input-and-edit">
                 <Input readOnly={!editable} id={`${name}-title`} type="text" defaultValue={input.text} />
                 {!editable ? (
@@ -51,7 +65,7 @@ const InputContainer = ({ name, input, label }) => {
                 ) : (
                     <>
                     <button>Ångra ändring</button>
-                    <button>Spara</button>
+                    <button onClick={(e) => handleSave(e, targetId)}>Spara</button>
                     </>
                 )}
             </div>
