@@ -36,6 +36,8 @@ export async function getServerSideProps(){
 
 export default function Home({ siteSections, emissions }) {
 
+  console.log(emissions)
+
   return (
     <>
     <Head>
