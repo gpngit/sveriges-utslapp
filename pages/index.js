@@ -29,7 +29,7 @@ export async function getServerSideProps(){
   return {
     props: {
         siteSections: adminData.val(),
-        emissions: scbData.val(),
+        emissions: scbData.val().data,
     }
   }
 }
