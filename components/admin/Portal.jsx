@@ -16,7 +16,7 @@ const Container = styled.main`
     padding: 30px;
 `
 
-const Portal = () => {
+const Portal = ({ setAuthenticated }) => {
 
     const [sections, setSections] = useState(null)
 
@@ -38,6 +38,7 @@ const Portal = () => {
     return (
         <Container>
             <h2>Adminportal</h2>
+            <button onClick={() => setAuthenticated(false)}>Logga ut</button>
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
