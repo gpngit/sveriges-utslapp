@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { flex, colors, fontSizes } from '../../styles/partials'
 //react hooks
 import { useState } from "react"
+//firebase
+import { getDatabase, ref, update } from "firebase/database"
 
 const Container = styled.div`
     ${flex()};
@@ -30,6 +32,14 @@ const InputContainer = ({ name, input, label }) => {
         e.preventDefault()
         setEditable(!editable)
     }
+
+    const sendEditToFirebase = (sectionIndex, inputType, inputValue) => {
+        const db = getDatabase()
+        const dbRef = ref(db, `/admin/${sectionIndex}/details/sections/${inputType}`)
+        update(dbRef, {text: inputValue})
+    }
+
+    console.log(index)
     
     return (
         <Container>
