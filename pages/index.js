@@ -45,7 +45,7 @@ export default function Home({ siteSections, emissions }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
-    <LineChart />
+    <LineChart emissions={emissions}/>
     <Footer />
     </>
   )

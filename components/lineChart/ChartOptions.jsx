@@ -27,7 +27,7 @@ const ChartOptions = () => {
                 size: '12px',
                 family: "Noto Sans",
               },
-              stepSize:10000,
+              stepSize: 10000,
             },
             min: 0,
             max: 120000,
