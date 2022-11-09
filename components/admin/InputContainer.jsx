@@ -24,13 +24,18 @@ const Label = styled.label`
 const InputContainer = ({ name, input, label }) => {
 
     const [editable, setEditable] = useState(false)
+
+    const handleEditClick = (e) => {
+        e.preventDefault()
+        setEditable(!editable)
+    }
     
     return (
         <Container>
             <Label htmlFor={`${name}-title`}>{label}</Label>
             <div className="input-and-edit">
-                <Input id={`${name}-title`} type="text" defaultValue={input.text} />
-                <button>Edit</button>
+                <Input readOnly={!editable} id={`${name}-title`} type="text" defaultValue={input.text} />
+                <button onClick={(e) => handleEditClick(e)}>Edit</button>
             </div>
         </Container>
     )
