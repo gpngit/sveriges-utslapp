@@ -36,7 +36,9 @@ const InputContainer = ({ name, input, label }) => {
             <Label htmlFor={`${name}-title`}>{label}</Label>
             <div className="input-and-edit">
                 <Input readOnly={!editable} id={`${name}-title`} type="text" defaultValue={input.text} />
-                <button onClick={(e) => handleEditClick(e)}>Edit</button>
+                {!editable && (
+                    <button onClick={(e) => handleEditClick(e)}>Edit</button>
+                )}
             </div>
         </Container>
     )
