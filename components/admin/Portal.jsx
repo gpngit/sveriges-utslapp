@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 //firebase
 import initFirebase from '../../firebase/initFirebase'
-import { getDatabase, ref, set, child, push, update, onValue } from "firebase/database"
+import { getDatabase, ref, onValue } from "firebase/database"
+//components
+import InputForm from './InputForm'
 
 const Container = styled.main`
     min-height: 100vh;
@@ -19,7 +21,6 @@ const Portal = () => {
         const db = getDatabase()
         const dbRef = ref(db, route)
         onValue(dbRef, (snapshot) => {
-          setPages(snapshot.val().pages)
           setHeroPage(snapshot.val().heropage)
         })
     }
@@ -29,17 +30,14 @@ const Portal = () => {
         getDataFromFirebase('admin/')
     }, [])
 
-    console.log(pages)
-    console.log(heropage)
-
     return (
         <Container>
             <h2>Adminportal</h2>
             {heropage && heropage.map(page => {
                 console.log(page)
                 return (
-                    <form key={page.pageId}>
-                    </form>
+                    <InputForm key={page.pageId} pageElements={page}>
+                    </InputForm>
                 )
             })}
         </Container>

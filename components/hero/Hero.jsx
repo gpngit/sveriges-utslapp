@@ -41,9 +41,11 @@ const TextContent = styled.div`
     }
 `
 
-const Hero = ({ sectionDetails }) => {
+const Hero = ({ pageElements }) => {
 
-    const {subheading, title, articles} = sectionDetails
+    const {id, sections, show} = pageElements
+    const {title, subheading, body} = sections
+    console.log(body)
 
     return (
         <Container>
@@ -54,11 +56,11 @@ const Hero = ({ sectionDetails }) => {
                 </ImageContainer>
             </Crumble>
             <TextContent>
-                <p>{subheading.heading.toUpperCase()}</p>
-                <h1>{title.heading}</h1>
-                {articles.map((article,i) => {
+                <p>{subheading.text.toUpperCase()}</p>
+                <h1>{title.text}</h1>
+                {body.map((section,i) => {
                     return (
-                        <p key={i}>{article.article}</p>
+                        <p key={i}>{section.text}</p>
                     )
                 })}
             </TextContent>
