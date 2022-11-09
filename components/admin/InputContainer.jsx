@@ -9,7 +9,8 @@ const Container = styled.div`
     width: 100%;
 
     .input-and-edit {
-        ${flex('row')};
+        ${flex('row', 'space-between', 'center')};
+        gap: 10px;
         width: 100%;
     }
 `

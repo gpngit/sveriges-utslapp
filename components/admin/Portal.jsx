@@ -38,8 +38,6 @@ const Portal = ({ setAuthenticated }) => {
         getDataFromFirebase('admin/')
     }, [])
 
-    console.log(sections)
-
     return (
         <Container>
             <div className='header-and-logout'>
