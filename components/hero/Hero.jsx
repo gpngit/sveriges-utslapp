@@ -43,9 +43,13 @@ const TextContent = styled.div`
 
 const Hero = ({ pageElements }) => {
 
-    const {id, details, name} = pageElements
-    const {show, sections} = details
-    const {body, title, subheading} = sections
+    const {id, sections, name} = pageElements
+
+    const title = sections.find(section => section.name === 'title')
+    const subheading = sections.find(section => section.name === 'subheading')
+    const body1 = sections.find(section => section.name === 'body1')
+    const body2 = sections.find(section => section.name === 'body2')
+    const body3 = sections.find(section => section.name === 'body3')
 
     return (
         <Container>
@@ -58,11 +62,9 @@ const Hero = ({ pageElements }) => {
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h1>{title.text}</h1>
-                {body.map((section,i) => {
-                    return (
-                        <p key={i}>{section.text}</p>
-                    )
-                })}
+                <p>{body1.text}</p>
+                <p>{body2.text}</p>
+                <p>{body3.text}</p>
             </TextContent>
         </Container>
     )
