@@ -1,6 +1,8 @@
 //CSS
 import styled from "styled-components"
 import { flex, colors, fontSizes } from '../../styles/partials'
+//firebase
+import { getDatabase, ref, update } from "firebase/database";
 //components
 import InputContainer from "./InputContainer"
 // import ToggleSwitch from './ToggleSwitch'
@@ -80,8 +82,15 @@ const InputForm = ({ pageElements }) => {
         setShowSection(!showSection)
     }
 
-    const handleVisibility = () => {
+    const showOrHidePage = (index, bool) => {
+        const db = getDatabase()
+        const dbRef = ref(db, `/admin/${index}/details`)
+        update(dbRef, {show: bool})
+    }
+
+    const handleVisibility = (index) => {
         setVisible(!visible)
+        showOrHidePage(index, !visible)
     } 
 
     return (
@@ -91,7 +100,7 @@ const InputForm = ({ pageElements }) => {
                 <button onClick={(e) => handleShowClick(e)}>{showSection ? 'Visa mindre' : 'Visa mer'}</button>
             </div>
             <ToggleSwitch htmlFor={`switch-${id}`}>
-                <input onChange={(e) => handleVisibility()} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
+                <input onChange={() => handleVisibility(id-1)} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
                 <span className="slider round"></span>
             </ToggleSwitch>
             {showSection && (
