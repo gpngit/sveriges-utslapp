@@ -82,7 +82,7 @@ const InputForm = ({ pageElements }) => {
 
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
-        const dbRef = ref(db, `/admin/${index}/details`)
+        const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
     }
 
