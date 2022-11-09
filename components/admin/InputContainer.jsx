@@ -47,6 +47,13 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
         sendEditToFirebase(inputValue.value)
         setEditable(!editable)
     }
+
+    const handleDiscard = (e) => {
+        e.preventDefault()
+        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
+        inputValue.value = input.text
+        setEditable(!editable)
+    }
     
     return (
         <Container>
@@ -57,7 +64,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
                     <button onClick={(e) => handleEditClick(e)}>Edit</button>
                 ) : (
                     <>
-                    <button>Ångra ändring</button>
+                    <button onClick={(e) => handleDiscard(e)}>Ångra ändring</button>
                     <button onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}
