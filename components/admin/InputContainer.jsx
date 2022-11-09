@@ -24,48 +24,41 @@ const Label = styled.label`
 
 `
 
-const InputContainer = ({ pageElements, label, input, bodyIndex }) => {
+const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
 
-    const {id, name, details} = pageElements
+    const targetId = sectionId-1
 
     const [editable, setEditable] = useState(false)
-    const targetId = id-1
-
-    console.log(details)
 
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
     }
 
-    const sendEditToFirebase = (inputType, inputValue, index) => {
+    const sendEditToFirebase = (inputValue) => {
         const db = getDatabase()
-        if (!bodyIndex) {
-            const dbRef = ref(db, `/admin/${targetId}/details/sections/${inputType}`)
-            // update(dbRef, {text: inputValue})
-        } else {
-            const dbRef = ref(db, `/admin/${sectionIndex}/details/sections/${inputType}/${index}`)
-            // update(dbRef, {text: inputValue})
-        }
+        const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
+        update(dbRef, {text: inputValue})
     }
 
-    const handleSave = (e, test) => {
+    const handleSave = (e) => {
         e.preventDefault()
-        console.log(test)
+        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
+        sendEditToFirebase(inputValue.value)
+        setEditable(!editable)
     }
     
     return (
         <Container>
-            <Label htmlFor={`${name}-title`}>{label}</Label>
-            <p>{targetId}</p>
+            <Label htmlFor={`${sectionName}-${input.name}`}>{input.name}</Label>
             <div className="input-and-edit">
-                <Input readOnly={!editable} id={`${name}-title`} type="text" defaultValue={input.text} />
+                <Input readOnly={!editable} id={`${sectionName}-${input.name}`} type="text" defaultValue={input.text} />
                 {!editable ? (
                     <button onClick={(e) => handleEditClick(e)}>Edit</button>
                 ) : (
                     <>
                     <button>Ångra ändring</button>
-                    <button onClick={(e) => handleSave(e, targetId)}>Spara</button>
+                    <button onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}
             </div>

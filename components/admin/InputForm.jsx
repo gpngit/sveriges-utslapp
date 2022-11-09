@@ -70,9 +70,7 @@ const ToggleSwitch = styled.label`
 
 const InputForm = ({ pageElements }) => {
 
-    const {id, details, name} = pageElements
-    const {show, sections} = details
-    const {body, title, subheading} = sections
+    const {id, name, show, sections} = pageElements
 
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
@@ -103,18 +101,11 @@ const InputForm = ({ pageElements }) => {
                 <input onChange={() => handleVisibility(id-1)} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
                 <span className="slider round"></span>
             </ToggleSwitch>
-            {showSection && (
-                <>
-                <InputContainer pageElements={pageElements} input={title} label={'Rubrik'} />
-                <InputContainer pageElements={pageElements} input={subheading} label={'Underrubrik'} />
-                {body.map((body, i) => {
-                    return (
-                        <InputContainer pageElements={pageElements} input={body} label={`Brödtext ${i+1}`} bodyIndex={i} />
-                    )
-                })}
-                </>
-            )}
-
+            {showSection && sections.map((section, i) => {
+                return (
+                    <InputContainer sectionId={id} key={section.name} input={section} inputIndex={i} sectionName={name} />
+                )
+            })}
         </Form>
     )
 }

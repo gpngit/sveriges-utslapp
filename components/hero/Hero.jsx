@@ -43,8 +43,6 @@ const TextContent = styled.div`
 
 const Hero = ({ pageElements }) => {
 
-    console.log(pageElements)
-
     const {id, sections, name} = pageElements
 
     const title = sections.find(section => section.name === 'title')
