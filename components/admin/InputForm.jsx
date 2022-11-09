@@ -101,6 +101,7 @@ const InputForm = ({ pageElements }) => {
                 <input onChange={() => handleVisibility(id-1)} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
                 <span className="slider round"></span>
             </ToggleSwitch>
+            <p>{show ? 'information kan ses på sidan' : 'information visas inte på sidan'}</p>
             {showSection && sections.map((section, i) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} input={section} inputIndex={i} sectionName={name} />
