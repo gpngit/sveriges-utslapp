@@ -43,14 +43,14 @@ const BarChart = ({ emissions }) => {
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
-            backgroundColor: '#00d084',
+            backgroundColor: '#ff6900',
             borderWidth: 0,
             pointRadius: 0,
             tension: .5,
             },{
             label: 'Fossila utsläpp',
             data: yearlyFossilData.map(data => data.value),
-            backgroundColor: '#0015d0',
+            backgroundColor: '#f78da7',
             borderWidth: 0,
             pointRadius: 0,
             tension: .5,
@@ -69,14 +69,14 @@ const BarChart = ({ emissions }) => {
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
-            backgroundColor: '#00d084',
+            backgroundColor: '#ff6900',
             borderWidth: 0,
             pointRadius: 0,
             tension: .5,
             },{
             label: 'Fossila utsläpp',
             data: yearlyFossilData.map(data => data.value),
-            backgroundColor: '#0015d0',
+            backgroundColor: '#f78da7',
             borderWidth: 0,
             pointRadius: 0,
             tension: .5,
@@ -84,11 +84,9 @@ const BarChart = ({ emissions }) => {
         })
     }, [yearlyBioData, yearlyFossilData])
 
-    console.log(yearlyFossilData)
-
     return (
         <Container>
-            <ChartHeader>Utsläpp per sektor per år</ChartHeader>
+            <ChartHeader>Utsläpp år {displayYear}</ChartHeader>
             <ChartContainer>
                 {chartData && (
                     <Bar
