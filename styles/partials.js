@@ -3,9 +3,13 @@ import styled, {css} from "styled-components";
 // variables
 
 export const colors = {
-    primaryLight: '#f2cebd',
-    primaryDarK: '#540707',
-    mainBackGround: '#D3D3D3'
+    primary: '#f2cebd',
+    secondary: '#370000',
+    primaryOpaque: '#fccebd99',
+    secondaryOpaque: '#38000099',
+    mainBackGround: '#D3D3D3',
+    highlight: '#AB523A',
+    hightlightOpaque: '#ab523a99'
 }
 
 export const fontSizes = {

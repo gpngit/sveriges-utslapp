@@ -9,8 +9,9 @@ import ChartOptions from "./ChartOptions";
 import { useState, useEffect } from 'react';
 
 const Container = styled.section`
-    background-color: ${colors.mainBackGround};
-    padding: 30px;
+    background-color: ${colors.primary};
+    color: ${colors.secondary};
+    padding: 60px;
     height: 100vh;
     width: 100%;
 `
@@ -48,27 +49,27 @@ const LineChart = ({ emissions }) => {
                 label: 'Biogena utsläpp', //bioEmissions[0].type.text
                 data: bioEmissions.map(emissions => emissions.value),
                 fill: true,
-                backgroundColor: '#ff6900',
-                borderColor: '#5d5d5d',
-                borderWidth: 3,
+                backgroundColor: colors.hightlightOpaque,
+                borderColor: colors.secondary,
+                borderWidth: 2,
                 pointRadius: 0,
                 tension: .1,
             },{
                 label: 'Fossila utsläpp', //fossilEmissions[0].type.text
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
-                backgroundColor: '#f78da7',
-                borderColor: '#5d5d5d',
-                borderWidth: 3,
+                backgroundColor: colors.secondaryOpaque,
+                borderColor: colors.secondary,
+                borderWidth: 2,
                 pointRadius: 0,
                 tension: .1,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
-                backgroundColor: '#8ed1fc',
+                backgroundColor: 'white',
                 borderColor: '#5d5d5d',
-                borderWidth: 3,
+                borderWidth: 2,
                 pointRadius: 0,
                 tension: .1,
             }]
