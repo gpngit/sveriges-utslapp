@@ -4,19 +4,37 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import LogoDark from '../../public/images/Greenpeace-logo-primarydark.png'
+import LogoDark from '../../public/images/Greenpeace-logo-secondary.png'
+import BurningForest from '../../public/burning-forest.svg'
 
 const Container = styled.header`
     ${flex()};
-    gap: 60px;
+    gap: 40px;
     min-height: 100vh;
-    padding: 30px;
-    background-color: ${colors.primaryLight};
-    color: ${colors.primaryDarK};
+    background-color: ${colors.primary};
+    color: ${colors.secondary};
+
+    .burning-forest {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        bottom: 0;
+    }
+`
+const ScrollContainer = styled.div`
+    height: 260px;
+    position: sticky;
+    overflow-y: auto;
+    z-index: 10;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 const Crumble = styled.div`
     ${flex('row', 'center', 'center')}
     align-self: center;
+    padding: 20px;
 `
 const ImageContainer = styled.div`
     height: 16px;
@@ -28,9 +46,9 @@ const ImageContainer = styled.div`
     }
 `
 const TextContent = styled.div`
-    ${flex()}
-    gap: 20px;
-    width: 70%;
+    ${flex()};
+    gap: 60px;
+    padding: 60px;
 
     h1 {
         font-size: ${fontSizes.heading};
@@ -39,6 +57,32 @@ const TextContent = styled.div`
     p {
         font-size: ${fontSizes.subheading};
     }
+`
+const TextAndLink = styled.div`
+    ${flex('row', 'space-between')};
+    gap: 80px;
+    width: 100%;
+`
+const NavButton = styled.button`
+    padding: 20px 40px;
+    background-color: ${colors.primary};
+    border: 3px solid ${colors.secondary};
+    border-radius: 10px;
+`
+const Blurred = styled.div`
+    position: sticky;
+    height: 100px;
+    width: 100%;
+    
+    &.bottom {
+        bottom: 0;
+        background: linear-gradient(to top, ${colors.primary} 20px, transparent);
+    }
+    
+    /* &.top {
+        top: 60px;
+        background: linear-gradient(to bottom, ${colors.primary}, transparent);
+    } */
 `
 
 const Hero = ({ pageElements }) => {
@@ -59,13 +103,32 @@ const Hero = ({ pageElements }) => {
                     <Image src={LogoDark} alt='Greenpeace logo'/>
                 </ImageContainer>
             </Crumble>
-            <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
-                <h1>{title.text}</h1>
-                <p>{body1.text}</p>
-                <p>{body2.text}</p>
-                <p>{body3.text}</p>
-            </TextContent>
+            <ScrollContainer>
+                {/* <Blurred className='top' /> */} 
+                <TextContent>
+                    <TextAndLink>
+                        <p>{subheading.text.toUpperCase()}</p>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <h1>{title.text}</h1>
+                        <NavButton>Hur ser siffrorna ut egentligen?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body1.text}</p>
+                        <NavButton>Varför rapporteras de inte?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body2.text}</p>
+                        <NavButton>Men är inte biobränslen bra för naturen?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body3.text}</p>
+                        <NavButton>Men skogen växer väl upp igen och binder kolet?</NavButton>
+                    </TextAndLink>
+                </TextContent>
+                <Blurred className='bottom' />
+            </ScrollContainer>
+            <Image className='burning-forest' src={BurningForest}/>
         </Container>
     )
 }

@@ -11,6 +11,7 @@ import Footer from '../components/footer/Footer'
 import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
+import Second from '../components/second section/Second'
 
 
 export async function getServerSideProps(){
@@ -47,6 +48,7 @@ export default function Home({ siteSections, emissions }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
+    <Second  pageElements={siteSections.find(elem => elem.name === 'second')}  />
     <LineChart emissions={emissions}/>
     <Slider emissions={emissions}/>
     <BarChart emissions={emissions}/>

@@ -32,14 +32,12 @@ const ChartOptions = () => {
             min: 0,
             max: 120000,
             grid: {
-              display: true,
-              color: 'black',
+              display: false
             }
           },
           x: {             
             grid: {
-              display: true,
-              color: 'black',
+              display: false
             },
             ticks:{
               color: 'black',
