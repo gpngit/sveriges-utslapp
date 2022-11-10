@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { flex, colors } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from 'react'
+//context
+import { useContext } from 'react'
+import AppContext from '../../context/AppContext'
 
 const Container = styled.div`
     padding: 30px 50px;
@@ -35,8 +38,12 @@ const SliderContainer = styled.form`
 
 const Slider = ({ emissions }) => {
 
+    const context = useContext(AppContext)
+    const {displayYear, setDisplayYear} = context
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
 
+
+    console.log(displayYear)
     return (
         <Container>
             <SliderContainer>
@@ -45,11 +52,11 @@ const Slider = ({ emissions }) => {
                 id="slider"
                 className='slider' 
                 type={'range'} 
-                // max={2020}
-                // min={1990}
+                max={years[years.length-1]}
+                min={years[0]}
                 aria-label="Dra för att ändra årtal"
-                // value={year} 
-                // onChange={(e) => setYear(e.target.value)} 
+                value={displayYear} 
+                onChange={(e) => setDisplayYear(e.target.value)} 
                 />
                 <span className='slider-labels'>
                     {years.map(year => <p key={year}>{year}</p>)}
