@@ -10,6 +10,7 @@ import Hero from '../components/hero/Hero'
 import Footer from '../components/footer/Footer'
 import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
+import BarChart from '../components/barchart/BarChart'
 
 
 export async function getServerSideProps(){
@@ -48,6 +49,7 @@ export default function Home({ siteSections, emissions }) {
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <LineChart emissions={emissions}/>
     <Slider emissions={emissions}/>
+    <BarChart emissions={emissions}/>
     <Footer />
     </>
   )
