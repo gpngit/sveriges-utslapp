@@ -6,17 +6,17 @@ const ChartOptions = () => {
         maintainAspectRatio: false,
         responsive: true,
         plugins: {
-          datalabels: {
-            display: true,
-            color: 'black',
-            anchor: "end",
-            align: "end",
-            font: {
-              size: '12px',
-              family: " Noto Sans",
-              weight: 600,
-            }
-          },
+          // datalabels: {
+          //   display: true,
+          //   color: 'black',
+          //   anchor: "end",
+          //   align: "end",
+          //   font: {
+          //     size: '12px',
+          //     family: " Noto Sans",
+          //     weight: 600,
+          //   }
+          // },
             legend: {
                 display: true,
                 position: 'bottom',

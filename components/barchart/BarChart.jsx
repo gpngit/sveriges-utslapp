@@ -8,6 +8,9 @@ import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 // import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ChartOptions from './ChartOptions';
+//context
+import { useContext } from 'react'
+import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
     background-color: ${colors.mainBackGround};
@@ -23,16 +26,38 @@ const ChartContainer = styled.div`
 
 const BarChart = ({ emissions }) => {
 
-  const [options, setOptions] = useState(ChartOptions())
+    const context = useContext(AppContext)
+    const {displayYear, setDisplayYear} = context
+    const [options, setOptions] = useState(ChartOptions())
+    const [chartData, setChartData] = useState(null)
+    const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
+
+    console.log(displayYear)
+
+    useEffect(() => {
+        setChartData({
+            labels: [1,2,3],
+            datasets: [{
+            label: 'Test',
+            data: [10000, 20000, 30000],
+            backgroundColor: '#00d084',
+            borderWidth: 0,
+            pointRadius: 0,
+            tension: .5,
+            }]
+        })
+    }, [])
 
     return (
         <Container>
             <ChartContainer>
-                {/* <Bar
-                    data={chartData}
-                    options={options}
-                    plugins={[ChartDataLabels]}
-                /> */}
+                {chartData && (
+                    <Bar
+                        data={chartData}
+                        options={options}
+                        // plugins={[ChartDataLabels]}
+                    />
+                )}
             </ChartContainer>
         </Container>
     )
