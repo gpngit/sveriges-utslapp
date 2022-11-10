@@ -34,8 +34,8 @@ const BarChart = ({ emissions }) => {
     const {displayYear, setDisplayYear} = context
     const [options, setOptions] = useState(ChartOptions())
     const [chartData, setChartData] = useState(null)
-    const [yearlyBioData, setYearlyBioData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO'))
-    const [yearlyFossilData, setYearlyFossilData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.'))
+    const [yearlyBioData, setYearlyBioData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
+    const [yearlyFossilData, setYearlyFossilData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
 
     useEffect(() => {
         setChartData({
@@ -59,8 +59,8 @@ const BarChart = ({ emissions }) => {
     }, [])
 
     useEffect(() => {
-        setYearlyBioData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO'))
-        setYearlyFossilData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.'))
+        setYearlyBioData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
+        setYearlyFossilData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
     }, [displayYear])
 
     useEffect(() => {
@@ -83,6 +83,8 @@ const BarChart = ({ emissions }) => {
             }]
         })
     }, [yearlyBioData, yearlyFossilData])
+
+    console.log(yearlyFossilData)
 
     return (
         <Container>

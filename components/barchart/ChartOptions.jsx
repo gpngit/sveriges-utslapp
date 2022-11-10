@@ -41,10 +41,10 @@ const ChartOptions = () => {
                 size: '12px',
                 family: " Noto Sans",
               },
-              stepSize:10000,
+              stepSize: 5000,
             },
             min: 0,
-            max: 80000,
+            max: 25000,
             grid: {
               display: true,
               color: 'black',
