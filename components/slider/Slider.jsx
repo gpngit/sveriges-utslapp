@@ -31,7 +31,7 @@ const SliderContainer = styled.form`
         ${flex('row', 'space-between', 'center')}
 
         p {
-            font-size: 8px;
+            writing-mode: vertical-rl;
         }
     }
 `
