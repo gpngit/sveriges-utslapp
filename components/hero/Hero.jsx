@@ -14,6 +14,16 @@ const Container = styled.header`
     background-color: ${colors.primaryLight};
     color: ${colors.primaryDarK};
 `
+const ScrollContainer = styled.div`
+    outline: 1px solid red;
+    height: 50vh;
+    position: sticky;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`
 const Crumble = styled.div`
     ${flex('row', 'center', 'center')}
     align-self: center;
@@ -28,9 +38,9 @@ const ImageContainer = styled.div`
     }
 `
 const TextContent = styled.div`
-    ${flex()}
-    gap: 20px;
-    width: 70%;
+    ${flex()};
+    padding: 40px 0px;
+    gap: 40px;
 
     h1 {
         font-size: ${fontSizes.heading};
@@ -59,13 +69,15 @@ const Hero = ({ pageElements }) => {
                     <Image src={LogoDark} alt='Greenpeace logo'/>
                 </ImageContainer>
             </Crumble>
-            <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
-                <h1>{title.text}</h1>
-                <p>{body1.text}</p>
-                <p>{body2.text}</p>
-                <p>{body3.text}</p>
-            </TextContent>
+            <ScrollContainer>
+                <TextContent>
+                    <p>{subheading.text.toUpperCase()}</p>
+                    <h1>{title.text}</h1>
+                    <p>{body1.text}</p>
+                    <p>{body2.text}</p>
+                    <p>{body3.text}</p>
+                </TextContent>
+            </ScrollContainer>
         </Container>
     )
 }
