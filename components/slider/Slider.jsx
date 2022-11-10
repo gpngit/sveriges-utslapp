@@ -42,8 +42,6 @@ const Slider = ({ emissions }) => {
     const {displayYear, setDisplayYear} = context
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
 
-
-    console.log(displayYear)
     return (
         <Container>
             <SliderContainer>
