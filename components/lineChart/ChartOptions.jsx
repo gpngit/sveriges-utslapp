@@ -7,7 +7,7 @@ const ChartOptions = () => {
             legend: {
                 display: true,
                 position: 'bottom',
-                align: "end",
+                align: "center",
                 labels:{
                     boxHeight: 20,
                     color: 'black',
