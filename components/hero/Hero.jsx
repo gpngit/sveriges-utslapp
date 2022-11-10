@@ -11,14 +11,22 @@ const Container = styled.header`
     ${flex()};
     gap: 60px;
     min-height: 100vh;
-    padding: 30px;
     background-color: ${colors.primaryLight};
     color: ${colors.primaryDarK};
+
+    .burning-forest {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        bottom: 0;
+    }
 `
 const ScrollContainer = styled.div`
-    height: 50vh;
+    margin-bottom: 100px;
+    height: 300px;
     position: sticky;
     overflow-y: auto;
+    z-index: 10;
 
     &::-webkit-scrollbar {
         display: none;
@@ -63,15 +71,25 @@ const NavButton = styled.button`
 `
 const Blurred = styled.div`
     position: sticky;
-    bottom: 0;
-    height: 200px;
+    height: 100px;
     width: 100%;
-    background: linear-gradient(to top, ${colors.primaryLight}, transparent);
+    
+    &.bottom {
+        bottom: 0;
+        background: linear-gradient(to top, ${colors.primaryLight} 20px, transparent);
+    }
+    
+    /* &.top {
+        top: 60px;
+        background: linear-gradient(to bottom, ${colors.primaryLight}, transparent);
+    } */
 `
 
 const Hero = ({ pageElements }) => {
 
     const {id, sections, name} = pageElements
+
+    console.log(BurningForest)
 
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
@@ -88,6 +106,7 @@ const Hero = ({ pageElements }) => {
                 </ImageContainer>
             </Crumble>
             <ScrollContainer>
+                {/* <Blurred className='top' /> */} 
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p>
@@ -109,8 +128,9 @@ const Hero = ({ pageElements }) => {
                         <NavButton>Men skogen växer väl upp igen och binder kolet?</NavButton>
                     </TextAndLink>
                 </TextContent>
-                <Blurred></Blurred>
+                <Blurred className='bottom' />
             </ScrollContainer>
+            <Image className='burning-forest' src={BurningForest}/>
         </Container>
     )
 }
