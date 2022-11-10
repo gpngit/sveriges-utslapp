@@ -34,6 +34,7 @@ const ChartOptions = () => {
         },
         scales: {
           y: { 
+            // stacked: true,
             ticks:{
               color: 'black',
               font:{
@@ -51,11 +52,11 @@ const ChartOptions = () => {
           },
           x: {             
             grid: {
-              display: false,
+              display: true,
               color: 'black',
             },
             ticks:{
-              display: false,
+              display: true,
             }
           }
         }

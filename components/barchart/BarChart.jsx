@@ -23,6 +23,10 @@ const ChartContainer = styled.div`
     height: 80vh;
     width: 100%;
 `
+const ChartHeader = styled.h2`
+  text-align: center;
+  margin-bottom: 30px;
+`
 
 const BarChart = ({ emissions }) => {
 
@@ -30,17 +34,23 @@ const BarChart = ({ emissions }) => {
     const {displayYear, setDisplayYear} = context
     const [options, setOptions] = useState(ChartOptions())
     const [chartData, setChartData] = useState(null)
-    const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
-
-    console.log(displayYear)
+    const [yearlyBioData, setYearlyBioData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO'))
+    const [yearlyFossilData, setYearlyFossilData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.'))
 
     useEffect(() => {
         setChartData({
-            labels: [1,2,3],
+            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
             datasets: [{
-            label: 'Test',
-            data: [10000, 20000, 30000],
+            label: 'Biogena utsläpp',
+            data: yearlyBioData.map(data => data.value),
             backgroundColor: '#00d084',
+            borderWidth: 0,
+            pointRadius: 0,
+            tension: .5,
+            },{
+            label: 'Fossila utsläpp',
+            data: yearlyFossilData.map(data => data.value),
+            backgroundColor: '#0015d0',
             borderWidth: 0,
             pointRadius: 0,
             tension: .5,
@@ -48,8 +58,35 @@ const BarChart = ({ emissions }) => {
         })
     }, [])
 
+    useEffect(() => {
+        setYearlyBioData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO'))
+        setYearlyFossilData(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.'))
+    }, [displayYear])
+
+    useEffect(() => {
+        setChartData({
+            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
+            datasets: [{
+            label: 'Biogena utsläpp',
+            data: yearlyBioData.map(data => data.value),
+            backgroundColor: '#00d084',
+            borderWidth: 0,
+            pointRadius: 0,
+            tension: .5,
+            },{
+            label: 'Fossila utsläpp',
+            data: yearlyFossilData.map(data => data.value),
+            backgroundColor: '#0015d0',
+            borderWidth: 0,
+            pointRadius: 0,
+            tension: .5,
+            }]
+        })
+    }, [yearlyBioData, yearlyFossilData])
+
     return (
         <Container>
+            <ChartHeader>Utsläpp per sektor per år</ChartHeader>
             <ChartContainer>
                 {chartData && (
                     <Bar
