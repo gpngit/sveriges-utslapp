@@ -13,7 +13,7 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
-    background-color: ${colors.mainBackGround};
+    background-color: ${colors.primary};
     padding: 30px;
     height: 100vh;
     width: 100%;

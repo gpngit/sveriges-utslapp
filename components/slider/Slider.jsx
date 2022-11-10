@@ -9,7 +9,7 @@ import AppContext from '../../context/AppContext'
 
 const Container = styled.div`
     padding: 30px 50px;
-    background-color: ${colors.mainBackGround};
+    background-color: ${colors.primary};
 `
 const SliderContainer = styled.form`
     ${flex()};
