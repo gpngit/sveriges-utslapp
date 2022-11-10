@@ -5,6 +5,7 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 import Image from 'next/image'
 //resources
 import LogoDark from '../../public/images/Greenpeace-logo-primarydark.png'
+import BurningForest from '../../public/burning-forest.svg'
 
 const Container = styled.header`
     ${flex()};
@@ -15,7 +16,6 @@ const Container = styled.header`
     color: ${colors.primaryDarK};
 `
 const ScrollContainer = styled.div`
-    outline: 1px solid red;
     height: 50vh;
     position: sticky;
     overflow-y: auto;
@@ -39,8 +39,8 @@ const ImageContainer = styled.div`
 `
 const TextContent = styled.div`
     ${flex()};
-    padding: 40px 0px;
-    gap: 40px;
+    gap: 60px;
+    padding: 40px;
 
     h1 {
         font-size: ${fontSizes.heading};
@@ -49,6 +49,24 @@ const TextContent = styled.div`
     p {
         font-size: ${fontSizes.subheading};
     }
+`
+const TextAndLink = styled.div`
+    ${flex('row', 'space-between')};
+    gap: 80px;
+    width: 100%;
+`
+const NavButton = styled.button`
+    padding: 20px 40px;
+    background-color: transparent;
+    border: 3px solid ${colors.primaryDarK};
+    border-radius: 10px;
+`
+const Blurred = styled.div`
+    position: sticky;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    background: linear-gradient(to top, ${colors.primaryLight}, transparent);
 `
 
 const Hero = ({ pageElements }) => {
@@ -71,12 +89,27 @@ const Hero = ({ pageElements }) => {
             </Crumble>
             <ScrollContainer>
                 <TextContent>
-                    <p>{subheading.text.toUpperCase()}</p>
-                    <h1>{title.text}</h1>
-                    <p>{body1.text}</p>
-                    <p>{body2.text}</p>
-                    <p>{body3.text}</p>
+                    <TextAndLink>
+                        <p>{subheading.text.toUpperCase()}</p>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <h1>{title.text}</h1>
+                        <NavButton>Hur ser siffrorna ut egentligen?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body1.text}</p>
+                        <NavButton>Varför rapporteras de inte?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body2.text}</p>
+                        <NavButton>Men är inte biobränslen bra för naturen?</NavButton>
+                    </TextAndLink>
+                    <TextAndLink>
+                        <p>{body3.text}</p>
+                        <NavButton>Men skogen växer väl upp igen och binder kolet?</NavButton>
+                    </TextAndLink>
                 </TextContent>
+                <Blurred></Blurred>
             </ScrollContainer>
         </Container>
     )
