@@ -14,7 +14,8 @@ import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
     background-color: ${colors.primary};
-    padding: 30px;
+    color: ${colors.secondary};
+    padding: 60px;
     height: 100vh;
     width: 100%;
 `
@@ -43,15 +44,17 @@ const BarChart = ({ emissions }) => {
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
-            backgroundColor: '#ff6900',
-            borderWidth: 0,
+            backgroundColor: colors.hightlightOpaque,
+            borderColor: colors.secondary,
+            borderWidth: 2,
             pointRadius: 0,
             tension: .5,
             },{
             label: 'Fossila utsläpp',
             data: yearlyFossilData.map(data => data.value),
-            backgroundColor: '#f78da7',
-            borderWidth: 0,
+            backgroundColor: colors.secondaryOpaque,
+            borderColor: colors.secondary,
+            borderWidth: 2,
             pointRadius: 0,
             tension: .5,
             }]
@@ -69,15 +72,17 @@ const BarChart = ({ emissions }) => {
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
-            backgroundColor: '#ff6900',
-            borderWidth: 0,
+            backgroundColor: colors.hightlightOpaque,
+            borderColor: colors.secondary,
+            borderWidth: 2,
             pointRadius: 0,
             tension: .5,
             },{
             label: 'Fossila utsläpp',
             data: yearlyFossilData.map(data => data.value),
-            backgroundColor: '#f78da7',
-            borderWidth: 0,
+            backgroundColor: colors.secondaryOpaque,
+            borderColor: colors.secondary,
+            borderWidth: 2,
             pointRadius: 0,
             tension: .5,
             }]
