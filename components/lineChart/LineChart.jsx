@@ -9,11 +9,19 @@ import ChartOptions from "./ChartOptions";
 import { useState, useEffect } from 'react';
 
 const Container = styled.div`
-    position: relative;
     background-color: ${colors.mainBackGround};
-    padding: 40px;
+    padding: 30px;
+    height: 100vh;
+    width: 100%;
+`
+const ChartContainer = styled.div`
+    position: relative;
     height: 80vh;
     width: 100%;
+`
+const ChartHeader = styled.h2`
+  text-align: center;
+  margin-bottom: 30px;
 `
 
 const LineChart = ({ emissions }) => {
@@ -70,7 +78,10 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container>
-        {chartData && <Line data={chartData} options={options} />}
+        <ChartHeader>Sveriges koldioxidutsläpp sedan 1990</ChartHeader>
+        <ChartContainer>
+          {chartData && <Line data={chartData} options={options} />}
+        </ChartContainer>
       </Container>
   )
 }
