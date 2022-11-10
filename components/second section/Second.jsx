@@ -1,6 +1,8 @@
 //CSS
 import styled from 'styled-components'
 import { flex, colors, fontSizes } from '../../styles/partials'
+//components
+import SourceAndShare from '../buttons/SourceAndShare'
 
 const Container = styled.section`
     background-color: ${colors.secondary};
@@ -38,6 +40,7 @@ const Second = ({ pageElements }) => {
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
+            <SourceAndShare sourceLink={'#'} shareLink={'#'} />
         </Container>
     )
 }
