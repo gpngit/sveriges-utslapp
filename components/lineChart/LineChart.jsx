@@ -8,7 +8,7 @@ import ChartOptions from "./ChartOptions";
 //react hooks
 import { useState, useEffect } from 'react';
 
-const Container = styled.div`
+const Container = styled.section`
     background-color: ${colors.mainBackGround};
     padding: 30px;
     height: 100vh;
