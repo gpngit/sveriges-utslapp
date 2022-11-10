@@ -4,7 +4,8 @@ import styled, {css} from "styled-components";
 
 export const colors = {
     primaryLight: '#f2cebd',
-    primaryDarK: '#540707'
+    primaryDarK: '#540707',
+    mainBackGround: '#D3D3D3'
 }
 
 export const fontSizes = {
