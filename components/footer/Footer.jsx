@@ -5,18 +5,18 @@ import { flex, colors } from '../../styles/partials'
 import Link from 'next/link'
 import Image from 'next/image'
 //resources
-import LogoLight from '../../public/images/Greenpeace-logo-primarylight.png'
+import LogoLight from '../../public/images/Greenpeace-logo-primary.png'
 
 const Container = styled.footer`
     ${flex('column')}
     gap: 20px;
     height: 200px;
     padding: 30px;
-    background-color: ${colors.primaryDarK};
-    color: ${colors.primaryLight};
+    background-color: ${colors.secondary};
+    color: ${colors.primary};
 
     a {
-        color: ${colors.primaryLight};
+        color: ${colors.primary};
     }
 `
 const ImageContainer = styled.div`

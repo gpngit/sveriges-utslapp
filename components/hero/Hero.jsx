@@ -4,15 +4,15 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import LogoDark from '../../public/images/Greenpeace-logo-primarydark.png'
+import LogoDark from '../../public/images/Greenpeace-logo-secondary.png'
 import BurningForest from '../../public/burning-forest.svg'
 
 const Container = styled.header`
     ${flex()};
     gap: 40px;
     min-height: 100vh;
-    background-color: ${colors.primaryLight};
-    color: ${colors.primaryDarK};
+    background-color: ${colors.primary};
+    color: ${colors.secondary};
 
     .burning-forest {
         position: absolute;
@@ -65,8 +65,8 @@ const TextAndLink = styled.div`
 `
 const NavButton = styled.button`
     padding: 20px 40px;
-    background-color: ${colors.primaryLight};
-    border: 3px solid ${colors.primaryDarK};
+    background-color: ${colors.primary};
+    border: 3px solid ${colors.secondary};
     border-radius: 10px;
 `
 const Blurred = styled.div`
@@ -76,12 +76,12 @@ const Blurred = styled.div`
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primaryLight} 20px, transparent);
+        background: linear-gradient(to top, ${colors.primary} 20px, transparent);
     }
     
     /* &.top {
         top: 60px;
-        background: linear-gradient(to bottom, ${colors.primaryLight}, transparent);
+        background: linear-gradient(to bottom, ${colors.primary}, transparent);
     } */
 `
 
