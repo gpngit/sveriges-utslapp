@@ -14,7 +14,8 @@ export const colors = {
 
 export const fontSizes = {
     heading: '36px',
-    subheading: '24px'
+    subheading: '24px',
+    paragraph: '14px'
 }
 
 

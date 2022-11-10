@@ -1,12 +1,24 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, fontSizes } from '../../styles/partials'
 
 const Container = styled.section`
-    height: 60vh;
     background-color: ${colors.secondary};
-    padding: 60px;
+    padding: 100px 60px;
     color: white;
+`
+const TextContent = styled.div`
+    ${flex()};
+    gap: 20px;
+    max-width: 600px;
+
+    h2 {
+        font-size: ${fontSizes.subheading};
+    }
+
+    p {
+        font-size: ${fontSizes.paragraph};
+    }
 `
 
 const Second = ({ pageElements }) => {
@@ -19,7 +31,14 @@ const Second = ({ pageElements }) => {
     const body2 = sections.find(section => section.name === 'body2')
 
     return (
-        <Container>hej</Container>
+        <Container>
+            <TextContent>
+                <p>{subheading.text.toUpperCase()}</p>
+                <h1>{title.text}</h1>
+                <p>{body1.text}</p>
+                <p>{body2.text}</p>
+            </TextContent>
+        </Container>
     )
 }
 
