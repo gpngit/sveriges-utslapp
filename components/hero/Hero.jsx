@@ -22,8 +22,7 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    margin-bottom: 100px;
-    height: 300px;
+    height: 260px;
     position: sticky;
     overflow-y: auto;
     z-index: 10;
@@ -49,7 +48,7 @@ const ImageContainer = styled.div`
 const TextContent = styled.div`
     ${flex()};
     gap: 60px;
-    padding: 40px;
+    padding: 60px;
 
     h1 {
         font-size: ${fontSizes.heading};
