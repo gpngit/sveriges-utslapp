@@ -9,7 +9,7 @@ import BurningForest from '../../public/burning-forest.svg'
 
 const Container = styled.header`
     ${flex()};
-    gap: 60px;
+    gap: 40px;
     min-height: 100vh;
     background-color: ${colors.primaryLight};
     color: ${colors.primaryDarK};
@@ -35,6 +35,7 @@ const ScrollContainer = styled.div`
 const Crumble = styled.div`
     ${flex('row', 'center', 'center')}
     align-self: center;
+    padding: 20px;
 `
 const ImageContainer = styled.div`
     height: 16px;
@@ -65,7 +66,7 @@ const TextAndLink = styled.div`
 `
 const NavButton = styled.button`
     padding: 20px 40px;
-    background-color: transparent;
+    background-color: ${colors.primaryLight};
     border: 3px solid ${colors.primaryDarK};
     border-radius: 10px;
 `
@@ -88,8 +89,6 @@ const Blurred = styled.div`
 const Hero = ({ pageElements }) => {
 
     const {id, sections, name} = pageElements
-
-    console.log(BurningForest)
 
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
