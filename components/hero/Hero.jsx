@@ -7,6 +7,8 @@ import Image from 'next/image'
 import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 import BurningForest from '../../public/burning-forest.svg'
 import Arrow from '../../public/arrow.svg'
+//components
+import Crumble from '../crumble/Crumble'
 
 const Container = styled.header`
     position: relative;
@@ -34,12 +36,6 @@ const ScrollContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-`
-const Crumble = styled.div`
-    ${flex('row', 'center', 'center')}
-    gap: 10px;
-    align-self: center;
-    padding: 20px;
 `
 const TextContent = styled.div`
     ${flex()};
@@ -96,10 +92,7 @@ const Hero = ({ pageElements }) => {
 
     return (
         <Container>
-            <Crumble>
-                <p>En sammanställning av</p>
-                <GreenpeaceLogo alt='Greenpeace-logo' color={colors.secondary} />
-            </Crumble>
+            <Crumble color={colors.secondary}/>
             <ScrollContainer>
                 {/* <Blurred className='top' /> */} 
                 <TextContent>

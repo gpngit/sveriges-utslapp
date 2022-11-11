@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { flex, colors } from '../../styles/partials'
 //nextjs components
 import Link from 'next/link'
-//resources
-import GreenpeaceLogo from '../../public/GreenpeaceLogo'
+//components
+import Crumble from '../crumble/Crumble'
 
 const Container = styled.footer`
     ${flex('column')}
@@ -27,7 +27,7 @@ const Footer = () => {
                 <Link href='/'><p>Start</p></Link>
                 <Link href='/admin'><p>Admin</p></Link>
             </div>
-            <GreenpeaceLogo alt='Greenpeace-logo' color={colors.primary} />
+            <Crumble color={colors.primary} />
         </Container>
     )
 }
