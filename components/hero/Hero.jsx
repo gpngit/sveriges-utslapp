@@ -27,8 +27,8 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 50vh;
-    width: 90%;
+    height: 75vh;
+    width: 100%;
     position: sticky;
     overflow-y: auto;
 
@@ -62,6 +62,7 @@ const NavLink = styled.a`
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
+    margin-right: 40px;
 `
 const Blurred = styled.div`
     position: sticky;
@@ -92,12 +93,13 @@ const Hero = ({ pageElements }) => {
 
     return (
         <Container>
-            <Crumble color={colors.secondary}/>
             <ScrollContainer>
+                <Crumble color={colors.secondary}/>
                 {/* <Blurred className='top' /> */} 
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p>
+                        {/* ingen länk här */}
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
