@@ -51,7 +51,7 @@ const TextContent = styled.div`
 `
 const TextAndLink = styled.div`
     ${flex('row', 'flext-start', 'center')};
-    gap: 60px;
+    gap: 40px;
     width: 100%;
 `
 const NavLink = styled.a`
@@ -80,6 +80,14 @@ const Blurred = styled.div`
         background: linear-gradient(to bottom, ${colors.primary}, transparent);
     } */
 `
+const ImageContainer = styled.div`
+    min-width: 100px;
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+`
 
 const Hero = ({ pageElements }) => {
 
@@ -103,22 +111,30 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink href='#second-section'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
