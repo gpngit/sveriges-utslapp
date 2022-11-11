@@ -72,13 +72,13 @@ const NavLink = styled.a`
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 100px;
+    height: 200px;
     width: 100%;
     pointer-events: none;
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 30px, transparent);
+        background: linear-gradient(to top, ${colors.primary}, transparent);
     }
     
     /* &.top {
