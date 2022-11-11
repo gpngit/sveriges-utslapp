@@ -49,7 +49,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: colors.secondary,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: 'Fossila utsläpp', //fossilEmissions[0].type.text
                 data: fossilEmissions.map(emissions => emissions.value),
@@ -58,7 +58,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: colors.secondary,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
@@ -67,7 +67,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: '#5d5d5d',
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             }]
         })
     }
