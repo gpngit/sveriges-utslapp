@@ -90,7 +90,7 @@ const BarChart = ({ emissions }) => {
     }, [yearlyBioData, yearlyFossilData])
 
     return (
-        <Container>
+        <Container id='bar-chart'>
             <ChartHeader>Utsläpp år {displayYear}</ChartHeader>
             <ChartContainer>
                 {chartData && (
