@@ -19,6 +19,7 @@ const Container = styled.header`
     .burning-forest {
         position: absolute;
         width: 100%;
+        height: 100%;
         object-fit: cover;
         bottom: 0;
         pointer-events: none;
