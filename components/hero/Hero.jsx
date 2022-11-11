@@ -4,7 +4,7 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import LogoDark from '../../public/images/Greenpeace-logo-secondary.png'
+import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 import BurningForest from '../../public/burning-forest.svg'
 import Arrow from '../../public/arrow.svg'
 
@@ -36,17 +36,9 @@ const ScrollContainer = styled.div`
 `
 const Crumble = styled.div`
     ${flex('row', 'center', 'center')}
+    gap: 10px;
     align-self: center;
     padding: 20px;
-`
-const ImageContainer = styled.div`
-    height: 16px;
-    margin-left: 8px;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
 `
 const TextContent = styled.div`
     ${flex()};
@@ -105,9 +97,7 @@ const Hero = ({ pageElements }) => {
         <Container>
             <Crumble>
                 <p>En sammanställning av</p>
-                <ImageContainer>
-                    <Image src={LogoDark} alt='Greenpeace logo'/>
-                </ImageContainer>
+                <GreenpeaceLogo alt='Greenpeace-logo' color={colors.secondary} />
             </Crumble>
             <ScrollContainer>
                 {/* <Blurred className='top' /> */} 
