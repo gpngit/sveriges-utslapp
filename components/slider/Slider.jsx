@@ -57,7 +57,12 @@ const Slider = ({ emissions }) => {
                 onChange={(e) => setDisplayYear(e.target.value)} 
                 />
                 <span className='slider-labels'>
-                    {years.map(year => <p key={year}>{year}</p>)}
+                    {years.map(year => {
+                        // nedan visar var femte år. I fullskärm kanske man vill vis alla?
+                        if (Number(year) % 5 === 0){
+                            return <p key={year}>{year}</p>
+                        }
+                    })}
                 </span>
             </SliderContainer>
         </Container>
