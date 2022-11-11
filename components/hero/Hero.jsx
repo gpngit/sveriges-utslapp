@@ -39,7 +39,7 @@ const ScrollContainer = styled.div`
 const TextContent = styled.div`
     ${flex()};
     gap: 30px;
-    padding: 40px;
+    padding: 30px;
 
     h1 {
         font-size: ${fontSizes.heading};
@@ -53,16 +53,22 @@ const TextAndLink = styled.div`
     ${flex('row', 'flext-start', 'center')};
     gap: 40px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        ${flex('column')};
+        gap: 10px;
+    }
 `
 const NavLink = styled.a`
     text-decoration: none;
+    text-align: center;
     padding: 14px 20px;
     font-size: ${fontSizes.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
-    margin-right: 40px;
+    margin-right: 5vw;
 `
 const Blurred = styled.div`
     position: sticky;
@@ -86,6 +92,10 @@ const ImageContainer = styled.div`
     img {
         max-height: 100%;
         max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
     }
 `
 
