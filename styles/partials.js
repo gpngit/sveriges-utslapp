@@ -5,11 +5,10 @@ import styled, {css} from "styled-components";
 export const colors = {
     primary: '#f2cebd',
     secondary: '#370000',
-    primaryOpaque: '#fccebd99',
-    secondaryOpaque: '#38000099',
-    mainBackGround: '#D3D3D3',
-    highlight: '#AB523A',
-    hightlightOpaque: '#ab523a99'
+    bio: '#AB523A',
+    fossil: '#876666',
+    border: '#404040'
+
 }
 
 export const fontSizes = {
