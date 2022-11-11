@@ -12,7 +12,7 @@ const Container = styled.header`
     position: relative;
     ${flex()};
     gap: 40px;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
 
@@ -24,7 +24,7 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 40vh;
+    height: 60vh;
     width: 80vw;
     position: sticky;
     overflow-y: auto;
@@ -115,28 +115,28 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <Image src={Arrow} />
+                        <Image src={Arrow} alt='arrow' />
                         <NavButton>Hur ser siffrorna ut egentligen?</NavButton>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <Image src={Arrow} />
+                        <Image src={Arrow} alt='arrow' />
                         <NavButton>Varför rapporteras de inte?</NavButton>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <Image src={Arrow} />
+                        <Image src={Arrow} alt='arrow' />
                         <NavButton>Men är inte biobränslen bra för naturen?</NavButton>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <Image src={Arrow} />
+                        <Image src={Arrow} alt='arrow' />
                         <NavButton>Men skogen växer väl upp igen och binder kolet?</NavButton>
                     </TextAndLink>
                 </TextContent>
                 <Blurred className='bottom' />
             </ScrollContainer>
-            <Image className='burning-forest' src={BurningForest}/>
+            <Image className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
         </Container>
     )
 }
