@@ -2,11 +2,11 @@
 import styled from "styled-components";
 import { flex, colors } from '../../styles/partials'
 //Charts
-import { Line } from 'react-chartjs-2';
+import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
 //react hooks
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
     background-color: ${colors.primary};
@@ -23,6 +23,7 @@ const ChartContainer = styled.div`
 
 const LineChart = ({ emissions }) => {
 
+  const canvas = useRef()
   const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState(null)
   const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
@@ -73,10 +74,18 @@ const LineChart = ({ emissions }) => {
     }
   }, [totalEmissions])
 
+  const handleClick = (e) => {
+    console.log(canvas.current.config)
+    console.log(canvas.current.config.data)
+    console.log(canvas.current.config.options)
+    console.log(canvas.current.config.options.plugins)
+  }
+
   return (
       <Container id='line-chart'>
+        <button onClick={(e) => handleClick(e)}>Test button</button>
         <ChartContainer>
-          {chartData && <Line data={chartData} options={options} />}
+          {chartData && <Line ref={canvas} data={chartData} options={options} />}
         </ChartContainer>
       </Container>
   )

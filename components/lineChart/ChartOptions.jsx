@@ -5,18 +5,31 @@ const ChartOptions = () => {
         responsive: true,
         plugins: {
             legend: {
-                display: true,
-                position: 'top',
-                align: "center",
-                labels:{
-                    boxHeight: 20,
-                    color: 'black',
-                    font:{
-                        size: '12px',
-                        family: "Noto Sans",
-                        weight: 500,
-                    }
-                } 
+            //   onClick: function (e, legendItem, legend) {    
+            //     let datasetIndex = legendItem.datasetIndex;
+            //     let ci = legend.chart, metaSets = [];
+                
+            //     for (let i = 0; i < legend.chart.data.datasets.length; i++) {
+            //         metaSets.push(ci.getDatasetMeta(i));
+            //     }
+                
+            //     metaSets.forEach(function(meta) {
+            //         meta.hidden = meta.index === datasetIndex ? false : true;
+            //     });
+            //     ci.update();  
+            // },
+              display: true,
+              position: 'top',
+              align: "center",
+              labels:{
+                  boxHeight: 20,
+                  color: 'black',
+                  font:{
+                      size: '12px',
+                      family: "Noto Sans",
+                      weight: 500,
+                  }
+              } 
             }
         },
         scales: {
