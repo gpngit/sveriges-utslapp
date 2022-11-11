@@ -5,7 +5,6 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 const Container = styled.div`
     ${flex('row')};
     gap: 20px;
-    margin: 40px 0px;
 `
 const Button = styled.button`
     background-color: transparent;

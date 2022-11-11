@@ -5,6 +5,8 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 import SourceAndShare from '../buttons/SourceAndShare'
 
 const Container = styled.section`
+    ${flex()};
+    gap: 40px;
     background-color: ${colors.secondary};
     padding: 100px 60px;
     color: white;
