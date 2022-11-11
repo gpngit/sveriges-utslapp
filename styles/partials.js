@@ -13,9 +13,9 @@ export const colors = {
 }
 
 export const fontSizes = {
-    desktopHeading: '48px',
-    desktopSubheading: '24px',
-    paragraph: '14px'
+    heading: '3.8em',
+    subheading: '2.4em',
+    paragraph: '1.6em'
 }
 
 

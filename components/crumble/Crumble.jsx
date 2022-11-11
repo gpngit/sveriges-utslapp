@@ -5,10 +5,14 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 
 const Container = styled.div`
-    ${flex('row', 'center', 'center')};
+    ${flex('column', 'center', 'center')};
     gap: 10px;
     align-self: center;
     padding: 20px;
+
+    p {
+        font-size: ${fontSizes.paragraph};
+    }
 `
 
 const Crumble = ({ color }) => {

@@ -42,11 +42,11 @@ const TextContent = styled.div`
     padding: 40px;
 
     h1 {
-        font-size: ${fontSizes.desktopHeading};
+        font-size: ${fontSizes.heading};
     }
 
     p {
-        font-size: ${fontSizes.desktopSubheading};
+        font-size: ${fontSizes.subheading};
     }
 `
 const TextAndLink = styled.div`
@@ -57,6 +57,7 @@ const TextAndLink = styled.div`
 const NavLink = styled.a`
     text-decoration: none;
     padding: 14px 20px;
+    font-size: ${fontSizes.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
