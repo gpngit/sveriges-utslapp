@@ -15,7 +15,7 @@ const TextContent = styled.div`
     max-width: 600px;
 
     h2 {
-        font-size: ${fontSizes.subheading};
+        font-size: ${fontSizes.desktopSubheading};
     }
 
     p {
