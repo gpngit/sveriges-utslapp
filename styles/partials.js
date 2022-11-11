@@ -5,17 +5,16 @@ import styled, {css} from "styled-components";
 export const colors = {
     primary: '#f2cebd',
     secondary: '#370000',
-    primaryOpaque: '#fccebd99',
-    secondaryOpaque: '#38000099',
-    mainBackGround: '#D3D3D3',
-    highlight: '#AB523A',
-    hightlightOpaque: '#ab523a99'
+    bio: '#AB523A',
+    fossil: '#876666',
+    border: '#404040'
+
 }
 
 export const fontSizes = {
-    desktopHeading: '48px',
-    desktopSubheading: '24px',
-    paragraph: '14px'
+    heading: '3.8em',
+    subheading: '2.4em',
+    paragraph: '1.6em'
 }
 
 

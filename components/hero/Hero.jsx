@@ -4,7 +4,6 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 import BurningForest from '../../public/burning-forest.svg'
 import Arrow from '../../public/arrow.svg'
 //components
@@ -28,8 +27,8 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 50vh;
-    width: 90%;
+    height: 75vh;
+    width: 100%;
     position: sticky;
     overflow-y: auto;
 
@@ -40,44 +39,64 @@ const ScrollContainer = styled.div`
 const TextContent = styled.div`
     ${flex()};
     gap: 30px;
-    padding: 40px;
+    padding: 30px;
 
     h1 {
-        font-size: ${fontSizes.desktopHeading};
+        font-size: ${fontSizes.heading};
     }
 
     p {
-        font-size: ${fontSizes.desktopSubheading};
+        font-size: ${fontSizes.subheading};
     }
 `
 const TextAndLink = styled.div`
     ${flex('row', 'flext-start', 'center')};
-    gap: 60px;
+    gap: 40px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        ${flex('column')};
+        gap: 10px;
+    }
 `
 const NavLink = styled.a`
     text-decoration: none;
+    text-align: center;
     padding: 14px 20px;
+    font-size: ${fontSizes.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
+    margin-right: 5vw;
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 100px;
+    height: 200px;
     width: 100%;
     pointer-events: none;
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 20px, transparent);
+        background: linear-gradient(to top, ${colors.primary}, transparent);
     }
     
     /* &.top {
         top: 60px;
         background: linear-gradient(to bottom, ${colors.primary}, transparent);
     } */
+`
+const ImageContainer = styled.div`
+    min-width: 100px;
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `
 
 const Hero = ({ pageElements }) => {
@@ -92,31 +111,40 @@ const Hero = ({ pageElements }) => {
 
     return (
         <Container>
-            <Crumble color={colors.secondary}/>
             <ScrollContainer>
+                <Crumble color={colors.secondary}/>
                 {/* <Blurred className='top' /> */} 
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p>
+                        {/* ingen länk här */}
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink href='#second-section'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <Image src={Arrow} alt='arrow' />
+                        <ImageContainer>
+                            <Image src={Arrow} alt='arrow' />
+                        </ImageContainer>
                         <NavLink onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>

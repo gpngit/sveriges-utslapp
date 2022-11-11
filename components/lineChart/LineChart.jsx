@@ -20,10 +20,6 @@ const ChartContainer = styled.div`
     height: 80vh;
     width: 100%;
 `
-const ChartHeader = styled.h2`
-  text-align: center;
-  margin-bottom: 30px;
-`
 
 const LineChart = ({ emissions }) => {
 
@@ -49,29 +45,29 @@ const LineChart = ({ emissions }) => {
                 label: 'Biogena utsläpp', //bioEmissions[0].type.text
                 data: bioEmissions.map(emissions => emissions.value),
                 fill: true,
-                backgroundColor: colors.hightlightOpaque,
-                borderColor: colors.secondary,
+                backgroundColor: colors.bio,
+                borderColor: colors.border,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: 'Fossila utsläpp', //fossilEmissions[0].type.text
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
-                backgroundColor: colors.secondaryOpaque,
-                borderColor: colors.secondary,
+                backgroundColor: colors.fossil,
+                borderColor: colors.border,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
                 backgroundColor: 'white',
-                borderColor: '#5d5d5d',
+                borderColor: colors.border,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             }]
         })
     }
@@ -79,7 +75,6 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-        <ChartHeader>Sveriges koldioxidutsläpp sedan 1990</ChartHeader>
         <ChartContainer>
           {chartData && <Line data={chartData} options={options} />}
         </ChartContainer>
