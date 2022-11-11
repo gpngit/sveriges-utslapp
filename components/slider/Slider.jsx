@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
-const Container = styled.div`
+const Container = styled.section`
     padding: 30px 50px;
     background-color: ${colors.primary};
 `
@@ -43,7 +43,7 @@ const Slider = ({ emissions }) => {
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
 
     return (
-        <Container>
+        <Container id='slider'>
             <SliderContainer>
                 {/* <label htmlFor="slider">Ändra årtal:</label> */}
                 <input 
@@ -57,7 +57,12 @@ const Slider = ({ emissions }) => {
                 onChange={(e) => setDisplayYear(e.target.value)} 
                 />
                 <span className='slider-labels'>
-                    {years.map(year => <p key={year}>{year}</p>)}
+                    {years.map(year => {
+                        // nedan visar var femte år. I fullskärm kanske man vill vis alla?
+                        if (Number(year) % 5 === 0){
+                            return <p key={year}>{year}</p>
+                        }
+                    })}
                 </span>
             </SliderContainer>
         </Container>

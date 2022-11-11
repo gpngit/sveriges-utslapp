@@ -15,7 +15,7 @@ const TextContent = styled.div`
     max-width: 600px;
 
     h2 {
-        font-size: ${fontSizes.subheading};
+        font-size: ${fontSizes.desktopSubheading};
     }
 
     p {
@@ -33,7 +33,7 @@ const Second = ({ pageElements }) => {
     const body2 = sections.find(section => section.name === 'body2')
 
     return (
-        <Container>
+        <Container id='second-section'>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h1>{title.text}</h1>

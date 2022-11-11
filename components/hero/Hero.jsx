@@ -6,8 +6,10 @@ import Image from 'next/image'
 //resources
 import LogoDark from '../../public/images/Greenpeace-logo-secondary.png'
 import BurningForest from '../../public/burning-forest.svg'
+import Arrow from '../../public/arrow.svg'
 
 const Container = styled.header`
+    position: relative;
     ${flex()};
     gap: 40px;
     min-height: 100vh;
@@ -19,13 +21,14 @@ const Container = styled.header`
         width: 100%;
         object-fit: cover;
         bottom: 0;
+        pointer-events: none;
     }
 `
 const ScrollContainer = styled.div`
-    height: 260px;
+    height: 50vh;
+    width: 90%;
     position: sticky;
     overflow-y: auto;
-    z-index: 10;
 
     &::-webkit-scrollbar {
         display: none;
@@ -47,25 +50,27 @@ const ImageContainer = styled.div`
 `
 const TextContent = styled.div`
     ${flex()};
-    gap: 60px;
-    padding: 60px;
+    gap: 30px;
+    padding: 40px;
 
     h1 {
-        font-size: ${fontSizes.heading};
+        font-size: ${fontSizes.desktopHeading};
     }
 
     p {
-        font-size: ${fontSizes.subheading};
+        font-size: ${fontSizes.desktopSubheading};
     }
 `
 const TextAndLink = styled.div`
-    ${flex('row', 'space-between')};
-    gap: 80px;
+    ${flex('row', 'flext-start', 'center')};
+    gap: 60px;
     width: 100%;
 `
-const NavButton = styled.button`
-    padding: 20px 40px;
+const NavLink = styled.a`
+    text-decoration: none;
+    padding: 14px 20px;
     background-color: ${colors.primary};
+    color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
 `
@@ -73,6 +78,7 @@ const Blurred = styled.div`
     position: sticky;
     height: 100px;
     width: 100%;
+    pointer-events: none;
     
     &.bottom {
         bottom: 0;
@@ -111,24 +117,28 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <NavButton>Hur ser siffrorna ut egentligen?</NavButton>
+                        <Image src={Arrow} alt='arrow' />
+                        <NavLink href='#second-section'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <NavButton>Varför rapporteras de inte?</NavButton>
+                        <Image src={Arrow} alt='arrow' />
+                        <NavLink onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <NavButton>Men är inte biobränslen bra för naturen?</NavButton>
+                        <Image src={Arrow} alt='arrow' />
+                        <NavLink onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <NavButton>Men skogen växer väl upp igen och binder kolet?</NavButton>
+                        <Image src={Arrow} alt='arrow' />
+                        <NavLink onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
                 <Blurred className='bottom' />
             </ScrollContainer>
-            <Image className='burning-forest' src={BurningForest}/>
+            <Image className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
         </Container>
     )
 }
