@@ -78,7 +78,7 @@ const LineChart = ({ emissions }) => {
   }, [totalEmissions])
 
   return (
-      <Container>
+      <Container id='line-chart'>
         <ChartHeader>Sveriges koldioxidutsläpp sedan 1990</ChartHeader>
         <ChartContainer>
           {chartData && <Line data={chartData} options={options} />}

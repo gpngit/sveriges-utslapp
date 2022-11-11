@@ -12,6 +12,8 @@ import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import Second from '../components/second section/Second'
+//react hooks
+import { useEffect } from 'react'
 
 
 export async function getServerSideProps(){
@@ -38,7 +40,26 @@ export async function getServerSideProps(){
   }
 }
 
+
 export default function Home({ siteSections, emissions }) {
+  
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
+      // console.log(scrollPercentage)
+    })
+
+    const observer = new IntersectionObserver((entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            console.log(entry.target.id)
+          }
+      })
+      }),{threshold: 0.6})
+
+    let sections = document.querySelectorAll('section')
+    sections.forEach(section => observer.observe(section))  
+  }, [])
 
   return (
     <>

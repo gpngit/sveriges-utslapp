@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
-const Container = styled.div`
+const Container = styled.section`
     padding: 30px 50px;
     background-color: ${colors.primary};
 `
@@ -43,7 +43,7 @@ const Slider = ({ emissions }) => {
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
 
     return (
-        <Container>
+        <Container id='slider'>
             <SliderContainer>
                 {/* <label htmlFor="slider">Ändra årtal:</label> */}
                 <input 
