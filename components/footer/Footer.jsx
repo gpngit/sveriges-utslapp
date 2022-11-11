@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { flex, colors } from '../../styles/partials'
 //nextjs components
 import Link from 'next/link'
-import Image from 'next/image'
-//resources
-import LogoLight from '../../public/images/Greenpeace-logo-primary.png'
+//components
+import Crumble from '../crumble/Crumble'
 
 const Container = styled.footer`
     ${flex('column')}
@@ -19,14 +18,6 @@ const Container = styled.footer`
         color: ${colors.primary};
     }
 `
-const ImageContainer = styled.div`
-    height: 30px;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
-`
 
 const Footer = () => {
 
@@ -36,9 +27,7 @@ const Footer = () => {
                 <Link href='/'><p>Start</p></Link>
                 <Link href='/admin'><p>Admin</p></Link>
             </div>
-            <ImageContainer>
-                <Image src={LogoLight} alt='Greenpeace logo' />
-            </ImageContainer>
+            <Crumble color={colors.primary} />
         </Container>
     )
 }
