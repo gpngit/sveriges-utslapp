@@ -20,10 +20,6 @@ const ChartContainer = styled.div`
     height: 80vh;
     width: 100%;
 `
-const ChartHeader = styled.h2`
-  text-align: center;
-  margin-bottom: 30px;
-`
 
 const LineChart = ({ emissions }) => {
 
@@ -79,7 +75,6 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-        <ChartHeader>Sveriges koldioxidutsläpp sedan 1990</ChartHeader>
         <ChartContainer>
           {chartData && <Line data={chartData} options={options} />}
         </ChartContainer>

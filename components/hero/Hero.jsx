@@ -4,7 +4,6 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 import BurningForest from '../../public/burning-forest.svg'
 import Arrow from '../../public/arrow.svg'
 //components
@@ -71,7 +70,7 @@ const Blurred = styled.div`
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 20px, transparent);
+        background: linear-gradient(to top, ${colors.primary} 30px, transparent);
     }
     
     /* &.top {
