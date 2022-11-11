@@ -25,8 +25,8 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 60vh;
-    width: 80vw;
+    height: 50vh;
+    width: 90%;
     position: sticky;
     overflow-y: auto;
 
@@ -66,10 +66,11 @@ const TextAndLink = styled.div`
     gap: 60px;
     width: 100%;
 `
-const NavButton = styled.button`
+const NavLink = styled.a`
+    text-decoration: none;
     padding: 14px 20px;
     background-color: ${colors.primary};
-    color: ${colors.secondary}
+    color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
 `
@@ -117,22 +118,22 @@ const Hero = ({ pageElements }) => {
                     <TextAndLink>
                         <h1>{title.text}</h1>
                         <Image src={Arrow} alt='arrow' />
-                        <NavButton onClick={(e) => console.log(e)}>Hur ser siffrorna ut egentligen?</NavButton>
+                        <NavLink href='#second-section'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
                         <Image src={Arrow} alt='arrow' />
-                        <NavButton onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavButton>
+                        <NavLink onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
                         <Image src={Arrow} alt='arrow' />
-                        <NavButton onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavButton>
+                        <NavLink onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
                         <Image src={Arrow} alt='arrow' />
-                        <NavButton onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavButton>
+                        <NavLink onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
                 <Blurred className='bottom' />
