@@ -4,7 +4,7 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import BurningForest from '../../public/burning-forest.svg'
+import BurningForest from '../../public/burning-forest2.png'
 import Arrow from '../../public/arrow.svg'
 //components
 import Crumble from '../crumble/Crumble'
@@ -90,8 +90,8 @@ const ImageContainer = styled.div`
     min-width: 100px;
 
     img {
-        max-height: 100%;
-        max-width: 100%;
+        height: 100%;
+        width: 100%;
     }
 
     @media (max-width: 768px) {
@@ -150,7 +150,7 @@ const Hero = ({ pageElements }) => {
                 </TextContent>
                 <Blurred className='bottom' />
             </ScrollContainer>
-            <Image className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
+            <Image priority className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
         </Container>
     )
 }
