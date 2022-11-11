@@ -48,6 +48,17 @@ export default function Home({ siteSections, emissions }) {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
       // console.log(scrollPercentage)
     })
+
+    const observer = new IntersectionObserver((entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            console.log(entry.target.id)
+          }
+      })
+      }),{threshold: 0.6})
+
+    let sections = document.querySelectorAll('section')
+    sections.forEach(section => observer.observe(section))  
   }, [])
 
   return (
