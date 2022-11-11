@@ -5,6 +5,8 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 import SourceAndShare from '../buttons/SourceAndShare'
 
 const Container = styled.section`
+    ${flex()};
+    gap: 40px;
     background-color: ${colors.secondary};
     padding: 100px 60px;
     color: white;
@@ -15,7 +17,7 @@ const TextContent = styled.div`
     max-width: 600px;
 
     h2 {
-        font-size: ${fontSizes.desktopSubheading};
+        font-size: ${fontSizes.heading};
     }
 
     p {
@@ -36,7 +38,7 @@ const Second = ({ pageElements }) => {
         <Container id='second-section'>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
-                <h1>{title.text}</h1>
+                <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>

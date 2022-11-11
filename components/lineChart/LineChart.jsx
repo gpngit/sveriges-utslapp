@@ -20,10 +20,6 @@ const ChartContainer = styled.div`
     height: 80vh;
     width: 100%;
 `
-const ChartHeader = styled.h2`
-  text-align: center;
-  margin-bottom: 30px;
-`
 
 const LineChart = ({ emissions }) => {
 
@@ -53,7 +49,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: colors.secondary,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: 'Fossila utsläpp', //fossilEmissions[0].type.text
                 data: fossilEmissions.map(emissions => emissions.value),
@@ -62,7 +58,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: colors.secondary,
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
@@ -71,7 +67,7 @@ const LineChart = ({ emissions }) => {
                 borderColor: '#5d5d5d',
                 borderWidth: 2,
                 pointRadius: 0,
-                tension: .1,
+                tension: .3,
             }]
         })
     }
@@ -79,7 +75,6 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-        <ChartHeader>Sveriges koldioxidutsläpp sedan 1990</ChartHeader>
         <ChartContainer>
           {chartData && <Line data={chartData} options={options} />}
         </ChartContainer>

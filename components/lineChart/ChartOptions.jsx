@@ -6,7 +6,7 @@ const ChartOptions = () => {
         plugins: {
             legend: {
                 display: true,
-                position: 'bottom',
+                position: 'top',
                 align: "center",
                 labels:{
                     boxHeight: 20,
