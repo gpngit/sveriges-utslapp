@@ -9,10 +9,7 @@ const Container = styled.div`
     gap: 10px;
     align-self: center;
     padding: 20px;
-
-    p {
-        font-size: ${fontSizes.paragraph};
-    }
+    font-size: 16px;
 `
 
 const Crumble = ({ color }) => {

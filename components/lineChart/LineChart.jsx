@@ -27,7 +27,7 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
 `
 const Button = styled.button`
-  padding: 10px 40px;
+  padding: 10px;
   border: none;
   border-radius: 10px;
   background-color: white;
