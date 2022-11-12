@@ -24,6 +24,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   ${flex('row', 'center', 'center')};
   gap: 10px;
+  flex-wrap: wrap;
 `
 const Button = styled.button`
   padding: 10px 40px;
