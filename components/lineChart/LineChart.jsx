@@ -20,6 +20,10 @@ const ChartContainer = styled.div`
     height: 80vh;
     width: 100%;
 `
+const ButtonContainer = styled.div`
+  width: 100%;
+  ${flex('row', 'center', 'center')};
+`
 
 const LineChart = ({ emissions }) => {
 
@@ -94,9 +98,11 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-        <button data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</button>
-        <button data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</button>
-        <button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</button>
+        <ButtonContainer>
+          <button data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</button>
+          <button data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</button>
+          <button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</button>
+        </ButtonContainer>
         <ChartContainer>
           {chartData && <Line ref={canvas} data={chartData} options={options} />}
         </ChartContainer>
