@@ -2,7 +2,7 @@
 import styled, {css} from "styled-components";
 import { flex, colors } from '../../styles/partials'
 //Charts
-import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
 //react hooks
@@ -55,9 +55,11 @@ const Button = styled.button`
 
 const LineChart = ({ emissions }) => {
 
+  let gradient
   const canvas = useRef()
+  const [componentMounted, setComponentMounted] = useState(null)
   const [options, setOptions] = useState(ChartOptions())
-  const [chartData, setChartData] = useState(null)
+  const [chartData, setChartData] = useState()
   const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
@@ -69,6 +71,21 @@ const LineChart = ({ emissions }) => {
         year: emission.year
     }
   }))
+
+  // useEffect(() => {
+  //   setComponentMounted(true)
+  // }, [])
+
+  // useEffect(() => {
+  //   if(componentMounted) {
+  //     let ctx = canvas.current.canvas
+  //     let chart = ctx.getContext('2d')
+  //     gradient = chart.createLinearGradient(0,0,0,400)
+  //     gradient.addColorStop(0, 'rgba(58,123,213,1)')
+  //     gradient.addColorStop(1, 'rgba(0,210,255,0.3)')
+  //   }
+  //     console.log(gradient)
+  // }, [componentMounted])
 
   useEffect(() => {
     if (totalEmissions) {
