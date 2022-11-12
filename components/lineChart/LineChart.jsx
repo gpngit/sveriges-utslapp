@@ -75,15 +75,28 @@ const LineChart = ({ emissions }) => {
   }, [totalEmissions])
 
   const handleClick = (e) => {
-    console.log(canvas.current.config)
-    console.log(canvas.current.config.data)
-    console.log(canvas.current.config.options)
-    console.log(canvas.current.config.options.plugins)
+    let clickedDatasetIndex = e.target.dataset.index
+    let chartDatasets = canvas.current.legend.chart._sortedMetasets
+
+    chartDatasets.forEach(dataset => {
+      if (dataset.index == clickedDatasetIndex) {
+        if (dataset.hidden === true) {
+          dataset.hidden = false
+        } else {
+          dataset.hidden = true
+        }
+      } else {
+        dataset.hidden = false
+      }
+    });
+    canvas.current.legend.chart.update();  
   }
 
   return (
       <Container id='line-chart'>
-        <button onClick={(e) => handleClick(e)}>Test button</button>
+        <button data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</button>
+        <button data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</button>
+        <button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</button>
         <ChartContainer>
           {chartData && <Line ref={canvas} data={chartData} options={options} />}
         </ChartContainer>
