@@ -41,6 +41,10 @@ const Button = styled.button`
     background-color: ${colors.fossil};
     color: white;
   `}
+
+  &.active {
+    text-decoration: line-through;
+  }
 `
 
 const LineChart = ({ emissions }) => {
@@ -107,10 +111,9 @@ const LineChart = ({ emissions }) => {
         } else {
           dataset.hidden = true
         }
-      } else {
-        dataset.hidden = false
       }
     });
+    e.target.classList.toggle('active')
     canvas.current.legend.chart.update();  
   }
 
