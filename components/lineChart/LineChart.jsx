@@ -1,5 +1,5 @@
 //CSS
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { flex, colors } from '../../styles/partials'
 //Charts
 import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
@@ -23,6 +23,24 @@ const ChartContainer = styled.div`
 const ButtonContainer = styled.div`
   width: 100%;
   ${flex('row', 'center', 'center')};
+  gap: 10px;
+`
+const Button = styled.button`
+  padding: 10px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: ${colors.secondary};
+
+  ${props => props.bio && css`
+    background-color: ${colors.bio};
+    color: white;
+  `}
+
+  ${props => props.fossil && css`
+    background-color: ${colors.fossil};
+    color: white;
+  `}
 `
 
 const LineChart = ({ emissions }) => {
@@ -99,9 +117,9 @@ const LineChart = ({ emissions }) => {
   return (
       <Container id='line-chart'>
         <ButtonContainer>
-          <button data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</button>
-          <button data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</button>
-          <button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</button>
+          <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
+          <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
         </ButtonContainer>
         <ChartContainer>
           {chartData && <Line ref={canvas} data={chartData} options={options} />}
