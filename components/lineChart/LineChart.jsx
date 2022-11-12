@@ -70,27 +70,27 @@ const LineChart = ({ emissions }) => {
                 fill: true,
                 backgroundColor: colors.bio,
                 borderColor: colors.border,
-                borderWidth: 2,
+                borderWidth: 5,
                 pointRadius: 0,
-                tension: .3,
+                tension: .2,
             },{
                 label: 'Fossila utsläpp', //fossilEmissions[0].type.text
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
                 backgroundColor: colors.fossil,
                 borderColor: colors.border,
-                borderWidth: 2,
+                borderWidth: 5,
                 pointRadius: 0,
-                tension: .3,
+                tension: .2,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
                 backgroundColor: 'white',
                 borderColor: colors.border,
-                borderWidth: 2,
+                borderWidth: 5,
                 pointRadius: 0,
-                tension: .3,
+                tension: .2,
             }]
         })
     }

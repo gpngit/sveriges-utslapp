@@ -7,7 +7,7 @@ export const colors = {
     secondary: '#370000',
     bio: '#AB523A',
     fossil: '#876666',
-    border: '#404040'
+    border: '#663531'
 
 }
 
