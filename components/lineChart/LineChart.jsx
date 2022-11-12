@@ -44,6 +44,11 @@ const Button = styled.button`
 
   &.active {
     text-decoration: line-through;
+    filter: brightness(90%);
+  }
+
+  &:hover {
+    filter: brightness(90%);
   }
 `
 
