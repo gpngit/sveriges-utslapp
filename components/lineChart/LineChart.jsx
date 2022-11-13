@@ -57,7 +57,7 @@ const LineChart = ({ emissions }) => {
 
   let gradient
   const canvas = useRef()
-  const [componentMounted, setComponentMounted] = useState(null)
+  const [componentDidMount, setComponentDidMount] = useState(null)
   const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState()
   const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
@@ -73,19 +73,14 @@ const LineChart = ({ emissions }) => {
   }))
 
   // useEffect(() => {
-  //   setComponentMounted(true)
-  // }, [])
-
-  // useEffect(() => {
-  //   if(componentMounted) {
+  //   if(componentDidMount) {
   //     let ctx = canvas.current.canvas
   //     let chart = ctx.getContext('2d')
   //     gradient = chart.createLinearGradient(0,0,0,400)
   //     gradient.addColorStop(0, 'rgba(58,123,213,1)')
-  //     gradient.addColorStop(1, 'rgba(0,210,255,0.3)')
+  //     gradient.addColorStop(1, 'transparent')
   //   }
-  //     console.log(gradient)
-  // }, [componentMounted])
+  // }, [componentDidMount])
 
   useEffect(() => {
     if (totalEmissions) {
@@ -120,6 +115,7 @@ const LineChart = ({ emissions }) => {
                 tension: .2,
             }]
         })
+        setComponentDidMount(true)
     }
   }, [totalEmissions])
 
