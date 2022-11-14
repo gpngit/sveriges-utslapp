@@ -27,7 +27,7 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
 `
 const Button = styled.button`
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: white;
@@ -55,11 +55,11 @@ const Button = styled.button`
 
 const LineChart = ({ emissions }) => {
 
-  let gradient
   const canvas = useRef()
-  const [componentDidMount, setComponentDidMount] = useState(null)
   const [options, setOptions] = useState(ChartOptions())
-  const [chartData, setChartData] = useState()
+  const [chartData, setChartData] = useState({
+    datasets: [],
+  })
   const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
@@ -72,33 +72,34 @@ const LineChart = ({ emissions }) => {
     }
   }))
 
-  // useEffect(() => {
-  //   if(componentDidMount) {
-  //     let ctx = canvas.current.canvas
-  //     let chart = ctx.getContext('2d')
-  //     gradient = chart.createLinearGradient(0,0,0,400)
-  //     gradient.addColorStop(0, 'rgba(58,123,213,1)')
-  //     gradient.addColorStop(1, 'transparent')
-  //   }
-  // }, [componentDidMount])
+  const renderGradient = (ref, color, y0, y1) => {
+    let ctx = ref.canvas
+    let chart = ctx.getContext('2d')
+    let gradient = chart.createLinearGradient(0, y0, 0, y1)
+    gradient.addColorStop(0, color)
+    gradient.addColorStop(1, 'transparent')
+    return gradient
+  }
 
   useEffect(() => {
     if (totalEmissions) {
         setChartData({
             labels: years.map(year => year),
             datasets: [{
-                label: 'Biogena utsläpp', //bioEmissions[0].type.text
+                label: 'Biogena utsläpp',
                 data: bioEmissions.map(emissions => emissions.value),
                 fill: true,
+                // backgroundColor: renderGradient(canvas.current, colors.bio, 200, 500),
                 backgroundColor: colors.bio,
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
                 tension: .2,
             },{
-                label: 'Fossila utsläpp', //fossilEmissions[0].type.text
+                label: 'Fossila utsläpp',
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
+                // backgroundColor: renderGradient(canvas.current, colors.bio, 300, 1000),
                 backgroundColor: colors.fossil,
                 borderColor: colors.border,
                 borderWidth: 5,
@@ -108,6 +109,7 @@ const LineChart = ({ emissions }) => {
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
+                // backgroundColor: renderGradient(canvas.current, 'white', 0, 1200),
                 backgroundColor: 'white',
                 borderColor: colors.border,
                 borderWidth: 5,
@@ -115,7 +117,6 @@ const LineChart = ({ emissions }) => {
                 tension: .2,
             }]
         })
-        setComponentDidMount(true)
     }
   }, [totalEmissions])
 
@@ -124,6 +125,7 @@ const LineChart = ({ emissions }) => {
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
 
     chartDatasets.forEach(dataset => {
+      console.log(dataset)
       if (dataset.index == clickedDatasetIndex) {
         if (dataset.hidden === true) {
           dataset.hidden = false
@@ -144,7 +146,7 @@ const LineChart = ({ emissions }) => {
           <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
         </ButtonContainer>
         <ChartContainer>
-          {chartData && <Line ref={canvas} data={chartData} options={options} />}
+          <Line ref={canvas} data={chartData} options={options} />
         </ChartContainer>
       </Container>
   )

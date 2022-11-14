@@ -21,6 +21,7 @@ const ChartOptions = () => {
         },
         scales: {
           y: { 
+            // display: false,
             ticks:{
               color: 'black',
               font:{
