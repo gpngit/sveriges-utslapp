@@ -1,6 +1,6 @@
 //CSS
 import styled from "styled-components"
-import { flex, fonts, colors, fontSizes } from '../../styles/partials'
+import { flex, fonts, colors, device } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from "react"
 //firebase
@@ -77,15 +77,31 @@ text-transform: uppercase;
 const Modal = styled.div`
 background-color:${colors.primary};
 padding:2rem;
-${flex("column")}
+${flex("column","center", "center")}
 gap:10px;
-max-width:800px;
+margin:1rem;
+max-width:80%;
+position:relative;
+&::after{
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 35px solid transparent;
+	border-top-color: ${colors.primary};
+	border-bottom: 0;
+	margin-left: -35px;
+	margin-bottom: -35px;
+}
 `
 const Validation =styled.span`
 width:80%;
 h3{
     ${fonts.footnote};
     margin-top:1rem;
+    color: ${colors.secondary};
 }
 p{
     ${fonts.footnote};
@@ -93,7 +109,10 @@ p{
 `
 
 const ModalButtons= styled.span`
-${flex("row")}
+${flex("column", "center", "center")}
+@media screen and ${device.mobileL}{
+    ${flex("row", "center", "center")}
+}
 gap:10px;
 margin-top:1rem;
 button{
