@@ -91,11 +91,13 @@ const Login = ({ setAuthenticated }) => {
                 <h1>Logga in</h1>
                 <InputAndlabel>
                     <label htmlFor="username">Användarnamn</label>
-                    <input placeholder="Användarnamn" name="username" type="text" id="username" autoComplete='off'/>
+                    <input placeholder="Användarnamn" 
+                    name="username" type="text" id="username" autoComplete='off'/>
                 </InputAndlabel>
                 <InputAndlabel>
                     <label htmlFor="passwordInput">Lösenord:</label>
-                    <input name="password" placeholder="*******" type="password" id="passwordInput" />
+                    <input 
+                    name="password" placeholder="*******" type="password" id="passwordInput" />
                 </InputAndlabel>
                
                 <ErrorMessage>{error}</ErrorMessage>

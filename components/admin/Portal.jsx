@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fontSizes, device } from '../../styles/partials'
 //react hooks
 import { useEffect, useState } from 'react'
 //firebase
@@ -10,10 +10,11 @@ import { getDatabase, ref, onValue } from "firebase/database"
 import InputForm from './InputForm'
 
 const Container = styled.main`
+    background-color:${colors.primary};
     ${flex()};
-    gap: 20px;
+    gap: 2rem;
     min-height: 100vh;
-    padding: 30px;
+    padding: 2rem;
 
     .header-and-logout {
         ${flex('row', 'space-between', 'center')}
@@ -29,7 +30,7 @@ const Portal = ({ setAuthenticated }) => {
         const db = getDatabase()
         const dbRef = ref(db, route)
         onValue(dbRef, (snapshot) => {
-          setSections(snapshot.val())
+        setSections(snapshot.val())
         })
     }
 
