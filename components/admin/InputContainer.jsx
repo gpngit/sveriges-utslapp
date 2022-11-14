@@ -27,6 +27,10 @@ const Label = styled.label`
 
 `
 
+const Modal = styled.div`
+background-color: ${colors.secondary};
+height:300px;`
+
 const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
@@ -60,13 +64,11 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     }
     
     useEffect(() => {
-      if(isLoading){
+    if(isLoading){
         setTimeout(() => {
             setLoading(false)
         }, 2000);
-      }
-     
-    }, [isLoading])
+    }}, [isLoading])
     
 
     return (
@@ -83,8 +85,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
                     <button onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}</>)}
-                
             </div>
+           
         </Container>
     )
 }

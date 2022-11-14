@@ -108,6 +108,7 @@ const InputForm = ({ pageElements }) => {
                     <InputContainer sectionId={id} key={section.name} input={section} inputIndex={i} sectionName={name} />
                 )
             })}
+            
         </Form>
     )
 }
