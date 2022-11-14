@@ -1,11 +1,14 @@
 //CSS
 import styled from "styled-components"
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, fonts, colors, fontSizes } from '../../styles/partials'
 //firebase
 import { getDatabase, ref, update } from "firebase/database";
 //components
 import InputContainer from "./InputContainer"
+import LoadingSpinner from "../loader/LoadingSpinner";
+import { capitalize } from "../helpers/Capitalize";
 // import ToggleSwitch from './ToggleSwitch'
+
 //react hooks
 import { useState } from "react"
 
@@ -13,6 +16,16 @@ const Form = styled.form`
     ${flex()};
     gap: 5px;
     width: 100%;
+    background-color: #ffff;
+    padding:1rem;
+    max-width:800px;
+`
+const TitleAndReveal = styled.div`
+${flex("row", "space-between", "flex-end")}
+gap:1rem;
+h3{
+    float:right;
+}
 `
 const ToggleSwitch = styled.label`
     position: relative;
@@ -44,7 +57,7 @@ const ToggleSwitch = styled.label`
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: black;
+        background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
     }
@@ -91,22 +104,24 @@ const InputForm = ({ pageElements }) => {
         setVisible(!visible)
     } 
 
+
     return (
         <Form>
-            <div>
-                <h3>{name}</h3>
+            <TitleAndReveal>
+                <h3>{capitalize(name)} sektion</h3>
                 <button onClick={(e) => handleShowClick(e)}>{showSection ? 'Visa mindre' : 'Visa mer'}</button>
-            </div>
+            </TitleAndReveal>
             <ToggleSwitch htmlFor={`switch-${id}`}>
                 <input onChange={() => handleVisibility(id-1)} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
                 <span className="slider round"></span>
             </ToggleSwitch>
-            <p>{show ? 'information kan ses på sidan' : 'information visas inte på sidan'}</p>
+            <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
             {showSection && sections.map((section, i) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} input={section} inputIndex={i} sectionName={name} />
                 )
             })}
+            
         </Form>
     )
 }

@@ -7,7 +7,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 1vw;
+  /* font-size: 1vw; */
 }
 
 button, a {
