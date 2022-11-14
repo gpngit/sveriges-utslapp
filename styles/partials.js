@@ -2,6 +2,9 @@ import styled, {css} from "styled-components";
 
 // variables
 
+export const AxisThickness = '80px'
+export const LineChartWidth = '2000px'
+
 export const colors = {
     primary: '#f2cebd',
     secondary: '#370000',
@@ -16,8 +19,6 @@ export const fontSizes = {
     subheading: '2.4em',
     paragraph: '1.6em'
 }
-
-export const AxisSize = '80px'
 
 
 // mixins

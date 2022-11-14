@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisSize } from '../../styles/partials'
+import { flex, colors, AxisThickness, LineChartWidth } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -9,10 +9,9 @@ import ChartOptions from "./ChartOptions";
 import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
-  position: relative;
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  height: 100vh;
+  height: 90vh;
 `
 const ButtonContainer = styled.div`
   position: absolute;
@@ -23,14 +22,20 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
 `
 const ChartContainer = styled.div`
+  /* position: absolute; */
+  height: 100%;
+  min-width: ${LineChartWidth};
+`
+const AxisAndScrollContainer = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-`
-const Axiscontainer = styled.div`
-  height: 100%;
-  width: 100%;
   ${flex('row')};
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -59,26 +64,42 @@ const Button = styled.button`
   }
 `
 const YAxis = styled.div`
+  position: sticky;
+  z-index: 1;
+  left: 0;
   height: 100%;
-  min-width: ${AxisSize};
-  background-color: yellow;
+  min-width: ${AxisThickness};
+  background-color: #ffff0062;
 `
 const XAxis = styled.div`
-  ${flex('column', 'space-between', 'flex-end')};
+  ${flex('row', 'space-between', 'flex-end')};
   position: absolute;
   bottom: 0;
-  min-height: ${AxisSize};
-  width: 100%;
-  writing-mode: vertical-lr;
-
-  .tick {
+  min-height: ${AxisThickness};
+  margin-left: ${AxisThickness};
+  width: ${LineChartWidth}; 
+`
+const XTick = styled.div`
     flex-basis: 100%;
-    height: calc(100vh - ${AxisSize});
+    ${flex('column-reverse', 'flex-start', 'center')};
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+    height: calc(100vh - ${AxisThickness});
+    font-size: 14px;
+
+    .info-per-year {
+      display: none;
+    }
 
     &:hover, &:active {
-      background: linear-gradient(transparent, #fff);
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+
+      .info-per-year {
+        ${flex('column', 'center', 'center')};
+        gap: 10px;
+      }
     }
-  }
 `
 
 const LineChart = ({ emissions }) => {
@@ -172,19 +193,39 @@ const LineChart = ({ emissions }) => {
           <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
           <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
         </ButtonContainer>
-        <Axiscontainer>
+        <AxisAndScrollContainer>
           <YAxis>
-
+            
           </YAxis>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} />
-            <XAxis>
-              {years.map(year => {
-                return <div className="tick"></div>
-              })}
-            </XAxis>
           </ChartContainer>
-        </Axiscontainer>
+          <XAxis>
+            {years.map(year => {
+              // if (Number(year) % 5 === 0){
+                return (
+                <XTick>
+                  <strong className="year">{year}</strong>
+                  <div className="info-per-year">
+                    <div className="fossila">
+                      <p>Fossila</p>
+                      <p>{fossilEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                    </div>
+                    <div className="biogena">
+                      <p>Biogena</p>
+                      <p>{bioEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                    </div>
+                    <div className="totala">
+                      <p>Totalt</p>
+                      <p>{totalEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                    </div>
+                  </div>
+                </XTick>
+                )
+              // }
+            })}
+          </XAxis>
+        </AxisAndScrollContainer>
       </Container>
   )
 }
