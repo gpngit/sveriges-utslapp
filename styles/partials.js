@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 
 // variables
 
-export const AxisThickness = '140px'
+export const AxisThickness = '100px'
 export const LineChartWidth = '1200px'
 
 export const colors = {

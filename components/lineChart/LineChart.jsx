@@ -15,12 +15,13 @@ const Container = styled.section`
 `
 const ButtonContainer = styled.div`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   right: 0px;
   padding: 20px;
+  width: 100vw;
   ${flex('row', 'flex-end', 'center')};
   gap: 10px;
-  flex-wrap: wrap;
+  background-color: ${colors.primary};
 `
 const ChartContainer = styled.div`
   /* position: absolute; */
@@ -66,16 +67,12 @@ const Button = styled.button`
 `
 const YAxis = styled.div`
   position: sticky;
+  ${flex('column-reverse', 'space-between', 'flex-end')};
   z-index: 1;
   left: 0;
   height: 100%;
   min-width: ${AxisThickness};
   background-color: ${colors.primary};
-
-  div {
-    height: 100%;
-    ${flex('column-reverse', 'space-between', 'flex-end')};
-  }
 `
 const XAxis = styled.div`
   ${flex('row', 'space-between', 'flex-end')};
@@ -115,9 +112,6 @@ const XTick = styled.div`
         font-size: 16px;
       }
     }
-`
-const YAxisLabel = styled.p`
-
 `
 const YTick = styled.span`
   font-size: 14px;
@@ -221,10 +215,7 @@ const LineChart = ({ emissions }) => {
         </ButtonContainer>
         <AxisAndScrollContainer>
           <YAxis>
-            <YAxisLabel>Koldioxid (kt CO2)</YAxisLabel>
-            <div>
-              {YScale.map(val => <YTick key={val}>{val}</YTick>)}
-            </div>
+            {YScale.map(val => <YTick key={val}>{val}</YTick>)}
           </YAxis>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} />
