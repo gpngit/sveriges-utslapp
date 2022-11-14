@@ -21,13 +21,12 @@ import { useState } from "react"
 const Form = styled.form`
 width: 100%;
 background-color:${props => props.hide ? `#e2e2e2` : "white"};
-`
-const Background = styled.div`
 ${flex()};
 gap: 5px;
 max-width:1000px;
 padding:1rem;
 `
+
 const TitleAndReveal = styled.div`
 width:100%;
 ${flex("column", "center", "center")}
@@ -149,7 +148,7 @@ const InputForm = ({ pageElements }) => {
 
     return (
         <Form className="form">
-            <Background>
+           
             <TitleAndReveal>
                 <h3>{capitalize(name)}</h3>
                 <Row>
@@ -182,7 +181,7 @@ const InputForm = ({ pageElements }) => {
                     input={section} inputIndex={i} sectionName={name} />
                 )
             })}
-            </Background>
+            
         </Form>
        
     )
