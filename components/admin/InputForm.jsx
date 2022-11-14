@@ -1,8 +1,10 @@
 //CSS
 import styled from "styled-components"
-import { flex, fonts, colors, fontSizes } from '../../styles/partials'
+import { flex,device, fonts, colors} from '../../styles/partials'
+
 //firebase
 import { getDatabase, ref, update } from "firebase/database";
+
 //components
 import InputContainer from "./InputContainer"
 import LoadingSpinner from "../loader/LoadingSpinner";
@@ -14,18 +16,25 @@ import arrow from "../../public/arrow_down.png"
 //react hooks
 import { useState } from "react"
 
+
+
 const Form = styled.form`
-    ${flex()};
-    gap: 5px;
-    width: 100%;
-    padding:1rem;
-    max-width:800px;
-    background-color:white;
+width: 100%;
+background-color:${props => props.hide ? `#e2e2e2` : "white"};
+`
+const Background = styled.div`
+${flex()};
+gap: 5px;
+max-width:1000px;
+padding:1rem;
 `
 const TitleAndReveal = styled.div`
 width:100%;
-${flex("row", "space-between", "center")}
-
+${flex("column", "center", "center")}
+gap:10px;
+@media screen and ${device.tablet}{
+    ${flex("row", "space-between", "center")}
+}
 h3{
     ${fonts.paragraph};
 }
@@ -111,6 +120,9 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
+  
+
+
 
     const {id, name, show, sections} = pageElements
 
@@ -120,6 +132,7 @@ const InputForm = ({ pageElements }) => {
     const handleShowClick = (e) => {
         e.preventDefault()
         setShowSection(!showSection)
+      
     }
 
     const showOrHidePage = (index, bool) => {
@@ -131,14 +144,14 @@ const InputForm = ({ pageElements }) => {
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
+        
     } 
 
-
-
     return (
-        <Form>
+        <Form className="form">
+            <Background>
             <TitleAndReveal>
-                <h3>{capitalize(name)} sektion</h3>
+                <h3>{capitalize(name)}</h3>
                 <Row>
             <ToggleSwitch 
             aria-label="Stäng av/Sätt på en sektion"
@@ -162,14 +175,16 @@ const InputForm = ({ pageElements }) => {
                 width={20}
                 height={10}/>)}</button>
             </TitleAndReveal>
+           
             {showSection && sections.map((section, i) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} 
                     input={section} inputIndex={i} sectionName={name} />
                 )
             })}
-            
+            </Background>
         </Form>
+       
     )
 }
 

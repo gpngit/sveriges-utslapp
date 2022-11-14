@@ -53,6 +53,7 @@ const Container = styled.div`
             background-color:${colors.secondary};
         }
     }
+
 `
 const Input = styled.input`
     width: 90%;
@@ -69,6 +70,8 @@ const Input = styled.input`
 `
 const Label = styled.label`
 ${fonts.footnote};
+margin-bottom:2px;
+text-transform: uppercase;
 `
 
 
@@ -114,9 +117,16 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
 
     return (
         <Container>
-            <Label htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}</Label>
+    
+            <Label 
+            htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
+            </Label>
             <div className="input-and-edit">
-                <Input readOnly={!editable} id={`${sectionName}-${input.name}`} type="text" defaultValue={input.text} />
+                <Input readOnly={!editable} 
+                id={`${sectionName}-${input.name}`}
+                className="input_text"
+                type="text"
+                defaultValue={input.text} />
                 {isLoading ? (<LoadingSpinner/> ):  ( 
                     <>{!editable ? (
                     <button 
