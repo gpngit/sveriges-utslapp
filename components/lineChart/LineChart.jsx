@@ -12,17 +12,17 @@ const Container = styled.section`
     background-color: ${colors.primary};
     color: ${colors.secondary};
     height: 100vh;
-    width: 100%;
 `
 const ChartContainer = styled.div`
     position: relative;
-    height: 80vh;
+    height:100%;
     width: 100%;
 `
 const ButtonContainer = styled.div`
   width: 100%;
   ${flex('row', 'center', 'center')};
   gap: 10px;
+  padding: 40px 0px;
   flex-wrap: wrap;
 `
 const Button = styled.button`
@@ -50,6 +50,21 @@ const Button = styled.button`
   &:hover {
     filter: brightness(90%);
   }
+`
+const Axiscontainer = styled.div`
+  height: 100%;
+  width: 100%;
+  ${flex('row')};
+`
+const YAxis = styled.div`
+  height: 100%;
+  min-width: 100px;
+  background-color: red;
+`
+const XAxis = styled.div`
+  min-height: 100px;
+  width: 100%;
+  background-color: red;
 `
 
 const LineChart = ({ emissions }) => {
@@ -144,9 +159,17 @@ const LineChart = ({ emissions }) => {
           <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
           <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
         </ButtonContainer>
-        <ChartContainer>
-          <Line ref={canvas} data={chartData} options={options} />
-        </ChartContainer>
+        <Axiscontainer>
+          <YAxis>
+
+          </YAxis>
+          <ChartContainer>
+            <Line ref={canvas} data={chartData} options={options} />
+            <XAxis>
+
+            </XAxis>
+          </ChartContainer>
+        </Axiscontainer>
       </Container>
   )
 }
