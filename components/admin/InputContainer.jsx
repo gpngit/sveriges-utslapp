@@ -1,16 +1,18 @@
 //CSS
 import styled from "styled-components"
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, fonts, colors, fontSizes } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from "react"
 //firebase
 import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
-
+import { capitalize } from "../helpers/Capitalize"
 
 const Container = styled.div`
     ${flex()};
+    padding:0.3rem;
+   
     width: 100%;
 
     .input-and-edit {
@@ -27,9 +29,6 @@ const Label = styled.label`
 
 `
 
-const Modal = styled.div`
-background-color: ${colors.secondary};
-height:300px;`
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     const [isLoading, setLoading] = useState(false)
