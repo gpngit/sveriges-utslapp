@@ -74,12 +74,55 @@ margin-bottom:2px;
 text-transform: uppercase;
 `
 
+const Modal = styled.div`
+background-color:${colors.primary};
+padding:2rem;
+${flex("column")}
+gap:10px;
+max-width:800px;
+`
+const Validation =styled.span`
+width:80%;
+h3{
+    ${fonts.footnote};
+    margin-top:1rem;
+}
+p{
+    ${fonts.footnote};
+}
+`
+
+const ModalButtons= styled.span`
+${flex("row")}
+gap:10px;
+margin-top:1rem;
+button{
+    ${fonts.footnote};
+    padding: 6px 6px;
+    background-color: ${colors.bio};
+    color: white;
+    border:none;    
+    &:hover{
+        background-color:${colors.secondary};
+        box-shadow: 0 0 1px ${colors.border};
+    }
+    &:focus{
+        background-color: ${colors.fossil};
+    }
+    &:active{
+        background-color:${colors.secondary};
+    }
+   }
+}
+
+`
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
+    const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
-
     const [editable, setEditable] = useState(false)
+    const [newText, setNewText] = useState(null)
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -93,11 +136,19 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     }
 
     const handleSave = (e) => {
-        setLoading(true)
+        e.preventDefault()
+        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
+        setModal(true)
+        setNewText(inputValue.value)
+        setEditable(!editable)
+    }
+
+    const confirmSave=(e) => {
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         sendEditToFirebase(inputValue.value)
-        setEditable(!editable)
+        setLoading(true)
+        
     }
 
     const handleDiscard = (e) => {
@@ -111,11 +162,35 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
+            setModal(false)
         }, 2000);
     }}, [isLoading])
     
 
     return (
+        <>
+        {modal && (
+            <Modal>
+                <div>
+                    <Validation>
+                    <h3>Ändra från:</h3>
+                    <p>{input.text}</p>
+                    </Validation>
+                    <Validation>
+                    <h3>Ändra till:</h3>
+                    <p>{newText}</p>
+                    </Validation>
+                </div>
+                {isLoading ? (<LoadingSpinner/> ):(
+                <ModalButtons>
+                <button 
+                className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                <button 
+                className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
+                </ModalButtons>)}
+            </Modal>
+        )}
+        
         <Container>
     
             <Label 
@@ -127,8 +202,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                {isLoading ? (<LoadingSpinner/> ):  ( 
-                    <>{!editable ? (
+                
+                    {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
                 ) : (
@@ -138,10 +213,11 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
                     <button className="spara"
                     onClick={(e) => handleSave(e)}>Spara</button>
                     </>
-                )}</>)}
+                )}
             </div>
            
         </Container>
+        </>
     )
 }
 
