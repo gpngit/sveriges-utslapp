@@ -15,13 +15,33 @@ const Container = styled.main`
     gap: 2rem;
     min-height: 100vh;
     padding: 2rem;
-  
+    padding-top:4rem;
+   
     .header-and-logout {
         ${flex('row', 'space-between', 'center')}
         width: 100%;
-        @media screen and ${device.mobileS}{
-            background-color: red;}
+        h2{
+            font-size:${fontSizes.heading};
+            color:${colors.secondary};
+        }
+        button{
+            background-color:${colors.bio};
+            color: white;
+            padding:10px;
+            border:none;
+            border-radius:9px;
+            &:hover{
+                background-color:${colors.secondary};
+                box-shadow: 0 0 1px ${colors.border};
+            }
+            &:focus{
+                background-color:${colors.fossil};
+            }
+        }
     }
+
+    @media screen and ${device.tablet}{
+        padding:4rem;}
   
 `
 
@@ -46,7 +66,9 @@ const Portal = ({ setAuthenticated }) => {
         <Container>
             <div className='header-and-logout'>
                 <h2>Adminportal</h2>
-                <button onClick={() => setAuthenticated(false)}>Logga ut</button>
+                <button onClick={() => setAuthenticated(false)}
+                type="button"
+                aria-label="Logga ut">Logga ut</button>
             </div>
             {sections && sections.map(section => {
                 return (
