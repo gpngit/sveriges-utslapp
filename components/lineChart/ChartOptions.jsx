@@ -5,22 +5,23 @@ const ChartOptions = () => {
         responsive: true,
         plugins: {
             legend: {
-                display: true,
-                position: 'top',
-                align: "center",
-                labels:{
-                    boxHeight: 20,
-                    color: 'black',
-                    font:{
-                        size: '12px',
-                        family: "Noto Sans",
-                        weight: 500,
-                    }
-                } 
+              display: false,
+              position: 'top',
+              align: "center",
+              labels:{
+                  boxHeight: 20,
+                  color: 'black',
+                  font:{
+                      size: '12px',
+                      family: "Noto Sans",
+                      weight: 500,
+                  }
+              } 
             }
         },
         scales: {
           y: { 
+            // display: false,
             ticks:{
               color: 'black',
               font:{
