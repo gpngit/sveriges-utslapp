@@ -12,21 +12,63 @@ import { capitalize } from "../helpers/Capitalize"
 const Container = styled.div`
     ${flex()};
     padding:0.3rem;
-   
     width: 100%;
-
     .input-and-edit {
         ${flex('row', 'space-between', 'center')};
         gap: 10px;
         width: 100%;
     }
+    button{
+        ${fonts.footnote};
+        padding:4px 8px;
+        border-radius:9px;
+        background-color: ${colors.bio};
+        color: white;
+        border:none;    
+        &:hover{
+            background-color:${colors.secondary};
+            box-shadow: 0 0 1px ${colors.border};
+        }
+        &:focus{
+            background-color: ${colors.fossil};
+        }
+        &:active{
+            background-color:${colors.secondary};
+        }
+        
+    }
+    .discard{
+        background-color: ${colors.fossil};
+    }
+    .spara{
+        background-color: ${colors.secondary}; 
+        &:hover{
+ 
+            box-shadow: 0 0 1px ${colors.border};
+        }
+        &:focus{
+            background-color: ${colors.bio};
+        }
+        &:active{
+            background-color:${colors.secondary};
+        }
+    }
 `
 const Input = styled.input`
-    width: 100%;
+    width: 90%;
     padding: 10px;
+    ${fonts.footnote};
+    border-color: ${colors.bio};
+        padding: 10px;
+        ${fonts.footnote}
+        &:focus{
+        outline: none;
+        border:2px solid ${colors.bio};
+        box-shadow: 0 0 10px ${colors.border};
+        }
 `
 const Label = styled.label`
-
+${fonts.footnote};
 `
 
 
@@ -72,16 +114,19 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
 
     return (
         <Container>
-            <Label htmlFor={`${sectionName}-${input.name}`}>{input.name}</Label>
+            <Label htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}</Label>
             <div className="input-and-edit">
                 <Input readOnly={!editable} id={`${sectionName}-${input.name}`} type="text" defaultValue={input.text} />
                 {isLoading ? (<LoadingSpinner/> ):  ( 
                     <>{!editable ? (
-                    <button onClick={(e) => handleEditClick(e)}>Redigera</button>
+                    <button 
+                    onClick={(e) => handleEditClick(e)}>Redigera</button>
                 ) : (
                     <>
-                    <button onClick={(e) => handleDiscard(e)}>Ångra ändring</button>
-                    <button onClick={(e) => handleSave(e)}>Spara</button>
+                    <button className="discard"
+                    onClick={(e) => handleDiscard(e)}>Ångra</button>
+                    <button className="spara"
+                    onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}</>)}
             </div>
