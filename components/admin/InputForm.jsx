@@ -23,7 +23,7 @@ width: 100%;
 background-color:${props => props.hide ? `#e2e2e2` : "white"};
 ${flex()};
 gap: 5px;
-max-width:1000px;
+max-width:1200px;
 padding:1rem;
 `
 

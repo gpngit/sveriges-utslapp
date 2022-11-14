@@ -82,6 +82,8 @@ gap:10px;
 margin:1rem;
 max-width:80%;
 position:relative;
+border-radius:19px;
+padding-bottom:3rem;
 &::after{
     content: '';
 	position: absolute;
@@ -117,7 +119,8 @@ gap:10px;
 margin-top:1rem;
 button{
     ${fonts.footnote};
-    padding: 6px 6px;
+    border-radius:9px;
+    padding: 8px;
     background-color: ${colors.bio};
     color: white;
     border:none;    

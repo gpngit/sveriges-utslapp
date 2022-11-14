@@ -8,7 +8,7 @@ import initFirebase from '../../firebase/initFirebase'
 import { getDatabase, ref, onValue } from "firebase/database"
 //components
 import InputForm from './InputForm'
-console.log(device.mobileS)
+
 const Container = styled.main`
     background-color:${colors.primary};
     ${flex()};
@@ -48,6 +48,15 @@ const Container = styled.main`
         
     }
 `
+const Grid = styled.section`
+max-width:1200px;
+width:100%;
+display:grid;
+gap:2rem;
+@media screen and ${device.laptop} {
+    grid-template-columns: repeat(2, 1fr); }
+  
+`
 
 const Portal = ({ setAuthenticated }) => {
 
@@ -74,12 +83,15 @@ const Portal = ({ setAuthenticated }) => {
                 type="button"
                 aria-label="Logga ut">Logga ut</button>
             </div>
+         
+            
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
                     </InputForm>
                 )
             })}
+           
         </Container>
     )
 }
