@@ -15,6 +15,7 @@ const Container = styled.section`
 `
 const ButtonContainer = styled.div`
   position: absolute;
+  z-index: 1;
   right: 0px;
   padding: 20px;
   ${flex('row', 'flex-end', 'center')};
@@ -75,7 +76,6 @@ const XAxis = styled.div`
   ${flex('row', 'space-between', 'flex-end')};
   position: absolute;
   bottom: 0;
-  min-height: ${AxisThickness};
   margin-left: ${AxisThickness};
   width: ${LineChartWidth}; 
 `
@@ -85,7 +85,7 @@ const XTick = styled.div`
     gap: 40px;
     padding: 10px;
     text-align: center;
-    height: calc(100vh - ${AxisThickness});
+    height: 90vh;
     font-size: 14px;
 
     .info-per-year {
