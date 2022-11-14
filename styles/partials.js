@@ -1,6 +1,10 @@
 import styled, {css} from "styled-components";
 
 // variables
+
+export const AxisThickness = '80px'
+export const LineChartWidth = '2000px'
+
 export const colors = {
     primary: '#f2cebd',
     secondary: '#370000',

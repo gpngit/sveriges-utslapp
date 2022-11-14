@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisThickness, LineChartWidth } from '../../styles/partials'
+import { flex, colors } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -9,33 +9,22 @@ import ChartOptions from "./ChartOptions";
 import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
-  background-color: ${colors.primary};
-  color: ${colors.secondary};
-  height: 90vh;
-`
-const ButtonContainer = styled.div`
-  position: absolute;
-  right: 0px;
-  padding: 20px;
-  ${flex('row', 'flex-end', 'center')};
-  gap: 10px;
-  flex-wrap: wrap;
+    background-color: ${colors.primary};
+    color: ${colors.secondary};
+    padding: 60px;
+    height: 100vh;
+    width: 100%;
 `
 const ChartContainer = styled.div`
-  /* position: absolute; */
-  height: 100%;
-  min-width: ${LineChartWidth};
+    position: relative;
+    height: 80vh;
+    width: 100%;
 `
-const AxisAndScrollContainer = styled.div`
-  position: relative;
-  height: 100%;
+const ButtonContainer = styled.div`
   width: 100%;
-  ${flex('row')};
-  overflow-x: auto;
-
-  &::-webkit-scrollbar {
-      display: none;
-  }
+  ${flex('row', 'center', 'center')};
+  gap: 10px;
+  flex-wrap: wrap;
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -43,66 +32,24 @@ const Button = styled.button`
   border-radius: 10px;
   background-color: white;
   color: ${colors.secondary};
-
   ${props => props.bio && css`
     background-color: ${colors.bio};
     color: white;
   `}
-
   ${props => props.fossil && css`
     background-color: ${colors.fossil};
     color: white;
   `}
-
   &.active {
     text-decoration: line-through;
     filter: brightness(90%);
   }
-
   &:hover {
     filter: brightness(90%);
   }
 `
-const YAxis = styled.div`
-  position: sticky;
-  z-index: 1;
-  left: 0;
-  height: 100%;
-  min-width: ${AxisThickness};
-  background-color: ${colors.primary};
-`
-const XAxis = styled.div`
-  ${flex('row', 'space-between', 'flex-end')};
-  position: absolute;
-  bottom: 0;
-  min-height: ${AxisThickness};
-  margin-left: ${AxisThickness};
-  width: ${LineChartWidth}; 
-`
-const XTick = styled.div`
-    flex-basis: 100%;
-    ${flex('column-reverse', 'flex-start', 'center')};
-    gap: 40px;
-    padding: 10px;
-    text-align: center;
-    height: calc(100vh - ${AxisThickness});
-    font-size: 14px;
 
-    .info-per-year {
-      display: none;
-    }
-
-    &:hover, &:active {
-      background: linear-gradient(transparent, rgba(255, 255, 255, 0.6));
-
-      .info-per-year {
-        ${flex('column', 'center', 'center')};
-        gap: 20px;
-      }
-    }
-`
-
-const LineChart = ({ emissions }) => {
+const LineChartVersion1 = ({ emissions }) => {
 
   const canvas = useRef()
   const [options, setOptions] = useState(ChartOptions())
@@ -174,6 +121,7 @@ const LineChart = ({ emissions }) => {
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
 
     chartDatasets.forEach(dataset => {
+      console.log(dataset)
       if (dataset.index == clickedDatasetIndex) {
         if (dataset.hidden === true) {
           dataset.hidden = false
@@ -193,41 +141,11 @@ const LineChart = ({ emissions }) => {
           <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
           <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
         </ButtonContainer>
-        <AxisAndScrollContainer>
-          <YAxis>
-            
-          </YAxis>
-          <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} />
-          </ChartContainer>
-          <XAxis>
-            {years.map(year => {
-              // if (Number(year) % 5 === 0){
-                return (
-                <XTick>
-                  <strong className="year">{year}</strong>
-                  <div className="info-per-year">
-                    <div className="fossila">
-                      <p>Fossila</p>
-                      <p>{Math.round(Number(fossilEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
-                    </div>
-                    <div className="biogena">
-                      <p>Biogena</p>
-                      <p>{Math.round(Number(bioEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
-                    </div>
-                    <div className="totala">
-                      <p>Totalt</p>
-                      <p>{Math.round(Number(totalEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
-                    </div>
-                  </div>
-                </XTick>
-                )
-              // }
-            })}
-          </XAxis>
-        </AxisAndScrollContainer>
+        <ChartContainer>
+          <Line ref={canvas} data={chartData} options={options} />
+        </ChartContainer>
       </Container>
   )
 }
 
-export default LineChart
+export default LineChartVersion1
