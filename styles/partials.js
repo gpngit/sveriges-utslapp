@@ -12,9 +12,9 @@ export const colors = {
 }
 
 export const fontSizes = {
-    heading: '3.8em',
-    subheading: '2.4em',
-    paragraph: '1.6em'
+    heading: '3.8rem',
+    subheading: '2.4rem',
+    paragraph: '1.6rem'
 }
 
 export const font ={

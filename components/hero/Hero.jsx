@@ -13,9 +13,10 @@ const Container = styled.header`
     position: relative;
     ${flex()};
     gap: 40px;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
+    
 
     .burning-forest {
         position: absolute;
