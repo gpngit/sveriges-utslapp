@@ -17,6 +17,8 @@ export const fontSizes = {
     paragraph: '1.6em'
 }
 
+export const AxisSize = '80px'
+
 
 // mixins
 

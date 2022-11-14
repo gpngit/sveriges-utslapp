@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, AxisSize } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from 'react'
 //context
@@ -8,7 +8,8 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
-    padding: 30px 50px;
+    min-height: 100px;
+    padding: 30px 0px 30px ${AxisSize};
     background-color: ${colors.primary};
 `
 const SliderContainer = styled.form`

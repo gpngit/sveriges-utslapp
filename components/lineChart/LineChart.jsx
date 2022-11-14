@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, AxisSize } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -9,21 +9,27 @@ import ChartOptions from "./ChartOptions";
 import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
-    background-color: ${colors.primary};
-    color: ${colors.secondary};
-    height: 100vh;
-`
-const ChartContainer = styled.div`
-    position: relative;
-    height:100%;
-    width: 100%;
+  position: relative;
+  padding-top: 20px;
+  background-color: ${colors.primary};
+  color: ${colors.secondary};
+  height: 100vh;
 `
 const ButtonContainer = styled.div`
-  width: 100%;
-  ${flex('row', 'center', 'center')};
+  position: absolute;
+  right: 20px;
+  ${flex('row', 'flex-end', 'center')};
   gap: 10px;
-  padding: 40px 0px;
   flex-wrap: wrap;
+`
+const ChartContainer = styled.div`
+  height: calc(100% - ${AxisSize});
+  width: 100%;
+`
+const Axiscontainer = styled.div`
+  height: 100%;
+  width: 100%;
+  ${flex('row')};
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -51,14 +57,9 @@ const Button = styled.button`
     filter: brightness(90%);
   }
 `
-const Axiscontainer = styled.div`
-  height: 100%;
-  width: 100%;
-  ${flex('row')};
-`
 const YAxis = styled.div`
-  height: 100%;
-  min-width: 100px;
+  height: calc(100% - ${AxisSize});
+  min-width: ${AxisSize};
   background-color: red;
 `
 const XAxis = styled.div`
