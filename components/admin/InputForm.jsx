@@ -5,6 +5,7 @@ import { flex, colors, fontSizes } from '../../styles/partials'
 import { getDatabase, ref, update } from "firebase/database";
 //components
 import InputContainer from "./InputContainer"
+import LoadingSpinner from "../loader/LoadingSpinner";
 // import ToggleSwitch from './ToggleSwitch'
 //react hooks
 import { useState } from "react"
@@ -44,7 +45,7 @@ const ToggleSwitch = styled.label`
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: black;
+        background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
     }
