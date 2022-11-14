@@ -11,7 +11,6 @@ import { useState, useEffect, useRef } from 'react';
 const Container = styled.section`
     background-color: ${colors.primary};
     color: ${colors.secondary};
-    padding: 60px;
     height: 100vh;
     width: 100%;
 `
