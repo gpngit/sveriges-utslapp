@@ -69,7 +69,7 @@ const YAxis = styled.div`
   left: 0;
   height: 100%;
   min-width: ${AxisThickness};
-  background-color: #ffff0062;
+  background-color: ${colors.primary};
 `
 const XAxis = styled.div`
   ${flex('row', 'space-between', 'flex-end')};
@@ -82,7 +82,7 @@ const XAxis = styled.div`
 const XTick = styled.div`
     flex-basis: 100%;
     ${flex('column-reverse', 'flex-start', 'center')};
-    gap: 20px;
+    gap: 40px;
     padding: 10px;
     text-align: center;
     height: calc(100vh - ${AxisThickness});
@@ -93,11 +93,11 @@ const XTick = styled.div`
     }
 
     &:hover, &:active {
-      background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.6));
 
       .info-per-year {
         ${flex('column', 'center', 'center')};
-        gap: 10px;
+        gap: 20px;
       }
     }
 `
@@ -209,15 +209,15 @@ const LineChart = ({ emissions }) => {
                   <div className="info-per-year">
                     <div className="fossila">
                       <p>Fossila</p>
-                      <p>{fossilEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                      <p>{Math.round(Number(fossilEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
                     </div>
                     <div className="biogena">
                       <p>Biogena</p>
-                      <p>{bioEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                      <p>{Math.round(Number(bioEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
                     </div>
                     <div className="totala">
                       <p>Totalt</p>
-                      <p>{totalEmissions.filter(emission => emission.year === year).map(emission => emission.value)}</p>
+                      <p>{Math.round(Number(totalEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
                     </div>
                   </div>
                 </XTick>
