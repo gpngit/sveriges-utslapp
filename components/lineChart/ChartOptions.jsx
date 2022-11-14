@@ -31,7 +31,7 @@ const ChartOptions = () => {
               stepSize: 10000,
             },
             min: 0,
-            max: 120000,
+            max: 140000,
             grid: {
               display: false
             }

@@ -10,20 +10,21 @@ import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
   position: relative;
-  padding-top: 20px;
   background-color: ${colors.primary};
   color: ${colors.secondary};
   height: 100vh;
 `
 const ButtonContainer = styled.div`
   position: absolute;
-  right: 20px;
+  right: 0px;
+  padding: 20px;
   ${flex('row', 'flex-end', 'center')};
   gap: 10px;
   flex-wrap: wrap;
 `
 const ChartContainer = styled.div`
-  height: calc(100% - ${AxisSize});
+  position: relative;
+  height: 100%;
   width: 100%;
 `
 const Axiscontainer = styled.div`
@@ -58,14 +59,26 @@ const Button = styled.button`
   }
 `
 const YAxis = styled.div`
-  height: calc(100% - ${AxisSize});
+  height: 100%;
   min-width: ${AxisSize};
-  background-color: red;
+  background-color: yellow;
 `
 const XAxis = styled.div`
-  min-height: 100px;
+  ${flex('column', 'space-between', 'flex-end')};
+  position: absolute;
+  bottom: 0;
+  min-height: ${AxisSize};
   width: 100%;
-  background-color: red;
+  writing-mode: vertical-lr;
+
+  .tick {
+    flex-basis: 100%;
+    height: calc(100vh - ${AxisSize});
+
+    &:hover, &:active {
+      background: linear-gradient(transparent, #fff);
+    }
+  }
 `
 
 const LineChart = ({ emissions }) => {
@@ -140,7 +153,6 @@ const LineChart = ({ emissions }) => {
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
 
     chartDatasets.forEach(dataset => {
-      console.log(dataset)
       if (dataset.index == clickedDatasetIndex) {
         if (dataset.hidden === true) {
           dataset.hidden = false
@@ -167,7 +179,9 @@ const LineChart = ({ emissions }) => {
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} />
             <XAxis>
-
+              {years.map(year => {
+                return <div className="tick"></div>
+              })}
             </XAxis>
           </ChartContainer>
         </Axiscontainer>
