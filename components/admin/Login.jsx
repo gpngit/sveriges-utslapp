@@ -1,9 +1,9 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, fonts, colors, fontSizes } from '../../styles/partials'
 // react hooks
 import { useState, useEffect } from 'react'
-import LoadingSpinner from '../loader/LoadingSpinner'
+import LoadingSpinner from '../loader/LoadingSpinner';
 
 const Container = styled.main`
     min-height: 100vh;
@@ -11,12 +11,15 @@ const Container = styled.main`
     padding: 30px;
     background-color:${colors.primary};
     color:${colors.secondary};
-    
 `
 const LoginForm = styled.form`
-    ${flex('column', 'center', 'flex-start')}
+    ${flex('column', 'center', 'flex-start')};
     gap: 10px;
     border-radius: 10px;
+`
+const Header = styled.h1`
+${fonts.subheading};
+
 `
 const InputAndlabel = styled.div`
     ${flex('column', 'center')}
@@ -29,16 +32,16 @@ const InputAndlabel = styled.div`
         border-color: ${colors.bio};
         width: 300px;
         padding: 10px;
+        ${fonts.footnote}
     }
     input:focus{
-        outline: none;
+    outline: none;
     border:2px solid ${colors.bio};
     box-shadow: 0 0 10px ${colors.border};
     }
 `
 const ErrorMessage = styled.p`
-font-size:${fontSizes.paragraph}
-
+${fonts.footnote}
 `
 const Button = styled.button`
     width: 300px;
@@ -47,14 +50,13 @@ const Button = styled.button`
     color: white;
     border-radius:19px;
     border:none;
-  
+    ${fonts.footnote}
     &:hover{
         background-color:${colors.secondary};
         box-shadow: 0 0 1px ${colors.border};
     }
     &:focus{
         background-color:${colors.fossil};
-        
     }
 `
 
@@ -88,7 +90,7 @@ const Login = ({ setAuthenticated }) => {
     return (
         <Container>
             <LoginForm onSubmit={(e) => login(e)} onFocus={() => setError(null)}>
-                <h1>Logga in</h1>
+                <Header>Logga in</Header>
                 <InputAndlabel>
                     <label htmlFor="username">Användarnamn</label>
                     <input placeholder="Användarnamn" 

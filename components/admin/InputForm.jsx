@@ -14,6 +14,7 @@ const Form = styled.form`
     ${flex()};
     gap: 5px;
     width: 100%;
+
 `
 const ToggleSwitch = styled.label`
     position: relative;
