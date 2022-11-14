@@ -21,7 +21,7 @@ const ChartOptions = () => {
         },
         scales: {
           y: { 
-            // display: false,
+            display: false,
             ticks:{
               color: 'black',
               font:{
@@ -31,12 +31,13 @@ const ChartOptions = () => {
               stepSize: 10000,
             },
             min: 0,
-            max: 120000,
+            max: 140000,
             grid: {
               display: false
             }
           },
-          x: {             
+          x: {  
+            display: false,           
             grid: {
               display: false
             },

@@ -6,13 +6,14 @@ display: inline-block;
 position: relative;
 width: 80px;
 height: 80px;
+
 div{
   position: absolute;
   top: 33px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: ${colors.primary};
+  background: ${colors.secondary};
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 @keyframes lds-ellipsis1 {
