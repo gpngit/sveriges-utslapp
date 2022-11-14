@@ -5,6 +5,8 @@ import initFirebase from '../firebase/initFirebase'
 import { getDatabase, ref, child, get } from "firebase/database"
 //SCB
 import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
+//react hooks
+import { useEffect } from 'react'
 //components
 import Hero from '../components/hero/Hero'
 import Footer from '../components/footer/Footer'
@@ -12,8 +14,7 @@ import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import Second from '../components/second section/Second'
-//react hooks
-import { useEffect } from 'react'
+import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 
 
 export async function getServerSideProps(){
