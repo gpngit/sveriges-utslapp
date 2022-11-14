@@ -71,6 +71,11 @@ const YAxis = styled.div`
   height: 100%;
   min-width: ${AxisThickness};
   background-color: ${colors.primary};
+
+  div {
+    height: 100%;
+    ${flex('column-reverse', 'space-between', 'flex-end')};
+  }
 `
 const XAxis = styled.div`
   ${flex('row', 'space-between', 'flex-end')};
@@ -85,21 +90,38 @@ const XTick = styled.div`
     gap: 40px;
     padding: 10px;
     text-align: center;
-    height: 90vh;
+    height: 60vh;
     font-size: 14px;
+
+    strong {
+    font-size: 30px;
+    color: rgba(255, 255, 255, .5);
+    }
 
     .info-per-year {
       display: none;
     }
 
     &:hover, &:active {
-      background: linear-gradient(transparent, rgba(255, 255, 255, 0.6));
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+
+      strong {
+        color: white;
+      }
 
       .info-per-year {
         ${flex('column', 'center', 'center')};
         gap: 20px;
+        font-size: 16px;
       }
     }
+`
+const YAxisLabel = styled.p`
+
+`
+const YTick = styled.span`
+  font-size: 14px;
+  padding-right: 20px;
 `
 
 const LineChart = ({ emissions }) => {
@@ -120,6 +142,10 @@ const LineChart = ({ emissions }) => {
         year: emission.year
     }
   }))
+  const YScale = []
+  for(let i=0; i<140000; i+=10000){
+    YScale.push(i)
+  }
 
   const renderGradient = (ref, color, y0, y1) => {
     let ctx = ref.canvas
@@ -159,7 +185,7 @@ const LineChart = ({ emissions }) => {
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
                 // backgroundColor: renderGradient(canvas.current, 'white', 0, 1200),
-                backgroundColor: 'white',
+                // backgroundColor: 'white',
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
@@ -195,16 +221,19 @@ const LineChart = ({ emissions }) => {
         </ButtonContainer>
         <AxisAndScrollContainer>
           <YAxis>
-            
+            <YAxisLabel>Koldioxid (kt CO2)</YAxisLabel>
+            <div>
+              {YScale.map(val => <YTick key={val}>{val}</YTick>)}
+            </div>
           </YAxis>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} />
           </ChartContainer>
           <XAxis>
-            {years.map(year => {
-              // if (Number(year) % 5 === 0){
+            {years.map((year, i) => {
+              if (Number(year) % 5 === 0){
                 return (
-                <XTick>
+                <XTick key={year}>
                   <strong className="year">{year}</strong>
                   <div className="info-per-year">
                     <div className="fossila">
@@ -222,7 +251,7 @@ const LineChart = ({ emissions }) => {
                   </div>
                 </XTick>
                 )
-              // }
+              }
             })}
           </XAxis>
         </AxisAndScrollContainer>
