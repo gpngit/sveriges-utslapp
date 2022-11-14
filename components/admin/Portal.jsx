@@ -8,18 +8,21 @@ import initFirebase from '../../firebase/initFirebase'
 import { getDatabase, ref, onValue } from "firebase/database"
 //components
 import InputForm from './InputForm'
-
+console.log(device.mobileS)
 const Container = styled.main`
     background-color:${colors.primary};
     ${flex()};
     gap: 2rem;
     min-height: 100vh;
     padding: 2rem;
-
+  
     .header-and-logout {
         ${flex('row', 'space-between', 'center')}
         width: 100%;
+        @media screen and ${device.mobileS}{
+            background-color: red;}
     }
+  
 `
 
 const Portal = ({ setAuthenticated }) => {

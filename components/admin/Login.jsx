@@ -67,7 +67,7 @@ const Login = ({ setAuthenticated }) => {
         e.preventDefault()
         const {username, password} = e.target
         if (username.value === process.env.NEXT_PUBLIC_ADMIN_USERNAME && password.value === process.env.NEXT_PUBLIC_ADMIN_PASSWORD){
-            setLoading(true)
+     
             setAuthenticated(true)
         } 
         else if(username.value === ""|| password.value === ""){
