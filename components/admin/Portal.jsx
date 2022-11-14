@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes, device } from '../../styles/partials'
+import { flex, colors, fonts, fontSizes, device } from '../../styles/partials'
 //react hooks
 import { useEffect, useState } from 'react'
 //firebase
@@ -18,10 +18,13 @@ const Container = styled.main`
     padding-top:4rem;
    
     .header-and-logout {
-        ${flex('row', 'space-between', 'center')}
+        ${flex('column-reverse', 'space-between', 'center')}
         width: 100%;
+        @media screen and ${device.tablet}{
+            ${flex('row', 'space-between', 'center')}
+        }
         h2{
-            font-size:${fontSizes.heading};
+            ${fonts.heading};
             color:${colors.secondary};
         }
         button{
@@ -30,6 +33,7 @@ const Container = styled.main`
             padding:10px;
             border:none;
             border-radius:9px;
+            ${fonts.footnote};
             &:hover{
                 background-color:${colors.secondary};
                 box-shadow: 0 0 1px ${colors.border};
@@ -39,10 +43,10 @@ const Container = styled.main`
             }
         }
     }
-
     @media screen and ${device.tablet}{
-        padding:4rem;}
-  
+        padding:4rem;
+        
+    }
 `
 
 const Portal = ({ setAuthenticated }) => {

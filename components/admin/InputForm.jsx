@@ -1,6 +1,6 @@
 //CSS
 import styled from "styled-components"
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, fonts, colors, fontSizes } from '../../styles/partials'
 //firebase
 import { getDatabase, ref, update } from "firebase/database";
 //components
@@ -14,7 +14,9 @@ const Form = styled.form`
     ${flex()};
     gap: 5px;
     width: 100%;
-
+    background-color: #e2e2e2;
+    padding:1rem;
+    max-width:800px;
 `
 const ToggleSwitch = styled.label`
     position: relative;

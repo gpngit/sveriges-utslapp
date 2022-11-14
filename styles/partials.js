@@ -28,7 +28,7 @@ export const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 export const fonts = {
-    heading: `font-size: clamp(3.1rem, 4vw + 1rem, 4rem); line-height: 120%;  @media screen and ${device.desktop}{
+    heading: `font-size: clamp(3.1rem, 4vw + 1rem, 4rem); line-height: 150%;  @media screen and ${device.desktop}{
     line-height: 100%;}`,
     subheading: `font-size: clamp(2.6rem, 2vw + 1rem, 3rem); line-height:120%; @media screen and ${device.desktop}{
     line-height: 120%;} `,
