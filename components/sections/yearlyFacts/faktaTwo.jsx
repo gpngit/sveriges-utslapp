@@ -3,18 +3,8 @@ import { flex, fonts, colors, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
+import { Content } from './ContainerStyles'
 
-const Container = styled.section`
-`
-const Content = styled.div`
-${flex()};
-width:70%
-gap: 40px;
-background-color:white;
-color: black;
-position: relative;
-padding:2rem;
-`
 
 const TextContent = styled.div`
     ${flex()};
@@ -26,8 +16,6 @@ const TextContent = styled.div`
         ${fonts.paragraph};
     }
 `
-
-
 const FaktaTwo = ({pageElements, emissions}) => {
 
   const {id, sections, name} = pageElements
@@ -38,8 +26,8 @@ const FaktaTwo = ({pageElements, emissions}) => {
   const url = sections.find(section => section.name === 'source')
 
   return (
-    <Container id="faktaone">
-      <Content>
+
+      <Content id="faktatwo">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -49,7 +37,7 @@ const FaktaTwo = ({pageElements, emissions}) => {
             </TextContent>
             <SourceAndShare sourceLink={'#'} shareLink={'#'} />
       </Content>
-    </Container>
+
     );
 }
  
