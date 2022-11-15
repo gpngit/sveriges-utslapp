@@ -3,39 +3,11 @@ import { flex, colors, fonts } from "/styles/partials"
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
+import { Content } from './ContainerStyles'
 
-const Container = styled.section`
-  
-   padding:10rem;
-   background-color:${colors.primary}
-  
-`
-const Content = styled.div`
-${flex()};
-width:70%
-gap: 40px;
-background-color:white;
-color: black;
-position: relative;
-padding:2rem;
 
-&::after{
-  content: '';
-position: absolute;
-top: 0;
-left: 50%;
-width: 0;
-height: 0;
-border: 35px solid transparent;
-border-bottom-color: white;
-border-top: 0;
-margin-left: -20px;
-margin-top: -30px;
-}
-`
 
 const TextContent = styled.div`
-    ${flex()};
     gap: 20px;
     h2 {
         ${fonts.heading};;
@@ -54,8 +26,10 @@ const FaktaOne = ({pageElements, emissions}) => {
   const url = sections.find(section => section.name === 'source')
 
   return (
-    <Container id="faktaone">
-      <Content>
+    
+      <Content 
+      faktaOne
+      id="faktaone">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -63,9 +37,11 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <BarChart emissions={emissions}/>
                 <p>{url.text}</p>
             </TextContent>
-            <SourceAndShare sourceLink={'#'} shareLink={'#'} />
+            <SourceAndShare 
+            whiteBG={"yes"}
+            sourceLink={'#'} shareLink={'#'} />
       </Content>
-    </Container>
+ 
     );
 }
  

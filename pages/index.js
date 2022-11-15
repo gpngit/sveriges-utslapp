@@ -19,6 +19,7 @@ import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaOne from '../components/sections/yearlyFacts/faktaOne'
 import FaktaTwo from '../components/sections/yearlyFacts/faktaTwo'
+import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionTypeOne from '../components/sections/sectionDifferentTypes/SectionOnePicture'
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
 
@@ -75,10 +76,13 @@ export default function Home({ siteSections, emissions }) {
     <LineChart emissions={emissions}/>
     <YearChanger emissions={emissions} />
     {/* <Slider emissions={emissions}/> */}
-    <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
+    <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaOne')}
+    pageTwoElem={siteSections.find(elem => elem.name === 'faktaTwo')}
+    emissions={emissions}/>
+    {/* <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
     emissions={emissions}/>
     <FaktaTwo pageElements={siteSections.find(elem => elem.name === 'faktaTwo')}
-    emissions={emissions}/>
+    emissions={emissions}/> */}
      <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
 

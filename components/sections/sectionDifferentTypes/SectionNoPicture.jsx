@@ -49,7 +49,9 @@ const SectionTypeThree= ({ pageElements }) => {
                 <p>{source.text}</p>
               
             </TextContent>
-            <SourceAndShare sourceLink={'#'} shareLink={'#'} />
+            <SourceAndShare 
+             whiteBG={"yes"}
+            sourceLink={'#'} shareLink={'#'} />
          
         </Container>
     )
