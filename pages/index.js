@@ -17,8 +17,6 @@ import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from './sections/ingress/Ingress'
 
-
-
 export async function getServerSideProps(){
   initFirebase()
   const db = getDatabase()
@@ -68,9 +66,8 @@ export default function Home({ siteSections, emissions }) {
     <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <YearChanger />
+    <YearChanger emissions={emissions} />
     <LineChart emissions={emissions}/>
-    <Slider emissions={emissions}/>
     <BarChart emissions={emissions}/>
     <Footer />
     </>
