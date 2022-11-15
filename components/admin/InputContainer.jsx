@@ -139,7 +139,8 @@ button{
 
 `
 
-const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
+const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
+
     const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
@@ -190,7 +191,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
     
 
     return (
-        <>
+        
+            <>
         {modal && (
             <Modal>
                 <div>
@@ -239,6 +241,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName }) => {
             </div>
            
         </Container>
+       
         </>
     )
 }

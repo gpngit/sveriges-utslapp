@@ -119,9 +119,7 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-  
-
-
+const [published, setPublished] = useState(true)
 
     const {id, name, show, sections} = pageElements
 
@@ -131,24 +129,27 @@ const InputForm = ({ pageElements }) => {
     const handleShowClick = (e) => {
         e.preventDefault()
         setShowSection(!showSection)
-      
     }
 
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
+        console.log(dbRef)
         update(dbRef, {show: bool})
+        console.log(dbRef)
     }
   
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
+        setPublished(false)
+        console.log(published)
         
     } 
 
     return (
-        <Form className="form">
-           
+        <Form className="form"
+        >
             <TitleAndReveal>
                 <h3>{capitalize(name)}</h3>
                 <Row>
@@ -156,8 +157,10 @@ const InputForm = ({ pageElements }) => {
             aria-label="Stäng av/Sätt på en sektion"
             type="button"
             htmlFor={`switch-${id}`}>
-                <input onChange={() => handleVisibility(id-1)} type="checkbox" id={`switch-${id}`} checked={visible ? true : false} />
-                <span className="slider round"></span>
+                <input onChange={() => handleVisibility(id-1)} type="checkbox" 
+                id={`switch-${id}`} checked={visible ? true : false} />
+                <span 
+                className="slider round"></span>
             </ToggleSwitch>
             <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p></Row>
                 <button onClick={(e) => handleShowClick(e)}>{showSection ? 
@@ -167,7 +170,8 @@ const InputForm = ({ pageElements }) => {
                 src={arrow}
                 width={20}
                 height={10}/>
-                :  (<Image alt="Visa mer"
+                :  (
+                <Image alt="Visa mer"
                 type="Button"
                 aria-label="Visa mer" 
                 src={arrow}
@@ -175,10 +179,12 @@ const InputForm = ({ pageElements }) => {
                 height={10}/>)}</button>
             </TitleAndReveal>
            
-            {showSection && sections.map((section, i) => {
+            {showSection && sections.map((section, i, published) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} 
-                    input={section} inputIndex={i} sectionName={name} />
+                    input={section} inputIndex={i} 
+                    sectionName={name} 
+                    published = {published}/>
                 )
             })}
             
