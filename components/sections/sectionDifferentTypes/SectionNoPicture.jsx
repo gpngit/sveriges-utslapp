@@ -1,8 +1,8 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../../styles/partials'
+import { flex, colors, fonts } from '../styles/partials'
 //components
-import SourceAndShare from '../../../components/buttons/SourceAndShare'
+import SourceAndShare from '../components/buttons/SourceAndShare'
 
 const Container = styled.section`
     ${flex()};

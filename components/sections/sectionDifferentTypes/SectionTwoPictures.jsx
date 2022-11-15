@@ -1,31 +1,10 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../../styles/partials'
+import { flex, device, colors, fonts } from '../../../styles/partials'
+import { Container, TextContent } from './ContainerStyles'
 //components
-import SourceAndShare from '../../../components/buttons/SourceAndShare'
+import SourceAndShare from '../../buttons/SourceAndShare'
 
-const Container = styled.section`
-    ${flex()};
-    gap: 40px;
-    background-color: white;
-    padding: 5rem;
-    color: black;
-`
-
-
-const TextContent = styled.div`
-    ${flex()};
-    gap: 20px;
-    max-width: 600px;
-
-    h2 {
-        ${fonts.heading};;
-    }
-
-    p {
-        ${fonts.paragraph};
-    }
-`
 
 const SectionTypeTwo= ({ pageElements }) => {
     

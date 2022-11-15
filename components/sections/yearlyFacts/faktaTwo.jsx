@@ -1,14 +1,10 @@
 import styled from 'styled-components'
-import { flex, colors, fonts } from "../../../../styles/partials"
+import { flex, fonts, colors, device } from '../../../styles/partials'
 //components
-import SourceAndShare from '../../../../components/buttons/SourceAndShare'
-import BarChart from '../../../../components/barchart/BarChart'
+import SourceAndShare from '../../buttons/SourceAndShare'
+import BarChart from '../../barchart/BarChart'
 
 const Container = styled.section`
-  
-   padding:10rem;
-   background-color:${colors.primary}
-  
 `
 const Content = styled.div`
 ${flex()};
@@ -18,20 +14,6 @@ background-color:white;
 color: black;
 position: relative;
 padding:2rem;
-
-&::after{
-  content: '';
-position: absolute;
-top: 0;
-left: 50%;
-width: 0;
-height: 0;
-border: 35px solid transparent;
-border-bottom-color: white;
-border-top: 0;
-margin-left: -20px;
-margin-top: -30px;
-}
 `
 
 const TextContent = styled.div`
@@ -46,9 +28,8 @@ const TextContent = styled.div`
 `
 
 
-const FaktaOne = ({pageElements, emissions}) => {
+const FaktaTwo = ({pageElements, emissions}) => {
 
-  
   const {id, sections, name} = pageElements
 
   const title = sections.find(section => section.name === 'title')
@@ -72,4 +53,4 @@ const FaktaOne = ({pageElements, emissions}) => {
     );
 }
  
-export default FaktaOne;
+export default FaktaTwo;
