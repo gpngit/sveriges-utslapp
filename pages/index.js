@@ -15,8 +15,7 @@ import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import Second from '../components/second section/Second'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
-
-
+import YearChanger from '../components/year-changer/YearChanger'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -65,9 +64,10 @@ export default function Home({ siteSections, emissions }) {
 
   return (
     <>
-  <HeadContent/>
+    <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Second  pageElements={siteSections.find(elem => elem.name === 'second')}  />
+    <YearChanger />
     <LineChart emissions={emissions}/>
     <Slider emissions={emissions}/>
     <BarChart emissions={emissions}/>
