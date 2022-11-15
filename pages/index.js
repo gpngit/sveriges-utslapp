@@ -65,9 +65,9 @@ export default function Home({ siteSections, emissions }) {
 
   return (
     <>
-  <HeadContent/>
+    <HeadContent />
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
-    <Second  pageElements={siteSections.find(elem => elem.name === 'second')}  />
+    <Second  pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart emissions={emissions}/>
     <Slider emissions={emissions}/>
     <BarChart emissions={emissions}/>
