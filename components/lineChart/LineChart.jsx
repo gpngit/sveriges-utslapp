@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisThickness, LineChartWidth } from '../../styles/partials'
+import { flex, colors, AxisThickness, LineChartWidth, size } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -14,14 +14,13 @@ const Container = styled.section`
   height: 90vh;
 `
 const ButtonContainer = styled.div`
-  position: absolute;
-  z-index: 2;
-  right: 0px;
   padding: 20px;
-  width: 100vw;
-  ${flex('row', 'flex-end', 'center')};
+  ${flex('row', 'center', 'center')};
   gap: 10px;
-  background-color: ${colors.primary};
+
+  @media (max-width: ${size.tablet}) {
+    visibility: hidden;
+  }
 `
 const ChartContainer = styled.div`
   /* position: absolute; */

@@ -119,7 +119,7 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-const [published, setPublished] = useState(true)
+
 
     const {id, name, show, sections} = pageElements
 
@@ -134,7 +134,6 @@ const [published, setPublished] = useState(true)
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
-        console.log(dbRef)
         update(dbRef, {show: bool})
         console.log(dbRef)
     }
@@ -142,9 +141,6 @@ const [published, setPublished] = useState(true)
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
-        setPublished(false)
-        console.log(published)
-        
     } 
 
     return (
@@ -157,8 +153,10 @@ const [published, setPublished] = useState(true)
             aria-label="Stäng av/Sätt på en sektion"
             type="button"
             htmlFor={`switch-${id}`}>
-                <input onChange={() => handleVisibility(id-1)} type="checkbox" 
-                id={`switch-${id}`} checked={visible ? true : false} />
+                <input onChange={() => handleVisibility(id-1)} 
+                type="checkbox" 
+                id={`switch-${id}`} 
+                checked={visible ? true : false} />
                 <span 
                 className="slider round"></span>
             </ToggleSwitch>
@@ -179,12 +177,12 @@ const [published, setPublished] = useState(true)
                 height={10}/>)}</button>
             </TitleAndReveal>
            
-            {showSection && sections.map((section, i, published) => {
+            {showSection && sections.map((section, i) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} 
                     input={section} inputIndex={i} 
                     sectionName={name} 
-                    published = {published}/>
+                    />
                 )
             })}
             

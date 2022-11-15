@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -30,6 +30,7 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
+  ${fonts.footnote};
   background-color: white;
   color: ${colors.secondary};
   ${props => props.bio && css`

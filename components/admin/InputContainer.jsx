@@ -239,9 +239,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     </>
                 )}
             </div>
-           
         </Container>
-       
         </>
     )
 }
