@@ -1,6 +1,6 @@
 //CSS
 import styled from "styled-components";
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from "react";
 //charts

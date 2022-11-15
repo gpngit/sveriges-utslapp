@@ -8,14 +8,16 @@ import { useEffect } from 'react'
 //custom head:
 import HeadContent from '../components/Head'
 //components
-import Hero from '../components/hero/Hero'
+import Hero from './sections/hero/Hero'
 import Footer from '../components/footer/Footer'
 import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
-import Second from '../components/second section/Second'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import YearChanger from '../components/year-changer/YearChanger'
+import Ingress from './sections/ingress/Ingress'
+
+
 
 export async function getServerSideProps(){
   initFirebase()
@@ -41,7 +43,6 @@ export async function getServerSideProps(){
   }
 }
 
-
 export default function Home({ siteSections, emissions }) {
   
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function Home({ siteSections, emissions }) {
     <>
     <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
-    <Second  pageElements={siteSections.find(elem => elem.name === 'second')}  />
+    <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <YearChanger />
     <LineChart emissions={emissions}/>
     <Slider emissions={emissions}/>

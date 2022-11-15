@@ -48,15 +48,7 @@ const Container = styled.main`
         
     }
 `
-const Grid = styled.section`
-max-width:1200px;
-width:100%;
-display:grid;
-gap:2rem;
-@media screen and ${device.laptop} {
-    grid-template-columns: repeat(2, 1fr); }
-  
-`
+
 
 const Portal = ({ setAuthenticated }) => {
 

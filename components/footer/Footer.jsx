@@ -13,7 +13,6 @@ const Container = styled.footer`
     padding: 30px;
     background-color: ${colors.secondary};
     color: ${colors.primary};
-
     a {
         color: ${colors.primary};
     }

@@ -1,13 +1,13 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fontSizes, fonts } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import BurningForest from '../../public/burning-forest2.png'
-import Arrow from '../../public/arrow.svg'
+import BurningForest from '../../../public/burning-forest2.png'
+import Arrow from '../../../public/arrow.svg'
 //components
-import Crumble from '../crumble/Crumble'
+import Crumble from '../../../components/crumble/Crumble'
 
 const Container = styled.header`
     position: relative;
@@ -17,7 +17,6 @@ const Container = styled.header`
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
-
     .burning-forest {
         position: absolute;
         width: 100%;
@@ -43,11 +42,13 @@ const TextContent = styled.div`
     padding: 30px;
 
     h1 {
-        font-size: ${fontSizes.heading};
+    ${fonts.heading};
+   
     }
 
     p {
-        font-size: ${fontSizes.subheading};
+        ${fonts.subheading};
+        
     }
 `
 const TextAndLink = styled.div`
@@ -64,7 +65,8 @@ const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
-    font-size: ${fontSizes.paragraph};
+    // // font-size: ${fontSizes.paragraph};
+    ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};

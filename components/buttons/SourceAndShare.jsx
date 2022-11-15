@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fonts,  } from '../../styles/partials'
 
 const Container = styled.div`
     ${flex('row')};
