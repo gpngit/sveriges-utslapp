@@ -119,7 +119,7 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-const [published, setPublished] = useState(true)
+
 
     const {id, name, show, sections} = pageElements
 
@@ -142,8 +142,7 @@ const [published, setPublished] = useState(true)
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
-        setPublished(false)
-        console.log(published)
+        
         
     } 
 
@@ -179,12 +178,12 @@ const [published, setPublished] = useState(true)
                 height={10}/>)}</button>
             </TitleAndReveal>
            
-            {showSection && sections.map((section, i, published) => {
+            {showSection && sections.map((section, i) => {
                 return (
                     <InputContainer sectionId={id} key={section.name} 
                     input={section} inputIndex={i} 
                     sectionName={name} 
-                    published = {published}/>
+                    />
                 )
             })}
             

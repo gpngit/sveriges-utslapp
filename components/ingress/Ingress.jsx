@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 //components
 import SourceAndShare from '../buttons/SourceAndShare'
 
@@ -17,15 +17,15 @@ const TextContent = styled.div`
     max-width: 600px;
 
     h2 {
-        font-size: ${fontSizes.heading};
+        ${fonts.heading};;
     }
 
     p {
-        font-size: ${fontSizes.paragraph};
+         ${fonts.paragraph};
     }
 `
 
-const Second = ({ pageElements }) => {
+const Ingress = ({ pageElements }) => {
 
     const {id, sections, name} = pageElements
 
@@ -35,7 +35,7 @@ const Second = ({ pageElements }) => {
     const body2 = sections.find(section => section.name === 'body2')
 
     return (
-        <Container id='second-section'>
+        <Container id='ingress'>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -47,4 +47,4 @@ const Second = ({ pageElements }) => {
     )
 }
 
-export default Second
+export default Ingress

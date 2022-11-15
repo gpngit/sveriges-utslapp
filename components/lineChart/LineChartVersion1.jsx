@@ -30,6 +30,7 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
+  ${fonts.footnote};
   background-color: white;
   color: ${colors.secondary};
   ${props => props.bio && css`
