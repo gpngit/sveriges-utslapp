@@ -7,23 +7,9 @@ import SourceAndShare from '../../../components/buttons/SourceAndShare'
 const Container = styled.section`
     ${flex()};
     gap: 40px;
-    background-color: ${colors.secondary};
-    padding: 100px 60px;
-    color: white;
-    position: relative;
-    &::after{
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border: 35px solid transparent;
-        border-top-color: ${colors.secondary};
-        border-bottom: 0;
-        margin-left: -35px;
-        margin-bottom: -35px;
-    }
+    background-color: white;
+    padding: 5rem;
+    color: black;
 `
 
 
@@ -41,7 +27,7 @@ const TextContent = styled.div`
     }
 `
 
-const Ingress = ({ pageElements }) => {
+const SectionTypeOne= ({ pageElements }) => {
     
     const {id, sections, name} = pageElements
 
@@ -49,6 +35,8 @@ const Ingress = ({ pageElements }) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const body2 = sections.find(section => section.name === 'body2')
+    const imgurl = sections.find(section => section.name === 'imgurl')
+    const source = sections.find(section => section.name === 'source')
 
     return (
         <Container id='ingress'>
@@ -57,6 +45,9 @@ const Ingress = ({ pageElements }) => {
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
+                <p>alt:{imgurl.text} bild: {imgurl.url}</p>
+                <p>{source.text}</p>
+              
             </TextContent>
             <SourceAndShare sourceLink={'#'} shareLink={'#'} />
          
@@ -64,4 +55,4 @@ const Ingress = ({ pageElements }) => {
     )
 }
 
-export default Ingress
+export default SectionTypeOne

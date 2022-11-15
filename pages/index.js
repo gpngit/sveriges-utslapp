@@ -10,12 +10,17 @@ import HeadContent from '../components/Head'
 //components
 import Hero from './sections/hero/Hero'
 import Footer from '../components/footer/Footer'
-import LineChart from '../components/lineChart/LineChart'
+
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from './sections/ingress/Ingress'
+import FaktaOne from './sections/yearlyFacts/factsOne/faktaOne'
+import FaktaTwo from './sections/yearlyFacts/factsTwo/faktaTwo'
+import SectionTypeOne from './sections/sectionDifferentTypes/SectionOnePicture'
+import SectionTypeTwo from './sections/sectionDifferentTypes/SectionTwoPictures'
+import SectionTypeThree from './sections/sectionDifferentTypes/SectionNoPicture'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -67,8 +72,15 @@ export default function Home({ siteSections, emissions }) {
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <YearChanger emissions={emissions} />
-    <LineChart emissions={emissions}/>
-    <BarChart emissions={emissions}/>
+    <Slider emissions={emissions}/>
+    <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
+    emissions={emissions}/>
+    <FaktaTwo pageElements={siteSections.find(elem => elem.name === 'faktaTwo')}
+    emissions={emissions}/>
+     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
+    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
+    {/* <SectionTypeThree pageElements={siteSections.find(elem => elem.name === 'international')}/> */}
+ 
     <Footer />
     </>
   )
