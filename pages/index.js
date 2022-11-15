@@ -14,12 +14,11 @@ import Footer from '../components/footer/Footer'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
+import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from './sections/ingress/Ingress'
 import Tidslinjen from './sections/tidslinjen/Tidslinjen'
 import FaktaOne from './sections/årsfakta/faktadel1/faktaOne'
 import FaktaTwo from './sections/årsfakta/faktadel1/faktaOne'
-
-
 
 export async function getServerSideProps(){
   initFirebase()
@@ -67,10 +66,10 @@ export default function Home({ siteSections, emissions }) {
 
   return (
     <>
-  <HeadContent/>
+    <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <Tidslinjen emissions={emissions}/>
+    <YearChanger emissions={emissions} />
     <Slider emissions={emissions}/>
     <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
     emissions={emissions}/>
