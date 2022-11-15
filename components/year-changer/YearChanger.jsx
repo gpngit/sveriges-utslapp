@@ -6,6 +6,10 @@ import { useState, useEffect } from 'react'
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+//resources
+import Chevron from '../../public/Chevron'
+//nextjs components
+import Image from "next/image";
 
 const Container = styled.div`
     z-index: 10;
@@ -15,7 +19,15 @@ const Container = styled.div`
     ${flex('row', 'space-around', 'center')};
     padding: 20px;
     background-color: ${colors.primary};
-    box-shadow: 0px -5px 20px 0px ${colors.secondary};
+`
+const InnerContainer = styled.div`
+    ${flex('row', 'space-around', 'center')};
+    gap: 30px;
+
+    div {
+        ${flex('row', 'space-around', 'center')};
+        gap: 10px;
+    }
 `
 const Year = styled.span`
     font-size: 30px;
@@ -26,7 +38,7 @@ const Button = styled.button`
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
-    width: 120px;
+    padding: 10px 30px;
     height: 50px;
 `
 
@@ -35,8 +47,8 @@ const YearChanger = ({ emissions }) => {
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
-    const latestYear = years[years.length-1]
-    const firstYear = years[0]
+    const latestYear = Number(years[years.length-1])
+    const firstYear = Number(years[0])
 
     const increment = () => {
         if (displayYear != latestYear){
@@ -52,9 +64,19 @@ const YearChanger = ({ emissions }) => {
 
     return (
         <Container>
-            <Button onClick={() => decrement()}>Föregående</Button>
-            <Year>{displayYear}</Year>
-            <Button onClick={() => increment()}>Nästa</Button>
+            <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
+            <InnerContainer>
+                <div onClick={() => decrement()}>
+                    <Chevron color={colors.secondary} size={30} direction={'left'} />
+                    <p>{displayYear-1}</p>
+                </div>
+                <Year>{displayYear}</Year>
+                <div onClick={() => increment()}>
+                    <p>{displayYear+1}</p>
+                    <Chevron color={colors.secondary} size={30} direction={'right'} />
+                </div>
+            </InnerContainer>
+            <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
         </Container>
     )
 }

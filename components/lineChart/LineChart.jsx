@@ -14,10 +14,10 @@ import AppContext from '../../context/AppContext'
 const Container = styled.section`
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  height: 100vh;
+  height: 85vh;
 `
 const ButtonContainer = styled.div`
-  padding-top: 40px;
+  padding-top: 60px;
   ${flex('row', 'center', 'center')};
   gap: 10px;
 
@@ -27,7 +27,7 @@ const ButtonContainer = styled.div`
 `
 const ChartContainer = styled.div`
   height: 80%;
-  min-width: 100%;
+  width: 100%;
 `
 const Button = styled.button`
   padding: 10px 20px;

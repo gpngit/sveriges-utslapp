@@ -4,10 +4,7 @@ const ChartOptions = (emissions) => {
         maintainAspectRatio: false,
         responsive: true,
         layout: {
-          padding: {
-            left: 50,
-            top: 50
-          }
+          padding: 50
         },
         plugins: {
             legend: {
