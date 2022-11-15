@@ -16,6 +16,7 @@ import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import Ingress from './sections/ingress/Ingress'
 import Tidslinjen from './sections/tidslinjen/Tidslinjen'
+import FaktaOne from './sections/årsfakta/faktadel1/faktaOne'
 
 
 
@@ -70,6 +71,8 @@ export default function Home({ siteSections, emissions }) {
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <Tidslinjen emissions={emissions}/>
     <Slider emissions={emissions}/>
+    <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
+    emissions={emissions}/>
     <BarChart emissions={emissions}/>
     <Footer />
     </>

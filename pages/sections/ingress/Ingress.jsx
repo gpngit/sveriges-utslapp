@@ -24,7 +24,6 @@ const Container = styled.section`
         margin-left: -35px;
         margin-bottom: -35px;
     }
-
 `
 
 
@@ -53,7 +52,6 @@ const Ingress = ({ pageElements }) => {
 
     return (
         <Container id='ingress'>
-          
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>

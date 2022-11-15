@@ -13,7 +13,6 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
-    background-color: ${colors.primary};
     color: ${colors.secondary};
     padding: 60px;
     height: 100vh;
@@ -91,6 +90,7 @@ const BarChart = ({ emissions }) => {
 
     return (
         <Container id='bar-chart'>
+           
             <ChartHeader>Utsläpp år {displayYear}</ChartHeader>
             <ChartContainer>
                 {chartData && (
