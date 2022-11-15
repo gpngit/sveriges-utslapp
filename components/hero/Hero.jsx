@@ -27,7 +27,7 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 75vh;
+    height: 100vh;
     width: 100%;
     position: sticky;
     overflow-y: auto;
@@ -75,13 +75,13 @@ const NavLink = styled.a`
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 200px;
+    height: 60vh;
     width: 100%;
     pointer-events: none;
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary}, transparent);
+        background: linear-gradient(to top, ${colors.primary} 20vh, transparent);
     }
     
     /* &.top {
