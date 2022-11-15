@@ -8,13 +8,13 @@ import { useEffect } from 'react'
 //custom head:
 import HeadContent from '../components/Head'
 //components
-import Hero from '../components/hero/Hero'
+import Hero from './sections/hero/Hero'
 import Footer from '../components/footer/Footer'
 import LineChart from '../components/lineChart/LineChart'
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
-import Ingress from '../components/ingress/Ingress'
+import Ingress from './sections/ingress/Ingress'
 
 
 

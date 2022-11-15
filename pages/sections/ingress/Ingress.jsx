@@ -1,8 +1,8 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../styles/partials'
+import { flex, colors, fonts } from '../../../styles/partials'
 //components
-import SourceAndShare from '../buttons/SourceAndShare'
+import SourceAndShare from '../../../components/buttons/SourceAndShare'
 
 const Container = styled.section`
     ${flex()};
@@ -26,7 +26,7 @@ const TextContent = styled.div`
 `
 
 const Ingress = ({ pageElements }) => {
-
+    
     const {id, sections, name} = pageElements
 
     const title = sections.find(section => section.name === 'title')

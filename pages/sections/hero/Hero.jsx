@@ -1,13 +1,13 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes, fonts } from '../../styles/partials'
+import { flex, colors, fontSizes, fonts } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import BurningForest from '../../public/burning-forest2.png'
-import Arrow from '../../public/arrow.svg'
+import BurningForest from '../../../public/burning-forest2.png'
+import Arrow from '../../../public/arrow.svg'
 //components
-import Crumble from '../crumble/Crumble'
+import Crumble from '../../../components/crumble/Crumble'
 
 const Container = styled.header`
     position: relative;

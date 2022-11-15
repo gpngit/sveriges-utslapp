@@ -134,7 +134,6 @@ const InputForm = ({ pageElements }) => {
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
-        console.log(dbRef)
         update(dbRef, {show: bool})
         console.log(dbRef)
     }
@@ -142,8 +141,6 @@ const InputForm = ({ pageElements }) => {
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
-        
-        
     } 
 
     return (
@@ -156,8 +153,10 @@ const InputForm = ({ pageElements }) => {
             aria-label="Stäng av/Sätt på en sektion"
             type="button"
             htmlFor={`switch-${id}`}>
-                <input onChange={() => handleVisibility(id-1)} type="checkbox" 
-                id={`switch-${id}`} checked={visible ? true : false} />
+                <input onChange={() => handleVisibility(id-1)} 
+                type="checkbox" 
+                id={`switch-${id}`} 
+                checked={visible ? true : false} />
                 <span 
                 className="slider round"></span>
             </ToggleSwitch>
