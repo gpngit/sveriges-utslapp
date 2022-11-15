@@ -11,11 +11,11 @@ const Container = styled.div`
     z-index: 10;
     width: 100%;
     position: sticky;
-    bottom: 0;
+    top: 0;
     ${flex('row', 'space-around', 'center')};
     padding: 20px;
     background-color: ${colors.primary};
-    box-shadow: 0px 5px 20px 0px ${colors.secondary};
+    box-shadow: 0px -5px 20px 0px ${colors.secondary};
 `
 const Year = styled.span`
     font-size: 30px;

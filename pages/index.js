@@ -66,9 +66,9 @@ export default function Home({ siteSections, emissions }) {
     <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
+    <YearChanger emissions={emissions} />
     <LineChart emissions={emissions}/>
     <BarChart emissions={emissions}/>
-    <YearChanger emissions={emissions} />
     <Footer />
     </>
   )
