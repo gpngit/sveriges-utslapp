@@ -1,10 +1,10 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisThickness, LineChartWidth, size } from '../../styles/partials'
+import { flex, colors, AxisThickness, LineChartWidth, size } from "../../../styles/partials"
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import ChartOptions from "./ChartOptions";
+import ChartOptions from "../../../components/lineChart/ChartOptions";
 //react hooks
 import { useState, useEffect, useRef } from 'react';
 
@@ -117,7 +117,7 @@ const YTick = styled.span`
   padding-right: 20px;
 `
 
-const LineChart = ({ emissions }) => {
+const Tidslinjen = ({ emissions }) => {
 
   const canvas = useRef()
   const [options, setOptions] = useState(ChartOptions())
@@ -206,7 +206,9 @@ const LineChart = ({ emissions }) => {
   }
 
   return (
-      <Container id='line-chart'>
+      <Container 
+      id='line-chart'>
+    
         <ButtonContainer>
           <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
           <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
@@ -245,8 +247,9 @@ const LineChart = ({ emissions }) => {
             })}
           </XAxis>
         </AxisAndScrollContainer>
+      
       </Container>
   )
 }
 
-export default LineChart
+export default Tidslinjen

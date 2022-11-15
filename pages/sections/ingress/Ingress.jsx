@@ -10,7 +10,24 @@ const Container = styled.section`
     background-color: ${colors.secondary};
     padding: 100px 60px;
     color: white;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 35px solid transparent;
+        border-top-color: ${colors.secondary};
+        border-bottom: 0;
+        margin-left: -35px;
+        margin-bottom: -35px;
+    }
+
 `
+
+
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
@@ -36,6 +53,7 @@ const Ingress = ({ pageElements }) => {
 
     return (
         <Container id='ingress'>
+          
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -43,6 +61,7 @@ const Ingress = ({ pageElements }) => {
                 <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare sourceLink={'#'} shareLink={'#'} />
+         
         </Container>
     )
 }

@@ -10,11 +10,12 @@ import HeadContent from '../components/Head'
 //components
 import Hero from './sections/hero/Hero'
 import Footer from '../components/footer/Footer'
-import LineChart from '../components/lineChart/LineChart'
+
 import Slider from '../components/slider/Slider'
 import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import Ingress from './sections/ingress/Ingress'
+import Tidslinjen from './sections/tidslinjen/Tidslinjen'
 
 
 
@@ -67,7 +68,7 @@ export default function Home({ siteSections, emissions }) {
   <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <LineChart emissions={emissions}/>
+    <Tidslinjen emissions={emissions}/>
     <Slider emissions={emissions}/>
     <BarChart emissions={emissions}/>
     <Footer />
