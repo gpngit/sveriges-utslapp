@@ -9,6 +9,8 @@ import ChartOptions from "../../../components/lineChart/ChartOptions";
 import { useState, useEffect, useRef } from 'react';
 
 const Container = styled.section`
+  padding:2rem;
+  padding-top:3rem;
   background-color: ${colors.primary};
   color: ${colors.secondary};
   height: 90vh;
