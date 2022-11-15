@@ -6,6 +6,10 @@ import { useState, useEffect } from 'react'
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+//resources
+import Chevron from '../../public/Chevron'
+//nextjs components
+import Image from "next/image";
 
 const Container = styled.div`
     z-index: 10;
@@ -15,6 +19,15 @@ const Container = styled.div`
     ${flex('row', 'space-around', 'center')};
     padding: 20px;
     background-color: ${colors.primary};
+`
+const InnerContainer = styled.div`
+    ${flex('row', 'space-around', 'center')};
+    gap: 30px;
+
+    div {
+        ${flex('row', 'space-around', 'center')};
+        gap: 10px;
+    }
 `
 const Year = styled.span`
     font-size: 30px;
@@ -52,7 +65,17 @@ const YearChanger = ({ emissions }) => {
     return (
         <Container>
             <Button onClick={() => decrement()}>Föregående</Button>
-            <Year>{displayYear}</Year>
+            <InnerContainer>
+                <div>
+                    <Chevron color={colors.secondary} size={30} direction={'left'} />
+                    <p>{displayYear-1}</p>
+                </div>
+                <Year>{displayYear}</Year>
+                <div>
+                    <p>{displayYear+1}</p>
+                    <Chevron color={colors.secondary} size={30} direction={'right'} />
+                </div>
+            </InnerContainer>
             <Button onClick={() => increment()}>Nästa</Button>
         </Container>
     )
