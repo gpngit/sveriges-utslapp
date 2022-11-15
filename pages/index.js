@@ -18,7 +18,9 @@ import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from './sections/ingress/Ingress'
 import FaktaOne from './sections/yearlyFacts/factsOne/faktaOne'
 import FaktaTwo from './sections/yearlyFacts/factsTwo/faktaTwo'
-import Regler from './sections/sektion1/regler'
+import SectionTypeOne from './sections/sectionDifferentTypes/SectionOnePicture'
+import SectionTypeTwo from './sections/sectionDifferentTypes/SectionTwoPictures'
+import SectionTypeThree from './sections/sectionDifferentTypes/SectionNoPicture'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -75,7 +77,10 @@ export default function Home({ siteSections, emissions }) {
     emissions={emissions}/>
     <FaktaTwo pageElements={siteSections.find(elem => elem.name === 'faktaTwo')}
     emissions={emissions}/>
-    <Regler pageElements={siteSections.find(elem => elem.name === 'regler')} />
+     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
+    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
+    {/* <SectionTypeThree pageElements={siteSections.find(elem => elem.name === 'international')}/> */}
+ 
     <Footer />
     </>
   )

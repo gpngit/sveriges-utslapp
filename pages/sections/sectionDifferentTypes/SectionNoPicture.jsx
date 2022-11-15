@@ -8,7 +8,7 @@ const Container = styled.section`
     ${flex()};
     gap: 40px;
     background-color: white;
-    padding: 5em;
+    padding: 5rem;
     color: black;
 `
 
@@ -27,7 +27,7 @@ const TextContent = styled.div`
     }
 `
 
-const Regler= ({ pageElements }) => {
+const SectionTypeThree= ({ pageElements }) => {
     
     const {id, sections, name} = pageElements
 
@@ -35,7 +35,7 @@ const Regler= ({ pageElements }) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const body2 = sections.find(section => section.name === 'body2')
-    const imgurl = sections.find(section => section.name === 'imgurl')
+    const body3 = sections.find(section => section.name === 'body3')
     const source = sections.find(section => section.name === 'source')
 
     return (
@@ -45,7 +45,7 @@ const Regler= ({ pageElements }) => {
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
-                <p>alt:{imgurl.text} bild: {imgurl.url}</p>
+                <p>{body3.text}</p>
                 <p>{source.text}</p>
               
             </TextContent>
@@ -55,4 +55,4 @@ const Regler= ({ pageElements }) => {
     )
 }
 
-export default Regler
+export default SectionTypeThree
