@@ -38,7 +38,7 @@ const Button = styled.button`
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
-    width: 120px;
+    padding: 10px 30px;
     height: 50px;
 `
 
@@ -47,8 +47,8 @@ const YearChanger = ({ emissions }) => {
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
     const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
-    const latestYear = years[years.length-1]
-    const firstYear = years[0]
+    const latestYear = Number(years[years.length-1])
+    const firstYear = Number(years[0])
 
     const increment = () => {
         if (displayYear != latestYear){
@@ -64,19 +64,19 @@ const YearChanger = ({ emissions }) => {
 
     return (
         <Container>
-            <Button onClick={() => decrement()}>Föregående</Button>
+            <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
             <InnerContainer>
-                <div>
+                <div onClick={() => decrement()}>
                     <Chevron color={colors.secondary} size={30} direction={'left'} />
                     <p>{displayYear-1}</p>
                 </div>
                 <Year>{displayYear}</Year>
-                <div>
+                <div onClick={() => increment()}>
                     <p>{displayYear+1}</p>
                     <Chevron color={colors.secondary} size={30} direction={'right'} />
                 </div>
             </InnerContainer>
-            <Button onClick={() => increment()}>Nästa</Button>
+            <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
         </Container>
     )
 }
