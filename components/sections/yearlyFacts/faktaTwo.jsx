@@ -3,7 +3,7 @@ import { flex, fonts, colors, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
-import { Content } from './ContainerStyles'
+import { Content, Wrapper } from './ContainerStyles'
 
 
 const TextContent = styled.div`
@@ -28,6 +28,7 @@ const FaktaTwo = ({pageElements, emissions}) => {
   return (
 
       <Content id="faktatwo">
+   
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -35,7 +36,11 @@ const FaktaTwo = ({pageElements, emissions}) => {
                 <BarChart emissions={emissions}/>
                 <p>{url.text}</p>
             </TextContent>
-            <SourceAndShare sourceLink={'#'} shareLink={'#'} />
+            <SourceAndShare 
+            whiteBG={"yes"}
+            sourceLink={'#'} 
+            shareLink={'#'} />
+         
       </Content>
 
     );
