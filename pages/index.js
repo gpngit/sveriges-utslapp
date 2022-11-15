@@ -16,7 +16,6 @@ import BarChart from '../components/barchart/BarChart'
 import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from './sections/ingress/Ingress'
-import Tidslinjen from './sections/tidslinjen/Tidslinjen'
 import FaktaOne from './sections/årsfakta/faktadel1/faktaOne'
 import FaktaTwo from './sections/årsfakta/faktadel1/faktaOne'
 
