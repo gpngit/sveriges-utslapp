@@ -4,7 +4,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 import { Container, TextContent } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-
+import Image from 'next/image'
 
 
 
@@ -26,13 +26,14 @@ const SectionTypeOne= ({ pageElements }) => {
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
-                <p>alt:{imgurl.text} bild: {imgurl.url}</p>
-                <p>{source.text}</p>
-              
+                <Image src={imgurl.url}
+                alt={imgurl.text}
+                width={500}
+                height={500}/>
             </TextContent>
             <SourceAndShare 
              whiteBG={"yes"}
-             sourceLink={'#'} shareLink={'#'} />
+             sourceLink={source.text} shareLink={'#'} />
          
         </Container>
     )

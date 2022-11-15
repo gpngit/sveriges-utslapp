@@ -49,7 +49,7 @@ const Ingress = ({ pageElements }) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const body2 = sections.find(section => section.name === 'body2')
-
+    const url = sections.find(section => section.name === 'source')
     return (
         <Container id='ingress'>
             <TextContent>
@@ -58,7 +58,7 @@ const Ingress = ({ pageElements }) => {
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
-            <SourceAndShare sourceLink={'#'} shareLink={'#'} />
+            <SourceAndShare sourceLink={url.text} shareLink={'#'} />
          
         </Container>
     )

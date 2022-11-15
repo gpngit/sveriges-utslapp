@@ -23,6 +23,7 @@ import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionTypeOne from '../components/sections/sectionDifferentTypes/SectionOnePicture'
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
 
+
 export async function getServerSideProps(){
   initFirebase()
   const db = getDatabase()
@@ -79,15 +80,13 @@ export default function Home({ siteSections, emissions }) {
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaOne')}
     pageTwoElem={siteSections.find(elem => elem.name === 'faktaTwo')}
     emissions={emissions}/>
-    {/* <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
-    emissions={emissions}/>
-    <FaktaTwo pageElements={siteSections.find(elem => elem.name === 'faktaTwo')}
-    emissions={emissions}/> */}
-     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
+   
+    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
-
+    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
+    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
  
-    <Footer />
+    <Footer/>
     </>
   )
 }

@@ -1,8 +1,8 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../styles/partials'
+import { flex, colors, fonts, device } from '../../../styles/partials'
 //components
-import SourceAndShare from '../components/buttons/SourceAndShare'
+import SourceAndShare from '../../buttons/SourceAndShare'
 
 const Container = styled.section`
     ${flex()};
@@ -35,7 +35,6 @@ const SectionTypeThree= ({ pageElements }) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const body2 = sections.find(section => section.name === 'body2')
-    const body3 = sections.find(section => section.name === 'body3')
     const source = sections.find(section => section.name === 'source')
 
     return (
@@ -45,7 +44,7 @@ const SectionTypeThree= ({ pageElements }) => {
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
-                <p>{body3.text}</p>
+               
                 <p>{source.text}</p>
               
             </TextContent>
