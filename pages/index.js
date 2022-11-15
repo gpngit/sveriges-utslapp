@@ -21,6 +21,7 @@ import FaktaTwo from './sections/yearlyFacts/factsTwo/faktaTwo'
 import SectionTypeOne from './sections/sectionDifferentTypes/SectionOnePicture'
 import SectionTypeTwo from './sections/sectionDifferentTypes/SectionTwoPictures'
 import SectionTypeThree from './sections/sectionDifferentTypes/SectionNoPicture'
+import Tidslinjen from './sections/tidslinje/Tidslinje'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -71,6 +72,7 @@ export default function Home({ siteSections, emissions }) {
     <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
+    <Tidslinjen emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <Slider emissions={emissions}/>
     <FaktaOne pageElements={siteSections.find(elem => elem.name === 'faktaOne')}
