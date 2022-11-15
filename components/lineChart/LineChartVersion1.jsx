@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';

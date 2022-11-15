@@ -21,7 +21,7 @@ const TextContent = styled.div`
     }
 
     p {
-         ${fonts.paragraph};
+        ${fonts.paragraph};
     }
 `
 
