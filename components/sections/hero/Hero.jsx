@@ -1,13 +1,13 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fontSizes, fonts } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import BurningForest from '../../public/burning-forest2.png'
-import Arrow from '../../public/arrow.svg'
+import BurningForest from '../../../public/burning-forest2.png'
+import Arrow from '../../../public/arrow.svg'
 //components
-import Crumble from '../crumble/Crumble'
+import Crumble from '../../../components/crumble/Crumble'
 
 const Container = styled.header`
     position: relative;
@@ -17,7 +17,6 @@ const Container = styled.header`
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
-
     .burning-forest {
         position: absolute;
         width: 100%;
@@ -28,7 +27,7 @@ const Container = styled.header`
     }
 `
 const ScrollContainer = styled.div`
-    height: 75vh;
+    height: 100vh;
     width: 100%;
     position: sticky;
     overflow-y: auto;
@@ -43,11 +42,13 @@ const TextContent = styled.div`
     padding: 30px;
 
     h1 {
-        font-size: ${fontSizes.heading};
+    ${fonts.heading};
+   
     }
 
     p {
-        font-size: ${fontSizes.subheading};
+        ${fonts.subheading};
+        
     }
 `
 const TextAndLink = styled.div`
@@ -64,7 +65,8 @@ const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
-    font-size: ${fontSizes.paragraph};
+    // // font-size: ${fontSizes.paragraph};
+    ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
@@ -73,13 +75,13 @@ const NavLink = styled.a`
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 200px;
+    height: 60vh;
     width: 100%;
     pointer-events: none;
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary}, transparent);
+        background: linear-gradient(to top, ${colors.primary} 20vh, transparent);
     }
     
     /* &.top {

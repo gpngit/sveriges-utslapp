@@ -7,27 +7,36 @@ import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
 //react hooks
 import { useState, useEffect, useRef } from 'react';
-//context
-import { useContext } from 'react'
-import AppContext from '../../context/AppContext'
 
 const Container = styled.section`
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  height: 85vh;
+  height: 90vh;
 `
 const ButtonContainer = styled.div`
-  padding-top: 60px;
+  padding: 20px;
   ${flex('row', 'center', 'center')};
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    visibility: hidden;
   }
 `
 const ChartContainer = styled.div`
-  height: 80%;
+  /* position: absolute; */
+  height: 100%;
+  min-width: ${LineChartWidth};
+`
+const AxisAndScrollContainer = styled.div`
+  position: relative;
+  height: 100%;
   width: 100%;
+  ${flex('row')};
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -55,13 +64,63 @@ const Button = styled.button`
     filter: brightness(90%);
   }
 `
+const YAxis = styled.div`
+  position: sticky;
+  ${flex('column-reverse', 'space-between', 'flex-end')};
+  z-index: 1;
+  left: 0;
+  height: 100%;
+  min-width: ${AxisThickness};
+  background-color: ${colors.primary};
+`
+const XAxis = styled.div`
+  ${flex('row', 'space-between', 'flex-end')};
+  position: absolute;
+  bottom: 0;
+  margin-left: ${AxisThickness};
+  width: ${LineChartWidth}; 
+`
+const XTick = styled.div`
+    flex-basis: 100%;
+    ${flex('column-reverse', 'flex-start', 'center')};
+    gap: 40px;
+    padding: 10px;
+    text-align: center;
+    height: 60vh;
+    font-size: 14px;
+
+    strong {
+    font-size: 30px;
+    color: rgba(255, 255, 255, .5);
+    }
+
+    .info-per-year {
+      display: none;
+    }
+
+    &:hover, &:active {
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+
+      strong {
+        color: white;
+      }
+
+      .info-per-year {
+        ${flex('column', 'center', 'center')};
+        gap: 20px;
+        font-size: 16px;
+      }
+    }
+`
+const YTick = styled.span`
+  font-size: 14px;
+  padding-right: 20px;
+`
 
 const LineChart = ({ emissions }) => {
 
   const canvas = useRef()
-  const context = useContext(AppContext)
-  const {displayYear, setDisplayYear} = context
-  const [options, setOptions] = useState(ChartOptions(emissions))
+  const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState({
     datasets: [],
   })
@@ -127,7 +186,7 @@ const LineChart = ({ emissions }) => {
             }]
         })
     }
-  }, [totalEmissions, displayYear])
+  }, [totalEmissions])
 
   const handleClick = (e) => {
     let clickedDatasetIndex = e.target.dataset.index
@@ -148,14 +207,44 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-          <ButtonContainer>
-            <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
-            <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
-            <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
-          </ButtonContainer>
+        <ButtonContainer>
+          <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
+          <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
+        </ButtonContainer>
+        <AxisAndScrollContainer>
+          <YAxis>
+            {YScale.map(val => <YTick key={val}>{val}</YTick>)}
+          </YAxis>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} />
           </ChartContainer>
+          <XAxis>
+            {years.map((year, i) => {
+              if (Number(year) % 5 === 0){
+                return (
+                <XTick key={year}>
+                  <strong className="year">{year}</strong>
+                  <div className="info-per-year">
+                    <div className="fossila">
+                      <p>Fossila</p>
+                      <p>{Math.round(Number(fossilEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
+                    </div>
+                    <div className="biogena">
+                      <p>Biogena</p>
+                      <p>{Math.round(Number(bioEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
+                    </div>
+                    <div className="totala">
+                      <p>Totalt</p>
+                      <p>{Math.round(Number(totalEmissions.filter(emission => emission.year === year).map(emission => emission.value)))}</p>
+                    </div>
+                  </div>
+                </XTick>
+                )
+              }
+            })}
+          </XAxis>
+        </AxisAndScrollContainer>
       </Container>
   )
 }

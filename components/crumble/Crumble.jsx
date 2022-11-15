@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 //resources
 import GreenpeaceLogo from '../../public/GreenpeaceLogo'
 

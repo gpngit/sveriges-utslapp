@@ -1,8 +1,11 @@
-const ChartOptions = () => {
+const ChartOptions = (emissions) => {
 
     const options = {
         maintainAspectRatio: false,
         responsive: true,
+        layout: {
+          padding: 50
+        },
         plugins: {
             legend: {
               display: false,
@@ -21,23 +24,24 @@ const ChartOptions = () => {
         },
         scales: {
           y: { 
-            display: false,
+            display: true,
             ticks:{
+              beginAtZero: true,
               color: 'black',
               font:{
                 size: '12px',
                 family: "Noto Sans",
               },
-              stepSize: 10000,
+              stepSize: 20000,
             },
             min: 0,
-            max: 140000,
+            max: 120000,
             grid: {
-              display: false
+              display: true
             }
           },
           x: {  
-            display: false,           
+            display: true,           
             grid: {
               display: false
             },
