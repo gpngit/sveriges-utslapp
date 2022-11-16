@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from 'styled-components'
-import { flex, colors, fonts,  } from '../../styles/partials'
+import { flex, colors, fonts  } from '../../styles/partials'
 import { useEffect, useState } from 'react'
 
 const Container = styled.div`
@@ -16,6 +16,8 @@ const LinkButton = styled.a`
     border-radius: 10px;
     width: 100px;
     height: 40px;
+    ${fonts.footnote};
+
     ${props => 
         props.secondary && 
         css`
@@ -31,11 +33,12 @@ const LinkButton = styled.a`
 
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
     const [showSecondary, setShowSecondary] = useState(false);
+    
     useEffect(() => {
         if(whiteBG === "yes"){
             setShowSecondary(true)
         }
-    },[])
+    },[whiteBG])
 
     return (
         <Container>
