@@ -56,6 +56,14 @@ ${props =>
     `}
 `
 
+const Wrapper = styled.span`
+background-color: ${colors.primary};
+padding:1rem;
+color:black;
+border-radius:19px;
+z-index:20;
+`
+
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
     const [showSecondary, setShowSecondary] = useState(false);
     console.log(shareLink, "shareLink")
@@ -70,6 +78,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
     const shareModal= () => {
         setShowModal(true)
     }
+  
 
     return (
         <Container>
@@ -77,7 +86,6 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
                 <LinkButton  secondary
                     href={sourceLink}>Källa</LinkButton>
                 <Button secondary
-                source={shareLink}
                 onClick={shareModal}>Dela</Button>
                 {/* <LinkButton secondary 
                     href={shareLink}>Dela</LinkButton> */}
@@ -86,15 +94,16 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
                 <LinkButton
                     href={sourceLink}>Källa</LinkButton>
                 <Button 
-                source={shareLink}
                 onClick={shareModal}>Dela</Button>
                 {/* <LinkButton 
                     href={shareLink}>Dela</LinkButton> */}
                     </>
-               
             )}
-            {showModal ? (<SharingModal
-            source={shareLink} />) : (null)}
+            {showModal ? (<Wrapper>
+                <p onClick={() => setShowModal(false)}>X</p>
+                <SharingModal
+                source={shareLink} />
+                </Wrapper>) : (null)}
            
         </Container>
     )
