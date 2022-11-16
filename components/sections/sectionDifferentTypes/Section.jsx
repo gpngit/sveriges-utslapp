@@ -23,9 +23,8 @@ const Section = ( {pageElements, sectionIDname} ) => {
   
   let amountOfPictures = sections.images.map(item => item).length;
   let amountOfTexts = sections.texts.map(item => item).length;
-
   let sourceForButton = sections.sources.map(item => item);
-  console.log(sourceForButton.length)
+  console.log("pics:", amountOfPictures, "texts:", amountOfTexts, sectionIDname)
   
 
   return ( 
@@ -39,7 +38,33 @@ const Section = ( {pageElements, sectionIDname} ) => {
     </>}
     {sectionIDname === "siffror" && <>
     <Item>
+    {sections.texts.map((item, index) => {
+        if(index === 0){
+          return <p key={item.id}>{item.text}</p>
+        }})}
+      {sections.images.map((item, index) => {
+        if(index ===0){
+          return (
+            <ImageWrapper
+            key={item.id}>
+            <Image 
+            className='image'
+            layout = "responsive"
+            width={imageSizeSquare.width}
+            height={imageSizeSquare.height}
+            src={item.url} 
+            alt={item.text}
+            />
+            </ImageWrapper>
+          )
+        }
+      })}
+      {sections.texts.map((item, index) => {
+        if(index === 1){
+          return <p key={item.id}>{item.text}</p>
+      }})}
     </Item>
+    
     </>}
     {sectionIDname === "circular" && <>
     <Row>
@@ -100,7 +125,7 @@ const Section = ( {pageElements, sectionIDname} ) => {
       </Row>
       </>}
   </TextContent>
-  
+
   {sourceForButton.length > 1 && 
     <div>
     <h3>Flera källor:</h3>
