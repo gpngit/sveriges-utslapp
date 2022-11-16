@@ -18,7 +18,6 @@ export default function Admin() {
         <>
         {!authenticated && <Login setAuthenticated={setAuthenticated} />}
         {authenticated && <Portal setAuthenticated={setAuthenticated} />}
-        <Footer />
         </>
     )
 }

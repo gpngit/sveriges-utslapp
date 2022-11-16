@@ -87,7 +87,7 @@ export default function Home({ siteSections, emissions }) {
     sectionIDname={"kolcykeln"} /> 
 
  
-    <Footer/>
+    <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
     </>
   )
 }
