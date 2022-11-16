@@ -22,7 +22,7 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    visibility: hidden;
   }
 `
 const ChartContainer = styled.div`
