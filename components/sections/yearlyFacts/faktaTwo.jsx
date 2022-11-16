@@ -27,7 +27,7 @@ const FaktaTwo = ({pageElements, emissions}) => {
 
   return (
 
-      <Content id="faktatwo">
+      <Content id="bio-inte-bra-for-naturen">
    
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>

@@ -81,10 +81,11 @@ export default function Home({ siteSections, emissions }) {
     pageTwoElem={siteSections.find(elem => elem.name === 'faktaTwo')}
     emissions={emissions}/>
    
-    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
-    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
-    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
-    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
+    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')}
+    sectionIDname={"regler"} />
+    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
+    sectionIDname={"kolcykeln"} /> 
+
  
     <Footer/>
     </>

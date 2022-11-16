@@ -6,7 +6,7 @@ import { Container, TextContent } from './ContainerStyles'
 import SourceAndShare from '../../buttons/SourceAndShare'
 
 
-const SectionTypeTwo= ({ pageElements }) => {
+const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     
     const {id, sections, name} = pageElements
 
@@ -19,7 +19,7 @@ const SectionTypeTwo= ({ pageElements }) => {
     const source = sections.find(section => section.name === 'source')
 
     return (
-        <Container id='ingress'>
+        <Container id={sectionIDname}>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
