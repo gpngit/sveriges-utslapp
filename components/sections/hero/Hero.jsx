@@ -127,28 +127,28 @@ const Hero = ({ pageElements }) => {
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink href='#second-section'>Hur ser siffrorna ut egentligen?</NavLink>
+                        <NavLink href='#ingress'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink onClick={(e) => console.log(e)}>Varför rapporteras de inte?</NavLink>
+                        <NavLink href="#faktaruta1">Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink onClick={(e) => console.log(e)}>Men är inte biobränslen bra för naturen?</NavLink>
+                        <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink onClick={(e) => console.log(e)}>Men skogen växer väl upp igen och binder kolet?</NavLink>
+                        <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
                 <Blurred className='bottom' />

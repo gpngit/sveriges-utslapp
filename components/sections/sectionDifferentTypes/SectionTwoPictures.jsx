@@ -1,12 +1,19 @@
+
+import { useState } from 'react'
+import Image from 'next/legacy/image'
 //CSS
-import styled from 'styled-components'
+import styled,{css} from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent } from './ContainerStyles'
+
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
+import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+
+const ImagePortrait = styled(Image)`
+`
 
 
-const SectionTypeTwo= ({ pageElements }) => {
+const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     
     const {id, sections, name} = pageElements
 
@@ -18,16 +25,57 @@ const SectionTypeTwo= ({ pageElements }) => {
     const imgurl2 = sections.find(section => section.name === 'imgurl2')
     const source = sections.find(section => section.name === 'source')
 
+    const [imageSizeSquare, setSmageSizeSquare] = useState({
+        width: 500,
+        height: 500
+       });
+
+    const [imageSizePortrait, setSmageSizePortrait] = useState({
+        width: 200,
+        height: 500
+    });
+
+    const [imageSizeLand, setSmageSizeLand] = useState({
+        width: 600,
+        height: 300
+    });
+
     return (
-        <Container id='ingress'>
+        <Container id={sectionIDname}>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
+                <Row>
+                <Item>
                 <p>{body1.text}</p>
-                <p>alt:{imgurl.text} bild: {imgurl.url}</p>
+                <ImageWrapper>
+                <Image 
+                className='image'
+                layout = "responsive"
+                width={300}
+                height={imageSizeSquare.height}
+                src={imgurl.url} 
+                alt={imgurl.text}
+                />
+                </ImageWrapper>
+                </Item>
+                <Item>
                 <p>{body2.text}</p>
-                <p>alt:{imgurl2.text} bild: {imgurl2.url}</p>
-                <p>{source.text}</p>
+                <ImageWrapper 
+                portrait
+                >
+                <Image 
+                className='image'
+                layout = "responsive"
+                width={imageSizePortrait.width}
+                height={imageSizePortrait.height}
+                src={imgurl2.url} 
+                alt={imgurl2.text}
+                />
+                </ImageWrapper>
+                </Item>
+                </Row>
+                <p>Källa: {source.text}</p>
               
             </TextContent>
             <SourceAndShare 
