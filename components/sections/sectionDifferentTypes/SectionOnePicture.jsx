@@ -38,9 +38,9 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
                 <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 
-             whiteBG={"yes"}
-             sourceLink={source.text} shareLink={'#'} />
-         
+            whiteBG={"yes"}
+            sourceLink={source.text} 
+            shareLink={'#'} />
         </Container>
     )
 }

@@ -45,7 +45,6 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
-               
                 <Row>
                 <Item>
                 <p>{body1.text}</p>

@@ -22,6 +22,7 @@ import FaktaTwo from '../components/sections/yearlyFacts/faktaTwo'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionTypeOne from '../components/sections/sectionDifferentTypes/SectionOnePicture'
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
+import Section from '../components/sections/sectionDifferentTypes/Section'
 
 
 export async function getServerSideProps(){
@@ -85,8 +86,8 @@ export default function Home({ siteSections, emissions }) {
     sectionIDname={"regler"} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} /> 
-
- 
+    <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
+    sectionIDname={"circular"}/>
     <Footer/>
     </>
   )
