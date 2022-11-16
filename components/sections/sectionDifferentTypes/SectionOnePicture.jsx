@@ -5,7 +5,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 import { Container, TextContent, Row, ImageWrapper, Item } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 const ImageLandscape = styled(Image)`
 `
@@ -22,14 +22,16 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     return (
-        <Container id={sectionIDname}>
+        <Container 
+        firstContainer
+        id={sectionIDname}>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <ImageWrapper>
                 <ImageLandscape
-                layout = "responsive"
+                layout ="responsive"
                 src={imgurl.url}
                 alt={imgurl.text}
                 width={700}

@@ -8,6 +8,15 @@ gap: 40px;
 background-color: white;
 padding: 5rem;
 color: black;
+margin-top:-5rem;
+
+${props => 
+    props.firstContainer && 
+    css`
+    @media only screen and (${device.tablet}){
+        padding:5em;
+        }
+    `}
 `
 
 export const TextContent = styled.div`

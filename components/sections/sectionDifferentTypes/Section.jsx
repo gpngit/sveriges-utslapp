@@ -15,7 +15,7 @@ import Link from 'next/link'
 const Section = ( {pageElements, sectionIDname} ) => {
 
   const [imageSizeSquare, setSmageSizeSquare] = useState({
-    width: 500,
+    width: 300,
     height: 500
   });
 
@@ -81,7 +81,7 @@ const Section = ( {pageElements, sectionIDname} ) => {
         if(index <= 1){
           return <p key={item.id}>{item.text}</p>
         }})}
-   <div className='row'>
+
       {sections.images.map((item, index) => {
           return (
             <ImageWrapper
@@ -98,7 +98,7 @@ const Section = ( {pageElements, sectionIDname} ) => {
           )
         }
       )}
-     </div>
+
       {sections.texts.map((item, index) => {
         if(index >= 2){
           return <p key={item.id}>{item.text}</p>
