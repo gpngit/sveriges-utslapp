@@ -29,7 +29,7 @@ const FaktaOne = ({pageElements, emissions}) => {
     
       <Content 
       faktaOne
-      id="faktaone">
+      id="faktaruta1">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>

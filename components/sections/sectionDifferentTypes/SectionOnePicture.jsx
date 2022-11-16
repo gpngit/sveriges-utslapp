@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 
 
-const SectionTypeOne= ({ pageElements }) => {
+const SectionTypeOne= ({ pageElements, sectionIDname }) => {
     
     const {id, sections, name} = pageElements
 
@@ -20,7 +20,7 @@ const SectionTypeOne= ({ pageElements }) => {
     const source = sections.find(section => section.name === 'source')
 
     return (
-        <Container id='ingress'>
+        <Container id={sectionIDname}>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
