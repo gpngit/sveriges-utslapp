@@ -23,3 +23,37 @@ p {
     ${fonts.paragraph};
 }
 `
+
+export const ImageWrapper = styled.div`
+width:100%;
+    .image{       
+        object-fit: contain;
+        width: 100%;
+        position: relative;
+        height: unset;
+    }
+    ${props => 
+        props.portrait && 
+        css`
+        width:100%;
+        .image{  
+        width: unset;
+        object-fit: contain;
+        height: 100%;
+        position: relative;
+        }
+        `}
+`
+
+export const Row = styled.div`
+
+@media only screen and (${device.tablet}){
+${flex}
+gap:5rem;
+}
+`
+
+export const Item = styled.div`
+${flex("column")}
+gap:10px;
+padding:1rem;`

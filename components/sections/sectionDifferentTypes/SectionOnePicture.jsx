@@ -1,12 +1,14 @@
+import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent } from './ContainerStyles'
+import { Container, TextContent, Row, ImageWrapper, Item } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/image'
 
-
+const ImageLandscape = styled(Image)`
+`
 
 const SectionTypeOne= ({ pageElements, sectionIDname }) => {
     
@@ -25,11 +27,15 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-                <p>{body2.text}</p>
-                <Image src={imgurl.url}
+                <ImageWrapper>
+                <ImageLandscape
+                layout = "responsive"
+                src={imgurl.url}
                 alt={imgurl.text}
-                width={500}
-                height={500}/>
+                width={700}
+                height={300}/>
+                </ImageWrapper>
+                <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 
              whiteBG={"yes"}
