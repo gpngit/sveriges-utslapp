@@ -9,22 +9,6 @@ const ChartOptions = (emissions) => {
             right: 50
           }
         },
-        plugins: {
-            legend: {
-              display: false,
-              position: 'top',
-              align: "center",
-              labels:{
-                  boxHeight: 20,
-                  color: 'black',
-                  font:{
-                      size: '12px',
-                      family: "Noto Sans",
-                      weight: 500,
-                  }
-              } 
-            }
-        },
         scales: {
           y: { 
             display: true,
@@ -56,7 +40,17 @@ const ChartOptions = (emissions) => {
               }
             }
           }
-        }
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+          }
+       }
       }
       
     return options
