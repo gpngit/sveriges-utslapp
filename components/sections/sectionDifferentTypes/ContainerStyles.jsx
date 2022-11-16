@@ -26,6 +26,7 @@ p {
 
 export const ImageWrapper = styled.div`
 width:100%;
+
     .image{       
         object-fit: contain;
         width: 100%;
@@ -46,14 +47,14 @@ width:100%;
 `
 
 export const Row = styled.div`
-
-@media only screen and (${device.tablet}){
-${flex}
-gap:5rem;
-}
+gap:2rem;
+${flex};
 `
 
 export const Item = styled.div`
 ${flex("column")}
 gap:10px;
-padding:1rem;`
+padding:1rem;
+.row{
+    ${flex()}
+}`

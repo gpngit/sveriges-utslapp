@@ -9,8 +9,8 @@ import SourceAndShare from '../../buttons/SourceAndShare'
 import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
 import Link from 'next/link'
 
-const ImagePortrait = styled(Image)`
-`
+
+
 
 const Section = ( {pageElements, sectionIDname} ) => {
 
@@ -36,6 +36,11 @@ const Section = ( {pageElements, sectionIDname} ) => {
     </>}
     {sectionIDname === "kolcykeln" && <>
     </>}
+
+
+
+    { /*--------THIRD SECTION----------------------*/ }
+
     {sectionIDname === "siffror" && <>
     <Item>
     {sections.texts.map((item, index) => {
@@ -64,47 +69,23 @@ const Section = ( {pageElements, sectionIDname} ) => {
           return <p key={item.id}>{item.text}</p>
       }})}
     </Item>
-    
     </>}
+
+    { /*--------FOURTH SECTION----------------------*/ }
+    
     {sectionIDname === "circular" && <>
-    <Row>
-    <Item> 
-      {sections.texts.map((item, index) => {
-        if(index === 0){
-          return <p key={item.id}>{item.text}</p>
-        }})}
-      {sections.images.map((item, index) => {
-        if(index ===0){
-          return (
-            <ImageWrapper
-            key={item.id}>
-            <Image 
-            className='image'
-            layout = "responsive"
-            width={imageSizeSquare.width}
-            height={imageSizeSquare.height}
-            src={item.url} 
-            alt={item.text}
-            />
-            </ImageWrapper>
-          )
-        }
-      })}
-      {sections.texts.map((item, index) => {
-        if(index === 1){
-          return <p key={item.id}>{item.text}</p>
-        }})}
-    </Item>
-    <Item> 
+    <Item>
+      
     {sections.texts.map((item, index) => {
-        if(index === 2){
+ 
+        if(index <= 1){
           return <p key={item.id}>{item.text}</p>
         }})}
+   <div className='row'>
       {sections.images.map((item, index) => {
-        if(index ===1){
           return (
             <ImageWrapper
-            key={item.id}>
+            key={index}>
             <Image 
             className='image'
             layout = "responsive"
@@ -116,13 +97,13 @@ const Section = ( {pageElements, sectionIDname} ) => {
             </ImageWrapper>
           )
         }
-      })}
+      )}
+     </div>
       {sections.texts.map((item, index) => {
-        if(index === 3){
+        if(index >= 2){
           return <p key={item.id}>{item.text}</p>
         }})}
       </Item>
-      </Row>
       </>}
   </TextContent>
 
