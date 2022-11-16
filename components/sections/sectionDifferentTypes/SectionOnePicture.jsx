@@ -1,12 +1,14 @@
+import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent } from './ContainerStyles'
+import { Container, TextContent, Row, ImageWrapper, Item } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
-
+const ImageLandscape = styled(Image)`
+`
 
 const SectionTypeOne= ({ pageElements, sectionIDname }) => {
     
@@ -20,21 +22,27 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     return (
-        <Container id={sectionIDname}>
+        <Container 
+        firstContainer
+        id={sectionIDname}>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-                <p>{body2.text}</p>
-                <Image src={imgurl.url}
+                <ImageWrapper>
+                <ImageLandscape
+                layout ="responsive"
+                src={imgurl.url}
                 alt={imgurl.text}
-                width={500}
-                height={500}/>
+                width={700}
+                height={300}/>
+                </ImageWrapper>
+                <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 
-             whiteBG={"yes"}
-             sourceLink={source.text} shareLink={'#'} />
-         
+            whiteBG={"yes"}
+            sourceLink={source.text} 
+            shareLink={'#'} />
         </Container>
     )
 }
