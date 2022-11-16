@@ -80,11 +80,11 @@ const YearChanger = ({ emissions }) => {
             <InnerContainer>
                 <div onClick={() => decrement()}>
                     <Chevron color={colors.secondary} size={30} direction={'left'} stroke={5} />
-                    <p className={reachedBeginning && 'inactive'}>{displayYear-1}</p>
+                    <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
                 </div>
                 <Year>{displayYear}</Year>
                 <div onClick={() => increment()}>
-                    <p className={reachedEnd && 'inactive'}>{displayYear+1}</p>
+                    <p className={reachedEnd ? 'inactive' : null}>{displayYear+1}</p>
                     <Chevron color={colors.secondary} size={30} direction={'right'} stroke={5}  />
                 </div>
             </InnerContainer>
