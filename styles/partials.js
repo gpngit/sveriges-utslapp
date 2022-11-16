@@ -32,10 +32,12 @@ export const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 export const fonts = {
-    heading: `font-size: clamp(3.1rem, 4vw + 1rem, 4rem); line-height: 150%;  @media screen and ${device.desktop}{
+    heading: `font-size: clamp(3rem, 2vw + 1rem, 3.8rem); line-height: 120%;  @media screen and ${device.desktop}{
     line-height: 100%;}`,
-    subheading: `font-size: clamp(2.6rem, 2vw + 1rem, 3rem); line-height:120%; @media screen and ${device.desktop}{
-    line-height: 120%;} `,
+    subheading: `font-size: clamp(1.5rem, 1vw + 1rem, 2rem); line-height:120%; @media screen and ${device.desktop}{
+    line-height: 100%;} `,
+    action: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:120%; @media screen and ${device.desktop}{
+        line-height: 120%;} `,
     paragraph: `font-size: clamp(1.8rem, 1vw + 1rem, 2.2rem); line-height:150%; @media screen and ${device.desktop}{
         line-height: 120%;}  `,
     footnote:"font-size: 1rem; line-height:150%; "
