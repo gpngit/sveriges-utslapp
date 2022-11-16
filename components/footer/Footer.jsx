@@ -39,7 +39,9 @@ const Footer = ({ pageElements }) => {
                 <Subheading>{subheading.text.toUpperCase()}</Subheading>
                 <Title>{title.text}</Title>
                 <LinksContainer>
-                    {links.map(link => <Link href={link.link}>{link.name}</Link>)}
+                    {links.map(link => 
+                    <Link key={link.link}
+                    href={link.link}>{link.name}</Link>)}
                 </LinksContainer>
             </div>
             <Crumble color={colors.primary} />
