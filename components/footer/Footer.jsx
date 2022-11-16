@@ -26,13 +26,11 @@ const LinksContainer = styled.div`
 
 const Footer = ({ pageElements }) => {
 
-    const {id, sections, name} = pageElements
+    const {sections} = pageElements
 
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const links = sections.find(section => section.name === 'links').links
-
-    console.log(links)
 
     return (
         <Container>
