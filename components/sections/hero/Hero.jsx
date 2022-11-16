@@ -134,14 +134,14 @@ const Hero = ({ pageElements }) => {
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink href="#varfor-rapporteras-de-inte">Varför rapporteras de inte?</NavLink>
+                        <NavLink href="#faktaruta1">Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
                         <ImageContainer>
                             <Image src={Arrow} alt='arrow' />
                         </ImageContainer>
-                        <NavLink href="#bio-inte-bra-for-naturen">Men är inte biobränslen bra för naturen?</NavLink>
+                        <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>

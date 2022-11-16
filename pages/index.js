@@ -77,8 +77,8 @@ export default function Home({ siteSections, emissions }) {
     <LineChart emissions={emissions}/>
     <YearChanger emissions={emissions} />
     {/* <Slider emissions={emissions}/> */}
-    <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaOne')}
-    pageTwoElem={siteSections.find(elem => elem.name === 'faktaTwo')}
+    <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
+    pageTwoElem={siteSections.find(elem => elem.name === 'faktaruta2')}
     emissions={emissions}/>
    
     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')}

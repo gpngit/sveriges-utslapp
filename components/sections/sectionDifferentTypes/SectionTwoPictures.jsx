@@ -4,7 +4,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 import { Container, TextContent } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-
+import Image from 'next/image'
 
 const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     
@@ -24,7 +24,11 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-                <p>alt:{imgurl.text} bild: {imgurl.url}</p>
+                <Image src={imgurl.url} alt={imgurl.text}
+                width={500}
+                height={500}/>
+
+               
                 <p>{body2.text}</p>
                 <p>alt:{imgurl2.text} bild: {imgurl2.url}</p>
                 <p>{source.text}</p>
