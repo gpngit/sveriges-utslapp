@@ -9,9 +9,10 @@ import Crumble from '../crumble/Crumble'
 const Container = styled.footer`
     padding: 30px;
     background-color: ${colors.secondary};
-    color: ${colors.primary};
+    color: white;
+    
     a {
-        color: ${colors.primary};
+        color: white;
     }
 `
 const Subheading = styled.h3`
