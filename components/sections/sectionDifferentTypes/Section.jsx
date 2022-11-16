@@ -14,9 +14,19 @@ import Link from 'next/link'
 
 const Section = ( {pageElements, sectionIDname} ) => {
 
-  const [imageSizeSquare, setSmageSizeSquare] = useState({
+  const [imageSizeLandscape, setSmageSizeSquareLandscape] = useState({
+    width: 400,
+    height: 300
+  });
+
+  const [imageSizePortrait, setSmagePortrait] = useState({
     width: 300,
     height: 500
+  });
+
+  const [imageSizeSquare, setSmageSizeSquare] = useState({
+    width: 400,
+    height: 400
   });
 
   const {id, sections, name} = pageElements
@@ -32,8 +42,10 @@ const Section = ( {pageElements, sectionIDname} ) => {
   <TextContent>
     <p>{sections.subheading.text}</p>
     <h2>{sections.title.text}</h2>
+
     {sectionIDname === "regler" && <>
     </>}
+
     {sectionIDname === "kolcykeln" && <>
     </>}
 
@@ -55,8 +67,8 @@ const Section = ( {pageElements, sectionIDname} ) => {
             <Image 
             className='image'
             layout = "responsive"
-            width={imageSizeSquare.width}
-            height={imageSizeSquare.height}
+            width={imageSizeLandscape.width}
+            height={imageSizeLandscape.height}
             src={item.url} 
             alt={item.text}
             />
@@ -83,6 +95,22 @@ const Section = ( {pageElements, sectionIDname} ) => {
         }})}
 
       {sections.images.map((item, index) => {
+        if(item.imgtype ==="portrait"){
+          return (
+            <ImageWrapper
+            key={index}>
+            <Image 
+            className='image'
+            layout = "responsive"
+            width={imageSizePortrait.width}
+            height={imageSizePortrait.height}
+            src={item.url} 
+            alt={item.text}
+            />
+            </ImageWrapper>
+          )
+        }
+        if(item.imgtype === "square"){
           return (
             <ImageWrapper
             key={index}>
@@ -96,6 +124,23 @@ const Section = ( {pageElements, sectionIDname} ) => {
             />
             </ImageWrapper>
           )
+        }
+        else{
+          return (
+            <ImageWrapper
+            key={item.id}>
+            <Image 
+            className='image'
+            layout = "responsive"
+            width={imageSizeLandscape.width}
+            height={imageSizeLandscape.height}
+            src={item.url} 
+            alt={item.text}
+            />
+            </ImageWrapper>
+          )
+        }
+         
         }
       )}
 
