@@ -34,6 +34,7 @@ const LinkButton = styled.a`
 
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
     const [showSecondary, setShowSecondary] = useState(false);
+    console.log(shareLink, "shareLink")
     
     useEffect(() => {
         if(whiteBG === "yes"){
