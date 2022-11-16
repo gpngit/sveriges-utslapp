@@ -22,7 +22,7 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    visibility: hidden;
   }
 `
 const ChartContainer = styled.div`
@@ -113,6 +113,9 @@ const LineChart = ({ emissions }) => {
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
+                // hoverRadius: 10,
+                // hoverBorderWidth: 5,
+                // hitRadius: 10,
                 tension: .2,
             },{
                 label: totalEmissions[0].type.text,
@@ -146,6 +149,26 @@ const LineChart = ({ emissions }) => {
     canvas.current.legend.chart.update();  
   }
 
+  // for drawing line on chart when hover over tooltip
+  const linePlugin = [{
+    afterDraw: chart => {
+      let ctx = chart.ctx;
+      if (chart.tooltip?._active?.length) {
+        let x = chart.tooltip._active[0].element.x;
+        let yAxis = chart.scales.y;
+        ctx.save();
+        ctx.beginPath();
+        // ctx.setLineDash([5, 5]);
+        ctx.moveTo(x, yAxis.top);
+        ctx.lineTo(x, yAxis.bottom);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.stroke();
+        ctx.restore(); 
+      }
+    }
+  }]
+
   return (
       <Container id='line-chart'>
           <ButtonContainer>
@@ -154,7 +177,7 @@ const LineChart = ({ emissions }) => {
             <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
           </ButtonContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} />
+            <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
           </ChartContainer>
       </Container>
   )

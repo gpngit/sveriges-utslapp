@@ -4,23 +4,10 @@ const ChartOptions = (emissions) => {
         maintainAspectRatio: false,
         responsive: true,
         layout: {
-          padding: 50
-        },
-        plugins: {
-            legend: {
-              display: false,
-              position: 'top',
-              align: "center",
-              labels:{
-                  boxHeight: 20,
-                  color: 'black',
-                  font:{
-                      size: '12px',
-                      family: "Noto Sans",
-                      weight: 500,
-                  }
-              } 
-            }
+          padding: {
+            left: 50,
+            right: 50
+          }
         },
         scales: {
           y: { 
@@ -53,7 +40,17 @@ const ChartOptions = (emissions) => {
               }
             }
           }
-        }
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+          }
+       }
       }
       
     return options
