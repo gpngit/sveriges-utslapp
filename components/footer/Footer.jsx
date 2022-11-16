@@ -1,15 +1,12 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors } from '../../styles/partials'
+import { flex, colors, font } from '../../styles/partials'
 //nextjs components
 import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
 
 const Container = styled.footer`
-    ${flex('column')}
-    gap: 20px;
-    height: 200px;
     padding: 30px;
     background-color: ${colors.secondary};
     color: ${colors.primary};
@@ -17,14 +14,34 @@ const Container = styled.footer`
         color: ${colors.primary};
     }
 `
+const Subheading = styled.h3`
+    ${font.subheading};
+`
+const Title = styled.h2`
+    ${font.title};
+`
+const LinksContainer = styled.div`
+    ${flex()};    
+`
 
-const Footer = () => {
+const Footer = ({ pageElements }) => {
+
+    const {id, sections, name} = pageElements
+
+    const title = sections.find(section => section.name === 'title')
+    const subheading = sections.find(section => section.name === 'subheading')
+    const links = sections.find(section => section.name === 'links').links
+
+    console.log(links)
 
     return (
         <Container>
             <div>
-                <Link href='/'><p>Start</p></Link>
-                <Link href='/admin'><p>Admin</p></Link>
+                <Subheading>{subheading.text.toUpperCase()}</Subheading>
+                <Title>{title.text}</Title>
+                <LinksContainer>
+                    {links.map(link => <Link href={link.link}>{link.name}</Link>)}
+                </LinksContainer>
             </div>
             <Crumble color={colors.primary} />
         </Container>

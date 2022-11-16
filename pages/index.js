@@ -86,7 +86,7 @@ export default function Home({ siteSections, emissions }) {
     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')} /> 
  
-    <Footer/>
+    <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
     </>
   )
 }
