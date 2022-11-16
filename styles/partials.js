@@ -36,9 +36,7 @@ export const fonts = {
     line-height: 100%;}`,
     subheading: `font-size: clamp(1.5rem, 1vw + 1rem, 2rem); line-height:120%; @media screen and ${device.desktop}{
     line-height: 100%;} `,
-    paragraph: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:120%; @media screen and ${device.desktop}{
-        line-height: 120%;} `,
-    paragraph: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:120%; @media screen and ${device.desktop}{
+    paragraph: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:150%; @media screen and ${device.desktop}{
         line-height: 120%;}`,
     footnote:"font-size: 1rem; line-height:150%; "
 }
