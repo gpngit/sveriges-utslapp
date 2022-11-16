@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../../styles/partials'
+import { flex, colors, fonts, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../../components/buttons/SourceAndShare'
 
@@ -8,9 +8,15 @@ const Container = styled.section`
     ${flex()};
     gap: 40px;
     background-color: ${colors.secondary};
-    padding: 100px 60px;
+    padding-bottom: 3rem;
     color: white;
     position: relative;
+    div{
+        padding:3rem;
+        @media screen and ${device.tablet}{
+        padding:3rem;
+        padding-left:7rem;}
+    }
     &::after{
         content: '';
         position: absolute;
@@ -30,8 +36,9 @@ const Container = styled.section`
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
-    max-width: 600px;
-
+    @media screen and ${device.laptop}{
+    max-width:70%;}
+    margin-bottom:-4rem;
     h2 {
         ${fonts.heading};;
     }
@@ -58,8 +65,9 @@ const Ingress = ({ pageElements }) => {
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
-            <SourceAndShare sourceLink={url.text} shareLink={'#'} />
-         
+            <SourceAndShare 
+            sourceLink={url.text} 
+            shareLink={'#'} />
         </Container>
     )
 }
