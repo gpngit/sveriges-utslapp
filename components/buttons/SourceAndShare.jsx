@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 const Container = styled.div`
     ${flex('row')};
     gap: 20px;
+    
 `
 const LinkButton = styled.a`
     ${flex('row', 'center', 'center')}
@@ -43,15 +44,15 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
     return (
         <Container>
             {showSecondary ? (<>
-                 <LinkButton  secondary
-                 href={sourceLink}>Källa</LinkButton>
-                 <LinkButton secondary 
-                 href={shareLink}>Dela</LinkButton></>
+                <LinkButton  secondary
+                    href={sourceLink}>Källa</LinkButton>
+                <LinkButton secondary 
+                    href={shareLink}>Dela</LinkButton></>
             ): ( <>
                 <LinkButton
-                href={sourceLink}>Källa</LinkButton>
+                    href={sourceLink}>Källa</LinkButton>
                 <LinkButton 
-                href={shareLink}>Dela</LinkButton></>
+                    href={shareLink}>Dela</LinkButton></>
             )}
            
         </Container>
