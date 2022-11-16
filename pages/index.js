@@ -50,7 +50,7 @@ export async function getServerSideProps(){
 }
 
 export default function Home({ siteSections, emissions }) {
-  
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
@@ -77,7 +77,6 @@ export default function Home({ siteSections, emissions }) {
     
     <LineChart emissions={emissions}/>
     <YearChanger emissions={emissions} />
-    {/* <Slider emissions={emissions}/> */}
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'faktaruta2')}
     emissions={emissions}/>
@@ -86,8 +85,11 @@ export default function Home({ siteSections, emissions }) {
     sectionIDname={"regler"} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} /> 
+    <Section pageElements={siteSections.find(elem => elem.name === 'siffror')}
+    sectionIDname={"siffror"}/>
     <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
     sectionIDname={"circular"}/>
+    
     <Footer/>
     </>
   )

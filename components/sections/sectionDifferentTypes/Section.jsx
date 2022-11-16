@@ -7,12 +7,12 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import Link from 'next/link'
 
 const ImagePortrait = styled(Image)`
 `
 
 const Section = ( {pageElements, sectionIDname} ) => {
- 
 
   const [imageSizeSquare, setSmageSizeSquare] = useState({
     width: 500,
@@ -24,6 +24,8 @@ const Section = ( {pageElements, sectionIDname} ) => {
   let amountOfPictures = sections.images.map(item => item).length;
   let amountOfTexts = sections.texts.map(item => item).length;
 
+  let sourceForButton = sections.sources.map(item => item);
+  console.log(sourceForButton.length)
   
 
   return ( 
@@ -31,8 +33,15 @@ const Section = ( {pageElements, sectionIDname} ) => {
   <TextContent>
     <p>{sections.subheading.text}</p>
     <h2>{sections.title.text}</h2>
-    {amountOfPictures < 2 && amountOfPictures > 0 && <>test</>}
-    {amountOfPictures >= 2 && amountOfTexts > 2 && <>
+    {sectionIDname === "regler" && <>
+    </>}
+    {sectionIDname === "kolcykeln" && <>
+    </>}
+    {sectionIDname === "siffror" && <>
+    <Item>
+    </Item>
+    </>}
+    {sectionIDname === "circular" && <>
     <Row>
     <Item> 
       {sections.texts.map((item, index) => {
@@ -92,6 +101,18 @@ const Section = ( {pageElements, sectionIDname} ) => {
       </>}
   </TextContent>
   
+  {sourceForButton.length > 1 && 
+    <div>
+    <h3>Flera källor:</h3>
+  {sections.sources.map((item, index) => { 
+    return <p key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></p>
+  })}
+  </div>}
+
+  <SourceAndShare 
+  whiteBG={"yes"}
+  sourceLink={sourceForButton[0].text} 
+  shareLink={'#'} />
   </Container>
   
   
