@@ -85,12 +85,13 @@ export default function Home({ siteSections, emissions }) {
     sectionIDname={"regler"} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} /> 
+
     <Section pageElements={siteSections.find(elem => elem.name === 'siffror')}
     sectionIDname={"siffror"}/>
     <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
     sectionIDname={"circular"}/>
-    
-    <Footer/>
+    <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
+
     </>
   )
 }
