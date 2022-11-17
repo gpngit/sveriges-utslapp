@@ -7,14 +7,13 @@ import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
 
-
-
 const Container = styled.footer`
     padding: 30px;
     background-color: ${colors.secondary};
     color: white;
     
     a {
+        ${fonts.footnote}
         color: white;
     }
 `

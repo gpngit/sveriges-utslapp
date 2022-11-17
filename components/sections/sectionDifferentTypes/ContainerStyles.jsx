@@ -92,7 +92,7 @@ ${fonts.footnote};
 font-style: italic;
 `
 
-export const Sources = styled.span`
+export const Sources = styled.div`
 h3{
     ${fonts.subheading};
     margin-bottom:1rem;
@@ -112,6 +112,4 @@ ${flex("row")};
 export const Item = styled.div`
 ${flex("column")}
 gap:10px;
-.row{
-    ${flex()}
-}`
+`

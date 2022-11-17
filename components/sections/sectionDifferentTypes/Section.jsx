@@ -155,13 +155,12 @@ const Section = ( {pageElements, sectionIDname} ) => {
   </TextContent>
 
   {sourceForButton.length > 1 && 
-    <Sources>
+  <Sources>
     <h3>Flera källor:</h3>
   {sections.sources.map((item, index) => { 
     return <Links key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></Links>
   })}
   </Sources>}
-
   <SourceAndShare 
   whiteBG={"yes"}
   sourceLink={sourceForButton[0].text} 
