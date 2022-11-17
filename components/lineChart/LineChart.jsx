@@ -14,6 +14,9 @@ import AppContext from '../../context/AppContext'
 import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
+padding:10em;
+padding-bottom:0;
+padding-top:0;
   position: relative;
   background-color: ${colors.primary};
   color: ${colors.secondary};
