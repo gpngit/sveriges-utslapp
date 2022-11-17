@@ -81,15 +81,6 @@ const LineChart = ({ emissions }) => {
     YScale.push(i)
   }
 
-  const renderGradient = (ref, color, y0, y1) => {
-    let ctx = ref.canvas
-    let chart = ctx.getContext('2d')
-    let gradient = chart.createLinearGradient(0, y0, 0, y1)
-    gradient.addColorStop(0, color)
-    gradient.addColorStop(1, 'transparent')
-    return gradient
-  }
-
   useEffect(() => {
     if (totalEmissions) {
         setChartData({
@@ -98,7 +89,6 @@ const LineChart = ({ emissions }) => {
                 label: 'Biogena utsläpp',
                 data: bioEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, colors.bio, 200, 500),
                 backgroundColor: colors.bio,
                 borderColor: colors.border,
                 borderWidth: 5,
@@ -108,21 +98,15 @@ const LineChart = ({ emissions }) => {
                 label: 'Fossila utsläpp',
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, colors.bio, 300, 1000),
                 backgroundColor: colors.fossil,
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
-                // hoverRadius: 10,
-                // hoverBorderWidth: 5,
-                // hitRadius: 10,
                 tension: .2,
             },{
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, 'white', 0, 1200),
-                // backgroundColor: 'white',
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
@@ -132,7 +116,7 @@ const LineChart = ({ emissions }) => {
     }
   }, [totalEmissions, displayYear])
 
-  const handleClick = (e) => {
+  const handleDataVisibility = (e) => {
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
 
@@ -153,16 +137,20 @@ const LineChart = ({ emissions }) => {
   const linePlugin = [{
     afterDraw: chart => {
       let ctx = chart.ctx;
+      let yAxis = chart.scales.y;
+
+      let gradient = ctx.createLinearGradient(0, 0, 0, yAxis.height);
+      gradient.addColorStop(0, 'transparent');
+      gradient.addColorStop(1 , "rgba(0,0,0,.5)");
+
       if (chart.tooltip?._active?.length) {
         let x = chart.tooltip._active[0].element.x;
-        let yAxis = chart.scales.y;
         ctx.save();
         ctx.beginPath();
-        // ctx.setLineDash([5, 5]);
         ctx.moveTo(x, yAxis.top);
         ctx.lineTo(x, yAxis.bottom);
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = gradient;
         ctx.stroke();
         ctx.restore(); 
       }
@@ -172,9 +160,9 @@ const LineChart = ({ emissions }) => {
   return (
       <Container id='line-chart'>
           <ButtonContainer>
-            <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
-            <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
-            <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
+            <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+            <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+            <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
           </ButtonContainer>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
