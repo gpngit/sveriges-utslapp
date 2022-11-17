@@ -92,6 +92,14 @@ ${fonts.footnote};
 font-style: italic;
 `
 
+export const Sources = styled.span`
+h3{
+    ${fonts.subheading};
+    margin-bottom:1rem;
+}
+p{${fonts.paragraph}
+}`
+
 export const Row = styled.div`
 width:100%;
 ${flex()}

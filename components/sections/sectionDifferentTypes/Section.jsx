@@ -6,11 +6,12 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Container,Text, Subheading, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import { Container,Text, Sources, Subheading, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
 import Link from 'next/link'
 
 
-
+const Links = styled.p`
+${fonts.paragraph}`
 
 const Section = ( {pageElements, sectionIDname} ) => {
 
@@ -154,12 +155,12 @@ const Section = ( {pageElements, sectionIDname} ) => {
   </TextContent>
 
   {sourceForButton.length > 1 && 
-    <div>
+    <Sources>
     <h3>Flera källor:</h3>
   {sections.sources.map((item, index) => { 
-    return <p key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></p>
+    return <Links key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></Links>
   })}
-  </div>}
+  </Sources>}
 
   <SourceAndShare 
   whiteBG={"yes"}
