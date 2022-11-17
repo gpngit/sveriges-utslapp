@@ -17,7 +17,6 @@ const Container = styled.header`
     min-height: 120vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
-   
     .burning-forest {
         position: absolute;
         width: 100%;
@@ -68,6 +67,7 @@ const TextAndLink = styled.div`
         display:block;
     }
     }
+  
 `
 const PaddingWrapper = styled.div`
 padding:1rem;

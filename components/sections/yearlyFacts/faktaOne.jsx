@@ -15,6 +15,9 @@ const TextContent = styled.div`
     p {
         ${fonts.paragraph};
     }
+    margin-bottom:4rem;
+    padding:1rem;
+    width:100%;
 `
 
 
@@ -24,7 +27,7 @@ const FaktaOne = ({pageElements, emissions}) => {
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
   const url = sections.find(section => section.name === 'source')
-  console.log(url.text)
+ 
   return (
     
       <Content 
@@ -34,9 +37,9 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-                <BarChart emissions={emissions}/>
-                
+                <BarChart emissions={emissions}/> 
             </TextContent>
+            
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
