@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../../styles/partials'
+import { flex, colors, fonts, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../../components/buttons/SourceAndShare'
 
@@ -8,7 +8,7 @@ const Container = styled.section`
     ${flex()};
     gap: 40px;
     background-color: ${colors.secondary};
-    padding: 100px 60px;
+    padding-bottom: 3rem;
     color: white;
     position: relative;
     &::after{
@@ -25,13 +25,21 @@ const Container = styled.section`
         margin-bottom: -35px;
     }
 `
+const Padding = styled.div`
+padding:3rem;
+
+@media screen and ${device.tablet}{
+padding:3rem;
+padding-left:7rem;}
+`
 
 
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
-    max-width: 600px;
-
+    @media screen and ${device.laptop}{
+    max-width:70%;}
+    margin-bottom:2rem;
     h2 {
         ${fonts.heading};;
     }
@@ -52,14 +60,19 @@ const Ingress = ({ pageElements }) => {
     const url = sections.find(section => section.name === 'source')
     return (
         <Container id='ingress'>
+            <Padding>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
-            <SourceAndShare sourceLink={url.text} shareLink={'#'} />
-         
+            <SourceAndShare 
+            whiteBG={"no"}
+            sourceLink={url.text} 
+            shareLink={'#ingress'}
+            sourceText={body1.text} />
+            </Padding>
         </Container>
     )
 }

@@ -65,7 +65,7 @@ const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
-    ${fonts.action};
+    ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};

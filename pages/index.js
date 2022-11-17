@@ -12,7 +12,6 @@ import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
 
 import Slider from '../components/slider/Slider'
-import LineChartVersion1 from '../components/lineChart/LineChartVersion1'
 
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'

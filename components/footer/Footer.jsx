@@ -2,9 +2,12 @@
 import styled from 'styled-components'
 import { flex, colors, font } from '../../styles/partials'
 //nextjs components
+
 import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
+
+
 
 const Container = styled.footer`
     padding: 30px;
@@ -39,10 +42,10 @@ const Footer = ({ pageElements }) => {
                 <Subheading>{subheading.text.toUpperCase()}</Subheading>
                 <Title>{title.text}</Title>
                 <LinksContainer>
-                    {links.map(link => 
-                    <Link key={link.link}
+                    {links.map((link,indx) => 
+                    <Link key={indx}
                     href={link.link}>
-                        {link.name}</Link>)}
+                    {link.name}</Link>)}
                 </LinksContainer>
             </div>
             <Crumble color={colors.primary} />

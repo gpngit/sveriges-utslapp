@@ -42,7 +42,8 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={source.text} 
-            shareLink={'#'} />
+            shareLink={`#${sectionIDname}`}
+            sourceText={title.text}/>
         </Container>
     )
 }

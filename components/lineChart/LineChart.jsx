@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisThickness, LineChartWidth, size } from '../../styles/partials'
+import { flex, colors, size, fonts } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -10,8 +10,11 @@ import { useState, useEffect, useRef } from 'react';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+//resources
+import SmallArrow from "../../public/SmallArrow";
 
 const Container = styled.section`
+  position: relative;
   background-color: ${colors.primary};
   color: ${colors.secondary};
   height: 85vh;
@@ -22,12 +25,37 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    visibility: hidden;
+  }
+`
+const Scrolltext = styled.div`
+  ${flex('row', 'flex-start', 'flex-end')};
+  gap: 6px;
+  position: absolute;
+  color: ${colors.bio};
+  right: 20px;
+  top: 60px;
+  max-width: 300px;
+
+  @media (min-width: ${size.tablet}) {
+  visibility: hidden;
+  }
+`
+const ScrollContainer = styled.div`
+ position: relative;
+  height: 100%;
+  width: 100%;
+  ${flex('row')};
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+      display: none;
   }
 `
 const ChartContainer = styled.div`
   height: 80%;
   width: 100%;
+  min-width: ${size.tablet};
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -81,15 +109,6 @@ const LineChart = ({ emissions }) => {
     YScale.push(i)
   }
 
-  const renderGradient = (ref, color, y0, y1) => {
-    let ctx = ref.canvas
-    let chart = ctx.getContext('2d')
-    let gradient = chart.createLinearGradient(0, y0, 0, y1)
-    gradient.addColorStop(0, color)
-    gradient.addColorStop(1, 'transparent')
-    return gradient
-  }
-
   useEffect(() => {
     if (totalEmissions) {
         setChartData({
@@ -98,7 +117,6 @@ const LineChart = ({ emissions }) => {
                 label: 'Biogena utsläpp',
                 data: bioEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, colors.bio, 200, 500),
                 backgroundColor: colors.bio,
                 borderColor: colors.border,
                 borderWidth: 5,
@@ -108,7 +126,6 @@ const LineChart = ({ emissions }) => {
                 label: 'Fossila utsläpp',
                 data: fossilEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, colors.bio, 300, 1000),
                 backgroundColor: colors.fossil,
                 borderColor: colors.border,
                 borderWidth: 5,
@@ -118,8 +135,6 @@ const LineChart = ({ emissions }) => {
                 label: totalEmissions[0].type.text,
                 data: totalEmissions.map(emissions => emissions.value),
                 fill: true,
-                // backgroundColor: renderGradient(canvas.current, 'white', 0, 1200),
-                // backgroundColor: 'white',
                 borderColor: colors.border,
                 borderWidth: 5,
                 pointRadius: 0,
@@ -129,7 +144,7 @@ const LineChart = ({ emissions }) => {
     }
   }, [totalEmissions, displayYear])
 
-  const handleClick = (e) => {
+  const handleDataVisibility = (e) => {
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
 
@@ -146,16 +161,46 @@ const LineChart = ({ emissions }) => {
     canvas.current.legend.chart.update();  
   }
 
+  // for drawing line on chart when hover over tooltip
+  const linePlugin = [{
+    afterDraw: chart => {
+      let ctx = chart.ctx;
+      let yAxis = chart.scales.y;
+
+      let gradient = ctx.createLinearGradient(0, 0, 0, yAxis.height);
+      gradient.addColorStop(0, 'transparent');
+      gradient.addColorStop(1 , "rgba(0,0,0,.5)");
+
+      if (chart.tooltip?._active?.length) {
+        let x = chart.tooltip._active[0].element.x;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, yAxis.top);
+        ctx.lineTo(x, yAxis.bottom);
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = gradient;
+        ctx.stroke();
+        ctx.restore(); 
+      }
+    }
+  }]
+
   return (
       <Container id='line-chart'>
+          <Scrolltext>
+            <p>Scrolla för att se utveckling</p>
+            <SmallArrow color={colors.bio} size={16} />
+          </Scrolltext>
           <ButtonContainer>
-            <Button bio data-index={0} onClick={(e) => handleClick(e)}>Biogena utsläpp</Button>
-            <Button fossil data-index={1} onClick={(e) => handleClick(e)}>Fossila utsläpp</Button>
-            <Button data-index={2} onClick={(e) => handleClick(e)}>Totala utsläpp</Button>
+            <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+            <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+            <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
           </ButtonContainer>
-          <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} />
-          </ChartContainer>
+          <ScrollContainer>
+            <ChartContainer>
+              <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
+            </ChartContainer>
+          </ScrollContainer>
       </Container>
   )
 }

@@ -9,7 +9,10 @@ html {
   scroll-behavior: smooth;
   /* font-size: 1vw; */
 }
-
+body{
+    /* font-size: clamp(14px, 1.2vw, 22px); */
+    font-size: clamp(10px, 0.9vw, 17px);
+}
 button, a {
   cursor: pointer;
 }
