@@ -1,8 +1,8 @@
 //CSS
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { flex, colors, fonts, size } from '../../styles/partials'
 //react hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 //charts
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -53,14 +53,47 @@ const ButtonContainer = styled.div`
   padding-top: 60px;
   ${flex('row', 'center', 'center')};
   gap: 10px;
+
+  @media (max-width: ${size.tablet}) {
+    visibility: hidden;
+  }
+`
+const Button = styled.button`
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: ${colors.secondary};
+
+  ${props => props.bio && css`
+    background-color: ${colors.bio};
+    color: white;
+  `}
+
+  ${props => props.fossil && css`
+    background-color: ${colors.fossil};
+    color: white;
+  `}
+
+  &.active {
+    text-decoration: line-through;
+    filter: brightness(90%);
+  }
+
+  &:hover {
+    filter: brightness(90%);
+  }
 `
 
 const BarChart = ({ emissions }) => {
 
+    const canvas = useRef()
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
     const [options, setOptions] = useState(ChartOptions())
-    const [chartData, setChartData] = useState(null)
+    const [chartData, setChartData] = useState({
+        datasets: [],
+      })
     const [yearlyBioData, setYearlyBioData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
     const [yearlyFossilData, setYearlyFossilData] = useState(emissions.filter(emission => emission.year === displayYear).filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
 
@@ -115,17 +148,37 @@ const BarChart = ({ emissions }) => {
         })
     }, [yearlyBioData, yearlyFossilData])
 
+    const handleDataVisibility = (e) => {
+        let clickedDatasetIndex = e.target.dataset.index
+        let chartDatasets = canvas.current.legend.chart._sortedMetasets
+    
+        chartDatasets.forEach(dataset => {
+          if (dataset.index == clickedDatasetIndex) {
+            if (dataset.hidden === true) {
+              dataset.hidden = false
+            } else {
+              dataset.hidden = true
+            }
+          }
+        });
+        e.target.classList.toggle('active')
+        canvas.current.legend.chart.update();  
+      }
+
     return (
         <Container id='bar-chart'>
             <Scrolltext>
                 <p>Scrolla för att se fler sektorer</p>
                 <SmallArrow color={colors.bio} size={16} />
             </Scrolltext>
-            <ButtonContainer></ButtonContainer>
+            <ButtonContainer>
+            <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+            <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+            </ButtonContainer>
             <ScrollContainer>
                 <ChartContainer>
                     {chartData && (
-                        <Bar
+                        <Bar ref={canvas}
                             data={chartData}
                             options={options}
                             // plugins={[ChartDataLabels]}
