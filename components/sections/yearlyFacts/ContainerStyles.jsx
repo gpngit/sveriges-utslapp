@@ -8,11 +8,11 @@ color: black;
 padding:3rem;
 width:100%;
 background-color:white;
-div{
-  @media ${device.laptop}{
+@media ${device.laptop}{
   padding-right:10rem;
-  }
 }
+
+
 
 ${props => 
   props.faktaOne && 
