@@ -5,21 +5,22 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 export const Content = styled.article`
 gap: 40px;
 color: black;
-padding:5rem;
+padding:3rem;
 width:100%;
 background-color:white;
 div{
   @media ${device.laptop}{
-   width:80%;
+  padding-right:10rem;
   }
 }
+
 ${props => 
   props.faktaOne && 
   css`
 gap: 40px;
 color: black;
 position: relative;
-padding:5rem;
+
   &::after{
     content: '';
   position: absolute;
