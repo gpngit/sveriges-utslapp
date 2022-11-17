@@ -8,6 +8,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
 `
@@ -27,7 +28,7 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
 
     const [imageSizeSquare, setSmageSizeSquare] = useState({
         width: 500,
-        height: 500
+        height: 300
        });
 
     const [imageSizePortrait, setSmageSizePortrait] = useState({
@@ -52,9 +53,9 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={300}
+                width={500}
                 height={imageSizeSquare.height}
-                src={imgurl.url} 
+                src={placeholder} 
                 alt={imgurl.text}
                 />
                 </ImageWrapper>
