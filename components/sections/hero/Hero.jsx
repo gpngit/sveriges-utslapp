@@ -67,12 +67,7 @@ const TextAndLink = styled.div`
         display:block;
     }
     }
-    @media screen and ${device.laptop}{
-        svg{
-            max-width:150px;
-            max-height:50px;
-        }
-    }
+  
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
