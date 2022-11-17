@@ -9,12 +9,15 @@ import placeholder from "../../../public/placeholder__2.jpg"
 
 const TextContent = styled.div`
     ${flex()};
-    gap: 20px;
     h2 {
         ${fonts.heading};;
     }
     p {
         ${fonts.paragraph};
+    }
+    img{
+        margin-top:1rem;
+        max-width:100%;
     }
     margin-bottom:2rem;
 `
@@ -46,7 +49,6 @@ const FaktaTwo = ({pageElements, emissions}) => {
             shareLink={'#faktaruta2'} 
             sourceText={title.text}
             />
-         
       </Content>
 
     );

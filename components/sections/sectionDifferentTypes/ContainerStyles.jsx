@@ -5,65 +5,113 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
-background-color: white;
-padding: 5rem;
+padding:3rem;
 color: black;
-margin-top:-5rem;
 
+@media ${device.laptop}{
+    width:80%;
+    padding-right:10rem;
+}
 ${props => 
     props.firstContainer && 
     css`
+    background-color:white;
+    position:relative;
+    top:-100px;
+    padding-top:10em;
     @media only screen and (${device.tablet}){
-        padding:5em;
+        top:0;
+        padding:10em;
+        padding-top:10em;
         }
     `}
+    ${props => 
+        props.secondContainer && 
+        css`
+        background-color:white;
+        position:relative;
+        top:-100px;
+        padding-top:10em;
+        @media only screen and (${device.tablet}){
+            top:0;
+            padding:10em;
+            padding-top:10em;
+            }
+        `}
+
+        ${props => 
+            props.sections && 
+            css`
+            background-color:white;
+            position:relative;
+            top:-100px;
+            padding-top:10em;
+            @media only screen and (${device.tablet}){
+                top:0;
+                padding:10em;
+                padding-top:10em;
+                }
+            `}
 `
 
 export const TextContent = styled.div`
 ${flex()};
-gap: 20px;
-max-width: 600px;
-
 h2 {
     ${fonts.heading};;
 }
-
 p {
     ${fonts.paragraph};
+  
 }
+`
+export const Text= styled.p`
+
+margin-top:1rem;
+margin-bottom:1rem;
+`
+
+export const Subheading = styled.p`
+text-transform:uppercase;
+max-width:70%;
 `
 
 export const ImageWrapper = styled.div`
-width:100%;
+display:block;
+width:70%;
 
-    .image{       
+    .image{      
+        display:block; 
         object-fit: contain;
-        width: 100%;
+        max-width: 100%;
         position: relative;
         height: unset;
     }
-    ${props => 
-        props.portrait && 
-        css`
-        width:100%;
-        .image{  
-        width: unset;
-        object-fit: contain;
-        height: 100%;
-        position: relative;
-        }
-        `}
+`
+export const ImageDescription= styled.p`
+${fonts.footnote};
+font-style: italic;
 `
 
+export const Sources = styled.span`
+h3{
+    ${fonts.subheading};
+    margin-bottom:1rem;
+}
+p{${fonts.paragraph}
+}`
+
 export const Row = styled.div`
-gap:2rem;
-${flex};
+width:100%;
+${flex()}
+gap:20px;
+@media only screen and (${device.tablet}){ 
+${flex("row")};
+}
 `
 
 export const Item = styled.div`
 ${flex("column")}
 gap:10px;
-padding:1rem;
 .row{
     ${flex()}
 }`

@@ -15,6 +15,7 @@ padding-bottom:5rem;
 @media ${device.laptop}{
   padding:10em;
 }
+
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {

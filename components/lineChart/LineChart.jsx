@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, size, fonts } from '../../styles/partials'
+import { flex, colors, size, fonts, device } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -11,9 +11,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
-import SmallArrow from "../../public/SmallArrow";
+import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
+@media ${device.laptop}{
+  padding:10em;
+  padding-bottom:0;
+  padding-top:0;
+}
   position: relative;
   background-color: ${colors.primary};
   color: ${colors.secondary};
@@ -30,6 +35,7 @@ const ButtonContainer = styled.div`
 `
 const Scrolltext = styled.div`
   ${flex('row', 'flex-start', 'flex-end')};
+  ${fonts.paragraph}
   gap: 6px;
   position: absolute;
   color: ${colors.bio};

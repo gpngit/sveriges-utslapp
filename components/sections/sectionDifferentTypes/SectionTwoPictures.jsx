@@ -7,7 +7,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import { Container, TextContent, ImageWrapper, Row, Text, Item, ImageDescription, Subheading } from './ContainerStyles'
 import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
@@ -25,59 +25,55 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     const [imageSizeSquare, setSmageSizeSquare] = useState({
-        width: 500,
-        height: 300
+        width: 700,
+        height: 400
        });
 
-    const [imageSizePortrait, setSmageSizePortrait] = useState({
-        width: 200,
-        height: 500
-    });
-
-    const [imageSizeLand, setSmageSizeLand] = useState({
-        width: 600,
-        height: 300
-    });
-
     return (
-        <Container id={sectionIDname}>
+        <Container secondContainer
+        id={sectionIDname}>
             <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
+                <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
-                <Row>
                 <Item>
+                <Text>
                 <p>{body1.text}</p>
+                </Text>
+                <Row>
                 <ImageWrapper>
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={500}
-                height={imageSizeSquare.height}
+                width={1000}
+                height={600}
                 src={placeholder} 
                 alt={imgurl.text}
                 />
+                <ImageDescription>
+                {imgurl.text}
+                </ImageDescription>
                 </ImageWrapper>
-                </Item>
-                <Item>
-                
-                <ImageWrapper 
-                portrait
-                >
+                <ImageWrapper>
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={imageSizePortrait.width}
-                height={imageSizePortrait.height}
+                width={300}
+                height={200}
                 src={imgurl2.url} 
                 alt={imgurl2.text}
                 />
+                <ImageDescription>
+                {imgurl.text}
+                </ImageDescription>
                 </ImageWrapper>
-                <p>{imgurl2.text}</p>
-                </Item>
                 </Row>
-                <p>{body2.text}</p>
-            
+                </Item>
+                <Text>
+                {body2.text}
+                </Text>
+               
             </TextContent>
+            
             <SourceAndShare 
              whiteBG={"yes"}
              sourceLink={source.text} 

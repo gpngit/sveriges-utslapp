@@ -92,6 +92,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
         <Container>
             {showSecondary ? (<>
                 <LinkButton  secondary
+                target="_blank"
                     href={sourceLink}>Källa</LinkButton>
                 <Button secondary
                 onClick={shareModal}>Dela</Button>
@@ -99,6 +100,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                     </>
             ): ( <>
                 <LinkButton
+                target="_blank"
                     href={sourceLink}>Källa</LinkButton>
                 <Button 
                 onClick={shareModal}>Dela</Button>
