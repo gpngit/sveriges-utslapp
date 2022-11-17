@@ -57,14 +57,13 @@ ${props =>
 `
 const Wrapper = styled.span`
 background-color: ${colors.primary};
-padding:2rem;
+padding:1rem;
 color:black;
 border-radius:19px;
 z-index:20;
 position:absolute;
 left:50%;
 margin-top:-1rem;
-max-width:300px;
 filter: drop-shadow(0 0 0.75rem black);
 `
 const Close = styled.p`

@@ -16,7 +16,10 @@ import {
 } from 'next-share';
 
 const Content=styled.div`
-width:90%;
+width:100%;
+padding:0;
+margin:0;
+
 ${fonts.paragraph};
 ul{
   margin-top:1rem;

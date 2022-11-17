@@ -11,12 +11,6 @@ const Container = styled.section`
     padding-bottom: 3rem;
     color: white;
     position: relative;
-    div{
-        padding:3rem;
-        @media screen and ${device.tablet}{
-        padding:3rem;
-        padding-left:7rem;}
-    }
     &::after{
         content: '';
         position: absolute;
@@ -31,6 +25,13 @@ const Container = styled.section`
         margin-bottom: -35px;
     }
 `
+const Padding = styled.div`
+padding:3rem;
+
+@media screen and ${device.tablet}{
+padding:3rem;
+padding-left:7rem;}
+`
 
 
 const TextContent = styled.div`
@@ -38,7 +39,7 @@ const TextContent = styled.div`
     gap: 20px;
     @media screen and ${device.laptop}{
     max-width:70%;}
-    margin-bottom:-4rem;
+    margin-bottom:2rem;
     h2 {
         ${fonts.heading};;
     }
@@ -59,6 +60,7 @@ const Ingress = ({ pageElements }) => {
     const url = sections.find(section => section.name === 'source')
     return (
         <Container id='ingress'>
+            <Padding>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -68,6 +70,7 @@ const Ingress = ({ pageElements }) => {
             <SourceAndShare 
             sourceLink={url.text} 
             shareLink={'#'} />
+            </Padding>
         </Container>
     )
 }
