@@ -60,6 +60,10 @@ const TextAndLink = styled.div`
     @media (max-width: 768px) {
         ${flex('column')};
         gap: 10px;
+
+        svg {
+            display: none;
+        }
     }
 `
 const NavLink = styled.a`
@@ -88,18 +92,6 @@ const Blurred = styled.div`
         top: 60px;
         background: linear-gradient(to bottom, ${colors.primary}, transparent);
     } */
-`
-const ImageContainer = styled.div`
-    min-width: 100px;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
-
-    @media (max-width: 768px) {
-        display: none;
-    }
 `
 
 const Hero = ({ pageElements }) => {
@@ -139,7 +131,7 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <ArrowStyleFour width={300} color={colors.bio} strokeWidth={3} />
+                        <ArrowStyleFour width={400} color={colors.bio} strokeWidth={2} />
                         <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>

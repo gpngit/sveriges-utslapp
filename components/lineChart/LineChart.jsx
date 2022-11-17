@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
-import SmallArrow from "../../public/SmallArrow";
+import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
   position: relative;
