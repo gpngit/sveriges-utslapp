@@ -60,7 +60,7 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 </ImageWrapper>
                 </Item>
                 <Item>
-                <p>{body2.text}</p>
+                
                 <ImageWrapper 
                 portrait
                 >
@@ -73,14 +73,16 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 alt={imgurl2.text}
                 />
                 </ImageWrapper>
+                <p>{imgurl2.text}</p>
                 </Item>
                 </Row>
-                <p>Källa: {source.text}</p>
-              
+                <p>{body2.text}</p>
+            
             </TextContent>
             <SourceAndShare 
              whiteBG={"yes"}
-             sourceLink={'#'} shareLink={'#'} />
+             sourceLink={source.text} 
+             shareLink={'#'} />
          
         </Container>
     )
