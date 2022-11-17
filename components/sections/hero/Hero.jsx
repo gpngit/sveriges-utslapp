@@ -71,7 +71,7 @@ const TextAndLink = styled.div`
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
-@media ${device.tablet} {
+@media ${device.laptop} {
 padding-left:5rem;
 padding-right:14rem;}
 `
