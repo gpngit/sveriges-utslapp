@@ -75,7 +75,6 @@ padding:1rem;
 padding-left:5rem;
 padding-right:14rem;}
 `
-
 const NavLink = styled.a`
 margin-top:1rem;
 @media ${device.tablet} {
