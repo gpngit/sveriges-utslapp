@@ -17,7 +17,7 @@ import {
 
 const Content=styled.div`
 width:100%;
-padding:0;
+padding:1rem;
 margin:0;
 
 ${fonts.paragraph};
@@ -66,8 +66,12 @@ const SharingModal = ({source, text}) => {
   const [buttontext, setButtonText] = useState("Kopiera")
 
   const copyURL = () => {
-    console.log(document.getElementById("inputShareLink").value)
-    setButtonText("Kopierat!")
+    const copyText = document.getElementById("inputShareLink");
+    copyText.select();
+    copyText.setSelectionRange(0,999999);
+    navigator.clipboard.writeText(copyText.value);
+    
+    setButtonText(`Kopierat!`)
     setTimeout(() => {
       setButtonText("Kopiera")
     },4000)
@@ -111,7 +115,7 @@ const SharingModal = ({source, text}) => {
       id="inputShareLink"
       type="text"
       aria-label="read only input"
-      readOnly 
+      // readOnly 
       value={correctURL}/>
       <button 
       aria-label="Kopiera länken"
