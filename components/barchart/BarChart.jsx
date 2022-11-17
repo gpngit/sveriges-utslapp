@@ -1,6 +1,6 @@
 //CSS
 import styled from "styled-components";
-import { flex, colors, fonts } from '../../styles/partials'
+import { flex, colors, fonts, size } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from "react";
 //charts
@@ -11,21 +11,48 @@ import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+//components
+import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
     color: ${colors.secondary};
-    padding: 60px;
-    height: 100vh;
-    width: 100%;
+    height: 85vh;
 `
 const ChartContainer = styled.div`
     position: relative;
-    height: 80vh;
+    height: 80%;
     width: 100%;
+    min-width: ${size.tablet};
 `
-const ChartHeader = styled.h2`
-  text-align: center;
-  margin-bottom: 30px;
+const ScrollContainer = styled.div`
+ position: relative;
+  height: 100%;
+  width: 100%;
+  ${flex('row')};
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
+`
+const Scrolltext = styled.div`
+  ${flex('row', 'flex-start', 'flex-end')};
+  ${fonts.paragraph}
+  gap: 6px;
+  position: absolute;
+  color: ${colors.bio};
+  right: 80px;
+  top: 220px;
+  max-width: 300px;
+
+  @media (min-width: ${size.tablet}) {
+  visibility: hidden;
+  }
+`
+const ButtonContainer = styled.div`
+  padding-top: 60px;
+  ${flex('row', 'center', 'center')};
+  gap: 10px;
 `
 
 const BarChart = ({ emissions }) => {
@@ -90,17 +117,22 @@ const BarChart = ({ emissions }) => {
 
     return (
         <Container id='bar-chart'>
-           
-            <ChartHeader>Utsläpp år {displayYear}</ChartHeader>
-            <ChartContainer>
-                {chartData && (
-                    <Bar
-                        data={chartData}
-                        options={options}
-                        // plugins={[ChartDataLabels]}
-                    />
-                )}
-            </ChartContainer>
+            <Scrolltext>
+                <p>Scrolla för att se fler sektorer</p>
+                <SmallArrow color={colors.bio} size={16} />
+            </Scrolltext>
+            <ButtonContainer></ButtonContainer>
+            <ScrollContainer>
+                <ChartContainer>
+                    {chartData && (
+                        <Bar
+                            data={chartData}
+                            options={options}
+                            // plugins={[ChartDataLabels]}
+                        />
+                    )}
+                </ChartContainer>
+            </ScrollContainer>
         </Container>
     )
 }
