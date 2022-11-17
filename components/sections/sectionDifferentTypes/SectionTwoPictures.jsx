@@ -8,11 +8,10 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
 `
-
-
 const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     
     const {id, sections, name} = pageElements
@@ -27,7 +26,7 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
 
     const [imageSizeSquare, setSmageSizeSquare] = useState({
         width: 500,
-        height: 500
+        height: 300
        });
 
     const [imageSizePortrait, setSmageSizePortrait] = useState({
@@ -52,15 +51,15 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={300}
+                width={500}
                 height={imageSizeSquare.height}
-                src={imgurl.url} 
+                src={placeholder} 
                 alt={imgurl.text}
                 />
                 </ImageWrapper>
                 </Item>
                 <Item>
-                <p>{body2.text}</p>
+                
                 <ImageWrapper 
                 portrait
                 >
@@ -73,14 +72,17 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 alt={imgurl2.text}
                 />
                 </ImageWrapper>
+                <p>{imgurl2.text}</p>
                 </Item>
                 </Row>
-                <p>Källa: {source.text}</p>
-              
+                <p>{body2.text}</p>
+            
             </TextContent>
             <SourceAndShare 
              whiteBG={"yes"}
-             sourceLink={'#'} shareLink={'#'} />
+             sourceLink={source.text} 
+             shareLink={`#${sectionIDname}`}
+             sourceText={title.text} />
          
         </Container>
     )
