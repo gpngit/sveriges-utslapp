@@ -5,29 +5,33 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
-background-color: white;
-padding: 5rem;
+padding:3rem;
 color: black;
-margin-top:-5rem;
 
+@media ${device.laptop}{
+    width:80%;
+    padding-right:10rem;
+}
 ${props => 
     props.firstContainer && 
     css`
+    background-color:white;
+    position:relative;
+    top:-100px;
+    padding-top:10em;
     @media only screen and (${device.tablet}){
-        padding:5em;
+        top:0;
+        padding:10em;
+        padding-top:10em;
         }
     `}
 `
 
 export const TextContent = styled.div`
 ${flex()};
-gap: 20px;
-max-width: 600px;
-
 h2 {
     ${fonts.heading};;
 }
-
 p {
     ${fonts.paragraph};
 }
