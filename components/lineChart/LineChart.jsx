@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, AxisThickness, LineChartWidth, size } from '../../styles/partials'
+import { flex, colors, size, fonts } from '../../styles/partials'
 //Charts
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -10,8 +10,11 @@ import { useState, useEffect, useRef } from 'react';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+//resources
+import SmallArrow from "../../public/SmallArrow";
 
 const Container = styled.section`
+  position: relative;
   background-color: ${colors.primary};
   color: ${colors.secondary};
   height: 85vh;
@@ -23,6 +26,19 @@ const ButtonContainer = styled.div`
 
   @media (max-width: ${size.tablet}) {
     visibility: hidden;
+  }
+`
+const Scrolltext = styled.div`
+  ${flex('row', 'flex-start', 'flex-end')};
+  gap: 6px;
+  position: absolute;
+  color: ${colors.bio};
+  right: 20px;
+  top: 60px;
+  max-width: 300px;
+
+  @media (min-width: ${size.tablet}) {
+  visibility: hidden;
   }
 `
 const ScrollContainer = styled.div`
@@ -171,6 +187,10 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
+          <Scrolltext>
+            <p>Scrolla för att se utveckling</p>
+            <SmallArrow color={colors.bio} size={16} />
+          </Scrolltext>
           <ButtonContainer>
             <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
             <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
