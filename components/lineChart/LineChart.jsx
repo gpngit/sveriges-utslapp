@@ -30,21 +30,20 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    visibility: hidden;
+    display: none;
   }
 `
 const Scrolltext = styled.div`
-  ${flex('row', 'flex-start', 'flex-end')};
+  width: 100%;
+  min-width: 260px;
+  ${flex('row', 'flex-end', 'flex-end')};
   ${fonts.paragraph}
   gap: 6px;
-  position: absolute;
+  padding: 60px 20px 20px 20px;
   color: ${colors.bio};
-  right: 20px;
-  top: 60px;
-  max-width: 300px;
 
   @media (min-width: ${size.tablet}) {
-  visibility: hidden;
+  display: none;
   }
 `
 const ScrollContainer = styled.div`

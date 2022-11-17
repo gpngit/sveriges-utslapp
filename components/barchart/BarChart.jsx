@@ -36,26 +36,25 @@ const ScrollContainer = styled.div`
   }
 `
 const Scrolltext = styled.div`
-  ${flex('row', 'flex-start', 'flex-end')};
-  ${fonts.paragraph}
+  width: 100%;
+  min-width: 260px;
+  ${flex('row', 'flex-end', 'flex-end')};
   gap: 6px;
-  position: absolute;
+  padding: 20px 0px;
+  ${fonts.paragraph}
   color: ${colors.bio};
-  right: 80px;
-  top: 220px;
-  max-width: 300px;
 
   @media (min-width: ${size.tablet}) {
-  visibility: hidden;
+  display: none;
   }
 `
 const ButtonContainer = styled.div`
-  padding-top: 60px;
+  padding: 20px 0px;
   ${flex('row', 'center', 'center')};
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    visibility: hidden;
+    display: none;
   }
 `
 const Button = styled.button`
@@ -168,7 +167,7 @@ const BarChart = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
             <Scrolltext>
-                <p>Scrolla för att se fler sektorer</p>
+                <p>Scrolla för att se sektorer</p>
                 <SmallArrow color={colors.bio} size={16} />
             </Scrolltext>
             <ButtonContainer>
