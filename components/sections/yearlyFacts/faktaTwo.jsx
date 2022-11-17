@@ -17,6 +17,7 @@ const TextContent = styled.div`
     }
     img{
         margin-top:1rem;
+        max-width:100%;
     }
     margin-bottom:2rem;
 `
