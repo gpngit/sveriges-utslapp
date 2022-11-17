@@ -6,11 +6,12 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import { Container,Text, Sources, Subheading, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
 import Link from 'next/link'
 
 
-
+const Links = styled.p`
+${fonts.paragraph}`
 
 const Section = ( {pageElements, sectionIDname} ) => {
 
@@ -34,13 +35,14 @@ const Section = ( {pageElements, sectionIDname} ) => {
   let amountOfPictures = sections.images.map(item => item).length;
   let amountOfTexts = sections.texts.map(item => item).length;
   let sourceForButton = sections.sources.map(item => item);
-  console.log("pics:", amountOfPictures, "texts:", amountOfTexts, sectionIDname)
+  // console.log("pics:", amountOfPictures, "texts:", amountOfTexts, sectionIDname)
   
 
   return ( 
-  <Container id={sectionIDname}>
+  <Container sections
+  id={sectionIDname}>
   <TextContent>
-    <p>{sections.subheading.text}</p>
+    <Subheading>{sections.subheading.text}</Subheading>
     <h2>{sections.title.text}</h2>
 
     {sectionIDname === "regler" && <>
@@ -93,7 +95,7 @@ const Section = ( {pageElements, sectionIDname} ) => {
         if(index <= 1){
           return <p key={item.id}>{item.text}</p>
         }})}
-
+      <Row>
       {sections.images.map((item, index) => {
         if(item.imgtype ==="portrait"){
           return (
@@ -143,7 +145,7 @@ const Section = ( {pageElements, sectionIDname} ) => {
          
         }
       )}
-
+      </Row>
       {sections.texts.map((item, index) => {
         if(index >= 2){
           return <p key={item.id}>{item.text}</p>
@@ -153,13 +155,12 @@ const Section = ( {pageElements, sectionIDname} ) => {
   </TextContent>
 
   {sourceForButton.length > 1 && 
-    <div>
+  <Sources>
     <h3>Flera källor:</h3>
   {sections.sources.map((item, index) => { 
-    return <p key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></p>
+    return <Links key={index}>Källa #{item.id}: <Link href={item.text}>{item.text}</Link></Links>
   })}
-  </div>}
-
+  </Sources>}
   <SourceAndShare 
   whiteBG={"yes"}
   sourceLink={sourceForButton[0].text} 
