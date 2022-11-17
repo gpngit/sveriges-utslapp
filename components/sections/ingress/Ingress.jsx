@@ -68,8 +68,10 @@ const Ingress = ({ pageElements }) => {
                 <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 
+            whiteBG={"no"}
             sourceLink={url.text} 
-            shareLink={'#'} />
+            shareLink={'#ingress'}
+            sourceText={body1.text} />
             </Padding>
         </Container>
     )

@@ -115,7 +115,7 @@ const SharingModal = ({source, text}) => {
       id="inputShareLink"
       type="text"
       aria-label="read only input"
-      // readOnly 
+      readOnly 
       value={correctURL}/>
       <button 
       aria-label="Kopiera länken"
