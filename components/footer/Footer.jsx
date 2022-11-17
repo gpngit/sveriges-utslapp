@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, font } from '../../styles/partials'
+import { flex, colors, fonts,} from '../../styles/partials'
 //nextjs components
 
 import Link from 'next/link'
@@ -19,10 +19,10 @@ const Container = styled.footer`
     }
 `
 const Subheading = styled.h3`
-    ${font.subheading};
+    ${fonts.subheading};
 `
 const Title = styled.h2`
-    ${font.title};
+    ${fonts.title};
 `
 const LinksContainer = styled.div`
     ${flex()};    
