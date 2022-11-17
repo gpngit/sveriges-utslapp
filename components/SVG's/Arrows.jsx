@@ -22,6 +22,30 @@ export const ArrowStyleTwo = ({ color, width, strokeWidth }) => {
     )
 }
 
+export const ArrowStyleThree = ({ color, width, strokeWidth }) => {
+    return (
+        <>
+        <svg width={width} viewBox="0 0 256 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M254.499 28.9373C254.499 28.9373 197.999 18.5002 129.499 18.5002C60.999 18.5002 19.499 25.9373 19.499 25.9373" stroke={color} stroke-width={strokeWidth} stroke-linecap="round"/>
+            <path d="M38.7856 48.8647C38.7856 48.8647 0.881546 35.5307 2.07673 27.267C3.27192 19.0033 35.7709 2.0124 35.7709 2.0124" stroke={color} stroke-width={strokeWidth} stroke-linecap="round"/>
+        </svg>
+        </>
+    )
+}
+
+export const ArrowStyleFour = ({ color, width, strokeWidth }) => {
+    return (
+        <>
+        <svg width={width} viewBox="0 0 202 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200.001 25.9373C200.001 25.9373 161.5 41 112 41C62.5005 41 22.5 25.9373 22.5 25.9373" stroke={color} stroke-width={strokeWidth} stroke-linecap="round"/>
+            <path d="M35.0855 52.7793C35.0855 52.7793 3.30597 28.1912 7.04176 20.7238C10.7776 13.2565 46.9729 7.35997 46.9729 7.35997" stroke={color} stroke-width={strokeWidth} stroke-linecap="round"/>
+        </svg>
+        </>
+    )
+}
+
+
+
 
 
 

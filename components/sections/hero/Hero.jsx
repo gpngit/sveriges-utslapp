@@ -8,7 +8,7 @@ import BurningForest from '../../../public/burning-forest2.png'
 import Arrow from '../../../public/arrow.svg'
 //components
 import Crumble from '../../../components/crumble/Crumble'
-import { ArrowStyleOne, ArrowStyleTwo } from '../../SVG\'s/Arrows'
+import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '../../SVG\'s/Arrows'
 
 const Container = styled.header`
     position: relative;
@@ -134,16 +134,12 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleThree width={300} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleFour width={300} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
