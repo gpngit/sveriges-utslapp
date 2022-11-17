@@ -25,9 +25,21 @@ const ButtonContainer = styled.div`
     visibility: hidden;
   }
 `
+const ScrollContainer = styled.div`
+ position: relative;
+  height: 100%;
+  width: 100%;
+  ${flex('row')};
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
+`
 const ChartContainer = styled.div`
   height: 80%;
   width: 100%;
+  min-width: ${size.tablet};
 `
 const Button = styled.button`
   padding: 10px 20px;
@@ -164,9 +176,11 @@ const LineChart = ({ emissions }) => {
             <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
             <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
           </ButtonContainer>
-          <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
-          </ChartContainer>
+          <ScrollContainer>
+            <ChartContainer>
+              <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
+            </ChartContainer>
+          </ScrollContainer>
       </Container>
   )
 }
