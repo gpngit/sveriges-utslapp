@@ -2,9 +2,31 @@
 import styled from 'styled-components'
 import { flex, colors, font } from '../../styles/partials'
 //nextjs components
+import {
+    FacebookShareCount,
+    HatenaShareCount,
+    OKShareCount,
+    PinterestShareCount,
+    TumblrShareCount,
+    VKShareCount,
+  } from 'next-share';
 import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
+
+
+{/* <FacebookShareCount
+url={'https://github.com/next-share'}
+appId={''}
+appSecret={''}
+/> */}
+{/* <FacebookShareCount
+  url={'https://github.com/next-share'}
+  appId={''}
+  appSecret={''}
+>
+  {shareCount => <span className="wrapper">{shareCount}</span>}
+</FacebookShareCount> */}
 
 const Container = styled.footer`
     padding: 30px;

@@ -62,19 +62,20 @@ color:black;
 border-radius:19px;
 z-index:20;
 position:absolute;
+left:50%;
 margin-top:-1rem;
 max-width:300px;
-height:300px;
+filter: drop-shadow(0 0 0.75rem black);
 `
 const Close = styled.p`
 font-weight:bold;
 margin-bottom:2rem;
 cursor:pointer;
+font-size:18px;
 `
 
-const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
+const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
     const [showSecondary, setShowSecondary] = useState(false);
-    console.log(shareLink, "shareLink")
     const [showModal, setShowModal] = useState(false);
     
     useEffect(() => {
@@ -108,7 +109,8 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
             {showModal ? (<Wrapper>
                 <Close onClick={() => setShowModal(false)}>X</Close>
                 <SharingModal
-                source={shareLink} />
+                source={shareLink} 
+                text={sourceText}/>
                 </Wrapper>) : (null)}
            
         </Container>
