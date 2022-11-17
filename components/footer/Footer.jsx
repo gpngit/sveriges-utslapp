@@ -45,7 +45,7 @@ const Footer = ({ pageElements }) => {
                     {links.map((link,indx) => 
                     <Link key={indx}
                     href={link.link}>
-                        {link.name}</Link>)}
+                    {link.name}</Link>)}
                 </LinksContainer>
             </div>
             <Crumble color={colors.primary} />
