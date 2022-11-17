@@ -30,6 +30,7 @@ const ButtonContainer = styled.div`
 `
 const Scrolltext = styled.div`
   ${flex('row', 'flex-start', 'flex-end')};
+  ${fonts.paragraph}
   gap: 6px;
   position: absolute;
   color: ${colors.bio};
