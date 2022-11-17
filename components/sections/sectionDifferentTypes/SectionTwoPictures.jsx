@@ -12,8 +12,6 @@ import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
 `
-
-
 const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     
     const {id, sections, name} = pageElements
@@ -83,7 +81,8 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
             <SourceAndShare 
              whiteBG={"yes"}
              sourceLink={source.text} 
-             shareLink={'#'} />
+             shareLink={`#${sectionIDname}`}
+             sourceText={title.text} />
          
         </Container>
     )
