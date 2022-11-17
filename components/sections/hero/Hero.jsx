@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fontSizes, fonts } from '../../../styles/partials'
+import { flex, colors, device, fonts } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
@@ -17,7 +17,7 @@ const Container = styled.header`
     min-height: 120vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
-    
+   
     .burning-forest {
         position: absolute;
         width: 100%;
@@ -53,25 +53,40 @@ const TextContent = styled.div`
     }
 `
 const TextAndLink = styled.div`
-    ${flex('row', 'flext-start', 'center')};
+  
+    ${flex('column')};
+    gap: 10px;
+    svg {
+        display: none;
+    }
+
+    @media ${device.tablet} {
+        ${flex('row', 'flext-start', 'center')};
     gap: 20px;
     width: 100%;
-
-    @media (max-width: 768px) {
-        ${flex('column')};
-        gap: 10px;
-
-        svg {
-            display: none;
-        }
+    svg{
+        display:block;
+    }
     }
 `
+const PaddingWrapper = styled.div`
+padding:1rem;
+@media ${device.tablet} {
+padding-left:5rem;
+padding-right:14rem;}
+`
+
 const NavLink = styled.a`
+margin-top:1rem;
+@media ${device.tablet} {
+margin-top:0;
+}
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
     ${fonts.paragraph};
     background-color: ${colors.primary};
+   
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
@@ -109,6 +124,7 @@ const Hero = ({ pageElements }) => {
             <ScrollContainer>
                 <Crumble color={colors.secondary}/>
                 {/* <Blurred className='top' /> */} 
+                <PaddingWrapper>
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p>
@@ -135,6 +151,7 @@ const Hero = ({ pageElements }) => {
                         <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
+                </PaddingWrapper>
                 <Blurred className='bottom' />
             </ScrollContainer>
             <Image priority className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
