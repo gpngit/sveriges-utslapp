@@ -8,6 +8,7 @@ import BurningForest from '../../../public/burning-forest2.png'
 import Arrow from '../../../public/arrow.svg'
 //components
 import Crumble from '../../../components/crumble/Crumble'
+import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '../../SVG\'s/Arrows'
 
 const Container = styled.header`
     position: relative;
@@ -53,12 +54,16 @@ const TextContent = styled.div`
 `
 const TextAndLink = styled.div`
     ${flex('row', 'flext-start', 'center')};
-    gap: 40px;
+    gap: 20px;
     width: 100%;
 
     @media (max-width: 768px) {
         ${flex('column')};
         gap: 10px;
+
+        svg {
+            display: none;
+        }
     }
 `
 const NavLink = styled.a`
@@ -67,8 +72,8 @@ const NavLink = styled.a`
     padding: 14px 20px;
     ${fonts.paragraph};
     background-color: ${colors.primary};
-    color: ${colors.secondary};
-    border: 3px solid ${colors.secondary};
+    color: ${colors.bio};
+    border: 3px solid ${colors.bio};
     border-radius: 10px;
     margin-right: 5vw;
 `
@@ -87,18 +92,6 @@ const Blurred = styled.div`
         top: 60px;
         background: linear-gradient(to bottom, ${colors.primary}, transparent);
     } */
-`
-const ImageContainer = styled.div`
-    min-width: 100px;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
-
-    @media (max-width: 768px) {
-        display: none;
-    }
 `
 
 const Hero = ({ pageElements }) => {
@@ -123,30 +116,22 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleOne width={300} color={colors.bio} strokeWidth={4} />
                         <NavLink href='#ingress'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleTwo width={300} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#faktaruta1">Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleThree width={300} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <ImageContainer>
-                            <Image src={Arrow} alt='arrow' />
-                        </ImageContainer>
+                        <ArrowStyleFour width={400} color={colors.bio} strokeWidth={2} />
                         <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>

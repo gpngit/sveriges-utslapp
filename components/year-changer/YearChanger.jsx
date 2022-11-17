@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
-import Chevron from '../../public/Chevron'
+import Chevron from '../SVG\'s/Chevron'
 //nextjs components
 import Image from "next/image";
 
