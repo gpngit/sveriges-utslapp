@@ -38,6 +38,20 @@ ${props =>
             padding-top:10em;
             }
         `}
+
+        ${props => 
+            props.sections && 
+            css`
+            background-color:white;
+            position:relative;
+            top:-100px;
+            padding-top:10em;
+            @media only screen and (${device.tablet}){
+                top:0;
+                padding:10em;
+                padding-top:10em;
+                }
+            `}
 `
 
 export const TextContent = styled.div`
