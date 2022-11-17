@@ -132,22 +132,22 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <ArrowStyleOne width={300} color={colors.bio} strokeWidth={4} />
+                        <ArrowStyleOne width={340} color={colors.bio} strokeWidth={4} />
                         <NavLink href='#ingress'>Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <ArrowStyleTwo width={300} color={colors.bio} strokeWidth={3} />
+                        <ArrowStyleTwo width={280} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#faktaruta1">Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <ArrowStyleThree width={300} color={colors.bio} strokeWidth={3} />
+                        <ArrowStyleThree width={320} color={colors.bio} strokeWidth={3} />
                         <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <ArrowStyleFour width={400} color={colors.bio} strokeWidth={2} />
+                        <ArrowStyleFour width={360} color={colors.bio} strokeWidth={2} />
                         <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
