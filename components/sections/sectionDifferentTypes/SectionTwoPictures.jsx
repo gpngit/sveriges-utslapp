@@ -29,10 +29,7 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
         height: 300
        });
 
-    const [imageSizePortrait, setSmageSizePortrait] = useState({
-        width: 200,
-        height: 500
-    });
+
 
     const [imageSizeLand, setSmageSizeLand] = useState({
         width: 600,
@@ -44,40 +41,36 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
-                <Row>
+               
                 <Item>
                 <p>{body1.text}</p>
                 <ImageWrapper>
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={500}
+                width={imageSizeSquare.height}
                 height={imageSizeSquare.height}
                 src={placeholder} 
                 alt={imgurl.text}
                 />
                 </ImageWrapper>
                 </Item>
-                <Item>
+           
                 
+                <p>{body2.text}</p>
                 <ImageWrapper 
-                portrait
                 >
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={imageSizePortrait.width}
-                height={imageSizePortrait.height}
+                width={imageSizeSquare.height}
+                height={imageSizeSquare.height +200}
                 src={imgurl2.url} 
                 alt={imgurl2.text}
                 />
                 </ImageWrapper>
-                <p>{imgurl2.text}</p>
-                </Item>
-                </Row>
-                <p>{body2.text}</p>
-            
             </TextContent>
+            
             <SourceAndShare 
              whiteBG={"yes"}
              sourceLink={source.text} 
