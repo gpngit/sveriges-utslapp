@@ -163,7 +163,8 @@ const Section = ( {pageElements, sectionIDname} ) => {
   <SourceAndShare 
   whiteBG={"yes"}
   sourceLink={sourceForButton[0].text} 
-  shareLink={'#'} />
+  shareLink={`#${sectionIDname}`}
+  sourceText={sections.title.text} />
   </Container>
   
   

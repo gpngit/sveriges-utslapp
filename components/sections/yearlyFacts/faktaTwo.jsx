@@ -4,7 +4,8 @@ import { flex, fonts, colors, device } from '../../../styles/partials'
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
 import { Content, Wrapper } from './ContainerStyles'
-
+import Image from 'next/image'
+import placeholder from "../../../public/placeholder__2.jpg"
 
 const TextContent = styled.div`
     ${flex()};
@@ -15,6 +16,7 @@ const TextContent = styled.div`
     p {
         ${fonts.paragraph};
     }
+    margin-bottom:2rem;
 `
 const FaktaTwo = ({pageElements, emissions}) => {
 
@@ -32,13 +34,18 @@ const FaktaTwo = ({pageElements, emissions}) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-                <BarChart emissions={emissions}/>
-                <p>{url.text}</p>
+            <Image src={placeholder}
+            width={800}
+            height={500}
+            alt={"Biodrivmedel"}/>
+         
             </TextContent>
             <SourceAndShare 
             whiteBG={"yes"}
-            sourceLink={'#'} 
-            shareLink={'#'} />
+            sourceLink={url.text} 
+            shareLink={'#faktaruta2'} 
+            sourceText={title.text}
+            />
          
       </Content>
 
