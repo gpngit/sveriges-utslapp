@@ -19,14 +19,24 @@ const Container = styled.div`
     top: 0;
     ${flex('row', 'space-around', 'center')};
     background-color: ${colors.primary};
+    gap: 10px;
     padding: 10px;
 `
 const InnerContainer = styled.div`
     ${flex('row', 'space-between', 'center')};
+    flex-basis: 60%;
+    max-width: 200px;
 
     div {
         ${flex('row', 'space-between', 'center')};
+        cursor: pointer;
+
+        p {
+            font-size: .8rem; 
+            line-height:150%;
+        }
     }
+
 
     .inactive {
         text-decoration: line-through;
@@ -43,8 +53,8 @@ const Button = styled.button`
     color: ${colors.secondary};
     border: 3px solid ${colors.secondary};
     border-radius: 10px;
-    padding: 10px 20px;
-    height: 50px;
+    padding: 0px 16px;
+    height: 40px;
 `
 
 const YearChanger = ({ emissions }) => {
@@ -79,13 +89,13 @@ const YearChanger = ({ emissions }) => {
             <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
             <InnerContainer>
                 <div onClick={() => decrement()}>
-                    <Chevron color={colors.secondary} size={30} direction={'left'} stroke={5} />
+                    <Chevron color={colors.secondary} size={20} direction={'left'} stroke={5} />
                     <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
                 </div>
                 <Year>{displayYear}</Year>
                 <div onClick={() => increment()}>
                     <p className={reachedEnd ? 'inactive' : null}>{displayYear+1}</p>
-                    <Chevron color={colors.secondary} size={30} direction={'right'} stroke={5}  />
+                    <Chevron color={colors.secondary} size={20} direction={'right'} stroke={5}  />
                 </div>
             </InnerContainer>
             <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
