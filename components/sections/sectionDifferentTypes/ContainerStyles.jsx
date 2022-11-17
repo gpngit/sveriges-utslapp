@@ -25,11 +25,11 @@ gap: 20px;
 max-width: 600px;
 
 h2 {
-    // // ${fonts.heading};;
+    ${fonts.heading};;
 }
 
 p {
-    // // ${fonts.paragraph};
+    ${fonts.paragraph};
 }
 `
 
