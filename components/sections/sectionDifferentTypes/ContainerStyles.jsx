@@ -94,7 +94,11 @@ font-style: italic;
 
 export const Row = styled.div`
 width:100%;
+${flex()}
+gap:20px;
+@media only screen and (${device.tablet}){ 
 ${flex("row")};
+}
 `
 
 export const Item = styled.div`
