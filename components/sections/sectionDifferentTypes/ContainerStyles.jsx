@@ -25,6 +25,19 @@ ${props =>
         padding-top:10em;
         }
     `}
+    ${props => 
+        props.secondContainer && 
+        css`
+        background-color:white;
+        position:relative;
+        top:-100px;
+        padding-top:10em;
+        @media only screen and (${device.tablet}){
+            top:0;
+            padding:10em;
+            padding-top:10em;
+            }
+        `}
 `
 
 export const TextContent = styled.div`
@@ -34,22 +47,28 @@ h2 {
 }
 p {
     ${fonts.paragraph};
+    margin-top:1rem;
 }
+`
+
+export const Subheading = styled.p`
+text-transform:uppercase;
+max-width:70%;
 `
 
 export const ImageWrapper = styled.div`
 width:100%;
-
     .image{       
         object-fit: contain;
-        width: 100%;
+        max-width: 100%;
         position: relative;
         height: unset;
     }
+    padding-bottom:1rem;
     ${props => 
         props.portrait && 
         css`
-        width:100%;
+        max-width:100%;
         .image{  
         width: unset;
         object-fit: contain;
@@ -57,6 +76,11 @@ width:100%;
         position: relative;
         }
         `}
+`
+export const ImageDescription= styled.p`
+${fonts.footnote};
+font-style: italic;
+
 `
 
 export const Row = styled.div`
@@ -67,7 +91,6 @@ ${flex};
 export const Item = styled.div`
 ${flex("column")}
 gap:10px;
-padding:1rem;
 .row{
     ${flex()}
 }`

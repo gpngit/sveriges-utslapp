@@ -7,7 +7,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Container, TextContent, ImageWrapper, Row, Item } from './ContainerStyles'
+import { Container, TextContent, ImageWrapper, Row, Item, ImageDescription, Subheading } from './ContainerStyles'
 import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
@@ -28,20 +28,17 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
         width: 500,
         height: 300
        });
-
-
-
     const [imageSizeLand, setSmageSizeLand] = useState({
         width: 600,
         height: 300
     });
 
     return (
-        <Container id={sectionIDname}>
+        <Container secondContainer
+        id={sectionIDname}>
             <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
+                <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
-               
                 <Item>
                 <p>{body1.text}</p>
                 <ImageWrapper>
@@ -49,10 +46,13 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 className='image'
                 layout = "responsive"
                 width={imageSizeSquare.height}
-                height={imageSizeSquare.height}
+                height={200}
                 src={placeholder} 
                 alt={imgurl.text}
                 />
+                <ImageDescription>
+                Bildtext
+                </ImageDescription>
                 </ImageWrapper>
                 </Item>
            

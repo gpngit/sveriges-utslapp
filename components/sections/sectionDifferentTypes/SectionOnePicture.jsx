@@ -2,7 +2,7 @@ import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent, Row, ImageWrapper, Item } from './ContainerStyles'
+import { Container, TextContent, Row, ImageWrapper, Subheading, Item } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -26,7 +26,7 @@ const SectionTypeOne= ({ pageElements, sectionIDname }) => {
         firstContainer
         id={sectionIDname}>
             <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
+                <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <ImageWrapper>
