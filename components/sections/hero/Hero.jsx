@@ -17,7 +17,6 @@ const Container = styled.header`
     min-height: 120vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
-   
     .burning-forest {
         position: absolute;
         width: 100%;
@@ -67,6 +66,12 @@ const TextAndLink = styled.div`
     svg{
         display:block;
     }
+    }
+    @media screen and ${device.laptop}{
+        svg{
+            max-width:150px;
+            max-height:50px;
+        }
     }
 `
 const PaddingWrapper = styled.div`
