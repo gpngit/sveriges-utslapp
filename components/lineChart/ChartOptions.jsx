@@ -1,36 +1,26 @@
+//CSS
+import styled, {css} from "styled-components";
+import { flex, colors, font, fonts } from '../../styles/partials'
+
 const ChartOptions = (emissions) => {
 
     const options = {
         maintainAspectRatio: false,
         responsive: true,
-        layout: {
-          padding: 50
-        },
-        plugins: {
-            legend: {
-              display: false,
-              position: 'top',
-              align: "center",
-              labels:{
-                  boxHeight: 20,
-                  color: 'black',
-                  font:{
-                      size: '12px',
-                      family: "Noto Sans",
-                      weight: 500,
-                  }
-              } 
-            }
-        },
+        // layout: {
+        //   padding: {
+        //     left: 50,
+        //     right: 50
+        //   }
+        // },
         scales: {
           y: { 
             display: true,
             ticks:{
-              beginAtZero: true,
-              color: 'black',
+              color: colors.secondary,
               font:{
                 size: '12px',
-                family: "Noto Sans",
+                family: font.main,
               },
               stepSize: 20000,
             },
@@ -46,14 +36,47 @@ const ChartOptions = (emissions) => {
               display: false
             },
             ticks:{
-              color: 'black',
+              color: colors.secondary,
               font:{
                 size: '12px',
-                family: "Noto Sans",
+                family: font.main,
               }
             }
           }
-        }
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+            backgroundColor: colors.secondary,
+            titleFont: {
+              family: font.main,
+              size: "18px",
+            },
+            titleColor: 'white', //default(onödig?)
+            titleAlign: 'left', //default(onödig?)
+            titleMarginBottom: 10,
+            bodyFont: {
+              family: font.main,
+              size: '14px'
+            },
+            bodyColor: 'white',  //default(onödig?)
+            bodyAlign: 'left', //default(onödig?)
+            bodySpacing: 10,
+            padding: 20,
+            caretPadding: 10, //avstång från pinkt på graf
+            caretSize: 10, //storlek på triangel 
+            cornerRadius: 10,
+            boxWidth: 16,
+            boxHeight: 16,
+            boxPadding: 10, //avstånd till text
+            borderWidth: 0
+          }
+       }
       }
       
     return options
