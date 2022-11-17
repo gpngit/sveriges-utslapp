@@ -7,21 +7,20 @@ const ChartOptions = (emissions) => {
     const options = {
         maintainAspectRatio: false,
         responsive: true,
-        layout: {
-          padding: {
-            left: 50,
-            right: 50
-          }
-        },
+        // layout: {
+        //   padding: {
+        //     left: 50,
+        //     right: 50
+        //   }
+        // },
         scales: {
           y: { 
             display: true,
             ticks:{
-              beginAtZero: true,
-              color: 'black',
+              color: colors.secondary,
               font:{
                 size: '12px',
-                family: "Noto Sans",
+                family: font.main,
               },
               stepSize: 20000,
             },
@@ -37,10 +36,10 @@ const ChartOptions = (emissions) => {
               display: false
             },
             ticks:{
-              color: 'black',
+              color: colors.secondary,
               font:{
                 size: '12px',
-                family: "Noto Sans",
+                family: font.main,
               }
             }
           }
@@ -56,14 +55,14 @@ const ChartOptions = (emissions) => {
             backgroundColor: colors.secondary,
             titleFont: {
               family: font.main,
-              size: "20px",
+              size: "18px",
             },
             titleColor: 'white', //default(onödig?)
             titleAlign: 'left', //default(onödig?)
             titleMarginBottom: 10,
             bodyFont: {
               family: font.main,
-              size: '16px'
+              size: '14px'
             },
             bodyColor: 'white',  //default(onödig?)
             bodyAlign: 'left', //default(onödig?)
