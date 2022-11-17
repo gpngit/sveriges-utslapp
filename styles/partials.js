@@ -48,7 +48,7 @@ export const fontSizes = {
 }
 
 export const font ={
-    main: "Noto Sans, sans-serif"
+    main: "'Noto Sans', sans-serif"
 }
 
 // mixins
