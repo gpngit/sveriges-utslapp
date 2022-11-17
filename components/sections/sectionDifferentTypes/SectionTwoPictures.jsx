@@ -7,7 +7,7 @@ import { flex, device, colors, fonts } from '../../../styles/partials'
 
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Container, TextContent, ImageWrapper, Row, Item, ImageDescription, Subheading } from './ContainerStyles'
+import { Container, TextContent, Text,ImageWrapper, Row, Item, ImageDescription, Subheading } from './ContainerStyles'
 import placeholder from "../../../public/placeholder__1.jpg"
 
 const ImagePortrait = styled(Image)`
@@ -25,14 +25,10 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     const [imageSizeSquare, setSmageSizeSquare] = useState({
-        width: 500,
-        height: 300
+        width: 700,
+        height: 400
        });
-    const [imageSizeLand, setSmageSizeLand] = useState({
-        width: 600,
-        height: 300
-    });
-
+  
     return (
         <Container secondContainer
         id={sectionIDname}>
@@ -40,31 +36,30 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
                 <Item>
-                <p>{body1.text}</p>
+                <Text>{body1.text}</Text>
                 <ImageWrapper>
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={imageSizeSquare.height}
-                height={200}
+                width={1000}
+                height={600}
                 src={placeholder} 
                 alt={imgurl.text}
                 />
-                <ImageDescription>
-                Bildtext
-                </ImageDescription>
                 </ImageWrapper>
+                <ImageDescription>
+                {imgurl.text}
+                </ImageDescription>
                 </Item>
-           
-                
-                <p>{body2.text}</p>
+
+                <Text>{body2.text}</Text>
                 <ImageWrapper 
                 >
                 <Image 
                 className='image'
                 layout = "responsive"
-                width={imageSizeSquare.height}
-                height={imageSizeSquare.height +200}
+                width={300}
+                height={200}
                 src={imgurl2.url} 
                 alt={imgurl2.text}
                 />

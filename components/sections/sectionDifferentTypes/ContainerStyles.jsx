@@ -40,6 +40,11 @@ ${props =>
         `}
 `
 
+export const Text= styled.p`
+margin-top:1rem;
+margin-bottom:1rem;
+`
+
 export const TextContent = styled.div`
 ${flex()};
 h2 {
@@ -57,25 +62,17 @@ max-width:70%;
 `
 
 export const ImageWrapper = styled.div`
-width:100%;
+display:block;
+width:70%;
     .image{       
+        display:block;
         object-fit: contain;
         max-width: 100%;
         position: relative;
         height: unset;
     }
-    padding-bottom:1rem;
-    ${props => 
-        props.portrait && 
-        css`
-        max-width:100%;
-        .image{  
-        width: unset;
-        object-fit: contain;
-        height: 100%;
-        position: relative;
-        }
-        `}
+  
+   
 `
 export const ImageDescription= styled.p`
 ${fonts.footnote};
@@ -85,7 +82,8 @@ font-style: italic;
 
 export const Row = styled.div`
 gap:2rem;
-${flex};
+width:100%;
+${flex("row")};
 `
 
 export const Item = styled.div`
