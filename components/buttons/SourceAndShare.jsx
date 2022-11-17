@@ -55,13 +55,21 @@ ${props =>
     color:${colors.secondary};
     `}
 `
-
 const Wrapper = styled.span`
 background-color: ${colors.primary};
-padding:1rem;
+padding:2rem;
 color:black;
 border-radius:19px;
 z-index:20;
+position:absolute;
+margin-top:-1rem;
+max-width:300px;
+height:300px;
+`
+const Close = styled.p`
+font-weight:bold;
+margin-bottom:2rem;
+cursor:pointer;
 `
 
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
@@ -87,20 +95,18 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink }) => {
                     href={sourceLink}>Källa</LinkButton>
                 <Button secondary
                 onClick={shareModal}>Dela</Button>
-                {/* <LinkButton secondary 
-                    href={shareLink}>Dela</LinkButton> */}
+       
                     </>
             ): ( <>
                 <LinkButton
                     href={sourceLink}>Källa</LinkButton>
                 <Button 
                 onClick={shareModal}>Dela</Button>
-                {/* <LinkButton 
-                    href={shareLink}>Dela</LinkButton> */}
+              
                     </>
             )}
             {showModal ? (<Wrapper>
-                <p onClick={() => setShowModal(false)}>X</p>
+                <Close onClick={() => setShowModal(false)}>X</Close>
                 <SharingModal
                 source={shareLink} />
                 </Wrapper>) : (null)}

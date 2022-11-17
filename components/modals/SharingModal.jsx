@@ -4,38 +4,49 @@ import Link from "next/link";
 
 
 const Content=styled.div`
+width:90%;
+
 ul{
   list-type:none;
   gap:10px;
+  padding-bottom:1rem;
+}
+
+.field{
+  margin-top:4px;
+  ${flex()}
+  gap:6px;
+  input{
+    padding:8px 6px;
+    border:none;
+  }
+
+  button{
+    background-color:transparent;
+    border: solid;
+    border-color: ${colors.secondary};
+    border-radius:9px;
+    padding:8px 6px;
+    font-weight:bold;
+    color:${colors.secondary};
+   
+  }
 }
 `
-const ShareButton=styled.div`
-background-color:black;
-width:100px;
-height:20px;
-`
+
 
 const SharingModal = ({source}) => {
   const copyURL = () => {
-    console.log()
+   
   }
-
   const correctURL = `/${source}`
+  
   return ( 
  
     <Content>
     <p>Dela detta via</p>
     <ul>
-    <Link 
-    href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsharingbuttons.io" 
-    target="_blank" 
-    rel="noopener" 
-    aria-label="Share on Facebook">
-      <p>FACEBOOK</p>
-      <ShareButton>
-     Dela
-      </ShareButton>
-    </Link>
+    <Link href="#">Facebook</Link>
     <Link href="#">Instagram</Link>
     <Link href="#">Twitter</Link>
     <Link href="#">Whatsapp</Link>
