@@ -54,8 +54,7 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 <ImageDescription>
                 Bildtext
                 </ImageDescription>
-                </ImageWrapper>
-                </Item>
+               
            
                 
                 <p>{body2.text}</p>
@@ -73,11 +72,11 @@ const SectionTypeTwo= ({ pageElements, sectionIDname }) => {
                 {imgurl.text}
                 </ImageDescription>
                 </ImageWrapper>
-                </Row>
+              
                 </Item>
-                <Text>
+                <p>
                 {body2.text}
-                </Text>
+                </p>
                
             </TextContent>
             

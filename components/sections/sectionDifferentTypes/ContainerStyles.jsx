@@ -69,11 +69,7 @@ p {
   
 }
 `
-export const Text= styled.p`
 
-margin-top:1rem;
-margin-bottom:1rem;
-`
 
 export const Subheading = styled.p`
 text-transform:uppercase;
