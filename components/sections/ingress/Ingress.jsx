@@ -13,6 +13,7 @@ const Container = styled.section`
     position: relative;
     &::after{
         content: '';
+        z-index: 1;
         position: absolute;
         bottom: 0;
         left: 50%;
