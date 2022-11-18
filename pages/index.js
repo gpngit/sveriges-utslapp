@@ -20,7 +20,6 @@ import SectionTypeOne from '../components/sections/sectionDifferentTypes/Section
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
 import Section from '../components/sections/sectionDifferentTypes/Section'
 
-
 export async function getServerSideProps(){
   initFirebase()
   const db = getDatabase()
