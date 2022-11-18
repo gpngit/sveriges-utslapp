@@ -1,18 +1,11 @@
 //CSS
-import styled, {css} from "styled-components";
-import { flex, colors, font, fonts } from '../../styles/partials'
+import { colors, font } from '../../styles/partials'
 
 const ChartOptions = (emissions) => {
 
     const options = {
         maintainAspectRatio: false,
         responsive: true,
-        // layout: {
-        //   padding: {
-        //     left: 50,
-        //     right: 50
-        //   }
-        // },
         scales: {
           y: { 
             display: true,
