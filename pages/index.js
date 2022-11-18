@@ -10,9 +10,6 @@ import HeadContent from '../components/Head'
 //components
 import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
-
-import Slider from '../components/slider/Slider'
-
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
@@ -78,18 +75,15 @@ export default function Home({ siteSections, emissions }) {
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'faktaruta2')}
     emissions={emissions}/>
-   
     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')}
     sectionIDname={"regler"} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} /> 
-
     <Section pageElements={siteSections.find(elem => elem.name === 'siffror')}
     sectionIDname={"siffror"}/>
     <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
     sectionIDname={"circular"}/>
     <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
-
     </>
   )
 }
