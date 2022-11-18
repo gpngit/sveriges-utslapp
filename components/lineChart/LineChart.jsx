@@ -14,18 +14,27 @@ import AppContext from '../../context/AppContext'
 import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
-@media ${device.laptop}{
-  padding:10em;
-  padding-bottom:0;
-  padding-top:0;
-}
   position: relative;
+  padding: 5em;
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  height: 85vh;
+  @media ${device.laptop}{
+    padding-right:10rem;
+  }
+`
+const TextContent = styled.div`
+  padding: 1rem 0rem;
+
+  h2 {
+      ${fonts.heading};;
+  }
+
+  p {
+      ${fonts.paragraph};
+  }
 `
 const ButtonContainer = styled.div`
-  padding-top: 60px;
+  padding: 20px;
   ${flex('row', 'center', 'center')};
   gap: 10px;
 
@@ -39,7 +48,7 @@ const Scrolltext = styled.div`
   ${flex('row', 'flex-end', 'flex-end')};
   ${fonts.paragraph}
   gap: 6px;
-  padding: 60px 20px 20px 20px;
+  padding: 20px;
   color: ${colors.bio};
 
   @media (min-width: ${size.tablet}) {
@@ -58,7 +67,7 @@ const ScrollContainer = styled.div`
   }
 `
 const ChartContainer = styled.div`
-  height: 80%;
+  min-height: 70vh;
   width: 100%;
   min-width: ${size.tablet};
 `
@@ -89,7 +98,14 @@ const Button = styled.button`
   }
 `
 
-const LineChart = ({ emissions }) => {
+const LineChart = ({ emissions, pageElements }) => {
+
+  const {id, sections, name} = pageElements
+  const title = sections.find(section => section.name === 'title')
+  const subheading = sections.find(section => section.name === 'subheading')
+  const body1 = sections.find(section => section.name === 'body1')
+
+  console.log(title, subheading, body1)
 
   const canvas = useRef()
   const context = useContext(AppContext)
@@ -192,20 +208,25 @@ const LineChart = ({ emissions }) => {
 
   return (
       <Container id='line-chart'>
-          <Scrolltext>
-            <p>Scrolla för att se utveckling</p>
-            <SmallArrow color={colors.bio} size={16} />
-          </Scrolltext>
-          <ButtonContainer>
-            <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-            <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
-            <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
-          </ButtonContainer>
-          <ScrollContainer>
-            <ChartContainer>
-              <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
-            </ChartContainer>
-          </ScrollContainer>
+        <TextContent>
+          <p>{subheading.text.toUpperCase()}</p>
+          <h2>{title.text}</h2>
+          <p>{body1.text}</p>
+        </TextContent>
+        <Scrolltext>
+          <p>Scrolla för att se utveckling</p>
+          <SmallArrow color={colors.bio} size={16} />
+        </Scrolltext>
+        <ButtonContainer>
+          <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+          <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
+        </ButtonContainer>
+        <ScrollContainer>
+          <ChartContainer>
+            <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
+          </ChartContainer>
+        </ScrollContainer>
       </Container>
   )
 }
