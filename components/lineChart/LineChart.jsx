@@ -34,9 +34,9 @@ const TextContent = styled.div`
   }
 `
 const ButtonContainer = styled.div`
-  padding: 20px;
+  padding: 1rem;
   ${flex('row', 'center', 'center')};
-  gap: 10px;
+  gap: 1rem;
 
   @media (max-width: ${size.tablet}) {
     display: none;
@@ -44,11 +44,10 @@ const ButtonContainer = styled.div`
 `
 const Scrolltext = styled.div`
   width: 100%;
-  min-width: 260px;
   ${flex('row', 'flex-end', 'flex-end')};
   ${fonts.paragraph}
-  gap: 6px;
-  padding: 20px;
+  gap: 1rem;
+  padding: 1rem;
   color: ${colors.bio};
 
   @media (min-width: ${size.tablet}) {
@@ -56,7 +55,7 @@ const Scrolltext = styled.div`
   }
 `
 const ScrollContainer = styled.div`
- position: relative;
+  position: relative;
   height: 100%;
   width: 100%;
   ${flex('row')};
@@ -72,9 +71,9 @@ const ChartContainer = styled.div`
   min-width: ${size.tablet};
 `
 const Button = styled.button`
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: white;
   color: ${colors.secondary};
 
@@ -98,14 +97,12 @@ const Button = styled.button`
   }
 `
 
-const LineChart = ({ emissions, pageElements }) => {
+const LineChart = ({emissions, pageElements}) => {
 
-  const {id, sections, name} = pageElements
+  const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
-
-  console.log(title, subheading, body1)
 
   const canvas = useRef()
   const context = useContext(AppContext)
@@ -125,10 +122,6 @@ const LineChart = ({ emissions, pageElements }) => {
         year: emission.year
     }
   }))
-  const YScale = []
-  for(let i=0; i<140000; i+=10000){
-    YScale.push(i)
-  }
 
   useEffect(() => {
     if (totalEmissions) {
