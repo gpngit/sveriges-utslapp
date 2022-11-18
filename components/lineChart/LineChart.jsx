@@ -18,8 +18,8 @@ const Container = styled.section`
   padding: 5em;
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  @media ${device.laptop}{
-    padding-right:10rem;
+  @media ${device.mobileL}{
+    padding-right: 0em;
   }
 `
 const TextContent = styled.div`
