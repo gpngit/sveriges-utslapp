@@ -59,7 +59,7 @@ export default function Home({ siteSections, emissions }) {
     const observer = new IntersectionObserver((entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-            console.log(entry.target.id)
+            // console.log(entry.target.id)
           }
       })
       }),{threshold: 0.6})

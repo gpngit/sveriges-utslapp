@@ -135,7 +135,6 @@ const InputForm = ({ pageElements }) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
-        console.log(dbRef)
     }
   
     const handleVisibility = (index) => {
