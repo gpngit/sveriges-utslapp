@@ -1,13 +1,11 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, font } from '../../styles/partials'
+import { flex, colors, fonts,} from '../../styles/partials'
 //nextjs components
 
 import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
-
-
 
 const Container = styled.footer`
     padding: 30px;
@@ -15,14 +13,15 @@ const Container = styled.footer`
     color: white;
     
     a {
+        ${fonts.footnote}
         color: white;
     }
 `
 const Subheading = styled.h3`
-    ${font.subheading};
+    ${fonts.subheading};
 `
 const Title = styled.h2`
-    ${font.title};
+    ${fonts.title};
 `
 const LinksContainer = styled.div`
     ${flex()};    

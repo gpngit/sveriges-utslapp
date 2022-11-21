@@ -10,9 +10,6 @@ import HeadContent from '../components/Head'
 //components
 import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
-
-import Slider from '../components/slider/Slider'
-
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
@@ -22,7 +19,6 @@ import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionTypeOne from '../components/sections/sectionDifferentTypes/SectionOnePicture'
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
 import Section from '../components/sections/sectionDifferentTypes/Section'
-
 
 export async function getServerSideProps(){
   initFirebase()
@@ -59,7 +55,7 @@ export default function Home({ siteSections, emissions }) {
     const observer = new IntersectionObserver((entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-            console.log(entry.target.id)
+            // console.log(entry.target.id)
           }
       })
       }),{threshold: 0.6})
@@ -70,27 +66,22 @@ export default function Home({ siteSections, emissions }) {
 
   return (
     <>
-    <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    
-    <LineChart emissions={emissions}/>
+    <LineChart pageElements={siteSections.find(elem => elem.name === 'utslapp')}  emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'faktaruta2')}
     emissions={emissions}/>
-   
     <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')}
     sectionIDname={"regler"} />
     <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} /> 
-
     <Section pageElements={siteSections.find(elem => elem.name === 'siffror')}
     sectionIDname={"siffror"}/>
     <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
     sectionIDname={"circular"}/>
     <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
-
     </>
   )
 }

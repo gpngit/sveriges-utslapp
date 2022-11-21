@@ -7,15 +7,14 @@ import FaktaTwo from './faktaTwo'
 const Container = styled.section`
 padding-top:5em;
 width:100%;
-background-color:${colors.primary}
+background-color:${colors.primary};
 `
 const Wrapper= styled.div`
 width:100%;
 padding-bottom:5rem;
-@media ${device.laptop}{
+/* @media ${device.laptop}{
   padding:10em;
-}
-
+} */
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {

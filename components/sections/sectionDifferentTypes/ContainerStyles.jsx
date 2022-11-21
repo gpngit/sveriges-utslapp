@@ -54,6 +54,11 @@ ${props =>
             `}
 `
 
+export const Text= styled.p`
+margin-top:1rem;
+margin-bottom:1rem;
+`
+
 export const TextContent = styled.div`
 ${flex()};
 h2 {
@@ -64,11 +69,7 @@ p {
   
 }
 `
-export const Text= styled.p`
 
-margin-top:1rem;
-margin-bottom:1rem;
-`
 
 export const Subheading = styled.p`
 text-transform:uppercase;
@@ -79,8 +80,10 @@ export const ImageWrapper = styled.div`
 display:block;
 width:70%;
 
+
     .image{      
         display:block; 
+
         object-fit: contain;
         max-width: 100%;
         position: relative;
@@ -92,7 +95,7 @@ ${fonts.footnote};
 font-style: italic;
 `
 
-export const Sources = styled.span`
+export const Sources = styled.div`
 h3{
     ${fonts.subheading};
     margin-bottom:1rem;
@@ -101,17 +104,18 @@ p{${fonts.paragraph}
 }`
 
 export const Row = styled.div`
+
+gap:2rem;
 width:100%;
-${flex()}
-gap:20px;
+
+
 @media only screen and (${device.tablet}){ 
 ${flex("row")};
 }
+
 `
 
 export const Item = styled.div`
 ${flex("column")}
 gap:10px;
-.row{
-    ${flex()}
-}`
+`
