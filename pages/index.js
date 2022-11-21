@@ -66,7 +66,6 @@ export default function Home({ siteSections, emissions }) {
 
   return (
     <>
-    <HeadContent/>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart pageElements={siteSections.find(elem => elem.name === 'utslapp')}  emissions={emissions}/>
