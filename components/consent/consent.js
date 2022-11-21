@@ -53,18 +53,15 @@ const Consent = () => {
     setConsent(true);
     setCookie('localConsent', 'true', { maxAge: 60 * 60 * 24 * 365 });
     consentGranted()
-    console.log('accepting cookies');
   };
 
   const closeP = () => {
     setConsent(true);
-    console.log('closing');
   };
 
   const denyCookie = () => {
     setConsent(true);
     setCookie('localConsent', 'false', { maxAge: 60 * 60 * 24 * 365 });
-    console.log('denying cookie');
   };
 
   if (consent === true) {
