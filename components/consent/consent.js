@@ -18,18 +18,27 @@ const Container = styled.div`
     padding: 2em;
 `
 const TextContent = styled.div`
-    ${fonts.paragraph}
+    font-size: 14px;
 
     span {
-        font-weight: bold;
         cursor: pointer;
+        text-decoration: underline;
     }
 `
 const ButtonContainer = styled.div`
     ${flex('row', 'flex-start', 'center')};
     gap: 1em;
     width: 100%;
-    padding: 2em;
+    padding: 2em 0;
+`
+const Button = styled.button`
+    padding: .5em 1em;
+
+    ${props => props.secondary && css`
+        background-color: transparent;
+        text-decoration: underline;
+        color: white;
+    `}
 `
 
 function consentGranted() {
@@ -38,7 +47,6 @@ function consentGranted() {
     analytics_storage: 'granted'
   });
 }
-  
 
 const Consent = () => {
 
@@ -55,10 +63,6 @@ const Consent = () => {
     consentGranted()
   };
 
-  const closeP = () => {
-    setConsent(true);
-  };
-
   const denyCookie = () => {
     setConsent(true);
     setCookie('localConsent', 'false', { maxAge: 60 * 60 * 24 * 365 });
@@ -71,7 +75,8 @@ const Consent = () => {
   return (
     <Container className={consent ? 'hidden' : ''}>
       <TextContent>
-        <p>Vi använder cookies för att ge dig en bättre upplevelse av denna webbplats. Genom att fortsätta använda webbplatsen accepterar du cookies. <span onClick={() => setReadMore(!readMore)}>Läs mer</span></p>
+        <p>Vi använder cookies för att ge dig en bättre upplevelse av denna webbplats. Genom att fortsätta använda webbplatsen accepterar du cookies.</p>
+        {!readMore && <span onClick={() => setReadMore(!readMore)}>Läs mer</span>}
         {readMore && (
             <>
             <br />
@@ -82,9 +87,8 @@ const Consent = () => {
         )}
       </TextContent>
       <ButtonContainer>
-        <button onClick={(e) => closeP()}>Close</button>
-        <button onClick={(e) => denyCookie()}>Deny All</button>
-        <button onClick={() => acceptCookie()}>Accept All</button>
+        <Button onClick={() => acceptCookie()}>Acceptera alla cookies</Button>
+        <Button secondary onClick={(e) => denyCookie()}>Avvisa alla</Button>
       </ButtonContainer>
     </Container>
   );
