@@ -8,7 +8,7 @@ import { setCookie, hasCookie } from 'cookies-next';
 
 
 const Container = styled.div`
-    ${flex('column', 'center', 'center')}
+    ${flex('column', 'flex-start', 'center')}
     z-index: 10;
     position: fixed;
     background-color: rgb(0,0,0,.9);
