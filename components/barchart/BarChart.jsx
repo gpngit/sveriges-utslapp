@@ -41,7 +41,6 @@ const Scrolltext = styled.div`
   ${flex('row', 'flex-end', 'flex-end')};
   gap: 6px;
   padding: 20px 0px;
-  ${fonts.paragraph}
   color: ${colors.bio};
 
   @media (min-width: ${size.tablet}) {

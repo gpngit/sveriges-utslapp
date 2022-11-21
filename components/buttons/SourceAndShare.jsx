@@ -1,13 +1,12 @@
 //CSS
 import styled, {css} from 'styled-components'
 import { flex, colors, fonts  } from '../../styles/partials'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import SharingModal from '../modals/SharingModal'
 
 const Container = styled.div`
     ${flex('row')};
     gap: 20px;
-    
 `
 const LinkButton = styled.a`
     ${flex('row', 'center', 'center')}
@@ -55,25 +54,30 @@ ${props =>
     color:${colors.secondary};
     `}
 `
-const Wrapper = styled.span`
-background-color: ${colors.primary};
-padding:1rem;
-color:black;
-border-radius:19px;
-z-index:20;
-position:absolute;
-left:50%;
-margin-top:-1rem;
-filter: drop-shadow(0 0 0.75rem black);
+const ModalWrapper = styled.dialog`
+    /* background-color: ${colors.primary}; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 2rem;
+
+    &::before {
+        ${flex()}
+    }
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 `
-const Close = styled.p`
-font-weight:bold;
-margin-bottom:2rem;
-cursor:pointer;
-font-size:18px;
+const CloseButton = styled.button`
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 `
 
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
+
+    const modal = useRef()
     const [showSecondary, setShowSecondary] = useState(false);
     const [showModal, setShowModal] = useState(false);
     
@@ -83,36 +87,41 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
         }
     },[whiteBG])
 
-    const shareModal= () => {
-        setShowModal(true)
-    }
+    // const shareModal= () => {
+    //     setShowModal(true)
+    // }
   
 
     return (
         <Container>
-            {showSecondary ? (<>
+            {showSecondary ? (
+                <>
                 <LinkButton  secondary
                 target="_blank"
-                    href={sourceLink}>Källa</LinkButton>
+                href={sourceLink}>Källa
+                </LinkButton>
                 <Button secondary
-                onClick={shareModal}>Dela</Button>
-       
-                    </>
-            ): ( <>
+                onClick={() => {modal.current.showModal()}}>Dela
+                </Button>
+                </>
+            ): (<>
                 <LinkButton
                 target="_blank"
-                    href={sourceLink}>Källa</LinkButton>
+                href={sourceLink}>Källa
+                </LinkButton>
                 <Button 
-                onClick={shareModal}>Dela</Button>
-              
-                    </>
+                onClick={() => modal.current.showModal()}>Dela
+                </Button>
+                </>
             )}
-            {showModal ? (<Wrapper>
-                <Close onClick={() => setShowModal(false)}>X</Close>
+            {/* {showModal ? ( */}
+            <ModalWrapper ref={modal}>
+                <CloseButton onClick={() => modal.current.close()}>Close</CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
-                </Wrapper>) : (null)}
+            </ModalWrapper>
+            {/* ) : (null)} */}
            
         </Container>
     )

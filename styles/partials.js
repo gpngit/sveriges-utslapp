@@ -38,13 +38,22 @@ export const fonts = {
     // paragraph: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:150%; @media screen and ${device.desktop}{
     //     line-height: 120%;}`,
     // footnote:"font-size: 1rem; line-height:150%; "
-    heading: `font-size: 3rem; line-height:120%; @media screen and ${device.desktop}{
-        line-height: 100%;}`,
-    subheading: `font-size: 1.5rem; line-height:120%; @media screen and ${device.desktop}{
-    line-height: 100%;} `,
-    paragraph: `font-size: 1.125rem; line-height:150%; @media screen and ${device.desktop}{
-        line-height: 120%;}`,
-    footnote:"font-size: 1rem; line-height:150%; "
+    heading: `
+    font-size: 3.6em; 
+    line-height:120%; 
+    @media screen and ${device.desktop}{line-height: 100%;}`,
+    subheading: `
+    font-size: 2.2em; 
+    line-height:120%; 
+    @media screen and ${device.desktop}{line-height: 100%;} `,
+    paragraph: `
+    font-size: 1.6em; 
+    line-height:150%; 
+    @media screen and ${device.desktop}{line-height: 120%;}`,
+    footnote: `
+    font-size: 1.2em; 
+    line-height:150%;
+    @media screen and ${device.desktop}{line-height: 120%;}`
 }
 export const fontSizes = {
     heading: "clamp(3.1rem, 4vw + 1rem, 4rem)",
