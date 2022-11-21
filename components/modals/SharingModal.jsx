@@ -15,54 +15,33 @@ import {
 
 } from 'next-share';
 
-const Content=styled.div`
-width:100%;
-padding:1rem;
-margin:0;
-
-${fonts.paragraph};
-ul{
-  margin-top:1rem;
-  ${flex("row")}
-  list-type:none;
-  gap:6px;
-  padding-bottom:1rem;
-}
-
-.field{
-  margin-top:4px;
+const Content = styled.div`
   ${flex()}
-  gap:10px;
+  gap: 1rem;
+  ${fonts.paragraph};
 
-  input{
-    padding:8px 6px;
-    border:none;
-    ${fonts.footnote};
-    max-width:100%;
+  ul {
+    ${flex("row")};
+    gap:6px;
   }
 
-  button{
-    background-color:transparent;
-    border: solid;
-    border-color: ${colors.secondary};
-    border-radius:9px;
-    padding:4px 6px;
-    color:${colors.secondary};
-    &:hover{
-      border-color: ${colors.bio};
+  .field {
+    ${flex()};
+    gap: 1rem;
+
+    input{  
+      ${fonts.footnote};
+      padding: .6rem;
     }
-    &:focus{
-      border-color: ${colors.fossil};
-    }
-    &:active{
-      border-color: ${colors.fossil};
+
+    button{
+      padding: .6rem; 
     }
   }
-}
 `
 
+const SharingModal = ({ source, text }) => {
 
-const SharingModal = ({source, text}) => {
   const [buttontext, setButtonText] = useState("Kopiera")
 
   const copyURL = () => {
