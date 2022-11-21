@@ -4,14 +4,13 @@ import { flex, colors, size, fonts, device } from '../../styles/partials'
 // react hooks
 import { useState, useEffect } from 'react';
 //next-cookies
-import { setCookie, hasCookie } from 'cookies-next';
+import { setCookie, hasCookie, getCookie } from 'cookies-next';
 
 
 const Container = styled.div`
-    ${flex('column', 'center', 'center')}
     z-index: 10;
     position: fixed;
-    background-color: rgb(0,0,0,.9);
+    background-color: rgb(55,0,0,.9);
     color: white;
     bottom: 0;
     width: 100%;
@@ -24,6 +23,10 @@ const TextContent = styled.div`
         cursor: pointer;
         text-decoration: underline;
     }
+
+    a {
+      color: white;
+    }
 `
 const ButtonContainer = styled.div`
     ${flex('row', 'flex-start', 'center')};
@@ -32,13 +35,16 @@ const ButtonContainer = styled.div`
     padding: 2em 0;
 `
 const Button = styled.button`
-    padding: .5em 1em;
+    padding: .8em 1em;
+    background-color: ${colors.primary};
+    color: ${colors.secondary};
 
     ${props => props.secondary && css`
         background-color: transparent;
         text-decoration: underline;
+        border: none;
         color: white;
-    `}
+    `};
 `
 
 function consentGranted() {
@@ -55,6 +61,9 @@ const Consent = () => {
 
   useEffect(() => {
     setConsent(hasCookie('localConsent'));
+    if (getCookie('localConsent')){
+      consentGranted()
+    }
   }, []);
 
   const acceptCookie = () => {
