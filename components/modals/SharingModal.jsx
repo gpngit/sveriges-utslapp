@@ -18,7 +18,7 @@ import {
 const Content = styled.div`
   ${flex()}
   gap: 1rem;
-  ${fonts.paragraph};
+  ${fonts.footnote};
 
   ul {
     ${flex("row")};
