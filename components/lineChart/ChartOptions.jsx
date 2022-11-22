@@ -8,6 +8,7 @@ const ChartOptions = (emissions) => {
         responsive: true,
         scales: {
           y: { 
+            stacked: true,
             display: true,
             ticks:{
               color: colors.secondary,

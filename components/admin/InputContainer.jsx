@@ -140,6 +140,7 @@ button{
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
+    
 
     const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
@@ -147,6 +148,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     const [editable, setEditable] = useState(false)
     const [newText, setNewText] = useState(null)
 
+   
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
@@ -159,6 +161,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     }
 
     const handleSave = (e) => {
+    
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)

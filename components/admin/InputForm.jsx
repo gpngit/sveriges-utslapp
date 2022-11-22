@@ -177,8 +177,8 @@ console.log(pageElements)
                 width={20}
                 height={10}/>)}</button>
             </TitleAndReveal>
-           
             {showSection && sections.map((section, i) => {
+                console.log(section.name)
                 return (
                     <InputContainer sectionId={id} key={section.name} 
                     input={section} inputIndex={i} 
