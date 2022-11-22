@@ -128,32 +128,34 @@ const LineChart = ({emissions, pageElements}) => {
         setChartData({
             labels: years.map(year => year),
             datasets: [{
-                label: 'Biogena utsläpp',
-                data: bioEmissions.map(emissions => emissions.value),
-                fill: true,
-                backgroundColor: colors.bio,
-                borderColor: colors.border,
-                borderWidth: 5,
-                pointRadius: 0,
-                tension: .2,
-            },{
-                label: 'Fossila utsläpp',
-                data: fossilEmissions.map(emissions => emissions.value),
-                fill: true,
-                backgroundColor: colors.fossil,
-                borderColor: colors.border,
-                borderWidth: 5,
-                pointRadius: 0,
-                tension: .2,
-            },{
-                label: totalEmissions[0].type.text,
-                data: totalEmissions.map(emissions => emissions.value),
-                fill: true,
-                borderColor: colors.border,
-                borderWidth: 5,
-                pointRadius: 0,
-                tension: .2,
-            }]
+              label: 'Fossila utsläpp',
+              data: fossilEmissions.map(emissions => emissions.value),
+              fill: true,
+              backgroundColor: colors.fossil,
+              borderColor: colors.border,
+              borderWidth: 5,
+              pointRadius: 0,
+              tension: .2,
+          },{
+              label: 'Biogena utsläpp',
+              data: bioEmissions.map(emissions => emissions.value),
+              fill: true,
+              backgroundColor: colors.bio,
+              borderColor: colors.border,
+              borderWidth: 5,
+              pointRadius: 0,
+              tension: .2,
+            },
+            // {
+            //     label: totalEmissions[0].type.text,
+            //     data: totalEmissions.map(emissions => emissions.value),
+            //     fill: true,
+            //     borderColor: colors.border,
+            //     borderWidth: 5,
+            //     pointRadius: 0,
+            //     tension: .2,
+            // }
+          ]
         })
     }
   }, [totalEmissions, displayYear])
