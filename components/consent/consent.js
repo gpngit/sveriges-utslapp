@@ -47,14 +47,14 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
     padding: .8em 1em;
     /* background-color: ${colors.secondary}; */
-    background-color: black;
+    background-color: green;
     color: white;
+    border: none;
     ${fonts.paragraph};
 
     ${props => props.secondary && css`
         background-color: transparent;
         text-decoration: underline;
-        border: none;
         /* color: ${colors.secondary}; */
         color: black;
     `};
