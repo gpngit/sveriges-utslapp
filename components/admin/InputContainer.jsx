@@ -161,9 +161,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     }
 
     const handleSave = (e) => {
-        console.log(`/admin/${targetId}/sections/${inputIndex}`)
-        console.log(targetId, "targetID")
-        console.log(sectionId, "===" )
+    
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)
