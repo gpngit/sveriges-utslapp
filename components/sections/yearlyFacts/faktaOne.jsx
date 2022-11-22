@@ -27,7 +27,7 @@ const FaktaOne = ({pageElements, emissions}) => {
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
   const url = sections.find(section => section.name === 'source')
- 
+    
   return (
     
       <Content 

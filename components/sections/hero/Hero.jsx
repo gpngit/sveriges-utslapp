@@ -137,17 +137,17 @@ const Hero = ({ pageElements }) => {
                     <TextAndLink>
                         <p>{body1.text}</p>
                         <ArrowStyleTwo width={280} color={colors.bio} strokeWidth={3} />
-                        <NavLink href="#faktaruta1">Varför rapporteras de inte?</NavLink>
+                        <NavLink href="#statistik">Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
                         <ArrowStyleThree width={320} color={colors.bio} strokeWidth={3} />
-                        <NavLink href="#faktaruta2">Men är inte biobränslen bra för naturen?</NavLink>
+                        <NavLink href="#kolcykeln">Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
                         <ArrowStyleFour width={360} color={colors.bio} strokeWidth={2} />
-                        <NavLink href="#kolcykeln">Men skogen växer väl upp igen och binder kolet?</NavLink>
+                        <NavLink href="#skogen">Men skogen växer väl upp igen och binder kolet?</NavLink>
                     </TextAndLink>
                 </TextContent>
                 </PaddingWrapper>
