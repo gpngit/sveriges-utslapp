@@ -9,15 +9,24 @@ import { setCookie, hasCookie, getCookie } from 'cookies-next';
 
 const Container = styled.div`
     z-index: 10;
+    height: 100vh;
+    width: 100vw;
     position: fixed;
-    background-color: rgb(55,0,0,.9);
-    color: white;
+    background-color: rgb(0,0,0,.8);
+    bottom: 0;
+    `
+const InnerContainer = styled.div`
+    position:absolute;
     bottom: 0;
     width: 100%;
     padding: 2em;
+    /* background-color: ${colors.primary};
+    color: ${colors.secondary}; */
+    background-color: white;
+    color: black;
 `
 const TextContent = styled.div`
-    font-size: 14px;
+    ${fonts.paragraph};
 
     span {
         cursor: pointer;
@@ -25,7 +34,8 @@ const TextContent = styled.div`
     }
 
     a {
-      color: white;
+      /* color: ${colors.secondary}; */
+      color: black;
     }
 `
 const ButtonContainer = styled.div`
@@ -36,14 +46,17 @@ const ButtonContainer = styled.div`
 `
 const Button = styled.button`
     padding: .8em 1em;
-    background-color: ${colors.primary};
-    color: ${colors.secondary};
+    /* background-color: ${colors.secondary}; */
+    background-color: green;
+    color: white;
+    border: none;
+    ${fonts.paragraph};
 
     ${props => props.secondary && css`
         background-color: transparent;
         text-decoration: underline;
-        border: none;
-        color: white;
+        /* color: ${colors.secondary}; */
+        color: black;
     `};
 `
 
@@ -82,23 +95,27 @@ const Consent = () => {
   }
 
   return (
-    <Container className={consent ? 'hidden' : ''}>
-      <TextContent>
-        <p>Vi använder cookies för att ge dig en bättre upplevelse av denna webbplats. Genom att fortsätta använda webbplatsen accepterar du cookies.</p>
-        {!readMore && <span onClick={() => setReadMore(!readMore)}>Läs mer</span>}
-        {readMore && (
-            <>
-            <br />
-            <p>Cookies är små filer som laddas ner på din dator (eller din mobiltelefon) från webbsidor som du besöker. Cookies innehåller information som låter webbsidor komma ihåg om du har använt webbsidan förut.
-            Vi använder cookies för att skapa den bästa upplevelsen för dig när du besöker vår sida. De tillåter oss att bättre förstå hur besökare interagerar med vår webbsida (genom att använda Google Analytics) så att vi kan förbättra användarupplevelsen.</p>
-            <a href="https://policies.google.com/technologies/cookies?hl=en-US">Läs mer</a>
-            </>
-        )}
-      </TextContent>
-      <ButtonContainer>
-        <Button onClick={() => acceptCookie()}>Acceptera alla cookies</Button>
-        <Button secondary onClick={(e) => denyCookie()}>Avvisa alla</Button>
-      </ButtonContainer>
+    <Container>
+      <InnerContainer>
+        <TextContent>
+          <p>Vi använder cookies för att ge dig en bättre upplevelse av denna webbplats.</p>
+          <br />
+          {!readMore && <span onClick={() => setReadMore(!readMore)}>Läs mer</span>}
+          {readMore && (
+              <>
+              <p>Cookies är små filer som laddas ner på din dator (eller din mobiltelefon) från webbsidor som du besöker. Cookies innehåller information som låter webbsidor komma ihåg om du har använt webbsidan förut.
+              Vi använder cookies för att skapa den bästa upplevelsen för dig när du besöker vår sida. De tillåter oss att bättre förstå hur besökare interagerar med vår webbsida (genom att använda Google Analytics) så att vi kan förbättra användarupplevelsen.</p>
+              <br />
+              <a href="https://policies.google.com/technologies/cookies?hl=en-US">Läs mer</a>
+              </>
+          )}
+        </TextContent>
+        <ButtonContainer>
+          <Button onClick={() => acceptCookie()}>Acceptera alla cookies</Button>
+          <Button secondary onClick={(e) => denyCookie()}>Avvisa alla</Button>
+        </ButtonContainer>
+
+      </InnerContainer>
     </Container>
   );
 }
