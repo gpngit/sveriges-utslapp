@@ -75,13 +75,13 @@ console.log(siteSections)
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
     emissions={emissions}/>
-    <SectionOne 
+    {/* <SectionOne 
     pageElements={siteSections.find(elem => elem.name === 'statistik')}
     sectionIDname={"statistik"} />
     <SectionTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
     sectionIDname={"kolcykeln"} />
     <SectionThree pageElements={siteSections.find(elem => elem.name === 'skogen')}
-    sectionIDname={"skogen"} />
+    sectionIDname={"skogen"} /> */}
     <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 
     </>
   )
