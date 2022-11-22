@@ -22,7 +22,7 @@ const TextContent = styled.div`
     margin-bottom:2rem;
 `
 const FaktaTwo = ({pageElements, emissions}) => {
-
+console.log(pageElements)
   const {id, sections, name} = pageElements
 
   const title = sections.find(section => section.name === 'title')
@@ -31,7 +31,6 @@ const FaktaTwo = ({pageElements, emissions}) => {
   const url = sections.find(section => section.name === 'source')
 
   return (
-
       <Content id="fakta-biobransle">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
