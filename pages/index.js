@@ -13,12 +13,12 @@ import Footer from '../components/footer/Footer'
 import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
-import FaktaOne from '../components/sections/yearlyFacts/faktaOne'
-import FaktaTwo from '../components/sections/yearlyFacts/faktaTwo'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
-import SectionTypeOne from '../components/sections/sectionDifferentTypes/SectionOnePicture'
+import SectionOne from '../components/sections/sectionDifferentTypes/SectionOne'
 import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
 import Section from '../components/sections/sectionDifferentTypes/Section'
+import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
+import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -45,7 +45,7 @@ export async function getServerSideProps(){
 }
 
 export default function Home({ siteSections, emissions }) {
-
+console.log(siteSections)
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
@@ -64,24 +64,25 @@ export default function Home({ siteSections, emissions }) {
     sections.forEach(section => observer.observe(section))  
   }, [])
 
+
+
   return (
     <>
-    <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} />
+     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <LineChart pageElements={siteSections.find(elem => elem.name === 'utslapp')}  emissions={emissions}/>
+    <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
-    pageTwoElem={siteSections.find(elem => elem.name === 'faktaruta2')}
+    pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
     emissions={emissions}/>
-    <SectionTypeOne pageElements={siteSections.find(elem => elem.name === 'regler')}
-    sectionIDname={"regler"} />
-    <SectionTypeTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
-    sectionIDname={"kolcykeln"} /> 
-    <Section pageElements={siteSections.find(elem => elem.name === 'siffror')}
-    sectionIDname={"siffror"}/>
-    <Section pageElements={siteSections.find(elem => elem.name === 'circular')}
-    sectionIDname={"circular"}/>
-    <Footer  pageElements={siteSections.find(elem => elem.name === 'footer')}/>
+    <SectionOne 
+    pageElements={siteSections.find(elem => elem.name === 'statistik')}
+    sectionIDname={"statistik"} />
+    <SectionTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
+    sectionIDname={"kolcykeln"} />
+    <SectionThree pageElements={siteSections.find(elem => elem.name === 'skogen')}
+    sectionIDname={"skogen"} />
+    <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 
     </>
   )
 }

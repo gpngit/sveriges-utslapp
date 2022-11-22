@@ -32,7 +32,7 @@ const FaktaTwo = ({pageElements, emissions}) => {
 
   return (
 
-      <Content id="faktaruta2">
+      <Content id="fakta-biobransle">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -41,12 +41,11 @@ const FaktaTwo = ({pageElements, emissions}) => {
             width={800}
             height={500}
             alt={"Biodrivmedel"}/>
-         
             </TextContent>
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
-            shareLink={'#faktaruta2'} 
+            shareLink={'#fakta-biobransle'} 
             sourceText={title.text}
             />
       </Content>
