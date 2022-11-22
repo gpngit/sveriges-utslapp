@@ -8,6 +8,7 @@ const HeadContent = () => {
       <title>Sveriges utsläpp</title>
       <meta name="description" content="En hemsida om de dolda uptsläppen." />
       <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
     </Head>
     <Script 
       id='gtag'
