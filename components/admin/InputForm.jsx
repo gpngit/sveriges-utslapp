@@ -64,6 +64,10 @@ transform: rotate(180deg);`
 const Row = styled.div`
 ${flex("row", "space-between", "center")}
 gap:1rem;
+
+p{
+    ${fonts.footnote};
+}
 `
 const ToggleSwitch = styled.label`
     position: relative;
@@ -119,7 +123,7 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-
+console.log(pageElements)
 
     const {id, name, show, sections} = pageElements
 
@@ -130,13 +134,11 @@ const InputForm = ({ pageElements }) => {
         e.preventDefault()
         setShowSection(!showSection)
     }
-
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
     }
-  
     const handleVisibility = (index) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)

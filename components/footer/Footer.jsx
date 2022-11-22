@@ -35,16 +35,17 @@ const Footer = ({ pageElements }) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const links = sections.find(section => section.name === 'links').links
 
+  
     return (
         <Container>
             <div>
                 <Subheading>{subheading.text.toUpperCase()}</Subheading>
                 <Title>{title.text}</Title>
                 <LinksContainer>
-                    {links.map((link,indx) => 
+                    {/* {links.map((link,indx) => 
                     <Link key={indx}
                     href={link.link}>
-                    {link.name}</Link>)}
+                    {link.name}</Link>)} */}
                 </LinksContainer>
             </div>
             <Crumble color={colors.primary} />
