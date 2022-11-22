@@ -215,7 +215,7 @@ const LineChart = ({emissions, pageElements}) => {
         <ButtonContainer>
           <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
           <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
-          <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button>
+          {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
