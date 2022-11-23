@@ -7,7 +7,7 @@ import { useState, useEffect } from "react"
 import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
-import { capitalize } from "../helpers/Capitalize"
+import Link from "next/link"
 
 const Container = styled.div`
     ${flex()};
@@ -135,18 +135,14 @@ button{
         background-color:${colors.secondary};
     }
    }
-}
-
 `
-
 const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) => {
-    
-
     const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
     const [newText, setNewText] = useState(null)
+    const [navButtons, setNavButtons] = useState(false)
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -173,7 +169,6 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         sendEditToFirebase(inputValue.value)
         setLoading(true)
-        
     }
 
     const handleDiscard = (e) => {
@@ -187,7 +182,7 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
-            setModal(false)
+            setNavButtons(true);
         }, 2000);
     }}, [isLoading])
     
@@ -209,12 +204,20 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
                     </Validation>
                 </div>
                 {isLoading ? (<LoadingSpinner/> ):(
-                <ModalButtons>
-                <button 
-                className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
-                <button 
-                className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
-                </ModalButtons>)}
+                    <>  {navButtons ? (null): (<ModalButtons>
+                        <button 
+                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        <button 
+                        className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
+                        </ModalButtons>)} </>
+                )}
+                {navButtons ? (  <ModalButtons>
+                <Link href="/" target="_blank"
+                aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
+                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
+                </ModalButtons>):(null)
+              }
+                
             </Modal>
         )}
         
