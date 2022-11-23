@@ -35,7 +35,23 @@ const Content = styled.div`
     }
 
     button{
-      padding: .6rem; 
+      border: 2px solid ${colors.secondary};
+      border-radius: 10px;
+      background-color:transparent;
+      color:${colors.secondary};
+      padding: 8px;
+      &:hover{
+        color:${colors.bio};
+        border: 2px solid ${colors.bio};
+      }
+      &:active{
+        color:${colors.fossil};
+        border: 2px solid ${colors.fossil};
+      }
+      &:focus{
+        color:${colors.fossil};
+        border: 2px solid ${colors.fossil};
+      }
     }
   }
 `

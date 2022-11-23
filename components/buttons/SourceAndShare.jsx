@@ -55,24 +55,37 @@ ${props =>
     `}
 `
 const ModalWrapper = styled.dialog`
-    /* background-color: ${colors.primary}; */
+    background-color: ${colors.primary};
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border: none;
     padding: 2rem;
-
+    
     &::before {
         ${flex()}
     }
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.2);
     }
+ 
 `
 const CloseButton = styled.button`
     position: absolute;
     right: 1rem;
     top: 1rem;
+    padding:4px;
+    background-color: ${colors.primary};
+    border:none;
+    &:hover{
+        color: ${colors.bio};
+    }
+    &:active{
+        color: ${colors.bio};
+    }
+    &:focus{
+        color: ${colors.secondary};
+    }
 `
 
 const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
@@ -87,10 +100,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
         }
     },[whiteBG])
 
-    // const shareModal= () => {
-    //     setShowModal(true)
-    // }
-  
+   
 
     return (
         <Container>
@@ -116,7 +126,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
             )}
             {/* {showModal ? ( */}
             <ModalWrapper ref={modal}>
-                <CloseButton onClick={() => modal.current.close()}>Close</CloseButton>
+                <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
