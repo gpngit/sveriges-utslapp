@@ -140,48 +140,51 @@ button{
 `
 
 const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  }) => {
-    
-
+ 
     const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
     const [newText, setNewText] = useState(null)
+    const [newURL, setNewURL] = useState(null)
 
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
     }
 
-    const sendEditToFirebase = (inputValue) => {
+    const sendEditToFirebase = (inputValueTxt, inputValueURL) => {
+      console.log(inputValueTxt, inputValueURL)
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
-        update(dbRef, {text: inputValue})
+        update(dbRef, {text: inputValueTxt},{url: inputValueURL})
     }
 
-    console.log(`/admin/${targetId}/sections/${inputIndex}`)
 
     const handleSave = (e) => {
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.text}`)
-        console.log(inputValue)
-        setModal(true)
-        setNewText(inputValue.value)
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        setNewText(inputValueTxt.value)
+        setNewURL(inputValueURL.value)
         setEditable(!editable)
     }
 
     const confirmSave=(e) => {
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
-        sendEditToFirebase(inputValue.value)
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        sendEditToFirebase(inputValueTxt.value, inputValueURL.value)
         setLoading(true)
         
     }
 
     const handleDiscard = (e) => {
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
-        inputValue.value = input.text
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        inputValueTxt.value = input.text
+        inputValueURL.value = input.url
         setEditable(!editable)
     }
     
@@ -202,11 +205,13 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                 <div>
                     <Validation>
                     <h3>Ändra från:</h3>
-                    <p>{input.text}</p>
+                    <p>text: {input.text}</p>
+                    <p>url: {input.url}</p>
                     </Validation>
                     <Validation>
                     <h3>Ändra till:</h3>
-                    <p>{newText}</p>
+                    <p>text : {newText}</p>
+                    <p>url: {newURL}</p>
                     </Validation>
                 </div>
                 {isLoading ? (<LoadingSpinner/> ):(
@@ -224,20 +229,19 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
           {input.name !== "links" ? (null): (<>
             <div className="input-and-edit">
             <Label 
-            htmlFor={`${sectionName}-${input.text}`}>Text:</Label>
-            
+            htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
                 <Input readOnly={!editable} 
-                id={`${sectionName}-${input.text}`}
+                id={`${sectionName}-${input.text}-${inputIndex}`}
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                <Label 
-                htmlFor={`${sectionName}-${input.url}`}>URL:</Label>
+                 <Label 
+                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>URL:</Label>
                 <Input readOnly={!editable} 
-                id={`${sectionName}-${input.url}`}
+                id={`${sectionName}-${input.url}-${inputIndex}`}
                 className="input_text"
                 type="url"
-                defaultValue={input.url} />
+                defaultValue={input.url} /> 
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>

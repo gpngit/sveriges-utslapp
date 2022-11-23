@@ -125,7 +125,6 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-console.log(pageElements)
 
     const {id, name, show, toggleShow, type, sections} = pageElements
     
@@ -191,7 +190,7 @@ console.log(pageElements)
               return (<>
 
                   <InputContainerFooter sectionId={id} 
-                  key={i} 
+                  key={`${i}-${name}`}
                   input={section} 
                   inputIndex={i} 
                   sectionName={name} 
@@ -206,7 +205,7 @@ console.log(pageElements)
 
                   <InputContainerFooterLinks
                     sectionId={id} 
-                  key={i} 
+                  key={`${i}-${name}`} 
                   input={section} 
                   inputIndex={i} 
                   sectionName={name} 
