@@ -18,6 +18,11 @@ padding-bottom:5rem;
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
+  console.log(pageOneElem.show)
+  if(!pageOneElem.show && !pageTwoElem.show){
+   return (null)
+  }
+  else{
   return ( 
     <Container>
       <Wrapper>
@@ -26,6 +31,7 @@ const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
       </Wrapper>
     </Container>
    );
+  }
 }
  
 export default FaktaPages;

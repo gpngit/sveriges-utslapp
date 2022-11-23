@@ -6,6 +6,7 @@ import BarChart from '../../barchart/BarChart'
 import { Content, Wrapper } from './ContainerStyles'
 import Image from 'next/image'
 import placeholder from "../../../public/placeholder__2.jpg"
+import { useState } from 'react'
 
 const TextContent = styled.div`
     ${flex()};
@@ -22,15 +23,18 @@ const TextContent = styled.div`
     margin-bottom:2rem;
 `
 const FaktaTwo = ({pageElements, emissions}) => {
-console.log(pageElements)
-  const {id, sections, name} = pageElements
 
-  const title = sections.find(section => section.name === 'title')
-  const subheading = sections.find(section => section.name === 'subheading')
-  const body1 = sections.find(section => section.name === 'body1')
-  const url = sections.find(section => section.name === 'source')
+    const [show, setShow] = useState(pageElements.show)
+    const {id, sections, name} = pageElements
 
-  return (
+    const title = sections.find(section => section.name === 'title')
+    const subheading = sections.find(section => section.name === 'subheading')
+    const body1 = sections.find(section => section.name === 'body1')
+    const url = sections.find(section => section.name === 'source')
+
+    return (
+    <>
+    {show && 
       <Content id="fakta-biobransle">
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
@@ -48,7 +52,8 @@ console.log(pageElements)
             sourceText={title.text}
             />
       </Content>
-
+      }
+      </>
     );
 }
  

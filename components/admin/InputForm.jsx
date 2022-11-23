@@ -127,15 +127,18 @@ const ToggleSwitch = styled.label`
 const InputForm = ({ pageElements }) => {
 
     const {id, name, show, toggleShow, type, sections} = pageElements
-    
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
+
+    console.log(visible, type)
 
     const handleShowClick = (e) => {
         e.preventDefault()
         setShowSection(!showSection)
     }
+  
     const showOrHidePage = (index, bool) => {
+        console.log(index, bool, "index, bool")
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
@@ -151,6 +154,7 @@ const InputForm = ({ pageElements }) => {
         >
             <TitleAndReveal>
             <h3>{capitalize(type)}</h3>
+            
             {toggleShow ? 
             <Row>
             <ToggleSwitch 
@@ -167,6 +171,7 @@ const InputForm = ({ pageElements }) => {
             <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
             </Row>
             :(null)} 
+            {visible ? (<>
             <button onClick={(e) => handleShowClick(e)}>
             {showSection ? 
                 <Up alt="Visa mindre"
@@ -181,8 +186,9 @@ const InputForm = ({ pageElements }) => {
                 aria-label="Visa mer" 
                 src={arrow}
                 width={20}
-                height={10}/>)}</button>
+                height={10}/>)}</button></>):(null)}
             </TitleAndReveal>
+            {visible ? (<>
             {name === "footer" ? (<>
             {showSection && <> 
             {sections.map((section, i) => {
@@ -231,7 +237,7 @@ const InputForm = ({ pageElements }) => {
           })}
           </>
           ) }
-      
+            </>):(null)}
    
             
         </Form>

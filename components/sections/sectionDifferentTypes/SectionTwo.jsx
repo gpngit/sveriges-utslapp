@@ -11,9 +11,8 @@ const ImageLandscape = styled(Image)`
 `
 
 const SectionTwo= ({ pageElements, sectionIDname }) => {
-    
+    const [show, setShow] = useState(pageElements.show)
     const {id, sections, name} = pageElements
-
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
@@ -22,6 +21,7 @@ const SectionTwo= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     return (
+        <>{show && 
         <Container 
         firstContainer
         id={sectionIDname}>
@@ -44,6 +44,7 @@ const SectionTwo= ({ pageElements, sectionIDname }) => {
             shareLink={`#${sectionIDname}`}
             sourceText={title.text}/>
         </Container>
+        }</>
     )
 }
 
