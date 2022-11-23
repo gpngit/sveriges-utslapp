@@ -226,7 +226,7 @@ const LineChart = ({emissions, pageElements}) => {
             <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
           </ChartContainer>
         </ScrollContainer>
-        </>}
+        </>} 
       </Container>
   )
 }
