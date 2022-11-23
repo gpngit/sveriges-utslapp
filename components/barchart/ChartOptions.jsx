@@ -5,6 +5,7 @@ import { flex, colors, font, fonts } from '../../styles/partials'
 
 const ChartOptions = () => {
   const options = {
+    indexAxis: 'y',
     maintainAspectRatio: false,
     responsive: true,
     scales: {
