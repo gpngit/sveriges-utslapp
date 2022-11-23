@@ -5,6 +5,7 @@ import { flex, colors, font, fonts } from '../../styles/partials'
 
 const ChartOptions = () => {
   const options = {
+    // indexAxis: 'y', om den ska ligga horisontellt
     maintainAspectRatio: false,
     responsive: true,
     scales: {
@@ -41,6 +42,10 @@ const ChartOptions = () => {
     plugins: {
       legend: {
         display: false,
+      },
+      datalabels: {
+        align: 'end',
+        anchor: 'end',
       },
       tooltip: {
         enabled: true,

@@ -15,7 +15,6 @@ const TextContent = styled.div`
     p {
         ${fonts.paragraph};
     }
-    margin-bottom:4rem;
     padding:1rem;
     width:100%;
 `
