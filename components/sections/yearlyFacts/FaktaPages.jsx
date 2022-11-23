@@ -12,20 +12,26 @@ background-color:${colors.primary};
 const Wrapper= styled.div`
 width:100%;
 padding-bottom:5rem;
- @media ${device.laptop}{
+@media ${device.laptop}{
   padding:10em;
 } 
 `
 
-const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
+const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
+  console.log(pageOneElem.show)
+  if(!pageOneElem.show && !pageTwoElem.show){
+   return (null)
+  }
+  else{
   return ( 
     <Container>
       <Wrapper>
       <FaktaOne pageElements={pageOneElem} emissions={emissions}/>
-      <FaktaTwo pageElements={pageTwoElem} emissions={emissions}/>
+      <FaktaTwo pageElements={pageTwoElem} emissions={emissions} energiMyndighetenData={energiMyndighetenData}/>
       </Wrapper>
     </Container>
    );
+  }
 }
  
 export default FaktaPages;

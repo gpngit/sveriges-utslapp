@@ -15,8 +15,6 @@ import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionOne from '../components/sections/sectionDifferentTypes/SectionOne'
-import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
-import Section from '../components/sections/sectionDifferentTypes/Section'
 import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
 import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
 
@@ -27,6 +25,7 @@ export async function getServerSideProps(){
 
   let adminData = await get(child(dbRef, 'admin/'))
   let scbData = await get(child(dbRef, 'scb/'))
+  let energiMyndighetenData = await get(child(dbRef, 'energimyndigheten/'))
 
   let rightNow = new Date()
   let timeSinceUpdate = new Date(scbData.val().date) 
@@ -40,12 +39,15 @@ export async function getServerSideProps(){
     props: {
         siteSections: adminData.val(),
         emissions: scbData.val().data,
+        energiMyndighetenData: energiMyndighetenData.val()
     }
   }
 }
 
-export default function Home({ siteSections, emissions }) {
-console.log(siteSections)
+export default function Home({ siteSections, emissions, energiMyndighetenData }) {
+
+// const showSections = siteSections.filter(item => item.show);
+//  console.log(showSections, "shown")
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
@@ -58,23 +60,23 @@ console.log(siteSections)
             // console.log(entry.target.id)
           }
       })
-      }),{threshold: 0.6})
+    }),{threshold: 0.6})
 
     let sections = document.querySelectorAll('section')
     sections.forEach(section => observer.observe(section))  
-  }, [])
 
-
+    }, [])
 
   return (
     <>
-     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
+    <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  emissions={emissions}/>
+    <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
+    emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
-    emissions={emissions}/>
+    emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
     <SectionOne 
     pageElements={siteSections.find(elem => elem.name === 'statistik')}
     sectionIDname={"statistik"} />

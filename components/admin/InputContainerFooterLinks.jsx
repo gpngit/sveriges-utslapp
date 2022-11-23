@@ -7,7 +7,6 @@ import { useState, useEffect } from "react"
 import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
-import { capitalize } from "../helpers/Capitalize"
 import Link from "next/link"
 
 const Container = styled.div`
@@ -25,9 +24,7 @@ const Container = styled.div`
         border-radius:9px;
         background-color: ${colors.bio};
         color: white;
-        border:none;   
-        a{ color: white;
-            text-decoration: none;} 
+        border:none;    
         &:hover{
             background-color:${colors.secondary};
             box-shadow: 0 0 1px ${colors.border};
@@ -38,6 +35,8 @@ const Container = styled.div`
         &:active{
             background-color:${colors.secondary};
         }
+        a{ color: white;
+            text-decoration: none;}
         
     }
     .discard{
@@ -140,50 +139,66 @@ button{
         background-color:${colors.secondary};
     }
    }
+
+
 `
 
-const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
-    //modal:
+const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  }) => {
+ 
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
-    //loading in modal:
     const [isLoading, setLoading] = useState(false)
-    //functionality:
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
-    //text in modal:
     const [newText, setNewText] = useState(null)
+    const [newURL, setNewURL] = useState(null)
 
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
     }
 
-    const sendEditToFirebase = (inputValue) => {
+    const sendTextEditToFirebase = ( inputValueTxt, ) => {
+ 
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
-        update(dbRef, {text: inputValue})
+        update(dbRef, {text: inputValueTxt})
+    }
+
+    const sendURLEditToFirebase = (inputValueURL) => {
+     
+      const db = getDatabase()
+      const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
+      update(dbRef, {url: inputValueURL})
     }
 
     const handleSave = (e) => {
+   
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        setNewText(inputValueTxt.value)
+        setNewURL(inputValueURL.value)
         setModal(true)
-        setNewText(inputValue.value)
         setEditable(!editable)
     }
 
     const confirmSave=(e) => {
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
-        sendEditToFirebase(inputValue.value)
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        sendTextEditToFirebase(inputValueTxt.value)
+        sendURLEditToFirebase(inputValueURL.value)
         setLoading(true)
+        
     }
 
     const handleDiscard = (e) => {
         e.preventDefault()
-        let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
-        inputValue.value = input.text
+        let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
+        let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        inputValueTxt.value = input.text
+        inputValueURL.value = input.url
         setEditable(!editable)
     }
     
@@ -191,27 +206,30 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
-            setNavButtons(true);
+            setNavButtons(true)
         }, 2000);
     }}, [isLoading])
     
-    const URLNav = `https://sverigesutslapp.netlify.app/#${sectionName}`
+    const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
     return (
+        
             <>
         {modal && (
             <Modal>
                 <div>
                     <Validation>
                     <h3>Ändra från:</h3>
-                    <p>{input.text}</p>
+                    <p>text: {input.text}</p>
+                    <p>url: {input.url}</p>
                     </Validation>
                     <Validation>
                     <h3>Ändra till:</h3>
-                    <p>{newText}</p>
+                    <p>text : {newText}</p>
+                    <p>url: {newURL}</p>
                     </Validation>
                 </div>
-                {isLoading ? (<LoadingSpinner/> ):(
+                 {isLoading ? (<LoadingSpinner/> ):(
                     <>  {navButtons ? (null): (<ModalButtons>
                         <button 
                         className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
@@ -232,10 +250,41 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
             </Modal>
         )}
         
-        <Container>
-    
+        <Container key={inputIndex}>
+
+          {input.name !== "links" ? (null): (<>
+            <div className="input-and-edit">
             <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
+            htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
+                <Input readOnly={!editable} 
+              
+                id={`${sectionName}-${input.text}-${inputIndex}`}
+                className="input_text"
+                type="text"
+                defaultValue={input.text} />
+                <Label 
+                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>URL:</Label>
+                <Input readOnly={!editable} 
+                id={`${sectionName}-${input.url}-${inputIndex}`}
+                className="input_text"
+                type="url"
+                defaultValue={input.url} /> 
+
+                    {!editable ? (
+                    <button 
+                    onClick={(e) => handleEditClick(e)}>Redigera</button>
+                ) : (
+                    <>
+                    <button className="discard"
+                    onClick={(e) => handleDiscard(e)}>Ångra</button>
+                    <button className="spara"
+                    onClick={(e) => handleSave(e)}>Spara</button>
+                    </>
+                )}
+            </div>
+          </>)}
+            {/* <Label 
+            htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
             </Label>
             <div className="input-and-edit">
                 <Input readOnly={!editable} 
@@ -255,10 +304,10 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}
-            </div>
+            </div> */}
         </Container>
         </>
     )
 }
 
-export default InputContainer
+export default InputContainerFooterLinks

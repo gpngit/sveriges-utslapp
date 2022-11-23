@@ -98,7 +98,9 @@ const Button = styled.button`
 `
 
 const LineChart = ({emissions, pageElements}) => {
-
+ 
+  console.log(pageElements.show, "test")
+  const [show, setShow] = useState(pageElements.show)
   const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
   const subheading = sections.find(section => section.name === 'subheading')
@@ -177,8 +179,9 @@ const LineChart = ({emissions, pageElements}) => {
     canvas.current.legend.chart.update();  
   }
 
+
   // for drawing line on chart when hover over tooltip
-  const linePlugin = [{
+  const linePlugin = {
     afterDraw: chart => {
       let ctx = chart.ctx;
       let yAxis = chart.scales.y;
@@ -199,29 +202,33 @@ const LineChart = ({emissions, pageElements}) => {
         ctx.restore(); 
       }
     }
-  }]
+  }
+
 
   return (
       <Container id='line-chart'>
+        {show && <>
         <TextContent>
           <p>{subheading.text.toUpperCase()}</p>
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
+        
         <Scrolltext>
           <p>Scrolla för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
         </Scrolltext>
         <ButtonContainer>
-          <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-          <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+          <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
           {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin,]} />
           </ChartContainer>
         </ScrollContainer>
+        </>} 
       </Container>
   )
 }

@@ -8,7 +8,7 @@ import Link from 'next/link'
 import Crumble from '../crumble/Crumble'
 
 const Container = styled.footer`
-    padding: 30px;
+    padding: 3rem;
     background-color: ${colors.secondary};
     color: white;
     
@@ -30,11 +30,9 @@ const LinksContainer = styled.div`
 const Footer = ({ pageElements }) => {
 
     const {sections} = pageElements
-
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
-    const links = sections.find(section => section.name === 'links').links
-
+    const links = pageElements.sections.filter(item => item.name === "links");
   
     return (
         <Container>
@@ -42,10 +40,10 @@ const Footer = ({ pageElements }) => {
                 <Subheading>{subheading.text.toUpperCase()}</Subheading>
                 <Title>{title.text}</Title>
                 <LinksContainer>
-                    {/* {links.map((link,indx) => 
+                    {links.map((link,indx) => 
                     <Link key={indx}
-                    href={link.link}>
-                    {link.name}</Link>)} */}
+                    href={link.url}>
+                    {link.text}</Link>)} 
                 </LinksContainer>
             </div>
             <Crumble color={colors.primary} />

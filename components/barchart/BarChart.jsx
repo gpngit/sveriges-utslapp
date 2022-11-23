@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 //charts
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-// import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
@@ -97,7 +97,7 @@ const BarChart = ({ emissions }) => {
 
     useEffect(() => {
         setChartData({
-            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
+            labels: yearlyFossilData.map(data => data.sector.text), // inte idealt men namnen är för långa
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
@@ -119,13 +119,13 @@ const BarChart = ({ emissions }) => {
     }, [])
 
     useEffect(() => {
-        setYearlyBioData(emissions.filter(emission => emission.year == displayYear).filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
-        setYearlyFossilData(emissions.filter(emission => emission.year == displayYear).filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4"))
+        setYearlyBioData(emissions.filter(emission => emission.year == displayYear).filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4" && emission.sector.val !== "10.0"))
+        setYearlyFossilData(emissions.filter(emission => emission.year == displayYear).filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val !== "0.1" && emission.sector.val !== "0.2" && emission.sector.val !== "0.3" && emission.sector.val !== "0.4" && emission.sector.val !== "10.0"))
     }, [displayYear])
 
     useEffect(() => {
         setChartData({
-            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
+            labels: yearlyFossilData.map(data => data.sector.text), // inte idealt men namnen är för långa
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),

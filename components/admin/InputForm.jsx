@@ -15,6 +15,8 @@ import arrow from "../../public/arrow_down.png"
 
 //react hooks
 import { useState } from "react"
+import InputContainerFooter from "./InputContainerFooter";
+import InputContainerFooterLinks from "./InputContainerFooterLinks";
 
 
 
@@ -123,19 +125,20 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-console.log(pageElements)
 
     const {id, name, show, toggleShow, type, sections} = pageElements
-    console.log("name:", name)
-    console.log("toggle?", toggleShow)
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
+
+    console.log(visible, type)
 
     const handleShowClick = (e) => {
         e.preventDefault()
         setShowSection(!showSection)
     }
+  
     const showOrHidePage = (index, bool) => {
+        console.log(index, bool, "index, bool")
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
@@ -151,6 +154,7 @@ console.log(pageElements)
         >
             <TitleAndReveal>
             <h3>{capitalize(type)}</h3>
+            
             {toggleShow ? 
             <Row>
             <ToggleSwitch 
@@ -167,7 +171,7 @@ console.log(pageElements)
             <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
             </Row>
             :(null)} 
-  
+            {visible ? (<>
             <button onClick={(e) => handleShowClick(e)}>
             {showSection ? 
                 <Up alt="Visa mindre"
@@ -182,17 +186,59 @@ console.log(pageElements)
                 aria-label="Visa mer" 
                 src={arrow}
                 width={20}
-                height={10}/>)}</button>
+                height={10}/>)}</button></>):(null)}
             </TitleAndReveal>
-            {showSection && sections.map((section, i) => {
-                console.log(section.name)
-                return (
-                    <InputContainer sectionId={id} key={section.name} 
-                    input={section} inputIndex={i} 
-                    sectionName={name} 
-                    />
-                )
+            {visible ? (<>
+            {name === "footer" ? (<>
+            {showSection && <> 
+            {sections.map((section, i) => {
+             
+              return (<>
+                  <InputContainerFooter 
+                  key={`${i}${id}`}
+                  sectionId={id} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
             })}
+            
+            <h3>LÄNKAR:</h3>
+            {sections.map((section, i) => {
+              return (<>
+
+                  <InputContainerFooterLinks
+                   
+                  key={`${id}${i}`} 
+                  sectionId={id} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
+            })}
+            </>}
+            </>
+            ):(  
+            <>
+            {showSection && sections.map((section, i) => {
+              
+              return (
+                  <InputContainer sectionId={id} 
+                  key={i} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+              )
+          })}
+          </>
+          ) }
+            </>):(null)}
+   
             
         </Form>
        

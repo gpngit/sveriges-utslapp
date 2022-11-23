@@ -8,6 +8,7 @@ import initFirebase from '../../firebase/initFirebase'
 import { getDatabase, ref, onValue } from "firebase/database"
 //components
 import InputForm from './InputForm'
+import Link from 'next/link'
 
 const Container = styled.main`
     background-color:${colors.primary};
@@ -18,6 +19,7 @@ const Container = styled.main`
     padding-top:4rem;
    
     .header-and-logout {
+      
         ${flex('column-reverse', 'space-between', 'center')}
         width: 100%;
         @media screen and ${device.tablet}{
@@ -41,6 +43,10 @@ const Container = styled.main`
             &:focus{
                 background-color:${colors.fossil};
             }
+        }
+        span{
+            ${flex("row")}
+            gap:10px;
         }
     }
     @media screen and ${device.tablet}{
@@ -71,9 +77,13 @@ const Portal = ({ setAuthenticated }) => {
         <Container>
             <div className='header-and-logout'>
                 <h2>Adminportal</h2>
+                <span>
                 <button onClick={() => setAuthenticated(false)}
                 type="button"
                 aria-label="Logga ut">Logga ut</button>
+                <Link href="/" target="_blank"
+                aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
+                </span>
             </div>
          
             

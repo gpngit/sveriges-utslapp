@@ -10,18 +10,7 @@ const ChartOptions = (emissions) => {
           y: { 
             // stepSize: 10000,
             min: 0,
-            max: (chart) => {
-              let {_sortedMetasets} = chart.chart
-              let highestValue = 0
-              let visibleDatasets = _sortedMetasets.filter(dataset => !dataset.hidden)
-              visibleDatasets.forEach(dataset => {
-                let valuesArray = dataset._parsed
-                let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
-                highestValue += highestValueInDataset
-              })
-              let rounded = Math.ceil(highestValue/10000)*10000
-              return rounded
-            },
+            // max: maxantal??,
             stacked: true,
             display: true,
             ticks:{

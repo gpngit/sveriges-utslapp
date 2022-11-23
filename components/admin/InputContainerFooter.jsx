@@ -7,7 +7,6 @@ import { useState, useEffect } from "react"
 import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
-import { capitalize } from "../helpers/Capitalize"
 import Link from "next/link"
 
 const Container = styled.div`
@@ -25,9 +24,7 @@ const Container = styled.div`
         border-radius:9px;
         background-color: ${colors.bio};
         color: white;
-        border:none;   
-        a{ color: white;
-            text-decoration: none;} 
+        border:none;    
         &:hover{
             background-color:${colors.secondary};
             box-shadow: 0 0 1px ${colors.border};
@@ -121,14 +118,14 @@ ${flex("column", "center", "center")}
 gap:10px;
 margin-top:1rem;
 button{
-    a{ color: white;
-        text-decoration: none;}
     ${fonts.footnote};
     border-radius:9px;
     padding: 8px;
     background-color: ${colors.bio};
     color: white;
     border:none;    
+    a{ color: white;
+    text-decoration: none;}
     &:hover{
         background-color:${colors.secondary};
         box-shadow: 0 0 1px ${colors.border};
@@ -141,18 +138,13 @@ button{
     }
    }
 `
-
-const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
-    //modal:
+const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) => {
     const [modal, setModal] = useState(false)
-    const [navButtons, setNavButtons] = useState(false)
-    //loading in modal:
     const [isLoading, setLoading] = useState(false)
-    //functionality:
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
-    //text in modal:
     const [newText, setNewText] = useState(null)
+    const [navButtons, setNavButtons] = useState(false)
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -195,9 +187,10 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         }, 2000);
     }}, [isLoading])
     
-    const URLNav = `https://sverigesutslapp.netlify.app/#${sectionName}`
+const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
     return (
+        
             <>
         {modal && (
             <Modal>
@@ -229,13 +222,15 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                 <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
                 </ModalButtons>):(null)
             }
+                
             </Modal>
         )}
         
         <Container>
-    
+
+          {input.name === "links" ? (null): (<>
             <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
+            htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
             </Label>
             <div className="input-and-edit">
                 <Input readOnly={!editable} 
@@ -256,9 +251,11 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     </>
                 )}
             </div>
+          </>)}
+          
         </Container>
         </>
     )
 }
 
-export default InputContainer
+export default InputContainerFooter
