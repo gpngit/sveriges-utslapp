@@ -153,20 +153,28 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
         setEditable(!editable)
     }
 
-    const sendEditToFirebase = (inputValueTxt, inputValueURL) => {
-      console.log(inputValueTxt, inputValueURL)
+    const sendTextEditToFirebase = ( inputValueTxt, ) => {
+      console.log("skickar till databas:",inputValueTxt)
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
-        update(dbRef, {text: inputValueTxt},{url: inputValueURL})
+        update(dbRef, {text: inputValueTxt})
     }
 
+    const sendURLEditToFirebase = (inputValueURL) => {
+      console.log("skickar till databas:",inputValueURL)
+      const db = getDatabase()
+      const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
+      update(dbRef, {url: inputValueURL})
+    }
 
     const handleSave = (e) => {
+   
         e.preventDefault()
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
         setNewText(inputValueTxt.value)
         setNewURL(inputValueURL.value)
+        setModal(true)
         setEditable(!editable)
     }
 
@@ -174,7 +182,8 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
         e.preventDefault()
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
-        sendEditToFirebase(inputValueTxt.value, inputValueURL.value)
+        sendTextEditToFirebase(inputValueTxt.value)
+        sendURLEditToFirebase(inputValueURL.value)
         setLoading(true)
         
     }
@@ -224,24 +233,26 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
             </Modal>
         )}
         
-        <Container>
+        <Container key={inputIndex}>
 
           {input.name !== "links" ? (null): (<>
             <div className="input-and-edit">
             <Label 
             htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
                 <Input readOnly={!editable} 
+              
                 id={`${sectionName}-${input.text}-${inputIndex}`}
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                 <Label 
+                <Label 
                 htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>URL:</Label>
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.url}-${inputIndex}`}
                 className="input_text"
                 type="url"
                 defaultValue={input.url} /> 
+
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>

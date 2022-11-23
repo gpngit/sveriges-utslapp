@@ -167,7 +167,6 @@ const InputForm = ({ pageElements }) => {
             <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
             </Row>
             :(null)} 
-  
             <button onClick={(e) => handleShowClick(e)}>
             {showSection ? 
                 <Up alt="Visa mindre"
@@ -187,10 +186,11 @@ const InputForm = ({ pageElements }) => {
             {name === "footer" ? (<>
             {showSection && <> 
             {sections.map((section, i) => {
+             
               return (<>
-
-                  <InputContainerFooter sectionId={id} 
-                  key={`${i}-${name}`}
+                  <InputContainerFooter 
+                  key={`${i}${id}`}
+                  sectionId={id} 
                   input={section} 
                   inputIndex={i} 
                   sectionName={name} 
@@ -204,8 +204,9 @@ const InputForm = ({ pageElements }) => {
               return (<>
 
                   <InputContainerFooterLinks
-                    sectionId={id} 
-                  key={`${i}-${name}`} 
+                   
+                  key={`${id}${i}`} 
+                  sectionId={id} 
                   input={section} 
                   inputIndex={i} 
                   sectionName={name} 
