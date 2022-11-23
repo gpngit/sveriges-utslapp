@@ -179,8 +179,9 @@ const LineChart = ({emissions, pageElements}) => {
     canvas.current.legend.chart.update();  
   }
 
+
   // for drawing line on chart when hover over tooltip
-  const linePlugin = [{
+  const linePlugin = {
     afterDraw: chart => {
       let ctx = chart.ctx;
       let yAxis = chart.scales.y;
@@ -201,7 +202,8 @@ const LineChart = ({emissions, pageElements}) => {
         ctx.restore(); 
       }
     }
-  }]
+  }
+
 
   return (
       <Container id='line-chart'>
@@ -217,13 +219,13 @@ const LineChart = ({emissions, pageElements}) => {
           <SmallArrow color={colors.bio} size={16} />
         </Scrolltext>
         <ButtonContainer>
-          <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-          <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+          <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
           {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin,]} />
           </ChartContainer>
         </ScrollContainer>
         </>} 
