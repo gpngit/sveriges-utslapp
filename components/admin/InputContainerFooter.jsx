@@ -124,6 +124,8 @@ button{
     background-color: ${colors.bio};
     color: white;
     border:none;    
+    a{ color: white;
+    text-decoration: none;}
     &:hover{
         background-color:${colors.secondary};
         box-shadow: 0 0 1px ${colors.border};
@@ -186,7 +188,7 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
         }, 2000);
     }}, [isLoading])
     
-
+const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
     return (
         
@@ -212,11 +214,15 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
                         </ModalButtons>)} </>
                 )}
                 {navButtons ? (  <ModalButtons>
-                <Link href="/" target="_blank"
-                aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
+                <button>
+                <Link href={URLNav} 
+                target="_blank"
+                aria-label="Tillbaka till huvudsidan">
+                Hem</Link>
+                </button>
                 <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
                 </ModalButtons>):(null)
-              }
+            }
                 
             </Modal>
         )}
@@ -247,28 +253,7 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
                 )}
             </div>
           </>)}
-            {/* <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
-            </Label>
-            <div className="input-and-edit">
-                <Input readOnly={!editable} 
-                id={`${sectionName}-${input.name}`}
-                className="input_text"
-                type="text"
-                defaultValue={input.text} />
-                
-                    {!editable ? (
-                    <button 
-                    onClick={(e) => handleEditClick(e)}>Redigera</button>
-                ) : (
-                    <>
-                    <button className="discard"
-                    onClick={(e) => handleDiscard(e)}>Ångra</button>
-                    <button className="spara"
-                    onClick={(e) => handleSave(e)}>Spara</button>
-                    </>
-                )}
-            </div> */}
+          
         </Container>
         </>
     )

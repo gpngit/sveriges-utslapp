@@ -7,7 +7,7 @@ import { useState, useEffect } from "react"
 import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
-import { capitalize } from "../helpers/Capitalize"
+import Link from "next/link"
 
 const Container = styled.div`
     ${flex()};
@@ -35,6 +35,8 @@ const Container = styled.div`
         &:active{
             background-color:${colors.secondary};
         }
+        a{ color: white;
+            text-decoration: none;}
         
     }
     .discard{
@@ -118,6 +120,8 @@ ${flex("column", "center", "center")}
 gap:10px;
 margin-top:1rem;
 button{
+    a{ color: white;
+        text-decoration: none;}
     ${fonts.footnote};
     border-radius:9px;
     padding: 8px;
@@ -135,13 +139,14 @@ button{
         background-color:${colors.secondary};
     }
    }
-}
+
 
 `
 
 const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  }) => {
  
     const [modal, setModal] = useState(false)
+    const [navButtons, setNavButtons] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
@@ -201,10 +206,11 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
-            setModal(false)
+            setNavButtons(true)
         }, 2000);
     }}, [isLoading])
     
+    const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
     return (
         
@@ -223,13 +229,24 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                     <p>url: {newURL}</p>
                     </Validation>
                 </div>
-                {isLoading ? (<LoadingSpinner/> ):(
-                <ModalButtons>
-                <button 
-                className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
-                <button 
-                className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
-                </ModalButtons>)}
+                 {isLoading ? (<LoadingSpinner/> ):(
+                    <>  {navButtons ? (null): (<ModalButtons>
+                        <button 
+                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        <button 
+                        className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
+                        </ModalButtons>)} </>
+                )}
+                {navButtons ? (  <ModalButtons>
+                <button>
+                <Link href={URLNav} 
+                target="_blank"
+                aria-label="Tillbaka till huvudsidan">
+                Hem</Link>
+                </button>
+                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
+                </ModalButtons>):(null)
+            }
             </Modal>
         )}
         
