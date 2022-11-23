@@ -151,7 +151,7 @@ console.log(pageElements)
         >
             <TitleAndReveal>
             <h3>{capitalize(type)}</h3>
-            {name !== "hero" ? 
+            {toggleShow ? 
             <Row>
             <ToggleSwitch 
             aria-label="Stäng av/Sätt på en sektion"
