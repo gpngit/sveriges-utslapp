@@ -43,8 +43,12 @@ const ChartOptions = () => {
       legend: {
         display: false,
       },
+      datalabels: {
+        align: 'end',
+        anchor: 'end',
+      },
       tooltip: {
-        enabled: true,
+        enabled: false,
         mode: 'index',
         intersect: false,
         backgroundColor: colors.secondary,
