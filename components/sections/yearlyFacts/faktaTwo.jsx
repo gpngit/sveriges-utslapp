@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import { flex, fonts, colors, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import BarChart from '../../barchart/BarChart'
 import { Content, Wrapper } from './ContainerStyles'
 import Image from 'next/image'
 import placeholder from "../../../public/placeholder__2.jpg"
+import FuelOrigin from '../../fuel-origin/FuelOrigin'
 import { useState } from 'react'
 
 const TextContent = styled.div`
@@ -22,11 +22,11 @@ const TextContent = styled.div`
     }
     margin-bottom:2rem;
 `
-const FaktaTwo = ({pageElements, emissions}) => {
-
-    const [show, setShow] = useState(pageElements.show)
+const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
+    
+    console.log(pageElements)
     const {id, sections, name} = pageElements
-
+    const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
@@ -40,11 +40,12 @@ const FaktaTwo = ({pageElements, emissions}) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-            <Image src={placeholder}
+            {/* <Image src={placeholder}
             width={800}
             height={500}
-            alt={"Biodrivmedel"}/>
+            alt={"Biodrivmedel"}/> */}
             </TextContent>
+                <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 

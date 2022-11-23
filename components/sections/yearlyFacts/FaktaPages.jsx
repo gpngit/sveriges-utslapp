@@ -17,7 +17,7 @@ padding-bottom:5rem;
 } 
 `
 
-const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
+const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
   console.log(pageOneElem.show)
   if(!pageOneElem.show && !pageTwoElem.show){
    return (null)
@@ -27,7 +27,7 @@ const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
     <Container>
       <Wrapper>
       <FaktaOne pageElements={pageOneElem} emissions={emissions}/>
-      <FaktaTwo pageElements={pageTwoElem} emissions={emissions}/>
+      <FaktaTwo pageElements={pageTwoElem} emissions={emissions} energiMyndighetenData={energiMyndighetenData}/>
       </Wrapper>
     </Container>
    );

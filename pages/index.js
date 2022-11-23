@@ -25,6 +25,7 @@ export async function getServerSideProps(){
 
   let adminData = await get(child(dbRef, 'admin/'))
   let scbData = await get(child(dbRef, 'scb/'))
+  let energiMyndighetenData = await get(child(dbRef, 'energimyndigheten/'))
 
   let rightNow = new Date()
   let timeSinceUpdate = new Date(scbData.val().date) 
@@ -38,11 +39,12 @@ export async function getServerSideProps(){
     props: {
         siteSections: adminData.val(),
         emissions: scbData.val().data,
+        energiMyndighetenData: energiMyndighetenData.val()
     }
   }
 }
 
-export default function Home({ siteSections, emissions }) {
+export default function Home({ siteSections, emissions, energiMyndighetenData }) {
 
 // const showSections = siteSections.filter(item => item.show);
 //  console.log(showSections, "shown")
@@ -58,17 +60,15 @@ export default function Home({ siteSections, emissions }) {
             // console.log(entry.target.id)
           }
       })
-      }),{threshold: 0.6})
+    }),{threshold: 0.6})
 
     let sections = document.querySelectorAll('section')
     sections.forEach(section => observer.observe(section))  
-  }, [])
 
-
+    }, [])
 
   return (
     <>
-   
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
@@ -76,7 +76,7 @@ export default function Home({ siteSections, emissions }) {
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
-    emissions={emissions}/>
+    emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
     <SectionOne 
     pageElements={siteSections.find(elem => elem.name === 'statistik')}
     sectionIDname={"statistik"} />
