@@ -17,12 +17,12 @@ padding-bottom:5rem;
 } 
 `
 
-const FaktaPages = ({pageOneElem, pageTwoElem, emissions}) => {
+const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
   return ( 
     <Container>
       <Wrapper>
       <FaktaOne pageElements={pageOneElem} emissions={emissions}/>
-      <FaktaTwo pageElements={pageTwoElem} emissions={emissions}/>
+      <FaktaTwo pageElements={pageTwoElem} emissions={emissions} energiMyndighetenData={energiMyndighetenData}/>
       </Wrapper>
     </Container>
    );

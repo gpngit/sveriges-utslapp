@@ -19,7 +19,6 @@ import SectionTypeTwo from "../components/sections/sectionDifferentTypes/Section
 import Section from '../components/sections/sectionDifferentTypes/Section'
 import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
 import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
-import FuelOrigin from '../components/fuel-origin/FuelOrigin'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -74,12 +73,11 @@ console.log(siteSections)
     <>
     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <FuelOrigin pageElements={siteSections.find(elem => elem.name === 'fakta-biobransle')} data={energiMyndighetenData} />
     <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
-    emissions={emissions}/>
+    emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
     <SectionOne 
     pageElements={siteSections.find(elem => elem.name === 'statistik')}
     sectionIDname={"statistik"} />

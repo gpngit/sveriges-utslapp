@@ -7,30 +7,15 @@ import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
 //react hooks
 import { useState, useEffect, useRef } from 'react';
-//context
-import { useContext } from 'react'
-import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
   position: relative;
   padding: 5em;
-  background-color: ${colors.primary};
   color: ${colors.secondary};
   @media ${device.mobileL}{
     padding-right: 0em;
-  }
-`
-const TextContent = styled.div`
-  padding: 1rem 0rem;
-
-  h2 {
-      ${fonts.heading};;
-  }
-
-  p {
-      ${fonts.paragraph};
   }
 `
 const ButtonContainer = styled.div`
@@ -70,39 +55,8 @@ const ChartContainer = styled.div`
   width: 100%;
   min-width: ${size.tablet};
 `
-const Button = styled.button`
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 1rem;
-  background-color: white;
-  color: ${colors.secondary};
 
-  ${props => props.bio && css`
-    background-color: ${colors.bio};
-    color: white;
-  `}
-
-  ${props => props.fossil && css`
-    background-color: ${colors.fossil};
-    color: white;
-  `}
-
-  &.active {
-    text-decoration: line-through;
-    filter: brightness(90%);
-  }
-
-  &:hover {
-    filter: brightness(90%);
-  }
-`
-
-const FuelOrigin = ({data, pageElements}) => {
-
-  const {sections} = pageElements
-  const title = sections.find(section => section.name === 'title')
-  const subheading = sections.find(section => section.name === 'subheading')
-  const body1 = sections.find(section => section.name === 'body1')
+const FuelOrigin = ({energiMyndighetenData}) => {
 
   const canvas = useRef()
   const [options, setOptions] = useState(ChartOptions())
@@ -115,8 +69,8 @@ const FuelOrigin = ({data, pageElements}) => {
   const datasets = []
   for (let i=0; i<10; i++){
     let obj = {
-        label: data.map(data => data.fuels[i]).map(data => data.name)[i],
-        data: data.map(data => data.fuels[i]).map(data => data.value),
+        label: energiMyndighetenData.map(data => data.fuels[i]).map(data => data.name)[i],
+        data: energiMyndighetenData.map(data => data.fuels[i]).map(data => data.value),
         fill: true,
         backgroundColor: colors[i],
         pointRadius: 0,
@@ -127,28 +81,44 @@ const FuelOrigin = ({data, pageElements}) => {
   
   useEffect(() => {
     setChartData({
-        labels: data.map(data => data.year),
+        labels: energiMyndighetenData.map(data => data.year),
         datasets: datasets    
     })
   }, [])
 
+   // for drawing line on chart when hover over tooltip
+   const linePlugin = {
+    afterDraw: chart => {
+      let ctx = chart.ctx;
+      let yAxis = chart.scales.y;
+
+      let gradient = ctx.createLinearGradient(0, 0, 0, yAxis.height);
+      gradient.addColorStop(0, 'transparent');
+      gradient.addColorStop(1 , "rgba(0,0,0,.5)");
+
+      if (chart.tooltip?._active?.length) {
+        let x = chart.tooltip._active[0].element.x;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, yAxis.top);
+        ctx.lineTo(x, yAxis.bottom);
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = gradient;
+        ctx.stroke();
+        ctx.restore(); 
+      }
+    }
+  }
+
   return (
       <Container id='line-chart'>
-        <TextContent>
-          <p>{subheading.text.toUpperCase()}</p>
-          <h2>{title.text}</h2>
-          <p>{body1.text}</p>
-        </TextContent>
         <Scrolltext>
           <p>Scrolla för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
         </Scrolltext>
-        <ButtonContainer>
-            {/* knappar ??? */}
-        </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin]} />
           </ChartContainer>
         </ScrollContainer>
       </Container>
