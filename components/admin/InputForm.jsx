@@ -126,8 +126,7 @@ const InputForm = ({ pageElements }) => {
 console.log(pageElements)
 
     const {id, name, show, toggleShow, type, sections} = pageElements
-    console.log("name:", name)
-    console.log("toggle?", toggleShow)
+    
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
 
@@ -184,11 +183,14 @@ console.log(pageElements)
                 width={20}
                 height={10}/>)}</button>
             </TitleAndReveal>
+      
             {showSection && sections.map((section, i) => {
-                console.log(section.name)
+              
                 return (
-                    <InputContainer sectionId={id} key={section.name} 
-                    input={section} inputIndex={i} 
+                    <InputContainer sectionId={id} 
+                    key={i} 
+                    input={section} 
+                    inputIndex={i} 
                     sectionName={name} 
                     />
                 )
