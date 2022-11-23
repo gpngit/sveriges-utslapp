@@ -125,8 +125,9 @@ const ToggleSwitch = styled.label`
 const InputForm = ({ pageElements }) => {
 console.log(pageElements)
 
-    const {id, name, show, sections} = pageElements
+    const {id, name, show, toggleShow, type, sections} = pageElements
     console.log("name:", name)
+    console.log("toggle?", toggleShow)
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
 
@@ -149,7 +150,7 @@ console.log(pageElements)
         <Form className="form"
         >
             <TitleAndReveal>
-            <h3>{capitalize(name)}</h3>
+            <h3>{capitalize(type)}</h3>
             {name !== "hero" ? 
             <Row>
             <ToggleSwitch 
