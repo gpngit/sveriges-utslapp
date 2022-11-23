@@ -8,6 +8,7 @@ import { getDatabase, ref, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
 import { capitalize } from "../helpers/Capitalize"
+import Link from "next/link"
 
 const Container = styled.div`
     ${flex()};
@@ -24,7 +25,9 @@ const Container = styled.div`
         border-radius:9px;
         background-color: ${colors.bio};
         color: white;
-        border:none;    
+        border:none;   
+        a{ color: white;
+            text-decoration: none;} 
         &:hover{
             background-color:${colors.secondary};
             box-shadow: 0 0 1px ${colors.border};
@@ -118,6 +121,8 @@ ${flex("column", "center", "center")}
 gap:10px;
 margin-top:1rem;
 button{
+    a{ color: white;
+        text-decoration: none;}
     ${fonts.footnote};
     border-radius:9px;
     padding: 8px;
@@ -135,20 +140,20 @@ button{
         background-color:${colors.secondary};
     }
    }
-}
-
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
-    
-
+    //modal:
     const [modal, setModal] = useState(false)
+    const [navButtons, setNavButtons] = useState(false)
+    //loading in modal:
     const [isLoading, setLoading] = useState(false)
+    //functionality:
     const targetId = sectionId-1
     const [editable, setEditable] = useState(false)
+    //text in modal:
     const [newText, setNewText] = useState(null)
 
-   
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
@@ -161,7 +166,6 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     }
 
     const handleSave = (e) => {
-    
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)
@@ -174,7 +178,6 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         sendEditToFirebase(inputValue.value)
         setLoading(true)
-        
     }
 
     const handleDiscard = (e) => {
@@ -188,13 +191,13 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
-            setModal(false)
+            setNavButtons(true);
         }, 2000);
     }}, [isLoading])
     
+    const URLNav = `https://sverigesutslapp.netlify.app/#${sectionName}`
 
     return (
-        
             <>
         {modal && (
             <Modal>
@@ -209,12 +212,23 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     </Validation>
                 </div>
                 {isLoading ? (<LoadingSpinner/> ):(
-                <ModalButtons>
-                <button 
-                className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
-                <button 
-                className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
-                </ModalButtons>)}
+                    <>  {navButtons ? (null): (<ModalButtons>
+                        <button 
+                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        <button 
+                        className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
+                        </ModalButtons>)} </>
+                )}
+                {navButtons ? (  <ModalButtons>
+                <button>
+                <Link href={URLNav} 
+                target="_blank"
+                aria-label="Tillbaka till huvudsidan">
+                Hem</Link>
+                </button>
+                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
+                </ModalButtons>):(null)
+            }
             </Modal>
         )}
         

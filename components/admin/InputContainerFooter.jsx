@@ -158,7 +158,6 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
     }
 
     const handleSave = (e) => {
-    
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)
