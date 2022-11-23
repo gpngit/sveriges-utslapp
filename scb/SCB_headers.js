@@ -64,31 +64,31 @@ export const sectorValueTexts = [{
     text: "NATIONELL TOTAL (inklusive LULUCF, inklusive internationella transporter)"
     }, {
     val: '1.0',
-    text: "ARBETSMASKINER, TOTALT"
+    text: "ARBETSMASKINER"
     }, {
     val: '2.0',
-    text: "AVFALL, TOTALT",
+    text: "AVFALL",
     }, {
     val: '3.0',
-    text: "EL OCH FJÄRRVÄRME, TOTALT",
+    text: "EL OCH FJÄRRVÄRME",
     }, {
     val: '4.0',
-    text: "INDUSTRI, TOTALT",
+    text: "INDUSTRI",
     }, {
     val: '8.0',
-    text: "INRIKES TRANSPORTER, TOTALT"
+    text: "INRIKES TRANSPORTER"
     }, {
     val: '5.0',
-    text: "UTRIKES TRANSPORTER, TOTALT"
+    text: "UTRIKES TRANSPORTER"
     }, {
     val: '6.0',
-    text: "JORDBRUK, TOTALT"
+    text: "JORDBRUK"
     }, {
     val: '7.0',
-    text: "LÖSNINGSMEDEL OCH ÖVRIG PRODUKTANVÄNDNING, TOTALT"
+    text: "ÖVRIG PRODUKTANVÄNDNING"
     }, {
     val: '9.0',
-    text: "EGEN UPPVÄRMNING AV BOSTÄDER OCH LOKALER, TOTALT"
+    text: "UPPVÄRMNING AV BOSTÄDER/LOKALER OCH LOKALER"
     }, {
     val: '10.0',
     text: "MARKANVÄNDNING, FÖRÄNDRAD MARKANVÄNDNING OCH SKOGSBRUK (LULUCF), TOTALT"
