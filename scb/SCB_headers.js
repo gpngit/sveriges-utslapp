@@ -88,7 +88,7 @@ export const sectorValueTexts = [{
     text: "ÖVRIG PRODUKTANVÄNDNING"
     }, {
     val: '9.0',
-    text: "UPPVÄRMNING AV BOSTÄDER/LOKALER OCH LOKALER"
+    text: "EGEN UPPVÄRMNING AV BOSTÄDER"
     }, {
     val: '10.0',
     text: "MARKANVÄNDNING, FÖRÄNDRAD MARKANVÄNDNING OCH SKOGSBRUK (LULUCF), TOTALT"
