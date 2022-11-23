@@ -15,6 +15,8 @@ import arrow from "../../public/arrow_down.png"
 
 //react hooks
 import { useState } from "react"
+import InputContainerFooter from "./InputContainerFooter";
+import InputContainerFooterLinks from "./InputContainerFooterLinks";
 
 
 
@@ -123,7 +125,6 @@ const ToggleSwitch = styled.label`
 `
 
 const InputForm = ({ pageElements }) => {
-console.log(pageElements)
 
     const {id, name, show, toggleShow, type, sections} = pageElements
     
@@ -166,7 +167,6 @@ console.log(pageElements)
             <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
             </Row>
             :(null)} 
-  
             <button onClick={(e) => handleShowClick(e)}>
             {showSection ? 
                 <Up alt="Visa mindre"
@@ -183,18 +183,56 @@ console.log(pageElements)
                 width={20}
                 height={10}/>)}</button>
             </TitleAndReveal>
-      
+            {name === "footer" ? (<>
+            {showSection && <> 
+            {sections.map((section, i) => {
+             
+              return (<>
+                  <InputContainerFooter 
+                  key={`${i}${id}`}
+                  sectionId={id} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
+            })}
+            
+            <h3>LÄNKAR:</h3>
+            {sections.map((section, i) => {
+              return (<>
+
+                  <InputContainerFooterLinks
+                   
+                  key={`${id}${i}`} 
+                  sectionId={id} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
+            })}
+            </>}
+            </>
+            ):(  
+            <>
             {showSection && sections.map((section, i) => {
               
-                return (
-                    <InputContainer sectionId={id} 
-                    key={i} 
-                    input={section} 
-                    inputIndex={i} 
-                    sectionName={name} 
-                    />
-                )
-            })}
+              return (
+                  <InputContainer sectionId={id} 
+                  key={i} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+              )
+          })}
+          </>
+          ) }
+      
+   
             
         </Form>
        
