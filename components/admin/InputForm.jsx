@@ -15,6 +15,8 @@ import arrow from "../../public/arrow_down.png"
 
 //react hooks
 import { useState } from "react"
+import InputContainerFooter from "./InputContainerFooter";
+import InputContainerFooterLinks from "./InputContainerFooterLinks";
 
 
 
@@ -183,18 +185,54 @@ console.log(pageElements)
                 width={20}
                 height={10}/>)}</button>
             </TitleAndReveal>
-      
+            {name === "footer" ? (<>
+            {showSection && <> 
+            {sections.map((section, i) => {
+              return (<>
+
+                  <InputContainerFooter sectionId={id} 
+                  key={i} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
+            })}
+            
+            <h3>LÄNKAR:</h3>
+            {sections.map((section, i) => {
+              return (<>
+
+                  <InputContainerFooterLinks
+                    sectionId={id} 
+                  key={i} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+                  </>
+              )
+            })}
+            </>}
+            </>
+            ):(  
+            <>
             {showSection && sections.map((section, i) => {
               
-                return (
-                    <InputContainer sectionId={id} 
-                    key={i} 
-                    input={section} 
-                    inputIndex={i} 
-                    sectionName={name} 
-                    />
-                )
-            })}
+              return (
+                  <InputContainer sectionId={id} 
+                  key={i} 
+                  input={section} 
+                  inputIndex={i} 
+                  sectionName={name} 
+                  />
+              )
+          })}
+          </>
+          ) }
+      
+   
             
         </Form>
        
