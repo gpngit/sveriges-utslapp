@@ -15,8 +15,6 @@ import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 import SectionOne from '../components/sections/sectionDifferentTypes/SectionOne'
-import SectionTypeTwo from "../components/sections/sectionDifferentTypes/SectionTwoPictures"
-import Section from '../components/sections/sectionDifferentTypes/Section'
 import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
 import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
 
@@ -45,7 +43,10 @@ export async function getServerSideProps(){
 }
 
 export default function Home({ siteSections, emissions }) {
-console.log(siteSections)
+
+const showSections = siteSections.filter(item => item.show);
+console.log(showSections, "array")
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
