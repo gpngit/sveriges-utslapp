@@ -126,7 +126,7 @@ const InputForm = ({ pageElements }) => {
 console.log(pageElements)
 
     const {id, name, show, sections} = pageElements
-
+    console.log("name:", name)
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
 
@@ -144,12 +144,14 @@ console.log(pageElements)
         setVisible(!visible)
     } 
 
+
     return (
         <Form className="form"
         >
             <TitleAndReveal>
-                <h3>{capitalize(name)}</h3>
-                <Row>
+            <h3>{capitalize(name)}</h3>
+            {name !== "hero" ? 
+            <Row>
             <ToggleSwitch 
             aria-label="Stäng av/Sätt på en sektion"
             type="button"
@@ -161,8 +163,12 @@ console.log(pageElements)
                 <span 
                 className="slider round"></span>
             </ToggleSwitch>
-            <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p></Row>
-                <button onClick={(e) => handleShowClick(e)}>{showSection ? 
+            <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
+            </Row>
+            :(null)} 
+  
+            <button onClick={(e) => handleShowClick(e)}>
+            {showSection ? 
                 <Up alt="Visa mindre"
                 type="Button"
                 aria-label="Visa mindre" 
