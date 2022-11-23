@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 //charts
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-// import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
@@ -97,7 +97,7 @@ const BarChart = ({ emissions }) => {
 
     useEffect(() => {
         setChartData({
-            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
+            labels: yearlyFossilData.map(data => data.sector.text), // inte idealt men namnen är för långa
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
@@ -125,7 +125,7 @@ const BarChart = ({ emissions }) => {
 
     useEffect(() => {
         setChartData({
-            labels: yearlyFossilData.map(data => data.sector.val), // inte idealt men namnen är för långa
+            labels: yearlyFossilData.map(data => data.sector.text), // inte idealt men namnen är för långa
             datasets: [{
             label: 'Biogena utsläpp',
             data: yearlyBioData.map(data => data.value),
@@ -179,7 +179,7 @@ const BarChart = ({ emissions }) => {
                         <Bar ref={canvas}
                             data={chartData}
                             options={options}
-                            // plugins={[ChartDataLabels]}
+                            plugins={[ChartDataLabels]}
                         />
                     )}
                 </ChartContainer>
