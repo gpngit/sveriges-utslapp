@@ -179,7 +179,7 @@ const BarChart = ({ emissions }) => {
                         <Bar ref={canvas}
                             data={chartData}
                             options={options}
-                            plugins={[ChartDataLabels]}
+                            // plugins={[ChartDataLabels]}
                         />
                     )}
                 </ChartContainer>
