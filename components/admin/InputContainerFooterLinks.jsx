@@ -154,14 +154,14 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
     }
 
     const sendTextEditToFirebase = ( inputValueTxt, ) => {
-      console.log("skickar till databas:",inputValueTxt)
+ 
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
         update(dbRef, {text: inputValueTxt})
     }
 
     const sendURLEditToFirebase = (inputValueURL) => {
-      console.log("skickar till databas:",inputValueURL)
+     
       const db = getDatabase()
       const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
       update(dbRef, {url: inputValueURL})
