@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { flex, colors, fonts, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../../components/buttons/SourceAndShare'
+import { useState } from 'react'
 
 const Container = styled.section`
     ${flex()};
@@ -51,9 +52,10 @@ const TextContent = styled.div`
 `
 
 const Ingress = ({ pageElements }) => {
-    
+    console.log(pageElements, "ingress")
+    console.log(pageElements.show, "test")
     const {id, sections, name} = pageElements
-
+    const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
@@ -62,17 +64,20 @@ const Ingress = ({ pageElements }) => {
     return (
         <Container id='ingress'>
             <Padding>
+                {show && <>
             <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
+           
             <SourceAndShare 
             whiteBG={"no"}
             sourceLink={url.text} 
             shareLink={'#ingress'}
             sourceText={body1.text} />
+             </>}
             </Padding>
         </Container>
     )

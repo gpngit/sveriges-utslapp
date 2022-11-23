@@ -44,9 +44,8 @@ export async function getServerSideProps(){
 
 export default function Home({ siteSections, emissions }) {
 
-const showSections = siteSections.filter(item => item.show);
-console.log(showSections, "array")
-
+// const showSections = siteSections.filter(item => item.show);
+// console.log(showSections, "shown")
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
@@ -69,9 +68,10 @@ console.log(showSections, "array")
 
   return (
     <>
-     <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
+    <Hero pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
-    <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  emissions={emissions}/>
+    <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
+    emissions={emissions}/>
     <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
