@@ -98,7 +98,9 @@ const Button = styled.button`
 `
 
 const LineChart = ({emissions, pageElements}) => {
-
+ 
+  console.log(pageElements.show, "test")
+  const [show, setShow] = useState(pageElements.show)
   const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
   const subheading = sections.find(section => section.name === 'subheading')
@@ -203,11 +205,13 @@ const LineChart = ({emissions, pageElements}) => {
 
   return (
       <Container id='line-chart'>
+        {show && <>
         <TextContent>
           <p>{subheading.text.toUpperCase()}</p>
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
+        
         <Scrolltext>
           <p>Scrolla för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
@@ -222,6 +226,7 @@ const LineChart = ({emissions, pageElements}) => {
             <Line ref={canvas} data={chartData} options={options} plugins={linePlugin} />
           </ChartContainer>
         </ScrollContainer>
+        </>}
       </Container>
   )
 }

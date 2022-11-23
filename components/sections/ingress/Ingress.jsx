@@ -52,8 +52,7 @@ const TextContent = styled.div`
 `
 
 const Ingress = ({ pageElements }) => {
-    console.log(pageElements, "ingress")
-    console.log(pageElements.show, "test")
+
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
@@ -71,7 +70,6 @@ const Ingress = ({ pageElements }) => {
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
             </TextContent>
-           
             <SourceAndShare 
             whiteBG={"no"}
             sourceLink={url.text} 
