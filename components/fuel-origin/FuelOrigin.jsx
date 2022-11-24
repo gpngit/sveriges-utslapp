@@ -120,7 +120,7 @@ const FuelOrigin = ({energiMyndighetenData}) => {
   return (
       <Container id='line-chart'>
         <Scrolltext>
-          <p>Scrolla för att se utveckling</p>
+          <p>Swipa höger för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
         </Scrolltext>
         <ScrollContainer>
