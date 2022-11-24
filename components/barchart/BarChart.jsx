@@ -27,13 +27,17 @@ const ChartContainer = styled.div`
 `
 const ScrollContainer = styled.div`
  position: relative;
-  height: 100%;
+  padding-top:1rem;
+  
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
-
+  //*IE AND FIREFOX:
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
       display: none;
+      
   }
 `
 const Scrolltext = styled.div`
