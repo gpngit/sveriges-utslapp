@@ -2,7 +2,7 @@ import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent, Row, ImageWrapper, Subheading, Item } from './ContainerStyles'
+import { Container, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -20,6 +20,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
+    console.log(imgurl.text)
 
     return (
         <>
@@ -39,6 +40,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 width={700}
                 height={700}/>
                 </ImageWrapper>
+                <ImageDescription>
+                  {imgurl.text}
+                </ImageDescription>
                 <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 

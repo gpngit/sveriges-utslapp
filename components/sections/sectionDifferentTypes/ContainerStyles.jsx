@@ -91,7 +91,7 @@ export const ImageWrapper = styled.div`
 display:block;
 width:70%;
 padding-top:2rem;
-margin-bottom:1rem;
+
     .image{      
         display:block; 
         object-fit: contain;
@@ -106,6 +106,8 @@ margin-bottom:1rem;
 export const ImageDescription= styled.p`
 ${fonts.footnote};
 font-style: italic;
+margin-bottom:2rem;
+
 `
 
 export const Sources = styled.div`
