@@ -56,9 +56,8 @@ const ScrollContainer = styled.div`
   
 `
 const ChartContainer = styled.div`
-
   min-height: 70vh;
-  width: 100%;
+  width: 70%;
   min-width: ${size.tablet};
   max-width:1400px;
 `
