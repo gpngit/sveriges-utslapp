@@ -18,11 +18,11 @@ Chart.register(annotationPlugin)
 
 const Container = styled.section`
   position: relative;
-  padding: 5em;
+  padding: 5em 0em 0em 5em;
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  @media ${device.mobileL}{
-    padding-right: 0em;
+  @media ${device.tablet}{
+    padding: 5em 5em 0em 5em;
   }
 `
 const TextContent = styled.div`

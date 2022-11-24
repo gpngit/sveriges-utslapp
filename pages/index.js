@@ -71,7 +71,6 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
     emissions={emissions}/>
-    <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
     emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
