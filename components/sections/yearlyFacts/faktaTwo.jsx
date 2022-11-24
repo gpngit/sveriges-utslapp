@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flex, fonts, colors, device } from '../../../styles/partials'
+import { flex, fonts, colors, device, size } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Content, Wrapper } from './ContainerStyles'
@@ -11,17 +11,17 @@ import { useState } from 'react'
 const TextContent = styled.div`
     ${flex()};
     h2 {
-        ${fonts.heading};;
+        ${fonts.heading};
+        margin-bottom:1rem;
     }
     p {
         ${fonts.paragraph};
-        max-width:1000px;
-    }
-    img{
-        margin-top:1rem;
-        max-width:100%;
+        @media (max-width: ${size.laptop}){
+            padding-right:5rem;
+        }
     }
     margin-bottom:2rem;
+    
     max-width:1400px;
 `
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {

@@ -29,7 +29,6 @@ const ChartContainer = styled.div`
 const ScrollContainer = styled.div`
  position: relative;
   padding-top:1rem;
-  
   width: 100%;
   ${flex('row')};
   overflow-x: auto;

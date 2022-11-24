@@ -8,6 +8,7 @@ color: black;
 padding:3rem;
 width:100%;
 background-color:white;
+
 @media ${device.laptop}{
   padding-right:10rem;
 }

@@ -12,7 +12,7 @@ import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
   position: relative;
-  padding: 5em;
+  padding-bottom: 5em;
   color: ${colors.secondary};
   @media ${device.mobileL}{
     padding-right: 0em;
@@ -44,7 +44,9 @@ const Scrolltext = styled.div`
 const ScrollContainer = styled.div`
   position: relative;
   height: 100%;
-  
+  //*IE AND FIREFOX:
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
