@@ -167,7 +167,7 @@ const BarChart = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
             <Scrolltext>
-                <p>Scrolla för att se sektorer</p>
+                <p>Swipa höger för att se sektorer</p>
                 <SmallArrow color={colors.bio} size={16} />
             </Scrolltext>
             <ButtonContainer>
