@@ -2,7 +2,7 @@ import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent, Row, ImageWrapper, Subheading, Item } from './ContainerStyles'
+import { Container, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -10,7 +10,8 @@ import Image from 'next/legacy/image'
 const ImageLandscape = styled(Image)`
 `
 
-const SectionThree= ({ pageElements, sectionIDname }) => {
+const SectionDynamic= ({ pageElements, sectionIDname }) => {
+
     const [show, setShow] = useState(pageElements.show)
     const {id, sections, name} = pageElements
     const title = sections.find(section => section.name === 'title')
@@ -19,9 +20,11 @@ const SectionThree= ({ pageElements, sectionIDname }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
+    console.log(imgurl.text)
 
     return (
-        <>{show && 
+        <>
+        {show && 
         <Container 
         firstContainer
         id={sectionIDname}>
@@ -35,8 +38,11 @@ const SectionThree= ({ pageElements, sectionIDname }) => {
                 src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
-                height={500}/>
+                height={700}/>
                 </ImageWrapper>
+                <ImageDescription>
+                  {imgurl.text}
+                </ImageDescription>
                 <p>{body2.text}</p>
             </TextContent>
             <SourceAndShare 
@@ -44,9 +50,9 @@ const SectionThree= ({ pageElements, sectionIDname }) => {
             sourceLink={source.text} 
             shareLink={`#${sectionIDname}`}
             sourceText={title.text}/>
-        </Container>
-        }</>
+        </Container>}
+        </>
     )
 }
 
-export default SectionThree
+export default SectionDynamic
