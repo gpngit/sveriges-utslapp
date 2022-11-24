@@ -21,7 +21,8 @@ const Container = styled.section`
 const ChartContainer = styled.div`
     position: relative;
     height: 80%;
-    width: 100%;
+    width: 70%;
+    max-width:1300px;
     min-width: ${size.tablet};
 `
 const ScrollContainer = styled.div`

@@ -52,8 +52,6 @@ const ScrollContainer = styled.div`
   &::-webkit-scrollbar {
       display: none;
   }
-  
-  
 `
 const ChartContainer = styled.div`
   min-height: 70vh;

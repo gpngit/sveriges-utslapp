@@ -42,7 +42,6 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <p>{body1.text}</p>
                 <BarChart emissions={emissions}/> 
             </TextContent>
-            
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 

@@ -15,6 +15,7 @@ const TextContent = styled.div`
     }
     p {
         ${fonts.paragraph};
+        max-width:1000px;
     }
     img{
         margin-top:1rem;
