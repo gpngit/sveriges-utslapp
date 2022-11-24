@@ -20,10 +20,11 @@ const Container = styled.section`
 `
 const ChartContainer = styled.div`
     position: relative;
-    height: 80%;
+    height: 800px;
     width: 70%;
     max-width:1300px;
     min-width: ${size.tablet};
+    
 `
 const ScrollContainer = styled.div`
  position: relative;
@@ -37,7 +38,6 @@ const ScrollContainer = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
       display: none;
-      
   }
 `
 const Scrolltext = styled.div`
@@ -48,7 +48,7 @@ const Scrolltext = styled.div`
   padding: 20px 0px;
   color: ${colors.bio};
 
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: 900px) {
   display: none;
   }
 `
