@@ -14,9 +14,7 @@ import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
-import SectionOne from '../components/sections/sectionDifferentTypes/SectionOne'
-import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
-import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
+
 import SectionDynamic from '../components/sections/sectionDifferentTypes/SectionDynamic'
 
 export async function getServerSideProps(){
@@ -79,10 +77,8 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
     <SectionDynamic 
     pageElements={siteSections.find(elem => elem.name === 'statistik')} sectionIDname={"statistik"}/>
-     <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'skogen')}
-    sectionIDname={"skogen"}/>
-    <SectionTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
-    sectionIDname={"kolcykeln"} />
+    <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
+    sectionIDname={"kolcykeln"}/>
     <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'skogen')}
     sectionIDname={"skogen"}/>
     <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 

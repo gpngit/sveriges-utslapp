@@ -1,15 +1,14 @@
 
 import styled,{css} from 'styled-components'
-import { flex, device, colors, fonts } from '../../../styles/partials'
+import { flex, device, size, colors, fonts } from '../../../styles/partials'
 
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
 padding:3rem;
 color: black;
-
+width:100%;
 @media ${device.laptop}{
-    width:80%;
     padding-right:10rem;
 }
 ${props => 
@@ -57,19 +56,27 @@ ${props =>
 export const Text= styled.p`
 margin-top:1rem;
 margin-bottom:1rem;
+
 `
 
 export const TextContent = styled.div`
 ${flex()};
+max-width:1200px;
 h2 {
     ${fonts.heading};
     max-width:70%;
     margin-bottom:1rem;
+    @media (max-width: ${size.tablet}){
+        max-width:100%;
+    }
 }
 p {
     ${fonts.paragraph};
     max-width:70%;
-    text-align:justify;
+    text-align:left;
+    @media (max-width: ${size.tablet}){
+        max-width:90%;
+    }
 }
 `
 
@@ -84,14 +91,16 @@ export const ImageWrapper = styled.div`
 display:block;
 width:70%;
 padding-top:2rem;
-
+margin-bottom:1rem;
     .image{      
         display:block; 
-
         object-fit: contain;
         max-width: 100%;
         position: relative;
         height: unset;
+    }
+    @media (max-width: ${size.mobileL}){
+        width:90%;
     }
 `
 export const ImageDescription= styled.p`
