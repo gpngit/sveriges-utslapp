@@ -21,10 +21,9 @@ const TextContent = styled.div`
         max-width:100%;
     }
     margin-bottom:2rem;
+    max-width:1400px;
 `
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
-    
-    console.log(pageElements)
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
@@ -40,10 +39,6 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-            {/* <Image src={placeholder}
-            width={800}
-            height={500}
-            alt={"Biodrivmedel"}/> */}
             </TextContent>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
             <SourceAndShare 

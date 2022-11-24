@@ -11,6 +11,7 @@ background-color:${colors.primary};
 `
 const Wrapper= styled.div`
 width:100%;
+
 padding-bottom:5rem;
 @media ${device.laptop}{
   padding:10em;

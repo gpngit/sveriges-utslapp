@@ -17,6 +17,7 @@ const Container = styled.section`
   @media ${device.mobileL}{
     padding-right: 0em;
   }
+  
 `
 const ButtonContainer = styled.div`
   padding: 1rem;
@@ -38,22 +39,28 @@ const Scrolltext = styled.div`
   @media (min-width: ${size.tablet}) {
   display: none;
   }
+  max-width:1300px;
 `
 const ScrollContainer = styled.div`
   position: relative;
   height: 100%;
+  
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
-
+  max-width:1300px;
   &::-webkit-scrollbar {
       display: none;
   }
+  
+  
 `
 const ChartContainer = styled.div`
+
   min-height: 70vh;
   width: 100%;
   min-width: ${size.tablet};
+  max-width:1400px;
 `
 
 const FuelOrigin = ({energiMyndighetenData}) => {
@@ -74,7 +81,8 @@ const FuelOrigin = ({energiMyndighetenData}) => {
         fill: true,
         backgroundColor: colors[i],
         pointRadius: 0,
-        tension: .2
+        tension: .2,
+        borderColor: colors[i]
     }
     datasets.push(obj)
   }
@@ -118,7 +126,10 @@ const FuelOrigin = ({energiMyndighetenData}) => {
         </Scrolltext>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin]} />
+            <Line ref={canvas} 
+            data={chartData} 
+            options={options} 
+            plugins={[linePlugin]} />
           </ChartContainer>
         </ScrollContainer>
       </Container>

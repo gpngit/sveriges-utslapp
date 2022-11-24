@@ -18,6 +18,7 @@ const TextContent = styled.div`
     }
     padding:1rem;
     width:100%;
+    max-width:1400px;
 `
 
 
