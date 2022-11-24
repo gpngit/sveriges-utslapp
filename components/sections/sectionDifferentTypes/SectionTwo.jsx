@@ -35,7 +35,7 @@ const SectionTwo= ({ pageElements, sectionIDname }) => {
                 src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
-                height={300}/>
+                height={500}/>
                 </ImageWrapper>
             </TextContent>
             <SourceAndShare 

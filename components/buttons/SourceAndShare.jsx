@@ -17,7 +17,7 @@ const LinkButton = styled.a`
     border-radius: 10px;
     width: 100px;
     height: 40px;
-    ${fonts.footnote};
+    ${fonts.paragraph};
 
     ${props => 
         props.secondary && 
@@ -40,7 +40,7 @@ border: 3px solid white;
 border-radius: 10px;
 width: 100px;
 height: 40px;
-${fonts.footnote};
+${fonts.paragraph};
 
 ${props => 
     props.secondary && 
