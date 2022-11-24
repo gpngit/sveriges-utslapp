@@ -31,7 +31,9 @@ const ScrollContainer = styled.div`
     width: 100%;
     position: sticky;
     overflow-y: auto;
-
+    //*IE AND FIREFOX:
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
     }
