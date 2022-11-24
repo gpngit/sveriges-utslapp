@@ -10,7 +10,11 @@ const ChartOptions = (emissions) => {
 
     const yearsForXAxis = []
     for (let i=firstYear; i<=climateNeutralYear; i++){
-      yearsForXAxis.push(i)
+      if (i > mostRecentYear && i < 2035){
+        continue
+      } else {
+        yearsForXAxis.push(i)
+      }
     }
 
     const options = {
@@ -34,6 +38,9 @@ const ChartOptions = (emissions) => {
             stacked: true,
             display: true,
             ticks:{
+              // callback: (value, index, values) => {
+              //   console.log(value)
+              // },
               color: colors.secondary,
               font:{
                 size: '12px',
@@ -55,6 +62,7 @@ const ChartOptions = (emissions) => {
                   return yearsForXAxis[index]
                 }
               },
+              stepSize: 10000,
               color: colors.secondary,
               font:{
                 size: '12px',
