@@ -35,3 +35,8 @@ position: relative;
   }
   `}
 `
+
+export const ButtonWrapper = styled.div`
+padding:3rem;
+padding-left:3rem;
+`

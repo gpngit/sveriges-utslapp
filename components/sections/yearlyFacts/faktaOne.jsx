@@ -3,7 +3,7 @@ import { flex, colors, size, fonts } from "/styles/partials"
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
-import { Content } from './ContainerStyles'
+import { Content, ButtonWrapper } from './ContainerStyles'
 import { useState } from 'react'
 
 const TextContent = styled.div`
@@ -46,11 +46,13 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <p>{body1.text}</p>
                 <BarChart emissions={emissions}/> 
             </TextContent>
+            <ButtonWrapper>
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
             shareLink={'#faktaruta1'}
             sourceText={title.text} />
+            </ButtonWrapper>
       </Content>
         </>}</>
     );

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { flex, fonts, colors, device, size } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Content, Wrapper } from './ContainerStyles'
+import { Content, ButtonWrapper, Wrapper } from './ContainerStyles'
 import Image from 'next/image'
 import placeholder from "../../../public/placeholder__2.jpg"
 import FuelOrigin from '../../fuel-origin/FuelOrigin'
@@ -24,6 +24,7 @@ const TextContent = styled.div`
     
     max-width:1400px;
 `
+
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
@@ -42,12 +43,14 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 <p>{body1.text}</p>
             </TextContent>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
+            <ButtonWrapper>
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
             shareLink={'#fakta-biobransle'} 
             sourceText={title.text}
             />
+            </ButtonWrapper>
       </Content>
       }
       </>
