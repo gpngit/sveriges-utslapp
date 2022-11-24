@@ -8,11 +8,10 @@ color: black;
 padding:3rem;
 width:100%;
 background-color:white;
+
 @media ${device.laptop}{
   padding-right:10rem;
 }
-
-
 
 ${props => 
   props.faktaOne && 
@@ -35,4 +34,9 @@ position: relative;
   margin-top: -30px;
   }
   `}
+`
+
+export const ButtonWrapper = styled.div`
+padding:3rem;
+padding-left:3rem;
 `

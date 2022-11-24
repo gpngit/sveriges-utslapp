@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { flex, fonts, colors, device } from '../../../styles/partials'
+import { flex, fonts, colors, device, size } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Content, Wrapper } from './ContainerStyles'
+import { Content, ButtonWrapper, Wrapper } from './ContainerStyles'
 import Image from 'next/image'
 import placeholder from "../../../public/placeholder__2.jpg"
 import FuelOrigin from '../../fuel-origin/FuelOrigin'
@@ -11,20 +11,21 @@ import { useState } from 'react'
 const TextContent = styled.div`
     ${flex()};
     h2 {
-        ${fonts.heading};;
+        ${fonts.heading};
+        margin-bottom:1rem;
     }
     p {
         ${fonts.paragraph};
-    }
-    img{
-        margin-top:1rem;
-        max-width:100%;
+        @media (max-width: ${size.laptop}){
+            padding-right:5rem;
+        }
     }
     margin-bottom:2rem;
-`
-const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     
-    console.log(pageElements)
+    max-width:1400px;
+`
+
+const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
@@ -40,18 +41,16 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
-            {/* <Image src={placeholder}
-            width={800}
-            height={500}
-            alt={"Biodrivmedel"}/> */}
             </TextContent>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
+            <ButtonWrapper>
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
             shareLink={'#fakta-biobransle'} 
             sourceText={title.text}
             />
+            </ButtonWrapper>
       </Content>
       }
       </>
