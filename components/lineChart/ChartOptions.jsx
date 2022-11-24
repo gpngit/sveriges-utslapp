@@ -8,7 +8,6 @@ const ChartOptions = (emissions) => {
         responsive: true,
         scales: {
           y: { 
-            // stepSize: 10000,
             min: 0,
             max: (chart) => {
               let {_sortedMetasets} = chart.chart
@@ -52,19 +51,60 @@ const ChartOptions = (emissions) => {
         plugins: {
           annotation: {
             annotations: {
-              line1: {
+              line2030: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
                 type: 'line',
-                yMin: 6000,
-                yMax: 6000,
+                yMin: 34213,
+                yMax: 34213,
                 borderColor: colors.border,
-                borderWidth: 10,
+                borderWidth: 5,
+                borderDash: [5],
+                label: {
+                  position: 'center',
+                  display: true,
+                  content: 'Sveriges klimatmål etapp 2030',
+                  padding: {
+                    top: 10,
+                    right: 20,
+                    bottom: 10,
+                    left: 20
+                  },
+                  backgroundColor: 'rgba(255,255,255,.8)',
+                  color: 'black',
+                  font: {
+                    family: font.main,
+                    size: '14px'
+                  },
+                }
               },
-              line: {
+              line2040: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
                 type: 'line',
-                yMin: 12000,
-                yMax: 12000,
+                yMin: 23117,
+                yMax: 23117,
+                xAdjust: -100,
                 borderColor: colors.border,
-                borderWidth: 10,
+                borderWidth: 5,
+                borderDash: [5],
+                label: {
+                  position: 'center',
+                  display: true,
+                  content: 'Sveriges klimatmål etapp 2040',
+                  padding: {
+                    top: 10,
+                    right: 20,
+                    bottom: 10,
+                    left: 20
+                  },
+                  backgroundColor: 'rgba(255,255,255,.8)',
+                  color: 'black',
+                  font: {
+                    family: font.main,
+                    size: '14px'
+                  },
+                }
               }
             },
           },
