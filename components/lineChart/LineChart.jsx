@@ -2,7 +2,7 @@
 import styled, {css} from "styled-components";
 import { flex, colors, size, fonts, device } from '../../styles/partials'
 //Charts
-import { Line } from 'react-chartjs-2';
+import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
 //react hooks
@@ -98,8 +98,7 @@ const Button = styled.button`
 `
 
 const LineChart = ({emissions, pageElements}) => {
- 
-  console.log(pageElements.show, "test")
+
   const [show, setShow] = useState(pageElements.show)
   const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
@@ -113,7 +112,7 @@ const LineChart = ({emissions, pageElements}) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   })
-  const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
+  const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
@@ -179,6 +178,10 @@ const LineChart = ({emissions, pageElements}) => {
     canvas.current.legend.chart.update();  
   }
 
+  const changeDisplayYear = () => {
+    let yearClicked = canvas.current.tooltip.dataPoints[0].label
+    setDisplayYear(Number(yearClicked))
+}
 
   // for drawing line on chart when hover over tooltip
   const linePlugin = {
@@ -225,7 +228,7 @@ const LineChart = ({emissions, pageElements}) => {
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin,]} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin]} onClick={changeDisplayYear} />
           </ChartContainer>
         </ScrollContainer>
         </>} 
