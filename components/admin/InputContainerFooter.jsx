@@ -4,7 +4,7 @@ import { flex, fonts, colors, device } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from "react"
 //firebase
-import { getDatabase, ref, update } from "firebase/database"
+import { getDatabase, ref, set, update } from "firebase/database"
 //components
 import LoadingSpinner from "../loader/LoadingSpinner"
 import Link from "next/link"
@@ -156,6 +156,7 @@ const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) =>
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
         update(dbRef, {text: inputValue})
     }
+ 
 
     const handleSave = (e) => {
         e.preventDefault()
@@ -225,7 +226,7 @@ const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
                 
             </Modal>
         )}
-        
+       
         <Container>
 
           {input.name === "links" ? (null): (<>

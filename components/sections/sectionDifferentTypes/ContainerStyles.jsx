@@ -62,24 +62,28 @@ margin-bottom:1rem;
 export const TextContent = styled.div`
 ${flex()};
 h2 {
-    ${fonts.heading};;
+    ${fonts.heading};
+    max-width:70%;
+    margin-bottom:1rem;
 }
 p {
     ${fonts.paragraph};
-  
+    max-width:70%;
+    text-align:justify;
 }
 `
 
 
 export const Subheading = styled.p`
 text-transform:uppercase;
+text-align: left;
 max-width:70%;
 `
 
 export const ImageWrapper = styled.div`
 display:block;
 width:70%;
-
+padding-top:2rem;
 
     .image{      
         display:block; 

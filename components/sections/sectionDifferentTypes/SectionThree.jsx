@@ -35,7 +35,7 @@ const SectionThree= ({ pageElements, sectionIDname }) => {
                 src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
-                height={300}/>
+                height={500}/>
                 </ImageWrapper>
                 <p>{body2.text}</p>
             </TextContent>

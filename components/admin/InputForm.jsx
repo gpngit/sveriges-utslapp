@@ -149,6 +149,7 @@ const InputForm = ({ pageElements }) => {
     } 
 
 
+
     return (
         <Form className="form"
         >
@@ -192,8 +193,7 @@ const InputForm = ({ pageElements }) => {
             {name === "footer" ? (<>
             {showSection && <> 
             {sections.map((section, i) => {
-             
-              return (<>
+            return (<>
                   <InputContainerFooter 
                   key={`${i}${id}`}
                   sectionId={id} 
@@ -206,6 +206,7 @@ const InputForm = ({ pageElements }) => {
             })}
             
             <h3>LÄNKAR:</h3>
+         
             {sections.map((section, i) => {
               return (<>
 
