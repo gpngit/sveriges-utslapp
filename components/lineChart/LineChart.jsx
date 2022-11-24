@@ -127,10 +127,15 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }))
 
+  const yearsForXAxis = []
+  for (let i=1990; i<2046; i++){
+    yearsForXAxis.push(i)
+  }
+
   useEffect(() => {
     if (totalEmissions) {
         setChartData({
-            labels: years.map(year => Number(year)),
+            labels: yearsForXAxis.map(year => year),
             datasets: [{
               label: 'Fossila utsläpp',
               data: fossilEmissions.map(emissions => emissions.value),
@@ -182,7 +187,7 @@ const LineChart = ({emissions, pageElements}) => {
   }
 
   const changeDisplayYear = () => {
-    console.log(canvas.current.tooltip.dataPoints)
+
     if (canvas.current.tooltip.dataPoints[0]){
       let yearClicked = canvas.current.tooltip.dataPoints[0].label
       setDisplayYear(Number(yearClicked))
