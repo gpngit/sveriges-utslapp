@@ -17,10 +17,10 @@ const Container = styled.div`
     width: 100%;
     position: sticky;
     top: 0;
-    ${flex('row', 'space-around', 'center')};
+    ${flex('row', 'center', 'center')};
     background-color: ${colors.primary};
-    gap: 10px;
-    padding: 10px;
+    gap: 20px;
+    padding: 20px;
 `
 const InnerContainer = styled.div`
     ${flex('row', 'space-between', 'center')};
@@ -29,6 +29,7 @@ const InnerContainer = styled.div`
 
     div {
         ${flex('row', 'space-between', 'center')};
+        gap: 5px;
         cursor: pointer;
 
         p {
