@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { flex, colors, fonts } from '../../styles/partials'
 //resources
 import GreenpeaceLogo from '../../public/GreenpeaceLogo'
+import Link from 'next/link'
 
 const Container = styled.div`
     ${flex('column', 'center', 'center')};
@@ -17,7 +18,12 @@ const Crumble = ({ color }) => {
     return (
         <Container>
             <p>En sammanställning av</p>
-            <GreenpeaceLogo alt='Greenpeace-logo' color={color} />
+            <Link href="https://www.greenpeace.org/sweden/" 
+            target="_blank"
+            aria-label='Link to Greenpeace'>
+            <GreenpeaceLogo alt='Greenpeace-logo' 
+            color={color} />
+            </Link>
         </Container>
     )
 }
