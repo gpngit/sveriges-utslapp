@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, device, fonts } from '../../../styles/partials'
+import { flex, colors, device, fonts, size } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
@@ -41,41 +41,50 @@ const ScrollContainer = styled.div`
 const TextContent = styled.div`
     ${flex()};
     gap: 30px;
-    padding: 30px;
-
+    padding: 2rem;
+ 
     h1 {
     ${fonts.heading};
-   
     }
 
     p {
         ${fonts.subheading};
-        
     }
 `
 const TextAndLink = styled.div`
-  
     ${flex('column')};
     gap: 10px;
     svg {
         display: none;
     }
-
     @media ${device.tablet} {
         ${flex('row', 'flext-start', 'center')};
     gap: 20px;
     width: 100%;
+    max-width:1500px;
     svg{
         display:block;
     }
     }
-  
+    @media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
+    gap:12px;
+ 
+    }
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
+@media ${device.tablet}{
+padding-left:3rem;
+padding-right:5rem;
+}
+@media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
+
+    padding-right:2rem;
+}
 @media ${device.laptop} {
 padding-left:5rem;
-padding-right:14rem;}
+padding-right:10rem;}
+
 `
 const NavLink = styled.a`
 margin-top:1rem;
