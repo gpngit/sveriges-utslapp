@@ -5,6 +5,7 @@ import { flex, colors, size, fonts, device } from '../../styles/partials'
 import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
+import annotationPlugin from 'chartjs-plugin-annotation'
 //react hooks
 import { useState, useEffect, useRef } from 'react';
 //context
@@ -13,13 +14,15 @@ import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
 
+Chart.register(annotationPlugin)
+
 const Container = styled.section`
   position: relative;
-  padding: 5em;
+  padding: 5em 0em 0em 5em;
   background-color: ${colors.primary};
   color: ${colors.secondary};
-  @media ${device.mobileL}{
-    padding-right: 0em;
+  @media ${device.tablet}{
+    padding: 5em 5em 0em 5em;
   }
 `
 const TextContent = styled.div`
@@ -113,6 +116,7 @@ const LineChart = ({emissions, pageElements}) => {
     datasets: [],
   })
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
+  const mostRecentYear = years[years.length-1]
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
@@ -124,10 +128,19 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }))
 
+  const yearsForXAxis = []
+  for (let i=1990; i<=2040; i++){
+    if (i > mostRecentYear && i < 2035){
+      continue
+    } else {
+      yearsForXAxis.push(i)
+    }
+  }
+
   useEffect(() => {
     if (totalEmissions) {
         setChartData({
-            labels: years.map(year => year),
+            labels: yearsForXAxis.map(year => year),
             datasets: [{
               label: 'Fossila utsläpp',
               data: fossilEmissions.map(emissions => emissions.value),
@@ -179,9 +192,12 @@ const LineChart = ({emissions, pageElements}) => {
   }
 
   const changeDisplayYear = () => {
-    let yearClicked = canvas.current.tooltip.dataPoints[0].label
-    setDisplayYear(Number(yearClicked))
-}
+
+    if (canvas.current.tooltip.dataPoints[0]){
+      let yearClicked = canvas.current.tooltip.dataPoints[0].label
+      setDisplayYear(Number(yearClicked))
+    }
+  }
 
   // for drawing line on chart when hover over tooltip
   const linePlugin = {
@@ -207,7 +223,6 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
-
   return (
       <Container id='line-chart'>
         {show && <>
@@ -216,7 +231,6 @@ const LineChart = ({emissions, pageElements}) => {
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
-        
         <Scrolltext>
           <p>Scrolla för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
@@ -228,7 +242,7 @@ const LineChart = ({emissions, pageElements}) => {
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin]} onClick={changeDisplayYear} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear} />
           </ChartContainer>
         </ScrollContainer>
         </>} 

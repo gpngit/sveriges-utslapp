@@ -3,12 +3,25 @@ import { colors, font } from '../../styles/partials'
 
 const ChartOptions = (emissions) => {
 
+    const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
+    const firstYear = yearsOfData[0]
+    const mostRecentYear = yearsOfData[yearsOfData.length -1]
+    const climateNeutralYear = 2040
+
+    const yearsForXAxis = []
+    for (let i=firstYear; i<=climateNeutralYear; i++){
+      if (i > mostRecentYear && i < 2035){
+        continue
+      } else {
+        yearsForXAxis.push(i)
+      }
+    }
+
     const options = {
         maintainAspectRatio: false,
         responsive: true,
         scales: {
           y: { 
-            // stepSize: 10000,
             min: 0,
             max: (chart) => {
               let {_sortedMetasets} = chart.chart
@@ -25,6 +38,9 @@ const ChartOptions = (emissions) => {
             stacked: true,
             display: true,
             ticks:{
+              // callback: (value, index, values) => {
+              //   console.log(value)
+              // },
               color: colors.secondary,
               font:{
                 size: '12px',
@@ -40,7 +56,13 @@ const ChartOptions = (emissions) => {
             grid: {
               display: false
             },
-            ticks:{
+            ticks: {
+              callback: (value, index, values) => {
+                if (yearsForXAxis[index] === firstYear || yearsForXAxis[index] === mostRecentYear || yearsForXAxis[index] === climateNeutralYear){
+                  return yearsForXAxis[index]
+                }
+              },
+              stepSize: 10000,
               color: colors.secondary,
               font:{
                 size: '12px',
@@ -50,6 +72,105 @@ const ChartOptions = (emissions) => {
           }
         },
         plugins: {
+          annotation: {
+            annotations: {
+              labelBio: {
+                type: 'label',
+                content: ['BIOGEN CO2'],
+                color: 'white',
+                font: {
+                  family: font.main,
+                  size: '16px'
+                },
+                xValue: 15,
+                yValue: (chart) => {
+                  let yMax = chart.chart.scales.y.max
+                  if (yMax === 130000){
+                    return 80000
+                  } else if (yMax === 80000){
+                    // skicka upp ovanför grafen
+                    return 90000
+                  }
+                },
+              },
+              labelFossil: {
+                type: 'label',
+                content: ['FOSSIL CO2'],
+                color: 'white',
+                font: {
+                  family: font.main,
+                  size: '16px'
+                },
+                xValue: 15,
+                yValue: (chart) => {
+                  let yMax = chart.chart.scales.y.max
+                  if (yMax === 130000){
+                    return 50000
+                  } else if (yMax === 50000){
+                    // skicka upp ovanför grafen
+                    return 60000
+                  }
+                },
+              },
+              line2030: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                yMin: 34213,
+                yMax: 34213,
+                borderColor: colors.border,
+                borderWidth: 5,
+                borderDash: [5],
+                label: {
+                  position: 'start',
+                  display: true,
+                  content: 'Sveriges klimatmål etapp 2030',
+                  padding: {
+                    top: 10,
+                    right: 20,
+                    bottom: 10,
+                    left: 20
+                  },
+                  backgroundColor: colors.border,
+                  color: 'white',
+                  font: {
+                    family: font.main,
+                    size: '14px',
+                    weight: 'normal'
+                  },
+                }
+              },
+              line2040: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                yMin: 23117,
+                yMax: 23117,
+                xAdjust: -100,
+                borderColor: colors.border,
+                borderWidth: 5,
+                borderDash: [5],
+                label: {
+                  position: 'start',
+                  display: true,
+                  content: 'Sveriges klimatmål etapp 2040',
+                  padding: {
+                    top: 10,
+                    right: 20,
+                    bottom: 10,
+                    left: 20
+                  },
+                  backgroundColor: colors.border,
+                  color: 'white',
+                  font: {
+                    family: font.main,
+                    size: '14px',
+                    weight: 'normal'
+                  },
+                }
+              }
+            },
+          },
           legend: {
             display: false,
           },

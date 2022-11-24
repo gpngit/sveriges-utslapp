@@ -14,9 +14,8 @@ import YearChanger from '../components/year-changer/YearChanger'
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
-import SectionOne from '../components/sections/sectionDifferentTypes/SectionOne'
-import SectionTwo from '../components/sections/sectionDifferentTypes/SectionTwo'
-import SectionThree from '../components/sections/sectionDifferentTypes/SectionThree'
+
+import SectionDynamic from '../components/sections/sectionDifferentTypes/SectionDynamic'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -46,8 +45,6 @@ export async function getServerSideProps(){
 
 export default function Home({ siteSections, emissions, energiMyndighetenData }) {
 
-// const showSections = siteSections.filter(item => item.show);
-//  console.log(showSections, "shown")
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
@@ -66,6 +63,7 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     sections.forEach(section => observer.observe(section))  
 
     }, [])
+    console.log(siteSections)
 
   return (
     <>
@@ -73,17 +71,15 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     <Ingress pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
     emissions={emissions}/>
-    <YearChanger emissions={emissions} />
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
     emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
-    <SectionOne 
-    pageElements={siteSections.find(elem => elem.name === 'statistik')}
-    sectionIDname={"statistik"} />
-    <SectionTwo pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
-    sectionIDname={"kolcykeln"} />
-    <SectionThree pageElements={siteSections.find(elem => elem.name === 'skogen')}
-    sectionIDname={"skogen"} />
+    <SectionDynamic 
+    pageElements={siteSections.find(elem => elem.name === 'statistik')} sectionIDname={"statistik"}/>
+    <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
+    sectionIDname={"kolcykeln"}/>
+    <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'skogen')}
+    sectionIDname={"skogen"}/>
     <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 
     </>
   )
