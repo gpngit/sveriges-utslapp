@@ -12,8 +12,6 @@ background-color:white;
   padding-right:10rem;
 }
 
-
-
 ${props => 
   props.faktaOne && 
   css`

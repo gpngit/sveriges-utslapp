@@ -20,17 +20,22 @@ const Container = styled.section`
 `
 const ChartContainer = styled.div`
     position: relative;
-    height: 80%;
-    width: 100%;
+    height: 800px;
+    width: 70%;
+    max-width:1300px;
     min-width: ${size.tablet};
+    
 `
 const ScrollContainer = styled.div`
  position: relative;
-  height: 100%;
+  padding-top:1rem;
+  
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
-
+  //*IE AND FIREFOX:
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
       display: none;
   }
@@ -43,7 +48,7 @@ const Scrolltext = styled.div`
   padding: 20px 0px;
   color: ${colors.bio};
 
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: 900px) {
   display: none;
   }
 `
@@ -166,7 +171,7 @@ const BarChart = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
             <Scrolltext>
-                <p>Scrolla för att se sektorer</p>
+                <p>Swipa höger för att se sektorer</p>
                 <SmallArrow color={colors.bio} size={16} />
             </Scrolltext>
             <ButtonContainer>
