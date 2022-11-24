@@ -3,6 +3,16 @@ import { colors, font } from '../../styles/partials'
 
 const ChartOptions = (emissions) => {
 
+    const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
+    const firstYear = yearsOfData[0]
+    const mostRecentYear = yearsOfData[yearsOfData.length -1]
+    const climateNeutralYear = 2040
+
+    const yearsForXAxis = []
+    for (let i=firstYear; i<=climateNeutralYear; i++){
+      yearsForXAxis.push(i)
+    }
+
     const options = {
         maintainAspectRatio: false,
         responsive: true,
@@ -39,7 +49,12 @@ const ChartOptions = (emissions) => {
             grid: {
               display: false
             },
-            ticks:{
+            ticks: {
+              callback: (value, index, values) => {
+                if (yearsForXAxis[index] === firstYear || yearsForXAxis[index] === mostRecentYear || yearsForXAxis[index] === climateNeutralYear){
+                  return yearsForXAxis[index]
+                }
+              },
               color: colors.secondary,
               font:{
                 size: '12px',

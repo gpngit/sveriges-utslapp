@@ -128,7 +128,7 @@ const LineChart = ({emissions, pageElements}) => {
   }))
 
   const yearsForXAxis = []
-  for (let i=1990; i<2046; i++){
+  for (let i=1990; i<=2040; i++){
     yearsForXAxis.push(i)
   }
 
