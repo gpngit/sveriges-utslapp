@@ -50,6 +50,24 @@ const ChartOptions = (emissions) => {
           }
         },
         plugins: {
+          annotation: {
+            annotations: {
+              line1: {
+                type: 'line',
+                yMin: 6000,
+                yMax: 6000,
+                borderColor: colors.border,
+                borderWidth: 10,
+              },
+              line: {
+                type: 'line',
+                yMin: 12000,
+                yMax: 12000,
+                borderColor: colors.border,
+                borderWidth: 10,
+              }
+            },
+          },
           legend: {
             display: false,
           },

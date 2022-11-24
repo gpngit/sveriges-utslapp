@@ -5,6 +5,7 @@ import { flex, colors, size, fonts, device } from '../../styles/partials'
 import { Line, getDatasetAtEvent, getElementAtEvent, getElementsAtEvent } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartOptions from "./ChartOptions";
+import annotationPlugin from 'chartjs-plugin-annotation'
 //react hooks
 import { useState, useEffect, useRef } from 'react';
 //context
@@ -12,6 +13,8 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
+
+Chart.register(annotationPlugin)
 
 const Container = styled.section`
   position: relative;
@@ -179,9 +182,11 @@ const LineChart = ({emissions, pageElements}) => {
   }
 
   const changeDisplayYear = () => {
-    let yearClicked = canvas.current.tooltip.dataPoints[0].label
-    setDisplayYear(Number(yearClicked))
-}
+    if (canvas.current.tooltip.dataPoints[0]){
+      let yearClicked = canvas.current.tooltip.dataPoints[0].label
+      setDisplayYear(Number(yearClicked))
+    }
+  }
 
   // for drawing line on chart when hover over tooltip
   const linePlugin = {
@@ -207,7 +212,6 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
-
   return (
       <Container id='line-chart'>
         {show && <>
@@ -216,7 +220,6 @@ const LineChart = ({emissions, pageElements}) => {
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
-        
         <Scrolltext>
           <p>Scrolla för att se utveckling</p>
           <SmallArrow color={colors.bio} size={16} />
@@ -228,7 +231,7 @@ const LineChart = ({emissions, pageElements}) => {
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin]} onClick={changeDisplayYear} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear} />
           </ChartContainer>
         </ScrollContainer>
         </>} 
