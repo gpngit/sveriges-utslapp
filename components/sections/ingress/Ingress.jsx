@@ -12,6 +12,7 @@ const Container = styled.section`
     padding-bottom: 3rem;
     color: white;
     position: relative;
+    
     &::after{
         content: '';
         z-index: 1;
@@ -29,6 +30,7 @@ const Container = styled.section`
 `
 const Padding = styled.div`
 padding:3rem;
+max-width:1400px;
 
 @media screen and ${device.tablet}{
 padding:3rem;

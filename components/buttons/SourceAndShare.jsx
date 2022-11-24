@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from 'styled-components'
-import { flex, colors, fonts  } from '../../styles/partials'
+import { flex, colors, fonts, device  } from '../../styles/partials'
 import { useEffect, useState, useRef } from 'react'
 import SharingModal from '../modals/SharingModal'
 
@@ -15,8 +15,10 @@ const LinkButton = styled.a`
     color: white;
     border: 3px solid white;
     border-radius: 10px;
-    width: 100px;
-    height: 40px;
+    width: 10%;
+    min-width:100px;
+    padding:1.4rem;
+    height: 2.5rem;
     ${fonts.paragraph};
 
     ${props => 
@@ -30,6 +32,7 @@ const LinkButton = styled.a`
         border: 3px solid ${colors.secondary};
         color:${colors.secondary};
         `}
+        
 `
 const Button = styled.button`
 ${flex('row', 'center', 'center')}
@@ -38,8 +41,10 @@ text-decoration: none;
 color: white;
 border: 3px solid white;
 border-radius: 10px;
-width: 100px;
-height: 40px;
+width: 10%;
+min-width:100px;
+padding:1.4rem;
+height: 2.5rem;
 ${fonts.paragraph};
 
 ${props => 

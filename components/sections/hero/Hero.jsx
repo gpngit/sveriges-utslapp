@@ -66,7 +66,7 @@ const TextAndLink = styled.div`
         display:block;
     }
     }
-    @media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
+    @media screen and ${device.betweentabletlaptop}{
     gap:12px;
  
     }
