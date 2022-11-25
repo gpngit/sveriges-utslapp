@@ -4,7 +4,8 @@ import { flex, colors, device, fonts, size } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-import BurningForest from '../../../public/burning-forest2.png'
+// import BurningForest from '../../../public/burning-forest2.png'
+import BurningForest from '../../SVG\'s/BurningForest'
 import Arrow from '../../../public/arrow.svg'
 //components
 import Crumble from '../../../components/crumble/Crumble'
@@ -14,17 +15,130 @@ const Container = styled.header`
     position: relative;
     ${flex()};
     gap: 40px;
-    min-height: 120vh;
+    min-height: 100vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
-    .burning-forest {
+    
+    /* .burning-forest {
         position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
         bottom: 0;
         pointer-events: none;
+    } */
+
+    .burning-forest {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+        bottom: 0;
+        white-space:nowrap;
+        pointer-events: none;
+        
+        svg {
+            object-fit: cover;
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        svg.embers{
+    animation: embers 7s infinite ease-in;
+    opacity: 0;
+    z-index:0;
     }
+
+    svg#forest{
+    z-index: 1;
+    }
+
+    svg#ember-1{
+    z-index: 2;
+    animation-delay: 0s;
+    left: -50%;
+    width: 150%;
+    bottom: -20%;
+    transform: skewX(-0.1rad);
+    }
+    svg#ember-1{
+    z-index: 2;
+    animation-delay: 2.1s;
+    left: -50%;
+    width: 150%;
+    bottom: -20%;
+    transform: skewX(-0.1rad);
+    }
+    svg#ember-3{
+    transform: scaleX(-1);
+    animation-delay: 4.2s;
+    left: 60%;
+    transform: skewX(0.2rad);
+    }
+
+    svg.smoke{
+    animation: smoke 12s infinite ease-in;
+    opacity: 0;
+    z-index:0;
+    }
+
+    svg#smoke-2{
+    animation-delay: 2s;
+    animation-duration: 8s;
+    }
+
+    @keyframes embers{
+    0%{
+        transform: translate(0,20%) scaleY(1) scaleX(1);
+        opacity; 0;
+    }
+    8%{
+        opacity: 1;
+    }
+    42%{
+        opacity: 1;
+    }
+    50%{
+        transform: translate(0,10%) scaleY(1.3) scaleX(1) skewX(0.5rad);
+        opacity: 0;
+    }
+    50.1%{
+        transform: translate(0,20%) scaleY(1) scaleX(-1);
+        opacity; 0;
+    }
+    59%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
+        opacity: 0;
+    }
+}
+}
+
+@keyframes smoke{
+  0%{
+    transform: translate(0,0%) scaleY(1);
+    opacity; 0.4;
+  }
+  42%{
+    opacity: 0.8;
+  }
+  60%{
+    transform: translate(0,-20%) scaleY(1.5) skewX(-0.5rad);
+    opacity: 0.3;
+  }
+  90%{
+    transform: translate(0,-5%) scaleY(1) skewX(-0.5rad);
+    opacity; 0;
+}
+}
+
 `
 const ScrollContainer = styled.div`
     height: 100vh;
@@ -104,13 +218,13 @@ margin-top:0;
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 60vh;
+    height: 40vh;
     width: 100%;
     pointer-events: none;
     
     &.bottom {
         bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 20vh, transparent);
+        background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
     }
     
     /* &.top {
@@ -164,7 +278,8 @@ const Hero = ({ pageElements }) => {
                 </PaddingWrapper>
                 <Blurred className='bottom' />
             </ScrollContainer>
-            <Image priority className='burning-forest' src={BurningForest} alt='burning forest graphic'/>
+            <BurningForest />
+            {/* <Image priority className='burning-forest' src={BurningForest} alt='burning forest graphic'/> */}
         </Container>
     )
 }
