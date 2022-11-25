@@ -2,69 +2,74 @@
 import styled,{css} from 'styled-components'
 import { flex, device, size, colors, fonts } from '../../../styles/partials'
 
+
+
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
-padding:3rem;
 color: black;
+
 width:100%;
-@media ${device.laptop}{
-    padding-right:10rem;
-}
+padding-top:10em;
+
+
+@media only screen and ${device.tablet}{
+    top:0;
+    padding:10em;
+    }
+
 ${props => 
     props.firstContainer && 
     css`
-    background-color:white;
+
     position:relative;
     top:-100px;
-    padding-top:10em;
-    @media only screen and (${device.tablet}){
-        top:0;
-        padding:10em;
-        padding-top:10em;
-        }
     `}
-    ${props => 
-        props.secondContainer && 
-        css`
-        background-color:white;
-        position:relative;
-        top:-100px;
-        padding-top:10em;
-        @media only screen and (${device.tablet}){
-            top:0;
-            padding:10em;
-            padding-top:10em;
-            }
-        `}
+`
 
-        ${props => 
-            props.sections && 
-            css`
-            background-color:white;
-            position:relative;
-            top:-100px;
-            padding-top:10em;
-            @media only screen and (${device.tablet}){
-                top:0;
-                padding:10em;
-                padding-top:10em;
-                }
-            `}
+
+export const Grid = styled.div`
+max-width: 1500px;
+display: grid;
+gap: 3rem;
+@media ${device.tablet}{
+    grid-template-columns: repeat(2, 1fr); }
+`
+export const TextContentGrid = styled.div`
+h2 {
+    ${fonts.heading};
+    max-width:100%;
+    margin-bottom:1rem;
+
+}
+p {
+    ${fonts.paragraph};
+    max-width:90%;
+    text-align:left-justify;
+    
+}
+${props => 
+    props.body && 
+    css`
+    
+    position:relative;
+    top:-50px;
+    `}
 `
 
 export const Text= styled.p`
 margin-top:1rem;
 margin-bottom:1rem;
-
 `
 
 export const TextContent = styled.div`
+max-width:900px;
+width:50%;
 ${flex()};
-max-width:1200px;
+
 h2 {
     ${fonts.heading};
-    max-width:70%;
+    max-width:90%;
     margin-bottom:1rem;
     @media (max-width: ${size.tablet}){
         max-width:100%;
@@ -72,7 +77,7 @@ h2 {
 }
 p {
     ${fonts.paragraph};
-    max-width:70%;
+    max-width:90%;
     text-align:left;
     @media (max-width: ${size.tablet}){
         max-width:90%;
@@ -107,7 +112,6 @@ export const ImageDescription= styled.p`
 ${fonts.footnote};
 font-style: italic;
 margin-bottom:2rem;
-
 `
 
 export const Sources = styled.div`
@@ -118,19 +122,4 @@ h3{
 p{${fonts.paragraph}
 }`
 
-export const Row = styled.div`
 
-gap:2rem;
-width:100%;
-
-
-@media only screen and (${device.tablet}){ 
-${flex("row")};
-}
-
-`
-
-export const Item = styled.div`
-${flex("column")}
-gap:10px;
-`

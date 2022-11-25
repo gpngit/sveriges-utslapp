@@ -10,12 +10,13 @@ import HeadContent from '../components/Head'
 //components
 import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
-import YearChanger from '../components/year-changer/YearChanger'
+
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
 
-import SectionDynamic from '../components/sections/sectionDifferentTypes/SectionDynamic'
+
+import Sections from '../components/sections/sectionDifferentTypes/Sections'
 
 export async function getServerSideProps(){
   initFirebase()
@@ -74,12 +75,11 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     <FaktaPages pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
     emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
-    <SectionDynamic 
-    pageElements={siteSections.find(elem => elem.name === 'statistik')} sectionIDname={"statistik"}/>
-    <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'kolcykeln')}
-    sectionIDname={"kolcykeln"}/>
-    <SectionDynamic pageElements={siteSections.find(elem => elem.name === 'skogen')}
-    sectionIDname={"skogen"}/>
+    <Sections 
+    pageOneElem= {siteSections.find(elem => elem.name === 'statistik')} sectionIDnameOne={"statistik"} 
+    pageTwoElem ={siteSections.find(elem => elem.name === 'kolcykeln')} sectionIDnameTwo={'kolcykeln'}
+    pageThreeElem = {siteSections.find(elem => elem.name === 'skogen')}
+    sectionIDnameThree={"skogen"} />
     <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 
     </>
   )
