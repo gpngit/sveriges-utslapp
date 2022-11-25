@@ -9,17 +9,9 @@ const ChartOptions = (emissions) => {
     const climateNeutralYear = 2045
     const currentYear = new Date().getFullYear()
     const totalEmissions1990 = 71441.6+21027.9
-  
-
-    console.log(totalEmissions1990)
 
     const yearsForXAxis = []
     for (let i=firstYear; i<=climateNeutralYear; i++){
-      // if (i > mostRecentYear && i < 2035){
-      //   continue
-      // } else {
-      //   yearsForXAxis.push(i)
-      // }
       yearsForXAxis.push(i)
     }
 
@@ -44,9 +36,6 @@ const ChartOptions = (emissions) => {
             stacked: true,
             display: true,
             ticks:{
-              // callback: (value, index, values) => {
-              //   console.log(value)
-              // },
               color: colors.secondary,
               font:{
                 size: '12px',
@@ -99,7 +88,7 @@ const ChartOptions = (emissions) => {
                   if (yMax === 130000){
                     return 80000
                   } else if (yMax === 80000){
-                    // skicka upp ovanför grafen
+                    // skicka upp text ovanför grafen
                     return 90000
                   }
                 },
@@ -118,7 +107,7 @@ const ChartOptions = (emissions) => {
                   if (yMax === 130000){
                     return 50000
                   } else if (yMax === 50000){
-                    // skicka upp ovanför grafen
+                    // skicka upp text ovanför grafen
                     return 60000
                   }
                 },
@@ -137,12 +126,6 @@ const ChartOptions = (emissions) => {
                   yAdjust: -20,
                   display: true,
                   content: ['ETAPPMÅL 2030', `${2030-currentYear} år kvar`],
-                  // padding: {
-                  //   top: 10,
-                  //   right: 20,
-                  //   bottom: 10,
-                  //   left: 20
-                  // },
                   backgroundColor: 'transparent',
                   color: colors.secondary,
                   font: {
