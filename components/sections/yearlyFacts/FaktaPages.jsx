@@ -10,6 +10,7 @@ width:100%;
 background-color:${colors.primary};
 padding:5rem;
 padding-top:10rem;
+padding-left:7rem;
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
