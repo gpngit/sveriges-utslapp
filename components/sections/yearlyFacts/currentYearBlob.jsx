@@ -27,18 +27,13 @@ h4{
     color: ${colors.secondary};
 }
 `
-
-
 const ChosenYear = ({emissions}) => {
- 
   const context = useContext(AppContext);
   const {displayYear, setDisplayYear} = context;
-
   return ( <FrameYear>
     <Year>
     <h4>{displayYear}</h4>
     </Year>
     </FrameYear> );
 }
- 
 export default ChosenYear
