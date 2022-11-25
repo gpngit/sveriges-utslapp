@@ -26,7 +26,7 @@ gap: 3rem;
 `
 export const TextContentGrid = styled.div`
 h2 {
-    ${fonts.heading};
+    ${fonts.lessheading};
     max-width:100%;
     margin-bottom:1rem;
 
