@@ -2,8 +2,6 @@
 import styled,{css} from 'styled-components'
 import { flex, device, size, colors, fonts } from '../../../styles/partials'
 
-
-
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
@@ -16,7 +14,6 @@ padding:10em;
 }
 `
 
-
 export const Grid = styled.div`
 max-width: 1500px;
 display: grid;
@@ -24,6 +21,7 @@ gap: 3rem;
 @media ${device.laptop}{
     grid-template-columns: repeat(2, 1fr); }
 `
+
 export const TextContentGrid = styled.div`
 h2 {
     ${fonts.lessheading};
@@ -56,7 +54,6 @@ export const TextContent = styled.div`
 max-width:900px;
 width:50%;
 ${flex()};
-
 h2 {
     ${fonts.heading};
     max-width:90%;
@@ -75,7 +72,6 @@ p {
 }
 `
 
-
 export const Subheading = styled.p`
 text-transform:uppercase;
 text-align: left;
@@ -86,7 +82,6 @@ export const ImageWrapper = styled.div`
 display:block;
 width:70%;
 padding-top:2rem;
-
     .image{      
         display:block; 
         object-fit: contain;
@@ -109,7 +104,9 @@ h3{
     ${fonts.subheading};
     margin-bottom:1rem;
 }
-p{${fonts.paragraph}
-}`
+p{
+    ${fonts.paragraph}
+}
+`
 
 

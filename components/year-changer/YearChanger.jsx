@@ -8,13 +8,11 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import Chevron from '../SVG\'s/Chevron'
-//nextjs components
-import Image from "next/image";
+
 
 const Container = styled.div`
     ${fonts.footnote};
     z-index: 10;
-    
     width: 100%;
     position: sticky;
     top: 0;
@@ -22,25 +20,20 @@ const Container = styled.div`
     background-color: ${colors.primary};
     gap: 20px;
     padding: 20px;
-  
 `
 const InnerContainer = styled.div`
     ${flex('row', 'space-between', 'center')};
     flex-basis: 60%;
     max-width: 200px;
-
     div {
         ${flex('row', 'space-between', 'center')};
         gap: 5px;
         cursor: pointer;
-
         p {
             font-size: .8rem; 
             line-height:150%;
         }
     }
-
-
     .inactive {
         text-decoration: line-through;
     }
@@ -85,28 +78,35 @@ const YearChanger = ({ emissions }) => {
     useEffect(() => {
         displayYear == firstYear ? setReachedBeginning(true) : setReachedBeginning(false)
         displayYear == latestYear ? setReachedEnd(true) : setReachedEnd(false)
-    }, [displayYear])
+    }, [displayYear, firstYear, latestYear])
 
     return (
-        <>
         <Container>
             <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
             <InnerContainer>
                 <div onClick={() => decrement()}>
-                    <Chevron color={colors.secondary} size={20} direction={'left'} stroke={5} />
-                    <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
+                    <Chevron 
+                    color={colors.secondary} 
+                    size={20} 
+                    direction={'left'} 
+                    stroke={5} />
+                    <p 
+                    className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
                 </div>
                 <Year>{displayYear}</Year>
                 <div onClick={() => increment()}>
-                    <p className={reachedEnd ? 'inactive' : null}>{displayYear+1}</p>
-                    <Chevron color={colors.secondary} size={20} direction={'right'} stroke={5}  />
+                    <p 
+                    className={reachedEnd ? 'inactive' : null}>
+                        {displayYear+1}</p>
+                    <Chevron 
+                    color={colors.secondary} 
+                    size={20} 
+                    direction={'right'} 
+                    stroke={5}  />
                 </div>
             </InnerContainer>
             <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
-         
         </Container>
-    
-        </>
     )
 }
 

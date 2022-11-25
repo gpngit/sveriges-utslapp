@@ -11,6 +11,7 @@ width:60px;
 height:60px;
 background-color: ${colors.fossil};
 `
+
 const Year = styled.span`
 clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 top: 5px;
@@ -30,10 +31,11 @@ h4{
 const ChosenYear = ({emissions}) => {
   const context = useContext(AppContext);
   const {displayYear, setDisplayYear} = context;
-  return ( <FrameYear>
+  return ( 
+  <FrameYear>
     <Year>
     <h4>{displayYear}</h4>
     </Year>
-    </FrameYear> );
+  </FrameYear> );
 }
 export default ChosenYear

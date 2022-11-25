@@ -4,7 +4,6 @@ import { flex, colors, device, fonts, size } from '../../../styles/partials'
 //nextjs components
 import Image from 'next/image'
 //resources
-// import BurningForest from '../../../public/burning-forest2.png'
 import BurningForest from '../../SVG\'s/BurningForest'
 import Arrow from '../../../public/arrow.svg'
 //components
@@ -36,7 +35,6 @@ const Container = styled.header`
         bottom: 0;
         white-space:nowrap;
         pointer-events: none;
-        
         svg {
             object-fit: cover;
             position:absolute;
@@ -45,7 +43,7 @@ const Container = styled.header`
             width: 100%;
         }
 
-        svg.embers{
+    svg.embers{
     animation: embers 7s infinite ease-in;
     opacity: 0;
     z-index:0;
@@ -63,6 +61,7 @@ const Container = styled.header`
     bottom: -20%;
     transform: skewX(-0.1rad);
     }
+
     svg#ember-1{
     z-index: 2;
     animation-delay: 2.1s;
@@ -71,6 +70,7 @@ const Container = styled.header`
     bottom: -20%;
     transform: skewX(-0.1rad);
     }
+
     svg#ember-3{
     transform: scaleX(-1);
     animation-delay: 4.2s;
@@ -117,35 +117,30 @@ const Container = styled.header`
     100%{
         transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
         opacity: 0;
-    }
-}
-}
+    }}}
 
 @keyframes smoke{
-  0%{
+    0%{
     transform: translate(0,0%) scaleY(1);
     opacity; 0.4;
-  }
-  42%{
+    }
+    42%{
     opacity: 0.8;
-  }
-  60%{
+    }
+    60%{
     transform: translate(0,-20%) scaleY(1.5) skewX(-0.5rad);
     opacity: 0.3;
-  }
-  90%{
+    }
+    90%{
     transform: translate(0,-5%) scaleY(1) skewX(-0.5rad);
     opacity; 0;
-}
-}
-
+}}
 `
 const ScrollContainer = styled.div`
     height: 100vh;
     width: 100%;
     position: sticky;
     overflow-y: auto;
-    //*IE AND FIREFOX:
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -156,11 +151,9 @@ const TextContent = styled.div`
     ${flex()};
     gap: 30px;
     padding: 2rem;
- 
     h1 {
     ${fonts.heading};
     }
-
     p {
         ${fonts.subheading};
     }
@@ -173,44 +166,40 @@ const TextAndLink = styled.div`
     }
     @media ${device.tablet} {
         ${flex('row', 'flext-start', 'center')};
-    gap: 20px;
-    width: 100%;
-    max-width:1500px;
-    svg{
+        gap: 20px;
+        width: 100%;
+        max-width:1500px;
+        svg{
         display:block;
-    }
+        }
     }
     @media screen and ${device.betweentabletlaptop}{
     gap:12px;
- 
     }
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
 @media ${device.tablet}{
-padding-left:3rem;
-padding-right:5rem;
+    padding-left:3rem;
+    padding-right:5rem;
 }
 @media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
-
     padding-right:2rem;
 }
 @media ${device.laptop} {
-padding-left:5rem;
-padding-right:10rem;}
-
+    padding-left:5rem;
+    padding-right:10rem;}
 `
 const NavLink = styled.a`
-margin-top:1rem;
-@media ${device.tablet} {
-margin-top:0;
-}
+    margin-top:1rem;
+    @media ${device.tablet} {
+        margin-top:0;
+    }
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
     ${fonts.paragraph};
     background-color: ${colors.primary};
-   
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
@@ -221,7 +210,6 @@ const Blurred = styled.div`
     height: 40vh;
     width: 100%;
     pointer-events: none;
-    
     &.bottom {
         bottom: 0;
         background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
@@ -234,9 +222,7 @@ const Blurred = styled.div`
 `
 
 const Hero = ({ pageElements }) => {
-
     const {id, sections, name} = pageElements
-
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
@@ -251,28 +237,44 @@ const Hero = ({ pageElements }) => {
                 <PaddingWrapper>
                 <TextContent>
                     <TextAndLink>
-                        <p>{subheading.text.toUpperCase()}</p>
-                        {/* ingen länk här */}
+                        <p>{subheading.text.toUpperCase()}</p> 
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
-                        <ArrowStyleOne width={340} color={colors.bio} strokeWidth={4} />
-                        <NavLink href='#ingress'>Hur ser siffrorna ut egentligen?</NavLink>
+                        <ArrowStyleOne 
+                        width={340} 
+                        color={colors.bio} 
+                        strokeWidth={4} />
+                        <NavLink href='#ingress'>
+                            Hur ser siffrorna ut egentligen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
-                        <ArrowStyleTwo width={280} color={colors.bio} strokeWidth={3} />
-                        <NavLink href="#statistik">Varför rapporteras de inte?</NavLink>
+                        <ArrowStyleTwo 
+                        width={280} 
+                        color={colors.bio} 
+                        strokeWidth={3} />
+                        <NavLink href="#statistik">
+                            Varför rapporteras de inte?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
-                        <ArrowStyleThree width={320} color={colors.bio} strokeWidth={3} />
-                        <NavLink href="#kolcykeln">Men är inte biobränslen bra för naturen?</NavLink>
+                        <ArrowStyleThree 
+                        width={320} 
+                        color={colors.bio} 
+                        strokeWidth={3} />
+                        <NavLink href="#kolcykeln">
+                            Men är inte biobränslen bra för naturen?</NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
-                        <ArrowStyleFour width={360} color={colors.bio} strokeWidth={2} />
-                        <NavLink href="#skogen">Men skogen växer väl upp igen och binder kolet?</NavLink>
+                        <ArrowStyleFour 
+                        width={360} 
+                        color={colors.bio} 
+                        strokeWidth={2} />
+                        <NavLink href="#skogen">
+                            Men skogen växer väl upp igen och binder kolet?
+                            </NavLink>
                     </TextAndLink>
                 </TextContent>
                 </PaddingWrapper>

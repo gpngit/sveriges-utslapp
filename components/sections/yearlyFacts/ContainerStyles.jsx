@@ -1,7 +1,5 @@
-
 import styled,{css} from 'styled-components'
 import { flex, device, colors, size, fonts } from '../../../styles/partials'
-
 
 export const Grid = styled.div`
 max-width: 1500px;
@@ -14,13 +12,13 @@ gap: 3rem;
 
 export const FirstContent = styled.div`
 gap: 20px;
+width:100%;
     h2 {
         ${fonts.lessheading};
     }
     p {
         ${fonts.paragraph};
     }
-    width:100%;
 `
 export const SecondContent = styled.div`
 p{
@@ -28,10 +26,8 @@ p{
   margin-bottom:2rem;
   padding-right:4rem;
 }
-
 @media screen and ${device.laptopL}{
   p{ ${fonts.footnote};
-  
 }}
 
 ${props => 
@@ -39,7 +35,6 @@ ${props =>
   css`
   margin-top:-5rem;
   max-width:800px;  
- 
   @media screen and ${device.laptopL}{
     padding-left:3rem;
     position: relative;
@@ -56,7 +51,6 @@ ${props =>
       top:30%;}
     `}
 `
-
 export const Row = styled.span`
 ${flex("row")}
 gap:20px;`
@@ -66,7 +60,7 @@ color: black;
 padding:3rem;
 `
 
-export const ButtonWrapper = styled.div`
-padding:3rem;
-padding-left:3rem;
-`
+// export const ButtonWrapper = styled.div`
+// padding:3rem;
+// padding-left:3rem;
+// `

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { flex, device, colors, fonts } from '../../../styles/partials'
 import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
@@ -9,7 +8,6 @@ import Image from 'next/legacy/image'
 
 const Empty = styled.span`
 width:100%;`
-
 
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
     console.log(sectionIDname)
@@ -25,29 +23,28 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     return (
         <>
         {show && 
-        <>{sectionIDname !== "statistik" ? (
-        <Container 
-        id={sectionIDname}>
-        <Grid>
-        <TextContentGrid>
-        <Subheading>{subheading.text}</Subheading>
-        <h2>{title.text}</h2>
-        </TextContentGrid>
-        <Empty/>
-        <Empty/>
-        <TextContentGrid 
-        body>
+            <>{sectionIDname !== "statistik" ? (
+            <Container 
+            id={sectionIDname}>
+            <Grid>
+                <TextContentGrid>
+                <Subheading>{subheading.text}</Subheading>
+                <h2>{title.text}</h2>
+                </TextContentGrid>
+                <Empty/>
+                <Empty/>
+                <TextContentGrid 
+                body>
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
-                
                 </TextContentGrid>
-        <Empty/>
-        <SourceAndShare 
+                <Empty/>
+                <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
-        </Grid>
+            </Grid>
             </Container>): (
             <Container 
             id={sectionIDname}>
@@ -64,15 +61,14 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
-                </Container>) }
-        
+                </Container>
+                )}
         </>}
         </>
     )
 }
 
 export default SectionDynamic
-
 
 
 

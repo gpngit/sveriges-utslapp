@@ -12,31 +12,14 @@ const Container = styled.section`
     padding-bottom: 3rem;
     color: white;
     position: relative;
-    
-    // &::after{
-    //     content: '';
-    //     z-index: 1;
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 50%;
-    //     width: 0;
-    //     height: 0;
-    //     border: 35px solid transparent;
-    //     border-top-color: ${colors.secondary};
-    //     border-bottom: 0;
-    //     margin-left: -35px;
-    //     margin-bottom: -35px;
-    // }
 `
 const Padding = styled.div`
 padding:3rem;
 max-width:1400px;
-
 @media screen and ${device.tablet}{
 padding:3rem;
 padding-left:7rem;}
 `
-
 
 const TextContent = styled.div`
     ${flex()};
@@ -47,12 +30,10 @@ const TextContent = styled.div`
     h2 {
         ${fonts.heading};;
     }
-
     p {
         ${fonts.paragraph};
     }
 `
-
 
 const Ingress = ({ pageElements }) => {
 
@@ -63,28 +44,26 @@ const Ingress = ({ pageElements }) => {
     const body1 = sections.find(section => section.name === 'body1')
     const body2 = sections.find(section => section.name === 'body2')
     const url = sections.find(section => section.name === 'source')
+
     return (
-        <>
+       
         <Container id='ingress'>
-            <Padding>
-                {show && <>
-            <TextContent>
+        <Padding>
+            {show && <>
+                <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p>{body1.text}</p>
                 <p>{body2.text}</p>
-            </TextContent>
-            <SourceAndShare 
-            whiteBG={"no"}
-            sourceLink={url.text} 
-            shareLink={'#ingress'}
-            sourceText={body1.text} />
-             </>}
-            </Padding>
-          
+                </TextContent>
+                <SourceAndShare 
+                whiteBG={"no"}
+                sourceLink={url.text} 
+                shareLink={'#ingress'}
+                sourceText={body1.text} />
+            </>}
+        </Padding>
         </Container>
-          
-          </>
     )
 }
 
