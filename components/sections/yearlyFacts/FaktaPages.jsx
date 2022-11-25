@@ -24,9 +24,15 @@ const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}
   return ( 
     <Container>
       <Wrapper>
-      <YearChanger emissions={emissions} />
-      <FaktaOne pageElements={pageOneElem} emissions={emissions}/>
-      <FaktaTwo pageElements={pageTwoElem} emissions={emissions} energiMyndighetenData={energiMyndighetenData}/>
+      <YearChanger 
+      emissions={emissions} />
+      <FaktaOne 
+      pageElements={pageOneElem} 
+      emissions={emissions}/>
+      <FaktaTwo 
+      pageElements={pageTwoElem} 
+      emissions={emissions} 
+      energiMyndighetenData={energiMyndighetenData}/>
       </Wrapper>
     </Container>
    );

@@ -7,6 +7,7 @@ import Image from 'next/image'
 import placeholder from "../../../public/placeholder__2.jpg"
 import FuelOrigin from '../../fuel-origin/FuelOrigin'
 import { useState } from 'react'
+import ChosenYear from './currentYearBlob'
 
 const TextContent = styled.div`
     ${flex()};
@@ -36,28 +37,6 @@ const Row = styled.span`
 ${flex("row")}
 gap:20px;`
 
-const FrameYear = styled.span`
-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-position:relative;
-width:60px;
-height:60px;
-background-color: ${colors.fossil};
-`
-const Year = styled.span`
-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-top: 5px;
-left: 5px;
-right: 5px;
-bottom: 5px;
-position: absolute;
-background-color: ${colors.primary};
-${flex("center", "center")};
-p{
-    font-size:12px;
-    position: absolute;
-    top:30%;
-}
-`
 
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
@@ -74,11 +53,7 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
         <Grid>
             <TextContent>
                 <Row>
-                <FrameYear>
-                <Year>
-                <p>ÅRTAL</p>
-                </Year>
-                </FrameYear>
+                <ChosenYear/>
                 <span>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -91,7 +66,7 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                  <div>
                  <p>{body1.text}</p>
            
-    <SourceAndShare 
+        <SourceAndShare 
        whiteBG={"yes"}
        sourceLink={url.text} 
        shareLink={'#fakta-biobransle'} 
