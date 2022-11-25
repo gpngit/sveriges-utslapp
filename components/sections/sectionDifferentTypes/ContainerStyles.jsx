@@ -19,6 +19,7 @@ padding:10em;
 
 export const Grid = styled.div`
 max-width: 1500px;
+
 display: grid;
 gap: 3rem;
 @media ${device.laptop}{
@@ -29,7 +30,7 @@ h2 {
     ${fonts.lessheading};
     max-width:100%;
     margin-bottom:1rem;
-
+    
 }
 p {
     ${fonts.paragraph};
