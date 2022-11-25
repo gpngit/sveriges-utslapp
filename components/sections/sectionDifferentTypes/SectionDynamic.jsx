@@ -2,13 +2,14 @@ import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { flex, device, colors, fonts } from '../../../styles/partials'
-import { Container, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
+import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
 
-const ImageLandscape = styled(Image)`
-`
+const Empty = styled.span`
+width:100%;`
+
 
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
     console.log(sectionIDname)
@@ -24,14 +25,22 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     return (
         <>
         {show && 
-        <>{sectionIDname !== "statistik" ? (<Container 
-            id={sectionIDname}>
-                <TextContent>
-                    <Subheading>{subheading.text}</Subheading>
-                    <h2>{title.text}</h2>
+        <>{sectionIDname !== "statistik" ? (
+        <Container 
+        id={sectionIDname}>
+        <Grid>
+        <TextContentGrid>
+        <Subheading>{subheading.text}</Subheading>
+        <h2>{title.text}</h2>
+        </TextContentGrid>
+        <Empty></Empty>
+        <Empty></Empty>
+        <TextContentGrid 
+        body>
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
-                </TextContent>
+                </TextContentGrid>
+        </Grid>
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
