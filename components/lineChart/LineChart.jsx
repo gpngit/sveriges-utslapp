@@ -199,6 +199,19 @@ const LineChart = ({emissions, pageElements}) => {
     canvas.current.legend.chart.update();  
   }
 
+  const handleCheckbox = (e) => {
+    let clickedDatasetIndex = e.target.dataset.index
+    let chartDatasets = canvas.current.legend.chart._sortedMetasets
+    let {checked} = e.target
+
+    if (checked) {
+      chartDatasets[clickedDatasetIndex].hidden = false
+    } else {
+      chartDatasets[clickedDatasetIndex].hidden = true
+    }
+    canvas.current.legend.chart.update(); 
+  }
+
   const changeDisplayYear = () => {
     if (canvas.current?.tooltip?.dataPoints?.length){
       let yearClicked = canvas.current.tooltip.dataPoints[0].label
@@ -248,16 +261,16 @@ const LineChart = ({emissions, pageElements}) => {
           {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
           <CheckBoxContainer>
             <CheckboxLabel for="fossila-checkbox">Fossila utsläpp</CheckboxLabel>
-            <Checkbox id="fossila-checkbox" data-index={0} checked/>
+            <Checkbox onChange={(e) => handleCheckbox(e)} id="fossila-checkbox" data-index={0} defaultChecked/>
           </CheckBoxContainer>
           <CheckBoxContainer>
             <CheckboxLabel for="biogena-checkbox">Biogena utsläpp</CheckboxLabel>
-            <Checkbox id="biogena-checkbox" data-index={1} checked/>
+            <Checkbox onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
           </CheckBoxContainer>
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
         </>} 
