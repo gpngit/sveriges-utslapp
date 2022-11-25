@@ -39,12 +39,23 @@ ${props =>
   css`
   margin-top:-5rem;
   max-width:800px;  
+ 
   @media screen and ${device.laptopL}{
     padding-left:3rem;
     position: relative;
     top:40%;}
   `}
 
+  ${props => 
+    props.biobransle && css`
+    margin-top:-5rem;
+   
+    max-width:800px;  
+    @media screen and ${device.laptopL}{
+      padding-left:3rem;
+      position: relative;
+      top:30%;}
+    `}
 `
 
 export const Row = styled.span`
