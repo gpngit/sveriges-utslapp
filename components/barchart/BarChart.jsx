@@ -60,32 +60,6 @@ const ButtonContainer = styled.div`
     ${flex('column')}
   }
 `
-const Button = styled.button`
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: white;
-  color: ${colors.secondary};
-
-  ${props => props.bio && css`
-    background-color: ${colors.bio};
-    color: white;
-  `}
-
-  ${props => props.fossil && css`
-    background-color: ${colors.fossil};
-    color: white;
-  `}
-
-  &.active {
-    text-decoration: line-through;
-    filter: brightness(90%);
-  }
-
-  &:hover {
-    filter: brightness(90%);
-  }
-`
 const CheckboxContainer = styled.label`
   width: 200px;
   ${flex('row', 'space-between', 'center')};
@@ -206,41 +180,22 @@ const BarChart = ({ emissions }) => {
         })
     }, [yearlyBioData, yearlyFossilData])
 
-    const handleDataVisibility = (e) => {
-        let clickedDatasetIndex = e.target.dataset.index
-        let chartDatasets = canvas.current.legend.chart._sortedMetasets
-    
-        chartDatasets.forEach(dataset => {
-          if (dataset.index == clickedDatasetIndex) {
-            if (dataset.hidden === true) {
-              dataset.hidden = false
-            } else {
-              dataset.hidden = true
-            }
-          }
-        });
-        e.target.classList.toggle('active')
-        canvas.current.legend.chart.update();  
+    const handleCheckbox = (e) => {
+      let clickedDatasetIndex = e.target.dataset.index
+      let chartDatasets = canvas.current.legend.chart._sortedMetasets
+      let {checked} = e.target
+  
+      if (checked) {
+        chartDatasets[clickedDatasetIndex].hidden = false
+      } else {
+        chartDatasets[clickedDatasetIndex].hidden = true
       }
-
-      const handleCheckbox = (e) => {
-        let clickedDatasetIndex = e.target.dataset.index
-        let chartDatasets = canvas.current.legend.chart._sortedMetasets
-        let {checked} = e.target
-    
-        if (checked) {
-          chartDatasets[clickedDatasetIndex].hidden = false
-        } else {
-          chartDatasets[clickedDatasetIndex].hidden = true
-        }
-        canvas.current.legend.chart.update(); 
-      }
+      canvas.current.legend.chart.update(); 
+    }
 
     return (
         <Container id='bar-chart'>
             <ButtonContainer>
-              {/* <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-              <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button> */}
               <CheckboxContainer>
                 <span className="labeltext">FOSSIL CO2</span>
                 <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={1} defaultChecked/>
@@ -259,11 +214,7 @@ const BarChart = ({ emissions }) => {
             <ScrollContainer>
                 <ChartContainer>
                     {chartData && (
-                        <Bar ref={canvas}
-                            data={chartData}
-                            options={options}
-                            // plugins={[ChartDataLabels]}
-                        />
+                        <Bar ref={canvas} data={chartData} options={options}/>
                     )}
                 </ChartContainer>
             </ScrollContainer>
