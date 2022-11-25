@@ -8,12 +8,9 @@ import YearChanger from '../../year-changer/YearChanger'
 const Container = styled.section`
 width:100%;
 background-color:${colors.primary};
+padding:5rem;
+padding-top:10rem;
 `
-const Wrapper= styled.div`
-padding:10rem;
-`
-
-
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
 
@@ -23,7 +20,7 @@ const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}
   else{
   return ( 
     <Container>
-      <Wrapper>
+     
       <YearChanger 
       emissions={emissions} />
       <FaktaOne 
@@ -33,7 +30,7 @@ const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}
       pageElements={pageTwoElem} 
       emissions={emissions} 
       energiMyndighetenData={energiMyndighetenData}/>
-      </Wrapper>
+      
     </Container>
    );
   }
