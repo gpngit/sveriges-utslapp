@@ -57,7 +57,7 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    ${flex('column')}
   }
 `
 const Button = styled.button`
@@ -84,6 +84,62 @@ const Button = styled.button`
 
   &:hover {
     filter: brightness(90%);
+  }
+`
+const CheckboxContainer = styled.label`
+  width: 200px;
+  ${flex('row', 'space-between', 'center')};
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .labeltext {
+    ${fonts.footnote};
+  }
+`
+const Checkbox = styled.input.attrs({type: 'checkbox'})`
+  display: none;
+
+  &:hover ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  &:checked ~ .checkmark {
+
+    ${props => props.bio && css`
+      background-color: ${colors.bio};
+    `}
+
+    ${props => props.fossil && css`
+      background-color: ${colors.fossil};
+    `}
+  }
+
+  &:checked ~ .checkmark:after {
+    display: block;
+  }
+`
+const CheckMark = styled.span`
+  ${flex('row', 'center', 'center')};
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+  border-radius: 5px;
+
+  &:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 `
 
@@ -167,16 +223,39 @@ const BarChart = ({ emissions }) => {
         canvas.current.legend.chart.update();  
       }
 
+      const handleCheckbox = (e) => {
+        let clickedDatasetIndex = e.target.dataset.index
+        let chartDatasets = canvas.current.legend.chart._sortedMetasets
+        let {checked} = e.target
+    
+        if (checked) {
+          chartDatasets[clickedDatasetIndex].hidden = false
+        } else {
+          chartDatasets[clickedDatasetIndex].hidden = true
+        }
+        canvas.current.legend.chart.update(); 
+      }
+
     return (
         <Container id='bar-chart'>
+            <ButtonContainer>
+              {/* <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+              <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button> */}
+              <CheckboxContainer>
+                <span className="labeltext">FOSSIL CO2</span>
+                <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={1} defaultChecked/>
+                <CheckMark className="checkmark" />
+              </CheckboxContainer>
+              <CheckboxContainer>
+                <span className="labeltext">BIOGEN CO2</span>
+                <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={0} defaultChecked/>
+                <CheckMark className="checkmark" />
+              </CheckboxContainer>
+            </ButtonContainer>
             <Scrolltext>
                 <p>Swipa höger för att se sektorer</p>
                 <SmallArrow color={colors.bio} size={16} />
             </Scrolltext>
-            <ButtonContainer>
-            <Button bio data-index={0} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-            <Button fossil data-index={1} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
-            </ButtonContainer>
             <ScrollContainer>
                 <ChartContainer>
                     {chartData && (

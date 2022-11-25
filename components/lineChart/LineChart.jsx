@@ -62,13 +62,13 @@ const ButtonContainer = styled.div`
   gap: 1rem;
 
   @media (max-width: ${size.tablet}) {
-    display: none;
+    ${flex('column')}
   }
 `
 const Scrolltext = styled.div`
   width: 100%;
   ${flex('row', 'flex-end', 'flex-end')};
-  ${fonts.paragraph}
+  ${fonts.paragraph};
   gap: 1rem;
   padding: 1rem;
   color: ${colors.bio};
@@ -120,16 +120,19 @@ const ChartContainer = styled.div`
 //   }
 // `
 const CheckboxContainer = styled.label`
-  ${flex('row', 'center', 'center')};
-  gap: 10px;
+  width: 200px;
+  ${flex('row', 'space-between', 'center')};
   position: relative;
-  padding-left: 35px;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  .labeltext {
+    ${fonts.footnote};
+  }
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
@@ -172,6 +175,7 @@ const CheckMark = styled.span`
     transform: rotate(45deg);
   }
 `
+
 
 const LineChart = ({emissions, pageElements}) => {
 
@@ -320,10 +324,6 @@ const LineChart = ({emissions, pageElements}) => {
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
-        <Scrolltext>
-          <p>Scrolla för att se utveckling</p>
-          <SmallArrow color={colors.bio} size={16} />
-        </Scrolltext>
         <ButtonContainer>
           {/* <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
           <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button> */}
@@ -339,6 +339,10 @@ const LineChart = ({emissions, pageElements}) => {
             <CheckMark className="checkmark" />
           </CheckboxContainer>
         </ButtonContainer>
+        <Scrolltext>
+          <p>Scrolla för att se utveckling</p>
+          <SmallArrow color={colors.bio} size={16} />
+        </Scrolltext>
         <ScrollContainer>
           <ChartContainer>
             <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
