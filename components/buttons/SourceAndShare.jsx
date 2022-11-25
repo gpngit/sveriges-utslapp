@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 const LinkButton = styled.a`
     ${flex('row', 'center', 'center')}
-    background-color: transparent;
+    background-color: ${colors.border};
     text-decoration: none;
     color: white;
     border: 3px solid white;
@@ -24,7 +24,7 @@ const LinkButton = styled.a`
     ${props => 
         props.secondary && 
         css`
-        background-color: transparent;
+        background-color: rgba(55, 0, 0, 0.1);
         text-decoration: none;
         border-radius: 10px;
         width: 100px;
@@ -36,7 +36,7 @@ const LinkButton = styled.a`
 `
 const Button = styled.button`
 ${flex('row', 'center', 'center')}
-background-color: transparent;
+background-color: ${colors.border};
 text-decoration: none;
 color: white;
 border: 3px solid white;
@@ -50,7 +50,7 @@ ${fonts.paragraph};
 ${props => 
     props.secondary && 
     css`
-    background-color: transparent;
+    background-color: rgba(55, 0, 0, 0.1);
     text-decoration: none;
     border-radius: 10px;
     width: 100px;
