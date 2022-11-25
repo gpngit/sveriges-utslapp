@@ -13,12 +13,12 @@ const LinkButton = styled.a`
     background-color: ${colors.border};
     text-decoration: none;
     color: white;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 10px;
     width: 10%;
-    min-width:100px;
-    padding:1.4rem;
-    height: 2.5rem;
+    min-width:80px;
+    padding:1rem;
+    height: 1.5rem;
     ${fonts.paragraph};
 
     ${props => 
@@ -27,7 +27,7 @@ const LinkButton = styled.a`
         background-color: rgba(55, 0, 0, 0.1);
         text-decoration: none;
         border-radius: 10px;
-        width: 100px;
+        width: 80px;
         height: 40px;
         border: 3px solid ${colors.secondary};
         color:${colors.secondary};
@@ -39,12 +39,12 @@ ${flex('row', 'center', 'center')}
 background-color: ${colors.border};
 text-decoration: none;
 color: white;
-border: 3px solid white;
+border: 2px solid white;
 border-radius: 10px;
 width: 10%;
-min-width:100px;
-padding:1.4rem;
-height: 2.5rem;
+min-width:80px;
+padding:1rem;
+height: 1.5rem;
 ${fonts.paragraph};
 
 ${props => 
@@ -53,7 +53,7 @@ ${props =>
     background-color: rgba(55, 0, 0, 0.1);
     text-decoration: none;
     border-radius: 10px;
-    width: 100px;
+    width: 80px;
     height: 40px;
     border: 3px solid ${colors.secondary};
     color:${colors.secondary};

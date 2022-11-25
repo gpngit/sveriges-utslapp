@@ -40,24 +40,24 @@ export const fonts = {
     //     line-height: 120%;}`,
     // footnote:"font-size: 1rem; line-height:150%; "
     heading: `
-    font-size: 3.6rem; 
+    font-size: 3.6em; 
     line-height:120%; 
     @media screen and ${device.desktop}{line-height: 100%;}`,
     lessheading: `
-    font-size:3rem;
+    font-size:3em;
     line-height: 120%;
     @media screen and ${device.desktop}{line-height: 100%;}
     `,
     subheading: `
-    font-size: 2.2rem; 
+    font-size: 2.2em; 
     line-height:120%; 
     @media screen and ${device.desktop}{line-height: 100%;} `,
     paragraph: `
-    font-size: 1.6rem; 
+    font-size: 1.6em; 
     line-height:150%; 
     @media screen and ${device.desktop}{line-height: 120%;}`,
     footnote: `
-    font-size: 1.2rem; 
+    font-size: 1.2em; 
     line-height:150%;
     @media screen and ${device.desktop}{line-height: 120%;}`
 }

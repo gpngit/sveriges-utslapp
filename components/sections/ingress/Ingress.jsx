@@ -13,20 +13,20 @@ const Container = styled.section`
     color: white;
     position: relative;
     
-    &::after{
-        content: '';
-        z-index: 1;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border: 35px solid transparent;
-        border-top-color: ${colors.secondary};
-        border-bottom: 0;
-        margin-left: -35px;
-        margin-bottom: -35px;
-    }
+    // &::after{
+    //     content: '';
+    //     z-index: 1;
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 50%;
+    //     width: 0;
+    //     height: 0;
+    //     border: 35px solid transparent;
+    //     border-top-color: ${colors.secondary};
+    //     border-bottom: 0;
+    //     margin-left: -35px;
+    //     margin-bottom: -35px;
+    // }
 `
 const Padding = styled.div`
 padding:3rem;
@@ -53,6 +53,7 @@ const TextContent = styled.div`
     }
 `
 
+
 const Ingress = ({ pageElements }) => {
 
     const {id, sections, name} = pageElements
@@ -63,6 +64,7 @@ const Ingress = ({ pageElements }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const url = sections.find(section => section.name === 'source')
     return (
+        <>
         <Container id='ingress'>
             <Padding>
                 {show && <>
@@ -79,7 +81,10 @@ const Ingress = ({ pageElements }) => {
             sourceText={body1.text} />
              </>}
             </Padding>
+          
         </Container>
+          
+          </>
     )
 }
 
