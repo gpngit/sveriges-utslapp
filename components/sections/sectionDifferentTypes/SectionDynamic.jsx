@@ -33,19 +33,21 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
         <Subheading>{subheading.text}</Subheading>
         <h2>{title.text}</h2>
         </TextContentGrid>
-        <Empty></Empty>
-        <Empty></Empty>
+        <Empty/>
+        <Empty/>
         <TextContentGrid 
         body>
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
+                
                 </TextContentGrid>
-        </Grid>
-                <SourceAndShare 
+        <Empty/>
+        <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
+        </Grid>
             </Container>): (
             <Container 
             id={sectionIDname}>
@@ -57,12 +59,12 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body2.text}</p>
                 </TextContentGrid>
             </Grid>
-             
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
-                sourceText={title.text}/></Container>) }
+                sourceText={title.text}/>
+                </Container>) }
         
         </>}
         </>
