@@ -99,6 +99,13 @@ const Button = styled.button`
     filter: brightness(90%);
   }
 `
+const CheckBoxContainer = styled.div`
+`
+const CheckboxLabel = styled.label`
+`
+const Checkbox = styled.input.attrs({type: 'checkbox'})`
+
+`
 
 const LineChart = ({emissions, pageElements}) => {
 
@@ -239,6 +246,14 @@ const LineChart = ({emissions, pageElements}) => {
           <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
           <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
           {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
+          <CheckBoxContainer>
+            <CheckboxLabel for="fossila-checkbox">Fossila utsläpp</CheckboxLabel>
+            <Checkbox id="fossila-checkbox" data-index={0} checked/>
+          </CheckBoxContainer>
+          <CheckBoxContainer>
+            <CheckboxLabel for="biogena-checkbox">Biogena utsläpp</CheckboxLabel>
+            <Checkbox id="biogena-checkbox" data-index={1} checked/>
+          </CheckBoxContainer>
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
