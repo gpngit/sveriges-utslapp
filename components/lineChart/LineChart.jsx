@@ -129,7 +129,7 @@ const LineChart = ({emissions, pageElements}) => {
   }))
 
   const yearsForXAxis = []
-  for (let i=1990; i<=2040; i++){
+  for (let i=1990; i<=2045; i++){
     if (i > mostRecentYear && i < 2035){
       continue
     } else {

@@ -6,7 +6,10 @@ const ChartOptions = (emissions) => {
     const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
     const firstYear = yearsOfData[0]
     const mostRecentYear = yearsOfData[yearsOfData.length -1]
-    const climateNeutralYear = 2040
+    const climateNeutralYear = 2045
+    const currentYear = new Date().getFullYear()
+
+    console.log(currentYear)
 
     const yearsForXAxis = []
     for (let i=firstYear; i<=climateNeutralYear; i++){
@@ -119,24 +122,26 @@ const ChartOptions = (emissions) => {
                 yMin: 34213,
                 yMax: 34213,
                 borderColor: colors.border,
-                borderWidth: 5,
+                borderWidth: 2,
                 borderDash: [5],
                 label: {
-                  position: 'start',
+                  position: `end`,
+                  yAdjust: -20,
                   display: true,
-                  content: 'Sveriges klimatmål etapp 2030',
-                  padding: {
-                    top: 10,
-                    right: 20,
-                    bottom: 10,
-                    left: 20
-                  },
-                  backgroundColor: colors.border,
-                  color: 'white',
+                  content: ['ETAPPMÅL 2030', `${2030-currentYear} år kvar`],
+                  // padding: {
+                  //   top: 10,
+                  //   right: 20,
+                  //   bottom: 10,
+                  //   left: 20
+                  // },
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
                   font: {
                     family: font.main,
                     size: '14px',
-                    weight: 'normal'
+                    weight: 'normal',
+                    lineHeight: 1.5,
                   },
                 }
               },
@@ -146,26 +151,45 @@ const ChartOptions = (emissions) => {
                 type: 'line',
                 yMin: 23117,
                 yMax: 23117,
-                xAdjust: -100,
                 borderColor: colors.border,
-                borderWidth: 5,
+                borderWidth: 2,
                 borderDash: [5],
                 label: {
-                  position: 'start',
+                  position: 'end',
+                  yAdjust: -20,
                   display: true,
-                  content: 'Sveriges klimatmål etapp 2040',
-                  padding: {
-                    top: 10,
-                    right: 20,
-                    bottom: 10,
-                    left: 20
-                  },
-                  backgroundColor: colors.border,
-                  color: 'white',
+                  content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
                   font: {
                     family: font.main,
                     size: '14px',
-                    weight: 'normal'
+                    weight: 'normal',
+                    lineHeight: 1.5,
+                  },
+                }
+              },
+              line2045: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                yMin: 0,
+                yMax: 0,
+                borderColor: colors.border,
+                borderWidth: 4,
+                borderDash: [5],
+                label: {
+                  position: 'end',
+                  yAdjust: 5,
+                  display: true,
+                  content: ['Nettonoll 2045', `${2045-currentYear} år kvar`],
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
+                  font: {
+                    family: font.main,
+                    size: '14px',
+                    weight: 'normal',
+                    lineHeight: 1.5,
                   },
                 }
               }
