@@ -187,17 +187,16 @@ const TextAndLink = styled.div`
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
-@media ${device.tablet}{
+/* @media ${device.tablet}{
 padding-left:3rem;
 padding-right:5rem;
 }
 @media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
-
-    padding-right:2rem;
+padding-right:2rem;
 }
 @media ${device.laptop} {
 padding-left:5rem;
-padding-right:10rem;}
+padding-right:10rem;} */
 
 `
 const NavLink = styled.a`
