@@ -38,21 +38,47 @@ const Container = styled.header`
         svg {
             object-fit: cover;
             position:absolute;
-            left: 0;
+            right: 0;
             bottom: 0;
             width: 100%;
+
+            @media (max-width: 1350px){
+                width: 120%;
+            }
+
+            @media (max-width: 900px){
+                width: 140%;
+            }
+
+            @media (max-width: 650px){
+                width: 160%;
+            }
+
+            @media (max-width: 450px){
+                width: 200%;
+            }
+
         }
 
+<<<<<<< HEAD
     svg.embers{
     animation: embers 7s infinite ease-in;
     opacity: 0;
     z-index:0;
     }
+=======
+        svg.embers{
+            animation: embers 7s infinite ease-in;
+            opacity: 0;
+            z-index:0;
+            }
+>>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
 
-    svg#forest{
-    z-index: 1;
-    }
+        svg#forest{
+        z-index: 1;
+        }
 
+<<<<<<< HEAD
     svg#ember-1{
     z-index: 2;
     animation-delay: 0s;
@@ -77,32 +103,35 @@ const Container = styled.header`
     left: 60%;
     transform: skewX(0.2rad);
     }
+=======
+        svg#ember-1{
+        z-index: 2;
+        animation-delay: 0s;
+        left: -50%;
+        width: 150%;
+        bottom: -20%;
+        transform: skewX(-0.1rad);
+        }
+        svg#ember-1{
+        z-index: 2;
+        animation-delay: 2.1s;
+        left: -50%;
+        width: 150%;
+        bottom: -20%;
+        transform: skewX(-0.1rad);
+        }
+        svg#ember-3{
+        transform: scaleX(-1);
+        animation-delay: 4.2s;
+        left: 60%;
+        transform: skewX(0.2rad);
+        }
+>>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
 
-    svg.smoke{
-    animation: smoke 12s infinite ease-in;
-    opacity: 0;
-    z-index:0;
-    }
-
-    svg#smoke-2{
-    animation-delay: 2s;
-    animation-duration: 8s;
-    }
-
-    @keyframes embers{
-    0%{
-        transform: translate(0,20%) scaleY(1) scaleX(1);
-        opacity; 0;
-    }
-    8%{
-        opacity: 1;
-    }
-    42%{
-        opacity: 1;
-    }
-    50%{
-        transform: translate(0,10%) scaleY(1.3) scaleX(1) skewX(0.5rad);
+        svg.smoke{
+        animation: smoke 12s infinite ease-in;
         opacity: 0;
+<<<<<<< HEAD
     }
     50.1%{
         transform: translate(0,20%) scaleY(1) scaleX(-1);
@@ -118,6 +147,47 @@ const Container = styled.header`
         transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
         opacity: 0;
     }}}
+=======
+        z-index:0;
+        }
+
+        svg#smoke-2{
+        animation-delay: 2s;
+        animation-duration: 8s;
+        }
+
+        @keyframes embers{
+        0%{
+            transform: translate(0,20%) scaleY(1) scaleX(1);
+            opacity; 0;
+        }
+        8%{
+            opacity: 1;
+        }
+        42%{
+            opacity: 1;
+        }
+        50%{
+            transform: translate(0,10%) scaleY(1.3) scaleX(1) skewX(0.5rad);
+            opacity: 0;
+        }
+        50.1%{
+            transform: translate(0,20%) scaleY(1) scaleX(-1);
+            opacity; 0;
+        }
+        59%{
+            opacity: 1;
+        }
+        90%{
+            opacity: 1;
+        }
+        100%{
+            transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
+            opacity: 0;
+        }
+}
+}
+>>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
 
 @keyframes smoke{
     0%{
@@ -179,6 +249,7 @@ const TextAndLink = styled.div`
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
+
 @media ${device.tablet}{
     padding-left:3rem;
     padding-right:5rem;
@@ -189,6 +260,18 @@ padding:1rem;
 @media ${device.laptop} {
     padding-left:5rem;
     padding-right:10rem;}
+
+/* @media ${device.tablet}{
+padding-left:3rem;
+padding-right:5rem;
+}
+@media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
+padding-right:2rem;
+}
+@media ${device.laptop} {
+padding-left:5rem;
+padding-right:10rem;} */
+
 `
 const NavLink = styled.a`
     margin-top:1rem;
@@ -214,11 +297,6 @@ const Blurred = styled.div`
         bottom: 0;
         background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
     }
-    
-    /* &.top {
-        top: 60px;
-        background: linear-gradient(to bottom, ${colors.primary}, transparent);
-    } */
 `
 
 const Hero = ({ pageElements }) => {
@@ -233,7 +311,6 @@ const Hero = ({ pageElements }) => {
         <Container>
             <ScrollContainer>
                 <Crumble color={colors.secondary}/>
-                {/* <Blurred className='top' /> */} 
                 <PaddingWrapper>
                 <TextContent>
                     <TextAndLink>
