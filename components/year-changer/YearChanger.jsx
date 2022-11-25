@@ -14,13 +14,15 @@ import Image from "next/image";
 const Container = styled.div`
     ${fonts.footnote};
     z-index: 10;
+    
     width: 100%;
     position: sticky;
     top: 0;
-    ${flex('row', 'center', 'center')};
+    ${flex('row', 'space-between', 'center')};
     background-color: ${colors.primary};
     gap: 20px;
     padding: 20px;
+  
 `
 const InnerContainer = styled.div`
     ${flex('row', 'space-between', 'center')};
@@ -86,6 +88,7 @@ const YearChanger = ({ emissions }) => {
     }, [displayYear])
 
     return (
+        <>
         <Container>
             <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
             <InnerContainer>
@@ -100,7 +103,10 @@ const YearChanger = ({ emissions }) => {
                 </div>
             </InnerContainer>
             <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
+         
         </Container>
+    
+        </>
     )
 }
 
