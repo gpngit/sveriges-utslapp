@@ -88,17 +88,19 @@ const FaktaOne = ({pageElements, emissions}) => {
                 </span>
                 </Row>
                 <BarChart emissions={emissions}/> 
-                <p>{body1.text}</p>
+                
                 </TextContent>
-               
-            </Grid>
-            <ButtonWrapper>
-            <SourceAndShare 
+                <div>
+                <p>{body1.text}</p>
+                <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
             shareLink={'#faktaruta1'}
             sourceText={title.text} />
-            </ButtonWrapper>
+                </div>
+                
+            </Grid>
+          
       </Content>
         </>}</>
     );

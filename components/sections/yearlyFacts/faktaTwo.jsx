@@ -25,6 +25,40 @@ const TextContent = styled.div`
     max-width:1400px;
 `
 
+const Grid = styled.div`
+max-width: 1500px;
+display: grid;
+gap: 3rem;
+@media ${device.tablet}{
+    grid-template-columns: repeat(2, 1fr); }
+`
+const Row = styled.span`
+${flex("row")}
+gap:20px;`
+
+const FrameYear = styled.span`
+clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+position:relative;
+width:60px;
+height:60px;
+background-color: ${colors.fossil};
+`
+const Year = styled.span`
+clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+top: 5px;
+left: 5px;
+right: 5px;
+bottom: 5px;
+position: absolute;
+background-color: ${colors.primary};
+${flex("center", "center")};
+p{
+    font-size:12px;
+    position: absolute;
+    top:30%;
+}
+`
+
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
@@ -36,21 +70,38 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     return (
     <>
     {show && 
-      <Content id="fakta-biobransle">
+    <Content id="fakta-biobransle">
+        <Grid>
             <TextContent>
+                <Row>
+                <FrameYear>
+                <Year>
+                <p>ÅRTAL</p>
+                </Year>
+                </FrameYear>
+                <span>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
-                <p>{body1.text}</p>
-            </TextContent>
+                </span>
+                </Row>
+               
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
-            <ButtonWrapper>
-            <SourceAndShare 
-            whiteBG={"yes"}
-            sourceLink={url.text} 
-            shareLink={'#fakta-biobransle'} 
-            sourceText={title.text}
-            />
-            </ButtonWrapper>
+
+                </TextContent>
+                 <div>
+                 <p>{body1.text}</p>
+           
+    <SourceAndShare 
+       whiteBG={"yes"}
+       sourceLink={url.text} 
+       shareLink={'#fakta-biobransle'} 
+       sourceText={title.text}
+       />
+                 </div>
+               
+                </Grid>
+     
+        
       </Content>
       }
       </>
