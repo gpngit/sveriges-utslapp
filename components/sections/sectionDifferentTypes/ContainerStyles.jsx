@@ -8,23 +8,12 @@ export const Container = styled.section`
 ${flex()};
 gap: 40px;
 color: black;
-
+max-width:1500px;
 width:100%;
-padding-top:10em;
-
-
-@media only screen and ${device.tablet}{
-    top:0;
-    padding:10em;
-    }
-
-${props => 
-    props.firstContainer && 
-    css`
-
-    position:relative;
-    top:-100px;
-    `}
+padding:10em;
+@media ${device.laptop}{
+    padding-right:15rem;
+}
 `
 
 
@@ -32,7 +21,7 @@ export const Grid = styled.div`
 max-width: 1500px;
 display: grid;
 gap: 3rem;
-@media ${device.tablet}{
+@media ${device.laptop}{
     grid-template-columns: repeat(2, 1fr); }
 `
 export const TextContentGrid = styled.div`
@@ -51,9 +40,11 @@ p {
 ${props => 
     props.body && 
     css`
-    
     position:relative;
-    top:-50px;
+    @media ${device.laptop}{
+        top:-50px; 
+    }
+    top:-9rem;
     `}
 `
 

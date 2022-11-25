@@ -48,7 +48,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 sourceText={title.text}/>
             </Container>): (
             <Container 
-            firstContainer
             id={sectionIDname}>
             <Grid>
                 <TextContentGrid>
