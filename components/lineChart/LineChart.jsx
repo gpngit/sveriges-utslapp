@@ -192,8 +192,7 @@ const LineChart = ({emissions, pageElements}) => {
   }
 
   const changeDisplayYear = () => {
-
-    if (canvas.current.tooltip.dataPoints[0]){
+    if (canvas.current?.tooltip?.dataPoints?.length){
       let yearClicked = canvas.current.tooltip.dataPoints[0].label
       setDisplayYear(Number(yearClicked))
     }
