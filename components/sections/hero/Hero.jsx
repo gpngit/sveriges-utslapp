@@ -225,11 +225,6 @@ const Blurred = styled.div`
         bottom: 0;
         background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
     }
-    
-    /* &.top {
-        top: 60px;
-        background: linear-gradient(to bottom, ${colors.primary}, transparent);
-    } */
 `
 
 const Hero = ({ pageElements }) => {
@@ -246,12 +241,10 @@ const Hero = ({ pageElements }) => {
         <Container>
             <ScrollContainer>
                 <Crumble color={colors.secondary}/>
-                {/* <Blurred className='top' /> */} 
                 <PaddingWrapper>
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p>
-                        {/* ingen länk här */}
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
