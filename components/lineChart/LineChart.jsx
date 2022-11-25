@@ -73,30 +73,83 @@ const ChartContainer = styled.div`
   width: 100%;
   min-width: ${size.tablet};
 `
-const Button = styled.button`
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 1rem;
-  background-color: white;
-  color: ${colors.secondary};
+// const Button = styled.button`
+//   padding: 1rem 2rem;
+//   border: none;
+//   border-radius: 1rem;
+//   background-color: white;
+//   color: ${colors.secondary};
 
-  ${props => props.bio && css`
-    background-color: ${colors.bio};
-    color: white;
-  `}
+//   ${props => props.bio && css`
+//     background-color: ${colors.bio};
+//     color: white;
+//   `}
 
-  ${props => props.fossil && css`
-    background-color: ${colors.fossil};
-    color: white;
-  `}
+//   ${props => props.fossil && css`
+//     background-color: ${colors.fossil};
+//     color: white;
+//   `}
 
-  &.active {
-    text-decoration: line-through;
-    filter: brightness(90%);
+//   &.active {
+//     text-decoration: line-through;
+//     filter: brightness(90%);
+//   }
+
+//   &:hover {
+//     filter: brightness(90%);
+//   }
+// `
+const CheckboxContainer = styled.label`
+  ${flex('row', 'center', 'center')};
+  gap: 10px;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`
+const Checkbox = styled.input.attrs({type: 'checkbox'})`
+  display: none;
+
+  &:hover ~ .checkmark {
+    background-color: #ccc;
   }
 
-  &:hover {
-    filter: brightness(90%);
+  &:checked ~ .checkmark {
+
+    ${props => props.bio && css`
+      background-color: ${colors.bio};
+    `}
+
+    ${props => props.fossil && css`
+      background-color: ${colors.fossil};
+    `}
+  }
+
+  &:checked ~ .checkmark:after {
+    display: block;
+  }
+`
+const CheckMark = styled.span`
+  ${flex('row', 'center', 'center')};
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+  border-radius: 5px;
+
+  &:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 `
 
@@ -192,6 +245,19 @@ const LineChart = ({emissions, pageElements}) => {
     canvas.current.legend.chart.update();  
   }
 
+  const handleCheckbox = (e) => {
+    let clickedDatasetIndex = e.target.dataset.index
+    let chartDatasets = canvas.current.legend.chart._sortedMetasets
+    let {checked} = e.target
+
+    if (checked) {
+      chartDatasets[clickedDatasetIndex].hidden = false
+    } else {
+      chartDatasets[clickedDatasetIndex].hidden = true
+    }
+    canvas.current.legend.chart.update(); 
+  }
+
   const changeDisplayYear = () => {
     if (canvas.current?.tooltip?.dataPoints?.length){
       let yearClicked = canvas.current.tooltip.dataPoints[0].label
@@ -236,13 +302,23 @@ const LineChart = ({emissions, pageElements}) => {
           <SmallArrow color={colors.bio} size={16} />
         </Scrolltext>
         <ButtonContainer>
-          <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-          <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button>
+          {/* <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
+          <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button> */}
           {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
+          <CheckboxContainer>
+            <span className="labeltext">FOSSIL CO2</span>
+            <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
+            <CheckMark className="checkmark" />
+          </CheckboxContainer>
+          <CheckboxContainer>
+            <span className="labeltext">BIOGEN CO2</span>
+            <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
+            <CheckMark className="checkmark" />
+          </CheckboxContainer>
         </ButtonContainer>
         <ScrollContainer>
           <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear} />
+            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
         </>} 
