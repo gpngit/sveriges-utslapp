@@ -13,7 +13,7 @@ const LinkButton = styled.a`
     background-color: ${colors.border};
     text-decoration: none;
     color: white;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 10px;
     width: 10%;
     min-width:80px;
@@ -39,7 +39,7 @@ ${flex('row', 'center', 'center')}
 background-color: ${colors.border};
 text-decoration: none;
 color: white;
-border: 3px solid white;
+border: 2px solid white;
 border-radius: 10px;
 width: 10%;
 min-width:80px;
