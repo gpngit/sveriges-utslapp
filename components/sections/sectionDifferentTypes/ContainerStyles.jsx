@@ -19,7 +19,6 @@ padding:10em;
 
 export const Grid = styled.div`
 max-width: 1500px;
-
 display: grid;
 gap: 3rem;
 @media ${device.laptop}{

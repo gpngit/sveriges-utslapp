@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flex, colors, size, fonts } from "/styles/partials"
+import { flex, colors, size, fonts, device } from "/styles/partials"
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
@@ -25,6 +25,39 @@ const TextContent = styled.div`
     max-width:1400px;
 `
 
+const Grid = styled.div`
+max-width: 1500px;
+display: grid;
+gap: 3rem;
+@media ${device.tablet}{
+    grid-template-columns: repeat(2, 1fr); }
+`
+const Row = styled.span`
+${flex("row")}
+gap:20px;`
+
+const FrameYear = styled.span`
+clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+position:relative;
+width:60px;
+height:60px;
+background-color: ${colors.fossil};
+`
+const Year = styled.span`
+clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+top: 5px;
+left: 5px;
+right: 5px;
+bottom: 5px;
+position: absolute;
+background-color: ${colors.primary};
+${flex("center", "center")};
+p{
+    font-size:12px;
+    position: absolute;
+    top:30%;
+}
+`
 
 const FaktaOne = ({pageElements, emissions}) => {
 
@@ -40,12 +73,25 @@ const FaktaOne = ({pageElements, emissions}) => {
       <Content 
       faktaOne
       id="faktaruta1">
+        <Grid>
             <TextContent>
+                <Row>
+                <FrameYear>
+                <Year>
+                <p>ÅRTAL</p>
+                </Year>
+                </FrameYear>
+                
+                <span>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
-                <p>{body1.text}</p>
+                </span>
+                </Row>
                 <BarChart emissions={emissions}/> 
-            </TextContent>
+                <p>{body1.text}</p>
+                </TextContent>
+               
+            </Grid>
             <ButtonWrapper>
             <SourceAndShare 
             whiteBG={"yes"}

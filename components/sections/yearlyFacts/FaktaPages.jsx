@@ -6,18 +6,14 @@ import FaktaTwo from './faktaTwo'
 import YearChanger from '../../year-changer/YearChanger'
 
 const Container = styled.section`
-/* padding-top:2em; */
 width:100%;
 background-color:${colors.primary};
 `
 const Wrapper= styled.div`
-width:100%;
-
-padding-bottom:5rem;
-@media ${device.laptop}{
-  padding:10em;
-} 
+padding:10rem;
 `
+
+
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
 
