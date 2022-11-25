@@ -131,7 +131,7 @@ const CheckboxContainer = styled.label`
   user-select: none;
 
   .labeltext {
-    ${fonts.paragraph};
+    ${fonts.footnote};
   }
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
