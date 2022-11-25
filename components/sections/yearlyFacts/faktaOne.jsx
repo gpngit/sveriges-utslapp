@@ -56,7 +56,7 @@ const FaktaOne = ({pageElements, emissions}) => {
         <Grid>
             <TextContent>
                 <Row>
-               <ChosenYear emissions={emissions}/>
+                <ChosenYear emissions={emissions}/>
                 <span>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>

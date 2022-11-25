@@ -20,10 +20,11 @@ bottom: 5px;
 position: absolute;
 background-color: ${colors.primary};
 ${flex("center", "center")};
-p{
-    font-size:12px;
+h4{
+    font-size:13px;
     position: absolute;
     top:30%;
+    color: ${colors.secondary};
 }
 `
 
@@ -35,7 +36,7 @@ const ChosenYear = ({emissions}) => {
 
   return ( <FrameYear>
     <Year>
-    <p>{displayYear}</p>
+    <h4>{displayYear}</h4>
     </Year>
     </FrameYear> );
 }
