@@ -16,6 +16,26 @@ import { SmallArrow } from "../SVG's/Arrows";
 
 Chart.register(annotationPlugin)
 
+const Wrapper = styled.div`
+@media ${device.tablet}{
+    clip-path: polygon(0% 70%, 4% 50%, 8% 50%, 12% 26%, 16% 26%, 20% 14%, 24% 18%, 30% 20%, 32% 0%, 36% 20%, 40% 38%, 44% 6%, 46% 10%, 48% 5%, 52% 16%, 56% 10%, 60% 15%, 64% 34%, 68% 0%, 70% 25%, 74% 30%, 80% 32%, 84% 44%, 88% 10%, 92% 26%, 96% 18%, 100% 55%, 100% 100%, 0% 100%);
+    -webkit-clip-path:  polygon(0% 70%, 4% 50%, 8% 50%, 12% 26%, 16% 26%, 20% 14%, 24% 18%, 28% 11%, 32% 0%, 36% 11%, 40% 38%, 44% 6%, 46% 10%, 48% 5%, 52% 16%, 56% 10%, 60% 15%, 64% 34%, 68% 0%, 70% 25%, 74% 30%, 80% 32%, 84% 44%, 88% 10%, 92% 26%, 96% 18%, 100% 55%, 100% 100%, 0% 100%);
+    }
+    display:block;
+    overflow:visible;
+    position:relative;
+    z-index:5;
+    background-color:${colors.primary};
+    height:100px;
+`
+const Bg = styled.div`
+z-index:1;
+background-color:${colors.secondary};
+height:200px;
+position:relative;
+margin-bottom:-100px;
+`
+
 const Container = styled.section`
   position: relative;
   padding: 5em 0em 0em 5em;
@@ -290,6 +310,9 @@ const LineChart = ({emissions, pageElements}) => {
   }
 
   return (
+    <>
+    <Bg/>
+    <Wrapper/>
       <Container id='line-chart'>
         {show && <>
         <TextContent>
@@ -323,6 +346,7 @@ const LineChart = ({emissions, pageElements}) => {
         </ScrollContainer>
         </>} 
       </Container>
+      </>
   )
 }
 

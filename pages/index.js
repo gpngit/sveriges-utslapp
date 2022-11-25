@@ -10,12 +10,9 @@ import HeadContent from '../components/Head'
 //components
 import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
-
 import Ingress from '../components/sections/ingress/Ingress'
 import LineChart from '../components/lineChart/LineChart'
 import FaktaPages from '../components/sections/yearlyFacts/FaktaPages'
-
-
 import Sections from '../components/sections/sectionDifferentTypes/Sections'
 
 export async function getServerSideProps(){
