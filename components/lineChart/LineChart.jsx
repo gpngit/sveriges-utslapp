@@ -156,6 +156,7 @@ const CheckMark = styled.span`
   }
 `
 
+
 const LineChart = ({emissions, pageElements}) => {
 
   const [show, setShow] = useState(pageElements.show)
