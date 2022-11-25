@@ -35,6 +35,7 @@ const Container = styled.header`
         bottom: 0;
         white-space:nowrap;
         pointer-events: none;
+
         svg {
             object-fit: cover;
             position:absolute;
@@ -60,50 +61,16 @@ const Container = styled.header`
 
         }
 
-<<<<<<< HEAD
-    svg.embers{
-    animation: embers 7s infinite ease-in;
-    opacity: 0;
-    z-index:0;
-    }
-=======
         svg.embers{
             animation: embers 7s infinite ease-in;
             opacity: 0;
             z-index:0;
-            }
->>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
-
-        svg#forest{
-        z-index: 1;
         }
 
-<<<<<<< HEAD
-    svg#ember-1{
-    z-index: 2;
-    animation-delay: 0s;
-    left: -50%;
-    width: 150%;
-    bottom: -20%;
-    transform: skewX(-0.1rad);
-    }
+        svg#forest{
+            z-index: 1;
+        }
 
-    svg#ember-1{
-    z-index: 2;
-    animation-delay: 2.1s;
-    left: -50%;
-    width: 150%;
-    bottom: -20%;
-    transform: skewX(-0.1rad);
-    }
-
-    svg#ember-3{
-    transform: scaleX(-1);
-    animation-delay: 4.2s;
-    left: 60%;
-    transform: skewX(0.2rad);
-    }
-=======
         svg#ember-1{
         z-index: 2;
         animation-delay: 0s;
@@ -112,7 +79,8 @@ const Container = styled.header`
         bottom: -20%;
         transform: skewX(-0.1rad);
         }
-        svg#ember-1{
+
+        svg#ember-2{
         z-index: 2;
         animation-delay: 2.1s;
         left: -50%;
@@ -126,28 +94,10 @@ const Container = styled.header`
         left: 60%;
         transform: skewX(0.2rad);
         }
->>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
 
         svg.smoke{
         animation: smoke 12s infinite ease-in;
         opacity: 0;
-<<<<<<< HEAD
-    }
-    50.1%{
-        transform: translate(0,20%) scaleY(1) scaleX(-1);
-        opacity; 0;
-    }
-    59%{
-        opacity: 1;
-    }
-    90%{
-        opacity: 1;
-    }
-    100%{
-        transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
-        opacity: 0;
-    }}}
-=======
         z-index:0;
         }
 
@@ -171,7 +121,7 @@ const Container = styled.header`
             transform: translate(0,10%) scaleY(1.3) scaleX(1) skewX(0.5rad);
             opacity: 0;
         }
-        50.1%{
+        55%{
             transform: translate(0,20%) scaleY(1) scaleX(-1);
             opacity; 0;
         }
@@ -185,26 +135,26 @@ const Container = styled.header`
             transform: translate(0,10%) scaleY(1.2) skewX(0.7rad) scaleX(-1);
             opacity: 0;
         }
+    }
 }
-}
->>>>>>> 6a1db2c0cf80f1d59dbcd8a68fdc10293d9d194b
 
-@keyframes smoke{
-    0%{
-    transform: translate(0,0%) scaleY(1);
-    opacity; 0.4;
+    @keyframes smoke{
+        0%{
+        transform: translate(0,0%) scaleY(1);
+        opacity: 0.4;
+        }
+        42%{
+        opacity: 0.8;
+        }
+        60%{
+        transform: translate(0,-20%) scaleY(1.5) skewX(-0.5rad);
+        opacity: 0.3;
+        }
+        90%{
+        transform: translate(0,-5%) scaleY(1) skewX(-0.5rad);
+        opacity; 0;
+        }
     }
-    42%{
-    opacity: 0.8;
-    }
-    60%{
-    transform: translate(0,-20%) scaleY(1.5) skewX(-0.5rad);
-    opacity: 0.3;
-    }
-    90%{
-    transform: translate(0,-5%) scaleY(1) skewX(-0.5rad);
-    opacity; 0;
-}}
 `
 const ScrollContainer = styled.div`
     height: 100vh;
@@ -249,7 +199,7 @@ const TextAndLink = styled.div`
 `
 const PaddingWrapper = styled.div`
 padding:1rem;
-
+/* 
 @media ${device.tablet}{
     padding-left:3rem;
     padding-right:5rem;
@@ -259,19 +209,7 @@ padding:1rem;
 }
 @media ${device.laptop} {
     padding-left:5rem;
-    padding-right:10rem;}
-
-/* @media ${device.tablet}{
-padding-left:3rem;
-padding-right:5rem;
-}
-@media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
-padding-right:2rem;
-}
-@media ${device.laptop} {
-padding-left:5rem;
-padding-right:10rem;} */
-
+    padding-right:10rem;} */
 `
 const NavLink = styled.a`
     margin-top:1rem;
