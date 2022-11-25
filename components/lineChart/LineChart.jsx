@@ -35,7 +35,6 @@ height:200px;
 position:relative;
 margin-bottom:-100px;
 `
-
 const Container = styled.section`
   position: relative;
   padding: 5em 0em 0em 5em;
@@ -93,32 +92,6 @@ const ChartContainer = styled.div`
   width: 100%;
   min-width: ${size.tablet};
 `
-// const Button = styled.button`
-//   padding: 1rem 2rem;
-//   border: none;
-//   border-radius: 1rem;
-//   background-color: white;
-//   color: ${colors.secondary};
-
-//   ${props => props.bio && css`
-//     background-color: ${colors.bio};
-//     color: white;
-//   `}
-
-//   ${props => props.fossil && css`
-//     background-color: ${colors.fossil};
-//     color: white;
-//   `}
-
-//   &.active {
-//     text-decoration: line-through;
-//     filter: brightness(90%);
-//   }
-
-//   &:hover {
-//     filter: brightness(90%);
-//   }
-// `
 const CheckboxContainer = styled.label`
   width: 200px;
   ${flex('row', 'space-between', 'center')};
@@ -176,7 +149,6 @@ const CheckMark = styled.span`
   }
 `
 
-
 const LineChart = ({emissions, pageElements}) => {
 
   const [show, setShow] = useState(pageElements.show)
@@ -207,11 +179,6 @@ const LineChart = ({emissions, pageElements}) => {
 
   const yearsForXAxis = []
   for (let i=1990; i<=2045; i++){
-    // if (i > mostRecentYear && i < 2035){
-    //   continue
-    // } else {
-    //   yearsForXAxis.push(i)
-    // }
     yearsForXAxis.push(i)
   }
 
@@ -237,37 +204,11 @@ const LineChart = ({emissions, pageElements}) => {
               borderWidth: 5,
               pointRadius: 0,
               tension: .2,
-            },
-            // {
-            //     label: totalEmissions[0].type.text,
-            //     data: totalEmissions.map(emissions => emissions.value),
-            //     fill: true,
-            //     borderColor: colors.border,
-            //     borderWidth: 5,
-            //     pointRadius: 0,
-            //     tension: .2,
-            // }
+            }
           ]
         })
     }
   }, [totalEmissions, displayYear])
-
-  const handleDataVisibility = (e) => {
-    let clickedDatasetIndex = e.target.dataset.index
-    let chartDatasets = canvas.current.legend.chart._sortedMetasets
-
-    chartDatasets.forEach(dataset => {
-      if (dataset.index == clickedDatasetIndex) {
-        if (dataset.hidden === true) {
-          dataset.hidden = false
-        } else {
-          dataset.hidden = true
-        }
-      }
-    });
-    e.target.classList.toggle('active')
-    canvas.current.legend.chart.update();  
-  }
 
   const handleCheckbox = (e) => {
     let clickedDatasetIndex = e.target.dataset.index
@@ -289,7 +230,6 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
-  // for drawing line on chart when hover over tooltip
   const linePlugin = {
     afterDraw: chart => {
       let ctx = chart.ctx;
@@ -325,9 +265,6 @@ const LineChart = ({emissions, pageElements}) => {
           <p>{body1.text}</p>
         </TextContent>
         <ButtonContainer>
-          {/* <Button bio data-index={1} onClick={(e) => handleDataVisibility(e)}>Biogena utsläpp</Button>
-          <Button fossil data-index={0} onClick={(e) => handleDataVisibility(e)}>Fossila utsläpp</Button> */}
-          {/* <Button data-index={2} onClick={(e) => handleDataVisibility(e)}>Totala utsläpp</Button> */}
           <CheckboxContainer>
             <span className="labeltext">FOSSIL CO2</span>
             <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
