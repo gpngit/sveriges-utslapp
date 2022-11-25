@@ -5,52 +5,25 @@ import { flex, device, size, colors, fonts } from '../../../styles/partials'
 export const Container = styled.section`
 ${flex()};
 gap: 40px;
-padding:3rem;
 color: black;
+
 width:100%;
-@media ${device.laptop}{
-    padding-right:10rem;
-}
+padding-top:10em;
+
+
+@media only screen and ${device.tablet}{
+    top:0;
+    padding:10em;
+   
+    }
+
 ${props => 
     props.firstContainer && 
     css`
-    background-color:white;
+
     position:relative;
     top:-100px;
-    padding-top:10em;
-    @media only screen and (${device.tablet}){
-        top:0;
-        padding:10em;
-        padding-top:10em;
-        }
     `}
-    ${props => 
-        props.secondContainer && 
-        css`
-        background-color:white;
-        position:relative;
-        top:-100px;
-        padding-top:10em;
-        @media only screen and (${device.tablet}){
-            top:0;
-            padding:10em;
-            padding-top:10em;
-            }
-        `}
-
-        ${props => 
-            props.sections && 
-            css`
-            background-color:white;
-            position:relative;
-            top:-100px;
-            padding-top:10em;
-            @media only screen and (${device.tablet}){
-                top:0;
-                padding:10em;
-                padding-top:10em;
-                }
-            `}
 `
 
 export const Text= styled.p`
@@ -60,11 +33,13 @@ margin-bottom:1rem;
 `
 
 export const TextContent = styled.div`
+max-width:900px;
+width:50%;
 ${flex()};
-max-width:1200px;
+
 h2 {
     ${fonts.heading};
-    max-width:70%;
+    max-width:90%;
     margin-bottom:1rem;
     @media (max-width: ${size.tablet}){
         max-width:100%;
@@ -72,7 +47,7 @@ h2 {
 }
 p {
     ${fonts.paragraph};
-    max-width:70%;
+    max-width:90%;
     text-align:left;
     @media (max-width: ${size.tablet}){
         max-width:90%;
@@ -119,18 +94,9 @@ p{${fonts.paragraph}
 }`
 
 export const Row = styled.div`
-
 gap:2rem;
 width:100%;
-
-
 @media only screen and (${device.tablet}){ 
 ${flex("row")};
 }
-
-`
-
-export const Item = styled.div`
-${flex("column")}
-gap:10px;
 `

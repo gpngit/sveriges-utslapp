@@ -20,9 +20,9 @@ padding-bottom:5rem;
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
-  console.log(pageOneElem.show)
+
   if(!pageOneElem.show && !pageTwoElem.show){
-   return (null)
+  return (null)
   }
   else{
   return ( 
