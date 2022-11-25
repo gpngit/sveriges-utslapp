@@ -46,15 +46,19 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
-            </Container>): (<Container 
+            </Container>): (
+            <Container 
             firstContainer
             id={sectionIDname}>
-             <TextContent>
-                    <Subheading>{subheading.text}</Subheading>
+            <Grid>
+                <TextContentGrid>
+                <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
-                </TextContent>
+                </TextContentGrid>
+            </Grid>
+             
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 

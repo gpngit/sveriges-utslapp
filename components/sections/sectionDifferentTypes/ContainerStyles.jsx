@@ -44,7 +44,7 @@ h2 {
 }
 p {
     ${fonts.paragraph};
-    max-width:100%;
+    max-width:90%;
     text-align:left-justify;
     
 }
