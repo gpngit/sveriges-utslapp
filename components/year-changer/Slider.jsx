@@ -8,11 +8,11 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 
 const RangeInput = styled.input.attrs({type: 'range'})`
-    height: 38px;
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
+    width: calc(100vw - 40px);
     background-color: transparent;
+    margin-top: 20px;
 
     &:focus {
         outline: none;
@@ -79,7 +79,6 @@ const Slider = ({ firstYear, latestYear }) => {
         ref={sliderRef}
         min={firstYear}
         max={latestYear}
-        defaultValue={displayYear} 
         onChange={(e) => handleSlide(e)}
         />
     )
