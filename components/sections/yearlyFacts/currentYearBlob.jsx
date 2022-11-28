@@ -14,10 +14,10 @@ background-color: ${colors.secondary};
 
 const Year = styled.span`
 clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-top: 5px;
-left: 5px;
-right: 5px;
-bottom: 5px;
+top: 3px;
+left: 3px;
+right: 3px;
+bottom: 3px;
 position: absolute;
 background-color: ${colors.primary};
 ${flex("center", "center")};
