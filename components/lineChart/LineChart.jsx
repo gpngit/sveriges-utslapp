@@ -66,6 +66,9 @@ const TextContent = styled.div`
 
   p {
       ${fonts.paragraph};
+      @media ${device.laptop}{
+        max-width:70%;
+      }
   }
 `
 const ButtonContainer = styled.div`
