@@ -55,7 +55,29 @@ const Container = styled.div`
             background-color:${colors.secondary};
         }
     }
-
+    .row{
+        ${flex("row", "center", "center")}
+        min-width:50%;
+    }
+    .input_url1{
+        border:none;
+        margin-right:3px;
+        ${fonts.footnote};
+        text-transform: none;
+        margin-right:-2px;
+        color:grey;
+        z-index:2;
+        position:relative;
+        left:50px;
+        width:30px;
+    }
+    .input_url2{
+    padding-left:72px;
+    ${fonts.footnote}
+    }
+    .urlLabel{
+        width:5px;
+    }
 `
 const Input = styled.input`
     width: 90%;
@@ -69,11 +91,13 @@ const Input = styled.input`
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
         }
+   
 `
 const Label = styled.label`
 ${fonts.footnote};
 margin-bottom:2px;
 text-transform: uppercase;
+
 `
 
 const Modal = styled.div`
@@ -138,12 +162,10 @@ button{
     &:active{
         background-color:${colors.secondary};
     }
-   }
-
-
+}
 `
 
-const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  }) => {
+const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }) => {
  
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
@@ -159,26 +181,24 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
     }
 
     const sendTextEditToFirebase = ( inputValueTxt, ) => {
- 
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
         update(dbRef, {text: inputValueTxt})
     }
 
     const sendURLEditToFirebase = (inputValueURL) => {
-     
     const db = getDatabase()
     const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
     update(dbRef, {url: inputValueURL})
     }
 
     const handleSave = (e) => {
-   
         e.preventDefault()
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        
         setNewText(inputValueTxt.value)
-        setNewURL(inputValueURL.value)
+        setNewURL("https://"+inputValueURL.value)
         setModal(true)
         setEditable(!editable)
     }
@@ -256,20 +276,23 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
             <div className="input-and-edit">
             <Label 
             htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
+                
                 <Input readOnly={!editable} 
-              
                 id={`${sectionName}-${input.text}-${inputIndex}`}
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                <Label 
-                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>URL:</Label>
+
+                <Label className="urlLabel"
+                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}
+                >URL:</Label>
+                <p 
+                className="input_url1">https://</p>
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.url}-${inputIndex}`}
-                className="input_text"
+                className="input_url2"
                 type="url"
-                defaultValue={`https://${input.url}`}/> 
-
+                defaultValue={input.url}/>  
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
@@ -282,7 +305,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                     </>
                 )}
             </div>
-          </>)}
+        </>)}
         </Container>
         </>
     )

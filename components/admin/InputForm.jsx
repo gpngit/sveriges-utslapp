@@ -206,7 +206,7 @@ const InputForm = ({ pageElements }) => {
             })}
             
             <h3>LÄNKAR:</h3>
-            <p>Viktigt: kom ihåg att ha med hela adressen, dvs &apos;&apos;https://&apos;&apos; när du skriver in URL:en.</p>
+            {/* <p>Viktigt: kom ihåg att ha med hela adressen, dvs &apos;&apos;https://&apos;&apos; när du skriver in URL:en.</p> */}
          
             {sections.map((section, i) => {
               return (<>
