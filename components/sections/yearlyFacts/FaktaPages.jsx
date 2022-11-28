@@ -8,8 +8,6 @@ import YearChanger from '../../year-changer/YearChanger'
 const Container = styled.section`
 width:100%;
 background-color:${colors.primary};
-padding:5rem;
-padding-top:10rem;
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
