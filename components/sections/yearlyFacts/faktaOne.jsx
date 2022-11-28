@@ -1,9 +1,11 @@
+//react hooks
+import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import BarChart from '../../barchart/BarChart'
 import { Grid, Content, Row, FirstContent, SecondContent, ButtonWrapper } from './ContainerStyles'
-import { useState } from 'react'
 import ChosenYear from './currentYearBlob'
+import Kollagring from '../../barchart/Kollagring'
 
 const FaktaOne = ({pageElements, emissions}) => {
 
@@ -29,7 +31,8 @@ const FaktaOne = ({pageElements, emissions}) => {
                     <h2>{title.text}</h2>
                 </span>
                 </Row>
-                <BarChart emissions={emissions}/>     
+                <Kollagring emissions={emissions}/>
+                {/* <BarChart emissions={emissions}/>      */}
             </FirstContent>
             <SecondContent
             kollagertxt>
