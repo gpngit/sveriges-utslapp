@@ -246,7 +246,7 @@ const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
        
         <Container>
 
-          {input.name === "links" ? (null): (<>
+        {input.name === "links" ? (null): (<>
             <Label 
             htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
             </Label>

@@ -211,6 +211,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         
         setNewText(inputValueTxt.value)
         setNewURL("https://"+inputValueURL.value)
+      
         setModal(true)
         setEditable(!editable)
     }
@@ -220,7 +221,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
         sendTextEditToFirebase(inputValueTxt.value)
-        sendURLEditToFirebase(inputValueURL.value)
+        sendURLEditToFirebase("https://"+inputValueURL.value)
         setLoading(true)
         
     }
@@ -243,6 +244,10 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
     }}, [isLoading])
     
     const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
+
+
+  
+ 
 
     return (
         
@@ -288,8 +293,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         )}
         
         <Container key={inputIndex}>
-         
-          {input.name !== "links" ? (null): (<>
+        {input.name !== "links" ? (null): (<>
             <div className="input-and-edit">
             <Label 
             htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
@@ -305,11 +309,12 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
                 >URL:</Label>
                 <p 
                 className="input_url1">https://</p>
+
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.url}-${inputIndex}`}
                 className="input_url2"
                 type="url"
-                defaultValue={input.url}/>  
+                defaultValue={`${input.url}`.replace("https://", "")}/>  
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>

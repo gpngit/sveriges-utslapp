@@ -73,7 +73,6 @@ const ModalWrapper = styled.dialog`
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.2);
     }
- 
 `
 const CloseButton = styled.button`
     position: absolute;
@@ -129,15 +128,15 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 </Button>
                 </>
             )}
-            {/* {showModal ? ( */}
-            <ModalWrapper ref={modal}>
+
+            <ModalWrapper 
+            ref={modal}>
                 <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
             </ModalWrapper>
-            {/* ) : (null)} */}
-           
+
         </Container>
     )
 }
