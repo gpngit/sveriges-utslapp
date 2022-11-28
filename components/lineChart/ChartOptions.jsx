@@ -21,18 +21,18 @@ const ChartOptions = (emissions) => {
         scales: {
           y: { 
             min: 0,
-            max: (chart) => {
-              let {_sortedMetasets} = chart.chart
-              let highestValue = 0
-              let visibleDatasets = _sortedMetasets.filter(dataset => !dataset.hidden)
-              visibleDatasets.forEach(dataset => {
-                let valuesArray = dataset._parsed
-                let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
-                highestValue += highestValueInDataset
-              })
-              let rounded = Math.ceil(highestValue/10000)*10000
-              return rounded
-            },
+            // max: (chart) => {
+            //   let {_sortedMetasets} = chart.chart
+            //   let highestValue = 0
+            //   let visibleDatasets = _sortedMetasets.filter(dataset => !dataset.hidden)
+            //   visibleDatasets.forEach(dataset => {
+            //     let valuesArray = dataset._parsed
+            //     let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
+            //     highestValue += highestValueInDataset
+            //   })
+            //   let rounded = Math.ceil(highestValue/10000)*10000
+            //   return rounded
+            // },
             stacked: true,
             display: true,
             ticks:{
@@ -85,11 +85,12 @@ const ChartOptions = (emissions) => {
                 xValue: 15,
                 yValue: (chart) => {
                   let yMax = chart.chart.scales.y.max
-                  if (yMax === 130000){
+                  if (yMax === 120000){
                     return 80000
                   } else if (yMax === 80000){
-                    // skicka upp text ovanför grafen
                     return 90000
+                  } else if (yMax === 35000) {
+                    return 50000
                   }
                 },
               },
@@ -104,11 +105,12 @@ const ChartOptions = (emissions) => {
                 xValue: 15,
                 yValue: (chart) => {
                   let yMax = chart.chart.scales.y.max
-                  if (yMax === 130000){
+                  if (yMax === 120000){
                     return 50000
                   } else if (yMax === 50000){
-                    // skicka upp text ovanför grafen
                     return 60000
+                  } else if (yMax === 35000) {
+                    return 50000
                   }
                 },
               },
