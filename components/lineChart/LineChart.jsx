@@ -79,7 +79,7 @@ const ButtonContainer = styled.div`
 const Scrolltext = styled.div`
   width: 100%;
   ${flex('row', 'flex-end', 'flex-end')};
-  ${fonts.paragraph};
+  ${fonts.footnote};
   gap: 1rem;
   padding: 1rem;
   color: ${colors.bio};
