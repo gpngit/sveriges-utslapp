@@ -167,9 +167,9 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
 
     const sendURLEditToFirebase = (inputValueURL) => {
      
-      const db = getDatabase()
-      const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
-      update(dbRef, {url: inputValueURL})
+    const db = getDatabase()
+    const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
+    update(dbRef, {url: inputValueURL})
     }
 
     const handleSave = (e) => {
@@ -251,7 +251,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
         )}
         
         <Container key={inputIndex}>
-
+         
           {input.name !== "links" ? (null): (<>
             <div className="input-and-edit">
             <Label 
@@ -268,7 +268,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                 id={`${sectionName}-${input.url}-${inputIndex}`}
                 className="input_text"
                 type="url"
-                defaultValue={input.url} /> 
+                defaultValue={`https://${input.url}`}/> 
 
                     {!editable ? (
                     <button 
@@ -283,28 +283,6 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                 )}
             </div>
           </>)}
-            {/* <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
-            </Label>
-            <div className="input-and-edit">
-                <Input readOnly={!editable} 
-                id={`${sectionName}-${input.name}`}
-                className="input_text"
-                type="text"
-                defaultValue={input.text} />
-                
-                    {!editable ? (
-                    <button 
-                    onClick={(e) => handleEditClick(e)}>Redigera</button>
-                ) : (
-                    <>
-                    <button className="discard"
-                    onClick={(e) => handleDiscard(e)}>Ångra</button>
-                    <button className="spara"
-                    onClick={(e) => handleSave(e)}>Spara</button>
-                    </>
-                )}
-            </div> */}
         </Container>
         </>
     )
