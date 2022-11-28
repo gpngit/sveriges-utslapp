@@ -1,14 +1,10 @@
-
+//react hooks
+import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Grid, Content, Row, FirstContent, SecondContent} from './ContainerStyles'
-import Image from 'next/image'
-import placeholder from "../../../public/placeholder__2.jpg"
-import FuelOrigin from '../../fuel-origin/FuelOrigin'
-import { useState } from 'react'
+import FuelOrigin from '../../fuel-origin/FuelOriginPerYear'
 import ChosenYear from './currentYearBlob'
-
-
 
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
@@ -27,8 +23,7 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 <Row>
                 <ChosenYear/>
                 <span>
-                    <p>
-                        {subheading.text.toUpperCase()}</p>
+                    <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </span>
                 </Row>
