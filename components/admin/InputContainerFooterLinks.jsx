@@ -97,7 +97,18 @@ const Label = styled.label`
 ${fonts.footnote};
 margin-bottom:2px;
 text-transform: uppercase;
-
+`
+const ModalBackdrop = styled.div`
+position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 `
 
 const Modal = styled.div`
@@ -105,6 +116,7 @@ background-color:${colors.primary};
 padding:2rem;
 ${flex("column","center", "center")}
 gap:10px;
+z-index:4;
 margin:1rem;
 max-width:80%;
 position:relative;
@@ -236,7 +248,11 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         
             <>
         {modal && (
-            <Modal>
+            <ModalBackdrop onClick={() => {setModal(!modal)}}>
+            <Modal 
+            onClick={e => { 
+                e.stopPropagation();
+            }}>
                 <div>
                     <Validation>
                     <h3>Ändra från:</h3>
@@ -249,7 +265,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
                     <p>url: {newURL}</p>
                     </Validation>
                 </div>
-                 {isLoading ? (<LoadingSpinner/> ):(
+                {isLoading ? (<LoadingSpinner/> ):(
                     <>  {navButtons ? (null): (<ModalButtons>
                         <button 
                         className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
@@ -268,6 +284,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
                 </ModalButtons>):(null)
             }
             </Modal>
+            </ModalBackdrop>
         )}
         
         <Container key={inputIndex}>
