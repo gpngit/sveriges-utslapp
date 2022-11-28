@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import { flex, colors, fonts } from '../../styles/partials'
 //react hooks
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
@@ -61,6 +61,7 @@ const RangeInput = styled.input.attrs({type: 'range'})`
 
 const Slider = ({ firstYear, latestYear }) => {
 
+    const sliderRef = useRef()
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
 
@@ -69,8 +70,13 @@ const Slider = ({ firstYear, latestYear }) => {
         setDisplayYear(Number(e.target.value))
     }
 
+    useEffect(() => {
+        sliderRef.current.value = displayYear
+    }, [displayYear])
+
     return (
         <RangeInput 
+        ref={sliderRef}
         min={firstYear}
         max={latestYear}
         defaultValue={displayYear} 
