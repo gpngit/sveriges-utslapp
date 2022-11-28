@@ -48,9 +48,9 @@ const Button = styled.button`
     background-color: ${colors.primary};
     ${fonts.footnote}
     color: ${colors.secondary};
-    border: 3px solid ${colors.secondary};
+    border: 2px solid ${colors.secondary};
     border-radius: 10px;
-    padding: 0px 16px;
+    padding: 0px 12px;
     height: 40px;
 `
 
