@@ -9,8 +9,10 @@ import Consent from '../components/consent/consent'
 
 function MyApp({ Component, pageProps }) {
 
+  const currentYear = new Date().getFullYear()
+
   const [authenticated, setAuthenticated] = useState(false)
-  const [displayYear, setDisplayYear] = useState(1990)
+  const [displayYear, setDisplayYear] = useState(currentYear-2)
 
   return (
     <AppContext.Provider value={{ authenticated, setAuthenticated, displayYear, setDisplayYear }}>
