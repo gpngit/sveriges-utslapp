@@ -31,7 +31,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   })
 
   useEffect(() => {
-    if (displayYear >= 2005) {
+    if (displayYear >= 2005 && displayYear <= 2020) {
         setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
     }
   }, [displayYear])

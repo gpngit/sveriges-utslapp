@@ -23,8 +23,7 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 <Row>
                 <ChosenYear/>
                 <span>
-                    <p>
-                        {subheading.text.toUpperCase()}</p>
+                    <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </span>
                 </Row>
