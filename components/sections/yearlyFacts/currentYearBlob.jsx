@@ -9,7 +9,7 @@ clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 position:relative;
 width:60px;
 height:60px;
-background-color: ${colors.fossil};
+background-color: ${colors.secondary};
 `
 
 const Year = styled.span`
