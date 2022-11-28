@@ -75,6 +75,10 @@ const ButtonContainer = styled.div`
   @media (max-width: ${size.mobileL}) {
     ${flex('column')}
   }
+  .checkboxInfo{
+    font-size:12px;
+    color: ${colors.bio};
+  }
 `
 const Scrolltext = styled.div`
   width: 100%;
@@ -95,7 +99,7 @@ const ScrollContainer = styled.div`
   ${flex('row')};
   overflow-x: auto;
   //*IE AND FIREFOX:
-  @media ${device.tablet}{
+  @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
   }
@@ -111,7 +115,8 @@ const ChartContainer = styled.div`
 `
 const CheckboxContainer = styled.label`
   width: 200px;
-  ${flex('row', 'space-between', 'center')};
+  ${flex('row', 'center', 'center')};
+  gap:10px;
   position: relative;
   cursor: pointer;
   ${fonts.paragraph};
@@ -123,6 +128,7 @@ const CheckboxContainer = styled.label`
     ${fonts.footnote};
   }
 `
+
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
 
@@ -175,18 +181,27 @@ const LineChart = ({emissions, pageElements}) => {
   const body1 = sections.find(section => section.name === 'body1')
   const body2 = sections.find(section => section.name === 'body2')
 
+  const [labelBio, setLabelBio] = useState("FOSSIL + BIOGEN CO2")
+
   const canvas = useRef()
   const context = useContext(AppContext)
   const {displayYear, setDisplayYear} = context
-  const [options, setOptions] = useState(ChartOptions(emissions))
+  const [options, setOptions] = useState(ChartOptions(emissions, labelBio))
   const [chartData, setChartData] = useState({
     datasets: [],
   })
 
+
+
+
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
+
   const mostRecentYear = years[years.length-1]
+
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
+
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
+
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
     return {
         sector: emission.sector,
@@ -290,12 +305,16 @@ const LineChart = ({emissions, pageElements}) => {
         <ScrollContainer>
           <ChartContainer>
             <Line ref={canvas} 
-            data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
+            data={chartData} 
+            options={options} 
+            plugins={[linePlugin, annotationPlugin]} 
+            onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
         </>} 
         
         <ButtonContainer>
+          <p className="checkboxInfo">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <CheckboxContainer>
             <span className="labeltext">FOSSIL CO2</span>
             <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>

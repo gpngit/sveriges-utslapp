@@ -1,8 +1,8 @@
 //CSS
 import { colors, font } from '../../styles/partials'
 
-const ChartOptions = (emissions) => {
-
+const ChartOptions = (emissions,) => {
+  
     const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
     const firstYear = yearsOfData[0]
     const mostRecentYear = yearsOfData[yearsOfData.length -1]
@@ -76,7 +76,7 @@ const ChartOptions = (emissions) => {
             annotations: {
               labelBio: {
                 type: 'label',
-                content: ['BIOGEN CO2'],
+                content: ['BIOGENA CO2'],
                 color: 'white',
                 font: {
                   family: font.main,
