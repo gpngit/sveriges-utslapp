@@ -19,15 +19,6 @@ const Container = styled.section`
   }
   
 `
-const ButtonContainer = styled.div`
-  padding: 1rem;
-  ${flex('row', 'center', 'center')};
-  gap: 1rem;
-
-  @media (max-width: ${size.tablet}) {
-    display: none;
-  }
-`
 const Scrolltext = styled.div`
   width: 100%;
   ${flex('row', 'flex-end', 'flex-end')};
