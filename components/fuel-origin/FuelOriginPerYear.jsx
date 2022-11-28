@@ -15,8 +15,9 @@ import AppContext from '../../context/AppContext'
 const Container = styled.section`
 `
 const ChartContainer = styled.div`
-    height: 500px;
-    width: 800px;
+    height: 50vh;
+    width: 80vw;
+    max-width: 500px;
 `
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
