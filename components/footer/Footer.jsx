@@ -2,7 +2,6 @@
 import styled from 'styled-components'
 import { flex, colors, fonts,} from '../../styles/partials'
 //nextjs components
-
 import Link from 'next/link'
 //components
 import Crumble from '../crumble/Crumble'
@@ -11,7 +10,6 @@ const Container = styled.footer`
     padding: 3rem;
     background-color: ${colors.secondary};
     color: white;
-    
     a {
         ${fonts.footnote}
         color: white;
@@ -42,6 +40,7 @@ const Footer = ({ pageElements }) => {
                 <LinksContainer>
                     {links.map((link,indx) => 
                     <Link key={indx}
+                    target="_blank"
                     href={link.url}>
                     {link.text}</Link>)} 
                 </LinksContainer>

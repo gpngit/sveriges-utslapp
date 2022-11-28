@@ -1,20 +1,18 @@
 //CSS
 import { colors, font } from '../../styles/partials'
 
-const ChartOptions = (emissions) => {
-
+const ChartOptions = (emissions,) => {
+  
     const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
     const firstYear = yearsOfData[0]
     const mostRecentYear = yearsOfData[yearsOfData.length -1]
-    const climateNeutralYear = 2040
+    const climateNeutralYear = 2045
+    const currentYear = new Date().getFullYear()
+    const totalEmissions1990 = 71441.6+21027.9
 
     const yearsForXAxis = []
     for (let i=firstYear; i<=climateNeutralYear; i++){
-      if (i > mostRecentYear && i < 2035){
-        continue
-      } else {
-        yearsForXAxis.push(i)
-      }
+      yearsForXAxis.push(i)
     }
 
     const options = {
@@ -32,15 +30,12 @@ const ChartOptions = (emissions) => {
                 let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
                 highestValue += highestValueInDataset
               })
-              let rounded = Math.ceil(highestValue/10000)*10000
+              let rounded = Math.ceil(highestValue/10000)*10000;
               return rounded
             },
             stacked: true,
             display: true,
             ticks:{
-              // callback: (value, index, values) => {
-              //   console.log(value)
-              // },
               color: colors.secondary,
               font:{
                 size: '12px',
@@ -58,14 +53,19 @@ const ChartOptions = (emissions) => {
             },
             ticks: {
               callback: (value, index, values) => {
-                if (yearsForXAxis[index] === firstYear || yearsForXAxis[index] === mostRecentYear || yearsForXAxis[index] === climateNeutralYear){
+                if (yearsForXAxis[index] === firstYear 
+                  || yearsForXAxis[index] === mostRecentYear 
+                  || yearsForXAxis[index] === 2030
+                  || yearsForXAxis[index] === 2040
+                  || yearsForXAxis[index] === climateNeutralYear){
                   return yearsForXAxis[index]
                 }
               },
               stepSize: 10000,
               color: colors.secondary,
               font:{
-                size: '12px',
+                size: '16px',
+                weight: 'bold',
                 family: font.main,
               }
             }
@@ -76,7 +76,7 @@ const ChartOptions = (emissions) => {
             annotations: {
               labelBio: {
                 type: 'label',
-                content: ['BIOGEN CO2'],
+                content: ['BIOGENA CO2'],
                 color: 'white',
                 font: {
                   family: font.main,
@@ -88,7 +88,7 @@ const ChartOptions = (emissions) => {
                   if (yMax === 130000){
                     return 80000
                   } else if (yMax === 80000){
-                    // skicka upp ovanför grafen
+                    // skicka upp text ovanför grafen
                     return 90000
                   }
                 },
@@ -107,7 +107,7 @@ const ChartOptions = (emissions) => {
                   if (yMax === 130000){
                     return 50000
                   } else if (yMax === 50000){
-                    // skicka upp ovanför grafen
+                    // skicka upp text ovanför grafen
                     return 60000
                   }
                 },
@@ -116,27 +116,23 @@ const ChartOptions = (emissions) => {
                 adjustScaleRange: true,
                 drawTime: 'afterDatasetsDraw',
                 type: 'line',
-                yMin: 34213,
-                yMax: 34213,
+                yMin: totalEmissions1990*0.37,
+                yMax: totalEmissions1990*0.37,
                 borderColor: colors.border,
-                borderWidth: 5,
+                borderWidth: 2,
                 borderDash: [5],
                 label: {
-                  position: 'start',
+                  position: `${(100/55)*40}%`,
+                  yAdjust: -20,
                   display: true,
-                  content: 'Sveriges klimatmål etapp 2030',
-                  padding: {
-                    top: 10,
-                    right: 20,
-                    bottom: 10,
-                    left: 20
-                  },
-                  backgroundColor: colors.border,
-                  color: 'white',
+                  content: ['Etappmål 2030', `${2030-currentYear} år kvar`],
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
-                    weight: 'normal'
+                    size: '10px',
+                    weight: 'normal',
+                    lineHeight: 1.2,
                   },
                 }
               },
@@ -144,28 +140,49 @@ const ChartOptions = (emissions) => {
                 adjustScaleRange: true,
                 drawTime: 'afterDatasetsDraw',
                 type: 'line',
-                yMin: 23117,
-                yMax: 23117,
-                xAdjust: -100,
+                yMin: totalEmissions1990*0.25,
+                yMax: totalEmissions1990*0.25,
                 borderColor: colors.border,
-                borderWidth: 5,
+                borderWidth: 2,
                 borderDash: [5],
                 label: {
-                  position: 'start',
+                  position: `${(100/55)*50}%`,
+                  yAdjust: -12,
                   display: true,
-                  content: 'Sveriges klimatmål etapp 2040',
-                  padding: {
-                    top: 10,
-                    right: 20,
-                    bottom: 10,
-                    left: 20
-                  },
-                  backgroundColor: colors.border,
-                  color: 'white',
+                  content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
-                    weight: 'normal'
+                    size: '10px',
+                    weight: 'normal',
+                    lineHeight: 1.2,
+                  },
+                }
+              },
+              line2045: {
+                adjustScaleRange: true,
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                yMin: 0,
+                yMax: 0,
+                borderColor: colors.border,
+                borderWidth: 4,
+                borderDash: [5],
+                label: {
+                  position: '100%',
+                  yAdjust: 5,
+                  xAdjust: 10,
+                  display: true,
+                  content: ['Nettonoll 2045', `${2045-currentYear} år kvar`],
+                  backgroundColor: 'transparent',
+                  color: colors.secondary,
+                  textAlign: 'end',
+                  font: {
+                    family: font.main,
+                    size: '10px',
+                    weight: 'normal',
+                    lineHeight: 1.2,
                   },
                 }
               }

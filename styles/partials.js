@@ -30,31 +30,36 @@ export const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 export const fonts = {
-    // heading: `font-size: clamp(3rem, 2vw + 1rem, 3.8rem); line-height: 120%;  
-    // @media screen and ${device.desktop}{
-    // line-height: 100%;}
-    // `,
-    // subheading: `font-size: clamp(1.5rem, 1vw + 1rem, 2rem); line-height:120%; @media screen and ${device.desktop}{
-    //     line-height: 100%;} `,
-    // paragraph: `font-size: clamp(1.125rem, 0.5vw + 1rem, 1.8rem); line-height:150%; @media screen and ${device.desktop}{
-    //     line-height: 120%;}`,
-    // footnote:"font-size: 1rem; line-height:150%; "
-    heading: `
+    heading: `font-size: clamp(2rem, 2vw + 1rem, 3.8rem); line-height: 120%;  
+    @media screen and ${device.desktop}{
+    line-height: 100%;}
+    `,
+    subheading: `font-size: clamp(0.9rem, 1vw + 1rem, 2rem); line-height:100%; @media screen and ${device.desktop}{
+    line-height: 100%;} `,
+    paragraph: `font-size: clamp(1rem, 1vw , 1.6rem); line-height:150%; @media screen and ${device.desktop}{
+    line-height: 120%;}`,
+    footnote:"font-size: 1rem; line-height:150%; ",
+    lessheading: `
+    font-size:clamp(2rem, 1vw + 0.2rem, 3.2rem);
+    line-height: 120%;
+    @media screen and ${device.desktop}{line-height: 100%;}
+    `,
+   /* heading: `
     font-size: 3.6em; 
     line-height:120%; 
     @media screen and ${device.desktop}{line-height: 100%;}`,
     subheading: `
     font-size: 2.2em; 
     line-height:120%; 
-    @media screen and ${device.desktop}{line-height: 100%;} `,
-    paragraph: `
-    font-size: 1.6em; 
-    line-height:150%; 
-    @media screen and ${device.desktop}{line-height: 120%;}`,
-    footnote: `
-    font-size: 1.2em; 
-    line-height:150%;
-    @media screen and ${device.desktop}{line-height: 120%;}`
+    @media screen and ${device.desktop}{line-height: 100%;} `,*/
+    // paragraph: `
+    // font-size: 1.6em; 
+    // line-height:150%; 
+    // @media screen and ${device.desktop}{line-height: 120%;}`,
+    // footnote: `
+    // font-size: 1.2em; 
+    // line-height:150%;
+    // @media screen and ${device.desktop}{line-height: 120%;}`
 }
 export const fontSizes = {
     heading: "clamp(3.1rem, 4vw + 1rem, 4rem)",

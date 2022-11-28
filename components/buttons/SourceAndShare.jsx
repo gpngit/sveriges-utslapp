@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from 'styled-components'
-import { flex, colors, fonts, device  } from '../../styles/partials'
+import { flex, colors, size, fonts, device  } from '../../styles/partials'
 import { useEffect, useState, useRef } from 'react'
 import SharingModal from '../modals/SharingModal'
 
@@ -10,24 +10,27 @@ const Container = styled.div`
 `
 const LinkButton = styled.a`
     ${flex('row', 'center', 'center')}
-    background-color: transparent;
+    background-color: ${colors.border};
     text-decoration: none;
     color: white;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 10px;
     width: 10%;
-    min-width:100px;
-    padding:1.4rem;
-    height: 2.5rem;
-    ${fonts.paragraph};
+    min-width:80px;
+    padding:1.2rem;
+    height: 1.5rem;
+    ${fonts.footnote};
+    @media (max-width:${size.mobileL}){ 
+        ${fonts.paragraph};
+    }
 
     ${props => 
         props.secondary && 
         css`
-        background-color: transparent;
+        background-color: rgba(55, 0, 0, 0.1);
         text-decoration: none;
         border-radius: 10px;
-        width: 100px;
+        width: 80px;
         height: 40px;
         border: 3px solid ${colors.secondary};
         color:${colors.secondary};
@@ -36,24 +39,27 @@ const LinkButton = styled.a`
 `
 const Button = styled.button`
 ${flex('row', 'center', 'center')}
-background-color: transparent;
+background-color: ${colors.border};
 text-decoration: none;
 color: white;
-border: 3px solid white;
+border: 2px solid white;
 border-radius: 10px;
 width: 10%;
-min-width:100px;
-padding:1.4rem;
-height: 2.5rem;
-${fonts.paragraph};
+min-width:80px;
+padding:1.2rem;
+height: 1.5rem;
+${fonts.footnote};
+@media (max-width:${size.mobileL}){ 
+    ${fonts.paragraph};
+}
 
 ${props => 
     props.secondary && 
     css`
-    background-color: transparent;
+    background-color: rgba(55, 0, 0, 0.1);
     text-decoration: none;
     border-radius: 10px;
-    width: 100px;
+    width: 80px;
     height: 40px;
     border: 3px solid ${colors.secondary};
     color:${colors.secondary};
@@ -73,7 +79,6 @@ const ModalWrapper = styled.dialog`
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.2);
     }
- 
 `
 const CloseButton = styled.button`
     position: absolute;
@@ -129,15 +134,15 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 </Button>
                 </>
             )}
-            {/* {showModal ? ( */}
-            <ModalWrapper ref={modal}>
+
+            <ModalWrapper 
+            ref={modal}>
                 <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
             </ModalWrapper>
-            {/* ) : (null)} */}
-           
+
         </Container>
     )
 }

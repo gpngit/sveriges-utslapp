@@ -129,16 +129,12 @@ const InputForm = ({ pageElements }) => {
     const {id, name, show, toggleShow, type, sections} = pageElements
     const [showSection, setShowSection] = useState(false)
     const [visible, setVisible] = useState(show)
-
-    console.log(visible, type)
-
     const handleShowClick = (e) => {
         e.preventDefault()
         setShowSection(!showSection)
     }
   
     const showOrHidePage = (index, bool) => {
-        console.log(index, bool, "index, bool")
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
         update(dbRef, {show: bool})
@@ -206,6 +202,7 @@ const InputForm = ({ pageElements }) => {
             })}
             
             <h3>LÄNKAR:</h3>
+            {/* <p>Viktigt: kom ihåg att ha med hela adressen, dvs &apos;&apos;https://&apos;&apos; när du skriver in URL:en.</p> */}
          
             {sections.map((section, i) => {
               return (<>

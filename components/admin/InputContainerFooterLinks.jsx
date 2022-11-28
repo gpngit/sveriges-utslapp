@@ -55,7 +55,29 @@ const Container = styled.div`
             background-color:${colors.secondary};
         }
     }
-
+    .row{
+        ${flex("row", "center", "center")}
+        min-width:50%;
+    }
+    .input_url1{
+        border:none;
+        margin-right:3px;
+        ${fonts.footnote};
+        text-transform: none;
+        margin-right:-2px;
+        color:grey;
+        z-index:2;
+        position:relative;
+        left:50px;
+        width:30px;
+    }
+    .input_url2{
+    padding-left:72px;
+    ${fonts.footnote}
+    }
+    .urlLabel{
+        width:5px;
+    }
 `
 const Input = styled.input`
     width: 90%;
@@ -69,11 +91,24 @@ const Input = styled.input`
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
         }
+   
 `
 const Label = styled.label`
 ${fonts.footnote};
 margin-bottom:2px;
 text-transform: uppercase;
+`
+const ModalBackdrop = styled.div`
+position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 `
 
 const Modal = styled.div`
@@ -81,6 +116,7 @@ background-color:${colors.primary};
 padding:2rem;
 ${flex("column","center", "center")}
 gap:10px;
+z-index:4;
 margin:1rem;
 max-width:80%;
 position:relative;
@@ -138,12 +174,10 @@ button{
     &:active{
         background-color:${colors.secondary};
     }
-   }
-
-
+}
 `
 
-const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  }) => {
+const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }) => {
  
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
@@ -159,26 +193,25 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
     }
 
     const sendTextEditToFirebase = ( inputValueTxt, ) => {
- 
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
         update(dbRef, {text: inputValueTxt})
     }
 
     const sendURLEditToFirebase = (inputValueURL) => {
-     
-      const db = getDatabase()
-      const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
-      update(dbRef, {url: inputValueURL})
+    const db = getDatabase()
+    const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
+    update(dbRef, {url: inputValueURL})
     }
 
     const handleSave = (e) => {
-   
         e.preventDefault()
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
+        
         setNewText(inputValueTxt.value)
-        setNewURL(inputValueURL.value)
+        setNewURL("https://"+inputValueURL.value)
+      
         setModal(true)
         setEditable(!editable)
     }
@@ -188,7 +221,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
         let inputValueTxt = document.getElementById(`${sectionName}-${input.text}-${inputIndex}`)
         let inputValueURL = document.getElementById(`${sectionName}-${input.url}-${inputIndex}`)
         sendTextEditToFirebase(inputValueTxt.value)
-        sendURLEditToFirebase(inputValueURL.value)
+        sendURLEditToFirebase("https://"+inputValueURL.value)
         setLoading(true)
         
     }
@@ -212,11 +245,19 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
     
     const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
+
+  
+ 
+
     return (
         
             <>
         {modal && (
-            <Modal>
+            <ModalBackdrop onClick={() => {setModal(!modal)}}>
+            <Modal 
+            onClick={e => { 
+                e.stopPropagation();
+            }}>
                 <div>
                     <Validation>
                     <h3>Ändra från:</h3>
@@ -229,7 +270,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                     <p>url: {newURL}</p>
                     </Validation>
                 </div>
-                 {isLoading ? (<LoadingSpinner/> ):(
+                {isLoading ? (<LoadingSpinner/> ):(
                     <>  {navButtons ? (null): (<ModalButtons>
                         <button 
                         className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
@@ -248,28 +289,32 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                 </ModalButtons>):(null)
             }
             </Modal>
+            </ModalBackdrop>
         )}
         
         <Container key={inputIndex}>
-
-          {input.name !== "links" ? (null): (<>
+        {input.name !== "links" ? (null): (<>
             <div className="input-and-edit">
             <Label 
             htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
+                
                 <Input readOnly={!editable} 
-              
                 id={`${sectionName}-${input.text}-${inputIndex}`}
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                <Label 
-                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>URL:</Label>
+
+                <Label className="urlLabel"
+                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}
+                >URL:</Label>
+                <p 
+                className="input_url1">https://</p>
+
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.url}-${inputIndex}`}
-                className="input_text"
+                className="input_url2"
                 type="url"
-                defaultValue={input.url} /> 
-
+                defaultValue={`${input.url}`.replace("https://", "")}/>  
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
@@ -282,29 +327,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName  
                     </>
                 )}
             </div>
-          </>)}
-            {/* <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{(input.name)}
-            </Label>
-            <div className="input-and-edit">
-                <Input readOnly={!editable} 
-                id={`${sectionName}-${input.name}`}
-                className="input_text"
-                type="text"
-                defaultValue={input.text} />
-                
-                    {!editable ? (
-                    <button 
-                    onClick={(e) => handleEditClick(e)}>Redigera</button>
-                ) : (
-                    <>
-                    <button className="discard"
-                    onClick={(e) => handleDiscard(e)}>Ångra</button>
-                    <button className="spara"
-                    onClick={(e) => handleSave(e)}>Spara</button>
-                    </>
-                )}
-            </div> */}
+        </>)}
         </Container>
         </>
     )

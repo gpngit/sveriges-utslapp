@@ -1,29 +1,10 @@
-import styled from 'styled-components'
-import { flex, fonts, colors, device, size } from '../../../styles/partials'
+//react hooks
+import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Content, ButtonWrapper, Wrapper } from './ContainerStyles'
-import Image from 'next/image'
-import placeholder from "../../../public/placeholder__2.jpg"
-import FuelOrigin from '../../fuel-origin/FuelOrigin'
-import { useState } from 'react'
-
-const TextContent = styled.div`
-    ${flex()};
-    h2 {
-        ${fonts.heading};
-        margin-bottom:1rem;
-    }
-    p {
-        ${fonts.paragraph};
-        @media (max-width: ${size.laptop}){
-            padding-right:5rem;
-        }
-    }
-    margin-bottom:2rem;
-    
-    max-width:1400px;
-`
+import { Grid, Content, Row, FirstContent, SecondContent} from './ContainerStyles'
+import FuelOrigin from '../../fuel-origin/FuelOriginPerYear'
+import ChosenYear from './currentYearBlob'
 
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const {id, sections, name} = pageElements
@@ -36,24 +17,32 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     return (
     <>
     {show && 
-      <Content id="fakta-biobransle">
-            <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
-                <h2>{title.text}</h2>
-                <p>{body1.text}</p>
-            </TextContent>
+    <Content id="fakta-biobransle">
+        <Grid>
+            <FirstContent>
+                <Row>
+                <ChosenYear/>
+                <span>
+                    <p>{subheading.text.toUpperCase()}</p>
+                    <h2>{title.text}</h2>
+                </span>
+                </Row>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
-            <ButtonWrapper>
+            </FirstContent>
+            <SecondContent
+            biobransle>
+                <p>{body1.text}</p>
             <SourceAndShare 
             whiteBG={"yes"}
             sourceLink={url.text} 
             shareLink={'#fakta-biobransle'} 
             sourceText={title.text}
             />
-            </ButtonWrapper>
-      </Content>
-      }
-      </>
+            </SecondContent>
+        </Grid>
+    </Content>
+    }
+    </>
     );
 }
  
