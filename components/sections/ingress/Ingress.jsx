@@ -21,6 +21,7 @@ padding:3rem;
 padding-left:7rem;}
 @media (max-width:${size.mobileL}){ 
     padding-left:3em;
+    padding-bottom:-3rem;
 }
 `
 
