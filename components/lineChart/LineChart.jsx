@@ -28,12 +28,14 @@ const Wrapper = styled.div`
     background-color:${colors.primary};
     height:100px;
 `
+
 const Bg = styled.div`
 z-index:1;
 background-color:${colors.secondary};
 height:200px;
 position:relative;
 margin-bottom:-100px;
+
 `
 const Container = styled.section`
   position: relative;
@@ -43,12 +45,23 @@ const Container = styled.section`
   @media ${device.tablet}{
     padding: 5em 5em 0em 5em;
   }
+  @media (max-width:${size.tablet}){
+    margin-top:-3rem;
+    z-index:2;
+  }
+  @media (max-width:${size.mobileL}){
+    padding-left:2em;
+  }
 `
 const TextContent = styled.div`
   padding: 1rem 0rem;
-
+  @media (max-width:${size.tablet}){
+    padding-right:2rem;
+    margin-top:-1rem;
+  }
   h2 {
-      ${fonts.heading};;
+      ${fonts.lessheading};
+      margin-bottom:1rem;
   }
 
   p {
@@ -59,8 +72,7 @@ const ButtonContainer = styled.div`
   padding: 1rem;
   ${flex('row', 'center', 'center')};
   gap: 1rem;
-
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileL}) {
     ${flex('column')}
   }
 `
@@ -82,27 +94,31 @@ const ScrollContainer = styled.div`
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
-
+  //*IE AND FIREFOX:
+  @media ${device.tablet}{
+    -ms-overflow-style:none;
+    scrollbar-width: none;
+  }
   &::-webkit-scrollbar {
       display: none;
   }
 `
 const ChartContainer = styled.div`
-  min-height: 70vh;
+  min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
+  padding-bottom:1rem;
 `
 const CheckboxContainer = styled.label`
   width: 200px;
   ${flex('row', 'space-between', 'center')};
   position: relative;
   cursor: pointer;
-  font-size: 22px;
+  ${fonts.paragraph};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
   .labeltext {
     ${fonts.footnote};
   }
@@ -151,11 +167,13 @@ const CheckMark = styled.span`
 
 const LineChart = ({emissions, pageElements}) => {
 
+  console.log(emissions, "emissions")
   const [show, setShow] = useState(pageElements.show)
   const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
+  const body2 = sections.find(section => section.name === 'body2')
 
   const canvas = useRef()
   const context = useContext(AppContext)
@@ -164,6 +182,7 @@ const LineChart = ({emissions, pageElements}) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   })
+
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
   const mostRecentYear = years[years.length-1]
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
@@ -234,7 +253,6 @@ const LineChart = ({emissions, pageElements}) => {
     afterDraw: chart => {
       let ctx = chart.ctx;
       let yAxis = chart.scales.y;
-
       let gradient = ctx.createLinearGradient(0, 0, 0, yAxis.height);
       gradient.addColorStop(0, 'transparent');
       gradient.addColorStop(1 , "rgba(0,0,0,.5)");
@@ -264,6 +282,19 @@ const LineChart = ({emissions, pageElements}) => {
           <h2>{title.text}</h2>
           <p>{body1.text}</p>
         </TextContent>
+        
+        <Scrolltext>
+          <p>Swipa höger för att se utveckling</p>
+          <SmallArrow color={colors.bio} size={14} />
+        </Scrolltext>
+        <ScrollContainer>
+          <ChartContainer>
+            <Line ref={canvas} 
+            data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
+          </ChartContainer>
+        </ScrollContainer>
+        </>} 
+        
         <ButtonContainer>
           <CheckboxContainer>
             <span className="labeltext">FOSSIL CO2</span>
@@ -276,16 +307,9 @@ const LineChart = ({emissions, pageElements}) => {
             <CheckMark className="checkmark" />
           </CheckboxContainer>
         </ButtonContainer>
-        <Scrolltext>
-          <p>Scrolla för att se utveckling</p>
-          <SmallArrow color={colors.bio} size={16} />
-        </Scrolltext>
-        <ScrollContainer>
-          <ChartContainer>
-            <Line ref={canvas} data={chartData} options={options} plugins={[linePlugin, annotationPlugin]} onClick={changeDisplayYear}  />
-          </ChartContainer>
-        </ScrollContainer>
-        </>} 
+        <TextContent>
+        <p>{body2.text}</p>
+        </TextContent>  
       </Container>
       </>
   )

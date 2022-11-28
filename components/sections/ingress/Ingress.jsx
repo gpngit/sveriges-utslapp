@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts, device } from '../../../styles/partials'
+import { flex, size, colors, fonts, device } from '../../../styles/partials'
 //components
 import SourceAndShare from '../../../components/buttons/SourceAndShare'
 import { useState } from 'react'
@@ -19,6 +19,9 @@ max-width:1400px;
 @media screen and ${device.tablet}{
 padding:3rem;
 padding-left:7rem;}
+@media (max-width:${size.mobileL}){ 
+    padding-left:3em;
+}
 `
 
 const TextContent = styled.div`

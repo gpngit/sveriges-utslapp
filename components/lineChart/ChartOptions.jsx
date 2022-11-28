@@ -30,7 +30,7 @@ const ChartOptions = (emissions) => {
                 let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
                 highestValue += highestValueInDataset
               })
-              let rounded = Math.ceil(highestValue/10000)*10000
+              let rounded = Math.ceil(highestValue/10000)*10000;
               return rounded
             },
             stacked: true,
@@ -125,14 +125,14 @@ const ChartOptions = (emissions) => {
                   position: `${(100/55)*40}%`,
                   yAdjust: -20,
                   display: true,
-                  content: ['ETAPPMÅL 2030', `${2030-currentYear} år kvar`],
+                  content: ['Etappmål 2030', `${2030-currentYear} år kvar`],
                   backgroundColor: 'transparent',
                   color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               },
@@ -147,16 +147,16 @@ const ChartOptions = (emissions) => {
                 borderDash: [5],
                 label: {
                   position: `${(100/55)*50}%`,
-                  yAdjust: -20,
+                  yAdjust: -12,
                   display: true,
                   content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
                   backgroundColor: 'transparent',
                   color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               },
@@ -180,9 +180,9 @@ const ChartOptions = (emissions) => {
                   textAlign: 'end',
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               }
