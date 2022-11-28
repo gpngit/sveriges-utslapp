@@ -22,7 +22,7 @@ const Container = styled.div`
     padding-top: 20px;
 `
 const InnerContainer = styled.div`
-    ${flex('row', 'space-between', 'center')};
+    ${flex('row','center', "center")};
     gap: 10px;
 
     div {

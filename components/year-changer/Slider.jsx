@@ -38,7 +38,7 @@ const RangeInput = styled.input.attrs({type: 'range'})`
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        border: 4px solid ${colors.secondary};
+        border: 2px solid ${colors.secondary};
         height: 30px;
         width: 30px;
         transform: rotate(45deg);
@@ -48,9 +48,8 @@ const RangeInput = styled.input.attrs({type: 'range'})`
     }
 
     &::-moz-range-thumb {
-        border: 4px solid ${colors.secondary};
+        border: 2px solid ${colors.secondary};
         height: 30px;
-        
         width: 30px;
         transform: rotate(45deg);
         background: ${colors.primary};
