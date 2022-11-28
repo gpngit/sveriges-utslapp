@@ -1,8 +1,8 @@
 //CSS
 import { colors, font } from '../../styles/partials'
 
-const ChartOptions = (emissions) => {
-
+const ChartOptions = (emissions,) => {
+  
     const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
     const firstYear = yearsOfData[0]
     const mostRecentYear = yearsOfData[yearsOfData.length -1]
@@ -76,7 +76,7 @@ const ChartOptions = (emissions) => {
             annotations: {
               labelBio: {
                 type: 'label',
-                content: ['BIOGEN CO2'],
+                content: ['BIOGENA CO2'],
                 color: 'white',
                 font: {
                   family: font.main,
@@ -127,14 +127,14 @@ const ChartOptions = (emissions) => {
                   position: `${(100/55)*40}%`,
                   yAdjust: -20,
                   display: true,
-                  content: ['ETAPPMÅL 2030', `${2030-currentYear} år kvar`],
+                  content: ['Etappmål 2030', `${2030-currentYear} år kvar`],
                   backgroundColor: 'transparent',
                   color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               },
@@ -149,16 +149,16 @@ const ChartOptions = (emissions) => {
                 borderDash: [5],
                 label: {
                   position: `${(100/55)*50}%`,
-                  yAdjust: -20,
+                  yAdjust: -12,
                   display: true,
                   content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
                   backgroundColor: 'transparent',
                   color: colors.secondary,
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               },
@@ -182,9 +182,9 @@ const ChartOptions = (emissions) => {
                   textAlign: 'end',
                   font: {
                     family: font.main,
-                    size: '14px',
+                    size: '10px',
                     weight: 'normal',
-                    lineHeight: 1.5,
+                    lineHeight: 1.2,
                   },
                 }
               }

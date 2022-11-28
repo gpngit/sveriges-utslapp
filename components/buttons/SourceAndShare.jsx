@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from 'styled-components'
-import { flex, colors, fonts, device  } from '../../styles/partials'
+import { flex, colors, size, fonts, device  } from '../../styles/partials'
 import { useEffect, useState, useRef } from 'react'
 import SharingModal from '../modals/SharingModal'
 
@@ -20,6 +20,9 @@ const LinkButton = styled.a`
     padding:1.2rem;
     height: 1.5rem;
     ${fonts.footnote};
+    @media (max-width:${size.mobileL}){ 
+        ${fonts.paragraph};
+    }
 
     ${props => 
         props.secondary && 
@@ -46,6 +49,9 @@ min-width:80px;
 padding:1.2rem;
 height: 1.5rem;
 ${fonts.footnote};
+@media (max-width:${size.mobileL}){ 
+    ${fonts.paragraph};
+}
 
 ${props => 
     props.secondary && 
