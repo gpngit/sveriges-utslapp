@@ -45,14 +45,13 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
                 label: 'value',
                 data: yearlyData.map((data, i) => data.value),
                 backgroundColor: colors,
-                borderWidth: 2,
+                borderWidth: 0,
             }]
         })
     }
   }, [yearlyData])
 
-  const colors = ['#ff0000','#ff5500', '#ff9100', '#eeff36', '#acff1d', '#00ff5e', '#00fbff', '#016bff', '#6f00ff', '#ff00aa']
-
+  const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
 
   return (
       <Container id='doughnut'>
