@@ -107,7 +107,7 @@ const YearChanger = ({ emissions }) => {
                     </div>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
-            <Slider />
+            <Slider firstYear={firstYear} latestYear={latestYear} />
         </Container>
     )
 }

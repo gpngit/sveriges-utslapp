@@ -59,10 +59,23 @@ const RangeInput = styled.input.attrs({type: 'range'})`
     }
 `
 
-const Slider = () => {
+const Slider = ({ firstYear, latestYear }) => {
+
+    const context = useContext(AppContext)
+    const {displayYear, setDisplayYear} = context
+
+    const handleSlide = (e) => {
+        console.log(e.target.value)
+        setDisplayYear(Number(e.target.value))
+    }
 
     return (
-        <RangeInput />
+        <RangeInput 
+        min={firstYear}
+        max={latestYear}
+        defaultValue={displayYear} 
+        onChange={(e) => handleSlide(e)}
+        />
     )
 }
 
