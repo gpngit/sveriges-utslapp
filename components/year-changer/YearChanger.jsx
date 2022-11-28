@@ -8,7 +8,8 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import Chevron from '../SVG\'s/Chevron'
-
+//components
+import Slider from './Slider'
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -16,19 +17,19 @@ const Container = styled.div`
     width: 100%;
     position: sticky;
     top: 0;
-    ${flex('row', 'space-between', 'center')};
+    ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
-    gap: 20px;
-    padding: 20px;
+    padding-top: 20px;
 `
 const InnerContainer = styled.div`
     ${flex('row', 'space-between', 'center')};
-    flex-basis: 60%;
-    max-width: 200px;
+    gap: 10px;
+
     div {
         ${flex('row', 'space-between', 'center')};
         gap: 5px;
         cursor: pointer;
+
         p {
             font-size: .8rem; 
             line-height:150%;
@@ -82,30 +83,31 @@ const YearChanger = ({ emissions }) => {
 
     return (
         <Container>
-            <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
-            <InnerContainer>
-                <div onClick={() => decrement()}>
-                    <Chevron 
-                    color={colors.secondary} 
-                    size={20} 
-                    direction={'left'} 
-                    stroke={5} />
-                    <p 
-                    className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
-                </div>
-                <Year>{displayYear}</Year>
-                <div onClick={() => increment()}>
-                    <p 
-                    className={reachedEnd ? 'inactive' : null}>
-                        {displayYear+1}</p>
-                    <Chevron 
-                    color={colors.secondary} 
-                    size={20} 
-                    direction={'right'} 
-                    stroke={5}  />
-                </div>
+                <InnerContainer>
+                <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
+                    <div onClick={() => decrement()}>
+                        <Chevron 
+                        color={colors.secondary} 
+                        size={20} 
+                        direction={'left'} 
+                        stroke={5} />
+                        <p 
+                        className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
+                    </div>
+                    <Year>{displayYear}</Year>
+                    <div onClick={() => increment()}>
+                        <p 
+                        className={reachedEnd ? 'inactive' : null}>
+                            {displayYear+1}</p>
+                        <Chevron 
+                        color={colors.secondary} 
+                        size={20} 
+                        direction={'right'} 
+                        stroke={5}  />
+                    </div>
+                <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
-            <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
+            <Slider firstYear={firstYear} latestYear={latestYear} />
         </Container>
     )
 }
