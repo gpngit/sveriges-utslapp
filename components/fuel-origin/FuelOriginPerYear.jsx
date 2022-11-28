@@ -51,23 +51,9 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   const colors = ['#ff0000','#ff5500', '#ff9100', '#eeff36', '#acff1d', '#00ff5e', '#00fbff', '#016bff', '#6f00ff', '#ff00aa']
 
-//   const datasets = []
-//   for (let i=0; i<10; i++){
-//     let obj = {
-//         label: energiMyndighetenData.map(data => data.fuels[i]).map(data => data.name)[i],
-//         data: energiMyndighetenData.map(data => data.fuels[i]).map(data => data.value),
-//         fill: true,
-//         backgroundColor: colors[i],
-//         pointRadius: 0,
-//         tension: .2,
-//         borderColor: colors[i]
-//     }
-//     datasets.push(obj)
-//   }
-
 
   return (
-      <Container id='line-chart'>
+      <Container id='doughnut'>
         <ChartContainer>
         <Doughnut ref={canvas} 
         data={chartData} 

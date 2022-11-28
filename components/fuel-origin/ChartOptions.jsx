@@ -8,34 +8,10 @@ const ChartOptions = (emissions) => {
         responsive: true,
         scales: {
           y: { 
-            // stepSize: 10000,
-            min: 0,
-            // max: maxantal??,
-            stacked: true,
-            display: true,
-            ticks:{
-              color: colors.secondary,
-              font:{
-                size: '12px',
-                family: font.main,
-              },
-            },
-            grid: {
-              display: true
-            }
+            display: false,
           },
           x: {  
-            display: true,           
-            grid: {
-              display: false
-            },
-            ticks:{
-              color: colors.secondary,
-              font:{
-                size: '12px',
-                family: font.main,
-              }
-            }
+            display: false,           
           }
         },
         plugins: {
