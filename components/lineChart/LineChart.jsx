@@ -70,15 +70,29 @@ const TextContent = styled.div`
 `
 const ButtonContainer = styled.div`
   padding: 1rem;
-  ${flex('row', 'center', 'center')};
+  max-width:80%;
+  ${flex("row")}
+  @media ${device.tablet}{${flex('row', 'center', 'center')};
   gap: 1rem;
-  @media (max-width: ${size.mobileL}) {
-    ${flex('column')}
+  div{
+    ${flex("row")}
   }
-  .checkboxInfo{
-    font-size:12px;
-    color: ${colors.bio};
   }
+  div{
+    ${flex("column", "flex-start","center")}
+    gap: 10px;
+    label:first-of-type{
+      padding-left:5px;
+    }
+  }
+
+p{
+color: ${colors.bio};
+font-size:12px;
+@media (max-width: ${size.tablet}){
+  width:60%;
+}
+}
 `
 const Scrolltext = styled.div`
   width: 100%;
@@ -314,7 +328,8 @@ const LineChart = ({emissions, pageElements}) => {
         </>} 
         
         <ButtonContainer>
-          <p className="checkboxInfo">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
+          <p>Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
+          <div>
           <CheckboxContainer>
             <span className="labeltext">FOSSIL CO2</span>
             <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
@@ -325,6 +340,7 @@ const LineChart = ({emissions, pageElements}) => {
             <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
             <CheckMark className="checkmark" />
           </CheckboxContainer>
+          </div>
         </ButtonContainer>
         <TextContent>
         <p>{body2.text}</p>
