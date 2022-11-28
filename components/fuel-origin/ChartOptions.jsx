@@ -6,6 +6,9 @@ const ChartOptions = (emissions) => {
     const options = {
         maintainAspectRatio: false,
         responsive: true,
+        layout: {
+          padding: 50,
+        },
         scales: {
           y: { 
             display: false,
@@ -16,7 +19,8 @@ const ChartOptions = (emissions) => {
         },
         plugins: {
           legend: {
-            display: false,
+            display: true,
+            position: 'right'
           },
           tooltip: {
             enabled: true,
