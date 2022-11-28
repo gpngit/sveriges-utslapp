@@ -80,6 +80,7 @@ padding:2rem;
 ${flex("column","center", "center")}
 gap:10px;
 margin:1rem;
+z-index:4;
 max-width:80%;
 position:relative;
 border-radius:19px;
@@ -108,6 +109,18 @@ h3{
 p{
     ${fonts.footnote};
 }
+`
+const ModalBackdrop = styled.div`
+position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 `
 
 const ModalButtons= styled.span`
@@ -194,7 +207,10 @@ const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
         
             <>
         {modal && (
-            <Modal>
+             <ModalBackdrop onClick={() => {setModal(!modal)}}>
+            <Modal onClick={e => { 
+                e.stopPropagation();
+            }}>
                 <div>
                     <Validation>
                     <h3>Ändra från:</h3>
@@ -225,6 +241,7 @@ const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
             }
                 
             </Modal>
+            </ModalBackdrop>
         )}
        
         <Container>
