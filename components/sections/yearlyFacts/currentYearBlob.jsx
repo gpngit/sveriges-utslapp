@@ -70,7 +70,8 @@ const ChosenYear = ({emissions, name}) => {
     <Year>
       {name !== "fakta-biobransle" ? ( <h4>{displayYear}</h4>):(
       <>
-      {displayYear >= 2005 && <h4>{displayYear}</h4>}
+      {displayYear >= 2005 && displayYear <= 2020 ? (<h4>{displayYear}</h4>):(null) }
+    
       </> )}
    
     </Year>
