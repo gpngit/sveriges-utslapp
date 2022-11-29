@@ -30,15 +30,26 @@ const Wrapper = styled.div`
     position:relative;
     z-index:5;
     background-color:${colors.primary};
-    height:200px;
+    height: 100px;
+
+    @media ${device.laptop}{
+      height:200px;
+    }
+
 `
 
 const Bg = styled.div`
+
 z-index:1;
 background-color:${colors.secondary};
-height:300px;
 position:relative;
-margin-bottom:-200px;
+height:200px;
+margin-bottom:-100px;
+
+@media ${device.laptop}{
+  height:300px;
+  margin-bottom:-200px;
+}
 `
 const Container = styled.section`
   position: relative;
@@ -51,13 +62,10 @@ const Container = styled.section`
   @media (max-width:${size.tablet}){
     margin-top:-10rem;
     z-index:10;
-
-    
   }
   @media (max-width:${size.mobileL}){
     padding-left:2em;
   }
- 
 `
 const TextContent = styled.div`
   padding: 1rem 0rem;
@@ -83,25 +91,40 @@ const ButtonContainer = styled.div`
   ${flex("row")}
   @media ${device.tablet}{${flex('row', 'center', 'center')};
   gap: 1rem;
-  div{
-    ${flex("row")}
-  }
+
   }
   div{
     ${flex("column", "flex-start","center")}
     gap: 10px;
     label:first-of-type{
-      padding-left:5px;
+      padding-left:6px;
     }
   }
 
 p{
 color: ${colors.bio};
 font-size:12px;
-@media (max-width: ${size.tablet}){
-  width:60%;
+width:100%;
 }
+@media (max-width:${size.tablet}){ 
+margin-top:-8px;
+  ${flex("column")}
+  gap:4px;
+  div{
+    margin-top:4px;
+    ${flex("row", "flex-start", "flex-start")}
+    label{
+      ${flex("row-reverse", "center", "center")}
+      width:140px;
+
+    }
+    label:first-of-type{
+      margin-left:-10px;
+    }
+  
+  }
 }
+
 `
 const Scrolltext = styled.div`
   width: 100%;
