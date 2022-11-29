@@ -110,6 +110,7 @@ const Kollagring = ({ emissions }) => {
         .filter(emission => emission.year == displayYear)
         .filter(emission => emission.type.val === 'CO2-ekv.')
         .filter(emission => emission.sector.val === "10.0"))
+    const [yearlyTotalEmissions, setYearlyTotalEmissions] = useState(null)
 
     useEffect(() => {
         setYearlyBioEmissions(emissions
@@ -127,35 +128,59 @@ const Kollagring = ({ emissions }) => {
     }, [displayYear])
 
     useEffect(() => {
+      setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
+    }, [yearlyBioEmissions, yearlyFossilEmissions])
+
+    console.log(yearlyBioEmissions[0].value)
+    console.log(yearlyFossilEmissions[0].value)
+    console.log(yearlyTotalEmissions)
+
+    useEffect(() => {
         setChartData({
             labels: [''],
             datasets: [{
             label: 'Fossila utsläpp',
-            data: yearlyFossilEmissions.map(data => data.value),
+            data: yearlyFossilEmissions.map(data => Number(data.value)),
             fill: true,
             backgroundColor: colors.fossil,
             borderColor: colors.border,
             borderWidth: 5,
-            stack: 'Stack 0'
+            stack: 'Stack 1'
             },{
             label: 'Biogena utsläpp',
-            data: yearlyBioEmissions.map(data => data.value),
+            data: yearlyBioEmissions.map(data => Number(data.value)),
             backgroundColor: colors.bio,
             borderColor: colors.border,
             fill: true,
             borderWidth: 5,
-            stack: 'Stack 0'
+            stack: 'Stack 1'
             },{
             label: 'Markanvändning',
-            data: yearlyLandUse.map(data => -(data.value)),
+            data: yearlyLandUse.map(data => -Number(data.value)),
             backgroundColor: 'white',
             fill: true,
             borderColor: colors.border,
             borderWidth: 5,
-            stack: 'Stack 1'
+            stack: 'Stack 2'
+            },{
+            label: 'Markanvändning',
+            data: yearlyLandUse.map(data => -Number(data.value)),
+            backgroundColor: 'white',
+            fill: true,
+            borderColor: colors.border,
+            borderWidth: 5,
+            stack: 'Stack 3'
+            },{
+            label: 'Biogena utsläpp',
+            data: yearlyBioEmissions.map(data => Number(data.value)),
+            backgroundColor: colors.bio,
+            borderColor: colors.border,
+            fill: true,
+            borderWidth: 5,
+            stack: 'Stack 3'
             }]
         })
-    }, [yearlyBioEmissions, yearlyFossilEmissions])
+    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions])
 
     const handleCheckbox = (e) => {
       let clickedDatasetIndex = e.target.dataset.index

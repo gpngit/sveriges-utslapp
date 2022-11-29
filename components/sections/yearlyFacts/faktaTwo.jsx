@@ -7,6 +7,7 @@ import FuelOrigin from '../../fuel-origin/FuelOriginPerYear'
 import ChosenYear from './currentYearBlob'
 
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
+    
     const {id, sections, name} = pageElements
     const [show, setShow] = useState(pageElements.show)
     const title = sections.find(section => section.name === 'title')
