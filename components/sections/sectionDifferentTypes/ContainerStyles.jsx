@@ -9,9 +9,18 @@ color: black;
 max-width:1500px;
 width:100%;
 padding:10em;
+@media (max-width:${size.mobileL}){ 
+   padding:2em;
+   padding-top:5em;
+   padding-bottom:5em;
+  }
+  @media (max-width:${size.tablet}){ 
+    padding:5em;
+   }
 @media ${device.laptop}{
     padding-right:15rem;
 }
+
 `
 
 export const Grid = styled.div`
