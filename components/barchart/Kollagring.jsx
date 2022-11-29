@@ -131,10 +131,6 @@ const Kollagring = ({ emissions }) => {
       setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
     }, [yearlyBioEmissions, yearlyFossilEmissions])
 
-    console.log(yearlyBioEmissions[0].value)
-    console.log(yearlyFossilEmissions[0].value)
-    console.log(yearlyTotalEmissions)
-
     useEffect(() => {
         setChartData({
             labels: [''],
@@ -147,14 +143,6 @@ const Kollagring = ({ emissions }) => {
             borderWidth: 5,
             stack: 'Stack 1'
             },{
-            label: 'Biogena utsläpp',
-            data: yearlyBioEmissions.map(data => Number(data.value)),
-            backgroundColor: colors.bio,
-            borderColor: colors.border,
-            fill: true,
-            borderWidth: 5,
-            stack: 'Stack 1'
-            },{
             label: 'Markanvändning',
             data: yearlyLandUse.map(data => -Number(data.value)),
             backgroundColor: 'white',
@@ -163,34 +151,26 @@ const Kollagring = ({ emissions }) => {
             borderWidth: 5,
             stack: 'Stack 2'
             },{
-            label: 'Markanvändning',
-            data: yearlyLandUse.map(data => -Number(data.value)),
-            backgroundColor: 'white',
-            fill: true,
-            borderColor: colors.border,
-            borderWidth: 5,
-            stack: 'Stack 3'
-            },{
             label: 'Biogena utsläpp',
             data: yearlyBioEmissions.map(data => Number(data.value)),
             backgroundColor: colors.bio,
             borderColor: colors.border,
             fill: true,
             borderWidth: 5,
-            stack: 'Stack 3'
+            stack: 'Stack 1'
             }]
         })
     }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions])
 
-    const handleCheckbox = (e) => {
-      let clickedDatasetIndex = e.target.dataset.index
-      let chartDatasets = canvas.current.legend.chart._sortedMetasets
-      let {checked} = e.target
-  
-      if (checked) {
-        chartDatasets[clickedDatasetIndex].hidden = false
+
+    const handleClick = () => {
+      let bio = canvas.current.config._config.data.datasets[2]
+      if (bio.stack === 'Stack 1'){
+        bio.stack = 'Stack 2'
+        bio.backgroundColor = 'white'
       } else {
-        chartDatasets[clickedDatasetIndex].hidden = true
+        bio.stack = 'Stack 1'
+        bio.backgroundColor = colors.bio
       }
       canvas.current.legend.chart.update(); 
     }
@@ -198,16 +178,7 @@ const Kollagring = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
             <ButtonContainer>
-              <CheckboxContainer>
-                <span className="labeltext">FOSSIL CO2</span>
-                <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
-                <CheckMark className="checkmark" />
-              </CheckboxContainer>
-              <CheckboxContainer>
-                <span className="labeltext">BIOGEN CO2</span>
-                <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
-                <CheckMark className="checkmark" />
-              </CheckboxContainer>
+              <button onClick={handleClick}>Visa potentiellt upptag</button>
             </ButtonContainer>
                 <ChartContainer>
                     {chartData && (
