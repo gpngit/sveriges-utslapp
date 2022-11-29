@@ -7,9 +7,30 @@ import AppContext from '../../../context/AppContext';
 const FrameYear = styled.span`
 clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 position:relative;
-width:60px;
 height:60px;
 background-color: ${colors.secondary};
+@media (max-width: ${size.mobileS}){
+  margin-left:-2rem;
+  width:50%;
+}
+@media ${device.mobileS}{
+  width:100px;
+  margin-left:-2rem;
+}
+@media ${device.mobileM}{
+  height:60px;
+  width:80px;
+}
+@media ${device.mobileL}{ 
+  margin-left:0;
+  width:80px;
+}
+
+@media ${device.tablet}{
+  margin-left:0;
+  width:60px;
+  height:60px;
+}
 `
 
 const Year = styled.span`
@@ -26,15 +47,32 @@ h4{
     position: absolute;
     top:30%;
     color: ${colors.secondary};
+
+    @media (max-width: ${size.mobileS}){
+    font-size:11px;
+    top:32%;
+    }
+    @media ${device.mobileM}{
+    font-size:11px;
+    }
+    @media ${device.mobileL}{ 
+    font-size:13px;
+    }
 }
 `
-const ChosenYear = ({emissions}) => {
+const ChosenYear = ({emissions, name}) => {
+  console.log(name, "name")
   const context = useContext(AppContext);
   const {displayYear, setDisplayYear} = context;
+  console.log(displayYear, "year")
   return ( 
   <FrameYear>
     <Year>
-    <h4>{displayYear}</h4>
+      {name !== "fakta-biobransle" ? ( <h4>{displayYear}</h4>):(
+      <>
+      {displayYear >= 2005 && <h4>{displayYear}</h4>}
+      </> )}
+   
     </Year>
   </FrameYear> );
 }

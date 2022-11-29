@@ -10,6 +10,8 @@ import AppContext from '../../context/AppContext'
 import Chevron from '../SVG\'s/Chevron'
 //components
 import Slider from './Slider'
+import Image from 'next/legacy/image'
+import Square from "../../public/Square.svg";
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -21,10 +23,12 @@ const Container = styled.div`
     background-color: ${colors.primary};
     padding-top: 20px;
 `
-const InnerContainer = styled.div`
-    ${flex('row','center', "center")};
-    gap: 10px;
 
+
+const InnerContainer = styled.div`
+    ${flex('row','space-between', "center")};
+    gap: 10px;
+    width: calc(100vw - 80px);
     div {
         ${flex('row', 'space-between', 'center')};
         gap: 5px;
@@ -40,18 +44,57 @@ const InnerContainer = styled.div`
     }
 `
 const Year = styled.span`
-    ${fonts.paragraph};
+    ${fonts.subheading};
     font-weight: bold;
     padding: 10px;
+    color: ${colors.secondary};
 `
+const Middle = styled.span`
+${flex("row", "center", "center")}
+gap:20px;
+p{
+    color:${colors.secondary};
+    font-weight:bold;
+    
+}`
+
+const ChevronButts = styled.button`
+border-radius:9px;
+width:30px;
+${flex("center", "center")}
+padding:8px 8px;
+background-color:transparent;
+border-color:${colors.secondary};
+&:hover{
+    background-color: rgba(55, 0, 0, 0.1);
+}
+`
+
 const Button = styled.button`
     background-color: ${colors.primary};
-    ${fonts.footnote}
+    ${fonts.footnote};
+    font-weight:bold;
     color: ${colors.secondary};
     border: 2px solid ${colors.secondary};
     border-radius: 10px;
     padding: 0px 12px;
     height: 40px;
+    &:hover{
+        background-color: rgba(55, 0, 0, 0.1);
+    }
+`
+const Decoration = styled.div`
+width: calc(100vw - 40px);
+margin-top:1rem;
+top:80px;
+`
+const SquareImg = styled(Image)`
+`
+const Line = styled.div`
+width:100%;
+background-color: ${colors.secondary};
+height:1px;
+z-index:10;
 `
 
 const YearChanger = ({ emissions }) => {
@@ -85,29 +128,61 @@ const YearChanger = ({ emissions }) => {
         <Container>
                 <InnerContainer>
                 <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
+                <Middle>
                     <div onClick={() => decrement()}>
+                        {reachedBeginning ? (null): (<>
+                        <ChevronButts>
                         <Chevron 
                         color={colors.secondary} 
-                        size={20} 
+                        size={10} 
                         direction={'left'} 
-                        stroke={5} />
+                        stroke={10} />
+                        </ChevronButts>
                         <p 
                         className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
+                        </>)}
                     </div>
                     <Year>{displayYear}</Year>
                     <div onClick={() => increment()}>
+                       
+                        {reachedEnd ? (null): ( 
+                        <>
                         <p 
                         className={reachedEnd ? 'inactive' : null}>
-                            {displayYear+1}</p>
+                         {displayYear+1}</p> 
+                        <ChevronButts>
                         <Chevron 
                         color={colors.secondary} 
-                        size={20} 
+                        size={10} 
                         direction={'right'} 
-                        stroke={5}  />
+                        stroke={10}  />
+                        </ChevronButts>
+                        </>)}
+                       
+                        
                     </div>
+                    </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
-            <Slider firstYear={firstYear} latestYear={latestYear} />
+            <Decoration>
+                <Line
+                className='decor-line'/>
+                 {/* <SquareImg
+                className="square"
+                src={Square}
+                alt="Square"
+                height={30}
+                width={30}
+            /> */}
+                </Decoration>
+                <SquareImg
+                className="square"
+                src={Square}
+                alt="Square"
+                height={30}
+                width={30}
+                />
+            {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
 }

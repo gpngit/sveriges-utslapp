@@ -14,7 +14,7 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const url = sections.find(section => section.name === 'source')
-
+    console.log(name)
     return (
     <>
     {show && 
@@ -22,7 +22,10 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
         <Grid>
             <FirstContent>
                 <Row>
-                <ChosenYear/>
+                <ChosenYear
+                emissions = {energiMyndighetenData}
+                name = {name}
+                />
                 <span>
                     <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
