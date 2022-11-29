@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts } from '../../styles/partials'
+import { flex, colors, fonts, size } from '../../styles/partials'
 //react hooks
 import { useState, useEffect } from 'react'
 //context
@@ -56,9 +56,17 @@ ${flex("row", "center", "center")}
 gap:20px;
 p{
     color:${colors.secondary};
-    font-weight:bold;
-    
-}`
+    font-weight:bold;    
+}
+@media (max-width: ${size.mobileM}){
+    gap:1px;
+    p{display:none}
+}
+@media (max-width: ${size.mobileL}){
+    gap:1px;
+}
+
+`
 
 const ChevronButts = styled.button`
 border-radius:9px;
@@ -99,6 +107,9 @@ height:1px;
 z-index:10;
 `
 
+const Empty = styled.span`
+display:none;`
+
 const YearChanger = ({ emissions }) => {
 
     const context = useContext(AppContext)
@@ -132,7 +143,7 @@ const YearChanger = ({ emissions }) => {
                 <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
                 <Middle>
                     <div onClick={() => decrement()}>
-                        {reachedBeginning ? (null): (<>
+                        {reachedBeginning ? (<Empty/>): (<>
                         <ChevronButts>
                         <Chevron 
                         color={colors.secondary} 
@@ -147,7 +158,7 @@ const YearChanger = ({ emissions }) => {
                     <Year>{displayYear}</Year>
                     <div onClick={() => increment()}>
                        
-                        {reachedEnd ? (null): ( 
+                        {reachedEnd ? (<Empty/>): ( 
                         <>
                         <p 
                         className={reachedEnd ? 'inactive' : null}>
@@ -160,8 +171,7 @@ const YearChanger = ({ emissions }) => {
                         stroke={10}  />
                         </ChevronButts>
                         </>)}
-                       
-                        
+
                     </div>
                     </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
@@ -176,7 +186,6 @@ const YearChanger = ({ emissions }) => {
                 strokeWidth={"3"} fillColor={`${colors.primary}`}
                 height={30}
                 width={30}/>
-              
             {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
