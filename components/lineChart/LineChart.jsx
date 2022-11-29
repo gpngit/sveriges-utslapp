@@ -46,7 +46,7 @@ height:200px;
 margin-bottom:-100px;
 
 @media ${device.laptop}{
-  height:300px;
+  height:200px;
   margin-bottom:-200px;
 }
 `
