@@ -93,11 +93,14 @@ const ButtonContainer = styled.div`
 
   }
   div{
+    @media (max-width:${size.tablet}){ 
+      
     ${flex("column", "flex-start","center")}
-    gap: 10px;
+    gap: 10px;}
     label:first-of-type{
       padding-left:6px;
     }
+    ${flex("row", "flex-start", "flex-start")}
   }
 
 p{
