@@ -59,12 +59,12 @@ const ChartOptions2 = () => {
               if (datasets[0].stacked){
                 return ['Utsläpp', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])} kt CO2`]
               } else {
-                return ['Upptag / kollagring', `-${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])} kt CO2`]
+                return ['Upptag /', 'kollagring', `-${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])} kt CO2`]
               }
           } else if (context.datasetIndex === 0) {
             return ['Utsläpp', `${Math.round(value)} kt CO2`]
           } else if (context.datasetIndex === 1) {
-            return ['Upptag / kollagring', `-${Math.round(value)} kt CO2`]
+            return ['Upptag /', 'kollagring', `-${Math.round(value)} kt CO2`]
           }
         },
         font: {
