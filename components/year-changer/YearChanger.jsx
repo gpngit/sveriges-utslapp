@@ -10,6 +10,8 @@ import AppContext from '../../context/AppContext'
 import Chevron from '../SVG\'s/Chevron'
 //components
 import Slider from './Slider'
+import Image from 'next/legacy/image'
+import Square from "../../public/square__filled.svg"
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -52,6 +54,23 @@ const Button = styled.button`
     border-radius: 10px;
     padding: 0px 12px;
     height: 40px;
+`
+const Decoration = styled.div`
+width: calc(100vw - 40px);
+margin-top:1rem;
+top:80px;
+`
+const SquareImg = styled(Image)`
+top:-20px;
+z-index:12;
+`
+
+const Line = styled.div`
+width:100%;
+background-color: ${colors.secondary};
+height:1px;
+z-index:10;
+position: absolute;
 `
 
 const YearChanger = ({ emissions }) => {
@@ -107,7 +126,17 @@ const YearChanger = ({ emissions }) => {
                     </div>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
-            <Slider firstYear={firstYear} latestYear={latestYear} />
+            <Decoration>
+                <Line
+                className='decor-line'/>
+                </Decoration>
+            <SquareImg
+                src={Square}
+                alt="Square"
+                height={30}
+                width={30}
+            />
+            {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
 }

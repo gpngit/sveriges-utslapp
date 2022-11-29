@@ -5,7 +5,7 @@ export const Grid = styled.div`
 max-width: 1500px;
 display: grid;
 gap: 3rem;
-@media screen and ${device.laptopL}{
+@media screen and ${device.laptop}{
   grid-template-columns: repeat(2, 1fr);
 }
 `
