@@ -11,7 +11,8 @@ import Chevron from '../SVG\'s/Chevron'
 //components
 import Slider from './Slider'
 import Image from 'next/legacy/image'
-import Square from "../../public/Square.svg";
+import Square2 from "../../public/Square.svg";
+import { Square } from './Square'
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -22,6 +23,7 @@ const Container = styled.div`
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
     padding-top: 20px;
+
 `
 
 
@@ -167,21 +169,14 @@ const YearChanger = ({ emissions }) => {
             <Decoration>
                 <Line
                 className='decor-line'/>
-                 {/* <SquareImg
-                className="square"
-                src={Square}
-                alt="Square"
-                height={30}
-                width={30}
-            /> */}
                 </Decoration>
-                <SquareImg
-                className="square"
-                src={Square}
-                alt="Square"
+                <Square 
+                className="squareElement"
+                color={`${colors.secondary}`}
+                strokeWidth={"3"} fillColor={`${colors.primary}`}
                 height={30}
-                width={30}
-                />
+                width={30}/>
+              
             {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
