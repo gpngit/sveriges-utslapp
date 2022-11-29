@@ -12,7 +12,7 @@ import Chevron from '../SVG\'s/Chevron'
 import Slider from './Slider'
 import Image from 'next/legacy/image'
 import Square2 from "../../public/Square.svg";
-import { Square } from './Square'
+// import { Square } from './Square'
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -87,20 +87,30 @@ const Button = styled.button`
     }
 `
 const Decoration = styled.div`
+position: relative;
 width: calc(100vw - 40px);
-margin-top:1rem;
-top:80px;
+margin-top: 20px;
 `
 const SquareImg = styled(Image)`
 `
 const Line = styled.div`
 width:100%;
 background-color: ${colors.secondary};
-height:1px;
+height:2px;
 z-index:10;
 `
-const Empty = styled.span`
-display:none;
+const Square = styled.span`
+    width: 30px;
+    height:30px;
+    border: 2px solid ${colors.secondary};
+    background-color: ${colors.primary};
+    transform: rotate(45deg);
+    position: absolute;
+    top: -14px;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
 `
 
 const YearChanger = ({ emissions }) => {
@@ -161,15 +171,15 @@ const YearChanger = ({ emissions }) => {
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
             <Decoration>
-                <Line
-                className='decor-line'/>
-                </Decoration>
-                <Square 
-                className="squareElement"
-                color={`${colors.secondary}`}
-                strokeWidth={"3"} fillColor={`${colors.primary}`}
-                height={30}
-                width={30}/>
+                <Line className='decor-line'/>
+                <Square />
+            </Decoration>
+            {/* <Square 
+            className="squareElement"
+            color={`${colors.secondary}`}
+            strokeWidth={"3"} fillColor={`${colors.primary}`}
+            height={30}
+            width={30}/> */}
             {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
