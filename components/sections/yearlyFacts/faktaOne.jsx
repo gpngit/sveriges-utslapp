@@ -32,7 +32,7 @@ const FaktaOne = ({pageElements, emissions}) => {
                 </span>
                 </Row>
                 <Kollagring emissions={emissions}/>
-                {/* <BarChart emissions={emissions}/>      */}
+                
             </FirstContent>
             <SecondContent
             kollagertxt>

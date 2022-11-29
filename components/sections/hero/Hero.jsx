@@ -166,6 +166,7 @@ const TextContent = styled.div`
     h1 {
         ${fonts.heading};
         margin-top:-4rem;
+
     }
     p {
         ${fonts.subheading};
@@ -182,7 +183,7 @@ const TextAndLink = styled.div`
         ${flex('row', 'flext-start', 'center')};
         gap: 20px;
         width: 100%;
-        max-width:1500px;
+        
         svg{
         display:block;
         }

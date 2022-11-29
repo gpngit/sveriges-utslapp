@@ -15,12 +15,12 @@ import AppContext from '../../context/AppContext'
 import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
-    padding: 30px 0px;
+    padding: 10px 0px;
 `
 const ChartContainer = styled.div`
     position: relative;
-    height: 50vh;
-    width: 80vw;
+    height: 40vh;
+    width: 50vw;
     max-width: 800px;
 `
 const ButtonContainer = styled.div`
@@ -91,7 +91,7 @@ const CheckMark = styled.span`
 const Button = styled.button`
   ${fonts.footnote}
   padding: 1rem 2rem;
-  background-color: ${colors.bio};
+  background-color: ${colors.secondary};
   border: none;
   border-radius: 1rem;
   color: white;
@@ -197,7 +197,11 @@ const Kollagring = ({ emissions }) => {
             </ButtonContainer>
                 <ChartContainer>
                     {chartData && (
-                        <Bar ref={canvas} data={chartData} options={options} plugins={[ChartDataLabels]}/>
+                        <Bar 
+                        ref={canvas} 
+                        data={chartData} 
+                        options={options} 
+                        plugins={[ChartDataLabels]}/>
                     )}
                 </ChartContainer>
         </Container>

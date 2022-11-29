@@ -33,8 +33,9 @@ p{
 ${props => 
   props.kollagertxt && 
   css`
-  margin-top:-5rem;
-  max-width:800px;  
+
+  max-width:520px;  
+  
   @media screen and ${device.laptopL}{
     padding-left:3rem;
     position: relative;
@@ -57,7 +58,8 @@ gap:20px;`
 
 export const Content = styled.article`
 color: black;
-padding:3rem;
+padding:5rem;
+padding-bottom:5em;
 `
 
 // export const ButtonWrapper = styled.div`
