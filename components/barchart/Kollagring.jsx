@@ -151,7 +151,7 @@ const Kollagring = ({ emissions }) => {
             backgroundColor: colors.fossil,
             hoverBackgroundColor: colors.fossil,
             borderColor: colors.border,
-            borderWidth: 5,
+            borderWidth: 0,
             stack: 'Stack 1',
             stacked: stackIndex === 'Stack 1' ? true : false
             },{
@@ -161,7 +161,7 @@ const Kollagring = ({ emissions }) => {
             hoverBackgroundColor: 'white',
             fill: true,
             borderColor: colors.border,
-            borderWidth: 5,
+            borderWidth: 0,
             stack: 'Stack 2',
             stacked: stackIndex === 'Stack 2' ? true : false
             },{
@@ -171,7 +171,7 @@ const Kollagring = ({ emissions }) => {
             hoverBackgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
             borderColor: colors.border,
             fill: true,
-            borderWidth: 5,
+            borderWidth: 0,
             stack: stackIndex,
             stacked : true
             }]

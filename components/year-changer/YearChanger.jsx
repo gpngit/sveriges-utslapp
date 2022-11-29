@@ -12,7 +12,7 @@ import Chevron from '../SVG\'s/Chevron'
 import Slider from './Slider'
 import Image from 'next/legacy/image'
 import Square2 from "../../public/Square.svg";
-import { Square } from './Square'
+// import { Square } from './Square'
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -23,10 +23,7 @@ const Container = styled.div`
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
     padding-top: 20px;
-
 `
-
-
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
     gap: 10px;
@@ -52,22 +49,15 @@ const Year = styled.span`
     color: ${colors.secondary};
 `
 const Middle = styled.span`
-${flex("row", "center", "center")}
-gap:20px;
+${flex("row", "center", "center")};
 p{
     color:${colors.secondary};
     font-weight:bold;    
 }
-@media (max-width: ${size.mobileM}){
-    gap:1px;
+@media (max-width: 500px){
     p{display:none}
 }
-@media (max-width: ${size.mobileL}){
-    gap:1px;
-}
-
 `
-
 const ChevronButts = styled.button`
 border-radius:9px;
 width:30px;
@@ -78,8 +68,11 @@ border-color:${colors.secondary};
 &:hover{
     background-color: rgba(55, 0, 0, 0.1);
 }
-`
 
+&.hidden {
+    visibility: hidden;
+}
+`
 const Button = styled.button`
     background-color: ${colors.primary};
     ${fonts.footnote};
@@ -94,21 +87,31 @@ const Button = styled.button`
     }
 `
 const Decoration = styled.div`
+position: relative;
 width: calc(100vw - 40px);
-margin-top:1rem;
-top:80px;
+margin-top: 20px;
 `
 const SquareImg = styled(Image)`
 `
 const Line = styled.div`
 width:100%;
 background-color: ${colors.secondary};
-height:1px;
+height:2px;
 z-index:10;
 `
-
-const Empty = styled.span`
-display:none;`
+const Square = styled.span`
+    width: 30px;
+    height:30px;
+    border: 2px solid ${colors.secondary};
+    background-color: ${colors.primary};
+    transform: rotate(45deg);
+    position: absolute;
+    top: -14px;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+`
 
 const YearChanger = ({ emissions }) => {
 
@@ -143,49 +146,40 @@ const YearChanger = ({ emissions }) => {
                 <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
                 <Middle>
                     <div onClick={() => decrement()}>
-                        {reachedBeginning ? (<Empty/>): (<>
-                        <ChevronButts>
-                        <Chevron 
-                        color={colors.secondary} 
-                        size={10} 
-                        direction={'left'} 
-                        stroke={10} />
+                        <ChevronButts className={reachedBeginning ? 'hidden' : ''}>
+                            <Chevron 
+                            color={colors.secondary} 
+                            size={10} 
+                            direction={'left'} 
+                            stroke={10} />
                         </ChevronButts>
-                        <p 
-                        className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
-                        </>)}
+                        <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
                     </div>
                     <Year>{displayYear}</Year>
                     <div onClick={() => increment()}>
-                       
-                        {reachedEnd ? (<Empty/>): ( 
-                        <>
-                        <p 
-                        className={reachedEnd ? 'inactive' : null}>
+                        <p className={reachedEnd ? 'inactive' : null}>
                          {displayYear+1}</p> 
-                        <ChevronButts>
-                        <Chevron 
-                        color={colors.secondary} 
-                        size={10} 
-                        direction={'right'} 
-                        stroke={10}  />
+                        <ChevronButts className={reachedEnd ? 'hidden' : ''}>
+                            <Chevron 
+                            color={colors.secondary} 
+                            size={10} 
+                            direction={'right'} 
+                            stroke={10}  />
                         </ChevronButts>
-                        </>)}
-
                     </div>
                     </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>
             <Decoration>
-                <Line
-                className='decor-line'/>
-                </Decoration>
-                <Square 
-                className="squareElement"
-                color={`${colors.secondary}`}
-                strokeWidth={"3"} fillColor={`${colors.primary}`}
-                height={30}
-                width={30}/>
+                <Line className='decor-line'/>
+                <Square />
+            </Decoration>
+            {/* <Square 
+            className="squareElement"
+            color={`${colors.secondary}`}
+            strokeWidth={"3"} fillColor={`${colors.primary}`}
+            height={30}
+            width={30}/> */}
             {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
