@@ -130,6 +130,7 @@ const YearChanger = ({ emissions }) => {
                 <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
                 <Middle>
                     <div onClick={() => decrement()}>
+                        {reachedBeginning ? (null): (<>
                         <ChevronButts>
                         <Chevron 
                         color={colors.secondary} 
@@ -139,19 +140,26 @@ const YearChanger = ({ emissions }) => {
                         </ChevronButts>
                         <p 
                         className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
+                        </>)}
                     </div>
                     <Year>{displayYear}</Year>
                     <div onClick={() => increment()}>
+                       
+                        {reachedEnd ? (null): ( 
+                        <>
                         <p 
                         className={reachedEnd ? 'inactive' : null}>
-                            {displayYear+1}</p>
-                            <ChevronButts>
+                         {displayYear+1}</p> 
+                        <ChevronButts>
                         <Chevron 
                         color={colors.secondary} 
                         size={10} 
                         direction={'right'} 
                         stroke={10}  />
                         </ChevronButts>
+                        </>)}
+                       
+                        
                     </div>
                     </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
