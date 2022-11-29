@@ -60,13 +60,19 @@ h4{
     }
 }
 `
-const ChosenYear = ({emissions}) => {
+const ChosenYear = ({emissions, name}) => {
+  console.log(name, "name")
   const context = useContext(AppContext);
   const {displayYear, setDisplayYear} = context;
+  console.log(displayYear, "year")
   return ( 
   <FrameYear>
     <Year>
-    <h4>{displayYear}</h4>
+      {name !== "fakta-biobransle" ? ( <h4>{displayYear}</h4>):(
+      <>
+      {displayYear >= 2005 && <h4>{displayYear}</h4>}
+      </> )}
+   
     </Year>
   </FrameYear> );
 }
