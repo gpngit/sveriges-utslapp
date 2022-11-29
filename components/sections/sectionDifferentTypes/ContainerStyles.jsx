@@ -89,23 +89,26 @@ max-width:70%;
 
 export const ImageWrapper = styled.div`
 display:block;
-width:70%;
-padding-top:2rem;
+width:80%;
     .image{      
         display:block; 
         object-fit: contain;
         max-width: 100%;
         position: relative;
         height: unset;
+ 
+       
+
+             
     }
     @media (max-width: ${size.mobileL}){
-        width:90%;
+        width:100%;
     }
+   padding-bottom:2rem;
+    
 `
 export const ImageDescription= styled.p`
-${fonts.footnote};
-font-style: italic;
-margin-bottom:2rem;
+
 `
 
 export const Sources = styled.div`

@@ -34,17 +34,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-                {sectionIDname === "kolcykeln" ? (<> <ImageWrapper>
+                {sectionIDname === "kolcykeln" ? ( <ImageWrapper>
                 <Image
                 layout ="responsive"
                 src={Kalhygge}
                 alt={imgurl.text}
                 width={700}
                 height={900}/>
-                <ImageDescription>
-                {imgurl.text}
-                </ImageDescription>
-                </ImageWrapper></>): (<Empty/>)
+              
+                </ImageWrapper>): (<Empty/>)
                 }
                 <TextContentGrid 
                 body>
