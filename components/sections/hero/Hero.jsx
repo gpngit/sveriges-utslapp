@@ -16,7 +16,7 @@ const Container = styled.header`
     min-height: 100vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
-
+    
     .burning-forest {
         height: 100%;
         width: 100%;
@@ -157,17 +157,19 @@ const ScrollContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
+   
 `
 const TextContent = styled.div`
     ${flex()};
     gap: clamp(30px, 50vh, 80px);
-    padding: 2rem;
     
     h1 {
         ${fonts.heading};
+        margin-top:-4rem;
     }
     p {
         ${fonts.subheading};
+        line-height:120%;
     }
 `
 const TextAndLink = styled.div`
@@ -190,10 +192,11 @@ const TextAndLink = styled.div`
     }
 `
 const PaddingWrapper = styled.div`
-    padding: 1rem;
-
+    padding: 5rem;
     @media ${device.laptop}{
-        padding: 5rem;
+        padding: 10rem;
+        max-width:1568px;
+        
     }
 `
 const NavLink = styled.a`

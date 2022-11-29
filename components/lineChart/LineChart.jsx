@@ -44,13 +44,14 @@ background-color:${colors.secondary};
 position:relative;
 height:200px;
 margin-bottom:-100px;
-
+display:block;
 @media ${device.laptop}{
   height:200px;
   margin-bottom:-200px;
 }
 `
 const Container = styled.section`
+display:block;
   position: relative;
   padding: 5em 0em 0em 5em;
   background-color: ${colors.primary};
