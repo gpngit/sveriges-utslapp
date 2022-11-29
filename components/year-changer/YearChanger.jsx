@@ -23,10 +23,7 @@ const Container = styled.div`
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
     padding-top: 20px;
-
 `
-
-
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
     gap: 10px;
@@ -52,22 +49,15 @@ const Year = styled.span`
     color: ${colors.secondary};
 `
 const Middle = styled.span`
-${flex("row", "center", "center")}
-gap:20px;
+${flex("row", "center", "center")};
 p{
     color:${colors.secondary};
     font-weight:bold;    
 }
-@media (max-width: ${size.mobileM}){
-    gap:1px;
+@media (max-width: 500px){
     p{display:none}
 }
-@media (max-width: ${size.mobileL}){
-    gap:1px;
-}
-
 `
-
 const ChevronButts = styled.button`
 border-radius:9px;
 width:30px;
@@ -78,8 +68,11 @@ border-color:${colors.secondary};
 &:hover{
     background-color: rgba(55, 0, 0, 0.1);
 }
-`
 
+&.hidden {
+    visibility: hidden;
+}
+`
 const Button = styled.button`
     background-color: ${colors.primary};
     ${fonts.footnote};
@@ -106,9 +99,9 @@ background-color: ${colors.secondary};
 height:1px;
 z-index:10;
 `
-
 const Empty = styled.span`
-display:none;`
+display:none;
+`
 
 const YearChanger = ({ emissions }) => {
 
@@ -143,35 +136,26 @@ const YearChanger = ({ emissions }) => {
                 <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
                 <Middle>
                     <div onClick={() => decrement()}>
-                        {reachedBeginning ? (<Empty/>): (<>
-                        <ChevronButts>
-                        <Chevron 
-                        color={colors.secondary} 
-                        size={10} 
-                        direction={'left'} 
-                        stroke={10} />
+                        <ChevronButts className={reachedBeginning ? 'hidden' : ''}>
+                            <Chevron 
+                            color={colors.secondary} 
+                            size={10} 
+                            direction={'left'} 
+                            stroke={10} />
                         </ChevronButts>
-                        <p 
-                        className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
-                        </>)}
+                        <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
                     </div>
                     <Year>{displayYear}</Year>
                     <div onClick={() => increment()}>
-                       
-                        {reachedEnd ? (<Empty/>): ( 
-                        <>
-                        <p 
-                        className={reachedEnd ? 'inactive' : null}>
+                        <p className={reachedEnd ? 'inactive' : null}>
                          {displayYear+1}</p> 
-                        <ChevronButts>
-                        <Chevron 
-                        color={colors.secondary} 
-                        size={10} 
-                        direction={'right'} 
-                        stroke={10}  />
+                        <ChevronButts className={reachedEnd ? 'hidden' : ''}>
+                            <Chevron 
+                            color={colors.secondary} 
+                            size={10} 
+                            direction={'right'} 
+                            stroke={10}  />
                         </ChevronButts>
-                        </>)}
-
                     </div>
                     </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
