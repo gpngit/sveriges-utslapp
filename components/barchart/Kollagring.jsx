@@ -127,6 +127,8 @@ const Kollagring = ({ emissions }) => {
             .filter(emission => emission.sector.val === "10.0"))
     }, [displayYear])
 
+    const [stackIndex, setStackIndex] = useState('Stack 1')
+
     useEffect(() => {
       setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
     }, [yearlyBioEmissions, yearlyFossilEmissions])
@@ -141,7 +143,8 @@ const Kollagring = ({ emissions }) => {
             backgroundColor: colors.fossil,
             borderColor: colors.border,
             borderWidth: 5,
-            stack: 'Stack 1'
+            stack: 'Stack 1',
+            stacked: stackIndex === 'Stack 1' ? true : false
             },{
             label: 'Markanvändning',
             data: yearlyLandUse.map(data => -Number(data.value)),
@@ -149,28 +152,27 @@ const Kollagring = ({ emissions }) => {
             fill: true,
             borderColor: colors.border,
             borderWidth: 5,
-            stack: 'Stack 2'
+            stack: 'Stack 2',
+            stacked: stackIndex === 'Stack 2' ? true : false
             },{
             label: 'Biogena utsläpp',
             data: yearlyBioEmissions.map(data => Number(data.value)),
-            backgroundColor: colors.bio,
+            backgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
             borderColor: colors.border,
             fill: true,
             borderWidth: 5,
-            stack: 'Stack 1'
+            stack: stackIndex,
+            stacked : true
             }]
         })
-    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions])
+    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, stackIndex])
 
 
     const handleClick = () => {
-      let bio = canvas.current.config._config.data.datasets[2]
-      if (bio.stack === 'Stack 1'){
-        bio.stack = 'Stack 2'
-        bio.backgroundColor = 'white'
+      if (stackIndex === 'Stack 1'){
+        setStackIndex('Stack 2')
       } else {
-        bio.stack = 'Stack 1'
-        bio.backgroundColor = colors.bio
+        setStackIndex('Stack 1')
       }
       canvas.current.legend.chart.update(); 
     }
@@ -182,7 +184,7 @@ const Kollagring = ({ emissions }) => {
             </ButtonContainer>
                 <ChartContainer>
                     {chartData && (
-                        <Bar ref={canvas} data={chartData} options={options}/>
+                        <Bar ref={canvas} data={chartData} options={options} plugins={[ChartDataLabels]}/>
                     )}
                 </ChartContainer>
         </Container>

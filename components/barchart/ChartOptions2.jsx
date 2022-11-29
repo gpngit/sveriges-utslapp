@@ -23,8 +23,6 @@ const ChartOptions2 = () => {
           },
           stepSize: 10000,
         },
-        // min: 0,
-        // max: 25000,
         grid: {
           display: true
         }
@@ -50,6 +48,21 @@ const ChartOptions2 = () => {
       datalabels: {
         align: 'end',
         anchor: 'end',
+        formatter: function(value, context) {
+          let datasets = context.chart.data.datasets
+          let stackedDatasets = datasets.filter(ds => ds.stacked === true)
+          if (context.datasetIndex !== 2 && context.dataset.stacked){
+            return null
+          } else if (context.datasetIndex === 2) {
+            return Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])
+          } else {
+
+          }
+        },
+        font: {
+          family: font.main,
+          size: "18px",
+        },
       },
       tooltip: {
         enabled: true,
