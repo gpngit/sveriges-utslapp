@@ -88,6 +88,14 @@ const CheckMark = styled.span`
     transform: rotate(45deg);
   }
 `
+const Button = styled.button`
+  ${fonts.footnote}
+  padding: 1rem 2rem;
+  background-color: ${colors.bio};
+  border: none;
+  border-radius: 1rem;
+  color: white;
+`
 
 const Kollagring = ({ emissions }) => {
 
@@ -141,6 +149,7 @@ const Kollagring = ({ emissions }) => {
             data: yearlyFossilEmissions.map(data => Number(data.value)),
             fill: true,
             backgroundColor: colors.fossil,
+            hoverBackgroundColor: colors.fossil,
             borderColor: colors.border,
             borderWidth: 5,
             stack: 'Stack 1',
@@ -149,6 +158,7 @@ const Kollagring = ({ emissions }) => {
             label: 'Markanvändning',
             data: yearlyLandUse.map(data => -Number(data.value)),
             backgroundColor: 'white',
+            hoverBackgroundColor: 'white',
             fill: true,
             borderColor: colors.border,
             borderWidth: 5,
@@ -158,6 +168,7 @@ const Kollagring = ({ emissions }) => {
             label: 'Biogena utsläpp',
             data: yearlyBioEmissions.map(data => Number(data.value)),
             backgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
+            hoverBackgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
             borderColor: colors.border,
             fill: true,
             borderWidth: 5,
@@ -180,7 +191,9 @@ const Kollagring = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
             <ButtonContainer>
-              <button onClick={handleClick}>Visa potentiellt upptag</button>
+              <Button onClick={handleClick}>
+                {stackIndex === 'Stack 1' ? 'Hur hade det kunnat se ut?' : 'Hur har det sett ut?'}
+                </Button>
             </ButtonContainer>
                 <ChartContainer>
                     {chartData && (
