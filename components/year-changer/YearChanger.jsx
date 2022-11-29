@@ -11,7 +11,7 @@ import Chevron from '../SVG\'s/Chevron'
 //components
 import Slider from './Slider'
 import Image from 'next/legacy/image'
-import Square from "../../public/square__filled.svg"
+import Square from "./Square.svg";
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -61,8 +61,7 @@ margin-top:1rem;
 top:80px;
 `
 const SquareImg = styled(Image)`
-top:-20px;
-z-index:12;
+
 `
 
 const Line = styled.div`
@@ -70,7 +69,7 @@ width:100%;
 background-color: ${colors.secondary};
 height:1px;
 z-index:10;
-position: absolute;
+
 `
 
 const YearChanger = ({ emissions }) => {
@@ -129,13 +128,21 @@ const YearChanger = ({ emissions }) => {
             <Decoration>
                 <Line
                 className='decor-line'/>
-                </Decoration>
-            <SquareImg
+                 {/* <SquareImg
+                className="square"
                 src={Square}
                 alt="Square"
                 height={30}
                 width={30}
-            />
+            /> */}
+                </Decoration>
+                <SquareImg
+                className="square"
+                src={Square}
+                alt="Square"
+                height={30}
+                width={30}
+                />
             {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
