@@ -33,6 +33,7 @@ const Button = styled.button`
   border: none;
   border-radius: 1rem;
   color: white;
+  transition: .2s linear;
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -155,7 +156,7 @@ const Kollagring = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
           <Button onClick={handleClick}>
-            {stackIndex === 'Stack 1' ? 'Hur hade det kunnat se ut?' : 'Hur har det sett ut?'}
+            {stackIndex === 'Stack 1' ? 'Tryck för hur det hade kunnat se ut om vi inte skövlade skog' : 'Visa mig de faktiska siffrorna'}
           </Button>
           <ChartContainer>
             {chartData && (
