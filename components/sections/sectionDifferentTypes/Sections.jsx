@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { colors, device, size } from "/styles/partials"
 
 const Container = styled.section`
-background-color:${colors.primary};`
+background-color:${colors.primary};
+display:block;`
 
 const Wrapper = styled.div`
 @media (max-width:${size.mobiletablet}){ 
@@ -26,9 +27,9 @@ padding-top:10em;
 const Content = styled.div`
 background-color:white;
 padding-bottom:10em;
+display:block;
 @media (max-width:${size.mobiletablet}){
   padding-bottom:5em;
-  
 }`
 
 const Sections = ({pageOneElem, sectionIDnameOne, pageTwoElem, sectionIDnameTwo, pageThreeElem, sectionIDnameThree}) => {
