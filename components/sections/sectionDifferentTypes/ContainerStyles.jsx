@@ -62,7 +62,7 @@ ${props =>
     @media (max-width:${size.mobiletablet}){ 
     margin-top:-3rem;
     }
-    `}
+    `}s
 `
 
 export const Text= styled.p`
@@ -91,6 +91,9 @@ width:80%;
         width:100%;
         margin-top:-2rem;
     }
+    @media (max-width: ${size.mobileL}){
+        margin-top:1rem;
+    }
     ${props => 
         props.imgbody && 
         css`
@@ -98,6 +101,13 @@ width:80%;
         margin-top:-5rem;
         }
         `}
+        ${props => 
+            props.utslappimg && 
+            css`
+            @media (max-width:${size.mobiletablet}){ 
+            margin-bottom:-5rem;
+            }
+            `}
     padding-bottom:2rem;
     
 `

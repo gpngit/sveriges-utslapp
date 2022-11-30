@@ -59,13 +59,13 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body1.text}</p>
                     <br/>
                     <p>{body2.text}</p>
-                </TextContentGrid>
-                <Empty/>
-                <SourceAndShare 
+                    <br/>
+                    <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
+                </TextContentGrid>
             </Grid>
             </Content>
             </Container>): (
@@ -80,21 +80,27 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body1.text}</p>
                     <br/>
                     <p>{body2.text}</p>
+                    <br/>
+                    <SourceAndShare 
+                whiteBG={"yes"}
+                sourceLink={source.text} 
+                shareLink={`#${sectionIDname}`}
+                sourceText={title.text}/>
                 </TextContentGrid>
-            <ImageWrapper key={sectionIDname}>
+            <ImageWrapper 
+            utslappimg
+            key={sectionIDname}>
             <Image
+
                 layout ="responsive"
                 src={utslappImg}
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
             </ImageWrapper>
+          
             </Grid>
-                <SourceAndShare 
-                whiteBG={"yes"}
-                sourceLink={source.text} 
-                shareLink={`#${sectionIDname}`}
-                sourceText={title.text}/>
+               
                 </Content>
                 </Container>
                 )}
