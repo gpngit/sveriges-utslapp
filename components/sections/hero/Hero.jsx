@@ -12,21 +12,11 @@ import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '.
 
 const Container = styled.header`
     position: relative;
-    ${flex()};
-    gap: 40px;
+    ${flex('column', 'center', 'center')};
     min-height: 100vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
-    /* .burning-forest {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        bottom: 0;
-        pointer-events: none;
-    } */
-
     .burning-forest {
         height: 100%;
         width: 100%;
@@ -159,6 +149,7 @@ const Container = styled.header`
 const ScrollContainer = styled.div`
     height: 100vh;
     width: 100%;
+    max-width: 1568px;
     position: sticky;
     overflow-y: auto;
     -ms-overflow-style: none;
@@ -166,21 +157,25 @@ const ScrollContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
+   
 `
 const TextContent = styled.div`
     ${flex()};
-    gap: 30px;
-    padding: 2rem;
+    gap: clamp(30px, 50vh, 80px);
+    
     h1 {
-    ${fonts.heading};
+        ${fonts.heading};
+        margin-top:-4rem;
+
     }
     p {
         ${fonts.subheading};
+        line-height:120%;
     }
 `
 const TextAndLink = styled.div`
     ${flex('column')};
-    gap: 10px;
+    gap: 20px;
     svg {
         display: none;
     }
@@ -188,7 +183,7 @@ const TextAndLink = styled.div`
         ${flex('row', 'flext-start', 'center')};
         gap: 20px;
         width: 100%;
-        max-width:1500px;
+        
         svg{
         display:block;
         }
@@ -198,33 +193,23 @@ const TextAndLink = styled.div`
     }
 `
 const PaddingWrapper = styled.div`
-padding:1rem;
-/* 
-@media ${device.tablet}{
-    padding-left:3rem;
-    padding-right:5rem;
-}
-@media screen and (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
-    padding-right:2rem;
-}
-@media ${device.laptop} {
-    padding-left:5rem;
-    padding-right:10rem;} */
+    padding: 5rem;
+    @media ${device.laptop}{
+        padding: 10rem;
+        max-width:1568px;
+        
+    }
 `
 const NavLink = styled.a`
-    margin-top:1rem;
-    @media ${device.tablet} {
-        margin-top:0;
-    }
     text-decoration: none;
     text-align: center;
     padding: 14px 20px;
     ${fonts.paragraph};
+    white-space: nowrap;
     background-color: ${colors.primary};
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
-    margin-right: 5vw;
 `
 const Blurred = styled.div`
     position: sticky;

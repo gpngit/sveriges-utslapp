@@ -13,18 +13,17 @@ const ChartOptions2 = () => {
     },
     scales: {
       y: { 
+        max: 120000,
         stacked: true,
-        display: true,
         ticks:{
+          display: true,
           color: colors.secondary,
           font:{
             size: '12px',
             family: font.main,
           },
-          stepSize: 10000,
+          stepSize: 20000,
         },
-        // min: 0,
-        // max: 25000,
         grid: {
           display: true
         }
@@ -50,9 +49,31 @@ const ChartOptions2 = () => {
       datalabels: {
         align: 'end',
         anchor: 'end',
+        color: colors.secondary,
+        formatter: function(value, context) {
+          let datasets = context.chart.data.datasets
+          let stackedDatasets = datasets.filter(ds => ds.stacked === true)
+          if (context.datasetIndex !== 2 && context.dataset.stacked){
+            return null
+          } else if (context.datasetIndex === 2) {
+              if (datasets[0].stacked){
+                return ['Utsläpp', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])} kt CO2`]
+              } else {
+                return ['Upptag /', 'kollagring', `-${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])} kt CO2`]
+              }
+          } else if (context.datasetIndex === 0) {
+            return ['Utsläpp', `${Math.round(value)} kt CO2`]
+          } else if (context.datasetIndex === 1) {
+            return ['Upptag /', 'kollagring', `-${Math.round(value)} kt CO2`]
+          }
+        },
+        font: {
+          family: font.main,
+          size: "18px",
+        },
       },
       tooltip: {
-        enabled: true,
+        enabled: false,
         mode: 'index',
         intersect: false,
         backgroundColor: colors.secondary,

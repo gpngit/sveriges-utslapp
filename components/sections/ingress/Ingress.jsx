@@ -23,6 +23,7 @@ padding-left:7rem;}
     padding-left:3em;
     padding-bottom:-3rem;
 }
+margin-top:2rem;
 `
 
 const TextContent = styled.div`

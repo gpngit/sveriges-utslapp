@@ -76,7 +76,7 @@ const ChartOptions = (emissions,) => {
             annotations: {
               labelBio: {
                 type: 'label',
-                content: ['BIOGENA CO2'],
+                content: ['BIOGEN CO2'],
                 color: 'white',
                 font: {
                   family: font.main,

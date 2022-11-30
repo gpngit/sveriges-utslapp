@@ -17,27 +17,41 @@ import { SmallArrow } from "../SVG's/Arrows";
 Chart.register(annotationPlugin)
 
 const Wrapper = styled.div`
+@media (max-width:${size.tablet}){ 
+  display:none
+}
 @media ${device.tablet}{
-    clip-path: polygon(0% 100%, 4% 80%, 8% 80%, 12% 60%, 14% 36%, 16% 36%, 18% 0%, 20% 30%, 22% 18%, 26% 50%, 30% 20%, 32% 14%, 36% 10%, 40% 30%, 44% 10%, 46% 10%, 48% 7%, 52% 10%, 56% 14%, 58% 44%, 60% 0%, 62% 30%, 74% 38%, 76% 50%, 80% 30%, 82% 20%, 88% 30%, 90% 34%, 92% 40%, 96% 40%, 98% 55%, 100% 100%, 0% 100%);
-    -webkit-clip-path:  polygon(0% 100%, 4% 80%, 8% 80%, 12% 60%, 14% 36%, 16% 36%, 18% 0%, 20% 30%, 22% 18%, 26% 50%, 30% 20%, 32% 14%, 36% 10%, 40% 30%, 44% 10%, 46% 10%, 48% 7%, 52% 10%, 56% 14%, 58% 44%, 60% 0%, 62% 30%, 74% 38%, 76% 50%, 80% 30%, 82% 20%, 88% 30%, 90% 34%, 92% 40%, 96% 40%, 98% 55%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
+    -webkit-clip-path:  polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
     }
     display:block;
     overflow:visible;
     position:relative;
     z-index:5;
     background-color:${colors.primary};
-    height:100px;
+    height: 100px;
+
+    @media ${device.laptop}{
+      height:200px;
+    }
+
 `
 
 const Bg = styled.div`
+
 z-index:1;
 background-color:${colors.secondary};
-height:200px;
 position:relative;
+height:200px;
 margin-bottom:-100px;
-
+display:block;
+@media ${device.laptop}{
+  height:200px;
+  margin-bottom:-200px;
+}
 `
 const Container = styled.section`
+display:block;
   position: relative;
   padding: 5em 0em 0em 5em;
   background-color: ${colors.primary};
@@ -46,8 +60,8 @@ const Container = styled.section`
     padding: 5em 5em 0em 5em;
   }
   @media (max-width:${size.tablet}){
-    margin-top:-3rem;
-    z-index:2;
+    margin-top:-10rem;
+    z-index:10;
   }
   @media (max-width:${size.mobileL}){
     padding-left:2em;
@@ -77,25 +91,43 @@ const ButtonContainer = styled.div`
   ${flex("row")}
   @media ${device.tablet}{${flex('row', 'center', 'center')};
   gap: 1rem;
-  div{
-    ${flex("row")}
-  }
+
   }
   div{
+    @media (max-width:${size.tablet}){ 
+      
     ${flex("column", "flex-start","center")}
-    gap: 10px;
+    gap: 10px;}
     label:first-of-type{
-      padding-left:5px;
+      padding-left:6px;
     }
+    ${flex("row", "flex-start", "flex-start")}
   }
 
 p{
 color: ${colors.bio};
 font-size:12px;
-@media (max-width: ${size.tablet}){
-  width:60%;
+width:100%;
 }
+@media (max-width:${size.tablet}){ 
+margin-top:-8px;
+  ${flex("column")}
+  gap:4px;
+  div{
+    margin-top:4px;
+    ${flex("row", "flex-start", "flex-start")}
+    label{
+      ${flex("row-reverse", "center", "center")}
+      width:140px;
+
+    }
+    label:first-of-type{
+      margin-left:-10px;
+    }
+  
+  }
 }
+
 `
 const Scrolltext = styled.div`
   width: 100%;

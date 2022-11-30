@@ -5,7 +5,7 @@ export const Grid = styled.div`
 max-width: 1500px;
 display: grid;
 gap: 3rem;
-@media screen and ${device.laptopL}{
+@media screen and ${device.laptop}{
   grid-template-columns: repeat(2, 1fr);
 }
 `
@@ -33,8 +33,9 @@ p{
 ${props => 
   props.kollagertxt && 
   css`
-  margin-top:-5rem;
-  max-width:800px;  
+
+  max-width:520px;  
+  
   @media screen and ${device.laptopL}{
     padding-left:3rem;
     position: relative;
@@ -57,7 +58,8 @@ gap:20px;`
 
 export const Content = styled.article`
 color: black;
-padding:3rem;
+padding:5rem;
+padding-bottom:5em;
 `
 
 // export const ButtonWrapper = styled.div`

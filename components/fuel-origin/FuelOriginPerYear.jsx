@@ -19,6 +19,11 @@ const ChartContainer = styled.div`
     width: 80vw;
     max-width: 500px;
 `
+const ErrorMessage = styled.div`
+  height: 100%;
+  width: 100%;
+  ${flex('column','center','center')};
+`
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
 
@@ -26,6 +31,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   const context = useContext(AppContext)
   const {displayYear, setDisplayYear} = context
   const [yearlyData, setYearlyData] = useState(null)
+  const [dataAvailable, setDataAvailable] = useState(false)
   const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState({
     datasets: [],
@@ -33,7 +39,10 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   useEffect(() => {
     if (displayYear >= 2005 && displayYear <= 2020) {
-        setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
+      setDataAvailable(true)
+      setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
+    } else {
+      setDataAvailable(false)
     }
   }, [displayYear])
 
@@ -56,9 +65,9 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   return (
       <Container id='doughnut'>
         <ChartContainer>
-        <Doughnut ref={canvas} 
-        data={chartData} 
-        options={options} />
+          {dataAvailable ?
+        <Doughnut ref={canvas} data={chartData} options={options} />
+          : <ErrorMessage>Data tillgänglig mellan 2005-2020. Ändra år ovan för att se graf.</ErrorMessage>}
         </ChartContainer>
       </Container>
   )

@@ -20,6 +20,9 @@ const LinkButton = styled.a`
     padding:1.2rem;
     height: 1.5rem;
     ${fonts.footnote};
+    &:hover{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
     @media (max-width:${size.mobileL}){ 
         ${fonts.paragraph};
     }
@@ -32,9 +35,13 @@ const LinkButton = styled.a`
         border-radius: 10px;
         width: 80px;
         height: 40px;
+        &:hover{
+            background-color: rgba(55, 0, 0, 0.3);
+        }
         border: 3px solid ${colors.secondary};
         color:${colors.secondary};
         `}
+        
         
 `
 const Button = styled.button`
@@ -53,6 +60,7 @@ ${fonts.footnote};
     ${fonts.paragraph};
 }
 
+
 ${props => 
     props.secondary && 
     css`
@@ -64,6 +72,9 @@ ${props =>
     border: 3px solid ${colors.secondary};
     color:${colors.secondary};
     `}
+    &:hover{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
 `
 const ModalWrapper = styled.dialog`
     background-color: ${colors.primary};
