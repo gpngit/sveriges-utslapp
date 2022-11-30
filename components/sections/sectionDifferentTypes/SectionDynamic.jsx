@@ -5,7 +5,7 @@ import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subhe
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-import Kalhygge from "../../../public/Kalhygge.svg"
+// import Kalhygge from "../../../public/Kalhygge.svg"
 
 const Empty = styled.span`
 width:100%;`
@@ -33,13 +33,13 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-                {sectionIDname === "kolcykeln" ? ( <ImageWrapper>
-                <Image
+                {sectionIDname === "kolcykeln" ? ( <ImageWrapper key={sectionIDname}>
+                {/* <Image
                 layout ="responsive"
                 src={Kalhygge}
                 alt={imgurl.text}
                 width={700}
-                height={900}/>
+                height={900}/> */}
               
                 </ImageWrapper>): (<Empty/>)
                 }
