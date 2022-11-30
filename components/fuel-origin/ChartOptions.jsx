@@ -20,14 +20,21 @@ const ChartOptions = (emissions) => {
         },
         plugins: {
           legend: {
-            display: (what) => {
+            display: true,
+            position: () => {
               if (window.innerWidth < 650){
-                return false
+                return 'bottom'
               } else {
-                return true
+                return 'right'
               }
             },
-            position: 'right',
+            align: () => {
+              if (window.innerWidth < 650){
+                return 'start'
+              } else {
+                return 'center'
+              }
+            },
             labels: {
               color: 'black',
               font: {

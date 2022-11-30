@@ -186,17 +186,9 @@ const LineChart = ({emissions, pageElements}) => {
     datasets: [],
   })
 
-
-
-
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
-
-  const mostRecentYear = years[years.length-1]
-
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
-
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
-
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
     return {
         sector: emission.sector,
@@ -286,18 +278,18 @@ const LineChart = ({emissions, pageElements}) => {
     <Bg>
       <Wrapper/>
     </Bg>
-      <Container id='line-chart'>
-        {show && <>
-        <TextContent>
-          <p>{subheading.text.toUpperCase()}</p>
-          <h2>{title.text}</h2>
-          <p>{body1.text}</p>
-        </TextContent>
-        
-        <Scrolltext>
-          <p>Swipa höger för att se utveckling</p>
-          <SmallArrow color={colors.bio} size={14} />
-        </Scrolltext>
+    <Container id='line-chart'>
+      {show && 
+      <>
+      <TextContent>
+        <p>{subheading.text.toUpperCase()}</p>
+        <h2>{title.text}</h2>
+        <p>{body1.text}</p>
+      </TextContent>  
+      <Scrolltext>
+        <p>Swipa höger för att se utveckling</p>
+        <SmallArrow color={colors.bio} size={14} />
+      </Scrolltext>
         <ScrollContainer>
           <ChartContainer>
             <Line ref={canvas} 
@@ -308,7 +300,6 @@ const LineChart = ({emissions, pageElements}) => {
           </ChartContainer>
         </ScrollContainer>
         </>} 
-        
         <ButtonContainer>
           <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
