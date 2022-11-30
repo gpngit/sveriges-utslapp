@@ -80,12 +80,11 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             utslappimg
             key={sectionIDname}>
             <Image
-
                 layout ="responsive"
                 src={imgurl.url}
                 alt={imgurl.text}
-                width={700}
-                height={700}/>
+                width={800}
+                height={800}/>
             </ImageWrapper>
           
             </Grid>

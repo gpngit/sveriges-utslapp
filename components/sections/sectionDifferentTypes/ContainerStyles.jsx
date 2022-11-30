@@ -8,33 +8,32 @@ gap: 40px;
 color: black;
 width:100%;
 padding:5em;
-@media (max-width:${size.mobiletablet}){ 
-    padding:2em;    
-}
-@media (max-width: ${size.mobileL}){
-   padding:1rem;
-}
+    @media (max-width:${size.mobiletablet}){ 
+        padding:2em;    
+    }
+    @media (max-width: ${size.mobileL}){
+    padding:1rem;
+    }
 
 ${props => 
     props.first && 
     css`
-    @media ${device.laptop}{
-    padding-top:8em;
-    }
-    padding-top:2em;
-    @media (max-width:${size.tablet}){  
-        padding-top:5em;
-    }
-    @media (max-width: ${size.mobileL}){
-        padding:1rem;
-     }
+        @media ${device.laptop}{
+        padding-top:8em;
+        }
+        padding-top:2em;
+        @media (max-width:${size.tablet}){  
+            padding-top:5em;
+        }
+        @media (max-width: ${size.mobileL}){
+            padding:1rem;
+        }
     `}
 `
 export const Content = styled.div`
 width:100%;
 max-width:1568px;
 padding:1rem;
-
 `
 
 export const Grid = styled.div`
@@ -102,6 +101,9 @@ width:80%;
     @media (max-width: ${size.mobileL}){
         margin-top:1rem;
     }
+    @media ${device.mobileTablet}{
+        width:100%;
+    }
     
     ${props => 
         props.imgbody && 
@@ -109,8 +111,12 @@ width:80%;
         @media (max-width:${size.mobiletablet}){ 
         margin-top:-5rem;
         }
+        @media ${device.mobileTablet}{
+            margin-top:-5rem;
+            margin-bottom:-4rem;}
         `}
-        ${props => 
+
+    ${props => 
             props.utslappimg && 
             css`
             @media (max-width:${size.mobiletablet}){ 
@@ -118,7 +124,10 @@ width:80%;
             }
             @media (max-width: ${size.mobileL}){
             margin-bottom:-2rem;
-             }
+            }
+            @media ${device.mobileTablet}{
+            margin-bottom:-10rem;
+            }
             `}
     padding-bottom:2rem;
     
