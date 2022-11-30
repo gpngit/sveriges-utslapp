@@ -22,6 +22,7 @@ padding:5em;
     }
     @media ${device.laptop}{
         padding:10rem;
+        padding-bottom:3rem;
     }
 
 ${props => 
@@ -75,7 +76,7 @@ h2 {
     }
     @media ${device.laptop}{
         margin-bottom:1rem;
-        min-width:500px;
+       
     }
 }
 p {
@@ -93,7 +94,6 @@ p {
     max-width:400px;
     width:100%;
     }
-   
 }
 `
 
@@ -160,10 +160,9 @@ display:block;
             width:100%;
             }
             @media ${device.laptop}{
-                max-width:500px;
-                width:100%;
-                margin-left:-5rem;
-                margin-top:-2rem;
+            width:100%;
+            left:0%;
+            
             }
             `}
     padding-bottom:1rem;
