@@ -19,11 +19,10 @@ ${props =>
     props.first && 
     css`
     @media ${device.laptop}{
-    padding-top:10em;
+    padding-top:8em;
     }
     padding-top:2em;
-    
-    @media (max-width:${size.mobiletablet}){  
+    @media (max-width:${size.tablet}){  
         padding-top:5em;
     }
     @media (max-width: ${size.mobileL}){
