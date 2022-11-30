@@ -2,17 +2,16 @@ import styled,{css} from 'styled-components'
 import { flex, device, colors, size, fonts } from '../../../styles/partials'
 
 export const Grid = styled.div`
-max-width: 1500px;
-display: grid;
-gap: 3rem;
-@media screen and ${device.laptop}{
-  grid-template-columns: repeat(2, 1fr);
-}
-`
+  max-width: 1500px;
+  display: grid;
+  gap: 3rem;
 
+  @media screen and ${device.laptop}{
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
 export const FirstContent = styled.div`
-gap: 20px;
-width:100%;
+
     h2 {
         ${fonts.lessheading};
     }
@@ -21,14 +20,15 @@ width:100%;
     }
 `
 export const SecondContent = styled.div`
-p{
-  ${fonts.paragraph};
-  margin-bottom:2rem;
-  padding-right:4rem;
-}
-@media screen and ${device.laptopL}{
-  p{ ${fonts.footnote};
-}}
+  p{
+    ${fonts.paragraph};
+    /* margin-bottom:2rem;
+    padding-right:4rem; */
+  }
+  @media screen and ${device.laptopL}{
+    p{ ${fonts.footnote};
+  }
+  }
 
 ${props => 
   props.kollagertxt && 
@@ -53,16 +53,15 @@ ${props =>
     `}
 `
 export const Row = styled.span`
-${flex("row")}
-gap:20px;`
-
-export const Content = styled.article`
-color: black;
-padding:5rem;
-padding-bottom:5em;
+  ${flex("row")}
+  gap:20px;
 `
 
-// export const ButtonWrapper = styled.div`
-// padding:3rem;
-// padding-left:3rem;
-// `
+export const Content = styled.article`
+  color: black;
+  padding:5rem 1rem;
+
+@media ${device.tablet}{
+  padding: 5rem;
+}
+`
