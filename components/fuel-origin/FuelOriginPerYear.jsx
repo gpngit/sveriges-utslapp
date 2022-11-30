@@ -25,7 +25,7 @@ const ErrorMessage = styled.div`
   ${flex('column','center','center')};
 `
 const SourceText = styled.p`
-
+  padding: 2rem 0;
 `
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
@@ -68,12 +68,12 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   return (
       <Container id='doughnut'>
+        <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
         <ChartContainer>
           {dataAvailable ?
         <Doughnut ref={canvas} data={chartData} options={options} />
           : <ErrorMessage>Data tillgänglig mellan 2005-2020. Ändra år ovan för att se graf.</ErrorMessage>}
         </ChartContainer>
-        <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
       </Container>
   )
 }

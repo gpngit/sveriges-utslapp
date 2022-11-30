@@ -19,22 +19,14 @@ const ChartOptions = (emissions) => {
           }
         },
         plugins: {
-        //   title: {
-        //     display: true,
-        //     text: 'Användning av biobränslen per bränslekategori, GWh',
-        //     align: 'start',
-        //     color: colors.secondary,
-        //     padding: {
-        //       top: 10,
-        //       bottom: 30
-        //     },
-        //     font: {
-        //       family: font.main,
-        //       size: "18px",
-        //     }
-        // },
           legend: {
-            display: true,
+            display: (what) => {
+              if (window.innerWidth < 650){
+                return false
+              } else {
+                return true
+              }
+            },
             position: 'right',
             labels: {
               color: 'black',
