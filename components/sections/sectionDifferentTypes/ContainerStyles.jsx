@@ -18,7 +18,7 @@ padding:5em;
         padding:2rem;
     }
     @media ${device.betweentabletlaptop}{
-        padding:4rem;
+        padding:3rem;
     }
     @media ${device.laptop}{
         padding:10rem;
@@ -51,10 +51,12 @@ gap: 1rem;
 @media ${device.tablet}{
     gap:3rem;
     grid-template-columns: repeat(2, 1fr); }
-
 `
 
 export const TextContentGrid = styled.div`
+@media ${device.betweentabletlaptop}{
+    max-width:320px;
+}
 h2 {
     ${fonts.lessheading};
     max-width:100%;
@@ -67,8 +69,7 @@ h2 {
     }
     @media ${device.betweentabletlaptop}{
         margin-bottom:1rem;
-        width:100%;
-        min-width:400px;
+        width:320px;
     }
     @media ${device.laptop}{
         margin-bottom:1rem;
