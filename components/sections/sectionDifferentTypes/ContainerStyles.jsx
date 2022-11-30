@@ -11,6 +11,9 @@ padding:5em;
 @media (max-width:${size.mobiletablet}){ 
     padding:2em;    
 }
+@media (max-width: ${size.mobileL}){
+   padding:1rem;
+}
 
 ${props => 
     props.first && 
@@ -23,12 +26,16 @@ ${props =>
     @media (max-width:${size.mobiletablet}){  
         padding-top:5em;
     }
+    @media (max-width: ${size.mobileL}){
+        padding:1rem;
+     }
     `}
 `
 export const Content = styled.div`
 width:100%;
 max-width:1568px;
 padding:1rem;
+
 `
 
 export const Grid = styled.div`
@@ -94,6 +101,7 @@ width:80%;
     @media (max-width: ${size.mobileL}){
         margin-top:1rem;
     }
+    
     ${props => 
         props.imgbody && 
         css`
@@ -107,6 +115,9 @@ width:80%;
             @media (max-width:${size.mobiletablet}){ 
             margin-bottom:-5rem;
             }
+            @media (max-width: ${size.mobileL}){
+            margin-bottom:-2rem;
+             }
             `}
     padding-bottom:2rem;
     
