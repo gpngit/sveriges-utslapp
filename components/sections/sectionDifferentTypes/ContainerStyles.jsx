@@ -17,6 +17,12 @@ padding:5em;
     @media ${device.mobileTablet}{
         padding:2rem;
     }
+    @media ${device.betweentabletlaptop}{
+        padding:4rem;
+    }
+    @media ${device.laptop}{
+        padding:10rem;
+    }
 
 ${props => 
     props.first && 
@@ -64,6 +70,10 @@ h2 {
         width:100%;
         min-width:400px;
     }
+    @media ${device.laptop}{
+        margin-bottom:1rem;
+        min-width:500px;
+    }
 }
 p {
     ${fonts.paragraph};
@@ -75,14 +85,8 @@ p {
     @media (max-width: ${size.mobileL}){
         max-width:100%;
     }
-}
-
-${props => 
-    props.first && 
-    css`
-
    
-    `}
+}
 `
 
 export const Subheading = styled.p`
@@ -93,7 +97,6 @@ max-width:70%;
 
 export const ImageWrapper = styled.div`
 display:block;
-width:80%;
     .image{      
         display:block; 
         object-fit: contain;
@@ -114,15 +117,12 @@ width:80%;
     }
     @media ${device.mobileTablet}{
         width:100%;
-        
     }
-    
     
     ${props => 
         props.imgbody && 
         css`
         @media (max-width:${size.mobiletablet}){ 
-            
         }
         @media ${device.mobileTablet}{
             }
@@ -149,6 +149,12 @@ width:80%;
             left:0%;
             top:10%;
             width:100%;
+            }
+            @media ${device.laptop}{
+                max-width:500px;
+                width:100%;
+                margin-left:-5rem;
+                margin-top:-2rem;
             }
             `}
     padding-bottom:1rem;
