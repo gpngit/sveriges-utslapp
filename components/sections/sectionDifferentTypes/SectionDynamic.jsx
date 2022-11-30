@@ -5,9 +5,6 @@ import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  I
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-import utslappImg from "./img/utslapp--3.png"
-import kolcykelnImg from "./img/kolcykeln.png"
-import kalhyggeImg from "./img/Kalhygge.png"
 
 const Empty = styled.span`
 width:100%;`
@@ -39,20 +36,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <ImageWrapper 
                 imgbody
                 key={sectionIDname}>
-                {sectionIDname === "kolcykeln" ? ( 
+                
                 <Image
                 layout ="responsive"
-                src={kalhyggeImg}
+                src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
-            ): (  <Image
-                layout ="responsive"
-                src={kolcykelnImg}
-                alt={imgurl.text}
-                width={700}
-                height={700}/>)
-                }
+            
+                
             </ImageWrapper>
                 <TextContentGrid 
                 body>
@@ -93,7 +85,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <Image
 
                 layout ="responsive"
-                src={utslappImg}
+                src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
