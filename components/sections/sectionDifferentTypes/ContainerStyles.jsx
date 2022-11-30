@@ -62,6 +62,9 @@ p {
     @media (max-width:${size.mobiletablet}){ 
         max-width:90%;
     }
+    @media (max-width: ${size.mobileL}){
+        max-width:100%;
+     }
 }
 ${props => 
     props.body && 
@@ -69,14 +72,13 @@ ${props =>
     @media (max-width:${size.mobiletablet}){ 
     margin-top:-3rem;
     }
-    `}s
+    `}
 `
 
 export const Text= styled.p`
 margin-top:1rem;
 margin-bottom:1rem;
 `
-
 
 export const Subheading = styled.p`
 text-transform:uppercase;

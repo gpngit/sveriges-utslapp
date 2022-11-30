@@ -24,7 +24,11 @@ padding-top:10em;
 `
 
 const Content = styled.div`
-background-color:white;`
+background-color:white;
+padding-bottom:10em;
+@media (max-width:${size.mobiletablet}){
+  padding-bottom:5em;
+}`
 
 const Sections = ({pageOneElem, sectionIDnameOne, pageTwoElem, sectionIDnameTwo, pageThreeElem, sectionIDnameThree}) => {
 
