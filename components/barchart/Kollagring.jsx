@@ -15,86 +15,50 @@ import AppContext from '../../context/AppContext'
 import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
-    padding: 10px 0px;
+  ${flex('column')};
+  gap: 1rem;
+  max-width: 600px;
 `
 const ChartContainer = styled.div`
-    position: relative;
-    height: 40vh;
-    width: 50vw;
-    max-width: 800px;
-`
-const ButtonContainer = styled.div`
-  padding: 20px 0px;
-  ${flex('row', 'center', 'center')};
-  gap: 10px;
-
-  @media (max-width: ${size.tablet}) {
-    ${flex('column')}
-  }
-`
-const CheckboxContainer = styled.label`
-  width: 200px;
-  ${flex('row', 'space-between', 'center')};
   position: relative;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  .labeltext {
-    ${fonts.footnote};
-  }
-`
-const Checkbox = styled.input.attrs({type: 'checkbox'})`
-  display: none;
-
-  &:hover ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  &:checked ~ .checkmark {
-
-    ${props => props.bio && css`
-      background-color: ${colors.bio};
-    `}
-
-    ${props => props.fossil && css`
-      background-color: ${colors.fossil};
-    `}
-  }
-
-  &:checked ~ .checkmark:after {
-    display: block;
-  }
-`
-const CheckMark = styled.span`
-  ${flex('row', 'center', 'center')};
-  height: 30px;
-  width: 30px;
-  background-color: #eee;
-  border-radius: 5px;
-
-  &:after {
-    content: "";
-    display: none;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+  height: 40vh;
+  width: 80vw;
+  max-width: 600px;
 `
 const Button = styled.button`
   ${fonts.footnote}
   padding: 1rem 2rem;
+  align-self: center;
   background-color: ${colors.secondary};
   border: none;
   border-radius: 1rem;
   color: white;
+`
+const LabelsContainer = styled.div`
+  align-self: center;
+  ${flex('row')};
+  gap: 1rem;
+  flex-wrap: wrap;
+`
+const Label = styled.div`
+  ${flex('row-reverse')};
+  gap: .5rem;
+  color: black;
+
+  div {
+    height: 20px;
+    width: 20px;
+  }
+
+  .fossil {
+    background-color: ${colors.fossil}
+  }
+  .bio {
+    background-color: ${colors.bio}
+  }
+  .lulucf {
+    background-color: ${colors.green}
+  }
 `
 
 const Kollagring = ({ emissions }) => {
@@ -157,8 +121,8 @@ const Kollagring = ({ emissions }) => {
             },{
             label: 'Markanvändning',
             data: yearlyLandUse.map(data => -Number(data.value)),
-            backgroundColor: 'white',
-            hoverBackgroundColor: 'white',
+            backgroundColor: colors.green,
+            hoverBackgroundColor: colors.green,
             fill: true,
             borderColor: colors.border,
             borderWidth: 0,
@@ -167,8 +131,8 @@ const Kollagring = ({ emissions }) => {
             },{
             label: 'Biogena utsläpp',
             data: yearlyBioEmissions.map(data => Number(data.value)),
-            backgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
-            hoverBackgroundColor: stackIndex === 'Stack 1' ? colors.bio : 'white',
+            backgroundColor: stackIndex === 'Stack 1' ? colors.bio : colors.greenOpaque,
+            hoverBackgroundColor: stackIndex === 'Stack 1' ? colors.bio : colors.greenOpaque,
             borderColor: colors.border,
             fill: true,
             borderWidth: 0,
@@ -190,20 +154,32 @@ const Kollagring = ({ emissions }) => {
 
     return (
         <Container id='bar-chart'>
-            <ButtonContainer>
-              <Button onClick={handleClick}>
-                {stackIndex === 'Stack 1' ? 'Hur hade det kunnat se ut?' : 'Hur har det sett ut?'}
-                </Button>
-            </ButtonContainer>
-                <ChartContainer>
-                    {chartData && (
-                        <Bar 
-                        ref={canvas} 
-                        data={chartData} 
-                        options={options} 
-                        plugins={[ChartDataLabels]}/>
-                    )}
-                </ChartContainer>
+          <Button onClick={handleClick}>
+            {stackIndex === 'Stack 1' ? 'Hur hade det kunnat se ut?' : 'Hur har det sett ut?'}
+          </Button>
+          <ChartContainer>
+            {chartData && (
+                <Bar 
+                ref={canvas} 
+                data={chartData} 
+                options={options} 
+                plugins={[ChartDataLabels]}/>
+            )}
+          </ChartContainer>
+          <LabelsContainer>
+            <Label>
+              <p>Fossil CO2</p>
+              <div className="fossil" />
+            </Label>
+            <Label>
+            <p>Biogen CO2</p>
+              <div className="bio" />
+            </Label>
+            <Label>
+              <p>Markanvändning (via LULUCF)</p>
+              <div className="lulucf" />
+            </Label>
+          </LabelsContainer>
         </Container>
     )
 }
