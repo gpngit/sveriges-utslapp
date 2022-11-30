@@ -5,10 +5,7 @@ import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  I
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-import utslappImg from "./img/utslapp--3.png"
-import kolcykelnImg from "./img/kolcykeln.png"
-import kalhyggeImg from "./img/Kalhygge.png"
-
+import Capitalize from "../../helpers/Capitalize";
 const Empty = styled.span`
 width:100%;`
 
@@ -34,26 +31,19 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
-                </TextContentGrid>
-                <Empty/>
                 <ImageWrapper 
                 imgbody
                 key={sectionIDname}>
-                {sectionIDname === "kolcykeln" ? ( 
                 <Image
                 layout ="responsive"
-                src={kalhyggeImg}
+                src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
-            ): (  <Image
-                layout ="responsive"
-                src={kolcykelnImg}
-                alt={imgurl.text}
-                width={700}
-                height={700}/>)
-                }
-            </ImageWrapper>
+                </ImageWrapper>
+                <ImageDescription>{imgurl.text}</ImageDescription>
+                </TextContentGrid>
+
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
@@ -73,8 +63,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             id={sectionIDname}
             first>
                 <Content>
-            <Grid>
-                <TextContentGrid>
+            <Grid
+            >
+                <TextContentGrid first >
                 <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
@@ -91,14 +82,14 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             utslappimg
             key={sectionIDname}>
             <Image
-
                 layout ="responsive"
-                src={utslappImg}
+                src={imgurl.url}
                 alt={imgurl.text}
-                width={700}
-                height={700}/>
+                width={800}
+                height={800}/>
+             <ImageDescription>{imgurl.text}</ImageDescription>
             </ImageWrapper>
-          
+             
             </Grid>
                
                 </Content>
