@@ -5,9 +5,7 @@ import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subhe
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-// import Kalhygge from "../../../public/Kalhygge.svg"
-// import utslapp from "../../../public/utslapp.svg"
-// import koldioxid from "../../../public/koldioxid.svg"
+
 
 const Empty = styled.span`
 width:100%;`
@@ -23,7 +21,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
     
-   
     return (
         <>
         {show && 
@@ -36,26 +33,20 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-                <ImageWrapper>
-                {sectionIDname === "kolcykeln" ? ( 
+
+                {sectionIDname === "kolcykeln" ? ( <ImageWrapper key={sectionIDname}>
+
                 {/* <Image
                 layout ="responsive"
                 src={Kalhygge}
                 alt={imgurl.text}
-                width={900}
+                width={700}
                 height={900}/> */}
-                ): (
-                 
-               
-                {/* <Image
-                layout ="responsive"
-                src={koldioxid}
-                alt={imgurl.text}
-                width={900}
-                height={900}/> */}
-                )
+              
+                </ImageWrapper>): (<Empty/>)
+
                 }
-                </ImageWrapper>
+              
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
@@ -79,14 +70,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body2.text}</p>
                 </TextContentGrid>
                 <Empty/>
-                {/* <ImageWrapper>
-                <Image
-                layout ="responsive"
-                src={utslapp}
-                alt={imgurl.text}
-                width={900}
-                height={900}/>
-                </ImageWrapper> */}
+         
             </Grid>
                 <SourceAndShare 
                 whiteBG={"yes"}
