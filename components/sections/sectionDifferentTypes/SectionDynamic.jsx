@@ -57,6 +57,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
+                    <br/>
                     <p>{body2.text}</p>
                 </TextContentGrid>
                 <Empty/>
@@ -77,6 +78,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
+                    <br/>
                     <p>{body2.text}</p>
                 </TextContentGrid>
             <ImageWrapper key={sectionIDname}>
