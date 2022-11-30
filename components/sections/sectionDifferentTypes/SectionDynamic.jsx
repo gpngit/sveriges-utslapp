@@ -5,7 +5,7 @@ import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  I
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-
+import Capitalize from "../../helpers/Capitalize";
 const Empty = styled.span`
 width:100%;`
 
@@ -41,6 +41,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 width={700}
                 height={700}/>
                 </ImageWrapper>
+                <ImageDescription>{imgurl.text}</ImageDescription>
                 </TextContentGrid>
 
                 <TextContentGrid 
@@ -86,8 +87,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 alt={imgurl.text}
                 width={800}
                 height={800}/>
+             <ImageDescription>{imgurl.text}</ImageDescription>
             </ImageWrapper>
-          
+             
             </Grid>
                
                 </Content>

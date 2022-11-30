@@ -55,7 +55,7 @@ gap: 1rem;
 
 export const TextContentGrid = styled.div`
 @media ${device.betweentabletlaptop}{
-    max-width:320px;
+    max-width:100%;
 }
 h2 {
     ${fonts.lessheading};
@@ -69,7 +69,9 @@ h2 {
     }
     @media ${device.betweentabletlaptop}{
         margin-bottom:1rem;
-        width:320px;
+        min-width:300px;
+        max-width:420px;
+        width:100%;
     }
     @media ${device.laptop}{
         margin-bottom:1rem;
@@ -86,6 +88,11 @@ p {
     @media (max-width: ${size.mobileL}){
         max-width:100%;
     }
+    @media ${device.betweentabletlaptop}{
+    min-width:300px;
+    max-width:400px;
+    width:100%;
+    }
    
 }
 `
@@ -98,6 +105,7 @@ max-width:70%;
 
 export const ImageWrapper = styled.div`
 display:block;
+
     .image{      
         display:block; 
         object-fit: contain;
@@ -148,7 +156,7 @@ display:block;
             @media ${device.betweentabletlaptop}{
             position:relative;
             left:0%;
-            top:10%;
+            top:20%;
             width:100%;
             }
             @media ${device.laptop}{
@@ -162,6 +170,6 @@ display:block;
     
 `
 export const ImageDescription= styled.p`
-
+font-style: italic;
 `
 
