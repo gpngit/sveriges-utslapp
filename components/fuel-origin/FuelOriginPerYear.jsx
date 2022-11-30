@@ -24,6 +24,9 @@ const ErrorMessage = styled.div`
   width: 100%;
   ${flex('column','center','center')};
 `
+const SourceText = styled.p`
+  padding: 2rem 0;
+`
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
 
@@ -55,6 +58,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
                 data: yearlyData.map((data, i) => data.value),
                 backgroundColor: colors,
                 borderWidth: 0,
+                hoverOffset: 20,
             }]
         })
     }
@@ -64,6 +68,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   return (
       <Container id='doughnut'>
+        <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
         <ChartContainer>
           {dataAvailable ?
         <Doughnut ref={canvas} data={chartData} options={options} />

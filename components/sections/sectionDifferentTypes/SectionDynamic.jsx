@@ -1,11 +1,13 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
+import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-
+import utslappImg from "./img/utslapp--3.png"
+import kolcykelnImg from "./img/kolcykeln.png"
+import kalhyggeImg from "./img/Kalhygge.png"
 
 const Empty = styled.span`
 width:100%;`
@@ -27,56 +29,79 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <>{sectionIDname !== "statistik" ? (
             <Container 
             id={sectionIDname}>
+            <Content>
             <Grid>
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-
-                {sectionIDname === "kolcykeln" ? ( <ImageWrapper key={sectionIDname}>
-
-                {/* <Image
+                <ImageWrapper 
+                imgbody
+                key={sectionIDname}>
+                {sectionIDname === "kolcykeln" ? ( 
+                <Image
                 layout ="responsive"
-                src={Kalhygge}
+                src={kalhyggeImg}
                 alt={imgurl.text}
                 width={700}
-                height={900}/> */}
-              
-                </ImageWrapper>): (<Empty/>)
-
+                height={700}/>
+            ): (  <Image
+                layout ="responsive"
+                src={kolcykelnImg}
+                alt={imgurl.text}
+                width={700}
+                height={700}/>)
                 }
-              
+            </ImageWrapper>
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
+                    <br/>
                     <p>{body2.text}</p>
-                </TextContentGrid>
-                <Empty/>
-                <SourceAndShare 
+                    <br/>
+                    <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
+                </TextContentGrid>
             </Grid>
+            </Content>
             </Container>): (
             <Container 
-            id={sectionIDname}>
+            id={sectionIDname}
+            first>
+                <Content>
             <Grid>
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
+                    <br/>
                     <p>{body2.text}</p>
-                </TextContentGrid>
-                <Empty/>
-         
-            </Grid>
-                <SourceAndShare 
+                    <br/>
+                    <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
+                </TextContentGrid>
+            <ImageWrapper 
+            utslappimg
+            key={sectionIDname}>
+            <Image
+
+                layout ="responsive"
+                src={utslappImg}
+                alt={imgurl.text}
+                width={700}
+                height={700}/>
+            </ImageWrapper>
+          
+            </Grid>
+               
+                </Content>
                 </Container>
                 )}
         </>}

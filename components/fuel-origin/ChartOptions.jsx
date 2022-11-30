@@ -6,6 +6,7 @@ const ChartOptions = (emissions) => {
     const options = {
         maintainAspectRatio: false,
         responsive: true,
+        cutout: '30%',
         layout: {
           padding: 50,
         },
@@ -18,23 +19,21 @@ const ChartOptions = (emissions) => {
           }
         },
         plugins: {
-        //   title: {
-        //     display: true,
-        //     text: 'Användning av biobränslen per bränslekategori, GWh',
-        //     align: 'start',
-        //     color: colors.secondary,
-        //     padding: {
-        //       top: 10,
-        //       bottom: 30
-        //     },
-        //     font: {
-        //       family: font.main,
-        //       size: "18px",
-        //     }
-        // },
           legend: {
-            display: false,
-            position: 'right'
+            display: (what) => {
+              if (window.innerWidth < 650){
+                return false
+              } else {
+                return true
+              }
+            },
+            position: 'right',
+            labels: {
+              color: 'black',
+              font: {
+                family: font.main,
+              },
+            },
           },
           tooltip: {
             enabled: true,
