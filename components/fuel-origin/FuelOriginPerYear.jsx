@@ -55,6 +55,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
                 data: yearlyData.map((data, i) => data.value),
                 backgroundColor: colors,
                 borderWidth: 0,
+                hoverOffset: 20,
             }]
         })
     }

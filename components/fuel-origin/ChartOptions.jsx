@@ -6,6 +6,7 @@ const ChartOptions = (emissions) => {
     const options = {
         maintainAspectRatio: false,
         responsive: true,
+        cutout: '30%',
         layout: {
           padding: 50,
         },
@@ -33,8 +34,14 @@ const ChartOptions = (emissions) => {
         //     }
         // },
           legend: {
-            display: false,
-            position: 'right'
+            display: true,
+            position: 'right',
+            labels: {
+              color: 'black',
+              font: {
+                family: font.main,
+              },
+            },
           },
           tooltip: {
             enabled: true,
