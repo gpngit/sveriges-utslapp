@@ -14,6 +14,9 @@ padding:5em;
     @media (max-width: ${size.mobileL}){
     padding:1rem;
     }
+    @media ${device.mobileTablet}{
+        padding:2rem;
+    }
 
 ${props => 
     props.first && 
@@ -38,9 +41,11 @@ padding:1rem;
 
 export const Grid = styled.div`
 display: grid;
-gap: 3rem;
+gap: 1rem;
 @media ${device.tablet}{
+    gap:3rem;
     grid-template-columns: repeat(2, 1fr); }
+
 `
 
 export const TextContentGrid = styled.div`
@@ -50,6 +55,14 @@ h2 {
     @media (max-width:${size.mobiletablet}){ 
         max-width:90%;
         margin-bottom:0.5rem;
+    }
+    @media ${device.mobileTablet}{
+        max-width:80%;
+    }
+    @media ${device.betweentabletlaptop}{
+        margin-bottom:1rem;
+        width:100%;
+        min-width:400px;
     }
 }
 p {
@@ -65,15 +78,11 @@ p {
 }
 
 ${props => 
-    props.body && 
+    props.first && 
     css`
+
    
     `}
-`
-
-export const Text= styled.p`
-margin-top:1rem;
-margin-bottom:1rem;
 `
 
 export const Subheading = styled.p`
@@ -97,17 +106,17 @@ width:80%;
         
     }
     @media (max-width: ${size.mobileL}){
-    
-     margin-bottom:-3rem;
-     margin-top:2rem;
+    margin-top:2rem;
     }
     @media ${device.mobileL}{
-        margin-bottom:-3rem;
+    
         margin-top:1rem;
     }
     @media ${device.mobileTablet}{
         width:100%;
+        
     }
+    
     
     ${props => 
         props.imgbody && 
@@ -124,13 +133,22 @@ width:80%;
             css`
             @media (max-width:${size.mobiletablet}){ 
             margin-bottom:-5rem;
-            margin-top:-2rem;
+            margin-top:1rem;
             }
             @media (max-width: ${size.mobileL}){
             margin-bottom:-2rem;
             }
             @media ${device.mobileTablet}{
-            margin-bottom:-10rem;
+            position:relative;
+            left:20%;
+            margin-bottom:-4rem;
+            width:70%;
+            }
+            @media ${device.betweentabletlaptop}{
+            position:relative;
+            left:0%;
+            top:10%;
+            width:100%;
             }
             `}
     padding-bottom:1rem;

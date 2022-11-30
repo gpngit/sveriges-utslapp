@@ -30,7 +30,10 @@ padding-bottom:10em;
 display:block;
 @media (max-width:${size.mobiletablet}){
   padding-bottom:5em;
-}`
+}
+@media ${device.betweentabletlaptop}{
+padding-bottom:8em;}
+`
 
 const Sections = ({pageOneElem, sectionIDnameOne, pageTwoElem, sectionIDnameTwo, pageThreeElem, sectionIDnameThree}) => {
 

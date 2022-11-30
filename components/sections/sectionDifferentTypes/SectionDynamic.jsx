@@ -40,10 +40,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
-            </ImageWrapper>
+                </ImageWrapper>
                 </TextContentGrid>
-                
-              
+
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
@@ -63,8 +62,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             id={sectionIDname}
             first>
                 <Content>
-            <Grid>
-                <TextContentGrid>
+            <Grid
+            >
+                <TextContentGrid first >
                 <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
