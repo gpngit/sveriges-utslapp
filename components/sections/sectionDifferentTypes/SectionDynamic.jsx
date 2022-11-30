@@ -1,7 +1,7 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { Container, Content, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
+import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -30,13 +30,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <Container 
             id={sectionIDname}>
             <Content>
-                <Grid>
+            <Grid>
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-                <ImageWrapper key={sectionIDname}>
+                <ImageWrapper 
+                imgbody
+                key={sectionIDname}>
                 {sectionIDname === "kolcykeln" ? ( 
                 <Image
                 layout ="responsive"
@@ -77,7 +79,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
                 </TextContentGrid>
-                
             <ImageWrapper key={sectionIDname}>
             <Image
                 layout ="responsive"
