@@ -1,7 +1,7 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
+import { Container, Content, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subheading, Item, ImageDescription } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -11,6 +11,7 @@ import kalhyggeImg from "./img/Kalhygge.png"
 
 const Empty = styled.span`
 width:100%;`
+
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
    
     const [show, setShow] = useState(pageElements.show)
@@ -28,14 +29,14 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <>{sectionIDname !== "statistik" ? (
             <Container 
             id={sectionIDname}>
-            <Grid>
+            <Content>
+                <Grid>
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-   
-            <ImageWrapper key={sectionIDname}>
+                <ImageWrapper key={sectionIDname}>
                 {sectionIDname === "kolcykeln" ? ( 
                 <Image
                 layout ="responsive"
@@ -63,9 +64,12 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
             </Grid>
+            </Content>
             </Container>): (
             <Container 
-            id={sectionIDname}>
+            id={sectionIDname}
+            first>
+                <Content>
             <Grid>
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
@@ -88,6 +92,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
+                </Content>
                 </Container>
                 )}
         </>}

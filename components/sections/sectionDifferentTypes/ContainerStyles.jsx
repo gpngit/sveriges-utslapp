@@ -3,28 +3,33 @@ import styled,{css} from 'styled-components'
 import { flex, device, size, colors, fonts } from '../../../styles/partials'
 
 export const Container = styled.section`
-${flex()};
+${flex("column", "center", "center")};
 gap: 40px;
 color: black;
-max-width:1500px;
 width:100%;
-padding:10em;
-@media (max-width:${size.mobileL}){ 
-   padding:2em;
-   padding-top:5em;
-   padding-bottom:5em;
-  }
-  @media (max-width:${size.tablet}){ 
-    padding:5em;
-   }
-@media ${device.laptop}{
-    padding-right:15rem;
+padding:5em;
+@media (max-width:${size.mobiletablet}){ 
+    padding:2em;    
 }
 
+${props => 
+    props.first && 
+    css`
+    @media ${device.laptop}{
+    padding-top:10em;
+    }
+    padding-top:2em;
+    `}
+
+`
+export const Content = styled.div`
+width:100%;
+max-width:1568px;
+
+padding:1rem;
 `
 
 export const Grid = styled.div`
-max-width: 1500px;
 display: grid;
 gap: 3rem;
 @media ${device.laptop}{
@@ -96,15 +101,11 @@ width:80%;
         max-width: 100%;
         position: relative;
         height: unset;
- 
-       
-
-             
     }
     @media (max-width: ${size.mobileL}){
         width:100%;
     }
-   padding-bottom:2rem;
+    padding-bottom:2rem;
     
 `
 export const ImageDescription= styled.p`
