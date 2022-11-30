@@ -5,7 +5,7 @@ import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  I
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-
+import Capitalize from "../../helpers/Capitalize";
 const Empty = styled.span`
 width:100%;`
 
@@ -31,8 +31,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <TextContentGrid>
                 <Subheading>{subheading.text}</Subheading>
                 <h2>{title.text}</h2>
-                </TextContentGrid>
-                <Empty/>
                 <ImageWrapper 
                 imgbody
                 key={sectionIDname}>
@@ -42,7 +40,10 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
-            </ImageWrapper>
+                </ImageWrapper>
+                <ImageDescription>{imgurl.text}</ImageDescription>
+                </TextContentGrid>
+
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
@@ -62,8 +63,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             id={sectionIDname}
             first>
                 <Content>
-            <Grid>
-                <TextContentGrid>
+            <Grid
+            >
+                <TextContentGrid first >
                 <Subheading>{subheading.text}</Subheading>
                     <h2>{title.text}</h2>
                     <p>{body1.text}</p>
@@ -80,14 +82,14 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             utslappimg
             key={sectionIDname}>
             <Image
-
                 layout ="responsive"
                 src={imgurl.url}
                 alt={imgurl.text}
-                width={700}
-                height={700}/>
+                width={800}
+                height={800}/>
+             <ImageDescription>{imgurl.text}</ImageDescription>
             </ImageWrapper>
-          
+             
             </Grid>
                
                 </Content>
