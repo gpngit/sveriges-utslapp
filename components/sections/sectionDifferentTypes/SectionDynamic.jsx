@@ -36,15 +36,12 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <ImageWrapper 
                 imgbody
                 key={sectionIDname}>
-                
                 <Image
                 layout ="responsive"
                 src={imgurl.url}
                 alt={imgurl.text}
                 width={700}
                 height={700}/>
-            
-                
             </ImageWrapper>
                 <TextContentGrid 
                 body>
