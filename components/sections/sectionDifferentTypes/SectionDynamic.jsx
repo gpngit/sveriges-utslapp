@@ -5,11 +5,12 @@ import { Container, Grid, TextContentGrid, TextContent, Row, ImageWrapper, Subhe
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-
+import utslappImg from "./img/utslapp--3.png"
+import kolcykelnImg from "./img/kolcykeln.png"
+import kalhyggeImg from "./img/Kalhygge.png"
 
 const Empty = styled.span`
 width:100%;`
-
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
    
     const [show, setShow] = useState(pageElements.show)
@@ -33,20 +34,23 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 <h2>{title.text}</h2>
                 </TextContentGrid>
                 <Empty/>
-
-                {sectionIDname === "kolcykeln" ? ( <ImageWrapper key={sectionIDname}>
-
-                {/* <Image
+   
+            <ImageWrapper key={sectionIDname}>
+                {sectionIDname === "kolcykeln" ? ( 
+                <Image
                 layout ="responsive"
-                src={Kalhygge}
+                src={kalhyggeImg}
                 alt={imgurl.text}
                 width={700}
-                height={900}/> */}
-              
-                </ImageWrapper>): (<Empty/>)
-
+                height={700}/>
+            ): (  <Image
+                layout ="responsive"
+                src={kolcykelnImg}
+                alt={imgurl.text}
+                width={700}
+                height={700}/>)
                 }
-              
+            </ImageWrapper>
                 <TextContentGrid 
                 body>
                     <p>{body1.text}</p>
@@ -69,8 +73,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <p>{body1.text}</p>
                     <p>{body2.text}</p>
                 </TextContentGrid>
-                <Empty/>
-         
+                
+            <ImageWrapper key={sectionIDname}>
+            <Image
+                layout ="responsive"
+                src={utslappImg}
+                alt={imgurl.text}
+                width={700}
+                height={700}/>
+            </ImageWrapper>
             </Grid>
                 <SourceAndShare 
                 whiteBG={"yes"}
