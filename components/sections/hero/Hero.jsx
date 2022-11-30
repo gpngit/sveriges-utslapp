@@ -205,11 +205,14 @@ const NavLink = styled.a`
     text-align: center;
     padding: 14px 20px;
     ${fonts.paragraph};
-    white-space: nowrap;
     background-color: ${colors.primary};
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
+
+    @media ${device.tablet} {
+        white-space: nowrap;
+    }
 `
 const Blurred = styled.div`
     position: sticky;
