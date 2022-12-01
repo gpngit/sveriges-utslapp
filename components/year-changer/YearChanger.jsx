@@ -54,6 +54,7 @@ ${flex("row", "center", "center")};
 p{
     color:${colors.secondary};
     font-weight:bold;    
+    
 }
 @media (max-width: 500px){
     p{display:none}
@@ -74,6 +75,7 @@ border-color:${colors.secondary};
 &.hidden {
     visibility: hidden;
 }
+
 `
 const Button = styled.button`
     background-color: ${colors.primary};
@@ -87,6 +89,8 @@ const Button = styled.button`
     &:hover{
         background-color: rgba(55, 0, 0, 0.1);
     }
+    margin-top:4px;
+   
 
 `
 const Decoration = styled.div`
