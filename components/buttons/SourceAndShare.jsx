@@ -19,7 +19,7 @@ const LinkButton = styled.a`
     min-width:80px;
     padding:1.2rem;
     height: 1.5rem;
-    ${fonts.footnote};
+    ${fonts.button};
     &:hover{
         background-color: rgba(55, 0, 0, 0.3);
     }
@@ -55,7 +55,7 @@ width: 10%;
 min-width:80px;
 padding:1.2rem;
 height: 1.5rem;
-${fonts.footnote};
+${fonts.button};
 @media (max-width:${size.mobileL}){ 
     ${fonts.paragraph};
 }
@@ -83,7 +83,8 @@ const ModalWrapper = styled.dialog`
     transform: translate(-50%, -50%);
     border: none;
     padding: 2rem;
-    
+    width: 300px;
+
     &::before {
         ${flex()}
     }

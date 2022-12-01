@@ -19,7 +19,7 @@ const Container = styled.section`
 `
 const ChartContainer = styled.div`
   position: relative;
-  height: 40vh;
+  height: 50vh;
   width: 80vw;
   max-width: 600px;
 `
@@ -39,7 +39,7 @@ const Overlay = styled.div`
   }
 `
 const SourceText = styled.p`
-  padding: 2rem 0;
+  font-style:italic;
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -128,7 +128,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   return (
       <Container id='doughnut'>
-        <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
+        <SourceText>Grafen visar användning av biobränslen per bränslekategori (GWh).<br/> Data från Energimyndigheten.</SourceText>
           <ChartContainer>
               <Doughnut ref={canvas} data={chartData} options={options} /> 
             {!dataAvailable && (

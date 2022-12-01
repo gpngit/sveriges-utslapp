@@ -2,9 +2,10 @@
 import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Grid, Content, Heading, Row, FirstContent, SecondContent} from './ContainerStyles'
+import { Grid, Content, Heading, Row, FirstContent, SecondContent, RowMobile} from './ContainerStyles'
 import ChosenYear from './currentYearBlob'
 import Kollagring from '../../barchart/Kollagring'
+import Link from 'next/link'
 
 const FaktaOne = ({pageElements, emissions}) => {
 
@@ -20,28 +21,31 @@ const FaktaOne = ({pageElements, emissions}) => {
         <Content 
         id="faktaruta1"
         >
-        <Grid>
-            <FirstContent>
-                <Row>
-                <ChosenYear 
+        <Row>
+            <ChosenYear 
                 emissions={emissions}/>
                 <Heading>
-                    <p>
-                        {subheading.text.toUpperCase()}</p>
+                    <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </Heading>
                 </Row>
-                
-                <Kollagring emissions={emissions}/> 
+        <Grid>
+            <FirstContent>
+                <Kollagring emissions={emissions}/>
+            
             </FirstContent>
             <SecondContent>
                 <p>{body1.text}</p>
+                <RowMobile>
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={url.text} 
                 shareLink={'#faktaruta1'}
                 sourceText={title.text} />
+                    <p className="footnote">Fotnot: LULUCF betyder Land Use, Land Use Change and Forestry och ingår i klimatrapporteringen. Mer om det går att läsa <Link href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-nettoutslapp-och-nettoupptag-fran-markanvandning/">här.</Link></p>
+                    </RowMobile> 
             </SecondContent>
+           
         </Grid>
         </Content>
         </>}</>

@@ -152,9 +152,9 @@ const InnerContainer = styled.div`
     }
 `
 const TextContent = styled.div`
-    max-width: 1500px;
+    max-width: 1200px;
     ${flex('column')};
-    gap: clamp(2rem, 20vw, 10rem);
+    gap: clamp(2rem, 5vw, 10rem);
     
     h1 {
         ${fonts.heading};
@@ -170,7 +170,7 @@ const TextAndLink = styled.div`
         display: none;
     }
     @media ${device.tablet} {
-        ${flex('row', 'flext-start', 'center')};
+        ${flex('row', 'flext-start', 'flex-start')};
         gap: 20px;
         
         svg{
@@ -198,7 +198,7 @@ const Blurred = styled.div`
     width: 100%;
     pointer-events: none;
     bottom: 0;
-    background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
+    background: linear-gradient(to top, ${colors.primary} 40vh, transparent);
 `
 
 const Hero = ({ pageElements }) => {
