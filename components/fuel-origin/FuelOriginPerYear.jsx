@@ -124,8 +124,6 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
     }
   }, [yearlyData])
 
-  console.log(customLabels)
-
   const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
 
   return (
@@ -142,7 +140,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
           <LabelsContainer>
             {customLabels && customLabels.map((label, i) => {
               return (
-                <Label>
+                <Label key={i}>
                   <p>{label.name} ({label.percentage}%)</p>
                   <div style={{backgroundColor: label.color}}></div>
                 </Label>
