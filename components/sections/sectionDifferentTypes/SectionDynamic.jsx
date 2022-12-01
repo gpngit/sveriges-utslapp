@@ -5,7 +5,8 @@ import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  I
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
-import Capitalize from "../../helpers/Capitalize";
+import SeveralSourcesAndShare from "../../buttons/SeveralSourcesAndShare";
+
 const Empty = styled.span`
 width:100%;`
 
@@ -19,7 +20,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
-    
+   
+   console.log(sections.find(section => section.name == "sources1"))
+
     return (
         <>
         {show && 
@@ -35,14 +38,22 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <br/>
                     <p>{body2.text}</p>
                     <Desktop>
-                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
+                    <> {sectionIDname === "kolcykeln" ? (   <SeveralSourcesAndShare
+                        whiteBG= {"yes"}
+                        sourceLink1 ={sections.find(section =>section.name === "sources1").text}
+                        sourceLink2 = 
+                        {sections.find(section =>section.name === "sources2").text}
+                        sourceLink3=
+                        {sections.find(section =>section.name === "sources3").text}
+                        shareLink={`#${sectionIDname}`}
+                        sourceText={title.text}/>
+                    ): ( <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>)}
                 </>
                 </Desktop>
-                   
                     </TextContentGrid>
             <ImageWrapper 
             key={sectionIDname}>
@@ -58,7 +69,18 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             
             </ImageWrapper>
             <Mobile>
-                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
+                    <> {sectionIDname === "kolcykeln" ? (
+                        <SeveralSourcesAndShare
+                        whiteBG= {"yes"}
+                        sourceLink1 ={sections.find(section =>section.name === "sources1").text}
+                        sourceLink2 = 
+                        {sections.find(section =>section.name === "sources2").text}
+                        sourceLink3=
+                        {sections.find(section =>section.name === "sources3").text}
+                        shareLink={`#${sectionIDname}`}
+                        sourceText={title.text}/>
+                        ): (         
+                <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
