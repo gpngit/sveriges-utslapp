@@ -12,7 +12,8 @@ const Container = styled.header`
     color: ${colors.secondary};
     
     .burning-forest {
-        min-height: 95vh;
+        margin-top: -100vh;
+        min-height: 100vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
@@ -137,6 +138,7 @@ const Container = styled.header`
     }
 `
 const InnerContainer = styled.div`
+    /* margin-bottom: -100%; */
     padding: 2rem;
     width: 100%;
     ${flex('column', 'center', 'center')};
@@ -144,20 +146,21 @@ const InnerContainer = styled.div`
     @media ${device.tablet}{
         padding: 2rem 5rem;
     }
+
+    @media ${device.laptop}{¨
+        padding: 2rem 10rem;
+    }
 `
 const TextContent = styled.div`
     max-width: 1500px;
     ${flex('column')};
-    gap: 5rem;
+    gap: clamp(2rem, 20vw, 10rem);
     
     h1 {
         ${fonts.heading};
-        margin-top:-4rem;
-
     }
     p {
         ${fonts.subheading};
-        line-height:120%;
     }
 `
 const TextAndLink = styled.div`
@@ -169,35 +172,33 @@ const TextAndLink = styled.div`
     @media ${device.tablet} {
         ${flex('row', 'flext-start', 'center')};
         gap: 20px;
-        width: 100%;
         
         svg{
         display:block;
         }
     }
-    @media screen and ${device.betweentabletlaptop}{
-    gap:12px;
-    }
 `
 const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
-    padding: 14px 20px;
+    padding: .6rem 1.4rem;
     ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
+
+    @media ${device.laptop}{
+        white-space:nowrap;
+    }
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     pointer-events: none;
-    &.bottom {
-        bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
-    }
+    bottom: 0;
+    background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
 `
 
 const Hero = ({ pageElements }) => {

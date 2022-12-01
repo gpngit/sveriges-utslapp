@@ -34,13 +34,13 @@ export const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 export const fonts = {
-    heading: `font-size: clamp(2rem, 2vw + 1rem, 3.8rem); line-height: 120%;  
+    heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3.8rem); line-height: 120%;  
     @media screen and ${device.desktop}{
     line-height: 100%;}
     `,
-    subheading: `font-size: clamp(0.9rem, 1vw + 1rem, 2rem); line-height:100%; @media screen and ${device.desktop}{
+    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 2rem); line-height:100%; @media screen and ${device.desktop}{
     line-height: 100%;} `,
-    paragraph:`font-size: clamp(1rem, 1vw , 1.6rem); 
+    paragraph:`font-size: clamp(.8rem, 1vw , 1.6rem); 
     line-height: 150%; @media screen and ${device.desktop}{
     line-height: 120%;}`,
     footnote:"font-size: 1rem; line-height:150%; ",
