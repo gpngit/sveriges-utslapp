@@ -18,7 +18,7 @@ export const Content = styled.article`
 `
 export const Row = styled.span`
 
-${flex("column", "center", "center")}
+${flex("column-reverse", "center", "center")}
 gap:10px;
 @media ${device.mobileL}{
   ${flex("row", "start", "center")}
@@ -29,7 +29,7 @@ gap:10px;
 
 export const Heading = styled.span`
 padding-left:0.5rem;
-background-color:pink;
+
 h2{
   ${fonts.lessheading};
 }
