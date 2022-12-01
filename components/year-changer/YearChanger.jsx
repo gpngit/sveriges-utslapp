@@ -8,11 +8,7 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import Chevron from '../SVG\'s/Chevron'
-//components
-import Slider from './Slider'
-import Image from 'next/legacy/image'
-import Square2 from "../../public/Square.svg";
-// import { Square } from './Square'
+
 
 const Container = styled.div`
     ${fonts.footnote};
@@ -23,10 +19,17 @@ const Container = styled.div`
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
     padding-top: 20px;
+   
 `
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
     gap: 10px;
+    @media (max-width:${size.mobileM}){
+      gap:2px;
+
+      width:90vw;
+
+     }
     width: calc(100vw - 80px);
     div {
         ${flex('row', 'space-between', 'center')};
@@ -41,6 +44,7 @@ const InnerContainer = styled.div`
     .inactive {
         text-decoration: line-through;
     }
+  
 `
 const Year = styled.span`
     ${fonts.subheading};
@@ -91,8 +95,7 @@ position: relative;
 width: calc(100vw - 20px);
 margin-top: 20px;
 `
-const SquareImg = styled(Image)`
-`
+
 const Line = styled.div`
 width:100%;
 background-color: ${colors.secondary};
@@ -174,13 +177,6 @@ const YearChanger = ({ emissions }) => {
                 <Line className='decor-line'/>
                 <Square />
             </Decoration>
-            {/* <Square 
-            className="squareElement"
-            color={`${colors.secondary}`}
-            strokeWidth={"3"} fillColor={`${colors.primary}`}
-            height={30}
-            width={30}/> */}
-            {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
 }

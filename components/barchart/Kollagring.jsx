@@ -22,18 +22,22 @@ const Container = styled.section`
 const ChartContainer = styled.div`
   position: relative;
   height: 40vh;
-  width: 80vw;
-  max-width: 600px;
+  width: 70vw;
+  max-width: 500px;
 `
 const Button = styled.button`
   ${fonts.footnote}
   padding: 1rem 2rem;
   align-self: center;
-  background-color: ${colors.secondary};
-  border: none;
+  background-color: transparent;
+  border: 2px solid ${colors.secondary};
+ 
   border-radius: 1rem;
-  color: white;
+  color: ${colors.secondary};
   transition: .2s linear;
+  &:hover{
+    background-color: rgba(55, 0, 0, 0.3);
+}
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -43,12 +47,14 @@ const LabelsContainer = styled.div`
 `
 const Label = styled.div`
   ${flex('row-reverse')};
-  gap: .5rem;
+  gap: .2rem;
   color: black;
 
   div {
     height: 20px;
     width: 20px;
+    border-radius:50%;
+    margin-top:2px;
   }
 
   .fossil {

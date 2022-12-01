@@ -13,19 +13,63 @@ import AppContext from '../../context/AppContext'
 
 
 const Container = styled.section`
+  ${flex('column')};
+  gap: 1rem;
+  max-width: 600px;
 `
 const ChartContainer = styled.div`
-    height: 50vh;
-    width: 80vw;
-    max-width: 500px;
+  position: relative;
+  height: 40vh;
+  width: 80vw;
+  max-width: 600px;
 `
-const ErrorMessage = styled.div`
+const Overlay = styled.div`
+  ${flex('column','center','center')};
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  ${flex('column','center','center')};
+
+  p {
+    background-color: black;
+    color: white;
+    padding: .6rem 1.4rem;
+    text-align: center;
+  }
 `
 const SourceText = styled.p`
   padding: 2rem 0;
+`
+const LabelsContainer = styled.div`
+  align-self: center;
+  ${flex('column', 'center', 'flex-start')};
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  @media ${device.tablet}{
+    ${flex('row', 'center', 'center')}
+  }
+`
+const Label = styled.div`
+  ${flex('row-reverse')};
+  gap: .5rem;
+  color: black;
+
+  div {
+    height: 20px;
+    width: 20px;
+  }
+
+  .fossil {
+    background-color: ${colors.fossil}
+  }
+  .bio {
+    background-color: ${colors.bio}
+  }
+  .lulucf {
+    background-color: ${colors.green}
+  }
 `
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
@@ -35,6 +79,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   const {displayYear, setDisplayYear} = context
   const [yearlyData, setYearlyData] = useState(null)
   const [dataAvailable, setDataAvailable] = useState(false)
+  const [customLabels, setCustomLabels] = useState(null)
   const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState({
     datasets: [],
@@ -46,11 +91,26 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
       setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
     } else {
       setDataAvailable(false)
+      setChartData({
+        labels: '',
+        datasets: [{
+          label: '',
+          data: [1]
+        }]
+      })
     }
   }, [displayYear])
 
   useEffect(() => {
     if (yearlyData) {
+        setCustomLabels(yearlyData.map((data, i) => {
+          return {
+            name: data.name,
+            color: colors[i],
+            value: data.value,
+            percentage: Math.round(data.value / (yearlyData.reduce((a, b) => a + b.value, 0)) * 100)
+          }
+        }).sort((a,b) => b.value - a.value ))
         setChartData({
             labels: yearlyData.map(data => data.name),
             datasets: [{
@@ -69,11 +129,24 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   return (
       <Container id='doughnut'>
         <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
-        <ChartContainer>
-          {dataAvailable ?
-        <Doughnut ref={canvas} data={chartData} options={options} />
-          : <ErrorMessage>Data tillgänglig mellan 2005-2020. Ändra år ovan för att se graf.</ErrorMessage>}
-        </ChartContainer>
+          <ChartContainer>
+              <Doughnut ref={canvas} data={chartData} options={options} /> 
+            {!dataAvailable && (
+            <Overlay>
+              <p>Data endast tillgänglig mellan 2005-2020</p>
+            </Overlay>
+            )}
+          </ChartContainer>
+          <LabelsContainer>
+            {customLabels && customLabels.map((label, i) => {
+              return (
+                <Label key={i}>
+                  <p>{label.name} ({label.percentage}%)</p>
+                  <div style={{backgroundColor: label.color}}></div>
+                </Label>
+              )
+            })}
+            </LabelsContainer>
       </Container>
   )
 }
