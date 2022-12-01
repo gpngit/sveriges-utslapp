@@ -16,125 +16,78 @@ import { SmallArrow } from "../SVG's/Arrows";
 
 Chart.register(annotationPlugin)
 
-const Wrapper = styled.div`
-@media (max-width:${size.tablet}){ 
-  display:none
-}
-@media ${device.tablet}{
-  clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
-    -webkit-clip-path:  polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
-    }
-    display:block;
-    overflow:visible;
-    position:relative;
-    z-index:5;
-    background-color:${colors.primary};
-    height: 100px;
-
-    @media ${device.laptop}{
-      height:200px;
-    }
-
-`
-
 const Bg = styled.div`
+  background-color:${colors.secondary};
+  position:relative;
+  display: none;
+  height: 100px;
 
-z-index:1;
-background-color:${colors.secondary};
-position:relative;
-height:200px;
-margin-bottom:-100px;
-display:block;
-@media ${device.laptop}{
-  height:200px;
-  margin-bottom:-200px;
-}
+  @media ${device.tablet}{
+    display: block;
+  }
+`
+const Wrapper = styled.div`
+  clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
+  height: 100%;
+  background-color:${colors.primary};
 `
 const Container = styled.section`
-display:block;
-  position: relative;
-  padding: 5em 0em 0em 5em;
+  ${flex('column')};
+  gap: 2rem;
   background-color: ${colors.primary};
   color: ${colors.secondary};
+  padding: 2rem;
+
   @media ${device.tablet}{
-    padding: 5em 5em 0em 5em;
-  }
-  @media (max-width:${size.tablet}){
-    margin-top:-10rem;
-    z-index:10;
-  }
-  @media (max-width:${size.mobileL}){
-    padding-left:2em;
+    padding: 2rem 4rem;
   }
 `
 const TextContent = styled.div`
-  padding: 1rem 0rem;
-  @media (max-width:${size.tablet}){
-    padding-right:2rem;
-    margin-top:-1rem;
-  }
+  ${flex('column')};
+  gap: 1rem;
+
   h2 {
-      ${fonts.lessheading};
-      margin-bottom:1rem;
+    ${fonts.lessheading};
   }
 
   p {
-      ${fonts.paragraph};
-      @media ${device.laptop}{
-        max-width:70%;
-      }
+    ${fonts.paragraph};
+
+    @media ${device.laptop}{
+      max-width:70%;
+    }
   }
 `
 const ButtonContainer = styled.div`
-  padding: 1rem;
-  max-width:80%;
-  ${flex("row")}
-  @media ${device.tablet}{${flex('row', 'center', 'center')};
-  gap: 1rem;
+  max-width: 1000px;
+  ${flex("row", 'flex-start', 'center')}
 
-  }
-  div{
-    @media (max-width:${size.tablet}){ 
-      
-    ${flex("column", "flex-start","center")}
-    gap: 10px;}
-    label:first-of-type{
-      padding-left:6px;
-    }
-    ${flex("row", "flex-start", "flex-start")}
+  @media ${device.tablet}{
+    gap: 1rem;
   }
 
-p{
-color: ${colors.bio};
-font-size:12px;
-width:100%;
-}
-@media (max-width:${size.tablet}){ 
-margin-top:-8px;
-  ${flex("column")}
-  gap:4px;
-  div{
-    margin-top:4px;
-    ${flex("row", "flex-start", "flex-start")}
-    label{
-      ${flex("row-reverse", "center", "center")}
-      width:140px;
-
-    }
-    label:first-of-type{
-      margin-left:-10px;
-    }
-  
+  .checkboxes {
+    ${flex("row")};
+    gap: 1rem;
   }
-}
+
+  .text {
+  color: ${colors.bio};
+  font-size:12px;
+  }
+
+  @media (max-width:${size.tablet}){ 
+    ${flex("column")};
+    gap: 1rem;
+  }
 
 `
 const Scrolltext = styled.div`
   width: 100%;
   ${flex('row', 'flex-end', 'flex-end')};
-  ${fonts.footnote};
+  font-size: 14px;
   gap: 1rem;
-  padding: 1rem;
   color: ${colors.bio};
 
   @media (min-width: ${size.tablet}) {
@@ -152,6 +105,7 @@ const ScrollContainer = styled.div`
     -ms-overflow-style:none;
     scrollbar-width: none;
   }
+
   &::-webkit-scrollbar {
       display: none;
   }
@@ -160,24 +114,17 @@ const ChartContainer = styled.div`
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
-  padding-bottom:1rem;
 `
 const CheckboxContainer = styled.label`
-  width: 200px;
-  ${flex('row', 'center', 'center')};
-  gap:10px;
+  ${flex('row-reverse', 'flex-start', 'center')};
+  gap: .5rem;
   position: relative;
   cursor: pointer;
-  ${fonts.paragraph};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  .labeltext {
-    ${fonts.footnote};
-  }
 `
-
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
 
@@ -222,7 +169,6 @@ const CheckMark = styled.span`
 
 const LineChart = ({emissions, pageElements}) => {
 
-  console.log(emissions, "emissions")
   const [show, setShow] = useState(pageElements.show)
   const {sections} = pageElements
   const title = sections.find(section => section.name === 'title')
@@ -240,17 +186,9 @@ const LineChart = ({emissions, pageElements}) => {
     datasets: [],
   })
 
-
-
-
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
-
-  const mostRecentYear = years[years.length-1]
-
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
-
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
-
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
     return {
         sector: emission.sector,
@@ -337,20 +275,21 @@ const LineChart = ({emissions, pageElements}) => {
 
   return (
     <>
-    <Bg/>
-    <Wrapper/>
-      <Container id='line-chart'>
-        {show && <>
-        <TextContent>
-          <p>{subheading.text.toUpperCase()}</p>
-          <h2>{title.text}</h2>
-          <p>{body1.text}</p>
-        </TextContent>
-        
-        <Scrolltext>
-          <p>Swipa höger för att se utveckling</p>
-          <SmallArrow color={colors.bio} size={14} />
-        </Scrolltext>
+    <Bg>
+      <Wrapper/>
+    </Bg>
+    <Container id='line-chart'>
+      {show && 
+      <>
+      <TextContent>
+        <p>{subheading.text.toUpperCase()}</p>
+        <h2>{title.text}</h2>
+        <p>{body1.text}</p>
+      </TextContent>  
+      <Scrolltext>
+        <p>Swipa höger för att se utveckling</p>
+        <SmallArrow color={colors.bio} size={14} />
+      </Scrolltext>
         <ScrollContainer>
           <ChartContainer>
             <Line ref={canvas} 
@@ -361,20 +300,19 @@ const LineChart = ({emissions, pageElements}) => {
           </ChartContainer>
         </ScrollContainer>
         </>} 
-        
         <ButtonContainer>
-          <p>Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
-          <div>
-          <CheckboxContainer>
-            <span className="labeltext">FOSSIL CO2</span>
-            <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
-            <CheckMark className="checkmark" />
-          </CheckboxContainer>
-          <CheckboxContainer>
-            <span className="labeltext">BIOGEN CO2</span>
-            <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
-            <CheckMark className="checkmark" />
-          </CheckboxContainer>
+          <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
+          <div className="checkboxes">
+            <CheckboxContainer>
+              <span className="labeltext">FOSSIL CO2</span>
+              <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
+              <CheckMark className="checkmark" />
+            </CheckboxContainer>
+            <CheckboxContainer>
+              <span className="labeltext">BIOGEN CO2</span>
+              <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
+              <CheckMark className="checkmark" />
+            </CheckboxContainer>
           </div>
         </ButtonContainer>
         <TextContent>

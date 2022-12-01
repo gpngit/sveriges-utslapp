@@ -1,7 +1,7 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription } from './ContainerStyles'
+import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription, Mobile, Desktop } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -23,63 +23,28 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     return (
         <>
         {show && 
-            <>{sectionIDname !== "statistik" ? (
-            <Container 
-            id={sectionIDname}>
+        <Container id={sectionIDname}>
             <Content>
-            <Grid>
-                <TextContentGrid>
-                <Subheading>{subheading.text}</Subheading>
-                <h2>{title.text}</h2>
-                <ImageWrapper 
-                imgbody
-                key={sectionIDname}>
-                <Image
-                layout ="responsive"
-                src={imgurl.url}
-                alt={imgurl.text}
-                width={700}
-                height={700}/>
-                </ImageWrapper>
-                <ImageDescription>{imgurl.text}</ImageDescription>
-                </TextContentGrid>
-
-                <TextContentGrid 
-                body>
-                    <p>{body1.text}</p>
+                <Grid>
+                    <TextContentGrid>
+                        <Subheading>
+                            {subheading.text}
+                        </Subheading>
+                        <h2>{title.text}</h2>
+                        <p>{body1.text}</p>
                     <br/>
                     <p>{body2.text}</p>
-                    <br/>
-                    <SourceAndShare 
+                    <Desktop>
+                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
-                sourceText={title.text}/>
-                </TextContentGrid>
-            </Grid>
-            </Content>
-            </Container>): (
-            <Container 
-            id={sectionIDname}
-            first>
-                <Content>
-            <Grid
-            >
-                <TextContentGrid first >
-                <Subheading>{subheading.text}</Subheading>
-                    <h2>{title.text}</h2>
-                    <p>{body1.text}</p>
-                    <br/>
-                    <p>{body2.text}</p>
-                    <br/>
-                    <SourceAndShare 
-                whiteBG={"yes"}
-                sourceLink={source.text} 
-                shareLink={`#${sectionIDname}`}
-                sourceText={title.text}/>
-                </TextContentGrid>
+                sourceText={title.text}/>)}
+                </>
+                </Desktop>
+                   
+                    </TextContentGrid>
             <ImageWrapper 
-            utslappimg
             key={sectionIDname}>
             <Image
                 layout ="responsive"
@@ -87,15 +52,23 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 alt={imgurl.text}
                 width={800}
                 height={800}/>
-             <ImageDescription>{imgurl.text}</ImageDescription>
+            <ImageDescription>
+                {imgurl.text}
+            </ImageDescription>
+            
             </ImageWrapper>
-             
-            </Grid>
-               
-                </Content>
-                </Container>
-                )}
-        </>}
+            <Mobile>
+                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
+                whiteBG={"yes"}
+                sourceLink={source.text} 
+                shareLink={`#${sectionIDname}`}
+                sourceText={title.text}/>)}
+                </>
+                </Mobile>
+                </Grid>
+            </Content>
+        </Container>
+        }
         </>
     )
 }
