@@ -24,6 +24,7 @@ const ChartContainer = styled.div`
   max-width: 600px;
   @media ${device.laptop}{
     max-width:400px;
+    height:40vh;
   }
 `
 const Overlay = styled.div`

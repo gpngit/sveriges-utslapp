@@ -73,6 +73,9 @@ ${props =>
      }
      @media ${device.laptop}{
       min-width:400px;
+      p{
+        padding-bottom:1rem;
+      }
      }
   `}
 `
@@ -123,5 +126,4 @@ export const DesktopButtons = styled.span`
 @media (max-width: ${size.laptop}){
   display:none;
 }
-padding-top:1rem;
 `
