@@ -2,7 +2,7 @@
 import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Grid, Content, Heading, Row, FirstContent, SecondContent} from './ContainerStyles'
+import { Grid, Content, Heading, Row, FirstContent, SecondContent, RowMobile} from './ContainerStyles'
 import ChosenYear from './currentYearBlob'
 import Kollagring from '../../barchart/Kollagring'
 import Link from 'next/link'
@@ -31,19 +31,19 @@ const FaktaOne = ({pageElements, emissions}) => {
                 </Row>
         <Grid>
             <FirstContent>
-               
                 <Kollagring emissions={emissions}/>
             
             </FirstContent>
             <SecondContent>
                 <p>{body1.text}</p>
-                
+                <RowMobile>
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={url.text} 
                 shareLink={'#faktaruta1'}
                 sourceText={title.text} />
-                    <p className="footnote">Fotnot: LULUCF betyder Land Use, Land Use Change and Forestry och ingår i klimatrapporteringen. Mer om det går att läsa <Link href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-nettoutslapp-och-nettoupptag-fran-markanvandning/">här.</Link></p> 
+                    <p className="footnote">Fotnot: LULUCF betyder Land Use, Land Use Change and Forestry och ingår i klimatrapporteringen. Mer om det går att läsa <Link href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-nettoutslapp-och-nettoupptag-fran-markanvandning/">här.</Link></p>
+                    </RowMobile> 
             </SecondContent>
            
         </Grid>

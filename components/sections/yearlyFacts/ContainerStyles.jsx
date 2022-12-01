@@ -24,7 +24,7 @@ gap:10px;
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
   gap:10px;
- 
+  padding:1rem;
 }
 
 `
@@ -51,22 +51,35 @@ export const Grid = styled.div`
   }
 `
 export const FirstContent = styled.div`
-    h2 {
-        ${fonts.lessheading};
-    }
-    p {
-        ${fonts.paragraph};
-    }
 
+    p {
+        ${fonts.footnote};
+    }
+@media ${device.mobileL}{
+  padding:1rem;
+}
 `
 export const SecondContent = styled.div`
+@media ${device.mobileL}{
+  padding:1rem;
+}
 p{
- 
+  padding-bottom:1rem;
   ${fonts.paragraph};
-  
+
 }
 .footnote{
+  padding-top:1rem;
   ${fonts.footnote};
-
+  @media (min-width: 900px) and (max-width: ${size.laptop}){
+    padding-right:3rem;
+  }
+}
+`
+export const RowMobile = styled.span`
+width:100%;
+@media (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
+  ${flex("row", "center", "center")}
+  gap:1rem;
 }
 `
