@@ -21,16 +21,17 @@ const FaktaOne = ({pageElements, emissions}) => {
         <Content 
         id="faktaruta1"
         >
-        <Grid>
-            <FirstContent>
-                <Row>
-                <ChosenYear 
+        <Row>
+            <ChosenYear 
                 emissions={emissions}/>
                 <Heading>
                     <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </Heading>
                 </Row>
+        <Grid>
+            <FirstContent>
+               
                 <Kollagring emissions={emissions}/>
             
             </FirstContent>
