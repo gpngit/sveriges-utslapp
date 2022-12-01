@@ -26,8 +26,7 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <ChosenYear 
                 emissions={emissions}/>
                 <Heading>
-                    <p>
-                        {subheading.text.toUpperCase()}</p>
+                    <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </Heading>
                 </Row>
