@@ -187,6 +187,10 @@ const NavLink = styled.a`
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
+
+    @media ${device.laptop}{
+        white-space:nowrap;
+    }
 `
 const Blurred = styled.div`
     position: sticky;
