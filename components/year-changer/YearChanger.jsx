@@ -88,7 +88,7 @@ const Button = styled.button`
 `
 const Decoration = styled.div`
 position: relative;
-width: calc(100vw - 40px);
+width: calc(100vw - 20px);
 margin-top: 20px;
 `
 const SquareImg = styled(Image)`

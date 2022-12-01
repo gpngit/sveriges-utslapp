@@ -2,7 +2,6 @@
 import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import BarChart from '../../barchart/BarChart'
 import { Grid, Content, Row, FirstContent, SecondContent, ButtonWrapper } from './ContainerStyles'
 import ChosenYear from './currentYearBlob'
 import Kollagring from '../../barchart/Kollagring'
