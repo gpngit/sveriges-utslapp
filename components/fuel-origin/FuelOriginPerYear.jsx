@@ -15,9 +15,25 @@ import AppContext from '../../context/AppContext'
 const Container = styled.section`
 `
 const ChartContainer = styled.div`
-    height: 50vh;
-    width: 80vw;
-    max-width: 500px;
+  position: relative;
+  height: 50vh;
+  width: 80vw;
+  max-width: 500px;
+`
+const Overlay = styled.div`
+  ${flex('column','center','center')};
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  p {
+    background-color: black;
+    color: white;
+    padding: .6rem 1.4rem;
+    text-align: center;
+  }
 `
 const ErrorMessage = styled.div`
   height: 100%;
@@ -46,6 +62,13 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
       setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
     } else {
       setDataAvailable(false)
+      setChartData({
+        labels: '',
+        datasets: [{
+          label: '',
+          data: [1]
+        }]
+      })
     }
   }, [displayYear])
 
@@ -69,10 +92,13 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   return (
       <Container id='doughnut'>
         <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
-        <ChartContainer>
-          {dataAvailable ?
-        <Doughnut ref={canvas} data={chartData} options={options} />
-          : <ErrorMessage>Data tillgänglig mellan 2005-2020. Ändra år ovan för att se graf.</ErrorMessage>}
+        <ChartContainer className="no-data">
+          <Doughnut ref={canvas} data={chartData} options={options} /> 
+          {!dataAvailable && (
+          <Overlay>
+            <p>Data endast tillgänglig mellan 2005-2020</p>
+          </Overlay>
+          )}
         </ChartContainer>
       </Container>
   )
