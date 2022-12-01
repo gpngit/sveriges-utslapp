@@ -33,15 +33,14 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 </Row>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
             </FirstContent>
-            <SecondContent
-            biobransle>
+            <SecondContent>
                 <p>{body1.text}</p>
-            <SourceAndShare 
-            whiteBG={"yes"}
-            sourceLink={url.text} 
-            shareLink={'#fakta-biobransle'} 
-            sourceText={title.text}
-            />
+                <SourceAndShare 
+                whiteBG={"yes"}
+                sourceLink={url.text} 
+                shareLink={'#fakta-biobransle'} 
+                sourceText={title.text}
+                />
             </SecondContent>
         </Grid>
     </Content>

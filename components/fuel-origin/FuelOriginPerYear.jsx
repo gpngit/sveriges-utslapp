@@ -13,12 +13,15 @@ import AppContext from '../../context/AppContext'
 
 
 const Container = styled.section`
+  ${flex('column')};
+  gap: 1rem;
+  max-width: 600px;
 `
 const ChartContainer = styled.div`
   position: relative;
-  height: 50vh;
+  height: 40vh;
   width: 80vw;
-  max-width: 500px;
+  max-width: 600px;
 `
 const Overlay = styled.div`
   ${flex('column','center','center')};
@@ -35,13 +38,34 @@ const Overlay = styled.div`
     text-align: center;
   }
 `
-const ErrorMessage = styled.div`
-  height: 100%;
-  width: 100%;
-  ${flex('column','center','center')};
-`
 const SourceText = styled.p`
   padding: 2rem 0;
+`
+const LabelsContainer = styled.div`
+  align-self: center;
+  ${flex('row')};
+  gap: 1rem;
+  flex-wrap: wrap;
+`
+const Label = styled.div`
+  ${flex('row-reverse')};
+  gap: .5rem;
+  color: black;
+
+  div {
+    height: 20px;
+    width: 20px;
+  }
+
+  .fossil {
+    background-color: ${colors.fossil}
+  }
+  .bio {
+    background-color: ${colors.bio}
+  }
+  .lulucf {
+    background-color: ${colors.green}
+  }
 `
 
 const FuelOrigin = ({ energiMyndighetenData }) => {
@@ -100,6 +124,20 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
           </Overlay>
           )}
         </ChartContainer>
+        <LabelsContainer>
+            <Label>
+              <p>Fossil CO2</p>
+              <div className="fossil" />
+            </Label>
+            <Label>
+            <p>Biogen CO2</p>
+              <div className="bio" />
+            </Label>
+            <Label>
+              <p>Markanvändning (via LULUCF)</p>
+              <div className="lulucf" />
+            </Label>
+          </LabelsContainer>
       </Container>
   )
 }

@@ -22,35 +22,8 @@ export const FirstContent = styled.div`
 export const SecondContent = styled.div`
   p{
     ${fonts.paragraph};
-    /* margin-bottom:2rem;
-    padding-right:4rem; */
   }
-  @media screen and ${device.laptopL}{
-    p{ ${fonts.footnote};
-  }
-  }
-
-${props => 
-  props.kollagertxt && 
-  css`
-
-  max-width:520px;  
   
-  @media screen and ${device.laptopL}{
-    padding-left:3rem;
-    position: relative;
-    top:40%;}
-  `}
-
-  ${props => 
-    props.biobransle && css`
-    margin-top:-5rem;
-    max-width:800px;  
-    @media screen and ${device.laptopL}{
-      padding-left:3rem;
-      position: relative;
-      top:30%;}
-    `}
 `
 export const Row = styled.span`
   ${flex("row")}

@@ -20,13 +20,14 @@ const ChartOptions = (emissions) => {
         },
         plugins: {
           legend: {
-            display: () => {
-              if (window.innerWidth < 650){
-                return false
-              } else {
-                return true
-              }
-            },
+            display: false,
+            // display: () => {
+            //   if (window.innerWidth < 650){
+            //     return false
+            //   } else {
+            //     return true
+            //   }
+            // },
             // position: () => {
             //   if (window.innerWidth < 650){
             //     return 'bottom'

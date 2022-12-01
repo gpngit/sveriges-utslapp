@@ -25,23 +25,20 @@ const FaktaOne = ({pageElements, emissions}) => {
                 <ChosenYear 
                 emissions={emissions}/>
                 <span>
-                    <p>
-                        {subheading.text.toUpperCase()}</p>
+                    <p>{subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
                 </span>
                 </Row>
                 <Kollagring emissions={emissions}/>
-                
             </FirstContent>
-            <SecondContent
-            kollagertxt>
+            <SecondContent>
                 <p>{body1.text}</p>
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={url.text} 
                 shareLink={'#faktaruta1'}
                 sourceText={title.text} />
-                </SecondContent>
+            </SecondContent>
         </Grid>
         </Content>
         </>}</>
