@@ -178,7 +178,6 @@ button{
 `
 
 const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }) => {
- 
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
     const [isLoading, setLoading] = useState(false)
@@ -245,12 +244,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
     
     const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
-
-  
- 
-
     return (
-        
             <>
         {modal && (
             <ModalBackdrop onClick={() => {setModal(!modal)}}>

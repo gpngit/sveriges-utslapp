@@ -1,39 +1,30 @@
 //CSS
 import styled from 'styled-components'
 import { flex, colors, device, fonts, size } from '../../../styles/partials'
-//nextjs components
-import Image from 'next/image'
 //resources
 import BurningForest from '../../SVG\'s/BurningForest'
-import Arrow from '../../../public/arrow.svg'
 //components
 import Crumble from '../../../components/crumble/Crumble'
 import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '../../SVG\'s/Arrows'
 
 const Container = styled.header`
-    position: relative;
-    ${flex('column', 'center', 'center')};
-    min-height: 100vh;
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
     .burning-forest {
-        height: 100%;
-        width: 100%;
-        position: absolute;
+        margin-top: -100vh;
+        min-height: 100vh;
+        position: sticky;
         overflow: hidden;
         bottom: 0;
-        white-space:nowrap;
         pointer-events: none;
 
         svg {
-            object-fit: cover;
-            position:absolute;
-            right: 0;
+            position: absolute;
             bottom: 0;
             width: 100%;
 
-            @media (max-width: 1350px){
+            /* @media (max-width: 1350px){
                 width: 120%;
             }
 
@@ -47,7 +38,7 @@ const Container = styled.header`
 
             @media (max-width: 450px){
                 width: 200%;
-            }
+            } */
 
         }
 
@@ -146,31 +137,30 @@ const Container = styled.header`
         }
     }
 `
-const ScrollContainer = styled.div`
-    height: 100vh;
+const InnerContainer = styled.div`
+    /* margin-bottom: -100%; */
+    padding: 2rem;
     width: 100%;
-    max-width: 1568px;
-    position: sticky;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-        display: none;
+    ${flex('column', 'center', 'center')};
+
+    @media ${device.tablet}{
+        padding: 2rem 5rem;
     }
-   
+
+    @media ${device.laptop}{¨
+        padding: 2rem 10rem;
+    }
 `
 const TextContent = styled.div`
-    ${flex()};
-    gap: clamp(30px, 50vh, 80px);
+    max-width: 1500px;
+    ${flex('column')};
+    gap: clamp(2rem, 20vw, 10rem);
     
     h1 {
         ${fonts.heading};
-        margin-top:-4rem;
-
     }
     p {
         ${fonts.subheading};
-        line-height:120%;
     }
 `
 const TextAndLink = styled.div`
@@ -182,51 +172,37 @@ const TextAndLink = styled.div`
     @media ${device.tablet} {
         ${flex('row', 'flext-start', 'center')};
         gap: 20px;
-        width: 100%;
         
         svg{
         display:block;
         }
     }
-    @media screen and ${device.betweentabletlaptop}{
-    gap:12px;
-    }
-`
-const PaddingWrapper = styled.div`
-    padding: 5rem;
-    @media ${device.laptop}{
-        padding: 10rem;
-        max-width:1568px;
-        
-    }
 `
 const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
-    padding: 14px 20px;
+    padding: .6rem 1.4rem;
     ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.bio};
     border: 3px solid ${colors.bio};
     border-radius: 10px;
 
-    @media ${device.tablet} {
-        white-space: nowrap;
+    @media ${device.laptop}{
+        white-space:nowrap;
     }
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     pointer-events: none;
-    &.bottom {
-        bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
-    }
+    bottom: 0;
+    background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
 `
 
 const Hero = ({ pageElements }) => {
-    const {id, sections, name} = pageElements
+    const { sections } = pageElements
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
@@ -235,9 +211,8 @@ const Hero = ({ pageElements }) => {
 
     return (
         <Container>
-            <ScrollContainer>
-                <Crumble color={colors.secondary}/>
-                <PaddingWrapper>
+            <Crumble color={colors.secondary}/>
+            <InnerContainer>
                 <TextContent>
                     <TextAndLink>
                         <p>{subheading.text.toUpperCase()}</p> 
@@ -280,11 +255,9 @@ const Hero = ({ pageElements }) => {
                             </NavLink>
                     </TextAndLink>
                 </TextContent>
-                </PaddingWrapper>
-                <Blurred className='bottom' />
-            </ScrollContainer>
+            </InnerContainer>
+            <Blurred className='bottom'/>
             <BurningForest />
-            {/* <Image priority className='burning-forest' src={BurningForest} alt='burning forest graphic'/> */}
         </Container>
     )
 }

@@ -58,42 +58,43 @@ export const TextContentGrid = styled.article`
 @media ${device.betweentabletlaptop}{
     max-width:100%;
 }
+@media ${device.laptopL}{
+    max-width:900px;
+}
 h2 {
+    margin-bottom:1rem;
     ${fonts.lessheading};
-    max-width:100%;
+    max-width:90%;
     @media (max-width:${size.mobiletablet}){ 
         max-width:90%;
-        margin-bottom:0.5rem;
-    }
-    @media ${device.mobileTablet}{
-        max-width:80%;
+        
     }
     @media ${device.betweentabletlaptop}{
-        margin-bottom:1rem;
         min-width:300px;
         max-width:420px;
         width:100%;
     }
     @media ${device.laptop}{
-        margin-bottom:1rem;
-       
+        
     }
 }
 p {
     ${fonts.paragraph};
-    max-width:100%;
-    text-align:left-justify;
-    @media (max-width:${size.mobiletablet}){ 
-        max-width:90%;
-    }
+    width:100%;
+    text-align:justify;
+
     @media (max-width: ${size.mobileL}){
         max-width:100%;
+    }
+    @media ${device.mobileTablet}{
+        max-width:90%;
     }
     @media ${device.betweentabletlaptop}{
     min-width:300px;
     max-width:400px;
     width:100%;
     }
+ 
 }
 `
 
@@ -106,6 +107,9 @@ max-width:70%;
 export const ImageWrapper = styled.div`
 display:block;
 
+@media (max-width: ${size.tablet}){
+    padding-top:1rem;
+}
     .image{      
         display:block; 
         object-fit: contain;
@@ -113,67 +117,31 @@ display:block;
         position: relative;
         height: unset;
     }
-    @media (max-width: ${size.mobiletablet}){
-        width:100%;
-        
-    }
-    @media (max-width: ${size.mobileL}){
-    margin-top:2rem;
-    }
-    @media ${device.mobileL}{
-    
-        margin-top:1rem;
-    }
-    @media ${device.mobileTablet}{
-        width:100%;
-    }
-    
-    ${props => 
-        props.imgbody && 
-        css`
-        @media (max-width:${size.mobiletablet}){ 
-        }
-        @media ${device.mobileTablet}{
-            }
-        `}
 
     ${props => 
-            props.utslappimg && 
-            css`
-            @media (max-width:${size.mobiletablet}){ 
-            margin-bottom:-5rem;
-            margin-top:1rem;
+        props.first && 
+        css`
+        @media (min-width:${size.mobiletablet} and max-width:700px){
+            width:90%;
+        }
+            @media (max-width:${size.tablet}){  
+                padding-top:1em;
+                p{
+                    text-align:justify;
+                }
             }
-            @media (max-width: ${size.mobileL}){
-            margin-bottom:-2rem;
-            }
-            @media ${device.mobileTablet}{
-            position:relative;
-            left:20%;
-            margin-bottom:-4rem;
-            width:70%;
-            }
-            @media ${device.betweentabletlaptop}{
-            position:relative;
-            left:0%;
-            top:20%;
-            width:100%;
-            }
-            @media ${device.laptop}{
-            width:100%;
-            left:0%;
-            
-            }
-            `}
-    padding-bottom:1rem;
-    
+        `}
+    @media ${device.laptopL}{
+        max-width:500px;
+    }
+    @media ${device.desktop}{
+        max-width:600px;
+    }
 `
 export const ImageDescription= styled.p`
 font-style: italic;
 `
-
 export const Mobile = styled.div`
-
 @media ${device.tablet}{
     display:none;
 }
@@ -183,4 +151,5 @@ export const Desktop = styled.div`
 @media (max-width: ${size.tablet}){
     display:none;
 }
+padding-top:1rem;
 `
