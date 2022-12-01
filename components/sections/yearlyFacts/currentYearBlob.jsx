@@ -18,6 +18,7 @@ const Square = styled.span`
       transform: rotate(-45deg);
       color: ${colors.secondary};
   }
+
   @media (max-width:${size.mobileL}){
     width:40px;
     height:40px;
@@ -25,6 +26,9 @@ const Square = styled.span`
       font-size:14px;
     }
   }
+  @media (max-width:${size.mobileM}){
+    margin-left:1rem;
+    }
 `
 
 const ChosenYear = ({emissions, name}) => {

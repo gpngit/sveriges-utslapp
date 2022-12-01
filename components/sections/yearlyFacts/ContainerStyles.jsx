@@ -17,12 +17,14 @@ export const Content = styled.article`
 }
 `
 export const Row = styled.span`
-
-${flex("column-reverse", "center", "center")}
+padding-bottom:1rem;
+${flex("column", "flex-start", "flex-start")}
 gap:10px;
-@media ${device.mobileL}{
+
+@media ${device.mobileM}{
   ${flex("row", "start", "center")}
   gap:10px;
+ 
 }
 
 `
