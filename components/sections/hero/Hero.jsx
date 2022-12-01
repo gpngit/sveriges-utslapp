@@ -12,7 +12,7 @@ const Container = styled.header`
     color: ${colors.secondary};
     
     .burning-forest {
-        min-height: 95vh;
+        min-height: 100vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
@@ -137,6 +137,7 @@ const Container = styled.header`
     }
 `
 const InnerContainer = styled.div`
+    /* margin-bottom: -100%; */
     padding: 2rem;
     width: 100%;
     ${flex('column', 'center', 'center')};
@@ -157,7 +158,6 @@ const TextContent = styled.div`
     }
     p {
         ${fonts.subheading};
-        line-height:120%;
     }
 `
 const TextAndLink = styled.div`
@@ -182,7 +182,7 @@ const TextAndLink = styled.div`
 const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
-    padding: 14px 20px;
+    padding: .6rem 1.4rem;
     ${fonts.paragraph};
     background-color: ${colors.primary};
     color: ${colors.bio};
@@ -191,7 +191,7 @@ const NavLink = styled.a`
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     pointer-events: none;
     &.bottom {
@@ -255,7 +255,7 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                 </TextContent>
             </InnerContainer>
-            <Blurred className='bottom'/>
+            {/* <Blurred className='bottom'/> */}
             <BurningForest />
         </Container>
     )
