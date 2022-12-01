@@ -11,10 +11,7 @@ const Square = styled.span`
     border: 2px solid ${colors.secondary};
     background-color: ${colors.primary};
     transform: rotate(45deg);
-    position: absolute;
-    left: 0; 
-    right: 10; 
-    margin-left: 2rem; 
+    margin-top:1rem;
     margin-right: auto; 
     ${flex("center", "center")}
     h4{
@@ -39,7 +36,6 @@ const ChosenYear = ({emissions, name}) => {
     <Square>
     <h4>{displayYear}</h4>
     </Square>
-
   )
 }
 export default ChosenYear

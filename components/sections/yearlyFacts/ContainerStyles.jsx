@@ -4,14 +4,14 @@ import { flex, device, colors, size, fonts } from '../../../styles/partials'
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
-  gap: 3rem;
-
-  @media screen and ${device.laptop}{
+  gap: 2rem;
+  
+  @media screen and ${device.tablet}{
     grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
   }
 `
 export const FirstContent = styled.div`
-
     h2 {
         ${fonts.lessheading};
     }
@@ -20,46 +20,25 @@ export const FirstContent = styled.div`
     }
 `
 export const SecondContent = styled.div`
-  p{
-    ${fonts.paragraph};
-    /* margin-bottom:2rem;
-    padding-right:4rem; */
-  }
-  @media screen and ${device.laptopL}{
-    p{ ${fonts.footnote};
-  }
-  }
-
-${props => 
-  props.kollagertxt && 
-  css`
-
-  max-width:520px;  
-  
-  @media screen and ${device.laptopL}{
-    padding-left:3rem;
-    position: relative;
-    top:40%;}
-  `}
-
-  ${props => 
-    props.biobransle && css`
-    margin-top:-5rem;
-    max-width:800px;  
-    @media screen and ${device.laptopL}{
-      padding-left:3rem;
-      position: relative;
-      top:30%;}
-    `}
+p{
+  padding-bottom:1rem;
+}
 `
 export const Row = styled.span`
-  ${flex("row")}
+  ${flex("row", "center", "flex-start")}
   gap:20px;
+  padding-bottom:1rem;
+  width:100%;
+  max-width:500px;
+`
+export const Heading = styled.span`
+${flex("column", "flex-end")}
+max-width:100%;
 `
 
 export const Content = styled.article`
   color: black;
-  padding:5rem 1rem;
+  padding:3rem 1rem;
 
 @media ${device.tablet}{
   padding: 5rem;
