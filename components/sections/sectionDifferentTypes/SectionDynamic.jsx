@@ -1,7 +1,7 @@
 import { useState } from 'react'
 //CSS
 import styled from 'styled-components'
-import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription } from './ContainerStyles'
+import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription, Mobile, Desktop } from './ContainerStyles'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
@@ -34,11 +34,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                         <p>{body1.text}</p>
                     <br/>
                     <p>{body2.text}</p>
-                    <SourceAndShare 
+                    <Desktop>
+                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
-                sourceText={title.text}/>
+                sourceText={title.text}/>)}
+                </>
+                </Desktop>
+                   
                     </TextContentGrid>
             <ImageWrapper 
             key={sectionIDname}>
@@ -51,7 +55,16 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <ImageDescription>
                 {imgurl.text}
             </ImageDescription>
+            
             </ImageWrapper>
+            <Mobile>
+                    <> {sectionIDname === "kolcykeln" ? (null): ( <SourceAndShare 
+                whiteBG={"yes"}
+                sourceLink={source.text} 
+                shareLink={`#${sectionIDname}`}
+                sourceText={title.text}/>)}
+                </>
+                </Mobile>
                 </Grid>
             </Content>
         </Container>

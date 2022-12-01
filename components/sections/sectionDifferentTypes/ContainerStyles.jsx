@@ -172,3 +172,15 @@ export const ImageDescription= styled.p`
 font-style: italic;
 `
 
+export const Mobile = styled.div`
+
+@media ${device.tablet}{
+    display:none;
+}
+`
+
+export const Desktop = styled.div`
+@media (max-width: ${size.tablet}){
+    display:none;
+}
+`
