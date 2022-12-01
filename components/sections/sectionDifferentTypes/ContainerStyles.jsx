@@ -54,7 +54,7 @@ gap: 1rem;
     grid-template-columns: repeat(2, 1fr); }
 `
 
-export const TextContentGrid = styled.div`
+export const TextContentGrid = styled.article`
 @media ${device.betweentabletlaptop}{
     max-width:100%;
 }

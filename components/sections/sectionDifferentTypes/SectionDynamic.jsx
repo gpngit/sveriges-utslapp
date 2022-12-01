@@ -40,8 +40,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 shareLink={`#${sectionIDname}`}
                 sourceText={title.text}/>
                     </TextContentGrid>
-                    <ImageWrapper 
-            utslappimg
+            <ImageWrapper 
             key={sectionIDname}>
             <Image
                 layout ="responsive"
@@ -49,7 +48,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 alt={imgurl.text}
                 width={800}
                 height={800}/>
-            <ImageDescription>{imgurl.text}</ImageDescription>
+            <ImageDescription>
+                {imgurl.text}
+            </ImageDescription>
             </ImageWrapper>
                 </Grid>
             </Content>
