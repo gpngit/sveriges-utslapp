@@ -18,8 +18,7 @@ const Container = styled.div`
     top: 0;
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
-    padding-top: 20px;
-   
+    padding-top: 10px;
 `
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
