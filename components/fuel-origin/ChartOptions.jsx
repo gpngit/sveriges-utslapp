@@ -20,21 +20,27 @@ const ChartOptions = (emissions) => {
         },
         plugins: {
           legend: {
-            display: true,
-            position: () => {
+            display: () => {
               if (window.innerWidth < 650){
-                return 'bottom'
+                return false
               } else {
-                return 'right'
+                return true
               }
             },
-            align: () => {
-              if (window.innerWidth < 650){
-                return 'start'
-              } else {
-                return 'center'
-              }
-            },
+            // position: () => {
+            //   if (window.innerWidth < 650){
+            //     return 'bottom'
+            //   } else {
+            //     return 'right'
+            //   }
+            // },
+            // align: () => {
+            //   if (window.innerWidth < 650){
+            //     return 'start'
+            //   } else {
+            //     return 'center'
+            //   }
+            // },
             labels: {
               color: 'black',
               font: {
