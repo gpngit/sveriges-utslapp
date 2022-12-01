@@ -43,7 +43,7 @@ export const fonts = {
     paragraph:`font-size: clamp(1rem, 1vw , 1.6rem); 
     line-height: 150%; @media screen and ${device.desktop}{
     line-height: 120%;}`,
-    footnote:"font-size: 1rem; line-height:150%; ",
+    footnote:"font-size: 0.8rem; line-height:150%; ",
     lessheading: `
     font-size:clamp(2rem, 1vw + 0.2rem, 3.2rem);
     line-height: 120%;
