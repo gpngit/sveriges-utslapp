@@ -8,7 +8,7 @@ const ChartOptions = (emissions) => {
         responsive: true,
         cutout: '30%',
         layout: {
-          padding: 50,
+          padding: 30,
         },
         scales: {
           y: { 
@@ -20,21 +20,28 @@ const ChartOptions = (emissions) => {
         },
         plugins: {
           legend: {
-            display: true,
-            position: () => {
-              if (window.innerWidth < 650){
-                return 'bottom'
-              } else {
-                return 'right'
-              }
-            },
-            align: () => {
-              if (window.innerWidth < 650){
-                return 'start'
-              } else {
-                return 'center'
-              }
-            },
+            display: false,
+            // display: () => {
+            //   if (window.innerWidth < 650){
+            //     return false
+            //   } else {
+            //     return true
+            //   }
+            // },
+            // position: () => {
+            //   if (window.innerWidth < 650){
+            //     return 'bottom'
+            //   } else {
+            //     return 'right'
+            //   }
+            // },
+            // align: () => {
+            //   if (window.innerWidth < 650){
+            //     return 'start'
+            //   } else {
+            //     return 'center'
+            //   }
+            // },
             labels: {
               color: 'black',
               font: {
