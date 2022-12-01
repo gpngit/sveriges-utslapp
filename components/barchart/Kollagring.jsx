@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, fonts, size } from '../../styles/partials'
+import { flex, colors, fonts, size, device } from '../../styles/partials'
 //react hooks
 import { useState, useEffect, useRef } from "react";
 //charts
@@ -22,8 +22,14 @@ const Container = styled.section`
 const ChartContainer = styled.div`
   position: relative;
   height: 40vh;
-  width: 70vw;
-  max-width: 500px;
+  width: 80vw;
+  @media ${device.laptop}{
+    max-width: 500px;
+  }
+  @media ${device.laptopL}{
+    max-width: 600px;
+  }
+  
 `
 const Button = styled.button`
   ${fonts.footnote}

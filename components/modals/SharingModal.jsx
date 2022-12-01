@@ -41,8 +41,7 @@ const Content = styled.div`
       color:${colors.secondary};
       padding: 8px;
       &:hover{
-        color:${colors.bio};
-        border: 2px solid ${colors.bio};
+        background-color: rgba(55, 0, 0, 0.2);
       }
       &:active{
         color:${colors.fossil};

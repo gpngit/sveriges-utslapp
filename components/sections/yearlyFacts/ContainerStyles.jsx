@@ -8,8 +8,7 @@ export const Grid = styled.div`
   
   @media screen and ${device.laptop}{
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    padding-left:2rem;
+    gap: 1rem;
   }
 `
 export const FirstContent = styled.div`
@@ -19,18 +18,28 @@ export const FirstContent = styled.div`
     p {
         ${fonts.paragraph};
     }
-   
+  
+
 `
 export const SecondContent = styled.div`
 p{
   padding-top:100px;
-  @media ${device.laptop}{
-    margin-top:2rem;
-    max-width:80%;
-  }
   ${fonts.paragraph};
   padding-bottom:1rem;
-  
+
+  @media ${device.tablet}{
+  margin-top:-5rem;
+  max-width:80vw;
+    }
+    @media ${device.laptop}{
+      margin-top:2rem;
+      max-width:90%;
+    }
+    
+}
+.footnote{
+  ${fonts.footnote};
+  margin-top:-5rem;
 }
 `
 export const Row = styled.span`
@@ -39,7 +48,6 @@ export const Row = styled.span`
   padding-top:2rem;
   padding-bottom:1rem;
   width:100%;
-  max-width:500px;
   @media ${device.mobileL}{
     padding-left:2rem;
     gap:40px;
@@ -51,8 +59,6 @@ export const Row = styled.span`
   }
   @media ${device.tablet}{
     margin-bottom:1rem;
-    ${flex("row", "center", "center")}
-    padding:2rem 5rem;
   }
   @media ${device.laptop}{
     gap:10px;
@@ -63,8 +69,15 @@ export const Row = styled.span`
 `
 
 export const Heading = styled.span`
-${flex("column", "flex-end")}
+${flex("column", "flex-start", "flex-start")}
 max-width:100%;
+
+@media ${device.tablet}{
+min-width:500px;
+padding-right:1rem;
+padding-left:2rem;
+}
+
 `
 
 export const Content = styled.article`
