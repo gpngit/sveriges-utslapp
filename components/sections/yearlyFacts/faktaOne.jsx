@@ -2,7 +2,7 @@
 import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Grid, Content, Row, FirstContent, SecondContent, ButtonWrapper } from './ContainerStyles'
+import { Grid, Content, Heading, Row, FirstContent, SecondContent} from './ContainerStyles'
 import ChosenYear from './currentYearBlob'
 import Kollagring from '../../barchart/Kollagring'
 
@@ -18,18 +18,20 @@ const FaktaOne = ({pageElements, emissions}) => {
     return (
     <>{show && <>
         <Content 
-        id="faktaruta1">
+        id="faktaruta1"
+        >
         <Grid>
             <FirstContent>
                 <Row>
                 <ChosenYear 
                 emissions={emissions}/>
-                <span>
-                    <p>{subheading.text.toUpperCase()}</p>
+                <Heading>
+                    <p>
+                        {subheading.text.toUpperCase()}</p>
                     <h2>{title.text}</h2>
-                </span>
+                </Heading>
                 </Row>
-                <Kollagring emissions={emissions}/>
+                <Kollagring emissions={emissions}/> 
             </FirstContent>
             <SecondContent>
                 <p>{body1.text}</p>
