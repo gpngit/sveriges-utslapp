@@ -18,7 +18,8 @@ const FaktaOne = ({pageElements, emissions}) => {
     return (
     <>{show && <>
         <Content 
-        id="faktaruta1">
+        id="faktaruta1"
+        >
         <Grid>
             <FirstContent>
                 <Row>

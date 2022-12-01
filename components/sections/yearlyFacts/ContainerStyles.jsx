@@ -28,10 +28,26 @@ p{
 export const Row = styled.span`
   ${flex("row", "center", "flex-start")}
   gap:20px;
+  padding-top:2rem;
   padding-bottom:1rem;
   width:100%;
   max-width:500px;
+  @media ${device.mobileL}{
+    padding-left:2rem;
+    gap:40px;
+  }
+  @media ${device.mobileTablet}{
+  ${flex("row", "center", "center")}
+  max-width:90%;
+  padding-bottom:2rem;
+  
+  }
+  @media ${device.tablet}{
+    padding-top:0rem;
+    gap:10px;
+  }
 `
+
 export const Heading = styled.span`
 ${flex("column", "flex-end")}
 max-width:100%;
@@ -44,4 +60,5 @@ export const Content = styled.article`
 @media ${device.tablet}{
   padding: 5rem;
 }
+
 `
