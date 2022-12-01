@@ -31,6 +31,7 @@ const FaktaOne = ({pageElements, emissions}) => {
                     <h2>{title.text}</h2>
                 </Heading>
                 </Row>
+                
                 <Kollagring emissions={emissions}/> 
             </FirstContent>
             <SecondContent>

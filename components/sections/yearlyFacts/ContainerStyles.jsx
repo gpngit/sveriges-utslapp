@@ -6,9 +6,10 @@ export const Grid = styled.div`
   display: grid;
   gap: 2rem;
   
-  @media screen and ${device.tablet}{
+  @media screen and ${device.laptop}{
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
+    padding-left:2rem;
   }
 `
 export const FirstContent = styled.div`
@@ -18,11 +19,18 @@ export const FirstContent = styled.div`
     p {
         ${fonts.paragraph};
     }
+   
 `
 export const SecondContent = styled.div`
 p{
+  padding-top:100px;
+  @media ${device.laptop}{
+    margin-top:2rem;
+    max-width:80%;
+  }
   ${fonts.paragraph};
   padding-bottom:1rem;
+  
 }
 `
 export const Row = styled.span`
@@ -40,12 +48,18 @@ export const Row = styled.span`
   ${flex("row", "center", "center")}
   max-width:90%;
   padding-bottom:2rem;
-  
   }
   @media ${device.tablet}{
-    padding-top:0rem;
-    gap:10px;
+    margin-bottom:1rem;
+    ${flex("row", "center", "center")}
+    padding:2rem 5rem;
   }
+  @media ${device.laptop}{
+    gap:10px;
+    margin-bottom:2rem;
+    padding: 1rem;
+  }
+  height:100px;
 `
 
 export const Heading = styled.span`
@@ -56,9 +70,14 @@ max-width:100%;
 export const Content = styled.article`
   color: black;
   padding:3rem 1rem;
+  
 
 @media ${device.tablet}{
   padding: 5rem;
 }
+@media ${device.laptopL}{
+  padding:5rem 10rem;
+}
+
 
 `
