@@ -100,6 +100,8 @@ width:100%;
 
 export const MobileButtons = styled.span`
 ${flex("column", "center", "center")}
+
+padding-right:1rem;
 margin-top:3rem;
 @media ${device.laptop}{
   display:none;
