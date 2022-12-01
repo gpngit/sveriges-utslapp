@@ -12,6 +12,7 @@ const Container = styled.header`
     color: ${colors.secondary};
     
     .burning-forest {
+        margin-top: -100vh;
         min-height: 100vh;
         position: sticky;
         overflow: hidden;
@@ -145,16 +146,18 @@ const InnerContainer = styled.div`
     @media ${device.tablet}{
         padding: 2rem 5rem;
     }
+
+    @media ${device.laptop}{¨
+        padding: 2rem 10rem;
+    }
 `
 const TextContent = styled.div`
     max-width: 1500px;
     ${flex('column')};
-    gap: 5rem;
+    gap: clamp(2rem, 20vw, 10rem);
     
     h1 {
         ${fonts.heading};
-        margin-top:-4rem;
-
     }
     p {
         ${fonts.subheading};
@@ -169,14 +172,10 @@ const TextAndLink = styled.div`
     @media ${device.tablet} {
         ${flex('row', 'flext-start', 'center')};
         gap: 20px;
-        width: 100%;
         
         svg{
         display:block;
         }
-    }
-    @media screen and ${device.betweentabletlaptop}{
-    gap:12px;
     }
 `
 const NavLink = styled.a`
@@ -194,10 +193,8 @@ const Blurred = styled.div`
     height: 60vh;
     width: 100%;
     pointer-events: none;
-    &.bottom {
-        bottom: 0;
-        background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
-    }
+    bottom: 0;
+    background: linear-gradient(to top, ${colors.primary} 30vh, transparent);
 `
 
 const Hero = ({ pageElements }) => {
@@ -255,7 +252,7 @@ const Hero = ({ pageElements }) => {
                     </TextAndLink>
                 </TextContent>
             </InnerContainer>
-            {/* <Blurred className='bottom'/> */}
+            <Blurred className='bottom'/>
             <BurningForest />
         </Container>
     )
