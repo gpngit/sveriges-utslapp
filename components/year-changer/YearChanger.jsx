@@ -54,12 +54,10 @@ ${flex("row", "center", "center")};
 p{
     color:${colors.secondary};
     font-weight:bold;    
-    
 }
 @media (max-width: 500px){
     p{display:none}
 }
-
 `
 const ChevronButts = styled.button`
 border-radius:9px;

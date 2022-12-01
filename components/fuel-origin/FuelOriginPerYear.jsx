@@ -16,15 +16,22 @@ const Container = styled.section`
   ${flex('column')};
   gap: 1rem;
   max-width: 600px;
+  @media ${device.tablet}{
+    gap:0rem;
+  }
 `
 const ChartContainer = styled.div`
   position: relative;
   height: 50vh;
   width: 80vw;
   max-width: 600px;
+  @media ${device.tablet}{
+    max-width:500px;
+    height:30vh;
+  }
   @media ${device.laptop}{
     max-width:400px;
-    height:40vh;
+    height:30vh;
   }
 `
 const Overlay = styled.div`
@@ -52,14 +59,16 @@ const LabelsContainer = styled.div`
   flex-wrap: wrap;
 
   @media ${device.tablet}{
-    ${flex('row', 'center', 'center')}
+    ${flex('row')}
+    gap:0.5rem;
+    
   }
 `
 const Label = styled.div`
   ${flex('row-reverse')};
   gap: .5rem;
   color: black;
-
+  height:24px;
   div {
     height: 20px;
     width: 20px;
