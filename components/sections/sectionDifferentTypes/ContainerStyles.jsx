@@ -143,6 +143,7 @@ display:block;
     }
 `
 export const ImageDescription= styled.p`
+padding-top:0.5rem;
 font-style: italic;
 `
 export const Mobile = styled.div`
