@@ -51,13 +51,12 @@ export const Grid = styled.div`
   }
 `
 export const FirstContent = styled.div`
-
     p {
         ${fonts.footnote};
     }
 @media ${device.mobileL}{
   padding:1rem;
-}
+    }
 `
 export const SecondContent = styled.div`
 @media ${device.mobileL}{

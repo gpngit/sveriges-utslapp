@@ -2,7 +2,7 @@
 import { useState } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Grid, Content, Row, FirstContent, SecondContent} from './ContainerStyles'
+import { Grid, Content, Row, FirstContent, SecondContent, RowMobile, Heading, } from './ContainerStyles'
 import FuelOrigin from '../../fuel-origin/FuelOriginPerYear'
 import ChosenYear from './currentYearBlob'
 
@@ -20,21 +20,23 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     {show && 
     <Content id="fakta-biobransle">
         <Grid>
-            <FirstContent>
-                <Row>
+        <Row>
                 <ChosenYear
                 emissions = {energiMyndighetenData}
                 name = {name}
                 />
-                <span>
-                    <p>{subheading.text.toUpperCase()}</p>
-                    <h2>{title.text}</h2>
-                </span>
+                <Heading>
+                <p>{subheading.text.toUpperCase()}</p>
+                <h2>{title.text}</h2>
+                </Heading>
                 </Row>
-                <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
+            <FirstContent 
+            biobransle>
+            <p>{body1.text}</p>
             </FirstContent>
-            <SecondContent>
-                <p>{body1.text}</p>
+            <SecondContent
+            biobransle>
+                <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={url.text} 
