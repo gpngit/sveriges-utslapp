@@ -67,6 +67,9 @@ ${props =>
       @media ${device.tablet}{
         max-width:90%;  
       }
+      @media (max-width: ${size.tablet}){
+        padding-bottom:1rem;
+      }
      }
      @media ${device.laptop}{
       min-width:400px;
@@ -89,6 +92,15 @@ p{
     padding-right:3rem;
   }
 }
+
+${props => 
+  props.biobransle && 
+  css`
+  @media ${device.laptop}{
+    max-width:500px;
+  }
+  
+  `}
 `
 export const RowMobile = styled.span`
 width:100%;

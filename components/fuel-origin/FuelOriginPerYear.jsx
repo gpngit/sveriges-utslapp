@@ -22,6 +22,9 @@ const ChartContainer = styled.div`
   height: 50vh;
   width: 80vw;
   max-width: 600px;
+  @media ${device.laptop}{
+    max-width:400px;
+  }
 `
 const Overlay = styled.div`
   ${flex('column','center','center')};
