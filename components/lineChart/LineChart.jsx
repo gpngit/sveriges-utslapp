@@ -166,6 +166,22 @@ const CheckMark = styled.span`
     transform: rotate(45deg);
   }
 `
+const Message = styled.div`
+  text-align: right;
+  max-width: 200px;
+  position: absolute;
+  display: none;
+  right: 10vw;
+
+  @media ${device.tablet}{
+    ${flex('column', 'flex-end', 'center')}
+    gap: .6rem;
+  }
+
+  svg {
+    transform: rotate(110deg)
+  }
+`
 
 const LineChart = ({emissions, pageElements}) => {
 
@@ -185,6 +201,7 @@ const LineChart = ({emissions, pageElements}) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   })
+  const [showMessage, setShowMessage] = useState(true)
 
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
@@ -242,6 +259,13 @@ const LineChart = ({emissions, pageElements}) => {
       chartDatasets[clickedDatasetIndex].hidden = true
     }
     canvas.current.legend.chart.update(); 
+
+    let checkboxes = document.querySelectorAll('.checkbox')
+    if (checkboxes[0].checked && checkboxes[1].checked){
+      setShowMessage(true)
+    } else {
+      setShowMessage(false)
+    }
   }
 
   const changeDisplayYear = () => {
@@ -291,6 +315,12 @@ const LineChart = ({emissions, pageElements}) => {
         <SmallArrow color={colors.bio} size={14} />
       </Scrolltext>
         <ScrollContainer>
+          {showMessage && (
+            <Message>
+              <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
+              <SmallArrow color={colors.bio} size={14} />
+            </Message>
+          )}
           <ChartContainer>
             <Line ref={canvas} 
             data={chartData} 
@@ -305,12 +335,12 @@ const LineChart = ({emissions, pageElements}) => {
           <div className="checkboxes">
             <CheckboxContainer>
               <span className="labeltext">FOSSIL CO2</span>
-              <Checkbox fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
+              <Checkbox className="checkbox" fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
             <CheckboxContainer>
               <span className="labeltext">BIOGEN CO2</span>
-              <Checkbox bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
+              <Checkbox className="checkbox" bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
           </div>
