@@ -44,10 +44,11 @@ p{
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
-  gap: 2rem;
+
   
   @media screen and ${device.laptop}{
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 `
 export const FirstContent = styled.div`
@@ -57,6 +58,20 @@ export const FirstContent = styled.div`
 @media ${device.mobileL}{
   padding:1rem;
     }
+    
+${props => 
+  props.biobransle && 
+  css`
+     p{
+      ${fonts.paragraph}
+      @media ${device.tablet}{
+        max-width:90%;  
+      }
+     }
+     @media ${device.laptop}{
+      min-width:400px;
+     }
+  `}
 `
 export const SecondContent = styled.div`
 @media ${device.mobileL}{
@@ -81,4 +96,18 @@ width:100%;
   ${flex("row", "center", "center")}
   gap:1rem;
 }
+`
+
+export const MobileButtons = styled.span`
+${flex("column", "center", "center")}
+margin-top:3rem;
+@media ${device.laptop}{
+  display:none;
+}
+`
+export const DesktopButtons = styled.span`
+@media (max-width: ${size.laptop}){
+  display:none;
+}
+padding-top:1rem;
 `
