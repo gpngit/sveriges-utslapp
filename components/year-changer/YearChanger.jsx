@@ -177,13 +177,6 @@ const YearChanger = ({ emissions }) => {
                 <Line className='decor-line'/>
                 <Square />
             </Decoration>
-            {/* <Square 
-            className="squareElement"
-            color={`${colors.secondary}`}
-            strokeWidth={"3"} fillColor={`${colors.primary}`}
-            height={30}
-            width={30}/> */}
-            {/* <Slider firstYear={firstYear} latestYear={latestYear} /> */}
         </Container>
     )
 }
