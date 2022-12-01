@@ -81,7 +81,7 @@ h2 {
 p {
     ${fonts.paragraph};
     width:100%;
-    text-align:justify;
+    text-align:left;
 
     @media (max-width: ${size.mobileL}){
         max-width:100%;

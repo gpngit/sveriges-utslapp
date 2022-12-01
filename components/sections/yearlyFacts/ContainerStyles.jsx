@@ -21,6 +21,7 @@ export const FirstContent = styled.div`
 `
 export const SecondContent = styled.div`
 p{
+  ${fonts.paragraph};
   padding-bottom:1rem;
 }
 `
