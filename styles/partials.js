@@ -44,6 +44,7 @@ export const fonts = {
     line-height: 150%; @media screen and ${device.desktop}{
     line-height: 120%;}`,
     footnote:"font-size: 0.8rem; line-height:150%; ",
+    button: "font-size: 1rem;",
     lessheading: `
     font-size:clamp(2rem, 1vw + 0.2rem, 3.2rem);
     line-height: 120%;

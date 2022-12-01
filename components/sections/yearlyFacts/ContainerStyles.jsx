@@ -33,8 +33,9 @@ p{
     }
     @media ${device.laptop}{
       margin-top:2rem;
-      max-width:100%;
+      max-width:90%;
     }
+    
 }
 .footnote{
   ${fonts.footnote};

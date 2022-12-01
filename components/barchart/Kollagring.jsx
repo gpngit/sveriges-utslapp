@@ -26,6 +26,9 @@ const ChartContainer = styled.div`
   @media ${device.laptop}{
     max-width: 500px;
   }
+  @media ${device.laptopL}{
+    max-width: 600px;
+  }
   
 `
 const Button = styled.button`
