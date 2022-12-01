@@ -43,9 +43,13 @@ const SourceText = styled.p`
 `
 const LabelsContainer = styled.div`
   align-self: center;
-  ${flex('row')};
+  ${flex('column', 'center', 'flex-start')};
   gap: 1rem;
   flex-wrap: wrap;
+
+  @media ${device.tablet}{
+    ${flex('row', 'center', 'center')}
+  }
 `
 const Label = styled.div`
   ${flex('row-reverse')};
@@ -75,6 +79,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   const {displayYear, setDisplayYear} = context
   const [yearlyData, setYearlyData] = useState(null)
   const [dataAvailable, setDataAvailable] = useState(false)
+  const [customLabels, setCustomLabels] = useState(null)
   const [options, setOptions] = useState(ChartOptions())
   const [chartData, setChartData] = useState({
     datasets: [],
@@ -98,6 +103,14 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   useEffect(() => {
     if (yearlyData) {
+        setCustomLabels(yearlyData.map((data, i) => {
+          return {
+            name: data.name,
+            color: colors[i],
+            value: data.value,
+            percentage: Math.round(data.value / (yearlyData.reduce((a, b) => a + b.value, 0)) * 100)
+          }
+        }).sort((a,b) => b.value - a.value ))
         setChartData({
             labels: yearlyData.map(data => data.name),
             datasets: [{
@@ -111,33 +124,31 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
     }
   }, [yearlyData])
 
+  console.log(customLabels)
+
   const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
 
   return (
       <Container id='doughnut'>
         <SourceText>Graf visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
-        <ChartContainer className="no-data">
-          <Doughnut ref={canvas} data={chartData} options={options} /> 
-          {!dataAvailable && (
-          <Overlay>
-            <p>Data endast tillgänglig mellan 2005-2020</p>
-          </Overlay>
-          )}
-        </ChartContainer>
-        <LabelsContainer>
-            <Label>
-              <p>Fossil CO2</p>
-              <div className="fossil" />
-            </Label>
-            <Label>
-            <p>Biogen CO2</p>
-              <div className="bio" />
-            </Label>
-            <Label>
-              <p>Markanvändning (via LULUCF)</p>
-              <div className="lulucf" />
-            </Label>
-          </LabelsContainer>
+          <ChartContainer>
+              <Doughnut ref={canvas} data={chartData} options={options} /> 
+            {!dataAvailable && (
+            <Overlay>
+              <p>Data endast tillgänglig mellan 2005-2020</p>
+            </Overlay>
+            )}
+          </ChartContainer>
+          <LabelsContainer>
+            {customLabels && customLabels.map((label, i) => {
+              return (
+                <Label>
+                  <p>{label.name} ({label.percentage}%)</p>
+                  <div style={{backgroundColor: label.color}}></div>
+                </Label>
+              )
+            })}
+            </LabelsContainer>
       </Container>
   )
 }

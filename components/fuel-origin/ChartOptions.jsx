@@ -8,7 +8,7 @@ const ChartOptions = (emissions) => {
         responsive: true,
         cutout: '30%',
         layout: {
-          padding: 50,
+          padding: 30,
         },
         scales: {
           y: { 
