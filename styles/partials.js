@@ -10,6 +10,7 @@ export const colors = {
     border: '#663531',
     green: '#3d873d',
     greenOpaque: '#3d873db3',
+    
 }
 export const size = {
     mobileS: '320px',

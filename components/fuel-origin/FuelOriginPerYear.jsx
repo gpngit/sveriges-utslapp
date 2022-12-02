@@ -22,9 +22,16 @@ const Container = styled.section`
 `
 const ChartContainer = styled.div`
   position: relative;
-  height: 50vh;
-  width: 80vw;
-  max-width: 600px;
+  @media ${device.mobileS}{
+    height:20vh;
+    width: 80vw;
+    max-width: 600px;
+    margin-top:-2rem;
+  }
+
+  @media ${device.mobileL}{
+    height: 30vh;
+  }
   @media ${device.tablet}{
     max-width:500px;
     height:30vh;
@@ -56,33 +63,28 @@ const SourceText = styled.p`
 const LabelsContainer = styled.div`
   align-self: center;
   ${flex('column', 'center', 'flex-start')};
-  gap: 1rem;
+  gap: 0.3rem;
   flex-wrap: wrap;
-
+  @media ${device.mobileL}{
+    gap:0.5rem;
+  }
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
-    
   }
 `
 const Label = styled.div`
   ${flex('row-reverse')};
   gap: .5rem;
   color: black;
-  height:24px;
+  height:22px;
   div {
     height: 20px;
     width: 20px;
-  }
-
-  .fossil {
-    background-color: ${colors.fossil}
-  }
-  .bio {
-    background-color: ${colors.bio}
-  }
-  .lulucf {
-    background-color: ${colors.green}
+    @media (max-width: ${size.mobileL}){
+      margin-top:3px;
+    }
+    
   }
 `
 
@@ -138,11 +140,14 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
     }
   }, [yearlyData])
 
-  const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
+  // const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
+
+  
+  const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
 
   return (
       <Container id='doughnut'>
-        <SourceText>Grafen visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
+        <SourceText>Användning av biobränslen per bränslekategori (GWh). Data kommer från Energimyndigheten.</SourceText>
           <ChartContainer>
               <Doughnut ref={canvas} data={chartData} options={options} /> 
             {!dataAvailable && (
