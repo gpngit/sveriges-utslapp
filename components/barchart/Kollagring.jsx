@@ -37,8 +37,9 @@ const ButtonAndMessageContainer = styled.div`
   gap: 1rem;
 `
 const Button = styled.button`
-  ${fonts.footnote}
-  padding: 1rem 2rem;
+  ${fonts.footnote};
+  font-weight:500;
+  padding: 0.8rem 1rem;
   align-self: center;
   background-color: transparent;
   border: 2px solid ${colors.secondary};
@@ -195,7 +196,7 @@ const Kollagring = ({ emissions }) => {
         <Container id='bar-chart'>
           <ButtonAndMessageContainer>
             <Button onClick={handleClick}>
-              {stackIndex === 'Stack 1' ? 'Tryck för hur det hade kunnat se ut om vi inte skövlade skog' : 'Visa mig hur de faktiskt sett ut'}
+              {stackIndex === 'Stack 1' ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
             </Button>
             {showMessage && (
               <Message>
