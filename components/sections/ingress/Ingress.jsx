@@ -30,13 +30,17 @@ const TextContent = styled.div`
     ${flex()};
     gap: 20px;
     @media screen and ${device.laptop}{
-    max-width:70%;}
+    max-width:60%;}
     margin-bottom:2rem;
     h2 {
-        ${fonts.heading};;
+        ${fonts.heading};
     }
     p {
-        ${fonts.paragraph};
+        ${fonts.paragraph}; 
+    }
+    .body{
+        line-height:175%;
+        font-weight:500;
     }
 `
 
@@ -58,8 +62,8 @@ const Ingress = ({ pageElements }) => {
                 <TextContent>
                 <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
-                <p>{body1.text}</p>
-                <p>{body2.text}</p>
+                <p className='body'>{body1.text}</p>
+                <p className='body'>{body2.text}</p>
                 </TextContent>
                 <SourceAndShare 
                 whiteBG={"no"}
