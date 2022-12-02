@@ -31,6 +31,7 @@ const Wrapper = styled.div`
   -webkit-clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
   height: 100%;
   background-color:${colors.primary};
+  display:block;
 `
 const Container = styled.section`
   ${flex('column')};
@@ -43,6 +44,11 @@ const Container = styled.section`
   }
   @media ${device.tablet}{
     padding: 2rem 4rem;
+    
+  }
+  @media ${device.laptop}{
+    padding-top:5rem;
+    padding-bottom:5rem;
   }
 `
 const TextContent = styled.div`
