@@ -10,7 +10,7 @@ const ChartOptions = (emissions,) => {
     // const totalEmissions1990 = 71441.6+21027.9
 
     const yearsForXAxis = []
-    for (let i=firstYear; i<=2030; i++){
+    for (let i=firstYear; i<=(mostRecentYear+10); i++){
       yearsForXAxis.push(i)
     }
 

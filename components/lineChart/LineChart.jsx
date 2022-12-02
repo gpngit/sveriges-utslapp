@@ -221,6 +221,7 @@ const LineChart = ({emissions, pageElements}) => {
   const [showMessage, setShowMessage] = useState(true)
 
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
+  const mostRecentYear = years[years.length -1]
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
@@ -233,7 +234,7 @@ const LineChart = ({emissions, pageElements}) => {
   }))
 
   const yearsForXAxis = []
-  for (let i=1990; i<=2030; i++){
+  for (let i=1990; i<=(mostRecentYear+10); i++){
     yearsForXAxis.push(i)
   }
 
@@ -348,7 +349,7 @@ const LineChart = ({emissions, pageElements}) => {
         <ScrollContainer>
           {showMessage && (
             <Message>
-              <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
+              <p>Titta, utsläppen är på ungefär samma nivå nu som 1990</p>
               <SmallArrow color={colors.secondary} size={14} />
             </Message>
           )}
