@@ -48,7 +48,7 @@ export const fonts = {
     button: `font-size: 1rem;
     `,
     lessheading: `
-    font-size:clamp(2rem, 1vw + 0.8rem, 4.2rem);
+    font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
     line-height: 100%;
     `,
 
