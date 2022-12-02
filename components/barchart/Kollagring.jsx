@@ -31,9 +31,15 @@ const ChartContainer = styled.div`
   }
   
 `
+const ButtonAndMessageContainer = styled.div`
+  width: 100%;
+  ${flex('row', 'center', 'center')};
+  gap: 1rem;
+`
 const Button = styled.button`
-  ${fonts.footnote}
-  padding: 1rem 2rem;
+  ${fonts.footnote};
+  font-weight:500;
+  padding: 0.8rem 1rem;
   align-self: center;
   background-color: transparent;
   border: 2px solid ${colors.secondary};
@@ -44,6 +50,25 @@ const Button = styled.button`
   &:hover{
     background-color: rgba(55, 0, 0, 0.3);
 }
+`
+const Message = styled.div`
+  max-width: 220px;
+  display: none;
+  color: ${colors.secondary};
+
+  p {
+    font-weight: bold;
+  }
+
+  @media ${device.tablet}{
+    display:block;
+    left: 50%;
+    gap: .6rem;
+  }
+
+  svg {
+    transform: translate(190px, -5px) rotate(30deg);
+  }
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -112,7 +137,8 @@ const Kollagring = ({ emissions }) => {
             .filter(emission => emission.sector.val === "10.0"))
     }, [displayYear])
 
-    const [stackIndex, setStackIndex] = useState('Stack 1')
+    const [stackIndex, setStackIndex] = useState('Stack 2')
+    const [showMessage, setShowMessage] = useState(true)
 
     useEffect(() => {
       setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
@@ -157,6 +183,7 @@ const Kollagring = ({ emissions }) => {
 
 
     const handleClick = () => {
+      setShowMessage(!showMessage)
       if (stackIndex === 'Stack 1'){
         setStackIndex('Stack 2')
       } else {
@@ -167,9 +194,17 @@ const Kollagring = ({ emissions }) => {
 
     return (
         <Container id='bar-chart'>
-          <Button onClick={handleClick}>
-            {stackIndex === 'Stack 1' ? 'Tryck för hur det hade kunnat se ut om vi inte skövlade skog' : 'Visa mig de faktiska siffrorna'}
-          </Button>
+          <ButtonAndMessageContainer>
+            <Button onClick={handleClick}>
+              {stackIndex === 'Stack 1' ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
+            </Button>
+            {showMessage && (
+              <Message>
+                <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
+                <SmallArrow size={15} color={colors.secondary} />
+              </Message>
+            )}
+          </ButtonAndMessageContainer>
           <ChartContainer>
             {chartData && (
                 <Bar 

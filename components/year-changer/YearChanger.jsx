@@ -18,22 +18,19 @@ const Container = styled.div`
     top: 0;
     ${flex('column', 'center', 'center')};
     background-color: ${colors.primary};
-    padding-top: 20px;
-   
+    padding-top: 5px;
 `
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
     gap: 10px;
     @media (max-width:${size.mobileM}){
       gap:2px;
-
       width:90vw;
-
      }
     width: calc(100vw - 80px);
     div {
         ${flex('row', 'space-between', 'center')};
-        gap: 5px;
+        gap: 6px;
         cursor: pointer;
 
         p {
@@ -76,6 +73,7 @@ border-color:${colors.secondary};
 &.hidden {
     visibility: hidden;
 }
+
 `
 const Button = styled.button`
     background-color: ${colors.primary};
@@ -89,11 +87,14 @@ const Button = styled.button`
     &:hover{
         background-color: rgba(55, 0, 0, 0.1);
     }
+    margin-top:4px;
+   
+
 `
 const Decoration = styled.div`
 position: relative;
 width: calc(100vw - 20px);
-margin-top: 20px;
+margin-top: 10px;
 `
 
 const Line = styled.div`
@@ -103,13 +104,13 @@ height:2px;
 z-index:10;
 `
 const Square = styled.span`
-    width: 30px;
-    height:30px;
+    width: 20px;
+    height:20px;
     border: 2px solid ${colors.secondary};
     background-color: ${colors.primary};
     transform: rotate(45deg);
     position: absolute;
-    top: -14px;
+    top: -10px;
     left: 0; 
     right: 0; 
     margin-left: auto; 

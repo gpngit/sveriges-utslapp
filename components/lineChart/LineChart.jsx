@@ -31,29 +31,41 @@ const Wrapper = styled.div`
   -webkit-clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
   height: 100%;
   background-color:${colors.primary};
+  display:block;
 `
 const Container = styled.section`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};
-  color: ${colors.secondary};
-  padding: 2rem;
-
+  color: black;
+  padding: 2rem 0rem 5rem 1rem;
+  @media ${device.mobileM}{
+    padding-left: 2rem;
+  }
   @media ${device.tablet}{
     padding: 2rem 4rem;
+    
+  }
+  @media ${device.laptop}{
+    padding-top:5rem;
+    padding-bottom:5rem;
   }
 `
 const TextContent = styled.div`
   ${flex('column')};
   gap: 1rem;
+  padding-right:2rem;
 
   h2 {
+    margin-top:-0.7rem;
     ${fonts.lessheading};
   }
 
   p {
     ${fonts.paragraph};
-
+    @media ${device.mobileTablet}{
+      width:90%;
+    }
     @media ${device.laptop}{
       max-width:70%;
     }
@@ -168,18 +180,23 @@ const CheckMark = styled.span`
 `
 const Message = styled.div`
   text-align: right;
-  max-width: 200px;
+  max-width: 220px;
   position: absolute;
   display: none;
   right: 10vw;
 
+  p {
+    font-weight: bold;
+  }
+
   @media ${device.tablet}{
-    ${flex('column', 'flex-end', 'center')}
+    display:block;
+    left: 50%;
     gap: .6rem;
   }
 
   svg {
-    transform: rotate(110deg)
+    transform: translate(-50px, 10px) rotate(110deg);
   }
 `
 
@@ -247,8 +264,22 @@ const LineChart = ({emissions, pageElements}) => {
         })
     }
   }, [totalEmissions, displayYear])
-
+  
   const handleCheckbox = (e) => {
+    let checkboxes = document.querySelectorAll('.checkbox')
+
+    if (!checkboxes[0].checked){
+      checkboxes[1].disabled = true
+    } else {
+      checkboxes[1].disabled = false
+    }
+
+    if (!checkboxes[1].checked){
+      checkboxes[0].disabled = true
+    } else {
+      checkboxes[0].disabled = false
+    }
+
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
     let {checked} = e.target
@@ -258,9 +289,9 @@ const LineChart = ({emissions, pageElements}) => {
     } else {
       chartDatasets[clickedDatasetIndex].hidden = true
     }
+
     canvas.current.legend.chart.update(); 
 
-    let checkboxes = document.querySelectorAll('.checkbox')
     if (checkboxes[0].checked && checkboxes[1].checked){
       setShowMessage(true)
     } else {
@@ -318,7 +349,7 @@ const LineChart = ({emissions, pageElements}) => {
           {showMessage && (
             <Message>
               <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
-              <SmallArrow color={colors.bio} size={14} />
+              <SmallArrow color={colors.secondary} size={14} />
             </Message>
           )}
           <ChartContainer>

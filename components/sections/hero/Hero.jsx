@@ -7,18 +7,27 @@ import BurningForest from '../../SVG\'s/BurningForest'
 import Crumble from '../../../components/crumble/Crumble'
 import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '../../SVG\'s/Arrows'
 
+const RedBg = styled.div`
+width:100%;
+z-index:40;
+position:absolute;
+height:10px;
+margin-top:-4px;
+background-color: ${colors.secondary};
+`
+
 const Container = styled.header`
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
     .burning-forest {
         margin-top: -100vh;
-        min-height: 100vh;
+        min-height: 70vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
         pointer-events: none;
-
+        display:block;
         svg {
             position: absolute;
             bottom: 0;
@@ -138,7 +147,6 @@ const Container = styled.header`
     }
 `
 const InnerContainer = styled.div`
-    /* margin-bottom: -100%; */
     padding: 2rem;
     width: 100%;
     ${flex('column', 'center', 'center')};
@@ -150,6 +158,7 @@ const InnerContainer = styled.div`
     @media ${device.laptop}{¨
         padding: 2rem 10rem;
     }
+    display:block;
 `
 const TextContent = styled.div`
     max-width: 1200px;
@@ -170,12 +179,15 @@ const TextAndLink = styled.div`
         display: none;
     }
     @media ${device.tablet} {
-        ${flex('row', 'flext-start', 'flex-start')};
-        gap: 20px;
+        ${flex('row', 'flext-start', 'center')};
         
         svg{
         display:block;
         }
+    }
+
+    @media ${device.laptopL}{
+        ${flex('row', 'flext-start', 'flex-start')};
     }
 `
 const NavLink = styled.a`
@@ -188,7 +200,7 @@ const NavLink = styled.a`
     border: 3px solid ${colors.bio};
     border-radius: 10px;
 
-    @media ${device.laptop}{
+    @media ${device.laptopL}{
         white-space:nowrap;
     }
 `
@@ -258,7 +270,9 @@ const Hero = ({ pageElements }) => {
             </InnerContainer>
             <Blurred className='bottom'/>
             <BurningForest />
+            <RedBg/>
         </Container>
+        
     )
 }
 

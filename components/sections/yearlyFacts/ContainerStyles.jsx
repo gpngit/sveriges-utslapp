@@ -12,6 +12,11 @@ export const Content = styled.article`
 @media ${device.tablet}{
   padding: 5rem;
 }
+@media ${device.laptop}{
+
+  padding-top:4rem;
+  padding-bottom:1rem;
+}
 @media ${device.laptopL}{
   padding:5rem 10rem;
 }
@@ -21,16 +26,36 @@ padding-bottom:1rem;
 ${flex("column", "flex-start", "flex-start")}
 gap:10px;
 
+span:first-of-type {  
+  padding-left:0;
+  margin-left:0.2rem;
+}
+
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
-  gap:10px;
+  gap:12px;
+  margin-left:0.2rem;
   padding:1rem;
+  span:first-of-type{
+    margin-left:-1rem;
+  }
 }
+@media ${device.mobileL}{
+  span:first-of-type{
+    margin-left:1rem;
+  
+  }
+}
+
+
 
 `
 
 export const Heading = styled.span`
-padding-left:0.5rem;
+
+
+  padding-left:1rem;
+
 
 h2{
   ${fonts.lessheading};
@@ -67,9 +92,15 @@ ${props =>
       @media ${device.tablet}{
         max-width:90%;  
       }
+      @media (max-width: ${size.tablet}){
+        padding-bottom:1rem;
+      }
      }
      @media ${device.laptop}{
       min-width:400px;
+      p{
+        padding-bottom:1rem;
+      }
      }
   `}
 `
@@ -89,6 +120,15 @@ p{
     padding-right:3rem;
   }
 }
+
+${props => 
+  props.biobransle && 
+  css`
+  @media ${device.laptop}{
+    max-width:500px;
+  }
+  
+  `}
 `
 export const RowMobile = styled.span`
 width:100%;
@@ -111,5 +151,4 @@ export const DesktopButtons = styled.span`
 @media (max-width: ${size.laptop}){
   display:none;
 }
-padding-top:1rem;
 `

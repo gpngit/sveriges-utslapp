@@ -74,45 +74,26 @@ const ChartOptions = (emissions,) => {
         plugins: {
           annotation: {
             annotations: {
-              labelBio: {
-                type: 'label',
-                content: ['BIOGEN CO2'],
-                color: 'white',
-                font: {
-                  family: font.main,
-                  size: '16px'
-                },
-                xValue: 15,
-                yValue: (chart) => {
-                  let yMax = chart.chart.scales.y.max
-                  if (yMax === 120000){
-                    return 80000
-                  } else if (yMax === 80000){
-                    return 90000
-                  } else if (yMax === 35000) {
-                    return 50000
+              testLabel: (chart) => {
+                let labelContent = ['FOSSIL + BIOGEN CO2']
+                if (chart.chart?._sortedMetasets?.length){
+                  let datasets = chart.chart._sortedMetasets
+                  if (datasets[0].hidden){
+                    labelContent = ['BIOGEN CO2']
+                  } else if (datasets[1].hidden){
+                    labelContent = ['FOSSIL CO2']
                   }
-                },
-              },
-              labelFossil: {
-                type: 'label',
-                content: ['FOSSIL CO2'],
-                color: 'white',
-                font: {
-                  family: font.main,
-                  size: '16px'
-                },
-                xValue: 15,
-                yValue: (chart) => {
-                  let yMax = chart.chart.scales.y.max
-                  if (yMax === 120000){
-                    return 50000
-                  } else if (yMax === 50000){
-                    return 60000
-                  } else if (yMax === 35000) {
-                    return 50000
-                  }
-                },
+                }
+                return {
+                  type: 'label',
+                  content: labelContent,
+                  color: 'white',
+                  font: {
+                    family: font.main,
+                    size: '16px'
+                  },
+                  xValue: 15,
+                }
               },
               line2030: {
                 adjustScaleRange: true,
