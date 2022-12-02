@@ -252,8 +252,22 @@ const LineChart = ({emissions, pageElements}) => {
         })
     }
   }, [totalEmissions, displayYear])
-
+  
   const handleCheckbox = (e) => {
+    let checkboxes = document.querySelectorAll('.checkbox')
+
+    if (!checkboxes[0].checked){
+      checkboxes[1].disabled = true
+    } else {
+      checkboxes[1].disabled = false
+    }
+
+    if (!checkboxes[1].checked){
+      checkboxes[0].disabled = true
+    } else {
+      checkboxes[0].disabled = false
+    }
+
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
     let {checked} = e.target
@@ -263,9 +277,9 @@ const LineChart = ({emissions, pageElements}) => {
     } else {
       chartDatasets[clickedDatasetIndex].hidden = true
     }
+
     canvas.current.legend.chart.update(); 
 
-    let checkboxes = document.querySelectorAll('.checkbox')
     if (checkboxes[0].checked && checkboxes[1].checked){
       setShowMessage(true)
     } else {
