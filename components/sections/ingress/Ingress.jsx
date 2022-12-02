@@ -33,7 +33,7 @@ const TextContent = styled.div`
     max-width:60%;}
     margin-bottom:2rem;
     h2 {
-        ${fonts.heading};
+        ${fonts.lessheading};
     }
     p {
         ${fonts.paragraph}; 
