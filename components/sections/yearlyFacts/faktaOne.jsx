@@ -42,7 +42,7 @@ const FaktaOne = ({pageElements, emissions}) => {
                 sourceLink={url.text} 
                 shareLink={'#faktaruta1'}
                 sourceText={title.text} />
-                    <p className="footnote">Fotnot: LULUCF betyder Land Use, Land Use Change and Forestry och ingår i klimatrapporteringen. Mer om det går att läsa <Link href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-nettoutslapp-och-nettoupptag-fran-markanvandning/">här.</Link></p>
+                    <p className="footnote">Fotnot: <abbr>LULUCF</abbr> betyder Land Use, Land Use Change and Forestry och ingår i klimatrapporteringen. Mer om det går att läsa <Link href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-nettoutslapp-och-nettoupptag-fran-markanvandning/">här.</Link></p>
                     </RowMobile> 
             </SecondContent>
            

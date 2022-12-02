@@ -29,7 +29,6 @@ const LinksContainer = styled.div`
     ${flex()}; 
     padding-bottom:4rem;
     padding-top:1rem;
-    
 `
 
 const Footer = ({ pageElements }) => {

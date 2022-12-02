@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   background-color:${colors.primary};
   display:block;
 `
-const Container = styled.section`
+const Container = styled.main`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};

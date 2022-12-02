@@ -34,11 +34,9 @@ const TextContent = styled.div`
     margin-bottom:2rem;
     h2 {
         ${fonts.lessheading};
-        
     }
     p {
         ${fonts.paragraph}; 
-       
     }
     .body{
         line-height:175%;
