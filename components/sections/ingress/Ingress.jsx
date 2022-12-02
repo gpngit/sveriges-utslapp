@@ -43,8 +43,8 @@ const TextContent = styled.div`
         font-weight:500;
     }
     .subheading{
-        @media ${device.mobileTablet}{
-            max-width:60%;
+        @media ${device.tablet}{
+            max-width:70%;
         }
         
         margin-bottom:-0.5rem;
