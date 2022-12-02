@@ -177,6 +177,14 @@ const TextContent = styled.div`
     }
     p {
         ${fonts.subheading};
+        @media (max-width:${size.tablet}){
+        width:80%;
+        padding-bottom:0.3rem;
+        }
+        @media (max-width:${size.mobileM}){
+            width:100%;
+            padding-bottom:0;
+        }
     }
 
 `
@@ -192,13 +200,16 @@ const TextAndLink = styled.div`
     @media ${device.tablet} {
         gap:0px;
         ${flex('row', 'flex-start', 'flex-start')};
+      
+        margin-bottom:-1rem;
         svg{
         display:block;
+        margin-top:1rem;
         }
     }
     .subheading{
         
-        margin-bottom:-4rem;
+        margin-bottom:-2rem;
         @media ${device.laptop}{
             padding-top:1rem;
         }
@@ -217,13 +228,11 @@ const TextAndLink = styled.div`
         }
     }
     .skogenref{
-        margin-left:-1.4rem;
-        margin-top: -1rem;
-   
-        
+        @media ${device.laptop}{
+            margin-left:-1.4rem;
+        }
        
     }
-  
 `
 const NavLink = styled.a`
     text-decoration: none;
@@ -238,6 +247,10 @@ const NavLink = styled.a`
     // @media ${device.laptop}{
     //     white-space:nowrap;
     // }
+    @media (max-width: ${size.mobileM}){
+        text-align:left;
+        width:80%;
+    }
 `
 const Blurred = styled.div`
     position: sticky;
