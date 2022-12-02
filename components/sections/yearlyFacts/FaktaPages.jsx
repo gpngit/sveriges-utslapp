@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, flex} from "/styles/partials"
+import { colors, flex, device} from "/styles/partials"
 //components
 import FaktaOne from './faktaOne'
 import FaktaTwo from './faktaTwo'
@@ -12,6 +12,14 @@ background-color:${colors.primary};
 const Wrapper = styled.div`
 ${flex("column","center", "center")}
 width:100%;
+@media ${device.tablet}{
+  padding-top:2rem;
+  padding-bottom:3rem;
+}
+@media ${device.laptopL}{
+  padding-bottom:5rem;
+}
+
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
