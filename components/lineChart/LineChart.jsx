@@ -168,18 +168,23 @@ const CheckMark = styled.span`
 `
 const Message = styled.div`
   text-align: right;
-  max-width: 200px;
+  max-width: 220px;
   position: absolute;
   display: none;
   right: 10vw;
 
+  p {
+    font-weight: bold;
+  }
+
   @media ${device.tablet}{
-    ${flex('column', 'flex-end', 'center')}
+    display:block;
+    left: 50%;
     gap: .6rem;
   }
 
   svg {
-    transform: rotate(110deg)
+    transform: translate(-50px, 10px) rotate(110deg);
   }
 `
 
@@ -318,7 +323,7 @@ const LineChart = ({emissions, pageElements}) => {
           {showMessage && (
             <Message>
               <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
-              <SmallArrow color={colors.bio} size={14} />
+              <SmallArrow color={colors.secondary} size={14} />
             </Message>
           )}
           <ChartContainer>
