@@ -20,14 +20,16 @@ export const Row = styled.span`
 padding-bottom:1rem;
 ${flex("column", "flex-start", "flex-start")}
 gap:10px;
+
 span:first-of-type {  
   padding-left:0;
-  margin-left:0;
+  margin-left:0.2rem;
 }
 
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
   gap:12px;
+  margin-left:0.2rem;
   padding:1rem;
   span:first-of-type{
     margin-left:-1rem;
@@ -36,6 +38,7 @@ span:first-of-type {
 @media ${device.mobileL}{
   span:first-of-type{
     margin-left:1rem;
+  
   }
 }
 
@@ -45,9 +48,9 @@ span:first-of-type {
 
 export const Heading = styled.span`
 
-@media ${device.mobileL}{
+
   padding-left:1rem;
-}
+
 
 h2{
   ${fonts.lessheading};
