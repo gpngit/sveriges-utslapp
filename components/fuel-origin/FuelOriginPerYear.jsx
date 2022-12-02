@@ -71,6 +71,10 @@ const ChartContainer = styled.div`
     height:25vh;
     min-width:200px;
   }
+  @media ${device.tablet}{
+    width:40vh;
+    margin-left:1rem;
+  }
   @media ${device.laptop}{
     max-width:400px;
     height:30vh;
@@ -124,7 +128,7 @@ const SourceText = styled.p`
   @media ${device.mobileTablet}{
     margin:0;
     padding-left:0;
-    width:100%;
+    width:80%;
     margin-top:-1rem;
   }
   @media ${device.tablet}{

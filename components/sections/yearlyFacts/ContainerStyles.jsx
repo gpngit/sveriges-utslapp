@@ -78,12 +78,20 @@ ${props =>
       ${fonts.paragraph}
       text-align: justify;
       text-justify: inter-word; 
-      @media (max-width: ${size.tablet}){
-        padding-bottom:1rem;
+      @media ${device.tablet}{
+        max-width:90%;
+        padding-left:3rem;
       }
+      @media (max-width: ${size.tablet}){
+        padding-bottom:1rem; 
+      }
+      
     }
+
     @media ${device.laptop}{
-      min-width:400px;
+      div{
+        padding-left:3rem;
+      }
       p{
         padding-bottom:1rem;
       }
@@ -99,6 +107,7 @@ p{
   ${fonts.paragraph};
   text-align: justify;
   text-justify: inter-word;
+  
 }
 .footnote{
   padding-top:1rem;
@@ -127,9 +136,9 @@ width:100%;
 
 export const MobileButtons = styled.span`
 ${flex("column", "center", "center")}
+align-self:center;
+padding-top:1rem;
 
-padding-right:1rem;
-margin-top:3rem;
 @media ${device.laptop}{
   display:none;
 }
@@ -138,4 +147,5 @@ export const DesktopButtons = styled.span`
 @media (max-width: ${size.laptop}){
   display:none;
 }
+
 `
