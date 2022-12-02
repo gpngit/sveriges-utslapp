@@ -20,17 +20,34 @@ export const Row = styled.span`
 padding-bottom:1rem;
 ${flex("column", "flex-start", "flex-start")}
 gap:10px;
+span:first-of-type {  
+  padding-left:0;
+  margin-left:0;
+}
 
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
-  gap:10px;
+  gap:12px;
   padding:1rem;
+  span:first-of-type{
+    margin-left:-1rem;
+  }
 }
+@media ${device.mobileL}{
+  span:first-of-type{
+    margin-left:1rem;
+  }
+}
+
+
 
 `
 
 export const Heading = styled.span`
-padding-left:0.5rem;
+
+@media ${device.mobileL}{
+  padding-left:1rem;
+}
 
 h2{
   ${fonts.lessheading};

@@ -51,6 +51,7 @@ const Overlay = styled.div`
 `
 const SourceText = styled.p`
   font-style:italic;
+  ${fonts.footnote};
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -141,7 +142,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
 
   return (
       <Container id='doughnut'>
-        <SourceText>Grafen visar användning av biobränslen per bränslekategori (GWh).<br/> Data från Energimyndigheten.</SourceText>
+        <SourceText>Grafen visar användning av biobränslen per bränslekategori (GWh). Data från Energimyndigheten.</SourceText>
           <ChartContainer>
               <Doughnut ref={canvas} data={chartData} options={options} /> 
             {!dataAvailable && (
