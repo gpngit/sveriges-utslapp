@@ -18,7 +18,7 @@ const Container = styled.header`
         overflow: hidden;
         bottom: 0;
         pointer-events: none;
-
+        display:block;
         svg {
             position: absolute;
             bottom: 0;
@@ -150,6 +150,7 @@ const InnerContainer = styled.div`
     @media ${device.laptop}{¨
         padding: 2rem 10rem;
     }
+    display:block;
 `
 const TextContent = styled.div`
     max-width: 1200px;
