@@ -56,16 +56,17 @@ const ChartOptions2 = () => {
             return null
           } else if (context.datasetIndex === 2) {
               if (datasets[0].stacked){
-                return ['Utsläpp','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+                return ['Totala', 'utsläpp','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
               } else {
-                return ['Upptag /', 'kollagring','', `-${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+                return ['Potentiellt','upptag','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
               }
           } else if (context.datasetIndex === 0) {
             return ['Utsläpp','', `${Math.round(value)}`]
           } else if (context.datasetIndex === 1) {
-            return ['Upptag /', 'kollagring','', `-${Math.round(value)}`]
+            return ['Upptag','', `${Math.round(value)}`]
           }
         },
+        textAlign: 'center',
         font: {
           family: font.main,
           size: "14px",
