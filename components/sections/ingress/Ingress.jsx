@@ -42,6 +42,13 @@ const TextContent = styled.div`
         line-height:175%;
         font-weight:500;
     }
+    .subheading{
+        @media ${device.mobileTablet}{
+            max-width:60%;
+        }
+        
+        margin-bottom:-0.5rem;
+    }
 `
 
 const Ingress = ({ pageElements }) => {
@@ -60,7 +67,7 @@ const Ingress = ({ pageElements }) => {
         <Padding>
             {show && <>
                 <TextContent>
-                <p>{subheading.text.toUpperCase()}</p>
+                <p className='subheading'>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 <p className='body'>{body1.text}</p>
                 <p className='body'>{body2.text}</p>

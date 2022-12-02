@@ -49,7 +49,7 @@ export const fonts = {
     `,
     lessheading: `
     font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
-    line-height: 100%;
+    line-height: 120%;
     `,
 
 }
