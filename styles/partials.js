@@ -20,7 +20,7 @@ export const size = {
     tablet: '768px',
     laptop: '1024px',
     laptopL: '1440px',
-    desktop: '2560px'
+    desktop: '2100px'
 }
 export const device = {
     mobileS:`(min-width: ${size.mobileS})`,
@@ -39,17 +39,17 @@ export const fonts = {
     @media screen and ${device.desktop}{
     line-height: 100%;}
     `,
-    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 2rem); line-height:100%; @media screen and ${device.desktop}{
-    line-height: 100%;} `,
-    paragraph:`font-size: clamp(1rem, 1vw , 1.6rem); 
-    line-height: 150%; @media screen and ${device.desktop}{
-    line-height: 120%;}`,
-    footnote:"font-size: 0.8rem; line-height:150%; ",
-    button: "font-size: 1rem;",
+    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 2rem); line-height:120%; `,
+    paragraph:`font-size: clamp(1rem, 1vw , 1.2rem); 
+    line-height: 150%; `,
+    footnote:`font-size: 0.8rem; line-height:150%;
+    @media screen and ${device.laptopL}{
+        font-size:1rem;}`,
+    button: `font-size: 1rem;
+    `,
     lessheading: `
-    font-size:clamp(2rem, 1vw + 0.2rem, 3.2rem);
-    line-height: 120%;
-    @media screen and ${device.desktop}{line-height: 100%;}
+    font-size:clamp(2rem, 1vw + 0.8rem, 4.2rem);
+    line-height: 100%;
     `,
 
 }

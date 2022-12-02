@@ -15,7 +15,7 @@ import AppContext from '../../context/AppContext'
 const Container = styled.section`
   ${flex('column')};
   gap: 1rem;
-  max-width: 600px;
+  max-width: 700px;
   @media ${device.tablet}{
     gap:0rem;
   }
@@ -28,7 +28,13 @@ const Container = styled.section`
   @media ${device.laptop}{
     ${flex("column-reverse")}
   }
-
+  @media ${device.laptopL}{
+    ${flex('column')};
+    margin-top:-1rem;
+  }
+  @media ${device.desktop}{
+    padding-left:2rem;
+  }
 `
 const Row600px = styled.div`
 @media ${device.mobileTablet}{
@@ -37,6 +43,19 @@ const Row600px = styled.div`
 @media ${device.laptop}{
   ${flex("column")}
 }
+@media ${device.laptopL}{
+  ${flex("row-reverse")}
+  width:700px;
+  margin-top:-4rem;
+  padding-right:3em;
+}
+@media ${device.desktop}{
+  margin-top:-2rem;
+  width:800px;
+  padding-right:0;
+  
+}
+
 `
 
 const ChartContainer = styled.div`
@@ -57,9 +76,15 @@ const ChartContainer = styled.div`
   }
   @media ${device.laptop}{
     max-width:400px;
-    height:40vh;
+    height:30vh;
     width:40vh;
     align-self:center;
+    margin-top:-2rem;
+  }
+  @media ${device.laptopL}{
+    height:50vh;
+    max-width:400px;
+    width:50vw;
   }
 `
 const Overlay = styled.div`
@@ -74,6 +99,9 @@ const Overlay = styled.div`
   }
   @media ${device.tablet}{
     width:90%;
+  }
+  @media ${device.laptop}{
+    width:100%;
   }
   
   p {
@@ -106,7 +134,6 @@ const SourceText = styled.p`
   }
   @media ${device.laptop}{
     margin:0;
-    
   }
 `
 
@@ -129,6 +156,10 @@ const LabelsContainer = styled.div`
   margin-bottom:0;
   gap:0.6rem;
   }
+  @media ${device.desktop}{
+    gap:1rem;
+    
+  }
   
 `
 const Label = styled.div`
@@ -140,6 +171,9 @@ const Label = styled.div`
     height: 20px;
     width: 20px;
     @media (max-width: ${size.mobileL}){
+      margin-top:3px;
+    }
+    @media ${device.laptopL}{
       margin-top:3px;
     }
   }
