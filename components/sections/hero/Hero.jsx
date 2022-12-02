@@ -147,7 +147,6 @@ const Container = styled.header`
     }
 `
 const InnerContainer = styled.div`
-    /* margin-bottom: -100%; */
     padding: 2rem;
     width: 100%;
     ${flex('column', 'center', 'center')};
@@ -180,12 +179,15 @@ const TextAndLink = styled.div`
         display: none;
     }
     @media ${device.tablet} {
-        ${flex('row', 'flext-start', 'flex-start')};
-        gap: 20px;
+        ${flex('row', 'flext-start', 'center')};
         
         svg{
         display:block;
         }
+    }
+
+    @media ${device.laptopL}{
+        ${flex('row', 'flext-start', 'flex-start')};
     }
 `
 const NavLink = styled.a`
@@ -198,7 +200,7 @@ const NavLink = styled.a`
     border: 3px solid ${colors.bio};
     border-radius: 10px;
 
-    @media ${device.laptop}{
+    @media ${device.laptopL}{
         white-space:nowrap;
     }
 `
