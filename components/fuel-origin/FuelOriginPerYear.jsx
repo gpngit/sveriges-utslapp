@@ -57,7 +57,6 @@ const Row600px = styled.div`
 }
 
 `
-
 const ChartContainer = styled.div`
   position: relative;
   @media ${device.mobileS}{
@@ -111,8 +110,6 @@ const Overlay = styled.div`
     text-align: center;
   }
 `
-
-
 const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
@@ -136,7 +133,6 @@ const SourceText = styled.p`
     margin:0;
   }
 `
-
 const LabelsContainer = styled.div`
   align-self: center;
   ${flex('column', 'center', 'flex-start')};
@@ -229,7 +225,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
             }]
         })
     }
-  }, [yearlyData])
+  }, [yearlyData, displayYear])
   
   const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
 
