@@ -19,7 +19,26 @@ const Container = styled.section`
   @media ${device.tablet}{
     gap:0rem;
   }
+  @media ${device.mobileL}{
+    ${flex('column-reverse')};
+  }
+  @media ${device.mobileTablet}{
+    ${flex('column')};
+  }
+  @media ${device.laptop}{
+    ${flex("column-reverse")}
+  }
+
 `
+const Row600px = styled.div`
+@media ${device.mobileTablet}{
+  ${flex("row")}
+}
+@media ${device.laptop}{
+  ${flex("column")}
+}
+`
+
 const ChartContainer = styled.div`
   position: relative;
   @media ${device.mobileS}{
@@ -28,17 +47,19 @@ const ChartContainer = styled.div`
     max-width: 600px;
     margin-top:-2rem;
   }
-
   @media ${device.mobileL}{
     height: 30vh;
   }
-  @media ${device.tablet}{
-    max-width:500px;
-    height:30vh;
+  @media ${device.mobileTablet}{
+    width:20vh;
+    margin-left:-1rem;
+    height:25vh;
   }
   @media ${device.laptop}{
     max-width:400px;
-    height:30vh;
+    height:40vh;
+    width:40vh;
+    align-self:center;
   }
 `
 const Overlay = styled.div`
@@ -47,8 +68,14 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
-
+  width:100%;
+  @media ${device.mobileTablet}{
+    width: 190%;
+  }
+  @media ${device.tablet}{
+    width:90%;
+  }
+  
   p {
     background-color: black;
     color: white;
@@ -56,22 +83,53 @@ const Overlay = styled.div`
     text-align: center;
   }
 `
+
+
 const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
+  @media ${device.mobileL}{
+    margin-top:-2rem;
+    margin-bottom:-2rem;
+    max-width:100%;
+    padding:1rem;
+    padding-left:2rem;
+    align-self:center;
+  }
+  @media ${device.mobileTablet}{
+    margin:0;
+    padding-left:0;
+    width:100%;
+  }
+  @media ${device.tablet}{
+    margin-top:-2rem;
+  }
+  @media ${device.laptop}{
+    margin:0;
+    
+  }
 `
+
 const LabelsContainer = styled.div`
   align-self: center;
   ${flex('column', 'center', 'flex-start')};
   gap: 0.3rem;
   flex-wrap: wrap;
+  margin-top:-1rem;
   @media ${device.mobileL}{
     gap:0.5rem;
+    margin-bottom:1rem;
   }
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
   }
+  @media ${device.laptop}{
+  margin-top:0;
+  margin-bottom:0;
+  gap:0.6rem;
+  }
+  
 `
 const Label = styled.div`
   ${flex('row-reverse')};
@@ -84,7 +142,6 @@ const Label = styled.div`
     @media (max-width: ${size.mobileL}){
       margin-top:3px;
     }
-    
   }
 `
 
@@ -139,15 +196,13 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
         })
     }
   }, [yearlyData])
-
-  // const colors = ['black','#f7941d', '#f15a29', 'grey', 'white', '#370000', '#96563d', 'darkgrey','gold', '#5f4f49', ]
-
   
   const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
 
   return (
       <Container id='doughnut'>
         <SourceText>Användning av biobränslen per bränslekategori (GWh). Data kommer från Energimyndigheten.</SourceText>
+        <Row600px>
           <ChartContainer>
               <Doughnut ref={canvas} data={chartData} options={options} /> 
             {!dataAvailable && (
@@ -166,6 +221,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
               )
             })}
             </LabelsContainer>
+            </Row600px>
       </Container>
   )
 }
