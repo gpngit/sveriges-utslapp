@@ -168,18 +168,23 @@ const CheckMark = styled.span`
 `
 const Message = styled.div`
   text-align: right;
-  max-width: 200px;
+  max-width: 220px;
   position: absolute;
   display: none;
   right: 10vw;
 
+  p {
+    font-weight: bold;
+  }
+
   @media ${device.tablet}{
-    ${flex('column', 'flex-end', 'center')}
+    display:block;
+    left: 50%;
     gap: .6rem;
   }
 
   svg {
-    transform: rotate(110deg)
+    transform: translate(-50px, 10px) rotate(110deg);
   }
 `
 
@@ -247,8 +252,22 @@ const LineChart = ({emissions, pageElements}) => {
         })
     }
   }, [totalEmissions, displayYear])
-
+  
   const handleCheckbox = (e) => {
+    let checkboxes = document.querySelectorAll('.checkbox')
+
+    if (!checkboxes[0].checked){
+      checkboxes[1].disabled = true
+    } else {
+      checkboxes[1].disabled = false
+    }
+
+    if (!checkboxes[1].checked){
+      checkboxes[0].disabled = true
+    } else {
+      checkboxes[0].disabled = false
+    }
+
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
     let {checked} = e.target
@@ -258,9 +277,9 @@ const LineChart = ({emissions, pageElements}) => {
     } else {
       chartDatasets[clickedDatasetIndex].hidden = true
     }
+
     canvas.current.legend.chart.update(); 
 
-    let checkboxes = document.querySelectorAll('.checkbox')
     if (checkboxes[0].checked && checkboxes[1].checked){
       setShowMessage(true)
     } else {
@@ -318,7 +337,7 @@ const LineChart = ({emissions, pageElements}) => {
           {showMessage && (
             <Message>
               <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
-              <SmallArrow color={colors.bio} size={14} />
+              <SmallArrow color={colors.secondary} size={14} />
             </Message>
           )}
           <ChartContainer>
