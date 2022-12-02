@@ -10,11 +10,9 @@ width:100%;
 padding:5em;
     @media (max-width:${size.mobiletablet}){ 
         padding:2em;  
-
     }
     @media (max-width: ${size.mobileL}){
     padding:1rem;
-  
     }
     @media ${device.mobileTablet}{
         padding:2rem;
@@ -47,7 +45,7 @@ width:100%;
 max-width:1568px;
 @media ${device.tablet}{
     padding: 1rem;
-  }
+}
 `
 
 export const Grid = styled.div`
@@ -84,8 +82,8 @@ h2 {
 }
 p {
     ${fonts.paragraph};
-    width:100%;
-    text-align:left;
+    text-align: justify;
+    text-justify: inter-word; 
 
     @media (max-width: ${size.mobileL}){
         max-width:100%;
