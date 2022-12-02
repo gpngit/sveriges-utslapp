@@ -7,6 +7,15 @@ import BurningForest from '../../SVG\'s/BurningForest'
 import Crumble from '../../../components/crumble/Crumble'
 import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '../../SVG\'s/Arrows'
 
+const RedBg = styled.div`
+width:100%;
+z-index:40;
+position:absolute;
+height:10px;
+margin-top:-4px;
+background-color: ${colors.secondary};
+`
+
 const Container = styled.header`
     background-color: ${colors.primary};
     color: ${colors.secondary};
@@ -259,7 +268,9 @@ const Hero = ({ pageElements }) => {
             </InnerContainer>
             <Blurred className='bottom'/>
             <BurningForest />
+            <RedBg/>
         </Container>
+        
     )
 }
 
