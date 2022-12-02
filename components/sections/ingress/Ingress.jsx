@@ -43,7 +43,10 @@ const TextContent = styled.div`
     .body{
         line-height:175%;
         font-weight:500;
-        max-width:70%;
+        @media screen and ${device.tablet}{
+            max-width:70%;
+        }
+        
     }
     .subheading{
         @media ${device.tablet}{

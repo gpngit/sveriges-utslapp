@@ -25,11 +25,7 @@ const Container = styled.section`
   @media ${device.mobileTablet}{
     ${flex('column')};
   }
-  @media ${device.laptop}{
-    ${flex("column-reverse")}
-  }
   @media ${device.laptopL}{
-    ${flex('column')};
     margin-top:-1rem;
   }
   @media ${device.desktop}{
@@ -44,18 +40,18 @@ const Row600px = styled.div`
   ${flex("column")}
 }
 @media ${device.laptopL}{
-  ${flex("row-reverse")}
-  width:700px;
-  margin-top:-4rem;
+  ${flex("column")}
+  width:500px;
+  padding: 0;
+  margin: 0;
   padding-right:3em;
+  padding-top:1rem;
 }
 @media ${device.desktop}{
   margin-top:-2rem;
   width:800px;
   padding-right:0;
-  
 }
-
 `
 const ChartContainer = styled.div`
   position: relative;
@@ -67,11 +63,13 @@ const ChartContainer = styled.div`
   }
   @media ${device.mobileL}{
     height: 30vh;
+    min-height:100px;
   }
   @media ${device.mobileTablet}{
-    width:20vh;
+    width:30vh;
     margin-left:-1rem;
     height:25vh;
+    min-width:200px;
   }
   @media ${device.laptop}{
     max-width:400px;
@@ -81,9 +79,11 @@ const ChartContainer = styled.div`
     margin-top:-2rem;
   }
   @media ${device.laptopL}{
-    height:50vh;
+    align-self:flex-start;
+    height:30vh;
     max-width:400px;
     width:50vw;
+    max-height:400px;
   }
 `
 const Overlay = styled.div`
@@ -125,12 +125,20 @@ const SourceText = styled.p`
     margin:0;
     padding-left:0;
     width:100%;
+    margin-top:-1rem;
   }
   @media ${device.tablet}{
-    margin-top:-2rem;
+    margin-bottom:1rem;
   }
   @media ${device.laptop}{
     margin:0;
+    width:80%;
+    padding:0;
+    padding-bottom:1rem;
+  }
+  @media ${device.laptopL}{
+    width:100%;
+    text-align:left;
   }
 `
 const LabelsContainer = styled.div`
@@ -139,6 +147,7 @@ const LabelsContainer = styled.div`
   gap: 0.3rem;
   flex-wrap: wrap;
   margin-top:-1rem;
+  
   @media ${device.mobileL}{
     gap:0.5rem;
     margin-bottom:1rem;
@@ -146,11 +155,13 @@ const LabelsContainer = styled.div`
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
+    padding-left:3rem;
   }
   @media ${device.laptop}{
   margin-top:0;
   margin-bottom:0;
   gap:0.6rem;
+  padding-left:0;
   }
   @media ${device.desktop}{
     gap:1rem;
