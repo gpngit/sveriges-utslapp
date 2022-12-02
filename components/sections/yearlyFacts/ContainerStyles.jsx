@@ -12,6 +12,11 @@ export const Content = styled.article`
 @media ${device.tablet}{
   padding: 5rem;
 }
+@media ${device.laptop}{
+
+  padding-top:4rem;
+  padding-bottom:1rem;
+}
 @media ${device.laptopL}{
   padding:5rem 10rem;
 }
