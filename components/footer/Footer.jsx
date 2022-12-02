@@ -11,18 +11,25 @@ const Container = styled.footer`
     background-color: ${colors.secondary};
     color: white;
     a {
-        ${fonts.footnote}
-        color: white;
+        ${fonts.paragraph};
+        line-height:175%;
+        color: ${colors.primary};
+        &:hover{
+            color: white;
+        }
     }
 `
 const Subheading = styled.h3`
-    ${fonts.subheading};
+    ${fonts.paragraph};
 `
 const Title = styled.h2`
-    ${fonts.title};
+    ${fonts.lessheading};
 `
 const LinksContainer = styled.div`
-    ${flex()};    
+    ${flex()}; 
+    padding-bottom:4rem;
+    padding-top:1rem;
+    
 `
 
 const Footer = ({ pageElements }) => {
@@ -39,6 +46,7 @@ const Footer = ({ pageElements }) => {
                 <Title>{title.text}</Title>
                 <LinksContainer>
                     {links.map((link,indx) => 
+                 
                     <Link key={indx}
                     target="_blank"
                     href={link.url}>
