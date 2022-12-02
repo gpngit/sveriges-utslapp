@@ -147,7 +147,6 @@ const Container = styled.header`
     }
 `
 const InnerContainer = styled.div`
-    /* margin-bottom: -100%; */
     padding: 2rem;
     width: 100%;
     ${flex('column', 'center', 'center')};
@@ -198,10 +197,8 @@ const TextAndLink = styled.div`
         gap:6px;
     }
     @media ${device.tablet} {
-        gap:0px;
         ${flex('row', 'flex-start', 'flex-start')};
-      
-        margin-bottom:-1rem;
+     
         svg{
         display:block;
         margin-top:1rem;
@@ -227,12 +224,6 @@ const TextAndLink = styled.div`
             margin-top:-1rem;
         }
     }
-    .skogenref{
-        @media ${device.laptop}{
-            margin-left:-1.4rem;
-        }
-       
-    }
 `
 const NavLink = styled.a`
     text-decoration: none;
@@ -244,13 +235,9 @@ const NavLink = styled.a`
     border: 3px solid ${colors.bio};
     border-radius: 10px;
 
-    // @media ${device.laptop}{
-    //     white-space:nowrap;
-    // }
-    @media (max-width: ${size.mobileM}){
-        text-align:left;
-        width:80%;
-    }
+    // // @media ${device.laptop}{
+    // //     white-space:nowrap;
+    // // }
 `
 const Blurred = styled.div`
     position: sticky;
@@ -322,11 +309,10 @@ const Hero = ({ pageElements }) => {
                         strokeWidth={2} />
                         <NavLink href="#skogen"
                         className="skogenref">
-                           
                             <strong>
                             Skogen växer väl upp igen och binder kolet?
                             </strong>
-                            
+
                             </NavLink>
                     </TextAndLink>
                 </TextContent>

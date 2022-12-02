@@ -6,12 +6,11 @@ const ChartOptions = (emissions,) => {
     const yearsOfData = [... new Set(emissions.map(emission => Number(emission.year)))]
     const firstYear = yearsOfData[0]
     const mostRecentYear = yearsOfData[yearsOfData.length -1]
-    const climateNeutralYear = 2045
-    const currentYear = new Date().getFullYear()
-    const totalEmissions1990 = 71441.6+21027.9
+    // const currentYear = new Date().getFullYear()
+    // const totalEmissions1990 = 71441.6+21027.9
 
     const yearsForXAxis = []
-    for (let i=firstYear; i<=climateNeutralYear; i++){
+    for (let i=firstYear; i<=(mostRecentYear+10); i++){
       yearsForXAxis.push(i)
     }
 
@@ -21,18 +20,6 @@ const ChartOptions = (emissions,) => {
         scales: {
           y: { 
             min: 0,
-            // max: (chart) => {
-            //   let {_sortedMetasets} = chart.chart
-            //   let highestValue = 0
-            //   let visibleDatasets = _sortedMetasets.filter(dataset => !dataset.hidden)
-            //   visibleDatasets.forEach(dataset => {
-            //     let valuesArray = dataset._parsed
-            //     let highestValueInDataset = Math.max(...valuesArray.map(val => val.y))
-            //     highestValue += highestValueInDataset
-            //   })
-            //   let rounded = Math.ceil(highestValue/10000)*10000
-            //   return rounded
-            // },
             stacked: true,
             display: true,
             ticks:{
@@ -53,13 +40,9 @@ const ChartOptions = (emissions,) => {
             },
             ticks: {
               callback: (value, index, values) => {
-                if (yearsForXAxis[index] === firstYear 
-                  || yearsForXAxis[index] === mostRecentYear 
-                  || yearsForXAxis[index] === 2030
-                  || yearsForXAxis[index] === 2040
-                  || yearsForXAxis[index] === climateNeutralYear){
+                if (yearsForXAxis[index] === firstYear || yearsForXAxis[index] === mostRecentYear){
                   return yearsForXAxis[index]
-                }
+                  }
               },
               stepSize: 10000,
               color: colors.secondary,
@@ -95,80 +78,80 @@ const ChartOptions = (emissions,) => {
                   xValue: 15,
                 }
               },
-              line2030: {
-                adjustScaleRange: true,
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                yMin: totalEmissions1990*0.37,
-                yMax: totalEmissions1990*0.37,
-                borderColor: colors.border,
-                borderWidth: 2,
-                borderDash: [5],
-                label: {
-                  position: `${(100/55)*40}%`,
-                  yAdjust: -20,
-                  display: true,
-                  content: ['Etappmål 2030', `${2030-currentYear} år kvar`],
-                  backgroundColor: 'transparent',
-                  color: colors.secondary,
-                  font: {
-                    family: font.main,
-                    size: '10px',
-                    weight: 'normal',
-                    lineHeight: 1.2,
-                  },
-                }
-              },
-              line2040: {
-                adjustScaleRange: true,
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                yMin: totalEmissions1990*0.25,
-                yMax: totalEmissions1990*0.25,
-                borderColor: colors.border,
-                borderWidth: 2,
-                borderDash: [5],
-                label: {
-                  position: `${(100/55)*50}%`,
-                  yAdjust: -12,
-                  display: true,
-                  content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
-                  backgroundColor: 'transparent',
-                  color: colors.secondary,
-                  font: {
-                    family: font.main,
-                    size: '10px',
-                    weight: 'normal',
-                    lineHeight: 1.2,
-                  },
-                }
-              },
-              line2045: {
-                adjustScaleRange: true,
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                yMin: 0,
-                yMax: 0,
-                borderColor: colors.border,
-                borderWidth: 4,
-                borderDash: [5],
-                label: {
-                  position: '100%',
-                  yAdjust: 5,
-                  xAdjust: 10,
-                  display: true,
-                  content: ['Nettonoll 2045', `${2045-currentYear} år kvar`],
-                  backgroundColor: 'transparent',
-                  color: colors.secondary,
-                  textAlign: 'end',
-                  font: {
-                    family: font.main,
-                    size: '10px',
-                    weight: 'normal',
-                    lineHeight: 1.2,
-                  },
-                }
-              }
+              // line2030: {
+              //   adjustScaleRange: true,
+              //   drawTime: 'afterDatasetsDraw',
+              //   type: 'line',
+              //   yMin: totalEmissions1990*0.37,
+              //   yMax: totalEmissions1990*0.37,
+              //   borderColor: colors.border,
+              //   borderWidth: 2,
+              //   borderDash: [5],
+              //   label: {
+              //     position: `${(100/55)*40}%`,
+              //     yAdjust: -20,
+              //     display: true,
+              //     content: ['Etappmål 2030', `${2030-currentYear} år kvar`],
+              //     backgroundColor: 'transparent',
+              //     color: colors.secondary,
+              //     font: {
+              //       family: font.main,
+              //       size: '10px',
+              //       weight: 'normal',
+              //       lineHeight: 1.2,
+              //     },
+              //   }
+              // },
+              // line2040: {
+              //   adjustScaleRange: true,
+              //   drawTime: 'afterDatasetsDraw',
+              //   type: 'line',
+              //   yMin: totalEmissions1990*0.25,
+              //   yMax: totalEmissions1990*0.25,
+              //   borderColor: colors.border,
+              //   borderWidth: 2,
+              //   borderDash: [5],
+              //   label: {
+              //     position: `${(100/55)*50}%`,
+              //     yAdjust: -12,
+              //     display: true,
+              //     content: ['Etappmål 2040', `${2040-currentYear} år kvar`],
+              //     backgroundColor: 'transparent',
+              //     color: colors.secondary,
+              //     font: {
+              //       family: font.main,
+              //       size: '10px',
+              //       weight: 'normal',
+              //       lineHeight: 1.2,
+              //     },
+              //   }
+              // },
+              // line2045: {
+              //   adjustScaleRange: true,
+              //   drawTime: 'afterDatasetsDraw',
+              //   type: 'line',
+              //   yMin: 0,
+              //   yMax: 0,
+              //   borderColor: colors.border,
+              //   borderWidth: 4,
+              //   borderDash: [5],
+              //   label: {
+              //     position: '100%',
+              //     yAdjust: 5,
+              //     xAdjust: 10,
+              //     display: true,
+              //     content: ['Nettonoll 2045', `${2045-currentYear} år kvar`],
+              //     backgroundColor: 'transparent',
+              //     color: colors.secondary,
+              //     textAlign: 'end',
+              //     font: {
+              //       family: font.main,
+              //       size: '10px',
+              //       weight: 'normal',
+              //       lineHeight: 1.2,
+              //     },
+              //   }
+              // }
             },
           },
           legend: {

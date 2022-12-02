@@ -189,22 +189,6 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   })
 
   useEffect(() => {
-    if (displayYear >= 2005 && displayYear <= 2020) {
-      setDataAvailable(true)
-      setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
-    } else {
-      setDataAvailable(false)
-      setChartData({
-        labels: '',
-        datasets: [{
-          label: '',
-          data: [1]
-        }]
-      })
-    }
-  }, [displayYear])
-
-  useEffect(() => {
     if (yearlyData) {
         setCustomLabels(yearlyData.map((data, i) => {
           return {
@@ -226,6 +210,22 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
         })
     }
   }, [yearlyData, displayYear])
+
+  useEffect(() => {
+    if (displayYear >= 2005 && displayYear <= 2020) {
+      setDataAvailable(true)
+      setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
+    } else {
+      setDataAvailable(false)
+      setChartData({
+        labels: '',
+        datasets: [{
+          label: '',
+          data: [1]
+        }]
+      })
+    }
+  }, [displayYear])
   
   const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
 
