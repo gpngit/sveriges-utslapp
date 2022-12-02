@@ -180,7 +180,7 @@ const CheckMark = styled.span`
 `
 const Message = styled.div`
   text-align: right;
-  max-width: 220px;
+  width: 220px;
   position: absolute;
   display: none;
   right: 10vw;
@@ -191,12 +191,12 @@ const Message = styled.div`
 
   @media ${device.tablet}{
     display:block;
-    left: 50%;
+    left: 70%;
     gap: .6rem;
   }
 
   svg {
-    transform: translate(-50px, 10px) rotate(110deg);
+    transform: translate(-50px, 5px) rotate(120deg);
   }
 `
 
