@@ -5,15 +5,13 @@ import { flex, device, colors, size, fonts } from '../../../styles/partials'
 export const Content = styled.article`
   color: black;
   padding:3rem 1rem;
-  @media ${device.mobileTablet}{
+@media ${device.mobileTablet}{
   padding: 3rem;
-  }
-
+}
 @media ${device.tablet}{
   padding: 5rem;
 }
 @media ${device.laptop}{
-
   padding-top:4rem;
   padding-bottom:1rem;
 }
@@ -30,7 +28,6 @@ span:first-of-type {
   padding-left:0;
   margin-left:0.2rem;
 }
-
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
   gap:12px;
@@ -43,20 +40,12 @@ span:first-of-type {
 @media ${device.mobileL}{
   span:first-of-type{
     margin-left:1rem;
-  
   }
 }
-
-
-
 `
 
 export const Heading = styled.span`
-
-
   padding-left:1rem;
-
-
 h2{
   ${fonts.lessheading};
 }
@@ -69,8 +58,6 @@ p{
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
-
-  
   @media screen and ${device.laptop}{
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -82,26 +69,25 @@ export const FirstContent = styled.div`
     }
 @media ${device.mobileL}{
   padding:1rem;
-    }
+}
     
 ${props => 
   props.biobransle && 
   css`
-     p{
+  p{
       ${fonts.paragraph}
-      @media ${device.tablet}{
-        max-width:90%;  
-      }
+      text-align: justify;
+      text-justify: inter-word; 
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem;
       }
-     }
-     @media ${device.laptop}{
+    }
+    @media ${device.laptop}{
       min-width:400px;
       p{
         padding-bottom:1rem;
       }
-     }
+    }
   `}
 `
 export const SecondContent = styled.div`
@@ -111,7 +97,8 @@ export const SecondContent = styled.div`
 p{
   padding-bottom:1rem;
   ${fonts.paragraph};
-
+  text-align: justify;
+  text-justify: inter-word;
 }
 .footnote{
   padding-top:1rem;

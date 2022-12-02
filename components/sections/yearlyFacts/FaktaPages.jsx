@@ -19,7 +19,6 @@ width:100%;
 @media ${device.laptopL}{
   padding-bottom:5rem;
 }
-
 `
 
 const FaktaPages = ({pageOneElem, pageTwoElem, emissions, energiMyndighetenData}) => {
