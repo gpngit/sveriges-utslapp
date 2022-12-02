@@ -36,9 +36,11 @@ const Container = styled.section`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};
-  color: ${colors.secondary};
-  padding: 2rem;
-
+  color: black;
+  padding: 2rem 0rem 5rem 1rem;
+  @media ${device.mobileM}{
+    padding-left: 2rem;
+  }
   @media ${device.tablet}{
     padding: 2rem 4rem;
   }
@@ -46,14 +48,18 @@ const Container = styled.section`
 const TextContent = styled.div`
   ${flex('column')};
   gap: 1rem;
+  padding-right:2rem;
 
   h2 {
+    margin-top:-0.7rem;
     ${fonts.lessheading};
   }
 
   p {
     ${fonts.paragraph};
-
+    @media ${device.mobileTablet}{
+      width:90%;
+    }
     @media ${device.laptop}{
       max-width:70%;
     }
