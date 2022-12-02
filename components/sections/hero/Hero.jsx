@@ -22,7 +22,7 @@ const Container = styled.header`
     
     .burning-forest {
         margin-top: -100vh;
-        min-height: 70vh;
+        min-height: 80vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
@@ -156,7 +156,7 @@ const InnerContainer = styled.div`
         padding: 2rem 5rem;
     }
 
-    @media ${device.laptop}{¨
+    @media ${device.laptop}{
         padding: 2rem 10rem;
     }
     display:block;
@@ -168,25 +168,62 @@ const TextContent = styled.div`
     
     h1 {
         ${fonts.heading};
+        @media ${device.laptopL}{
+            margin-top:-1rem;
+            margin-bottom:-2rem;
+        }
+        text-align: justified;
+        width:90%;
     }
     p {
         ${fonts.subheading};
     }
+
 `
 const TextAndLink = styled.div`
     ${flex('column')};
-    gap: 20px;
+    gap:20px;
     svg {
         display: none;
     }
+    @media ${device.mobileL}{
+        gap:6px;
+    }
     @media ${device.tablet} {
-        ${flex('row', 'flext-start', 'flex-start')};
-        gap: 20px;
-        
+        gap:0px;
+        ${flex('row', 'flex-start', 'flex-start')};
         svg{
         display:block;
         }
     }
+    .subheading{
+        
+        margin-bottom:-4rem;
+        @media ${device.laptop}{
+            padding-top:1rem;
+        }
+    }
+    .ingressref{
+        @media ${device.laptop}{
+            margin-top:2rem;
+        }
+    }
+    .statistikref{
+        @media ${device.tablet}{
+            margin-top:-2rem;
+        }
+        @media ${device.laptop}{
+            margin-top:-1rem;
+        }
+    }
+    .skogenref{
+        margin-left:-1.4rem;
+        margin-top: -1rem;
+   
+        
+       
+    }
+  
 `
 const NavLink = styled.a`
     text-decoration: none;
@@ -198,9 +235,9 @@ const NavLink = styled.a`
     border: 3px solid ${colors.bio};
     border-radius: 10px;
 
-    @media ${device.laptop}{
-        white-space:nowrap;
-    }
+    // @media ${device.laptop}{
+    //     white-space:nowrap;
+    // }
 `
 const Blurred = styled.div`
     position: sticky;
@@ -225,7 +262,7 @@ const Hero = ({ pageElements }) => {
             <InnerContainer>
                 <TextContent>
                     <TextAndLink>
-                        <p>{subheading.text.toUpperCase()}</p> 
+                        <p className="subheading">{subheading.text.toUpperCase()}</p> 
                     </TextAndLink>
                     <TextAndLink>
                         <h1>{title.text}</h1>
@@ -233,8 +270,12 @@ const Hero = ({ pageElements }) => {
                         width={340} 
                         color={colors.bio} 
                         strokeWidth={4} />
-                        <NavLink href='#ingress'>
-                            Hur ser siffrorna ut egentligen?</NavLink>
+                        <NavLink 
+                        className="ingressref" 
+                        href='#ingress'>
+                            <strong>
+                            Hur ser siffrorna ut egentligen?
+                            </strong></NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body1.text}</p>
@@ -242,8 +283,11 @@ const Hero = ({ pageElements }) => {
                         width={280} 
                         color={colors.bio} 
                         strokeWidth={3} />
-                        <NavLink href="#statistik">
-                            Varför rapporteras de inte?</NavLink>
+                        <NavLink 
+                        className="statistikref" 
+                        href="#statistik">
+                            <strong>Varför rapporteras de inte?</strong>
+                            </NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body2.text}</p>
@@ -252,7 +296,10 @@ const Hero = ({ pageElements }) => {
                         color={colors.bio} 
                         strokeWidth={3} />
                         <NavLink href="#kolcykeln">
-                            Men är inte biobränslen bra för naturen?</NavLink>
+                            <strong>
+                            Är inte biobränslen bra för naturen?
+                            </strong>
+                            </NavLink>
                     </TextAndLink>
                     <TextAndLink>
                         <p>{body3.text}</p>
@@ -260,8 +307,13 @@ const Hero = ({ pageElements }) => {
                         width={360} 
                         color={colors.bio} 
                         strokeWidth={2} />
-                        <NavLink href="#skogen">
-                            Men skogen växer väl upp igen och binder kolet?
+                        <NavLink href="#skogen"
+                        className="skogenref">
+                           
+                            <strong>
+                            Skogen växer väl upp igen och binder kolet?
+                            </strong>
+                            
                             </NavLink>
                     </TextAndLink>
                 </TextContent>
