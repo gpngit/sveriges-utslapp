@@ -61,6 +61,7 @@ const TextContent = styled.article`
   @media ${device.laptop}{
     padding-left:8rem;
   }
+  
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
@@ -72,6 +73,8 @@ const TextContent = styled.article`
   }
 
   p {
+    text-align: justify;
+    text-justify: inter-word;
     ${fonts.paragraph};
     @media ${device.mobileTablet}{
       width:90%;
@@ -79,8 +82,10 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       max-width:50%;
     }
-    text-align: justify;
-        text-justify: inter-word; 
+
+        @media (max-width: ${size.mobileS}){ 
+          width:90%;
+        } 
   }
 `
 const ButtonContainer = styled.div`

@@ -16,6 +16,8 @@ const Container = styled.section`
 const Padding = styled.div`
 padding:3rem;
 max-width:1400px;
+
+
 @media screen and ${device.tablet}{
 padding:3rem;
 padding-left:12rem;}
@@ -27,12 +29,17 @@ padding-left:12rem;}
 @media ${device.mobileTablet}{
     padding-left:2rem;
 }
+
 margin-top:2rem;
+@media (max-width: ${size.mobileS}){
+    padding:1rem;
+
+}
 `
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
-    
+    hyphens: auto;
     @media screen and ${device.laptop}{
     max-width:70%;}
     margin-bottom:2rem;
@@ -43,16 +50,25 @@ const TextContent = styled.div`
         ${fonts.paragraph}; 
     }
     .body{
+        hyphens: manual;
         font-weight:500;
+        text-align: justify;
+        text-justify: inter-word; 
+
         @media screen and ${device.tablet}{
             max-width:100%;
         }
-        text-align: justify;
-        text-justify: inter-word; 
+    
         @media screen and ${device.laptop}{
             padding-right:10rem;
-       
         }
+        @media (max-width: ${size.mobileS}){
+            display:inline;
+            padding:0.2rem;
+            text-align:left;
+            flex-wrap: wrap;
+        }
+       
     }
     .subheading{
         @media ${device.tablet}{
