@@ -91,6 +91,10 @@ p{
 
 }
 `
+export const Paragraph = styled.p`
+`
+
+
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
@@ -140,6 +144,7 @@ ${props =>
   `}
 `
 export const SecondContent = styled.div`
+
 @media ${device.mobileL}{
   padding:1rem;
 }
@@ -150,12 +155,17 @@ p{
   text-justify: inter-word;
   
 }
+
 .footnote{
   padding-top:1rem;
   ${fonts.footnote};
   @media (min-width: 900px) and (max-width: ${size.laptop}){
     padding-right:3rem;
   }
+  a{
+    color:${colors.secondary};
+  }
+ 
 }
 
 ${props => 

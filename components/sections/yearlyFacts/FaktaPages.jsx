@@ -8,6 +8,7 @@ import YearChanger from '../../year-changer/YearChanger'
 const Container = styled.section`
 width:100%;
 background-color:${colors.primary};
+
 `
 const Wrapper = styled.div`
 ${flex("column","center", "center")}

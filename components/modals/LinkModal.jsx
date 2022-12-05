@@ -17,6 +17,9 @@ const Content = styled.div`
   }
   a{
     color: ${colors.secondary};
+    &:hover{
+      color: ${colors.bio};
+    }
   }
 `
 
@@ -28,13 +31,13 @@ const LinkModal = ({sourceLink1, sourceLink2, sourceLink3}) => {
         <h3>Källhänvisningar:</h3>
         <ul>
           <Link href={sourceLink1} target="_blank">
-          #1: Konsumtion av skogsprodukter
+          Konsumtion av skogsprodukter
           </Link>
           <Link href={sourceLink2} target="_blank">
-          #2: Abrupt increase in harvested forest area over Europe after 2015
+          Abrupt increase in harvested forest area over Europe after 2015
           </Link>
           <Link href= {sourceLink3} target ="_blank">
-            #3 EU-kritik mot svenskt skogsbruk
+           EU-kritik mot svenskt skogsbruk
           </Link>
         </ul>
     </Content>

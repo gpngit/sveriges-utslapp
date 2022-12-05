@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
+import {Grid} from "../sections/sectionDifferentTypes/ContainerStyles";
 
 Chart.register(annotationPlugin)
 
@@ -55,9 +56,7 @@ const TextContent = styled.article`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
-  @media ${device.mobileTablet}{
-    padding-top:3rem;
-  }
+
   @media ${device.laptop}{
     padding-left:8rem;
   }
@@ -69,7 +68,6 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       margin-bottom:-0.3rem;
     }
-   
   }
 
   p {
@@ -82,12 +80,18 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       max-width:50%;
     }
-
         @media (max-width: ${size.mobileS}){ 
           width:90%;
         } 
   }
 `
+const GridText = styled.div`
+p {
+  text-align: justify;
+  text-justify: inter-word;
+  ${fonts.paragraph};
+` 
+
 const ButtonContainer = styled.div`
   max-width: 1000px;
   ${flex("row", 'flex-start', 'center')}
@@ -106,7 +110,7 @@ const ButtonContainer = styled.div`
   }
 
   .text {
-  color: ${colors.bio};
+  color: ${colors.border};
   font-size:12px;
   }
 
@@ -121,7 +125,7 @@ const Scrolltext = styled.div`
   ${flex('row', 'flex-end', 'flex-end')};
   font-size: 14px;
   gap: 1rem;
-  color: ${colors.bio};
+  color: ${colors.border};
 
   @media (min-width: ${size.tablet}) {
   display: none;
@@ -133,17 +137,23 @@ const ScrollContainer = styled.div`
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
+  cursor:grab;
+  scrollbar-color: ${colors.fossil} ${colors.white};
+  scrollbar-width: thin;
+
   //*IE AND FIREFOX:
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
-  }
-
-  &::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       display: none;
   }
+  }
+
+
 `
 const ChartContainer = styled.div`
+cursor:grab;
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
@@ -151,6 +161,7 @@ const ChartContainer = styled.div`
     padding-left:5rem;
     padding-right:5rem;
   }
+  padding-bottom:.5rem;
 `
 const CheckboxContainer = styled.label`
   ${flex('row-reverse', 'flex-start', 'center')};
@@ -164,8 +175,9 @@ const CheckboxContainer = styled.label`
   
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
-  display: none;
 
+  display: none;
+  cursor: pointer;
   &:hover ~ .checkmark {
     background-color: #ccc;
   }
@@ -234,6 +246,7 @@ const LineChart = ({emissions, pageElements}) => {
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
   const body2 = sections.find(section => section.name === 'body2')
+  const body3 = sections.find(section => section.name === 'body3')
 
   const [labelBio, setLabelBio] = useState("FOSSIL + BIOGEN CO2")
 
@@ -355,18 +368,25 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
+  
+  useEffect(() => {
+    //radbryt:
+    document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    document.getElementById(`line-chart-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    document.getElementById(`line-chart-body3`).innerText = body3.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    }, [])
+
   return (
     <>
     <Bg>
       <Wrapper/>
     </Bg>
-    <Container id='line-chart'>
       {show && 
-      <>
+    <Container id='line-chart'>
       <TextContent>
         <p>{subheading.text.toUpperCase()}</p>
         <h2>{title.text}</h2>
-        <p>{body1.text}</p>
+        <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
       </TextContent>  
       <Scrolltext>
         <p>Swipa höger för att se utveckling</p>
@@ -381,6 +401,8 @@ const LineChart = ({emissions, pageElements}) => {
           )}
           <ChartContainer>
             <Line ref={canvas} 
+            aria-label="Graf som visar hur både fossila och biobränslets utsläpp har blivit påverkade sedan 1990. Vi kan se att de fossila bränslenas utsläpp har minskat, men att biobränslet har helt fyllt upp samma summa. Därför är det 2020 lika mycket utsläpp som det är 1990, men att knappt hälften är fossila."
+            role="img"
             data={chartData} 
             options={options} 
             plugins={[linePlugin, annotationPlugin]} 
@@ -392,22 +414,39 @@ const LineChart = ({emissions, pageElements}) => {
           <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
             <CheckboxContainer>
-              <span className="labeltext">FOSSIL CO2</span>
-              <Checkbox className="checkbox" fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
+              <p className="labeltext">FOSSIL <abbr>CO2</abbr></p>
+              <Checkbox 
+              role="checkbox"
+              className="checkbox" 
+              fossil onChange={(e) => handleCheckbox(e)} 
+              tabindex="1"
+              data-index={0} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
             <CheckboxContainer>
-              <span className="labeltext">BIOGEN CO2</span>
-              <Checkbox className="checkbox" bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
+              <p className="labeltext">BIOGEN <abbr>CO2</abbr></p>
+              <Checkbox 
+              role="checkbox"
+              className="checkbox" 
+              bio onChange={(e) => handleCheckbox(e)} 
+              id="biogena-checkbox" 
+              data-index={1} defaultChecked 
+              tabindex="2"/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
           </div>
         </ButtonContainer>
-        <TextContent>
-        <p>{body2.text}</p>
-        </TextContent>  
-        </>} 
+        <Grid>  
+        <GridText>
+        <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
+        </GridText>
+        <GridText>
+        <h3>{body3.title}</h3>
+        <p id="line-chart-body3">{body3.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
+        </GridText>
+        </Grid>
       </Container>
+      } 
       </>
   )
 }

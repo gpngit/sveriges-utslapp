@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 //CSS
 import styled from 'styled-components'
 import { Container, Content, Grid, TextContentGrid, ImageWrapper, Subheading,  ImageDescription, Mobile, Desktop } from './ContainerStyles'
@@ -7,8 +7,10 @@ import SourceAndShare from '../../buttons/SourceAndShare'
 import Image from 'next/legacy/image'
 import SeveralSourcesAndShare from "../../buttons/SeveralSourcesAndShare";
 
-const Empty = styled.span`
-width:100%;`
+const Paragraph = styled.p`
+
+`
+
 
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
    
@@ -21,6 +23,15 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
 
+    useEffect(() => {
+ //radbryt:
+ let newBody1 = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+ document.getElementById(`${sectionIDname}+body1`).innerText = newBody1
+ let newBody2 = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+ document.getElementById(`${sectionIDname}+body2`).innerText = newBody2
+
+    }, [])
+   
     return (
         <>
         {show && 
@@ -32,9 +43,9 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                         {subheading.text}
                         </Subheading>
                         <h2>{title.text}</h2>
-                        <p>{body1.text}</p>
+                        <Paragraph id={`${sectionIDname}+body1`}>{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</Paragraph>
                         <br/>
-                        <p>{body2.text}</p>
+                        <Paragraph id={`${sectionIDname}+body2`}>{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</Paragraph>
                     <Desktop>
                     {sectionIDname === "kolcykeln" ? (   <SeveralSourcesAndShare
                         whiteBG= {"yes"}

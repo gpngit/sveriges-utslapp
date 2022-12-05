@@ -1,7 +1,7 @@
 //CSS
 import { colors, font } from '../../styles/partials'
 
-const ChartOptions = (emissions) => {
+const ChartOptions = () => {
 
     const options = {
         maintainAspectRatio: false,
@@ -21,27 +21,6 @@ const ChartOptions = (emissions) => {
         plugins: {
           legend: {
             display: false,
-            // display: () => {
-            //   if (window.innerWidth < 650){
-            //     return false
-            //   } else {
-            //     return true
-            //   }
-            // },
-            // position: () => {
-            //   if (window.innerWidth < 650){
-            //     return 'bottom'
-            //   } else {
-            //     return 'right'
-            //   }
-            // },
-            // align: () => {
-            //   if (window.innerWidth < 650){
-            //     return 'start'
-            //   } else {
-            //     return 'center'
-            //   }
-            // },
             labels: {
               color: 'black',
               font: {

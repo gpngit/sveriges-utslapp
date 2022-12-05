@@ -1,31 +1,29 @@
-// importera chartjs-plugin-datalabels ?????
-//CSS
-import styled, {css} from "styled-components";
-import { flex, colors, font, fonts } from '../../styles/partials'
+import { colors, font } from '../../styles/partials'
 
 const ChartOptions = () => {
   const options = {
-    // indexAxis: 'y', om den ska ligga horisontellt
     maintainAspectRatio: false,
     responsive: true,
+    interaction: {
+        intersect: false,
+    },
     scales: {
       y: { 
-        display: true,
+        stacked: true,
         ticks:{
+          display: true,
           color: colors.secondary,
           font:{
             size: '12px',
             family: font.main,
           },
-          stepSize: 5000,
+          stepSize: 20000,
         },
-        min: 0,
-        max: 25000,
         grid: {
           display: true
         }
       },
-      x: {  
+      x: {
         display: true,           
         grid: {
           display: false
@@ -44,36 +42,34 @@ const ChartOptions = () => {
         display: false,
       },
       datalabels: {
-        align: 'end',
-        anchor: 'end',
+        align: 'center',
+        anchor: 'center',
+        color: 'white',
+        formatter: function(value, context) {
+          let datasets = context.chart.data.datasets
+          let stackedDatasets = datasets.filter(ds => ds.stacked === true)
+          if (context.datasetIndex !== 2 && context.dataset.stacked){
+            return null
+          } else if (context.datasetIndex === 2) {
+              if (datasets[0].stacked){
+                return ['Totala', 'utsläpp','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+              } else {
+                return ['Potentiellt','upptag','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+              }
+          } else if (context.datasetIndex === 0) {
+            return ['Utsläpp','', `${Math.round(value)}`]
+          } else if (context.datasetIndex === 1) {
+            return ['Upptag','', `${Math.round(value)}`]
+          }
+        },
+        textAlign: 'center',
+        font: {
+          family: font.main,
+          size: "14px",
+        },
       },
       tooltip: {
-        enabled: true,
-        mode: 'index',
-        intersect: false,
-        backgroundColor: colors.secondary,
-        titleFont: {
-          family: font.main,
-          size: "18px",
-        },
-        titleColor: 'white', //default(onödig?)
-        titleAlign: 'left', //default(onödig?)
-        titleMarginBottom: 10,
-        bodyFont: {
-          family: font.main,
-          size: '14px'
-        },
-        bodyColor: 'white',  //default(onödig?)
-        bodyAlign: 'left', //default(onödig?)
-        bodySpacing: 10,
-        padding: 20,
-        caretPadding: 10, //avstång från pinkt på graf
-        caretSize: 10, //storlek på triangel 
-        cornerRadius: 10,
-        boxWidth: 16,
-        boxHeight: 16,
-        boxPadding: 10, //avstånd till text
-        borderWidth: 0
+        enabled: false,
       }
    }
   }

@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import ChartOptions from './ChartOptions2';
+import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
@@ -194,7 +194,8 @@ const Kollagring = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
           <ButtonAndMessageContainer>
-            <Button onClick={handleClick}>
+            <Button onClick={handleClick}
+            aria-label="Visa olika vyer:">
               {stackIndex === 'Stack 1' ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
             </Button>
             {showMessage && (
@@ -207,6 +208,8 @@ const Kollagring = ({ emissions }) => {
           <ChartContainer>
             {chartData && (
                 <Bar 
+                aria-label="Graf som visar skillnaden i hur mycket koldioxid som upptas, och hur mycket koldioxid som skulle kunna upptas av skogen. "
+                role="img"
                 ref={canvas} 
                 data={chartData} 
                 options={options} 
@@ -215,15 +218,15 @@ const Kollagring = ({ emissions }) => {
           </ChartContainer>
           <LabelsContainer>
             <Label>
-              <p>Fossil CO2</p>
+              <p>Fossil <abbr>CO2</abbr></p>
               <div className="fossil" />
             </Label>
             <Label>
-            <p>Biogen CO2</p>
+            <p>Biogen <abbr>CO2</abbr></p>
               <div className="bio" />
             </Label>
             <Label>
-              <p>Markanvändning (via LULUCF)</p>
+              <p>Markanvändning (via <abbr>LULUCF</abbr>)</p>
               <div className="lulucf" />
             </Label>
           </LabelsContainer>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flex, colors, fontSizes } from '../../styles/partials'
+import { colors } from '../../styles/partials'
 
 const Spinner = styled.div`
 display: inline-block;

@@ -63,14 +63,26 @@ const Input = styled.input`
     padding: 10px;
     ${fonts.footnote};
     border-color: ${colors.bio};
-        padding: 10px;
-        ${fonts.footnote}
         &:focus{
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
         }
 `
+const InputBody = styled.textarea`
+width: 90%;
+padding: 10px;
+${fonts.footnote};
+
+border-color: ${colors.bio};
+
+    &:focus{
+        outline: none;
+        border:2px solid ${colors.bio};
+        box-shadow: 0 0 10px ${colors.border};
+        }
+`
+
 const Label = styled.label`
 ${fonts.footnote};
 margin-bottom:2px;
@@ -111,6 +123,11 @@ h3{
 }
 p{
     ${fonts.footnote};
+    
+}
+.warning{
+    margin-top:1rem;
+    color:${colors.bio};
 }
 `
 
@@ -157,6 +174,7 @@ position: fixed;
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
+
     //modal:
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
@@ -167,12 +185,13 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     const [editable, setEditable] = useState(false)
     //text in modal:
     const [newText, setNewText] = useState(null)
+    const [warning, setWarning] = useState(false)
+    const [denied, setDenied] = useState(false)
 
     const handleEditClick = (e) => {
         e.preventDefault()
         setEditable(!editable)
     }
-
     const sendEditToFirebase = (inputValue) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
@@ -183,6 +202,14 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)
+        let brExp = "<br/>";
+        if(inputValue.value.indexOf(brExp) !== -1){
+            if(input.name !== "body1" || input.name !== "body2"){
+                setWarning(true)
+            }
+           
+           
+        }
         setNewText(inputValue.value)
         setEditable(!editable)
     }
@@ -192,25 +219,30 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         sendEditToFirebase(inputValue.value)
         setLoading(true)
+        setWarning(false)
+        setDenied(false)
     }
 
     const handleDiscard = (e) => {
         e.preventDefault()
+        setWarning(false)
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         inputValue.value = input.text
         setEditable(!editable)
+        setDenied(false)
     }
     
     useEffect(() => {
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
+            setDenied(false)
             setNavButtons(true);
         }, 2000);
     }}, [isLoading])
     
-    const URLNav = `https://sverigesutslapp.netlify.app/#${sectionName}`
-
+    const URLNav = `/#${sectionName}`
+    
     return (
             <>
         {modal && (
@@ -225,13 +257,16 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     </Validation>
                     <Validation>
                     <h3>Ändra till:</h3>
-                    <p>{newText}</p>
+                    {denied ? (<p>Du har använt en otillåten symbol i din text. Gå tillbaka och ta bort den. Annars prova att ladda om sidan. </p>): (<p>{newText}</p>)}
+                    
+                    {warning ? (<p className="warning">Varning: Du har använt dig av &lt;br/&gt;. Kontrollera att detta är en body-text som du editerar, annars kommer det synas på hemsidan!</p>): (null)}
                     </Validation>
                 </div>
                 {isLoading ? (<LoadingSpinner/> ):(
                     <>  {navButtons ? (null): (<ModalButtons>
-                        <button 
-                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        {denied ? (null): (<button 
+                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>)}
+                        
                         <button 
                         className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
                         </ModalButtons>)} </>
@@ -251,17 +286,46 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         )}
         
         <Container>
-    
+            
             <Label 
             htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
             </Label>
             <div className="input-and-edit">
+            {input.name === "body1" && 
+            <>{input.name !== "body2" && 
+                <InputBody readOnly={!editable} 
+                id={`${sectionName}-${input.name}`}
+                className="input_textarea"
+                name={`${sectionName}-${input.name}`}
+                rows="4"
+                cols="10"
+                type="textarea"
+                defaultValue={input.text} />
+
+            }</>}
+            {input.name === "body2" && 
+            <>{input.name !== "body1" && 
+            
+            <InputBody readOnly={!editable} 
+            id={`${sectionName}-${input.name}`}
+            role="textbox"
+            aria-labelledby={`${input.name}`}
+            name={`${sectionName}-${input.name}`}
+            rows="4"
+            type="textarea"
+            defaultValue={input.text}></InputBody>
+            
+            }</>
+            
+            }
+
+            {input.name !== "body1" && <>{input.name !== "body2" &&   
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.name}`}
                 className="input_text"
                 type="text"
-                defaultValue={input.text} />
-                
+                defaultValue={input.text} />}</>}
+          
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
@@ -273,6 +337,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}
+                  
             </div>
         </Container>
         </>
