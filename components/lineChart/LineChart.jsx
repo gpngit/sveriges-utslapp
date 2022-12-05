@@ -376,7 +376,7 @@ const LineChart = ({emissions, pageElements}) => {
             onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
-        </>} 
+
         <ButtonContainer>
           <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
@@ -395,6 +395,7 @@ const LineChart = ({emissions, pageElements}) => {
         <TextContent>
         <p>{body2.text}</p>
         </TextContent>  
+        </>} 
       </Container>
       </>
   )
