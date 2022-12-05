@@ -88,8 +88,7 @@ ${props =>
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
       }
-      
-      @media ${device.laptop}
+  
     }
 
     @media ${device.laptop}{
