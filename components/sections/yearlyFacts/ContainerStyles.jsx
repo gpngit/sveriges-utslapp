@@ -3,7 +3,7 @@ import { flex, device, colors, size, fonts } from '../../../styles/partials'
 
 
 export const Content = styled.article`
-  color: black;
+color: black;
   padding:3rem 1rem;
 @media ${device.mobileTablet}{
   padding: 3rem;
@@ -47,10 +47,12 @@ span:first-of-type {
 export const Heading = styled.span`
   padding-left:1rem;
 h2{
+  color: ${colors.secondary};
   ${fonts.lessheading};
 }
 p{
   ${fonts.paragraph};
+
 }
 `
 
@@ -78,6 +80,7 @@ ${props =>
       ${fonts.paragraph}
       text-align: justify;
       text-justify: inter-word; 
+      
       @media ${device.tablet}{
         max-width:90%;
         padding-left:3rem;
@@ -85,12 +88,15 @@ ${props =>
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
       }
-      
+      background-color:white;
+      @media ${device.laptop}
     }
 
     @media ${device.laptop}{
       div{
+      
         padding-left:3rem;
+    
       }
       p{
         padding-bottom:1rem;

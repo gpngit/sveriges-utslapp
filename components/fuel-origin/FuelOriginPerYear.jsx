@@ -118,31 +118,35 @@ const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
   @media ${device.mobileL}{
-    margin-top:-2rem;
-    margin-bottom:-2rem;
+    margin-top:-1rem;
     max-width:100%;
     padding:1rem;
-    padding-left:2rem;
     align-self:center;
+    padding-right:5rem;
   }
   @media ${device.mobileTablet}{
-    margin:0;
     padding-left:0;
-    width:80%;
-    margin-top:-1rem;
+    margin-top:-2rem;
+    margin-bottom:1rem;
+    align-self:start;
   }
   @media ${device.tablet}{
-    margin-bottom:1rem;
+    margin-bottom:2rem;
+    padding-left:3rem;
+    text-align:left;
   }
   @media ${device.laptop}{
     margin:0;
-    width:80%;
+    width:100%;
     padding:0;
     padding-bottom:1rem;
+    margin-bottom:0.4rem;
+    margin-left:-3rem;
   }
   @media ${device.laptopL}{
     width:100%;
     text-align:left;
+    margin-left:0;
   }
 `
 const LabelsContainer = styled.div`
@@ -156,10 +160,16 @@ const LabelsContainer = styled.div`
     gap:0.5rem;
     margin-bottom:1rem;
   }
+  @media ${device.mobileTablet}{
+    gap:0.2rem;
+    margin-left:-1rem;
+    width:100%;
+  }
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
     padding-left:3rem;
+    
   }
   @media ${device.laptop}{
   margin-top:0;
@@ -242,7 +252,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
     }
   }, [displayYear])
   
-  const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
+  const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','#f8f6f6','#f15a29' ,]
 
   return (
       <Container id='doughnut'>
