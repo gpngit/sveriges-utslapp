@@ -34,9 +34,14 @@ const Container = styled.header`
         }
 
         svg.embers{
+            display:none;
             animation: embers 7s infinite ease-in;
             opacity: 0;
             z-index:0;
+
+            @media ${device.tablet}{
+                display: block;
+            }
         }
 
         svg#forest{
