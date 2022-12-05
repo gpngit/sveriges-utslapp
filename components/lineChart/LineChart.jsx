@@ -20,8 +20,7 @@ const Bg = styled.div`
   background-color:${colors.secondary};
   position:relative;
   display: none;
-  height: 100px;
-
+  height: 200px;
   @media ${device.tablet}{
     display: block;
   }
@@ -51,14 +50,20 @@ const Container = styled.main`
     padding-bottom:5rem;
   }
 `
-const TextContent = styled.div`
+const TextContent = styled.article`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
-
+  @media ${device.laptop}{
+    padding-left:8rem;
+  }
   h2 {
+    color: ${colors.border};
     margin-top:-0.7rem;
     ${fonts.lessheading};
+    @media ${device.laptop}{
+      margin-bottom:-0.3rem;
+    }
   }
 
   p {
@@ -67,8 +72,10 @@ const TextContent = styled.div`
       width:90%;
     }
     @media ${device.laptop}{
-      max-width:70%;
+      max-width:50%;
     }
+    text-align: justify;
+        text-justify: inter-word; 
   }
 `
 const ButtonContainer = styled.div`
@@ -77,6 +84,10 @@ const ButtonContainer = styled.div`
 
   @media ${device.tablet}{
     gap: 1rem;
+  }
+  @media ${device.laptop}{
+    margin-top:-2rem;
+    padding-left:10rem; 
   }
 
   .checkboxes {
@@ -126,6 +137,9 @@ const ChartContainer = styled.div`
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
+  @media ${device.laptop}{
+    padding-left:3rem;
+  }
 `
 const CheckboxContainer = styled.label`
   ${flex('row-reverse', 'flex-start', 'center')};
@@ -136,6 +150,7 @@ const CheckboxContainer = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
@@ -184,7 +199,7 @@ const Message = styled.div`
   position: absolute;
   display: none;
   right: 10vw;
-
+  color: ${colors.border};
   p {
     font-weight: bold;
   }
@@ -349,8 +364,8 @@ const LineChart = ({emissions, pageElements}) => {
         <ScrollContainer>
           {showMessage && (
             <Message>
-              <p>Titta, utsläppen är på ungefär samma nivå nu som 1990</p>
-              <SmallArrow color={colors.secondary} size={14} />
+              <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
+              <SmallArrow color={colors.secondary} size={16} />
             </Message>
           )}
           <ChartContainer>

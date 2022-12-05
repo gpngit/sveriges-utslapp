@@ -18,7 +18,7 @@ padding:3rem;
 max-width:1400px;
 @media screen and ${device.tablet}{
 padding:3rem;
-padding-left:5rem;}
+padding-left:12rem;}
 
 @media (max-width:${size.mobileL}){ 
     padding-left:3em;
@@ -32,7 +32,7 @@ const TextContent = styled.div`
     gap: 20px;
     
     @media screen and ${device.laptop}{
-    max-width:60%;}
+    max-width:70%;}
     margin-bottom:2rem;
     h2 {
         ${fonts.lessheading};
@@ -41,7 +41,6 @@ const TextContent = styled.div`
         ${fonts.paragraph}; 
     }
     .body{
-        line-height:175%;
         font-weight:500;
         @media screen and ${device.tablet}{
             max-width:100%;
@@ -50,6 +49,7 @@ const TextContent = styled.div`
         text-justify: inter-word; 
         @media screen and ${device.laptop}{
             padding-right:10rem;
+       
         }
     }
     .subheading{
