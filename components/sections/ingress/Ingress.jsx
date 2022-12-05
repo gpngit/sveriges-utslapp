@@ -90,9 +90,10 @@ const Ingress = ({ pageElements }) => {
 
     return (
        
+        <>
+        {show && <>
         <Container id='ingress'>
         <Padding>
-            {show && <>
                 <TextContent>
                 <p className='subheading'>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
@@ -104,9 +105,10 @@ const Ingress = ({ pageElements }) => {
                 sourceLink={url.text} 
                 shareLink={'#ingress'}
                 sourceText={body1.text} />
-            </>}
         </Padding>
         </Container>
+        </>}
+        </>
     )
 }
 
