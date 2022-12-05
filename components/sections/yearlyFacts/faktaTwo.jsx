@@ -47,7 +47,6 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
             biobransle>
                 <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
                 <MobileButtons>
-                  
                 <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={url.text} 

@@ -10,7 +10,7 @@ const Container = styled.section`
     gap: 40px;
     background-color: ${colors.secondary};
     padding-bottom: 3rem;
-    color: white;
+    color: #f8f6f6;
     position: relative;
 `
 const Padding = styled.div`
@@ -18,7 +18,8 @@ padding:3rem;
 max-width:1400px;
 @media screen and ${device.tablet}{
 padding:3rem;
-padding-left:7rem;}
+padding-left:12rem;}
+
 @media (max-width:${size.mobileL}){ 
     padding-left:3em;
     padding-bottom:-3rem;
@@ -29,8 +30,9 @@ margin-top:2rem;
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
+    
     @media screen and ${device.laptop}{
-    max-width:60%;}
+    max-width:70%;}
     margin-bottom:2rem;
     h2 {
         ${fonts.lessheading};
@@ -39,14 +41,21 @@ const TextContent = styled.div`
         ${fonts.paragraph}; 
     }
     .body{
-        line-height:175%;
         font-weight:500;
+        @media screen and ${device.tablet}{
+            max-width:100%;
+        }
+        text-align: justify;
+        text-justify: inter-word; 
+        @media screen and ${device.laptop}{
+            padding-right:10rem;
+       
+        }
     }
     .subheading{
         @media ${device.tablet}{
             max-width:70%;
         }
-        
         margin-bottom:-0.5rem;
     }
 `

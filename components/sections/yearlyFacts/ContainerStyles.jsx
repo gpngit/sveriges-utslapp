@@ -3,17 +3,15 @@ import { flex, device, colors, size, fonts } from '../../../styles/partials'
 
 
 export const Content = styled.article`
-  color: black;
+color: black;
   padding:3rem 1rem;
-  @media ${device.mobileTablet}{
+@media ${device.mobileTablet}{
   padding: 3rem;
-  }
-
+}
 @media ${device.tablet}{
   padding: 5rem;
 }
 @media ${device.laptop}{
-
   padding-top:4rem;
   padding-bottom:1rem;
 }
@@ -30,7 +28,6 @@ span:first-of-type {
   padding-left:0;
   margin-left:0.2rem;
 }
-
 @media ${device.mobileM}{
   ${flex("row", "start", "center")}
   gap:12px;
@@ -43,25 +40,19 @@ span:first-of-type {
 @media ${device.mobileL}{
   span:first-of-type{
     margin-left:1rem;
-  
   }
 }
-
-
-
 `
 
 export const Heading = styled.span`
-
-
   padding-left:1rem;
-
-
 h2{
+  color: ${colors.secondary};
   ${fonts.lessheading};
 }
 p{
   ${fonts.paragraph};
+
 }
 `
 
@@ -69,8 +60,6 @@ p{
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
-
-  
   @media screen and ${device.laptop}{
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -82,26 +71,36 @@ export const FirstContent = styled.div`
     }
 @media ${device.mobileL}{
   padding:1rem;
-    }
+}
     
 ${props => 
   props.biobransle && 
   css`
-     p{
+  p{
       ${fonts.paragraph}
+      text-align: justify;
+      text-justify: inter-word; 
+      
       @media ${device.tablet}{
-        max-width:90%;  
+        max-width:90%;
+        padding-left:3rem;
       }
       @media (max-width: ${size.tablet}){
-        padding-bottom:1rem;
+        padding-bottom:1rem; 
       }
-     }
-     @media ${device.laptop}{
-      min-width:400px;
+  
+    }
+
+    @media ${device.laptop}{
+      div{
+      
+        padding-left:3rem;
+    
+      }
       p{
         padding-bottom:1rem;
       }
-     }
+    }
   `}
 `
 export const SecondContent = styled.div`
@@ -111,7 +110,9 @@ export const SecondContent = styled.div`
 p{
   padding-bottom:1rem;
   ${fonts.paragraph};
-
+  text-align: justify;
+  text-justify: inter-word;
+  
 }
 .footnote{
   padding-top:1rem;
@@ -140,9 +141,9 @@ width:100%;
 
 export const MobileButtons = styled.span`
 ${flex("column", "center", "center")}
+align-self:center;
+padding-top:1rem;
 
-padding-right:1rem;
-margin-top:3rem;
 @media ${device.laptop}{
   display:none;
 }
@@ -151,4 +152,5 @@ export const DesktopButtons = styled.span`
 @media (max-width: ${size.laptop}){
   display:none;
 }
+
 `

@@ -5,16 +5,14 @@ import { flex, device, size, colors, fonts } from '../../../styles/partials'
 export const Container = styled.section`
 ${flex("column", "center", "center")};
 gap: 40px;
-color: black;
+
 width:100%;
 padding:5em;
     @media (max-width:${size.mobiletablet}){ 
         padding:2em;  
-
     }
     @media (max-width: ${size.mobileL}){
     padding:1rem;
-  
     }
     @media ${device.mobileTablet}{
         padding:2rem;
@@ -47,7 +45,7 @@ width:100%;
 max-width:1568px;
 @media ${device.tablet}{
     padding: 1rem;
-  }
+}
 `
 
 export const Grid = styled.div`
@@ -66,12 +64,13 @@ export const TextContentGrid = styled.article`
     max-width:900px;
 }
 h2 {
-    margin-bottom:1rem;
+    margin-bottom:0.5rem;
+    margin-top:0.2rem;
     ${fonts.lessheading};
     max-width:90%;
+    color: ${colors.secondary};
     @media (max-width:${size.mobiletablet}){ 
         max-width:90%;
-        
     }
     @media ${device.betweentabletlaptop}{
         min-width:300px;
@@ -79,13 +78,15 @@ h2 {
         width:100%;
     }
     @media ${device.laptop}{
-        
+        max-width:400px;
+        width:100%;
     }
 }
 p {
+ 
     ${fonts.paragraph};
-    width:100%;
-    text-align:left;
+    text-align: justify;
+    text-justify: inter-word; 
 
     @media (max-width: ${size.mobileL}){
         max-width:100%;
@@ -105,7 +106,8 @@ p {
 export const Subheading = styled.p`
 text-transform:uppercase;
 text-align: left;
-max-width:70%;
+width:300px;
+color: ${colors.border};
 `
 
 export const ImageWrapper = styled.div`

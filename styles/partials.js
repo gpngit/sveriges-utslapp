@@ -10,6 +10,7 @@ export const colors = {
     border: '#663531',
     green: '#3d873d',
     greenOpaque: '#3d873db3',
+    white: "#f8f6f6",
     
 }
 export const size = {
@@ -35,11 +36,11 @@ export const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 export const fonts = {
-    heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3.8rem); line-height: 120%;  
+    heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3rem); line-height: 120%;  
     @media screen and ${device.desktop}{
     line-height: 100%;}
     `,
-    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 2rem); line-height:120%; `,
+    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 1.6rem); line-height:120%; `,
     paragraph:`font-size: clamp(1rem, 1vw , 1.2rem); 
     line-height: 150%; `,
     footnote:`font-size: 0.8rem; line-height:150%;

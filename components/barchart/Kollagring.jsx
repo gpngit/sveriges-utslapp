@@ -42,10 +42,9 @@ const Button = styled.button`
   padding: 0.8rem 1rem;
   align-self: center;
   background-color: transparent;
-  border: 2px solid ${colors.secondary};
- 
+  border: 2px solid ${colors.border};
   border-radius: 1rem;
-  color: ${colors.secondary};
+  color: ${colors.border};
   transition: .2s linear;
   &:hover{
     background-color: rgba(55, 0, 0, 0.3);
@@ -54,7 +53,7 @@ const Button = styled.button`
 const Message = styled.div`
   max-width: 220px;
   display: none;
-  color: ${colors.secondary};
+  color: ${colors.bio};
 
   p {
     font-weight: bold;
@@ -201,7 +200,7 @@ const Kollagring = ({ emissions }) => {
             {showMessage && (
               <Message>
                 <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
-                <SmallArrow size={15} color={colors.secondary} />
+                <SmallArrow size={15} color={colors.bio} />
               </Message>
             )}
           </ButtonAndMessageContainer>

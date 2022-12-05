@@ -25,11 +25,7 @@ const Container = styled.section`
   @media ${device.mobileTablet}{
     ${flex('column')};
   }
-  @media ${device.laptop}{
-    ${flex("column-reverse")}
-  }
   @media ${device.laptopL}{
-    ${flex('column')};
     margin-top:-1rem;
   }
   @media ${device.desktop}{
@@ -44,18 +40,18 @@ const Row600px = styled.div`
   ${flex("column")}
 }
 @media ${device.laptopL}{
-  ${flex("row-reverse")}
-  width:700px;
-  margin-top:-4rem;
+  ${flex("column")}
+  width:500px;
+  padding: 0;
+  margin: 0;
   padding-right:3em;
+  padding-top:1rem;
 }
 @media ${device.desktop}{
   margin-top:-2rem;
   width:800px;
   padding-right:0;
-  
 }
-
 `
 const ChartContainer = styled.div`
   position: relative;
@@ -67,11 +63,17 @@ const ChartContainer = styled.div`
   }
   @media ${device.mobileL}{
     height: 30vh;
+    min-height:100px;
   }
   @media ${device.mobileTablet}{
-    width:20vh;
+    width:30vh;
     margin-left:-1rem;
     height:25vh;
+    min-width:200px;
+  }
+  @media ${device.tablet}{
+    width:40vh;
+    margin-left:1rem;
   }
   @media ${device.laptop}{
     max-width:400px;
@@ -81,9 +83,11 @@ const ChartContainer = styled.div`
     margin-top:-2rem;
   }
   @media ${device.laptopL}{
-    height:50vh;
+    align-self:flex-start;
+    height:30vh;
     max-width:400px;
     width:50vw;
+    max-height:400px;
   }
 `
 const Overlay = styled.div`
@@ -114,23 +118,35 @@ const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
   @media ${device.mobileL}{
-    margin-top:-2rem;
-    margin-bottom:-2rem;
+    margin-top:-1rem;
     max-width:100%;
     padding:1rem;
-    padding-left:2rem;
     align-self:center;
+    padding-right:5rem;
   }
   @media ${device.mobileTablet}{
-    margin:0;
     padding-left:0;
-    width:100%;
+    margin-top:-2rem;
+    margin-bottom:1rem;
+    align-self:start;
   }
   @media ${device.tablet}{
-    margin-top:-2rem;
+    margin-bottom:2rem;
+    padding-left:3rem;
+    text-align:left;
   }
   @media ${device.laptop}{
     margin:0;
+    width:100%;
+    padding:0;
+    padding-bottom:1rem;
+    margin-bottom:0.4rem;
+    margin-left:-3rem;
+  }
+  @media ${device.laptopL}{
+    width:100%;
+    text-align:left;
+    margin-left:0;
   }
 `
 const LabelsContainer = styled.div`
@@ -139,18 +155,27 @@ const LabelsContainer = styled.div`
   gap: 0.3rem;
   flex-wrap: wrap;
   margin-top:-1rem;
+  
   @media ${device.mobileL}{
     gap:0.5rem;
     margin-bottom:1rem;
   }
+  @media ${device.mobileTablet}{
+    gap:0.2rem;
+    margin-left:-1rem;
+    width:100%;
+  }
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
+    padding-left:3rem;
+    
   }
   @media ${device.laptop}{
   margin-top:0;
   margin-bottom:0;
   gap:0.6rem;
+  padding-left:0;
   }
   @media ${device.desktop}{
     gap:1rem;
@@ -189,22 +214,6 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   })
 
   useEffect(() => {
-    if (displayYear >= 2005 && displayYear <= 2020) {
-      setDataAvailable(true)
-      setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
-    } else {
-      setDataAvailable(false)
-      setChartData({
-        labels: '',
-        datasets: [{
-          label: '',
-          data: [1]
-        }]
-      })
-    }
-  }, [displayYear])
-
-  useEffect(() => {
     if (yearlyData) {
         setCustomLabels(yearlyData.map((data, i) => {
           return {
@@ -226,8 +235,24 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
         })
     }
   }, [yearlyData, displayYear])
+
+  useEffect(() => {
+    if (displayYear >= 2005 && displayYear <= 2020) {
+      setDataAvailable(true)
+      setYearlyData(energiMyndighetenData.filter(data => data.year === displayYear)[0].fuels)
+    } else {
+      setDataAvailable(false)
+      setChartData({
+        labels: '',
+        datasets: [{
+          label: '',
+          data: [1]
+        }]
+      })
+    }
+  }, [displayYear])
   
-  const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','white','#f15a29' ,]
+  const colors = ['#5f4f49','#96563d','#3d873db3','#f7941d', '#370000', 'darkgrey','#663531', '#3d873d','#f8f6f6','#f15a29' ,]
 
   return (
       <Container id='doughnut'>

@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 @media (max-width:${size.mobiletablet}){ 
   display:none
 }
+
 @media ${device.mobiletablet}{
   clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
   
@@ -20,12 +21,12 @@ display:block;
 overflow:visible;
 position:relative;
 z-index:1;
-background-color:white;
+background-color:${colors.white};
 padding-top:10em;
 `
 
 const Content = styled.div`
-background-color:white;
+background-color:${colors.white};
 padding-bottom:10em;
 display:block;
 @media (max-width:${size.mobiletablet}){

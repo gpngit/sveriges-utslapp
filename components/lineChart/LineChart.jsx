@@ -20,8 +20,7 @@ const Bg = styled.div`
   background-color:${colors.secondary};
   position:relative;
   display: none;
-  height: 100px;
-
+  height: 200px;
   @media ${device.tablet}{
     display: block;
   }
@@ -33,7 +32,7 @@ const Wrapper = styled.div`
   background-color:${colors.primary};
   display:block;
 `
-const Container = styled.section`
+const Container = styled.main`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};
@@ -51,14 +50,20 @@ const Container = styled.section`
     padding-bottom:5rem;
   }
 `
-const TextContent = styled.div`
+const TextContent = styled.article`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
-
+  @media ${device.laptop}{
+    padding-left:8rem;
+  }
   h2 {
+    color: ${colors.secondary};
     margin-top:-0.7rem;
     ${fonts.lessheading};
+    @media ${device.laptop}{
+      margin-bottom:-0.3rem;
+    }
   }
 
   p {
@@ -67,8 +72,10 @@ const TextContent = styled.div`
       width:90%;
     }
     @media ${device.laptop}{
-      max-width:70%;
+      max-width:50%;
     }
+    text-align: justify;
+        text-justify: inter-word; 
   }
 `
 const ButtonContainer = styled.div`
@@ -77,6 +84,10 @@ const ButtonContainer = styled.div`
 
   @media ${device.tablet}{
     gap: 1rem;
+  }
+  @media ${device.laptop}{
+    margin-top:-2rem;
+    padding-left:10rem; 
   }
 
   .checkboxes {
@@ -126,6 +137,10 @@ const ChartContainer = styled.div`
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
+  @media ${device.laptop}{
+    padding-left:5rem;
+    padding-right:5rem;
+  }
 `
 const CheckboxContainer = styled.label`
   ${flex('row-reverse', 'flex-start', 'center')};
@@ -136,6 +151,7 @@ const CheckboxContainer = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
@@ -180,23 +196,23 @@ const CheckMark = styled.span`
 `
 const Message = styled.div`
   text-align: right;
-  max-width: 220px;
+  width: 220px;
   position: absolute;
   display: none;
   right: 10vw;
-
+  color: ${colors.border};
   p {
     font-weight: bold;
   }
 
   @media ${device.tablet}{
     display:block;
-    left: 50%;
+    left: 70%;
     gap: .6rem;
   }
 
   svg {
-    transform: translate(-50px, 10px) rotate(110deg);
+    transform: translate(-50px, 5px) rotate(120deg);
   }
 `
 
@@ -221,6 +237,7 @@ const LineChart = ({emissions, pageElements}) => {
   const [showMessage, setShowMessage] = useState(true)
 
   const [years, setYears] = useState([... new Set(emissions.map(emission => Number(emission.year)))])
+  const mostRecentYear = years[years.length -1]
   const [bioEmissions, setBioEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-BIO').filter(emission => emission.sector.val === '0.1'))
   const [fossilEmissions, setFossilEmissions] = useState(emissions.filter(emission => emission.type.val === 'CO2-ekv.').filter(emission => emission.sector.val === '0.1'))
   const [totalEmissions, setTotalEmissions] = useState(bioEmissions.map((emission, i) => {
@@ -233,7 +250,7 @@ const LineChart = ({emissions, pageElements}) => {
   }))
 
   const yearsForXAxis = []
-  for (let i=1990; i<=2045; i++){
+  for (let i=1990; i<=(mostRecentYear+10); i++){
     yearsForXAxis.push(i)
   }
 
@@ -348,8 +365,8 @@ const LineChart = ({emissions, pageElements}) => {
         <ScrollContainer>
           {showMessage && (
             <Message>
-              <p>Titta, utsläppen är på samma nivå 2020 som 1990</p>
-              <SmallArrow color={colors.secondary} size={14} />
+              <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
+              <SmallArrow color={colors.secondary} size={16} />
             </Message>
           )}
           <ChartContainer>
@@ -360,7 +377,7 @@ const LineChart = ({emissions, pageElements}) => {
             onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
-        </>} 
+
         <ButtonContainer>
           <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
@@ -379,6 +396,7 @@ const LineChart = ({emissions, pageElements}) => {
         <TextContent>
         <p>{body2.text}</p>
         </TextContent>  
+        </>} 
       </Container>
       </>
   )
