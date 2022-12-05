@@ -1,6 +1,7 @@
 import { flex, device, fonts, colors } from "../../styles/partials";
 import styled, {css} from "styled-components";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -57,6 +58,14 @@ const Content = styled.div`
 
 const SharingModal = ({ source, text }) => {
 
+  const { asPath } = useRouter();
+    const origin =
+        typeof window !== 'undefined' && window.location.origin
+            ? window.location.origin
+            : '';
+
+    const URL = `${origin}${asPath}`;
+
   const [buttontext, setButtonText] = useState("Kopiera")
 
   const copyURL = () => {
@@ -71,7 +80,9 @@ const SharingModal = ({ source, text }) => {
     },4000)
     
   }
-  const correctURL = `https://sverigesutslapp.netlify.app/${source}`
+
+
+  const correctURL = `${URL}${source}`
   
   return ( 
     <Content>
