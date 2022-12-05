@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, size, fonts, device } from '../../styles/partials'
+import { flex, colors, fonts } from '../../styles/partials'
 // react hooks
 import { useState, useEffect } from 'react';
 //next-cookies
@@ -20,8 +20,6 @@ const InnerContainer = styled.div`
     bottom: 0;
     width: 100%;
     padding: 2em;
-    /* background-color: ${colors.primary};
-    color: ${colors.secondary}; */
     background-color: white;
     color: black;
 `

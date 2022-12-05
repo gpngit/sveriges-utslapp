@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 
 // variables
 
@@ -53,12 +53,6 @@ export const fonts = {
     line-height: 120%;
     `,
 
-}
-export const fontSizes = {
-    heading: "clamp(3.1rem, 4vw + 1rem, 4rem)",
-    subheading: "clamp(2.6rem, 2vw + 1rem, 3rem)",
-    paragraph: "clamp(1.8rem, 1vw + 1rem, 2.2rem)",
-    footnote: "1rem"
 }
 
 export const font ={

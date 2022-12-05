@@ -169,7 +169,7 @@ position: fixed;
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
-    console.log("input", sectionId)
+
     //modal:
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
