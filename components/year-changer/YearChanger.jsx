@@ -9,7 +9,6 @@ import AppContext from '../../context/AppContext'
 //resources
 import Chevron from '../SVG\'s/Chevron'
 
-
 const Container = styled.div`
     ${fonts.footnote};
     z-index: 10;
@@ -107,7 +106,6 @@ position: relative;
 width: calc(100vw - 20px);
 margin-top: 10px;
 `
-
 const Line = styled.div`
 width:100%;
 background-color: ${colors.secondary};
@@ -127,7 +125,6 @@ const Square = styled.span`
     margin-left: auto; 
     margin-right: auto; 
 `
-
 const Change = styled.div`
 &:hover{
     background-color: rgba(55, 0, 0, 0.1);
@@ -148,7 +145,7 @@ const YearChanger = ({ emissions }) => {
 
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
-    const [years, setYears] = useState([... new Set(emissions.map(emission => emission.year))])
+    const years = [... new Set(emissions.map(emission => emission.year))]
     const latestYear = Number(years[years.length-1])
     const firstYear = Number(years[0])
     const [reachedBeginning, setReachedBeginning] = useState(true)
