@@ -54,6 +54,9 @@ const Row600px = styled.div`
 }
 `
 const ChartContainer = styled.div`
+@media (max-width: ${size.mobileS}){ 
+  display:none;
+} 
   position: relative;
   @media ${device.mobileS}{
     height:20vh;
@@ -118,6 +121,7 @@ const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
   padding:1rem;
+  
   @media ${device.mobileL}{
     margin-top:-1rem;
     max-width:100%;
@@ -148,8 +152,16 @@ const SourceText = styled.p`
     text-align:left;
     margin-left:0;
   }
+  @media (max-width: ${size.mobileS}){
+    text-align:left;
+    padding-right:2rem;
+   }
 `
 const LabelsContainer = styled.div`
+@media (max-width: ${size.mobileS}){ 
+  gap:1.2rem;
+  padding-right:1rem;
+} 
 padding-left:1rem;
 padding-bottom:2rem;
 padding-right:1rem;
@@ -158,6 +170,11 @@ padding-right:1rem;
   gap: 0.3rem;
   flex-wrap: wrap;
   margin-top:-1rem;
+
+  p{
+    line-height:1rem;
+    text-align:left;
+  }
   
   @media ${device.mobileL}{
     padding:0;
@@ -183,7 +200,6 @@ padding-right:1rem;
   }
   @media ${device.desktop}{
     gap:1rem;
-    
   }
   
 `
@@ -192,6 +208,10 @@ const Label = styled.div`
   gap: .5rem;
   color: black;
   height:22px;
+  @media (max-width: ${size.mobileS}){ 
+   gap:.3rem;
+   ${flex('row-reverse', "center", "flex-start")};
+  }
   div {
     height: 20px;
     width: 20px;
@@ -201,6 +221,7 @@ const Label = styled.div`
     @media ${device.laptopL}{
       margin-top:3px;
     }
+   
   }
 `
 
