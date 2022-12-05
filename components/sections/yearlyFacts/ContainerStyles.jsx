@@ -91,6 +91,10 @@ p{
 
 }
 `
+export const Paragraph = styled.p`
+`
+
+
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;

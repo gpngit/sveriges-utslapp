@@ -359,6 +359,13 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
+  
+  useEffect(() => {
+    //radbryt:
+    document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    document.getElementById(`line-chart-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    }, [])
+
   return (
     <>
     <Bg>
@@ -369,7 +376,7 @@ const LineChart = ({emissions, pageElements}) => {
       <TextContent>
         <p>{subheading.text.toUpperCase()}</p>
         <h2>{title.text}</h2>
-        <p>{body1.text}</p>
+        <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
       </TextContent>  
       <Scrolltext>
         <p>Swipa höger för att se utveckling</p>
@@ -420,7 +427,7 @@ const LineChart = ({emissions, pageElements}) => {
           </div>
         </ButtonContainer>
         <TextContent>
-        <p>{body2.text}</p>
+        <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
         </TextContent>  
       </Container>
       } 

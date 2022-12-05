@@ -1,11 +1,10 @@
 //react hooks
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
-import { Grid, Content, Row, FirstContent, SecondContent, RowMobile, Heading, MobileButtons, DesktopButtons } from './ContainerStyles'
+import { Grid, Paragraph, Content, Row, FirstContent, SecondContent, RowMobile, Heading, MobileButtons, DesktopButtons } from './ContainerStyles'
 import FuelOrigin from '../../fuel-origin/FuelOriginPerYear'
 import ChosenYear from './currentYearBlob'
-
 
 const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     
@@ -16,6 +15,12 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const body1 = sections.find(section => section.name === 'body1')
     const url = sections.find(section => section.name === 'source')
     
+
+    useEffect(() => {
+        //radbryt:
+        document.getElementById(`fakta-biobransle-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+        }, [])
+
     return (
     <>
     {show && 
@@ -29,14 +34,14 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
                 name = {name}
             />
             <Heading>
-            <p>{subheading.text.toUpperCase()}</p>
-                <h2>{title.text}</h2>
-                </Heading>
+            <p>{subheading.text.toUpperCase()}  </p>
+            <h2>{title.text}</h2>
+            </Heading>
         </Row>
         <Grid>
             <FirstContent 
             biobransle>
-            <p>{body1.text}</p>
+            <Paragraph id="fakta-biobransle-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</Paragraph>
             <DesktopButtons>
             <SourceAndShare 
                 whiteBG={"yes"}
