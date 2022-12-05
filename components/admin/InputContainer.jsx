@@ -157,6 +157,7 @@ position: fixed;
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
+    console.log("input", sectionId)
     //modal:
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
@@ -172,7 +173,6 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         e.preventDefault()
         setEditable(!editable)
     }
-
     const sendEditToFirebase = (inputValue) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
@@ -209,8 +209,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         }, 2000);
     }}, [isLoading])
     
-    const URLNav = `https://sverigesutslapp.netlify.app/#${sectionName}`
-
+    const URLNav = `/#${sectionName}`
+    console.log(input)
     return (
             <>
         {modal && (
@@ -251,7 +251,6 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         )}
         
         <Container>
-    
             <Label 
             htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
             </Label>
@@ -261,7 +260,6 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                 className="input_text"
                 type="text"
                 defaultValue={input.text} />
-                
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>

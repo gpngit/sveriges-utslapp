@@ -17,9 +17,8 @@ const Container = styled.main`
     min-height: 100vh;
     padding: 2rem;
     padding-top:4rem;
-   
+
     .header-and-logout {
-      
         ${flex('column-reverse', 'space-between', 'center')}
         width: 100%;
         @media screen and ${device.tablet}{
@@ -85,8 +84,7 @@ const Portal = ({ setAuthenticated }) => {
                 aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
                 </span>
             </div>
-         
-            
+
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>

@@ -133,7 +133,6 @@ const InputForm = ({ pageElements }) => {
         e.preventDefault()
         setShowSection(!showSection)
     }
-  
     const showOrHidePage = (index, bool) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${index}`)
@@ -143,15 +142,12 @@ const InputForm = ({ pageElements }) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
     } 
-
-
-
+    console.log("page:", pageElements)
     return (
         <Form className="form"
         >
             <TitleAndReveal>
             <h3>{capitalize(type)}</h3>
-            
             {toggleShow ? 
             <Row>
             <ToggleSwitch 
@@ -186,6 +182,8 @@ const InputForm = ({ pageElements }) => {
                 height={10}/>)}</button></>):(null)}
             </TitleAndReveal>
             {visible ? (<>
+      
+            
             {name === "footer" ? (<>
             {showSection && <> 
             {sections.map((section, i) => {
@@ -207,8 +205,7 @@ const InputForm = ({ pageElements }) => {
             {sections.map((section, i) => {
               return (<>
 
-                  <InputContainerFooterLinks
-                   
+                <InputContainerFooterLinks
                   key={`${id}${i}`} 
                   sectionId={id} 
                   input={section} 
@@ -223,7 +220,6 @@ const InputForm = ({ pageElements }) => {
             ):(  
             <>
             {showSection && sections.map((section, i) => {
-              
               return (
                   <InputContainer sectionId={id} 
                   key={i} 
