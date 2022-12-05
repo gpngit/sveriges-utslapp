@@ -20,8 +20,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
-   
-   console.log(sections.find(section => section.name == "sources1"))
 
     return (
         <>
@@ -61,7 +59,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <Image
                 layout ="responsive"
                 src={imgurl.url}
-                alt={imgurl.text}
+                alt={imgurl.alttext}
                 width={800}
                 height={800}/>
             <ImageDescription>
@@ -69,12 +67,12 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             </ImageDescription>
             </ImageWrapper>
                     </>): (<>
-                        <ImageWrapper 
+            <ImageWrapper 
             key={sectionIDname}>
             <Image
                 layout ="responsive"
                 src={imgurl.url}
-                alt={imgurl.text}
+                alt={imgurl.alttext}
                 width={800}
                 height={800}/>
             <ImageDescription>

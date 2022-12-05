@@ -6,7 +6,7 @@ export const Content = styled.article`
 color: black;
   padding:3rem 1rem;
 @media ${device.mobileTablet}{
-  padding: 3rem;
+  padding: 2rem;
 }
 @media ${device.tablet}{
   padding: 5rem;
@@ -18,6 +18,30 @@ color: black;
 @media ${device.laptopL}{
   padding:5rem 10rem;
 }
+${props => 
+  props.biobransle && 
+  css`
+
+  padding:3rem 1rem;
+
+  @media (max-width: ${size.tablet}){
+    margin-top:-3rem;
+    padding: 1rem;
+    padding-bottom:3rem;
+  }
+  
+  @media ${device.tablet}{
+    padding: 5rem;
+  }
+
+  @media ${device.laptop}{
+    padding-top:4rem;
+    padding-bottom:1rem;
+  }
+  @media ${device.laptopL}{
+    padding:5rem 10rem;
+  }
+  `}
 `
 export const Row = styled.span`
 padding-bottom:1rem;
@@ -27,8 +51,12 @@ gap:10px;
 span:first-of-type {  
   padding-left:0;
   margin-left:0.2rem;
+  @media (max-width: 350px){position:relative;
+    left:40%;
+  margin-bottom:0.5rem;}
 }
-@media ${device.mobileM}{
+
+@media ${device.mobileS}{
   ${flex("row", "start", "center")}
   gap:12px;
   margin-left:0.2rem;
@@ -42,6 +70,14 @@ span:first-of-type {
     margin-left:1rem;
   }
 }
+${props => 
+  props.biobransle && 
+  css`
+  span:first-of-type {  
+    padding-left:0;
+    margin-left:0.2rem;
+  }
+  `}
 `
 
 export const Heading = styled.span`
@@ -55,8 +91,6 @@ p{
 
 }
 `
-
-
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
@@ -80,7 +114,12 @@ ${props =>
       ${fonts.paragraph}
       text-align: justify;
       text-justify: inter-word; 
-      
+      padding: 1rem;
+      margin-top:-1rem;
+      @media ${device.mobileS}{
+       padding:0;
+       padding-top:1rem;
+      }
       @media ${device.tablet}{
         max-width:90%;
         padding-left:3rem;
@@ -88,14 +127,11 @@ ${props =>
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
       }
-  
     }
 
     @media ${device.laptop}{
       div{
-      
         padding-left:3rem;
-    
       }
       p{
         padding-bottom:1rem;
@@ -128,7 +164,6 @@ ${props =>
   @media ${device.laptop}{
     max-width:500px;
   }
-  
   `}
 `
 export const RowMobile = styled.span`
