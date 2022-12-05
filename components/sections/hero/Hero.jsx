@@ -21,7 +21,7 @@ const Container = styled.header`
     
     .burning-forest {
         margin-top: -100vh;
-        min-height: 80vh;
+        min-height: 100vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
