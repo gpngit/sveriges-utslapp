@@ -277,7 +277,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                 cols="10"
                 type="textarea"
                 defaultValue={input.text} />
-               
+
             }</>}
             {input.name === "body2" && 
             <>{input.name !== "body1" && 
@@ -292,7 +292,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
             defaultValue={input.text}></InputBody>
             }</>
             }
-           
+
             {input.name !== "body1" && <>{input.name !== "body2" &&   
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.name}`}

@@ -70,10 +70,108 @@ p{
     ${fonts.footnote};
 }
 `
-const ToggleVisibilitySwitch = styled.button`
+const ToggleOnOrOff = styled.div`
 position: relative;
-width: 60px;
-height: 34px;
+margin: 1rem;
+
+
+input[type='range'] {
+    -webkit-appearance: none;
+    max-width:3rem;
+    width:100%;
+    background: transparent;
+    border-radius:19px;
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 1.9rem;
+    margin: 0;
+    width: 100%;
+    border-radius:19px;
+    padding:0.2rem;
+    cursor: pointer;
+    background: ${colors.green};
+  }
+  
+  input[type='range']::-moz-range-track {
+    height: 1.9rem;
+    margin: 0;
+    border-radius:19px;
+    padding:0.2rem;
+    width: 100%;
+    cursor: pointer;
+    background: ${colors.green};
+  }
+  
+  input[type='range']::-ms-track {
+    height: 2rem;
+    border-radius:19px;
+    padding:0.2rem;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+    color: transparent;
+    background: ${colors.green};
+  }
+  
+  input[type='range']::-ms-fill-lower {
+    background: transparent;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.6rem;
+    width: 1.6rem;
+    background: ${colors.white};
+    border:none;
+    cursor:pointer;
+    
+  }
+
+  input[type='range']::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 1.6rem;
+    width: 1.6rem;
+    cursor:pointer;
+    background: ${colors.white};
+    border:none;
+    border-radius:50%;
+
+  }
+  
+  input[type='range']::-ms-thumb {
+    cursor:pointer;
+    -webkit-appearance: none;
+    height: 1.6rem;
+    width: 1.6rem;
+    background: ${colors.white};
+    border:none;
+    border-radius:50%;
+   
+  }
+
+  input[type='range']:focus {
+    outline: none;
+  }
+  
+  input[type='range']:focus::-webkit-slider-thumb {
+    box-shadow: 0px 0px 7px 3px ${colors.bio};
+  }
+  
+  input[type='range']:focus::-moz-range-thumb {
+    box-shadow: 0px 0px 7px 3px ${colors.bio};
+  }
+  
+  input[type='range']:focus::-ms-thumb {
+    box-shadow: 0px 0px 7px 3px ${colors.bio};
+  }
+  
+`
+const Label = styled.label`
+padding-right:1rem;
+
+position:relative;
+
+${fonts.footnote};
 `
 
 
@@ -156,7 +254,7 @@ const InputForm = ({ pageElements }) => {
             <h3>{capitalize(type)}</h3>
             {toggleShow ? 
             <Row>
-            
+
             <ToggleSwitch 
             role="slider"
             id={`toggle-${id}`}
