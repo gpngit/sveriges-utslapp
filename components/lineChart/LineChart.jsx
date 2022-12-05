@@ -392,12 +392,17 @@ const LineChart = ({emissions, pageElements}) => {
           <div className="checkboxes">
             <CheckboxContainer>
               <span className="labeltext">FOSSIL CO2</span>
-              <Checkbox className="checkbox" fossil onChange={(e) => handleCheckbox(e)} data-index={0} defaultChecked/>
+              <Checkbox className="checkbox" 
+              fossil onChange={(e) => handleCheckbox(e)} 
+              data-index={0} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
             <CheckboxContainer>
               <span className="labeltext">BIOGEN CO2</span>
-              <Checkbox className="checkbox" bio onChange={(e) => handleCheckbox(e)} id="biogena-checkbox" data-index={1} defaultChecked/>
+              <Checkbox className="checkbox" 
+              bio onChange={(e) => handleCheckbox(e)} 
+              id="biogena-checkbox" 
+              data-index={1} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
           </div>
