@@ -59,7 +59,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             <Image
                 layout ="responsive"
                 src={imgurl.url}
-                alt={imgurl.text}
+                alt={imgurl.alttext}
                 width={800}
                 height={800}/>
             <ImageDescription>
@@ -67,12 +67,12 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             </ImageDescription>
             </ImageWrapper>
                     </>): (<>
-                        <ImageWrapper 
+            <ImageWrapper 
             key={sectionIDname}>
             <Image
                 layout ="responsive"
                 src={imgurl.url}
-                alt={imgurl.text}
+                alt={imgurl.alttext}
                 width={800}
                 height={800}/>
             <ImageDescription>
