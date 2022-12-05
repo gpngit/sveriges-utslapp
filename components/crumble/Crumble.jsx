@@ -27,7 +27,7 @@ const Crumble = ({ color }) => {
             aria-label='Link to Greenpeace'>
             <GreenpeaceLogo 
             role="img"
-            alt='Greenpeace:s logotyp' 
+            alt='Se Greenpeace:s logotyp' 
             color={color} />
             </Link>
         </Container>

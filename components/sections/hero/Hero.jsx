@@ -265,8 +265,10 @@ const Hero = ({ pageElements }) => {
                         <h1>{title.text}</h1>
                         <ArrowStyleOne 
                         width={340} 
+                        role="img"
                         color={colors.bio} 
-                        strokeWidth={4} />
+                        strokeWidth={3}
+                        alt='En pil som pekar till föregående text' />
                         <NavLink 
                         className="ingressref" 
                         href='#ingress'>
@@ -278,8 +280,10 @@ const Hero = ({ pageElements }) => {
                         <p>{body1.text}</p>
                         <ArrowStyleTwo 
                         width={280} 
+                        role="img"
                         color={colors.bio} 
-                        strokeWidth={3} />
+                        strokeWidth={3} 
+                        alt='En pil som pekar till föregående text' />
                         <NavLink 
                         className="statistikref" 
                         href="#statistik">
@@ -289,9 +293,11 @@ const Hero = ({ pageElements }) => {
                     <TextAndLink>
                         <p>{body2.text}</p>
                         <ArrowStyleThree 
+                        role="img"
                         width={320} 
                         color={colors.bio} 
-                        strokeWidth={3} />
+                        strokeWidth={3} 
+                        alt='En pil som pekar till föregående text'/>
                         <NavLink href="#kolcykeln">
                             <strong>
                             Är inte biobränslen bra för naturen?
@@ -301,9 +307,11 @@ const Hero = ({ pageElements }) => {
                     <TextAndLink>
                         <p>{body3.text}</p>
                         <ArrowStyleFour 
+                        role="img"
                         width={360} 
                         color={colors.bio} 
-                        strokeWidth={2} />
+                        strokeWidth={2} 
+                        alt='En pil som pekar till föregående text'/>
                         <NavLink href="#skogen"
                         className="skogenref">
                             <strong>
