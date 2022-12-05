@@ -3,8 +3,6 @@ import initFirebase from '../firebase/initFirebase'
 import { getDatabase, ref, child, get } from "firebase/database"
 //SCB
 import { getDataFromScbAndTransferToFirebase } from '../scb/fetch'
-//react hooks
-import { useEffect } from 'react'
 //components
 import Hero from "../components/sections/hero/Hero"
 import Footer from '../components/footer/Footer'
@@ -38,26 +36,6 @@ export async function getServerSideProps(){
 }
 
 export default function Home({ siteSections, emissions, energiMyndighetenData }) {
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
-      
-    })
-
-    const observer = new IntersectionObserver((entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // console.log(entry.target.id)
-          }
-      })
-    }),{threshold: 0.6})
-
-    let sections = document.querySelectorAll('section')
-    sections.forEach(section => observer.observe(section))  
-
-    }, [])
-   
 
   return (
     <>

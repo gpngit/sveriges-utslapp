@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import ChartOptions from './ChartOptions2';
+import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'

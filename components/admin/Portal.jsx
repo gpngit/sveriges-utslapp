@@ -1,6 +1,6 @@
 //CSS
 import styled from 'styled-components'
-import { flex, colors, fonts, fontSizes, device } from '../../styles/partials'
+import { flex, colors, fonts, device } from '../../styles/partials'
 //react hooks
 import { useEffect, useState } from 'react'
 //firebase

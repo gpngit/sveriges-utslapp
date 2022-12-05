@@ -1,13 +1,7 @@
 //scb
 import { headers, SCB_URL, sectorValueTexts, typeValueTexts } from "./SCB_headers"
 //firebase
-import { getDatabase, ref, child, set, push, update } from "firebase/database"
-
-const getData = async (URL, headers) => {
-    const response = await fetch(URL, headers)
-    const data = await response.json()
-    return data.data
-}
+import { getDatabase, ref, set, update } from "firebase/database"
 
 const postDate = () => {
     const db = getDatabase()
@@ -21,7 +15,6 @@ const postDate = () => {
 const postScbData = (body) => {
     const db = getDatabase()
     body.forEach((obj, i) => {
-        // const newPostKey = push(child(ref(db), 'scb')).key
         const updates = {}
         updates['/scb/data/' + i] = obj
         return update(ref(db), updates)
