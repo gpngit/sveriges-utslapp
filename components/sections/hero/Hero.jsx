@@ -15,14 +15,13 @@ height:10px;
 margin-top:-4px;
 background-color: ${colors.secondary};
 `
-
 const Container = styled.header`
     background-color: ${colors.primary};
     color: ${colors.secondary};
     
     .burning-forest {
         margin-top: -100vh;
-        min-height: 80vh;
+        min-height: 100vh;
         position: sticky;
         overflow: hidden;
         bottom: 0;
@@ -30,31 +29,19 @@ const Container = styled.header`
         display:block;
         svg {
             position: absolute;
-            bottom: 0;
+            bottom: 0px;
             width: 100%;
-
-            /* @media (max-width: 1350px){
-                width: 120%;
-            }
-
-            @media (max-width: 900px){
-                width: 140%;
-            }
-
-            @media (max-width: 650px){
-                width: 160%;
-            }
-
-            @media (max-width: 450px){
-                width: 200%;
-            } */
-
         }
 
         svg.embers{
+            display:none;
             animation: embers 7s infinite ease-in;
             opacity: 0;
             z-index:0;
+
+            @media ${device.tablet}{
+                display: block;
+            }
         }
 
         svg#forest{
@@ -86,9 +73,13 @@ const Container = styled.header`
         }
 
         svg.smoke{
+        display:none;
         animation: smoke 12s infinite ease-in;
         opacity: 0;
-        z-index:0;
+
+            @media ${device.tablet}{
+                display: block;
+            }
         }
 
         svg#smoke-2{
@@ -241,11 +232,17 @@ const NavLink = styled.a`
 `
 const Blurred = styled.div`
     position: sticky;
-    height: 60vh;
+    height: 40vh;
+    background: linear-gradient(to top, ${colors.primary} 20vh, transparent);
     width: 100%;
     pointer-events: none;
     bottom: 0;
-    background: linear-gradient(to top, ${colors.primary} 40vh, transparent);
+
+
+    @media ${device.tablet}{
+        height: 60vh;
+        background: linear-gradient(to top, ${colors.primary} 40vh, transparent);
+    }
 `
 
 const Hero = ({ pageElements }) => {
