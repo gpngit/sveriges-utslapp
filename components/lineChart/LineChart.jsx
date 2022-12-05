@@ -360,9 +360,8 @@ const LineChart = ({emissions, pageElements}) => {
     <Bg>
       <Wrapper/>
     </Bg>
-    <Container id='line-chart'>
       {show && 
-      <>
+    <Container id='line-chart'>
       <TextContent>
         <p>{subheading.text.toUpperCase()}</p>
         <h2>{title.text}</h2>
@@ -406,8 +405,8 @@ const LineChart = ({emissions, pageElements}) => {
         <TextContent>
         <p>{body2.text}</p>
         </TextContent>  
-        </>} 
       </Container>
+      } 
       </>
   )
 }
