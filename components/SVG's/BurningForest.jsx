@@ -3,7 +3,13 @@ const BurningForest = () => {
     return (
         <>
         <section className="burning-forest">
-        <svg id="forest" fill="none" viewBox="0 0 1920 631">
+        <svg id="forest" 
+        fill="none" 
+        viewBox="0 0 1920 631"
+        role="img"
+        alt="En brinnande skog">
+             <title>Skogen brinner</title>
+            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g clipPath="url(#a)">
             <path fill="#CB4C21" d="M238 422v-1l1-1 1-1v1l2-1 2-1 2-1h1v9l-1 1-3 1-4 1-3 1-2 1a10 10 0 0 1 2 1h1v1l2-1v-1h1c2 1 3-1 4-1l3-2v7l-2 1h-4l-1 1h-1l-4 1h-1l-1 1h-1l-1 1 2 1h1l2-1v1l2-1 2-1 2-1 2-1 2-1h1v9h-1l-6 1-3 1v1l1 1 1-1 2 1 1-1 2-1h1l1-1h1v7h-1l-4 1h-2l2 2h1-1l1 1 1-1h1l2-2v8h-8l5 1h3v-1 8l-3 1h-4 7v7h-9l1 1h5l2-1h2v6h-10l1 1h9v62l1 46c3 3 6-2 6-2v-3l-2-39v-19l-1-8v-17l-1-4v-19l1 1h7a22 22 0 0 1-8-2l-1-5h2l2 1h2l-3-1-3-1v-3 1-1l-1 1v-1h-1 1v-1h1v-3l4 1h3l-4-1-2-1h-1v-1h1-1v-5h5l-3-1-2-1v-1l-1-8 1 1-1-1v-9h1l1 1 1 1 1 1a34 34 0 0 1 3 3l2 2 1 1 1-1v1l1 1h2l3 3 1 1 1 1v-1l-1-2-1-1v-1l-1-1-2-2-4-2-4-2-4-3h-2v-8 1h1l2 2 2 2h1l2 2v-1h1v2l2 2 1 1-1-1-1-2-1-2v-2l-1-1-3-1-4-2h-1v-2l2 1 3 1h3l-2-1-1-1-2-1h-2l-1-1-1-5h1l1 1 1 1h1l1 1 2 1v-1l2 1 1 1v-1l2 1 1 2h2-1v-1l-2-1-2-3-3-1h-3l-3-1h-1v-11l1 1 2 1 1 1 1 1 1 1 1 1v-1l1-2 1 1 1 2h1v-3l2 1 2 1 2 1-2-2-2-1h-2l-1-1-6-1-1-1-1-1-2-1v-3h-1s-1 0 0 0l-2 1-2 1h-2l-2 1v1h-2l-1 2h2l1-1 1-1h3l2-1 2-1v-1 6h-4l-1 1h-2l-2 1-2 3v1h1l1 1Zm13 165v-1 1Zm1 0Zm0 0Zm0 0Zm0 0s1 0 0 0Zm1 1v-1 1Zm0-1Zm0 1Zm0-1Zm2 1Zm-1 0Zm0-1c0-1 0 0 0 0Zm0 0Zm0 1Zm0-1Zm0-1v1-1Zm0 2Zm0-2v1h-1l1-1Zm-1 1h1-1Zm0 1s1 0 0 0c1 0 0 0 0 0Zm0-1Zm0 1Zm470-164 1-1 1-1h1l1-1 3-1 2-1v10h-1l-3 1-4 1-3 1-1 1-1 1h1l1 1 1-1v1l2-1h1c0-1 0 0 0 0l4-2 3-2v8h-2l-3 1h-2l-5 1-1 1h-1l-1 1v1h-1l3 1v-1l2-1 1 1 2-1 1-1h2l3-1 1-1 1-1v9h-1l-6 2h-3l1 1v2l2-1h1l2-1h1l1-1h2v-1 7h-1l-4 1-1 1 1 1h1v1h1l1-1 2-1v-1l1 8h-8l4 1h4v8h-7l-1 1h8v6h-4l-4 1h-2 10v5h-3l-5 1h-2 10v27l1 31v50c3 4 6-2 6-2v-3l-1-39-1-8v-21l-1-4v-20a166 166 0 0 0-1-9v-4h8-4l-3-1-1-1v-5l1 1h5l-4-1-2-1v-2h-2l1-1-1 1v-2l1 1v-1h1l-1-3 4 1h3l-4-1-2-1h-1 1-1v-6h5-3l-2-2v-8h1-1v-6l-1-4h1l1 1 1 1 1 1a34 34 0 0 1 3 3l2 2 1 2 1-2 1 1 1 1v1l1-1 3 3 1 2h1v-2l-1-1-1-2-1-1-2-1-3-2-5-3-4-2-1-1h-1v-7h1l1 1 2 2 1 1 1 1 2 1v-1l1 1 1 1 1 2 1 1v-1l-1-2-1-2-1-2h-1l-3-2-4-1-1-1v-2l3 1 2 1h3-2l-1-1-2-1-2-1h-1 1-1v-5h1l1 1h1l2 1 1 1h2s1 2 2 1h-1v-1l2 2 2 1 1 1v-1l-1-1-1-1-3-2-3-1-3-1-2-1h-1l-1-10h2l1 1 1 1 1 1 1 1 1 1h1v-3l1 2 1 1 2 1v-3c-1 0-1 0 0 0l1 1 2 1 2 1c1-1-1-2-2-2l-2-1-1-1h-2l-5-2-1-1-2-1-1-1-1-2v-1h-1v1h-1l-3 1h-2l-1 1-1 1-1 1-2 2 1-1h2l1-1 2-1v1h1l2-2 2-1v5l-3 1h-3l-2 2-2 2-1 1h1l1 1Zm14 165Zm0 0Zm0 0Zm1 0h-1 1c-1 0-1 0 0 0Zm0 0Zm0 1Zm0-1Zm0 1Zm0-1Zm2 1Zm0 0Zm0-1c-1 0-1 0 0 0Zm-1 0h1l-1 1v-1Zm0 1c1 0 0 0 0 0Zm0 0v-1 1Zm0-1Zm0 1Zm0-1Zm0 0Zm0 1Zm0-1Zm0 1Z" />
 
@@ -153,7 +159,12 @@ const BurningForest = () => {
         </clipPath>
         </defs>
         </svg>
-        <svg id="ember-3" className="embers" fill="none" viewBox="0 0 1920 382">
+        <svg 
+        role="img"
+        alt="Glödkol"
+        id="ember-3" className="embers" fill="none" viewBox="0 0 1920 382">
+              <title>Skogen brinner</title>
+            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g fill="#F15A29" clipPath="url(#a)">
         <path d="M630 44c2 0 2 4 0 4-3 0-3-4 0-4Z" opacity=".9"/>
         <path d="M599 83c3 0 3 3 0 3-2 0-2-3 0-3Zm-94 65c3 0 3 5 0 5-4 0-4-5 0-5Zm-6 14c4 0 4 4 0 4-3 0-3-4 0-4Zm72 127c3 0 3 4 0 4s-3-4 0-4Zm88 56h4l1 1v3h-4l-1-1v-3Zm-295-61c3 0 3 3 0 3-2 0-2-3 0-3Zm2-43c3 0 3 4 0 4-2 0-2-4 0-4Zm-11-22c3 0 3 3 0 3-2 0-2-3 0-3ZM301 82c2 0 2 2 0 2v-2Zm-37-6v1-1Zm-6 68 1 1c1 1 0 2-1 1l-1-1c-1-1 0-2 1-1Zm16 67c2 0 2 1 0 1v-1Zm28 77v2c-2 0-2-2 0-2Zm21-7v2-2Zm214 17v2-2Zm-34 13v2c-2 0-2-2 0-2Zm-65 30v2-2Zm-58 24c2 0 2 2 0 2v-2Zm474-100v2-2Zm45 37 1 2c1 1-1 2-1 1l-1-2c-1-1 1-2 1-1ZM406 91v2c-2 0-2-2 0-2Zm-80-49c2 0 2 2 0 2v-2Zm-40 6 1 1c1 0-1 2-2 1l-1-1c-1-1 1-2 2-1Zm79 85v1-1Zm-28 25v2-2Zm158-80v3c-2 0-2-3 0-3Zm9 41h2l1 1v2h-2l-1-1v-2Zm-41 24 2-1 2 1 1 2-3 1-2-1v-2Zm255-83c2 0 2 3 0 3s-2-3 0-3Zm-18 41c2 0 2 3 0 3s-2-3 0-3Zm-11 103c2 0 2 3 0 3s-2-3 0-3Zm6 33c2 0 2 2 0 2s-2-2 0-2Zm-73-23c2 0 2 2 0 2s-2-2 0-2Zm-98 87c2 0 2 3 0 3s-2-3 0-3Zm-25 33c2 0 2 3 0 3v-3Zm31 26c2 0 2 3 0 3s-2-3 0-3Zm-265-39 2-1 2 1 1 2-2 1-2-1-1-2Zm-33 20c2 0 2 2 0 2s-2-2 0-2Zm-53-137v2-2Zm42 48c2 0 2 1 0 1v-1Zm-27-77v2-2Zm652 137v1-1Zm46-45c2 0 2 2 0 2v-2Zm53 40 1 1c0 1-1 2-2 1l-1-1c-1-1 1-2 2-1Zm-238 23c2 0 2 2 0 2v-2Zm-24-66c2 0 2 2 0 2v-2Zm-72-14v2c-2 0-2-2 0-2Zm-93 59 1 1c1 0 0 2-1 1l-1-1c-1-1 1-2 1-1Zm-321 53v2c-2 0-2-2 0-2Zm-6-46v2c-2 0-2-2 0-2Zm87 24c2 0 2 2 0 2v-2Zm55-4v1-1Zm98-85v2-2Zm61-25c2 0 2 1 0 1v-1Zm-32-48v2-2Zm-61-54v2c-2 0-2-2 0-2Zm26-68h1v2h-1v-2ZM285 7v2-2Zm-68 10c2 0 2 1 0 1v-1Zm-41 38v1-1Zm22 89v1c-2 0-2-1 0-1ZM553 21v2c-2 0-2-2 0-2Zm84-13 1 1c1 1 0 2-1 1l-1-1c-1 0 0-2 1-1Zm14 105v2-2Zm70 16 3 1c1 0 1 2-1 1h-3c-1-1 0-3 1-2Zm-73 97v2-2Zm-88 0v2-2Zm8 60v2-2Zm-12 40v2-2Zm125 14v2-2Zm56-1 1 1s-1 2-2 1l-1-1c-1-1 1-2 2-1Z"/>
@@ -174,8 +185,11 @@ const BurningForest = () => {
         </clipPath>
         </defs>
         </svg>
-        <svg id="smoke-1" className="smoke" fill="none" viewBox="0 0 1916 521">
+        <svg id="smoke-1" className="smoke" fill="none" viewBox="0 0 1916 521"
+        alt="Rökmoln">
         <g clipPath="url(#a)">
+        <title>Skogen brinner</title>
+            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <path fill="#370000" fillOpacity=".1" d="m2510 520-41-242-21-3c-66-9-62-9-114-5a1044 1044 0 0 1-160-4c-52-5-45-5-91-2-39 2-40 2-73 0-58-4-48-4-89 4l-63 11a919 919 0 0 0-178 35c-58 23-47 22-90 10-56-16-50-15-105-16-30 0-34 0-72 6-40 6-45 6-88 7l-92 2c-36 2-38 2-85-1a2031 2031 0 0 0-237 2c-27 12-100 22-150 25-51 3-47 8-74 9-26 0-23-10-55-15-49-1-108 13-133 22l-50 17c-7 2-8 2-29 2-44 0-65-1-108-6-41-4-76-7-114-7-15 0-28 2-62 12-29 8-33 9-73 12-41 3-52 5-74 10l-54 9 86 519c1 4 2489-413 2489-413Z"/>
         </g>
         <defs>
@@ -184,7 +198,12 @@ const BurningForest = () => {
         </clipPath>
         </defs>
         </svg>
-        <svg id="smoke-2" className="smoke" fill="none" viewBox="0 0 1916 521">
+        <svg id="smoke-2" 
+        role="img"
+        alt="Röken"
+        className="smoke" fill="none" viewBox="0 0 1916 521">
+        <title>Skogen brinner</title>
+            <desc>Röken i bakgrunden rör sig pulserande.</desc>
         <g clipPath="url(#a)">
         <path fill="#370000" fillOpacity=".3" d="M0 698V407l20-8c61-24 57-23 106-28a839 839 0 0 0 151-36c49-16 42-14 86-20 37-5 38-5 69-14 54-16 44-15 84-13 19 1 47 2 61 1 109-2 146 0 174 7 59 15 48 16 87-7 51-29 44-27 97-38 28-6 32-7 69-8 38 0 43-1 83-9 25-5 48-8 88-14 34-6 36-6 80-18a1609 1609 0 0 1 225-44c26 8 97 6 145 0s45 0 71-4c25-5 20-16 49-28 47-11 104-6 130-1l50 11a707 707 0 0 0 128-31c38-14 71-23 107-31 14-3 27-3 61 2 28 4 32 4 70 0 39-4 50-5 72-2h52v624c0 5-2415 0-2415 0Z" opacity=".1"/>
         </g>
