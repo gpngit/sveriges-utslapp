@@ -20,8 +20,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const body2 = sections.find(section => section.name === 'body2')
     const imgurl = sections.find(section => section.name === 'imgurl')
     const source = sections.find(section => section.name === 'source')
-   
-   console.log(sections.find(section => section.name == "sources1"))
 
     return (
         <>

@@ -5,9 +5,14 @@ import { flex, device, size, colors, fonts } from '../../../styles/partials'
 export const Container = styled.section`
 ${flex("column", "center", "center")};
 gap: 40px;
-
 width:100%;
 padding:5em;
+@media (max-width: ${size.mobileS}){
+    padding:1rem;
+    margin: 0 auto;
+
+    width:100%;
+}
     @media (max-width:${size.mobiletablet}){ 
         padding:2em;  
     }
@@ -24,21 +29,6 @@ padding:5em;
         padding:10rem;
         padding-bottom:3rem;
     }
-
-${props => 
-    props.first && 
-    css`
-        @media ${device.laptop}{
-        padding-top:8em;
-        }
-        padding-top:2em;
-        @media (max-width:${size.tablet}){  
-            padding-top:5em;
-        }
-        @media (max-width: ${size.mobileL}){
-            padding:1rem;
-        }
-    `}
 `
 export const Content = styled.div`
 width:100%;
@@ -46,6 +36,7 @@ max-width:1568px;
 @media ${device.tablet}{
     padding: 1rem;
 }
+padding-top:2rem;
 `
 
 export const Grid = styled.div`
@@ -57,6 +48,7 @@ gap: 1rem;
 `
 
 export const TextContentGrid = styled.article`
+
 @media ${device.betweentabletlaptop}{
     max-width:100%;
 }
@@ -81,6 +73,10 @@ h2 {
         max-width:400px;
         width:100%;
     }
+    @media (max-width: ${size.mobileS}){
+        width:100%;
+       
+    }
 }
 p {
  
@@ -99,7 +95,10 @@ p {
     max-width:400px;
     width:100%;
     }
- 
+    @media (max-width: ${size.mobileS}){
+        padding-right:1rem;
+        width:100%;
+    }
 }
 `
 
@@ -108,6 +107,9 @@ text-transform:uppercase;
 text-align: left;
 width:300px;
 color: ${colors.border};
+@media (max-width: ${size.mobileS}){
+${fonts.footnote};
+}
 `
 
 export const ImageWrapper = styled.div`

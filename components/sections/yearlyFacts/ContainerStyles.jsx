@@ -27,6 +27,7 @@ ${props =>
   @media (max-width: ${size.tablet}){
     margin-top:-3rem;
     padding: 1rem;
+    padding-bottom:3rem;
   }
   
   @media ${device.tablet}{
