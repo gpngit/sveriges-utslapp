@@ -17,7 +17,7 @@ import arrow from "../../public/arrow_down.png"
 import { useState } from "react"
 import InputContainerFooter from "./InputContainerFooter";
 import InputContainerFooterLinks from "./InputContainerFooterLinks";
-
+import { Tutorial } from "./Portal";
 
 
 const Form = styled.form`
@@ -258,7 +258,7 @@ const InputForm = ({ pageElements }) => {
             <ToggleSwitch 
             role="slider"
             id={`toggle-${id}`}
-            aria-label="Stäng av/Sätt på en sektion"
+            aria-label="Publicera / Avpublicera en sektion"
             type="range"
             htmlFor={`switch-${id}`}>
                 <input onChange={() => handleVisibility(id-1)} 
@@ -269,7 +269,7 @@ const InputForm = ({ pageElements }) => {
                 <span 
                 className="slider round"></span>
             </ToggleSwitch>
-            <p>{show ? 'Information kan ses på sidan' : 'Information visas inte på sidan'}</p>
+            <p>{show ? 'Publicerat' : 'Avpublicerat'}</p>
             </Row>
             :(null)} 
             {visible ? (<>
@@ -294,8 +294,10 @@ const InputForm = ({ pageElements }) => {
             
             {name === "footer" ? (<>
             {showSection && <> 
+            
             {sections.map((section, i) => {
             return (<>
+            
                   <InputContainerFooter 
                   key={`${i}${id}`}
                   sectionId={id} 
@@ -303,6 +305,7 @@ const InputForm = ({ pageElements }) => {
                   inputIndex={i} 
                   sectionName={name} 
                   />
+                
                   </>
               )
             })}
@@ -327,7 +330,7 @@ const InputForm = ({ pageElements }) => {
             </>
             ):(  
             <>
-            {showSection && sections.map((section, i) => {
+            {showSection && <> {sections.map((section, i) => {
               return (
               <InputContainer sectionId={id} 
               key={i} 
@@ -337,13 +340,13 @@ const InputForm = ({ pageElements }) => {
             />
               )
           })}
+          <Tutorial><h4>Bra att veta:</h4>
+            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 <strong>&lt;br/&gt; </strong>Mening 2. <br/>Resultatet blir såhär:<span className="spanInsidespan"> <br/> Mening 1 <br/>Mening 2.</span><br/> <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1 eller BODY2.</p>
+            </Tutorial> </>}
           </>
           ) }
             </>):(null)}
-   
-            
         </Form>
-       
     )
 }
 

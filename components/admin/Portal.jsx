@@ -54,6 +54,17 @@ const Container = styled.main`
     }
 `
 
+export const Tutorial = styled.span`
+background-color: #e2e2e2;
+padding:1rem;
+border-radius:19px;
+.spanInsidespan{
+display: block;
+position:relative;
+left: 30%;
+}
+`
+
 
 const Portal = ({ setAuthenticated }) => {
 
@@ -84,14 +95,19 @@ const Portal = ({ setAuthenticated }) => {
                 aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
                 </span>
             </div>
+           
 
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
                     </InputForm>
+                    
                 )
             })}
-           
+            <Tutorial><h3>Bra att veta:</h3>
+            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 <strong>&lt;br/&gt; </strong>Mening 2. <br/>Resultatet blir då: <span className="spanInsidespan"> <br/> Mening 1 <br/>Mening 2.</span> <br/>
+            <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1 eller BODY2.</p>
+            </Tutorial>
         </Container>
     )
 }

@@ -17,8 +17,6 @@ const Padding = styled.div`
 padding:3rem;
 max-width:1500px;
 
-
-
 @media (max-width:${size.mobileL}){ 
     padding-left:3em;
     padding-bottom:-3rem;
@@ -26,8 +24,6 @@ max-width:1500px;
 @media ${device.mobileTablet}{
     padding-left:2rem;
 }
-
-
 
 margin-top:2rem;
 @media (max-width: ${size.mobileS}){

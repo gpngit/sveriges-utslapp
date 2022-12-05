@@ -123,6 +123,11 @@ h3{
 }
 p{
     ${fonts.footnote};
+    
+}
+.warning{
+    margin-top:1rem;
+    color:${colors.bio};
 }
 `
 
@@ -180,6 +185,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     const [editable, setEditable] = useState(false)
     //text in modal:
     const [newText, setNewText] = useState(null)
+    const [warning, setWarning] = useState(false)
+    const [denied, setDenied] = useState(false)
 
     const handleEditClick = (e) => {
         e.preventDefault()
@@ -195,6 +202,16 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         e.preventDefault()
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         setModal(true)
+        let brExp = "<br/>";
+        if(inputValue.value.indexOf(brExp) !== -1){
+            if(input.name !== "body1" || input.name !== "body2"){
+                setDenied(true)
+            }
+            else{
+                setWarning(true)
+            }
+           
+        }
         setNewText(inputValue.value)
         setEditable(!editable)
     }
@@ -204,19 +221,24 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         sendEditToFirebase(inputValue.value)
         setLoading(true)
+        setWarning(false)
+        setDenied(false)
     }
 
     const handleDiscard = (e) => {
         e.preventDefault()
+        setWarning(false)
         let inputValue = document.querySelector(`#${sectionName}-${input.name}`)
         inputValue.value = input.text
         setEditable(!editable)
+        setDenied(false)
     }
     
     useEffect(() => {
     if(isLoading){
         setTimeout(() => {
             setLoading(false)
+            setDenied(false)
             setNavButtons(true);
         }, 2000);
     }}, [isLoading])
@@ -237,13 +259,16 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     </Validation>
                     <Validation>
                     <h3>Ändra till:</h3>
-                    <p>{newText}</p>
+                    {denied ? (<p>Du har använt en otillåten symbol i din text. Gå tillbaka och ta bort den. Annars prova att ladda om sidan. </p>): (<p>{newText}</p>)}
+                    
+                    {warning ? (<p className="warning">Varning: Du har använt dig av &lt;br/&gt;. Kontrollera att detta är en body-text som du editerar, annars kommer det synas på hemsidan!</p>): (null)}
                     </Validation>
                 </div>
                 {isLoading ? (<LoadingSpinner/> ):(
                     <>  {navButtons ? (null): (<ModalButtons>
-                        <button 
-                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        {denied ? (null): (<button 
+                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>)}
+                        
                         <button 
                         className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
                         </ModalButtons>)} </>
@@ -263,6 +288,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         )}
         
         <Container>
+            
             <Label 
             htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
             </Label>
@@ -290,7 +316,9 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
             rows="4"
             type="textarea"
             defaultValue={input.text}></InputBody>
+            
             }</>
+            
             }
 
             {input.name !== "body1" && <>{input.name !== "body2" &&   
@@ -311,6 +339,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     onClick={(e) => handleSave(e)}>Spara</button>
                     </>
                 )}
+                  
             </div>
         </Container>
         </>
