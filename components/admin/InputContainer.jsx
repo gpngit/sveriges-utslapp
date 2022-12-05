@@ -205,11 +205,9 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         let brExp = "<br/>";
         if(inputValue.value.indexOf(brExp) !== -1){
             if(input.name !== "body1" || input.name !== "body2"){
-                setDenied(true)
-            }
-            else{
                 setWarning(true)
             }
+           
            
         }
         setNewText(inputValue.value)

@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
+import {Grid} from "../sections/sectionDifferentTypes/ContainerStyles";
 
 Chart.register(annotationPlugin)
 
@@ -84,6 +85,13 @@ const TextContent = styled.article`
         } 
   }
 `
+const GridText = styled.div`
+p {
+  text-align: justify;
+  text-justify: inter-word;
+  ${fonts.paragraph};
+` 
+
 const ButtonContainer = styled.div`
   max-width: 1000px;
   ${flex("row", 'flex-start', 'center')}
@@ -238,6 +246,7 @@ const LineChart = ({emissions, pageElements}) => {
   const subheading = sections.find(section => section.name === 'subheading')
   const body1 = sections.find(section => section.name === 'body1')
   const body2 = sections.find(section => section.name === 'body2')
+  const body3 = sections.find(section => section.name === 'body3')
 
   const [labelBio, setLabelBio] = useState("FOSSIL + BIOGEN CO2")
 
@@ -364,6 +373,7 @@ const LineChart = ({emissions, pageElements}) => {
     //radbryt:
     document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`line-chart-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    document.getElementById(`line-chart-body3`).innerText = body3.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     }, [])
 
   return (
@@ -404,7 +414,7 @@ const LineChart = ({emissions, pageElements}) => {
           <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
             <CheckboxContainer>
-              <span className="labeltext">FOSSIL CO2</span>
+              <p className="labeltext">FOSSIL <abbr>CO2</abbr></p>
               <Checkbox 
               role="checkbox"
               className="checkbox" 
@@ -414,7 +424,7 @@ const LineChart = ({emissions, pageElements}) => {
               <CheckMark className="checkmark" />
             </CheckboxContainer>
             <CheckboxContainer>
-              <span className="labeltext">BIOGEN CO2</span>
+              <p className="labeltext">BIOGEN <abbr>CO2</abbr></p>
               <Checkbox 
               role="checkbox"
               className="checkbox" 
@@ -426,9 +436,15 @@ const LineChart = ({emissions, pageElements}) => {
             </CheckboxContainer>
           </div>
         </ButtonContainer>
-        <TextContent>
+        <Grid>  
+        <GridText>
         <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-        </TextContent>  
+        </GridText>
+        <GridText>
+        <h3>{body3.title}</h3>
+        <p id="line-chart-body3">{body3.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
+        </GridText>
+        </Grid>
       </Container>
       } 
       </>

@@ -8,10 +8,7 @@ import Image from 'next/legacy/image'
 import SeveralSourcesAndShare from "../../buttons/SeveralSourcesAndShare";
 
 const Paragraph = styled.p`
-span ::before{
-    content: "\A";
-    white-space: pre;
-}
+
 `
 
 

@@ -9,7 +9,7 @@ const Container = styled.div`
     ${flex('row')};
     gap: 20px;
 `
-const LinkButton = styled.a`
+const LinkButton = styled.button`
     ${flex('row', 'center', 'center')}
     background-color: ${colors.border};
     text-decoration: none;
@@ -176,7 +176,7 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
             </ModalWrapper>
 
             {showModal ? (
-              <LinkModalWrapper>
+            <LinkModalWrapper>
                 <CloseButton onClick={() => {setShowModal(false)}}>Stäng</CloseButton>
                 <LinkModal 
                 sourceLink1 = {sourceLink1}

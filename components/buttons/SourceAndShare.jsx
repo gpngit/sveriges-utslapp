@@ -136,7 +136,7 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
         <Container>
             {showSecondary ? (
                 <>
-                <LinkButton  secondary
+                <LinkButton secondary
                 target="_blank"
                 href={sourceLink}>Källa
                 </LinkButton>

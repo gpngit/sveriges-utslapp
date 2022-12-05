@@ -7,6 +7,7 @@ ${flex("column", "center", "center")};
 gap: 40px;
 width:100%;
 padding:5em;
+
 @media (max-width: ${size.mobileS}){
     padding:1rem;
     margin: 0 auto;
@@ -37,6 +38,7 @@ max-width:1568px;
     padding: 1rem;
 }
 padding-top:2rem;
+
 `
 
 export const Grid = styled.div`

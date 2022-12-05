@@ -218,15 +218,15 @@ const Kollagring = ({ emissions }) => {
           </ChartContainer>
           <LabelsContainer>
             <Label>
-              <p>Fossil CO2</p>
+              <p>Fossil <abbr>CO2</abbr></p>
               <div className="fossil" />
             </Label>
             <Label>
-            <p>Biogen CO2</p>
+            <p>Biogen <abbr>CO2</abbr></p>
               <div className="bio" />
             </Label>
             <Label>
-              <p>Markanvändning (via LULUCF)</p>
+              <p>Markanvändning (via <abbr>LULUCF</abbr>)</p>
               <div className="lulucf" />
             </Label>
           </LabelsContainer>
