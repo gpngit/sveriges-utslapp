@@ -24,6 +24,9 @@ padding-left:12rem;}
     padding-left:3em;
     padding-bottom:-3rem;
 }
+@media ${device.mobileTablet}{
+    padding-left:2rem;
+}
 margin-top:2rem;
 `
 

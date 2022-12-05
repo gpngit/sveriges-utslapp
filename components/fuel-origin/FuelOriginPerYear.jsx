@@ -117,10 +117,10 @@ const Overlay = styled.div`
 const SourceText = styled.p`
   font-style:italic;
   ${fonts.footnote};
+  padding:1rem;
   @media ${device.mobileL}{
     margin-top:-1rem;
     max-width:100%;
-    padding:1rem;
     align-self:center;
     padding-right:5rem;
   }
@@ -150,6 +150,9 @@ const SourceText = styled.p`
   }
 `
 const LabelsContainer = styled.div`
+padding-left:1rem;
+padding-bottom:2rem;
+padding-right:1rem;
   align-self: center;
   ${flex('column', 'center', 'flex-start')};
   gap: 0.3rem;
@@ -157,6 +160,7 @@ const LabelsContainer = styled.div`
   margin-top:-1rem;
   
   @media ${device.mobileL}{
+    padding:0;
     gap:0.5rem;
     margin-bottom:1rem;
   }

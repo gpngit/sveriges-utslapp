@@ -21,6 +21,7 @@ const Bg = styled.div`
   position:relative;
   display: none;
   height: 200px;
+  
   @media ${device.tablet}{
     display: block;
   }
@@ -54,6 +55,9 @@ const TextContent = styled.article`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
+  @media ${device.mobileTablet}{
+    padding-top:3rem;
+  }
   @media ${device.laptop}{
     padding-left:8rem;
   }
@@ -64,6 +68,7 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       margin-bottom:-0.3rem;
     }
+   
   }
 
   p {

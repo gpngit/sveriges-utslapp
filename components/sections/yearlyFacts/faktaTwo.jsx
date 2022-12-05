@@ -19,14 +19,17 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     return (
     <>
     {show && 
-    <Content id="fakta-biobransle">
-        <Row>
-                <ChosenYear
+    <Content
+    biobransle
+    id="fakta-biobransle">
+        <Row 
+        biobransle>
+            <ChosenYear
                 emissions = {energiMyndighetenData}
                 name = {name}
-                />
-                <Heading>
-                <p>{subheading.text.toUpperCase()}</p>
+            />
+            <Heading>
+            <p>{subheading.text.toUpperCase()}</p>
                 <h2>{title.text}</h2>
                 </Heading>
         </Row>
