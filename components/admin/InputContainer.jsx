@@ -63,14 +63,26 @@ const Input = styled.input`
     padding: 10px;
     ${fonts.footnote};
     border-color: ${colors.bio};
-        padding: 10px;
-        ${fonts.footnote}
         &:focus{
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
         }
 `
+const InputBody = styled.textarea`
+width: 90%;
+padding: 10px;
+${fonts.footnote};
+
+border-color: ${colors.bio};
+
+    &:focus{
+        outline: none;
+        border:2px solid ${colors.bio};
+        box-shadow: 0 0 10px ${colors.border};
+        }
+`
+
 const Label = styled.label`
 ${fonts.footnote};
 margin-bottom:2px;
@@ -210,7 +222,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
     }}, [isLoading])
     
     const URLNav = `/#${sectionName}`
-    console.log(input)
+    
     return (
             <>
         {modal && (
@@ -255,11 +267,39 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
             htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
             </Label>
             <div className="input-and-edit">
+            {input.name === "body1" && 
+            <>{input.name !== "body2" && 
+                <InputBody readOnly={!editable} 
+                id={`${sectionName}-${input.name}`}
+                className="input_textarea"
+                name={`${sectionName}-${input.name}`}
+                rows="4"
+                cols="10"
+                type="textarea"
+                defaultValue={input.text} />
+               
+            }</>}
+            {input.name === "body2" && 
+            <>{input.name !== "body1" && 
+            
+            <InputBody readOnly={!editable} 
+            id={`${sectionName}-${input.name}`}
+            role="textbox"
+            aria-labelledby={`${input.name}`}
+            name={`${sectionName}-${input.name}`}
+            rows="4"
+            type="textarea"
+            defaultValue={input.text}></InputBody>
+            }</>
+            }
+           
+            {input.name !== "body1" && <>{input.name !== "body2" &&   
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.name}`}
                 className="input_text"
                 type="text"
-                defaultValue={input.text} />
+                defaultValue={input.text} />}</>}
+          
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>

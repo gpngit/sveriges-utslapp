@@ -66,11 +66,17 @@ transform: rotate(180deg);`
 const Row = styled.div`
 ${flex("row", "space-between", "center")}
 gap:1rem;
-
 p{
     ${fonts.footnote};
 }
 `
+const ToggleVisibilitySwitch = styled.button`
+position: relative;
+width: 60px;
+height: 34px;
+`
+
+
 const ToggleSwitch = styled.label`
     position: relative;
     width: 60px;
@@ -99,13 +105,13 @@ const ToggleSwitch = styled.label`
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: white;
+        background-color: ${colors.white};
         -webkit-transition: .4s;
         transition: .4s;
     }
 
     input:checked + .slider {
-        background-color: green;
+        background-color: ${colors.green};
     }
 
     input:checked + .slider:before {
@@ -142,7 +148,7 @@ const InputForm = ({ pageElements }) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
     } 
-    console.log("page:", pageElements)
+
     return (
         <Form className="form"
         >
@@ -150,13 +156,17 @@ const InputForm = ({ pageElements }) => {
             <h3>{capitalize(type)}</h3>
             {toggleShow ? 
             <Row>
+            
             <ToggleSwitch 
+            role="slider"
+            id={`toggle-${id}`}
             aria-label="Stäng av/Sätt på en sektion"
-            type="button"
+            type="range"
             htmlFor={`switch-${id}`}>
                 <input onChange={() => handleVisibility(id-1)} 
                 type="checkbox" 
                 id={`switch-${id}`} 
+                aria-labelledby = {`toggle-${id}`}
                 checked={visible ? true : false} />
                 <span 
                 className="slider round"></span>
@@ -221,12 +231,12 @@ const InputForm = ({ pageElements }) => {
             <>
             {showSection && sections.map((section, i) => {
               return (
-                  <InputContainer sectionId={id} 
-                  key={i} 
-                  input={section} 
-                  inputIndex={i} 
-                  sectionName={name} 
-                  />
+              <InputContainer sectionId={id} 
+              key={i} 
+              input={section} 
+              inputIndex={i} 
+              sectionName={name} 
+            />
               )
           })}
           </>
