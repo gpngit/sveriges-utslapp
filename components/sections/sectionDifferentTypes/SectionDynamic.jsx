@@ -36,7 +36,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                         <br/>
                         <p>{body2.text}</p>
                     <Desktop>
-                  {sectionIDname === "kolcykeln" ? (   <SeveralSourcesAndShare
+                    {sectionIDname === "kolcykeln" ? (   <SeveralSourcesAndShare
                         whiteBG= {"yes"}
                         sourceLink1 ={sections.find(section =>section.name === "sources1").text}
                         sourceLink2 = 
@@ -80,7 +80,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             </ImageDescription>
             </ImageWrapper>
                     </>)}
-           
             <Mobile>
                     {sectionIDname === "kolcykeln" ? (
                         <SeveralSourcesAndShare
