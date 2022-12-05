@@ -88,7 +88,7 @@ ${props =>
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
       }
-      background-color:white;
+      
       @media ${device.laptop}
     }
 
