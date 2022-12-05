@@ -323,7 +323,9 @@ const Hero = ({ pageElements }) => {
                 </TextContent>
             </InnerContainer>
             <Blurred className='bottom'/>
-            <BurningForest />
+            <BurningForest 
+            alt="Skogen brinner"
+            role="img"/>
             <RedBg/>
         </Container>
         

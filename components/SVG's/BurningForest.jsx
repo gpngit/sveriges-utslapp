@@ -105,7 +105,14 @@ const BurningForest = () => {
             </clipPath>
         </defs>
         </svg>
-        <svg id="ember-1" className="embers" fill="none" viewBox="0 0 1920 627" >
+        <svg id="ember-1" 
+        className="embers" 
+        fill="none" 
+        viewBox="0 0 1920 627" 
+        role="img" 
+        alt="Glödkol som brinner">
+        <title>Skogen brinner</title>
+            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g fill="#F15A29" clipPath="url(#a)">
         <path d="M1388 61c-2 0-2 5 0 5s2-5 0-5Z" opacity=".9"/>
         <path d="M1414 115c-3 0-3 5 0 5 2 0 2-5 0-5Zm80 92c-3 0-3 7 0 7s3-7 0-7Zm4 19c-3 0-3 6 0 6s3-6 0-6Zm-61 178c-2 0-2 6 0 6 3 0 3-6 0-6Zm-74 79h-3l-1 1v4c1 2 2 2 3 0l1-1v-4Zm69 69-3-3c-1-1-2 0-3 1l1 4 2 3c1 1 3 0 3-1v-4Zm40 25-1-1c0-2-2-2-3 0v4l1 1h3v-4Zm103-27h-2c-1 0-2 1-2 3s1 3 2 3h2c1 0 2-1 2-3s-1-3-2-3Zm37-153c-2 0-2 5 0 5s2-5 0-5Zm-1-59c-3 0-3 5 0 5 2 0 2-5 0-5Zm9-32c-2 0-2 5 0 5s2-5 0-5Zm46-192c-2 0-2 2 0 2v-2Zm31-9v3-3Zm5 96-1 1c-1 1 1 3 1 2l1-1c1-1 0-3-1-2Zm-14 94v2-2Zm-23 108v3-3Zm-18-10v3-3Zm-181 24v2c2 0 2-2 0-2Zm29 19v2c2 0 2-2 0-2Zm55 42v2-2Zm49 33v2-2Zm35 64v3c2 0 2-3 0-3Zm-435-204c-2 0-2 2 0 2v-2Zm-39 52-1 3c0 1 1 2 2 1l1-3c0-1-1-2-2-1Zm417-297v3-3Zm67-68v3-3Zm35 8-1 1c-1 1 0 3 1 2l1-1c1-1-1-3-1-2Zm-67 119c-2 0-2 3 0 3v-3Zm23 36v2c2 0 2-2 0-2Zm-133-112v3c2 0 2-3 0-3Zm-7 57h-2l-1 1v3h2l1-1v-3Zm34 34c0-1-1-2-2-1l-1 1-1 3h2l1-1 1-2ZM1313 83v4c2 0 2-4 0-4Zm15 58v3c2 0 2-3 0-3Zm10 144c-2 0-2 4 0 4v-4Zm-5 46c-2 0-2 4 0 4v-4Zm62-32c-2 0-2 4 0 4v-4Zm83 122c-2 0-2 4 0 4v-4Zm20 47c-2 0-2 4 0 4s2-4 0-4Zm-26 36v4c2 0 2-4 0-4Zm-68 58v4c2 0 2-4 0-4Zm17 42v4c2 0 2-4 0-4Zm275-155h-2l-1 1-1 3h2l2-1v-3Zm28 28c-2 0-2 4 0 4s2-4 0-4Zm-11 98c-2 0-2 3 0 3s2-3 0-3Zm-79 11c-2 0-2 3 0 3v-3Zm-46-7v-1h-2v2l1 1h1v-2Zm181-294v3-3Zm-36 67v3-3Zm23-107v2-2Zm-551 191v3-3Zm-39-62v3-3Zm-44 55-1 3c0 1 1 2 2 1v-2c1-2-1-3-1-2Zm232 156h-2v3h2v-3Zm-32-122v2-2Zm21-93v2-2Zm61-20v3-3Zm78 82-1 1c-1 2 1 3 1 2l1-1c1-1 0-3-1-2Zm37 162v2-2Zm-141 6v2-2Zm376-93v3-3Zm5-64v2-2Zm-74 33v3-3Zm-46-6v3-3Zm-83-119v3-3Zm-52-35v2-2Zm27-67v2-2Zm52-76v3-3Zm-22-95h-1v3h1v-3Zm118-69v2-2Zm57 13v3-3Zm35 54v2-2Zm-18 125v2-2ZM1453 29v2-2Zm-71-18-1 1c-1 1 0 3 1 2l1-2c1-1-1-3-1-1Zm-12 146v3-3Zm-59 23-2 1c-2 0-1 3 0 2l3-1c1 0 0-3-1-2Zm62 137v2-2Zm74 0v2-2Zm-7 84v2-2Zm10 56v2-2Zm-105 19c-2 0-2 3 0 3v-3Zm-47-2-1 1c-1 2 0 3 1 2l1-1c1-1 0-3-1-2Z"/>
@@ -132,7 +139,14 @@ const BurningForest = () => {
         </clipPath>
         </defs>
         </svg>
-        <svg id="ember-2" className="embers" fill="none" viewBox="0 0 1920 627">
+        <svg id="ember-2" 
+        role="img"
+        alt="Glödkol som flyger"
+        className="embers" 
+        fill="none" 
+        viewBox="0 0 1920 627">
+        <title>Skogen brinner</title>
+            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g fill="#F15A29" clipPath="url(#a)">
         <path d="M1388 61c-2 0-2 5 0 5s2-5 0-5Z" opacity=".9"/>
         <path d="M1414 115c-3 0-3 5 0 5 2 0 2-5 0-5Zm80 92c-3 0-3 7 0 7s3-7 0-7Zm4 19c-3 0-3 6 0 6s3-6 0-6Zm-61 178c-2 0-2 6 0 6 3 0 3-6 0-6Zm-74 79h-3l-1 1v4c1 2 2 2 3 0l1-1v-4Zm69 69-3-3c-1-1-2 0-3 1l1 4 2 3c1 1 3 0 3-1v-4Zm40 25-1-1c0-2-2-2-3 0v4l1 1h3v-4Zm103-27h-2c-1 0-2 1-2 3s1 3 2 3h2c1 0 2-1 2-3s-1-3-2-3Zm37-153c-2 0-2 5 0 5s2-5 0-5Zm-1-59c-3 0-3 5 0 5 2 0 2-5 0-5Zm9-32c-2 0-2 5 0 5s2-5 0-5Zm46-192c-2 0-2 2 0 2v-2Zm31-9v3-3Zm5 96-1 1c-1 1 1 3 1 2l1-1c1-1 0-3-1-2Zm-14 94v2-2Zm-23 108v3-3Zm-18-10v3-3Zm-181 24v2c2 0 2-2 0-2Zm29 19v2c2 0 2-2 0-2Zm55 42v2-2Zm49 33v2-2Zm35 64v3c2 0 2-3 0-3Zm-435-204c-2 0-2 2 0 2v-2Zm-39 52-1 3c0 1 1 2 2 1l1-3c0-1-1-2-2-1Zm417-297v3-3Zm67-68v3-3Zm35 8-1 1c-1 1 0 3 1 2l1-1c1-1-1-3-1-2Zm-67 119c-2 0-2 3 0 3v-3Zm23 36v2c2 0 2-2 0-2Zm-133-112v3c2 0 2-3 0-3Zm-7 57h-2l-1 1v3h2l1-1v-3Zm34 34c0-1-1-2-2-1l-1 1-1 3h2l1-1 1-2ZM1313 83v4c2 0 2-4 0-4Zm15 58v3c2 0 2-3 0-3Zm10 144c-2 0-2 4 0 4v-4Zm-5 46c-2 0-2 4 0 4v-4Zm62-32c-2 0-2 4 0 4v-4Zm83 122c-2 0-2 4 0 4v-4Zm20 47c-2 0-2 4 0 4s2-4 0-4Zm-26 36v4c2 0 2-4 0-4Zm-68 58v4c2 0 2-4 0-4Zm17 42v4c2 0 2-4 0-4Zm275-155h-2l-1 1-1 3h2l2-1v-3Zm28 28c-2 0-2 4 0 4s2-4 0-4Zm-11 98c-2 0-2 3 0 3s2-3 0-3Zm-79 11c-2 0-2 3 0 3v-3Zm-46-7v-1h-2v2l1 1h1v-2Zm181-294v3-3Zm-36 67v3-3Zm23-107v2-2Zm-551 191v3-3Zm-39-62v3-3Zm-44 55-1 3c0 1 1 2 2 1v-2c1-2-1-3-1-2Zm232 156h-2v3h2v-3Zm-32-122v2-2Zm21-93v2-2Zm61-20v3-3Zm78 82-1 1c-1 2 1 3 1 2l1-1c1-1 0-3-1-2Zm37 162v2-2Zm-141 6v2-2Zm376-93v3-3Zm5-64v2-2Zm-74 33v3-3Zm-46-6v3-3Zm-83-119v3-3Zm-52-35v2-2Zm27-67v2-2Zm52-76v3-3Zm-22-95h-1v3h1v-3Zm118-69v2-2Zm57 13v3-3Zm35 54v2-2Zm-18 125v2-2ZM1453 29v2-2Zm-71-18-1 1c-1 1 0 3 1 2l1-2c1-1-1-3-1-1Zm-12 146v3-3Zm-59 23-2 1c-2 0-1 3 0 2l3-1c1 0 0-3-1-2Zm62 137v2-2Zm74 0v2-2Zm-7 84v2-2Zm10 56v2-2Zm-105 19c-2 0-2 3 0 3v-3Zm-47-2-1 1c-1 2 0 3 1 2l1-1c1-1 0-3-1-2Z"/>
@@ -162,7 +176,10 @@ const BurningForest = () => {
         <svg 
         role="img"
         alt="Glödkol"
-        id="ember-3" className="embers" fill="none" viewBox="0 0 1920 382">
+        id="ember-3" 
+        className="embers" 
+        fill="none" 
+        viewBox="0 0 1920 382">
               <title>Skogen brinner</title>
             <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g fill="#F15A29" clipPath="url(#a)">
