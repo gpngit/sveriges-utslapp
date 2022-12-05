@@ -48,6 +48,9 @@ const TextContent = styled.div`
         }
         text-align: justify;
         text-justify: inter-word; 
+        @media screen and ${device.laptop}{
+            padding-right:10rem;
+        }
     }
     .subheading{
         @media ${device.tablet}{
