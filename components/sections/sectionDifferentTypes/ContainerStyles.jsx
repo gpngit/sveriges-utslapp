@@ -67,6 +67,7 @@ h2 {
     margin-bottom:1rem;
     ${fonts.lessheading};
     max-width:90%;
+    color: ${colors.secondary};
     @media (max-width:${size.mobiletablet}){ 
         max-width:90%;
         

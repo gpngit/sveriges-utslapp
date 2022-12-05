@@ -58,7 +58,7 @@ const TextContent = styled.article`
     padding-left:8rem;
   }
   h2 {
-    color: ${colors.border};
+    color: ${colors.secondary};
     margin-top:-0.7rem;
     ${fonts.lessheading};
     @media ${device.laptop}{
@@ -138,7 +138,8 @@ const ChartContainer = styled.div`
   width: 100%;
   min-width: ${size.tablet};
   @media ${device.laptop}{
-    padding-left:3rem;
+    padding-left:5rem;
+    padding-right:5rem;
   }
 `
 const CheckboxContainer = styled.label`
