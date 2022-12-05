@@ -222,8 +222,8 @@ const NavLink = styled.a`
     padding: .6rem 1.4rem;
     ${fonts.paragraph};
     background-color: ${colors.primary};
-    color: ${colors.bio};
-    border: 3px solid ${colors.bio};
+    color: ${colors.border};
+    border: 3px solid ${colors.border};
     border-radius: 10px;
 
     // // @media ${device.laptop}{
@@ -266,7 +266,7 @@ const Hero = ({ pageElements }) => {
                         <ArrowStyleOne 
                         width={340} 
                         role="img"
-                        color={colors.bio} 
+                        color={colors.border} 
                         strokeWidth={3}
                         alt='En pil som pekar till föregående text' />
                         <NavLink 
@@ -281,7 +281,7 @@ const Hero = ({ pageElements }) => {
                         <ArrowStyleTwo 
                         width={280} 
                         role="img"
-                        color={colors.bio} 
+                        color={colors.border} 
                         strokeWidth={3} 
                         alt='En pil som pekar till föregående text' />
                         <NavLink 
@@ -295,7 +295,7 @@ const Hero = ({ pageElements }) => {
                         <ArrowStyleThree 
                         role="img"
                         width={320} 
-                        color={colors.bio} 
+                        color={colors.border} 
                         strokeWidth={3} 
                         alt='En pil som pekar till föregående text'/>
                         <NavLink href="#kolcykeln">
@@ -309,7 +309,7 @@ const Hero = ({ pageElements }) => {
                         <ArrowStyleFour 
                         role="img"
                         width={360} 
-                        color={colors.bio} 
+                        color={colors.border} 
                         strokeWidth={2} 
                         alt='En pil som pekar till föregående text'/>
                         <NavLink href="#skogen"
