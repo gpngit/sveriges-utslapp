@@ -19,14 +19,15 @@ const Container = styled.div`
 `
 
 const Crumble = ({ color }) => {
-
     return (
         <Container>
             <p>En sammanställning av</p>
             <Link href={"https://www.greenpeace.org/sweden/"} 
             target="_blank"
             aria-label='Link to Greenpeace'>
-            <GreenpeaceLogo alt='Greenpeace-logo' 
+            <GreenpeaceLogo 
+            role="img"
+            alt='Greenpeace:s logotyp' 
             color={color} />
             </Link>
         </Container>
