@@ -29,7 +29,6 @@ padding-left:12rem;}
 }
 margin-top:2rem;
 `
-
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
