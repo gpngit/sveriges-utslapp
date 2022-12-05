@@ -44,7 +44,7 @@ const TextContent = styled.div`
         line-height:175%;
         font-weight:500;
         @media screen and ${device.tablet}{
-            max-width:90%;
+            max-width:100%;
         }
         text-align: justify;
         text-justify: inter-word; 
