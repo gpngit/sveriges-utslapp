@@ -69,7 +69,6 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       margin-bottom:-0.3rem;
     }
-   
   }
 
   p {
@@ -82,7 +81,6 @@ const TextContent = styled.article`
     @media ${device.laptop}{
       max-width:50%;
     }
-
         @media (max-width: ${size.mobileS}){ 
           width:90%;
         } 
@@ -380,6 +378,8 @@ const LineChart = ({emissions, pageElements}) => {
           )}
           <ChartContainer>
             <Line ref={canvas} 
+            aria-label="Graf som visar hur både fossila och biobränslets utsläpp har blivit påverkade sedan 1990. Vi kan se att de fossila bränslenas utsläpp har minskat, men att biobränslet har helt fyllt upp samma summa. Därför är det 2020 lika mycket utsläpp som det är 1990, men att knappt hälften är fossila."
+            role="img"
             data={chartData} 
             options={options} 
             plugins={[linePlugin, annotationPlugin]} 
