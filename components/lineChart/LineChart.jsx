@@ -55,9 +55,7 @@ const TextContent = styled.article`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
-  @media ${device.mobileTablet}{
-    padding-top:3rem;
-  }
+
   @media ${device.laptop}{
     padding-left:8rem;
   }
@@ -131,17 +129,23 @@ const ScrollContainer = styled.div`
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
+  cursor:pointer;
+  scrollbar-color: ${colors.fossil} ${colors.primary};
+  scrollbar-width: thin;
+
   //*IE AND FIREFOX:
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
-  }
-
-  &::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       display: none;
   }
+  }
+
+
 `
 const ChartContainer = styled.div`
+cursor:grab;
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
@@ -149,6 +153,7 @@ const ChartContainer = styled.div`
     padding-left:5rem;
     padding-right:5rem;
   }
+  padding-bottom:.5rem;
 `
 const CheckboxContainer = styled.label`
   ${flex('row-reverse', 'flex-start', 'center')};
@@ -163,7 +168,7 @@ const CheckboxContainer = styled.label`
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
   display: none;
-
+  cursor: pointer;
   &:hover ~ .checkmark {
     background-color: #ccc;
   }
@@ -394,6 +399,7 @@ const LineChart = ({emissions, pageElements}) => {
               <span className="labeltext">FOSSIL CO2</span>
               <Checkbox className="checkbox" 
               fossil onChange={(e) => handleCheckbox(e)} 
+              tabindex="1"
               data-index={0} defaultChecked/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
@@ -402,7 +408,8 @@ const LineChart = ({emissions, pageElements}) => {
               <Checkbox className="checkbox" 
               bio onChange={(e) => handleCheckbox(e)} 
               id="biogena-checkbox" 
-              data-index={1} defaultChecked/>
+              data-index={1} defaultChecked 
+              tabindex="2"/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
           </div>
