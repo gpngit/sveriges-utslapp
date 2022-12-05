@@ -102,7 +102,7 @@ const ButtonContainer = styled.div`
   }
 
   .text {
-  color: ${colors.bio};
+  color: ${colors.border};
   font-size:12px;
   }
 
@@ -117,7 +117,7 @@ const Scrolltext = styled.div`
   ${flex('row', 'flex-end', 'flex-end')};
   font-size: 14px;
   gap: 1rem;
-  color: ${colors.bio};
+  color: ${colors.border};
 
   @media (min-width: ${size.tablet}) {
   display: none;
@@ -129,8 +129,8 @@ const ScrollContainer = styled.div`
   width: 100%;
   ${flex('row')};
   overflow-x: auto;
-  cursor:pointer;
-  scrollbar-color: ${colors.fossil} ${colors.primary};
+  cursor:grab;
+  scrollbar-color: ${colors.fossil} ${colors.white};
   scrollbar-width: thin;
 
   //*IE AND FIREFOX:
@@ -167,6 +167,7 @@ const CheckboxContainer = styled.label`
   
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
+
   display: none;
   cursor: pointer;
   &:hover ~ .checkmark {
@@ -397,7 +398,9 @@ const LineChart = ({emissions, pageElements}) => {
           <div className="checkboxes">
             <CheckboxContainer>
               <span className="labeltext">FOSSIL CO2</span>
-              <Checkbox className="checkbox" 
+              <Checkbox 
+              role="checkbox"
+              className="checkbox" 
               fossil onChange={(e) => handleCheckbox(e)} 
               tabindex="1"
               data-index={0} defaultChecked/>
@@ -405,7 +408,9 @@ const LineChart = ({emissions, pageElements}) => {
             </CheckboxContainer>
             <CheckboxContainer>
               <span className="labeltext">BIOGEN CO2</span>
-              <Checkbox className="checkbox" 
+              <Checkbox 
+              role="checkbox"
+              className="checkbox" 
               bio onChange={(e) => handleCheckbox(e)} 
               id="biogena-checkbox" 
               data-index={1} defaultChecked 

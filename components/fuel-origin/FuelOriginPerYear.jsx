@@ -284,7 +284,12 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
         <SourceText>Användning av biobränslen per bränslekategori (GWh). Data kommer från Energimyndigheten.</SourceText>
         <Row600px>
           <ChartContainer>
-              <Doughnut ref={canvas} data={chartData} options={options} /> 
+              <Doughnut 
+              aria-label="Graf som visar varifrån biobränslet kommer ifrån. Datan är endast tillgänglig mellan 2005-2020 i dagsläget."
+              role="img"
+              ref={canvas} 
+              data={chartData} 
+              options={options} /> 
             {!dataAvailable && (
             <Overlay>
               <p>Data endast tillgänglig mellan 2005-2020</p>

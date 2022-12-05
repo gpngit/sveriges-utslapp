@@ -27,6 +27,9 @@ const LinkButton = styled.a`
     @media (max-width:${size.mobileL}){ 
         ${fonts.paragraph};
     }
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 
     ${props => 
         props.secondary && 
@@ -42,7 +45,9 @@ const LinkButton = styled.a`
         border: 3px solid ${colors.secondary};
         color:${colors.secondary};
         `}
-        
+        &:focus{
+            background-color: rgba(0, 0, 0, 0.2);
+        }
         
 `
 const Button = styled.button`
@@ -60,6 +65,9 @@ ${fonts.button};
 @media (max-width:${size.mobileL}){ 
     ${fonts.paragraph};
 }
+&:focus{
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
 
 ${props => 
@@ -75,6 +83,9 @@ ${props =>
     `}
     &:hover{
         background-color: rgba(55, 0, 0, 0.3);
+    }
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.2);
     }
 `
 const ModalWrapper = styled.dialog`
@@ -121,6 +132,8 @@ background-color: ${colors.primary};
     @media (max-width:${size.mobiletablet}){
      width:80%;
     }
+    
+    
   &::before {
       ${flex()}
   }
@@ -147,6 +160,7 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
     
                 <LinkButton  secondary
                 onClick = {() => {setShowModal(true)}}
+                aria-label="Visa källor"
                 >Källa
                 </LinkButton>
                 <Button secondary
@@ -154,7 +168,8 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
                 </Button>
             <ModalWrapper 
             ref={modal}>
-                <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
+                <CloseButton onClick={() => modal.current.close()}
+                aria-label="Stäng fönster">Stäng</CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>

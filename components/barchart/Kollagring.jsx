@@ -194,7 +194,8 @@ const Kollagring = ({ emissions }) => {
     return (
         <Container id='bar-chart'>
           <ButtonAndMessageContainer>
-            <Button onClick={handleClick}>
+            <Button onClick={handleClick}
+            aria-label="Visa olika vyer:">
               {stackIndex === 'Stack 1' ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
             </Button>
             {showMessage && (
@@ -207,6 +208,8 @@ const Kollagring = ({ emissions }) => {
           <ChartContainer>
             {chartData && (
                 <Bar 
+                aria-label="Graf som visar skillnaden i hur mycket koldioxid som upptas, och hur mycket koldioxid som skulle kunna upptas av skogen. "
+                role="img"
                 ref={canvas} 
                 data={chartData} 
                 options={options} 

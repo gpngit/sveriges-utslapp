@@ -69,9 +69,16 @@ border-color:${colors.secondary};
 &:hover{
     background-color: rgba(55, 0, 0, 0.1);
 }
+&:focus{
+    background-color: rgba(55, 0, 0, 0.3);
+}
 
 &.hidden {
     visibility: hidden;
+}
+&:active{
+    background-color: rgba(55, 0, 0, 0.3);
+  
 }
 
 `
@@ -88,8 +95,12 @@ const Button = styled.button`
         background-color: rgba(55, 0, 0, 0.1);
     }
     margin-top:4px;
-   
-
+    &:active{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
+    &:focus{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
 `
 const Decoration = styled.div`
 position: relative;
@@ -115,6 +126,22 @@ const Square = styled.span`
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
+`
+
+const Change = styled.div`
+&:hover{
+    background-color: rgba(55, 0, 0, 0.1);
+    border-radius:9px;
+  
+}
+&:focus{
+    background-color: rgba(55, 0, 0, 0.1);
+    border-radius:9px;
+}
+&:active{
+    background-color: rgba(55, 0, 0, 0.1);
+    border-radius:9px;
+}
 `
 
 const YearChanger = ({ emissions }) => {
@@ -147,30 +174,44 @@ const YearChanger = ({ emissions }) => {
     return (
         <Container>
                 <InnerContainer>
-                <Button onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
+                <Button 
+                role="button"
+                onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
                 <Middle>
-                    <div onClick={() => decrement()}>
-                        <ChevronButts className={reachedBeginning ? 'hidden' : ''}>
+                    <Change onClick={() => decrement()}
+                    role="button"
+                    aria-label="Gå bakåt ett år">
+                        <ChevronButts 
+                        className={reachedBeginning ? 'hidden' : ''}
+                        aria-label="Gå bakåt ett år">
                             <Chevron 
+                            role="img"
                             color={colors.secondary} 
                             size={10} 
                             direction={'left'} 
-                            stroke={10} />
+                            stroke={10} 
+                            />
                         </ChevronButts>
                         <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
-                    </div>
+                    </Change>
                     <Year>{displayYear}</Year>
-                    <div onClick={() => increment()}>
+                    <Change onClick={() => increment()}
+                    aria-label="Gå framåt ett år"
+                     role="button">
                         <p className={reachedEnd ? 'inactive' : null}>
                          {displayYear+1}</p> 
-                        <ChevronButts className={reachedEnd ? 'hidden' : ''}>
+                        <ChevronButts 
+                        aria-label="Gå framåt ett år"
+                         
+                         className={reachedEnd ? 'hidden' : ''}>
                             <Chevron 
+                            role="img"
                             color={colors.secondary} 
                             size={10} 
                             direction={'right'} 
                             stroke={10}  />
                         </ChevronButts>
-                    </div>
+                    </Change>
                     </Middle>
                 <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
             </InnerContainer>

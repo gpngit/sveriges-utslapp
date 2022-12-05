@@ -26,6 +26,9 @@ const LinkButton = styled.a`
     @media (max-width:${size.mobileL}){ 
         ${fonts.paragraph};
     }
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 
     ${props => 
         props.secondary && 
@@ -59,7 +62,9 @@ ${fonts.button};
 @media (max-width:${size.mobileL}){ 
     ${fonts.paragraph};
 }
-
+&:focus{
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
 ${props => 
     props.secondary && 
@@ -74,6 +79,9 @@ ${props =>
     `}
     &:hover{
         background-color: rgba(55, 0, 0, 0.3);
+    }
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.2);
     }
 `
 const ModalWrapper = styled.dialog`
