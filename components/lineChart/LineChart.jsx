@@ -24,6 +24,9 @@ padding-right:2rem;
 
     gap:2rem;
     grid-template-columns: repeat(2, 1fr); }
+    @media ${device.laptopL}{
+      gap:5rem;
+    }
 `
 
 Chart.register(annotationPlugin)
@@ -68,8 +71,6 @@ const TextContent = styled.div`
   gap: 1rem;
   padding-right:2rem;
 
-  
-  
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
@@ -95,10 +96,12 @@ const TextContent = styled.div`
   }
 `
 const GridText = styled.div`
+
 p {
   text-align: left;
   text-justify: inter-word;
   ${fonts.paragraph};
+  max-width:500px;
 }
 h3{
   color: ${colors.border};
