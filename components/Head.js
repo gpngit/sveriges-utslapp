@@ -4,26 +4,34 @@ import Script from 'next/script'
 const HeadContent = () => {
   return ( 
     <>
-    
     <Head>
       <title>Sveriges utsläpp</title>
-      <meta name="description" content="En hemsida om de dolda uptsläppen." />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
-     
-      <meta name="description" 
-      content="Checkout our cool page" 
-      key="desc" />
-        <meta property="og:title" 
-        content="Sveriges utsläpp" />
-        <meta
+      <meta 
+          name="description" 
+          content="En hemsida om de dolda utsläppen." />
+      <link 
+          rel="icon" 
+          href="/favicon.ico" />
+      <link 
+          rel="apple-touch-icon" 
+          href="/apple-touch-icon.png"/>
+      <meta 
+          property="og:type" 
+          content="website" />
+      <meta 
+          property="og:locale" 
+          content="swedish" />
+      <meta 
+          property="og:title" 
+          content="Sveriges utsläpp" />
+      <meta
           property="og:description"
           content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."
-        />
-        <meta
+      />
+      <meta
           property="og:image"
           content="./metapicture.png"
-        />
+      />
     </Head>
     <Script 
       id='gtag'
@@ -48,7 +56,6 @@ const HeadContent = () => {
       }}
     />
     </>
-   );
+  );
 }
- 
 export default HeadContent;
