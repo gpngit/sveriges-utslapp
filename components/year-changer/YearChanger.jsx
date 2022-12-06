@@ -162,7 +162,6 @@ const YearChanger = ({ emissions }) => {
     }
 
     const incrementWithArrow = (e) => {
-        console.log(e.keyCode)
         if (e.keyCode === 39){
             increment()
         }
