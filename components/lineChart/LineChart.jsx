@@ -233,6 +233,68 @@ const Message = styled.div`
     transform: translate(-50px, 5px) rotate(120deg);
   }
 `
+const RadioContainer = styled.fieldset`
+
+    ${flex("row", 'flex-start')};
+    border: none;
+
+    >div {
+      padding: .6rem 1rem;
+
+    }
+    >div:first-of-type{
+      border-right: 2px solid black;
+      padding-left: 0rem;
+    }
+    >div:last-of-type{
+      border-left: 2px solid black;
+    }
+`
+const RadioButton = styled.input.attrs({type: 'radio'})`
+  opacity: 0;
+	width: 0;
+  height: 0;
+
+  &:checked ~ label {
+    opacity: 1;
+    text-decoration: none;
+
+    ${props => props.both && css`
+    background: ${colors.border};
+    color: white;
+    `}
+    ${props => props.bio && css`
+      background: ${colors.bio};
+      color: white;
+    `}
+    ${props => props.fossil && css`
+      background: ${colors.fossil};
+      color: white;
+    `}
+  }
+`
+const RadioLabel = styled.label`
+  text-decoration: underline;
+  padding: .5rem 1rem;
+  ${fonts.paragraph}
+  
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+
+    ${props => props.both && css`
+    background: ${colors.border};
+    color: white;
+    `}
+    ${props => props.bio && css`
+      background: ${colors.bio};
+      color: white;
+    `}
+    ${props => props.fossil && css`
+      background: ${colors.fossil};
+      color: white;
+    `}
+	}
+`
 
 const LineChart = ({emissions, pageElements}) => {
 
@@ -364,7 +426,6 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
-  
   useEffect(() => {
     //radbryt:
     document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
@@ -384,30 +445,22 @@ const LineChart = ({emissions, pageElements}) => {
         <h2>{title.text}</h2>
         <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
       </TextContent>  
-      <Scrolltext>
-        <p>Swipa höger för att se utveckling</p>
-        <SmallArrow color={colors.bio} size={14} />
-      </Scrolltext>
-        <ScrollContainer>
-          {showMessage && (
-            <Message>
-              <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
-              <SmallArrow color={colors.secondary} size={16} />
-            </Message>
-          )}
-          <ChartContainer>
-            <Line ref={canvas} 
-            aria-label="Graf som visar hur både fossila och biobränslets utsläpp har blivit påverkade sedan 1990. Vi kan se att de fossila bränslenas utsläpp har minskat, men att biobränslet har helt fyllt upp samma summa. Därför är det 2020 lika mycket utsläpp som det är 1990, men att knappt hälften är fossila."
-            role="img"
-            data={chartData} 
-            options={options} 
-            plugins={[linePlugin, annotationPlugin]} 
-            onClick={changeDisplayYear}  />
-          </ChartContainer>
-        </ScrollContainer>
+      <RadioContainer>
+        <legend>Visa</legend>
+        <div>
+          <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
+          <RadioLabel both for='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
+        </div>
+        <div>
+          <RadioButton fossil className="sr-only" id="fossil" name="radio-btn" />
+          <RadioLabel fossil for='fossil'>Fossil CO2</RadioLabel>
+        </div>
+        <div>
+        <RadioButton bio className="sr-only" id="biogen" name="radio-btn" />
+          <RadioLabel bio for='biogen'>Biogen CO2</RadioLabel>
+        </div>
 
-        <ButtonContainer>
-          <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
+          {/* <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
           <div className="checkboxes">
             <CheckboxContainer>
               <p className="labeltext">FOSSIL <abbr>CO2</abbr></p>
@@ -430,8 +483,29 @@ const LineChart = ({emissions, pageElements}) => {
               tabindex="2"/>
               <CheckMark className="checkmark" />
             </CheckboxContainer>
-          </div>
-        </ButtonContainer>
+          </div> */}
+        </RadioContainer>
+      <Scrolltext>
+        <p>Swipa höger för att se utveckling</p>
+        <SmallArrow color={colors.bio} size={14} />
+      </Scrolltext>
+        <ScrollContainer>
+          {showMessage && (
+            <Message>
+              <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
+              <SmallArrow color={colors.secondary} size={16} />
+            </Message>
+          )}
+          <ChartContainer>
+            <Line ref={canvas} 
+            aria-label="Graf som visar hur både fossila och biobränslets utsläpp har blivit påverkade sedan 1990. Vi kan se att de fossila bränslenas utsläpp har minskat, men att biobränslet har helt fyllt upp samma summa. Därför är det 2020 lika mycket utsläpp som det är 1990, men att knappt hälften är fossila."
+            role="img"
+            data={chartData} 
+            options={options} 
+            plugins={[linePlugin, annotationPlugin]} 
+            onClick={changeDisplayYear}  />
+          </ChartContainer>
+        </ScrollContainer>
         <Grid>  
         <GridText>
         <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
