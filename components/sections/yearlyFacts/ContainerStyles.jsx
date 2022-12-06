@@ -92,6 +92,10 @@ p{
 }
 `
 export const Paragraph = styled.p`
+@media ${device.laptop}{
+  padding-right:2rem;
+}
+
 `
 
 
@@ -159,13 +163,17 @@ p{
 .footnote{
   padding-top:1rem;
   ${fonts.footnote};
+ 
   @media (min-width: 900px) and (max-width: ${size.laptop}){
     padding-right:3rem;
+  }
+  @media ${device.laptop}{
+    padding-right:2rem;
+    font-style:italic;
   }
   a{
     color:${colors.secondary};
   }
- 
 }
 
 ${props => 
