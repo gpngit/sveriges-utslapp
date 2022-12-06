@@ -180,7 +180,7 @@ const YearChanger = ({ emissions }) => {
                     aria-label="Gå bakåt ett år">
                         <ChevronButts 
                         className={reachedBeginning ? 'hidden' : ''}
-                        aria-label="Gå bakåt ett år">
+                        >
                             <Chevron 
                             role="img"
                             color={colors.secondary} 
@@ -194,13 +194,12 @@ const YearChanger = ({ emissions }) => {
                     <Year>{displayYear}</Year>
                     <Change onClick={() => increment()}
                     aria-label="Gå framåt ett år"
-                     role="button">
+                    role="button">
                         <p className={reachedEnd ? 'inactive' : null}>
-                         {displayYear+1}</p> 
+                        {displayYear+1}</p> 
                         <ChevronButts 
-                        aria-label="Gå framåt ett år"
-                         
-                         className={reachedEnd ? 'hidden' : ''}>
+
+                        className={reachedEnd ? 'hidden' : ''}>
                             <Chevron 
                             role="img"
                             color={colors.secondary} 
