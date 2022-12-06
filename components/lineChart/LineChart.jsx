@@ -18,8 +18,10 @@ const Grid = styled.div`
 display: grid;
 gap: 1rem;
 padding-right:2rem;
-@media ${device.tablet}{
-  padding-right: 0;
+@media ${device.laptop}{
+
+  padding-top:1rem;
+
     gap:2rem;
     grid-template-columns: repeat(2, 1fr); }
 `
@@ -66,9 +68,7 @@ const TextContent = styled.div`
   gap: 1rem;
   padding-right:2rem;
 
-  @media ${device.laptop}{
-    padding-left:8rem;
-  }
+  
   
   h2 {
     color: ${colors.secondary};
@@ -87,7 +87,7 @@ const TextContent = styled.div`
       width:90%;
     }
     @media ${device.laptop}{
-      max-width:50%;
+      max-width:80%;
     }
         @media (max-width: ${size.mobileS}){ 
           width:90%;
@@ -101,7 +101,8 @@ p {
   ${fonts.paragraph};
 }
 h3{
-  ${fonts.subheading};
+  color: ${colors.border};
+  font-size:clamp(1.2rem, 1vw, 1.6rem); 
   padding-bottom:.5rem;
 }
 ` 
