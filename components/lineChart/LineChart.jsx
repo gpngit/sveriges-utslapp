@@ -234,20 +234,39 @@ const Message = styled.div`
   }
 `
 const RadioContainer = styled.fieldset`
-
-    ${flex("row", 'flex-start')};
     border: none;
+    ${flex("row", 'flex-start')};
+
+    @media (max-width: 490px){
+      ${flex("column", 'flex-start')};
+    }
 
     >div {
       padding: .6rem 1rem;
 
+      @media (max-width: 490px){
+        padding-left: 0px;
+      }
+
     }
     >div:first-of-type{
       border-right: 2px solid black;
-      padding-left: 0rem;
+      border-bottom: none;
+      padding-left: 0px;
+
+      @media (max-width: 490px){
+      border-bottom: 2px solid black;
+      border-right:none;
+      }
     }
     >div:last-of-type{
       border-left: 2px solid black;
+      border-top: none;
+
+      @media (max-width: 490px){
+      border-top: 2px solid black;
+      border-left:none;
+      }
     }
 `
 const RadioButton = styled.input.attrs({type: 'radio'})`
@@ -276,7 +295,7 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
 const RadioLabel = styled.label`
   text-decoration: underline;
   padding: .5rem 1rem;
-  ${fonts.paragraph}
+  ${fonts.footnote}
   
   &:hover, &:focus, &:active {
     text-decoration: none;
