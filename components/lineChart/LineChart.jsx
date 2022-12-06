@@ -13,7 +13,16 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
-import {Grid} from "../sections/sectionDifferentTypes/ContainerStyles";
+
+const Grid = styled.div`
+display: grid;
+gap: 1rem;
+padding-right:2rem;
+@media ${device.tablet}{
+  padding-right: 0;
+    gap:2rem;
+    grid-template-columns: repeat(2, 1fr); }
+`
 
 Chart.register(annotationPlugin)
 
@@ -71,7 +80,7 @@ const TextContent = styled.div`
   }
 
   p {
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
     ${fonts.paragraph};
     @media ${device.mobileTablet}{
@@ -87,9 +96,13 @@ const TextContent = styled.div`
 `
 const GridText = styled.div`
 p {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   ${fonts.paragraph};
+}
+h3{
+  ${fonts.subheading};
+  padding-bottom:.5rem;
 }
 ` 
 const ButtonContainer = styled.div`
@@ -221,6 +234,33 @@ const Message = styled.div`
   color: ${colors.border};
   p {
     font-weight: bold;
+  }
+  @media (max-width: ${size.mobileS}){
+    display:block;
+    left:130%;
+    margin-left:8rem;
+  }
+  
+
+  @media (max-width: ${size.mobileM}){
+    display:block;
+    left:150%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileM}{
+    display:block;
+    left:120%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileL}{
+    display:block;
+    left:100%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileTablet}{
+    display:block;
+    left:70%;
+    margin-top:1rem;
   }
 
   @media ${device.tablet}{

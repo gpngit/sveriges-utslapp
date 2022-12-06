@@ -116,7 +116,7 @@ ${props =>
   css`
   p{
       ${fonts.paragraph}
-      text-align: justify;
+      text-align: left;
       text-justify: inter-word; 
       padding: 1rem;
       margin-top:-1rem;
@@ -151,7 +151,7 @@ export const SecondContent = styled.div`
 p{
   padding-bottom:1rem;
   ${fonts.paragraph};
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   
 }

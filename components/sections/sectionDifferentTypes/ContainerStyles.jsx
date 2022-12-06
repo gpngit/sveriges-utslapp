@@ -83,7 +83,7 @@ h2 {
 p {
  
     ${fonts.paragraph};
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word; 
 
     @media (max-width: ${size.mobileL}){
@@ -137,7 +137,7 @@ display:block;
             @media (max-width:${size.tablet}){  
                 padding-top:1em;
                 p{
-                    text-align:justify;
+                    text-align:left;
                 }
             }
         `}
