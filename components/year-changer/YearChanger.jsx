@@ -22,11 +22,12 @@ const Container = styled.div`
 const InnerContainer = styled.div`
     ${flex('row','space-between', "center")};
     gap: 10px;
-    @media (max-width:${size.mobileM}){
-      gap:2px;
-      width:90vw;
-     }
     width: calc(100vw - 80px);
+    @media (max-width:${size.mobileM}){
+        gap:2px;
+        width:90vw;
+    }
+    
     div {
         ${flex('row', 'space-between', 'center')};
         gap: 6px;
@@ -37,10 +38,10 @@ const InnerContainer = styled.div`
             line-height:150%;
         }
     }
+
     .inactive {
         text-decoration: line-through;
     }
-  
 `
 const Year = styled.span`
     ${fonts.subheading};
@@ -49,37 +50,37 @@ const Year = styled.span`
     color: ${colors.secondary};
 `
 const Middle = styled.span`
-${flex("row", "center", "center")};
-p{
-    color:${colors.secondary};
-    font-weight:bold;    
-}
-@media (max-width: 500px){
-    p{display:none}
-}
+    ${flex("row", "center", "center")};
+    p{
+        color:${colors.secondary};
+        font-weight:bold;    
+    }
+    @media (max-width: 500px){
+        p{
+            display:none
+        }
+    }
 `
 const ChevronButts = styled.button`
-border-radius:9px;
-width:30px;
-${flex("center", "center")}
-padding:8px 8px;
-background-color:transparent;
-border-color:${colors.secondary};
-&:hover{
-    background-color: rgba(55, 0, 0, 0.1);
-}
-&:focus{
-    background-color: rgba(55, 0, 0, 0.3);
-}
+    border-radius:9px;
+    width:30px;
+    ${flex("center", "center")}
+    padding:8px 8px;
+    background-color:transparent;
+    border-color:${colors.secondary};
+    &:hover{
+        background-color: rgba(55, 0, 0, 0.1);
+    }
+    &:focus{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
 
-&.hidden {
-    visibility: hidden;
-}
-&:active{
-    background-color: rgba(55, 0, 0, 0.3);
-  
-}
-
+    &.hidden {
+        visibility: hidden;
+    }
+    &:active{
+        background-color: rgba(55, 0, 0, 0.3);
+    }
 `
 const Button = styled.button`
     background-color: ${colors.primary};
@@ -90,27 +91,27 @@ const Button = styled.button`
     border-radius: 10px;
     padding: 0px 12px;
     height: 40px;
+    margin-top:4px;
     &:hover{
         background-color: rgba(55, 0, 0, 0.1);
     }
-    margin-top:4px;
     &:active{
         background-color: rgba(55, 0, 0, 0.3);
     }
     &:focus{
         background-color: rgba(55, 0, 0, 0.3);
     }
-`
+    `
 const Decoration = styled.div`
-position: relative;
-width: calc(100vw - 20px);
-margin-top: 10px;
+    position: relative;
+    width: calc(100vw - 20px);
+    margin-top: 10px;
 `
 const Line = styled.div`
-width:100%;
-background-color: ${colors.secondary};
-height:2px;
-z-index:10;
+    width:100%;
+    background-color: ${colors.secondary};
+    height:2px;
+    z-index:10;
 `
 const Square = styled.span`
     width: 20px;
@@ -126,19 +127,18 @@ const Square = styled.span`
     margin-right: auto; 
 `
 const Change = styled.div`
-&:hover{
-    background-color: rgba(55, 0, 0, 0.1);
-    border-radius:9px;
-  
-}
-&:focus{
-    background-color: rgba(55, 0, 0, 0.1);
-    border-radius:9px;
-}
-&:active{
-    background-color: rgba(55, 0, 0, 0.1);
-    border-radius:9px;
-}
+    &:hover{
+        background-color: rgba(55, 0, 0, 0.1);
+        border-radius:9px;
+    }
+    &:focus{
+        background-color: rgba(55, 0, 0, 0.1);
+        border-radius:9px;
+    }
+    &:active{
+        background-color: rgba(55, 0, 0, 0.1);
+        border-radius:9px;
+    }
 `
 
 const YearChanger = ({ emissions }) => {
@@ -169,53 +169,53 @@ const YearChanger = ({ emissions }) => {
     }, [displayYear, firstYear, latestYear])
 
     return (
-        <Container>
-                <InnerContainer>
-                <Button 
-                role="button"
-                onClick={() => setDisplayYear(firstYear)}>{firstYear}</Button>
-                <Middle>
-                    <Change onClick={() => decrement()}
-                    role="button"
-                    aria-label="Gå bakåt ett år">
-                        <ChevronButts 
-                        className={reachedBeginning ? 'hidden' : ''}
-                        >
-                            <Chevron 
-                            role="img"
-                            color={colors.secondary} 
-                            size={10} 
-                            direction={'left'} 
-                            stroke={10} 
-                            />
-                        </ChevronButts>
-                        <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}</p>
-                    </Change>
-                    <Year>{displayYear}</Year>
-                    <Change onClick={() => increment()}
-                    aria-label="Gå framåt ett år"
-                    role="button">
-                        <p className={reachedEnd ? 'inactive' : null}>
-                        {displayYear+1}</p> 
-                        <ChevronButts 
-
-                        className={reachedEnd ? 'hidden' : ''}>
-                            <Chevron 
-                            role="img"
-                            color={colors.secondary} 
-                            size={10} 
-                            direction={'right'} 
-                            stroke={10}  />
-                        </ChevronButts>
-                    </Change>
-                    </Middle>
-                <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
-            </InnerContainer>
-            <Decoration>
-                <Line className='decor-line'/>
-                <Square />
-            </Decoration>
-        </Container>
+    <Container>
+        <InnerContainer>
+        <Button 
+        role="button"
+        onClick={() => setDisplayYear(firstYear)}>{firstYear}
+        </Button>
+        <Middle>
+            <Change onClick={() => decrement()}
+            role="button"
+            aria-label="Gå bakåt ett år">
+                <ChevronButts 
+                className={reachedBeginning ? 'hidden' : ''}>
+                    <Chevron 
+                    role="img"
+                    color={colors.secondary} 
+                    size={10} 
+                    direction={'left'} 
+                    stroke={10} 
+                    />
+                </ChevronButts>
+                <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}
+                </p>
+            </Change>
+            <Year>{displayYear}</Year>
+            <Change onClick={() => increment()}
+            aria-label="Gå framåt ett år"
+            role="button">
+                <p className={reachedEnd ? 'inactive' : null}>
+                {displayYear+1}</p> 
+                <ChevronButts 
+                className={reachedEnd ? 'hidden' : ''}>
+                    <Chevron 
+                    role="img"
+                    color={colors.secondary} 
+                    size={10} 
+                    direction={'right'} 
+                    stroke={10}  />
+                </ChevronButts>
+            </Change>
+        </Middle>
+        <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
+        </InnerContainer>
+        <Decoration>
+            <Line className='decor-line'/>
+            <Square />
+        </Decoration>
+    </Container>
     )
 }
 
