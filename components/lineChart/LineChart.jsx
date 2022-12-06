@@ -13,7 +13,21 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
-import {Grid} from "../sections/sectionDifferentTypes/ContainerStyles";
+
+const Grid = styled.div`
+display: grid;
+gap: 1rem;
+padding-right:2rem;
+@media ${device.laptop}{
+
+  padding-top:1rem;
+
+    gap:2rem;
+    grid-template-columns: repeat(2, 1fr); }
+    @media ${device.laptopL}{
+      gap:5rem;
+    }
+`
 
 Chart.register(annotationPlugin)
 
@@ -57,10 +71,6 @@ const TextContent = styled.div`
   gap: 1rem;
   padding-right:2rem;
 
-  @media ${device.laptop}{
-    padding-left:8rem;
-  }
-  
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
@@ -71,14 +81,14 @@ const TextContent = styled.div`
   }
 
   p {
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
     ${fonts.paragraph};
     @media ${device.mobileTablet}{
       width:90%;
     }
     @media ${device.laptop}{
-      max-width:50%;
+      max-width:80%;
     }
         @media (max-width: ${size.mobileS}){ 
           width:90%;
@@ -86,10 +96,17 @@ const TextContent = styled.div`
   }
 `
 const GridText = styled.div`
+
 p {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   ${fonts.paragraph};
+  max-width:500px;
+}
+h3{
+  color: ${colors.border};
+  font-size:clamp(1.2rem, 1vw, 1.6rem); 
+  padding-bottom:.5rem;
 }
 ` 
 const Scrolltext = styled.div`
@@ -141,6 +158,33 @@ const Message = styled.div`
   color: ${colors.border};
   p {
     font-weight: bold;
+  }
+  @media (max-width: ${size.mobileS}){
+    display:block;
+    left:130%;
+    margin-left:8rem;
+  }
+  
+
+  @media (max-width: ${size.mobileM}){
+    display:block;
+    left:150%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileM}{
+    display:block;
+    left:120%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileL}{
+    display:block;
+    left:100%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileTablet}{
+    display:block;
+    left:70%;
+    margin-top:1rem;
   }
 
   @media ${device.tablet}{

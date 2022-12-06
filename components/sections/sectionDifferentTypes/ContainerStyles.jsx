@@ -58,7 +58,7 @@ export const TextContentGrid = styled.article`
     max-width:900px;
 }
 h2 {
-    margin-bottom:0.5rem;
+    padding-bottom:1rem;
     margin-top:0.2rem;
     ${fonts.lessheading};
     max-width:90%;
@@ -83,7 +83,7 @@ h2 {
 p {
  
     ${fonts.paragraph};
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word; 
 
     @media (max-width: ${size.mobileL}){
@@ -107,7 +107,7 @@ p {
 export const Subheading = styled.p`
 text-transform:uppercase;
 text-align: left;
-width:300px;
+
 color: ${colors.border};
 @media (max-width: ${size.mobileS}){
 ${fonts.footnote};
@@ -137,7 +137,7 @@ display:block;
             @media (max-width:${size.tablet}){  
                 padding-top:1em;
                 p{
-                    text-align:justify;
+                    text-align:left;
                 }
             }
         `}

@@ -92,6 +92,10 @@ p{
 }
 `
 export const Paragraph = styled.p`
+@media ${device.laptop}{
+  padding-right:2rem;
+}
+
 `
 
 
@@ -116,7 +120,7 @@ ${props =>
   css`
   p{
       ${fonts.paragraph}
-      text-align: justify;
+      text-align: left;
       text-justify: inter-word; 
       padding: 1rem;
       margin-top:-1rem;
@@ -151,7 +155,7 @@ export const SecondContent = styled.div`
 p{
   padding-bottom:1rem;
   ${fonts.paragraph};
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   
 }
@@ -159,13 +163,17 @@ p{
 .footnote{
   padding-top:1rem;
   ${fonts.footnote};
+ 
   @media (min-width: 900px) and (max-width: ${size.laptop}){
     padding-right:3rem;
+  }
+  @media ${device.laptop}{
+    padding-right:2rem;
+    font-style:italic;
   }
   a{
     color:${colors.secondary};
   }
- 
 }
 
 ${props => 

@@ -11,6 +11,19 @@ const HeadContent = () => {
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
       <html lang="sv"></html>
+      {/* <meta name="description" 
+      content="Checkout our cool page" 
+      key="desc" />
+        <meta property="og:title" 
+        content="Sveriges utsläpp" />
+        <meta
+          property="og:description"
+          content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."
+        />
+        <meta
+          property="og:image"
+          content="./metapicture.png"
+        /> */}
     </Head>
     <Script 
       id='gtag'

@@ -35,12 +35,12 @@ margin-top:2rem;
 }
 @media ${device.laptop}{
     padding:3rem;
-    padding-left:15rem;}
+    padding-left:5rem;}
 `
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
-    hyphens: auto;
+  
     @media screen and ${device.tablet}{
     max-width:70%;}
     margin-bottom:2rem;
@@ -53,7 +53,7 @@ const TextContent = styled.div`
     .body{
         hyphens: manual;
         font-weight:500;
-        text-align: justify;
+        text-align: left;
         text-justify: inter-word; 
 
         @media screen and ${device.tablet}{
@@ -61,7 +61,7 @@ const TextContent = styled.div`
         }
     
         @media screen and ${device.laptop}{
-            padding-right:10rem;
+         max-width:700px;
         }
         @media (max-width: ${size.mobileS}){
             display:inline;
