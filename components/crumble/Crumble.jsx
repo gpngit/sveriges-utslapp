@@ -22,7 +22,8 @@ const Crumble = ({ color }) => {
     return (
         <Container>
             <p>En sammanställning av</p>
-            <Link href={"https://www.greenpeace.org/sweden/"} 
+            <Link 
+            href={"https://www.greenpeace.org/sweden/"} 
             target="_blank"
             aria-label='Link to Greenpeace'>
             <GreenpeaceLogo 

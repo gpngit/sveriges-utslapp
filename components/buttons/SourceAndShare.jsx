@@ -139,10 +139,12 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 <>
                 <LinkButton secondary
                 target="_blank"
-                href={sourceLink}>Källa
+                href={sourceLink}>
+                    Källa
                 </LinkButton>
                 <Button secondary
-                onClick={() => {modal.current.showModal()}}>Dela
+                onClick={() => {modal.current.showModal()}}>
+                    Dela
                 </Button>
                 </>
             ): (<>
@@ -151,14 +153,17 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 href={sourceLink}>Källa
                 </LinkButton>
                 <Button 
-                onClick={() => modal.current.showModal()}>Dela
+                onClick={() => modal.current.showModal()}>
+                    Dela
                 </Button>
                 </>
             )}
 
             <ModalWrapper 
             ref={modal}>
-                <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
+                <CloseButton onClick={() => modal.current.close()}>
+                Stäng
+                </CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
