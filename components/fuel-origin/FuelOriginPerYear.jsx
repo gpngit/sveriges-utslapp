@@ -109,6 +109,14 @@ const Overlay = styled.div`
   @media ${device.laptop}{
     width:100%;
   }
+
+  button {
+    background-color: ${colors.fossil};
+    color: white;
+    margin-top: .5rem;
+    border: none;
+    padding: .4rem 1rem;
+  }
   
   p {
     background-color: black;
@@ -293,6 +301,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
             {!dataAvailable && (
             <Overlay>
               <p>Data endast tillgänglig mellan 2005-2020</p>
+              <button onClick={() => setDisplayYear(2005)}>Gå till 2005</button>
             </Overlay>
             )}
           </ChartContainer>

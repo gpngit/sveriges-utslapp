@@ -415,15 +415,15 @@ const LineChart = ({emissions, pageElements}) => {
         <legend>Visa</legend>
         <div>
           <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
-          <RadioLabel both for='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
+          <RadioLabel both htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
         </div>
         <div>
           <RadioButton data-index={0} fossil className="sr-only" id="fossil" name="radio-btn" />
-          <RadioLabel fossil for='fossil'>Fossil CO2</RadioLabel>
+          <RadioLabel fossil htmlFor='fossil'>Fossil CO2</RadioLabel>
         </div>
         <div>
           <RadioButton data-index={1} bio className="sr-only" id="biogen" name="radio-btn" />
-          <RadioLabel bio for='biogen'>Biogen CO2</RadioLabel>
+          <RadioLabel bio htmlFor='biogen'>Biogen CO2</RadioLabel>
         </div>
         </RadioContainer>
       <Scrolltext>

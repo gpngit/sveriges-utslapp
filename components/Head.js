@@ -10,8 +10,8 @@ const HeadContent = () => {
       <meta name="description" content="En hemsida om de dolda uptsläppen." />
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
-      <html lang="sv"></html>
-      {/* <meta name="description" 
+     
+      <meta name="description" 
       content="Checkout our cool page" 
       key="desc" />
         <meta property="og:title" 
@@ -23,7 +23,7 @@ const HeadContent = () => {
         <meta
           property="og:image"
           content="./metapicture.png"
-        /> */}
+        />
     </Head>
     <Script 
       id='gtag'
