@@ -161,9 +161,22 @@ const YearChanger = ({ emissions }) => {
         }
     }
 
+    const incrementWithArrow = (e) => {
+        console.log(e.keyCode)
+        if (e.keyCode === 39){
+            increment()
+        }
+    }
+
     const decrement = () => {
         if (displayYear != firstYear){
             setDisplayYear(displayYear-1)
+        }
+    }
+
+    const decrementWithArrow = (e) => {
+        if (e.keyCode === 37){
+            decrement()
         }
     }
 
@@ -180,7 +193,9 @@ const YearChanger = ({ emissions }) => {
         onClick={() => setDisplayYear(firstYear)}>{firstYear}
         </Button>
         <Middle>
-            <Change onClick={() => decrement()}
+            <Change 
+            onClick={() => decrement()}
+            onKeyDown={(e) => decrementWithArrow(e)}
             role="button"
             aria-label="Gå bakåt ett år">
                 <ChevronButts 
@@ -197,7 +212,9 @@ const YearChanger = ({ emissions }) => {
                 </p>
             </Change>
             <Year>{displayYear}</Year>
-            <Change onClick={() => increment()}
+            <Change 
+            onClick={() => increment()}
+            onKeyDown={(e) => incrementWithArrow(e)}
             aria-label="Gå framåt ett år"
             role="button">
                 <p className={reachedEnd ? 'inactive' : null}>
