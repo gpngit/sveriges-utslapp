@@ -57,6 +57,7 @@ const Message = styled.div`
 
   p {
     font-weight: bold;
+    color: black;
   }
 
   @media ${device.tablet}{
@@ -213,7 +214,7 @@ const Kollagring = ({ emissions }) => {
             {showMessage && (
               <Message>
                 <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
-                <SmallArrow size={15} color={colors.bio} />
+                <SmallArrow size={15} color={'black'} />
               </Message>
             )}
           </ButtonAndMessageContainer>
