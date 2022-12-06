@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useContext } from 'react'
 import AppContext from '../../../context/AppContext';
 
-
 const Square = styled.span`
     width:50px;
     height:50px;
@@ -12,20 +11,22 @@ const Square = styled.span`
     background-color: ${colors.primary};
     transform: rotate(45deg);
     ${flex("center", "center")}
+
     h4{
       font-size:18px;
       padding:8px;
       transform: rotate(-45deg);
       color: ${colors.secondary};
   }
-
   @media (max-width:${size.mobileL}){
     width:40px;
     height:40px;
+
     h4{
       font-size:14px;
     }
   }
+
   @media (max-width:${size.mobileM}){
     margin-left:1rem;
     }

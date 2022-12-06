@@ -4,7 +4,7 @@ import { flex, device, colors, size, fonts } from '../../../styles/partials'
 
 export const Content = styled.article`
 color: black;
-  padding:3rem 1rem;
+padding:3rem 1rem;
 @media ${device.mobileTablet}{
   padding: 2rem;
 }
@@ -21,7 +21,6 @@ color: black;
 ${props => 
   props.biobransle && 
   css`
-
   padding:3rem 1rem;
 
   @media (max-width: ${size.tablet}){
@@ -51,9 +50,10 @@ gap:10px;
 span:first-of-type {  
   padding-left:0;
   margin-left:0.2rem;
-  @media (max-width: 350px){position:relative;
+  @media (max-width: 350px){
+    position:relative;
     left:40%;
-  margin-bottom:0.5rem;}
+    margin-bottom:0.5rem;}
 }
 
 @media ${device.mobileS}{
@@ -88,17 +88,13 @@ h2{
 }
 p{
   ${fonts.paragraph};
-
 }
 `
 export const Paragraph = styled.p`
 @media ${device.laptop}{
   padding-right:2rem;
 }
-
 `
-
-
 export const Grid = styled.div`
   max-width: 1500px;
   display: grid;
@@ -108,9 +104,9 @@ export const Grid = styled.div`
   }
 `
 export const FirstContent = styled.div`
-    p {
-        ${fonts.footnote};
-    }
+  p {
+      ${fonts.footnote};
+  }
 @media ${device.mobileL}{
   padding:1rem;
 }
@@ -125,8 +121,8 @@ ${props =>
       padding: 1rem;
       margin-top:-1rem;
       @media ${device.mobileS}{
-       padding:0;
-       padding-top:1rem;
+      padding:0;
+      padding-top:1rem;
       }
       @media ${device.tablet}{
         max-width:90%;
@@ -148,7 +144,6 @@ ${props =>
   `}
 `
 export const SecondContent = styled.div`
-
 @media ${device.mobileL}{
   padding:1rem;
 }
@@ -157,13 +152,11 @@ p{
   ${fonts.paragraph};
   text-align: left;
   text-justify: inter-word;
-  
 }
 
 .footnote{
   padding-top:1rem;
   ${fonts.footnote};
- 
   @media (min-width: 900px) and (max-width: ${size.laptop}){
     padding-right:3rem;
   }
@@ -196,7 +189,6 @@ export const MobileButtons = styled.span`
 ${flex("column", "center", "center")}
 align-self:center;
 padding-top:1rem;
-
 @media ${device.laptop}{
   display:none;
 }
@@ -205,5 +197,4 @@ export const DesktopButtons = styled.span`
 @media (max-width: ${size.laptop}){
   display:none;
 }
-
 `
