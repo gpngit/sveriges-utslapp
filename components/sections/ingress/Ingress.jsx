@@ -14,8 +14,9 @@ const Container = styled.section`
     position: relative;
 `
 const Padding = styled.div`
-padding:3rem;
-max-width:1500px;
+    padding:3rem;
+    max-width:1500px;
+    margin-top:2rem;
 
 @media (max-width:${size.mobileL}){ 
     padding-left:3em;
@@ -25,10 +26,8 @@ max-width:1500px;
     padding-left:2rem;
 }
 
-margin-top:2rem;
 @media (max-width: ${size.mobileS}){
     padding:1rem;
-
 }
 @media ${device.tablet}{
     padding-left:5rem;
@@ -40,10 +39,11 @@ margin-top:2rem;
 const TextContent = styled.div`
     ${flex()};
     gap: 20px;
-  
+    margin-bottom:2rem;
+
     @media screen and ${device.tablet}{
     max-width:70%;}
-    margin-bottom:2rem;
+
     h2 {
         ${fonts.lessheading};
     }
@@ -59,10 +59,8 @@ const TextContent = styled.div`
         @media screen and ${device.tablet}{
             max-width:100%;
         }
-    
         @media screen and ${device.laptop}{
-         max-width:700px;
-         
+            max-width:700px;
         }
         @media (max-width: ${size.mobileS}){
             display:inline;
@@ -70,13 +68,13 @@ const TextContent = styled.div`
             text-align:left;
             flex-wrap: wrap;
         }
-       
     }
     .subheading{
+        margin-bottom:-0.5rem;
+
         @media ${device.tablet}{
             max-width:70%;
         }
-        margin-bottom:-0.5rem;
     }
 `
 
@@ -91,31 +89,41 @@ const Ingress = ({ pageElements }) => {
     const url = sections.find(section => section.name === 'source')
 
     useEffect(() => {
-        //radbryt:
+    //radbryt:
         document.getElementById(`ingress-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
         document.getElementById(`ingress-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
-        }, [])
+    }, [])
 
     return (
-       
         <>
-        {show && <>
-        <Container id='ingress'>
+        {show && 
+        <Container 
+            id='ingress'>
         <Padding>
-                <TextContent>
-                <p className='subheading'>{subheading.text.toUpperCase()}</p>
+            <TextContent>
+                <p className='subheading'>
+                    {subheading.text.toUpperCase()}
+                </p>
                 <h2>{title.text}</h2>
-                <p id="ingress-body1" className='body'>{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-                <p id="ingress-body2" className='body'>{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-                </TextContent>
-                <SourceAndShare 
-                whiteBG={"no"}
-                sourceLink={url.text} 
-                shareLink={'#ingress'}
-                sourceText={body1.text} />
+                <p 
+                id="ingress-body1" 
+                className='body'>
+                    {body1.text.replaceAll(/<br\s*[/]?>/gi, "")}
+                </p>
+                <p 
+                id="ingress-body2" 
+                className='body'>
+                    {body2.text.replaceAll(/<br\s*[/]?>/gi, "")}
+                </p>
+            </TextContent>
+            <SourceAndShare 
+            whiteBG={"no"}
+            sourceLink={url.text} 
+            shareLink={'#ingress'}
+            sourceText={body1.text} />
         </Padding>
         </Container>
-        </>}
+        }
         </>
     )
 }
