@@ -1,6 +1,6 @@
 //CSS
 import styled, {css} from "styled-components";
-import { flex, colors, fonts, size, device } from '../../styles/partials'
+import { flex, colors, fonts, device } from '../../styles/partials'
 //react hooks
 import { useState, useEffect, useRef } from "react";
 //charts
@@ -11,8 +11,6 @@ import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
-//components
-import { SmallArrow } from "../SVG's/Arrows";
 
 const Container = styled.section`
   ${flex('column')};
@@ -31,11 +29,6 @@ const ChartContainer = styled.div`
   }
   
 `
-const ButtonAndMessageContainer = styled.div`
-  width: 100%;
-  ${flex('row', 'center', 'center')};
-  gap: 1rem;
-`
 const Button = styled.button`
   ${fonts.footnote};
   font-weight:500;
@@ -49,26 +42,6 @@ const Button = styled.button`
   &:hover{
     background-color: rgba(55, 0, 0, 0.3);
 }
-`
-const Message = styled.div`
-  max-width: 220px;
-  display: none;
-  color: ${colors.bio};
-
-  p {
-    font-weight: bold;
-    color: black;
-  }
-
-  @media ${device.tablet}{
-    display:block;
-    left: 50%;
-    gap: .6rem;
-  }
-
-  svg {
-    transform: translate(190px, -5px) rotate(30deg);
-  }
 `
 const LabelsContainer = styled.div`
   align-self: center;
@@ -206,18 +179,10 @@ const Kollagring = ({ emissions }) => {
 
     return (
         <Container id='bar-chart'>
-          {/* <ButtonAndMessageContainer> */}
-            <Button onClick={() => setShowPotential(!showPotential)}
-            aria-label="Visa olika vyer:">
-              {!showPotential ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
-            </Button>
-            {/* {showMessage && (
-              <Message>
-                <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
-                <SmallArrow size={15} color={'black'} />
-              </Message>
-            )} */}
-          {/* </ButtonAndMessageContainer> */}
+          <Button onClick={() => setShowPotential(!showPotential)}
+          aria-label="Visa olika vyer:">
+            {!showPotential ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
+          </Button>
           <ChartContainer>
             {chartData && (
                 <Bar 
