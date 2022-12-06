@@ -55,7 +55,7 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     emissions={emissions} energiMyndighetenData={energiMyndighetenData} />
     <Sections 
     pageOneElem= {siteSections.find(elem => elem.name === 'statistik')} sectionIDnameOne={"statistik"} 
-    pageTwoElem ={siteSections.find(elem => elem.name === 'kolcykeln')} sectionIDnameTwo={'kolcykeln'}
+    pageTwoElem ={siteSections.find(elem => elem.name === 'biobränsle')} sectionIDnameTwo={'biobränsle'}
     pageThreeElem = {siteSections.find(elem => elem.name === 'skogen')}
     sectionIDnameThree={"skogen"} />
     <Footer pageElements={siteSections.find(elem => elem.name === 'footer')}/> 

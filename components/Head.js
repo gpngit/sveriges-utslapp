@@ -4,11 +4,13 @@ import Script from 'next/script'
 const HeadContent = () => {
   return ( 
     <>
+    
     <Head>
       <title>Sveriges utsläpp</title>
       <meta name="description" content="En hemsida om de dolda uptsläppen." />
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
+      <html lang="sv"></html>
     </Head>
     <Script 
       id='gtag'

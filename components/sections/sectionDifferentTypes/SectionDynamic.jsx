@@ -47,7 +47,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                         <br/>
                         <Paragraph id={`${sectionIDname}+body2`}>{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</Paragraph>
                     <Desktop>
-                    {sectionIDname === "kolcykeln" ? (   <SeveralSourcesAndShare
+                    {sectionIDname === "biobränsle" ? (   <SeveralSourcesAndShare
                         whiteBG= {"yes"}
                         sourceLink1 ={sections.find(section =>section.name === "sources1").text}
                         sourceLink2 = 
@@ -92,7 +92,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
             </ImageWrapper>
                     </>)}
             <Mobile>
-                    {sectionIDname === "kolcykeln" ? (
+                    {sectionIDname === "biobränsle" ? (
                         <SeveralSourcesAndShare
                         whiteBG= {"yes"}
                         sourceLink1 ={sections.find(section =>section.name === "sources1").text}
