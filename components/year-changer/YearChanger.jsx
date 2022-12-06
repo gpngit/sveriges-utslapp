@@ -40,7 +40,7 @@ const InnerContainer = styled.div`
     }
 
     .inactive {
-        text-decoration: line-through;
+        visibility: hidden;
     }
 `
 const Year = styled.span`
@@ -91,7 +91,11 @@ const Button = styled.button`
     border-radius: 10px;
     padding: 0px 12px;
     height: 40px;
-    margin-top:4px;
+
+    &.invisible {
+        visibility: hidden;
+    }
+
     &:hover{
         background-color: rgba(55, 0, 0, 0.1);
     }
@@ -101,7 +105,7 @@ const Button = styled.button`
     &:focus{
         background-color: rgba(55, 0, 0, 0.3);
     }
-    `
+`
 const Decoration = styled.div`
     position: relative;
     width: calc(100vw - 20px);
@@ -157,9 +161,22 @@ const YearChanger = ({ emissions }) => {
         }
     }
 
+    const incrementWithArrow = (e) => {
+        console.log(e.keyCode)
+        if (e.keyCode === 39){
+            increment()
+        }
+    }
+
     const decrement = () => {
         if (displayYear != firstYear){
             setDisplayYear(displayYear-1)
+        }
+    }
+
+    const decrementWithArrow = (e) => {
+        if (e.keyCode === 37){
+            decrement()
         }
     }
 
@@ -171,12 +188,14 @@ const YearChanger = ({ emissions }) => {
     return (
     <Container>
         <InnerContainer>
-        <Button 
+        <Button className={reachedBeginning ? 'invisible' : ''}
         role="button"
         onClick={() => setDisplayYear(firstYear)}>{firstYear}
         </Button>
         <Middle>
-            <Change onClick={() => decrement()}
+            <Change 
+            onClick={() => decrement()}
+            onKeyDown={(e) => decrementWithArrow(e)}
             role="button"
             aria-label="Gå bakåt ett år">
                 <ChevronButts 
@@ -193,7 +212,9 @@ const YearChanger = ({ emissions }) => {
                 </p>
             </Change>
             <Year>{displayYear}</Year>
-            <Change onClick={() => increment()}
+            <Change 
+            onClick={() => increment()}
+            onKeyDown={(e) => incrementWithArrow(e)}
             aria-label="Gå framåt ett år"
             role="button">
                 <p className={reachedEnd ? 'inactive' : null}>
@@ -209,7 +230,8 @@ const YearChanger = ({ emissions }) => {
                 </ChevronButts>
             </Change>
         </Middle>
-        <Button onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
+        <Button className={reachedEnd ? 'invisible' : ''}
+        onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
         </InnerContainer>
         <Decoration>
             <Line className='decor-line'/>
