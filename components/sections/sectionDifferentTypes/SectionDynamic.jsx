@@ -84,21 +84,21 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                 </ImageWrapper>
                 ): (
                 <ImageWrapper 
-            key={sectionIDname}>
-            <Image
+                key={sectionIDname}>
+                <Image
                 layout ="responsive"
                 src={imgurl.url}
                 alt={imgurl.alttext}
                 width={800}
                 height={800}/>
-            <ImageDescription>
+                <ImageDescription>
                 {imgurl.text}
-            </ImageDescription>
-            </ImageWrapper>
-                    </>)}
-            <Mobile>
+                </ImageDescription>
+                </ImageWrapper>
+                )}
+                <Mobile>
                     {sectionIDname === "biobränsle" ? (
-                        <SeveralSourcesAndShare
+                    <SeveralSourcesAndShare
                         whiteBG= {"yes"}
                         sourceLink1 ={sections.find(section =>section.name === "sources1").text}
                         sourceLink2 = 
@@ -107,8 +107,8 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                         {sections.find(section =>section.name === "sources3").text}
                         shareLink={`#${sectionIDname}`}
                         sourceText={title.text}/>
-                        ): (         
-                <SourceAndShare 
+                    ): (         
+                    <SourceAndShare 
                 whiteBG={"yes"}
                 sourceLink={source.text} 
                 shareLink={`#${sectionIDname}`}
