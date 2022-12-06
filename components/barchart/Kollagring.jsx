@@ -137,14 +137,14 @@ const Kollagring = ({ emissions }) => {
             .filter(emission => emission.sector.val === "10.0"))
     }, [displayYear])
 
-    const [showMessage, setShowMessage] = useState(true)
+    const [showPotential, setShowPotential] = useState(true)
 
     useEffect(() => {
       setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
     }, [yearlyBioEmissions, yearlyFossilEmissions])
 
     useEffect(() => {
-      if (showMessage) {
+      if (showPotential) {
         setChartData({
             labels: [''],
             datasets: [{
@@ -202,22 +202,22 @@ const Kollagring = ({ emissions }) => {
           }]
       })
       }
-    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showMessage])
+    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showPotential])
 
     return (
         <Container id='bar-chart'>
-          <ButtonAndMessageContainer>
-            <Button onClick={() => setShowMessage(!showMessage)}
+          {/* <ButtonAndMessageContainer> */}
+            <Button onClick={() => setShowPotential(!showPotential)}
             aria-label="Visa olika vyer:">
-              {!showMessage ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
+              {!showPotential ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
             </Button>
-            {showMessage && (
+            {/* {showMessage && (
               <Message>
                 <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
                 <SmallArrow size={15} color={'black'} />
               </Message>
-            )}
-          </ButtonAndMessageContainer>
+            )} */}
+          {/* </ButtonAndMessageContainer> */}
           <ChartContainer>
             {chartData && (
                 <Bar 
