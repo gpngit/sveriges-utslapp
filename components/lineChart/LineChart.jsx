@@ -416,6 +416,23 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
+  const handleRadioButtons = (e) => {
+    let clickedDatasetIndex = e.target.dataset.index
+    let chartDatasets = canvas.current.legend.chart._sortedMetasets
+
+    if (clickedDatasetIndex == 0){
+      chartDatasets[1].hidden = true
+      chartDatasets[0].hidden = false
+    } else if (clickedDatasetIndex == 1){
+      chartDatasets[0].hidden = true
+      chartDatasets[1].hidden = false
+    } else {
+      chartDatasets[0].hidden = false
+      chartDatasets[1].hidden = false
+    }
+    canvas.current.legend.chart.update(); 
+  }
+
   const changeDisplayYear = () => {
     if (canvas.current?.tooltip?.dataPoints?.length){
       let yearClicked = canvas.current.tooltip.dataPoints[0].label
@@ -464,18 +481,18 @@ const LineChart = ({emissions, pageElements}) => {
         <h2>{title.text}</h2>
         <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
       </TextContent>  
-      <RadioContainer>
+      <RadioContainer onChange={(e) => handleRadioButtons(e)}>
         <legend>Visa</legend>
         <div>
           <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
           <RadioLabel both for='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton fossil className="sr-only" id="fossil" name="radio-btn" />
+          <RadioButton data-index={0} fossil className="sr-only" id="fossil" name="radio-btn" />
           <RadioLabel fossil for='fossil'>Fossil CO2</RadioLabel>
         </div>
         <div>
-        <RadioButton bio className="sr-only" id="biogen" name="radio-btn" />
+          <RadioButton data-index={1} bio className="sr-only" id="biogen" name="radio-btn" />
           <RadioLabel bio for='biogen'>Biogen CO2</RadioLabel>
         </div>
 
