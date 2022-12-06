@@ -58,7 +58,7 @@ export const TextContentGrid = styled.article`
     max-width:900px;
 }
 h2 {
-    margin-bottom:0.5rem;
+    padding-bottom:1rem;
     margin-top:0.2rem;
     ${fonts.lessheading};
     max-width:90%;
