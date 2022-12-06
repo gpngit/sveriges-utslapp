@@ -28,7 +28,6 @@ const ChartContainer = styled.div`
   @media ${device.laptopL}{
     max-width: 600px;
   }
-  
 `
 const Button = styled.button`
   ${flex('row', 'flex-start', 'center')};
@@ -63,7 +62,6 @@ const Label = styled.div`
     border-radius:50%;
     margin-top:2px;
   }
-
   .fossil {
     background-color: ${colors.fossil}
   }
@@ -181,13 +179,18 @@ const Kollagring = ({ emissions }) => {
     }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showPotential])
 
     return (
-        <Container id='bar-chart'>
+        <Container 
+        id='bar-chart'>
           <Button onClick={() => setShowPotential(!showPotential)}
           aria-label="Visa olika vyer:">
             {!showPotential ? 
             <span>Visa hur det kunnat se ut om vi inte skövlade skog</span> :
             <>
-            <Chevron color={'black'} direction={'left'} size={12} stroke={5} />
+            <Chevron 
+            color={'black'} 
+            direction={'left'} 
+            size={12} 
+            stroke={5} />
             <span>Visa hur det faktiskt sett ut</span>
             </>}
           </Button>

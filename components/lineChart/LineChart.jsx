@@ -398,44 +398,64 @@ const LineChart = ({emissions, pageElements}) => {
     document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`line-chart-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`line-chart-body3`).innerText = body3.text.replaceAll(/<br\s*[/]?>/gi, "\n");
-    }, [])
+  }, [])
 
   return (
     <>
     <Bg>
       <Wrapper/>
     </Bg>
-      {show && 
+    {show && 
     <Container id='line-chart'>
       <TextContent>
         <p>{subheading.text.toUpperCase()}</p>
         <h2>{title.text}</h2>
-        <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
+        <p 
+        id="line-chart-body1">
+          {body1.text.replaceAll(/<br\s*[/]?>/gi, "")}
+        </p>
       </TextContent>  
       <RadioContainer onChange={(e) => handleRadioButtons(e)}>
         <legend>Visa</legend>
         <div>
-          <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
-          <RadioLabel both htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
+          <RadioButton defaultChecked both 
+          className="sr-only" 
+          id="fossil-biogen" 
+          name="radio-btn" />
+          <RadioLabel both 
+          htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton data-index={0} fossil className="sr-only" id="fossil" name="radio-btn" />
-          <RadioLabel fossil htmlFor='fossil'>Fossil CO2</RadioLabel>
+          <RadioButton 
+          data-index={0} fossil 
+          className="sr-only" 
+          id="fossil" 
+          name="radio-btn" />
+          <RadioLabel fossil 
+          htmlFor='fossil'>Fossil CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton data-index={1} bio className="sr-only" id="biogen" name="radio-btn" />
-          <RadioLabel bio htmlFor='biogen'>Biogen CO2</RadioLabel>
+          <RadioButton data-index={1} bio 
+          className="sr-only" 
+          id="biogen" 
+          name="radio-btn" />
+          <RadioLabel bio 
+          htmlFor='biogen'>Biogen CO2</RadioLabel>
         </div>
         </RadioContainer>
       <Scrolltext>
         <p>Swipa höger för att se utveckling</p>
-        <SmallArrow color={colors.bio} size={14} />
+        <SmallArrow 
+        color={colors.bio} 
+        size={14} />
       </Scrolltext>
         <ScrollContainer>
           {showMessage && (
             <Message>
               <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
-              <SmallArrow color={colors.secondary} size={16} />
+              <SmallArrow 
+              color={colors.secondary} 
+              size={16} />
             </Message>
           )}
           <ChartContainer>
@@ -449,13 +469,19 @@ const LineChart = ({emissions, pageElements}) => {
           </ChartContainer>
         </ScrollContainer>
         <Grid>  
-        <GridText>
-        <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-        </GridText>
-        <GridText>
-        <h3>{body3.title}</h3>
-        <p id="line-chart-body3">{body3.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-        </GridText>
+          <GridText>
+            <p 
+            id="line-chart-body2">
+              {body2.text.replaceAll(/<br\s*[/]?>/gi, "")}
+            </p>
+          </GridText>
+          <GridText>
+            <h3>{body3.title}</h3>
+            <p 
+            id="line-chart-body3">
+              {body3.text.replaceAll(/<br\s*[/]?>/gi, "")}
+            </p>
+          </GridText>
         </Grid>
       </Container>
       } 

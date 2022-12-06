@@ -163,26 +163,26 @@ const SourceText = styled.p`
   @media (max-width: ${size.mobileS}){
     text-align:left;
     padding-right:2rem;
-   }
+  }
 `
 const LabelsContainer = styled.div`
-@media (max-width: ${size.mobileS}){ 
-  gap:1.2rem;
+  padding-left:1rem;
+  padding-bottom:2rem;
   padding-right:1rem;
-} 
-padding-left:1rem;
-padding-bottom:2rem;
-padding-right:1rem;
   align-self: center;
   ${flex('column', 'center', 'flex-start')};
   gap: 0.3rem;
   flex-wrap: wrap;
   margin-top:-1rem;
-
   p{
     line-height:1rem;
     text-align:left;
   }
+
+  @media (max-width: ${size.mobileS}){ 
+    gap:1.2rem;
+    padding-right:1rem;
+  } 
   
   @media ${device.mobileL}{
     padding:0;
@@ -209,7 +209,6 @@ padding-right:1rem;
   @media ${device.desktop}{
     gap:1rem;
   }
-  
 `
 const Label = styled.div`
   ${flex('row-reverse')};
@@ -217,8 +216,8 @@ const Label = styled.div`
   color: black;
   height:22px;
   @media (max-width: ${size.mobileS}){ 
-   gap:.3rem;
-   ${flex('row-reverse', "center", "flex-start")};
+    gap:.3rem;
+    ${flex('row-reverse', "center", "flex-start")};
   }
   div {
     height: 20px;
@@ -229,7 +228,6 @@ const Label = styled.div`
     @media ${device.laptopL}{
       margin-top:3px;
     }
-   
   }
 `
 
