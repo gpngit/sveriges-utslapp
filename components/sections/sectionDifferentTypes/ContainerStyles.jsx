@@ -107,7 +107,7 @@ p {
 export const Subheading = styled.p`
 text-transform:uppercase;
 text-align: left;
-width:300px;
+
 color: ${colors.border};
 @media (max-width: ${size.mobileS}){
 ${fonts.footnote};
