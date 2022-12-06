@@ -139,11 +139,12 @@ const Container = styled.header`
 `
 const InnerContainer = styled.div`
     padding: 2rem;
+
     width: 100%;
     ${flex('column', 'center', 'center')};
 
     @media ${device.tablet}{
-        padding: 2rem 5rem;
+        padding: 2rem 6rem;
     }
 
     @media ${device.laptop}{
@@ -158,25 +159,45 @@ const TextContent = styled.div`
     
     h1 {
         ${fonts.heading};
+        text-align: justified;
+        width:90%;
+        padding-bottom:1rem;
+        @media ${device.tablet}{
+            width:100%;
+            padding:0;
+            margin-right:-1rem;s
+        }
+        @media ${device.laptop}{
+            
+            margin-right:-2rem;
+        }
         @media ${device.laptopL}{
             margin-top:-1rem;
             margin-bottom:-2rem;
         }
-        text-align: justified;
-        width:90%;
     }
     p {
         ${fonts.subheading};
         @media (max-width:${size.tablet}){
-        width:80%;
+
         padding-bottom:0.3rem;
         }
         @media (max-width:${size.mobileM}){
-            width:100%;
+           
             padding-bottom:0;
         }
     }
-
+    .arrowfour{
+        svg{
+            margin-top:3rem;
+            @media (min-width:1200px){
+                margin-top:2rem;
+            }
+            @media ${device.laptopL}{
+                margin-top:1rem;
+            }
+        }
+    
 `
 const TextAndLink = styled.div`
     ${flex('column')};
@@ -196,7 +217,7 @@ const TextAndLink = styled.div`
         }
     }
     .subheading{
-        
+        width:100%;
         margin-bottom:-2rem;
         @media ${device.laptop}{
             padding-top:1rem;
@@ -215,7 +236,16 @@ const TextAndLink = styled.div`
             margin-top:-1rem;
         }
     }
+    .body{
+    
+        max-width:70%;
+        @media (max-width:${size.mobileL}){
+            max-width:100%;
+        }
+    }
+    
 `
+
 const NavLink = styled.a`
     text-decoration: none;
     text-align: center;
@@ -277,8 +307,8 @@ const Hero = ({ pageElements }) => {
                             </strong></NavLink>
                     </TextAndLink>
                     <TextAndLink>
-                        <p>{body1.text}</p>
-                        <ArrowStyleTwo 
+                        <p className="body">{body1.text}</p>
+                        <ArrowStyleThree
                         width={280} 
                         role="img"
                         color={colors.border} 
@@ -291,7 +321,7 @@ const Hero = ({ pageElements }) => {
                             </NavLink>
                     </TextAndLink>
                     <TextAndLink>
-                        <p>{body2.text}</p>
+                        <p className="body">{body2.text}</p>
                         <ArrowStyleThree 
                         role="img"
                         width={320} 
@@ -304,9 +334,10 @@ const Hero = ({ pageElements }) => {
                             </strong>
                             </NavLink>
                     </TextAndLink>
-                    <TextAndLink>
-                        <p>{body3.text}</p>
+                    <TextAndLink   className="arrowfour">
+                        <p className="body">{body3.text}</p>
                         <ArrowStyleFour 
+                      
                         role="img"
                         width={360} 
                         color={colors.border} 
