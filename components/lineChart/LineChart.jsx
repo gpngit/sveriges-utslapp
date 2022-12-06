@@ -14,23 +14,6 @@ import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
 
-const Grid = styled.div`
-display: grid;
-gap: 1rem;
-padding-right:2rem;
-@media ${device.laptop}{
-  padding-top:1rem;
-  padding-left:5rem;
-  padding-right:5rem;
-    gap:2rem;
-    grid-template-columns: repeat(2, 1fr); }
-    @media ${device.laptopL}{
-      gap:5rem;
-      padding-left:9rem;
-      padding-bottom:8rem;
-    }
-`
-
 Chart.register(annotationPlugin)
 
 const Bg = styled.div`
@@ -46,6 +29,7 @@ const Bg = styled.div`
 const Wrapper = styled.div`
   clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
   -webkit-clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
+
   height: 100%;
   background-color:${colors.primary};
   display:block;
@@ -56,12 +40,12 @@ const Container = styled.article`
   background-color: ${colors.primary};
   color: black;
   padding: 2rem 0rem 5rem 1rem;
+
   @media ${device.mobileM}{
     padding-left: 2rem;
   }
   @media ${device.tablet}{
     padding: 2rem 4rem;
-    
   }
   @media ${device.laptop}{
     padding-top:5rem;
@@ -69,41 +53,58 @@ const Container = styled.article`
     padding-left:10rem;
   }
 `
+const Grid = styled.div`
+  display: grid;
+  gap: 1rem;
+  padding-right:2rem;
+  @media ${device.laptop}{
+    padding-top:1rem;
+    padding-left:5rem;
+    padding-right:5rem;
+    gap:2rem;
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  @media ${device.laptopL}{
+    gap:5rem;
+    padding-left:9rem;
+    padding-bottom:8rem;
+  }
+`
 const TextContent = styled.div`
-
-@media ${device.laptop}{
-  padding-left:6rem;
-}
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
+
+  @media ${device.laptop}{
+    padding-left:6rem;
+  }
 
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
     ${fonts.lessheading};
+
     @media ${device.laptop}{
       margin-bottom:-0.3rem;
     }
   }
-
   p {
     text-align: left;
     text-justify: inter-word;
     ${fonts.paragraph};
+
     @media ${device.mobileTablet}{
       width:90%;
     }
     @media ${device.laptop}{
       max-width:80%;
     }
-        @media (max-width: ${size.mobileS}){ 
-          width:90%;
-        } 
+    @media (max-width: ${size.mobileS}){ 
+      width:90%;
+    } 
   }
 `
 const GridText = styled.div`
-
 p {
   text-align: left;
   text-justify: inter-word;
@@ -122,7 +123,6 @@ const Scrolltext = styled.div`
   font-size: 14px;
   gap: 1rem;
   color: ${colors.border};
-
   @media (min-width: ${size.mobiletablet}) {
   display: none;
   }
@@ -136,17 +136,16 @@ const ScrollContainer = styled.div`
   cursor:grab;
   scrollbar-color: ${colors.fossil} ${colors.white};
   scrollbar-width: thin;
-
-  //*IE AND FIREFOX:
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-  }}
+      &::-webkit-scrollbar {
+        display: none;
+    }
+  }
 `
 const ChartContainer = styled.div`
-cursor:grab;
+  cursor:grab;
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
@@ -171,8 +170,6 @@ const Message = styled.div`
     left:130%;
     margin-left:8rem;
   }
-  
-
   @media (max-width: ${size.mobileM}){
     display:block;
     left:150%;
@@ -193,30 +190,25 @@ const Message = styled.div`
     left:70%;
     margin-top:1rem;
   }
-
   @media ${device.tablet}{
     display:block;
     left: 70%;
     gap: .6rem;
   }
-
   svg {
     transform: translate(-50px, 5px) rotate(120deg);
   }
 `
 const RadioContainer = styled.fieldset`
-
-@media ${device.laptop}{
-  padding-left:10rem;
-}
     border: none;
     ${flex("row", 'flex-start')};
-
     @media (max-width: 490px){
       ${flex("column", 'flex-start')};
     }
-
-    >div {
+    @media ${device.laptop}{
+      padding-left:10rem;
+    }
+    .div {
       padding: .6rem 1rem;
 
       @media (max-width: 490px){

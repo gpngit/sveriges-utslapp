@@ -23,11 +23,10 @@ const Content = styled.div`
   }
 `
 
-
 const LinkModal = ({sourceLink1, sourceLink2, sourceLink3}) => {
 
   return ( 
-      <Content>
+  <Content>
         <h3>Källhänvisningar:</h3>
         <ul>
           <Link href={sourceLink1} target="_blank">
