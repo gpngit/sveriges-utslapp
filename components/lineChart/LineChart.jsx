@@ -208,13 +208,11 @@ const RadioContainer = styled.fieldset`
     @media ${device.laptop}{
       padding-left:10rem;
     }
-    .div {
+    >div {
       padding: .6rem 1rem;
-
       @media (max-width: 490px){
         padding-left: 0px;
       }
-
     }
     >div:first-of-type{
       border-right: 2px solid black;

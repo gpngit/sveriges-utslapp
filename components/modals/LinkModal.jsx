@@ -27,20 +27,19 @@ const LinkModal = ({sourceLink1, sourceLink2, sourceLink3}) => {
 
   return ( 
   <Content>
-        <h3>Källhänvisningar:</h3>
-        <ul>
-          <Link href={sourceLink1} target="_blank">
+    <h3>Källhänvisningar:</h3>
+      <ul>
+        <Link href={sourceLink1} target="_blank">
           Konsumtion av skogsprodukter
-          </Link>
-          <Link href={sourceLink2} target="_blank">
+        </Link>
+        <Link href={sourceLink2} target="_blank">
           Abrupt increase in harvested forest area over Europe after 2015
-          </Link>
-          <Link href= {sourceLink3} target ="_blank">
-           EU-kritik mot svenskt skogsbruk
-          </Link>
+        </Link>
+        <Link href= {sourceLink3} target ="_blank">
+          EU-kritik mot svenskt skogsbruk
+        </Link>
         </ul>
-    </Content>
- 
+  </Content>
   );
 }
 export default LinkModal;
