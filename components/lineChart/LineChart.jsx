@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   background-color:${colors.primary};
   display:block;
 `
-const Container = styled.main`
+const Container = styled.article`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};
@@ -52,7 +52,7 @@ const Container = styled.main`
     padding-bottom:5rem;
   }
 `
-const TextContent = styled.article`
+const TextContent = styled.div`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
@@ -147,10 +147,7 @@ const ScrollContainer = styled.div`
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
-  }
-  }
-
-
+  }}
 `
 const ChartContainer = styled.div`
 cursor:grab;
@@ -172,7 +169,6 @@ const CheckboxContainer = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
 
