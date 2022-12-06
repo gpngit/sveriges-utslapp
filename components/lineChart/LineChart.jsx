@@ -19,13 +19,15 @@ display: grid;
 gap: 1rem;
 padding-right:2rem;
 @media ${device.laptop}{
-
   padding-top:1rem;
-
+  padding-left:5rem;
+  padding-right:5rem;
     gap:2rem;
     grid-template-columns: repeat(2, 1fr); }
     @media ${device.laptopL}{
       gap:5rem;
+      padding-left:9rem;
+      padding-bottom:8rem;
     }
 `
 
@@ -64,9 +66,14 @@ const Container = styled.article`
   @media ${device.laptop}{
     padding-top:5rem;
     padding-bottom:5rem;
+    padding-left:10rem;
   }
 `
 const TextContent = styled.div`
+
+@media ${device.laptop}{
+  padding-left:6rem;
+}
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
@@ -198,6 +205,10 @@ const Message = styled.div`
   }
 `
 const RadioContainer = styled.fieldset`
+
+@media ${device.laptop}{
+  padding-left:10rem;
+}
     border: none;
     ${flex("row", 'flex-start')};
 

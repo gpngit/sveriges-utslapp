@@ -35,7 +35,7 @@ margin-top:2rem;
 }
 @media ${device.laptop}{
     padding:3rem;
-    padding-left:5rem;}
+    padding-left:18rem;}
 `
 const TextContent = styled.div`
     ${flex()};
@@ -62,6 +62,7 @@ const TextContent = styled.div`
     
         @media screen and ${device.laptop}{
          max-width:700px;
+         
         }
         @media (max-width: ${size.mobileS}){
             display:inline;
