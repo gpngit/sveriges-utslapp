@@ -1,13 +1,12 @@
 //react hooks
 import { useState, useEffect } from 'react'
+//nextjs
+import Link from 'next/link'
 //components
 import SourceAndShare from '../../buttons/SourceAndShare'
 import { Grid, Paragraph, Content, Heading, Row, FirstContent, SecondContent, RowMobile} from './ContainerStyles'
 import ChosenYear from './currentYearBlob'
 import Kollagring from '../../barchart/Kollagring'
-import Link from 'next/link'
-
-
 
 const FaktaOne = ({pageElements, emissions}) => {
 

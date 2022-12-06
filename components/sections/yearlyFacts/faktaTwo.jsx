@@ -14,7 +14,6 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const subheading = sections.find(section => section.name === 'subheading')
     const body1 = sections.find(section => section.name === 'body1')
     const url = sections.find(section => section.name === 'source')
-    
 
     useEffect(() => {
         //radbryt:
@@ -30,37 +29,39 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
         <Row 
         biobransle>
             <ChosenYear
-                emissions = {energiMyndighetenData}
-                name = {name}
-            />
+            emissions = {energiMyndighetenData}/>
             <Heading>
-            <p>{subheading.text.toUpperCase()}  </p>
-            <h2>{title.text}</h2>
+                <p>{subheading.text.toUpperCase()}</p>
+                <h2>{title.text}</h2>
             </Heading>
         </Row>
         <Grid>
             <FirstContent 
             biobransle>
-            <Paragraph id="fakta-biobransle-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</Paragraph>
-            <DesktopButtons>
-            <SourceAndShare 
-                whiteBG={"yes"}
-                sourceLink={url.text} 
-                shareLink={'#fakta-biobransle'} 
-                sourceText={title.text}
-                />
-            </DesktopButtons>
+                <Paragraph 
+                id="fakta-biobransle-body1">
+                    {body1.text.replaceAll(/<br\s*[/]?>/gi, "")}
+                </Paragraph>
+                <DesktopButtons>
+                    <SourceAndShare 
+                        whiteBG={"yes"}
+                        sourceLink={url.text} 
+                        shareLink={'#fakta-biobransle'} 
+                        sourceText={title.text}
+                    />
+                </DesktopButtons>
             </FirstContent>
             <SecondContent
             biobransle>
-                <FuelOrigin energiMyndighetenData={energiMyndighetenData} />
+                <FuelOrigin 
+                energiMyndighetenData={energiMyndighetenData} />
                 <MobileButtons>
-                <SourceAndShare 
-                whiteBG={"yes"}
-                sourceLink={url.text} 
-                shareLink={'#fakta-biobransle'} 
-                sourceText={title.text}
-                />
+                    <SourceAndShare 
+                    whiteBG={"yes"}
+                    sourceLink={url.text} 
+                    shareLink={'#fakta-biobransle'} 
+                    sourceText={title.text}
+                    />
                 </MobileButtons>
             </SecondContent>
         </Grid>
