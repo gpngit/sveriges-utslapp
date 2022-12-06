@@ -90,11 +90,11 @@ p {
   text-align: justify;
   text-justify: inter-word;
   ${fonts.paragraph};
+}
 ` 
-
 const ButtonContainer = styled.div`
   max-width: 1000px;
-  ${flex("row", 'flex-start', 'center')}
+  ${flex("row", 'flex-start', 'center')};
 
   @media ${device.tablet}{
     gap: 1rem;
@@ -127,7 +127,7 @@ const Scrolltext = styled.div`
   gap: 1rem;
   color: ${colors.border};
 
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.mobiletablet}) {
   display: none;
   }
 `
