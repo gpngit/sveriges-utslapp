@@ -13,7 +13,21 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
-import {Grid} from "../sections/sectionDifferentTypes/ContainerStyles";
+
+const Grid = styled.div`
+display: grid;
+gap: 1rem;
+padding-right:2rem;
+@media ${device.laptop}{
+
+  padding-top:1rem;
+
+    gap:2rem;
+    grid-template-columns: repeat(2, 1fr); }
+    @media ${device.laptopL}{
+      gap:5rem;
+    }
+`
 
 Chart.register(annotationPlugin)
 
@@ -34,7 +48,7 @@ const Wrapper = styled.div`
   background-color:${colors.primary};
   display:block;
 `
-const Container = styled.main`
+const Container = styled.article`
   ${flex('column')};
   gap: 2rem;
   background-color: ${colors.primary};
@@ -52,15 +66,11 @@ const Container = styled.main`
     padding-bottom:5rem;
   }
 `
-const TextContent = styled.article`
+const TextContent = styled.div`
   ${flex('column')};
   gap: 1rem;
   padding-right:2rem;
 
-  @media ${device.laptop}{
-    padding-left:8rem;
-  }
-  
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
@@ -71,14 +81,14 @@ const TextContent = styled.article`
   }
 
   p {
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
     ${fonts.paragraph};
     @media ${device.mobileTablet}{
       width:90%;
     }
     @media ${device.laptop}{
-      max-width:50%;
+      max-width:80%;
     }
         @media (max-width: ${size.mobileS}){ 
           width:90%;
@@ -86,15 +96,22 @@ const TextContent = styled.article`
   }
 `
 const GridText = styled.div`
+
 p {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   ${fonts.paragraph};
+  max-width:500px;
+}
+h3{
+  color: ${colors.border};
+  font-size:clamp(1.2rem, 1vw, 1.6rem); 
+  padding-bottom:.5rem;
+}
 ` 
-
 const ButtonContainer = styled.div`
   max-width: 1000px;
-  ${flex("row", 'flex-start', 'center')}
+  ${flex("row", 'flex-start', 'center')};
 
   @media ${device.tablet}{
     gap: 1rem;
@@ -127,7 +144,7 @@ const Scrolltext = styled.div`
   gap: 1rem;
   color: ${colors.border};
 
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.mobiletablet}) {
   display: none;
   }
 `
@@ -147,10 +164,7 @@ const ScrollContainer = styled.div`
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
-  }
-  }
-
-
+  }}
 `
 const ChartContainer = styled.div`
 cursor:grab;
@@ -172,7 +186,6 @@ const CheckboxContainer = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
 `
 const Checkbox = styled.input.attrs({type: 'checkbox'})`
 
@@ -225,6 +238,33 @@ const Message = styled.div`
   color: ${colors.border};
   p {
     font-weight: bold;
+  }
+  @media (max-width: ${size.mobileS}){
+    display:block;
+    left:130%;
+    margin-left:8rem;
+  }
+  
+
+  @media (max-width: ${size.mobileM}){
+    display:block;
+    left:150%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileM}{
+    display:block;
+    left:120%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileL}{
+    display:block;
+    left:100%;
+    margin-top:1rem;
+  }
+  @media ${device.mobileTablet}{
+    display:block;
+    left:70%;
+    margin-top:1rem;
   }
 
   @media ${device.tablet}{

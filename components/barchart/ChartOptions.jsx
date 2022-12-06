@@ -48,19 +48,26 @@ const ChartOptions = () => {
         formatter: function(value, context) {
           let datasets = context.chart.data.datasets
           let stackedDatasets = datasets.filter(ds => ds.stacked === true)
-          if (context.datasetIndex !== 2 && context.dataset.stacked){
-            return null
-          } else if (context.datasetIndex === 2) {
-              if (datasets[0].stacked){
-                return ['Totala', 'utsläpp','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
-              } else {
-                return ['Potentiellt','upptag','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
-              }
-          } else if (context.datasetIndex === 0) {
-            return ['Utsläpp','', `${Math.round(value)}`]
+          if (context.datasetIndex === 0){
+            return ['Utsläpp', 'kt CO2']
           } else if (context.datasetIndex === 1) {
-            return ['Upptag','', `${Math.round(value)}`]
+            return ['Upptag', 'kt CO2']
+          } else {
+            return ['Potentiellt', 'Upptag', 'kt CO2']
           }
+          // if (context.datasetIndex !== 2 && context.dataset.stacked){
+          //   return null
+          // } else if (context.datasetIndex === 2) {
+          //     if (datasets[0].stacked){
+          //       return ['Totala', 'utsläpp','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+          //     } else {
+          //       return ['Potentiellt','upptag','', `${Math.round(stackedDatasets[0].data[0] + stackedDatasets[1].data[0])}`]
+          //     }
+          // } else if (context.datasetIndex === 0) {
+          //   return ['Utsläpp','', `${Math.round(value)}`]
+          // } else if (context.datasetIndex === 1) {
+          //   return ['Upptag','', `${Math.round(value)}`]
+          // }
         },
         textAlign: 'center',
         font: {

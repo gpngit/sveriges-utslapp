@@ -57,6 +57,7 @@ const Message = styled.div`
 
   p {
     font-weight: bold;
+    color: black;
   }
 
   @media ${device.tablet}{
@@ -136,7 +137,6 @@ const Kollagring = ({ emissions }) => {
             .filter(emission => emission.sector.val === "10.0"))
     }, [displayYear])
 
-    const [stackIndex, setStackIndex] = useState('Stack 2')
     const [showMessage, setShowMessage] = useState(true)
 
     useEffect(() => {
@@ -144,6 +144,7 @@ const Kollagring = ({ emissions }) => {
     }, [yearlyBioEmissions, yearlyFossilEmissions])
 
     useEffect(() => {
+      if (showMessage) {
         setChartData({
             labels: [''],
             datasets: [{
@@ -155,7 +156,6 @@ const Kollagring = ({ emissions }) => {
             borderColor: colors.border,
             borderWidth: 0,
             stack: 'Stack 1',
-            stacked: stackIndex === 'Stack 1' ? true : false
             },{
             label: 'Markanvändning',
             data: yearlyLandUse.map(data => -Number(data.value)),
@@ -165,43 +165,56 @@ const Kollagring = ({ emissions }) => {
             borderColor: colors.border,
             borderWidth: 0,
             stack: 'Stack 2',
-            stacked: stackIndex === 'Stack 2' ? true : false
+            stacked: true
             },{
             label: 'Biogena utsläpp',
             data: yearlyBioEmissions.map(data => Number(data.value)),
-            backgroundColor: stackIndex === 'Stack 1' ? colors.bio : colors.greenOpaque,
-            hoverBackgroundColor: stackIndex === 'Stack 1' ? colors.bio : colors.greenOpaque,
+            backgroundColor: colors.greenOpaque,
+            hoverBackgroundColor: colors.greenOpaque,
             borderColor: colors.border,
             fill: true,
             borderWidth: 0,
-            stack: stackIndex,
+            stack: 'Stack 2',
             stacked : true
             }]
         })
-    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, stackIndex])
-
-
-    const handleClick = () => {
-      setShowMessage(!showMessage)
-      if (stackIndex === 'Stack 1'){
-        setStackIndex('Stack 2')
       } else {
-        setStackIndex('Stack 1')
+        setChartData({
+          labels: [''],
+          datasets: [{
+          label: 'Fossila utsläpp',
+          data: yearlyFossilEmissions.map(data => Number(data.value)),
+          fill: true,
+          backgroundColor: colors.fossil,
+          hoverBackgroundColor: colors.fossil,
+          borderColor: colors.border,
+          borderWidth: 0,
+          stack: 'Stack 1',
+          },{
+          label: 'Markanvändning',
+          data: yearlyLandUse.map(data => -Number(data.value)),
+          backgroundColor: colors.green,
+          hoverBackgroundColor: colors.green,
+          fill: true,
+          borderColor: colors.border,
+          borderWidth: 0,
+          stack: 'Stack 2',
+          }]
+      })
       }
-      canvas.current.legend.chart.update(); 
-    }
+    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showMessage])
 
     return (
         <Container id='bar-chart'>
           <ButtonAndMessageContainer>
-            <Button onClick={handleClick}
+            <Button onClick={() => setShowMessage(!showMessage)}
             aria-label="Visa olika vyer:">
-              {stackIndex === 'Stack 1' ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
+              {!showMessage ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
             </Button>
             {showMessage && (
               <Message>
                 <p>Så här hade det kunnat se ut om vi inte hade skövlat vår skog </p>
-                <SmallArrow size={15} color={colors.bio} />
+                <SmallArrow size={15} color={'black'} />
               </Message>
             )}
           </ButtonAndMessageContainer>
@@ -220,10 +233,6 @@ const Kollagring = ({ emissions }) => {
             <Label>
               <p>Fossil <abbr>CO2</abbr></p>
               <div className="fossil" />
-            </Label>
-            <Label>
-            <p>Biogen <abbr>CO2</abbr></p>
-              <div className="bio" />
             </Label>
             <Label>
               <p>Markanvändning (via <abbr>LULUCF</abbr>)</p>

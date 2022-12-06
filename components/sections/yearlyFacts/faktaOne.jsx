@@ -44,7 +44,6 @@ const FaktaOne = ({pageElements, emissions}) => {
             <SecondContent>
                 <Paragraph id="faktaruta1-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}
                 </Paragraph>
-                
                 <RowMobile>
                 <SourceAndShare 
                 whiteBG={"yes"}
