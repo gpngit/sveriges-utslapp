@@ -32,27 +32,29 @@ const LinksContainer = styled.div`
 `
 
 const Footer = ({ pageElements }) => {
-
     const {sections} = pageElements
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
     const links = pageElements.sections.filter(item => item.name === "links");
-  
+
     return (
         <Container>
             <div>
-                <Subheading>{subheading.text.toUpperCase()}</Subheading>
+                <Subheading>
+                    {subheading.text.toUpperCase()}
+                </Subheading>
                 <Title>{title.text}</Title>
                 <LinksContainer>
                     {links.map((link,indx) => 
-                 
-                    <Link key={indx}
-                    target="_blank"
-                    href={link.url}>
-                    {link.text}</Link>)} 
+                        <Link 
+                        key={indx}
+                        target="_blank"
+                        href={link.url}>
+                        {link.text}</Link>)} 
                 </LinksContainer>
             </div>
-            <Crumble color={colors.primary} />
+            <Crumble 
+            color={colors.primary} />
         </Container>
     )
 }

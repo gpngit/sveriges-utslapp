@@ -51,42 +51,41 @@ const LinkButton = styled.button`
         
 `
 const Button = styled.button`
-${flex('row', 'center', 'center')}
-background-color: ${colors.border};
-text-decoration: none;
-color: white;
-border: 2px solid white;
-border-radius: 10px;
-width: 10%;
-min-width:80px;
-padding:1.2rem;
-height: 1.5rem;
-${fonts.button};
-@media (max-width:${size.mobileL}){ 
-    ${fonts.paragraph};
-}
-&:focus{
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-
-${props => 
-    props.secondary && 
-    css`
-    background-color: rgba(55, 0, 0, 0.1);
+    ${flex('row', 'center', 'center')}
+    background-color: ${colors.border};
     text-decoration: none;
+    color: white;
+    border: 2px solid white;
     border-radius: 10px;
-    width: 80px;
-    height: 40px;
-    border: 3px solid ${colors.secondary};
-    color:${colors.secondary};
-    `}
-    &:hover{
-        background-color: rgba(55, 0, 0, 0.3);
+    width: 10%;
+    min-width:80px;
+    padding:1.2rem;
+    height: 1.5rem;
+    ${fonts.button};
+    @media (max-width:${size.mobileL}){ 
+        ${fonts.paragraph};
     }
     &:focus{
         background-color: rgba(0, 0, 0, 0.2);
     }
+
+    ${props => 
+        props.secondary && 
+        css`
+        background-color: rgba(55, 0, 0, 0.1);
+        text-decoration: none;
+        border-radius: 10px;
+        width: 80px;
+        height: 40px;
+        border: 3px solid ${colors.secondary};
+        color:${colors.secondary};
+        `}
+        &:hover{
+            background-color: rgba(55, 0, 0, 0.3);
+        }
+        &:focus{
+            background-color: rgba(0, 0, 0, 0.2);
+        }
 `
 const ModalWrapper = styled.dialog`
     background-color: ${colors.primary};
@@ -130,17 +129,15 @@ background-color: ${colors.primary};
     border: none;
     padding: 2rem;
     @media (max-width:${size.mobiletablet}){
-     width:80%;
+    width:80%;
     }
     
-    
-  &::before {
-      ${flex()}
-  }
-  &::backdrop {
-      background-color: rgba(0, 0, 0, 0.15);
-  }
-  
+    &::before {
+        ${flex()}
+    }
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
 `
 const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareLink, sourceText }) => {
 
@@ -148,7 +145,6 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
     const [showSecondary, setShowSecondary] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
-    
     useEffect(() => {
         if(whiteBG === "yes"){
             setShowSecondary(true)
@@ -157,19 +153,21 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
 
     return (
         <Container>
-    
                 <LinkButton  secondary
                 onClick = {() => {setShowModal(true)}}
                 aria-label="Visa källor"
                 >Källa
                 </LinkButton>
                 <Button secondary
-                onClick={() => {modal.current.showModal()}}>Dela
+                onClick={() => {modal.current.showModal()}}>
+                    Dela
                 </Button>
             <ModalWrapper 
             ref={modal}>
                 <CloseButton onClick={() => modal.current.close()}
-                aria-label="Stäng fönster">Stäng</CloseButton>
+                aria-label="Stäng fönster">
+                    Stäng
+                </CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>
@@ -177,12 +175,14 @@ const SourceAndShare = ({ whiteBG, sourceLink1, sourceLink2, sourceLink3, shareL
 
             {showModal ? (
             <LinkModalWrapper>
-                <CloseButton onClick={() => {setShowModal(false)}}>Stäng</CloseButton>
+                <CloseButton onClick={() => {setShowModal(false)}}>
+                    Stäng
+                </CloseButton>
                 <LinkModal 
                 sourceLink1 = {sourceLink1}
                 sourceLink2 = {sourceLink2}
                 sourceLink3 = {sourceLink3}/>
-              </LinkModalWrapper>
+            </LinkModalWrapper>
             ):(null)}
         </Container>
     )

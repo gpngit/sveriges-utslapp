@@ -14,21 +14,6 @@ import AppContext from '../../context/AppContext'
 //resources
 import { SmallArrow } from "../SVG's/Arrows";
 
-const Grid = styled.div`
-display: grid;
-gap: 1rem;
-padding-right:2rem;
-@media ${device.laptop}{
-
-  padding-top:1rem;
-
-    gap:2rem;
-    grid-template-columns: repeat(2, 1fr); }
-    @media ${device.laptopL}{
-      gap:5rem;
-    }
-`
-
 Chart.register(annotationPlugin)
 
 const Bg = styled.div`
@@ -44,6 +29,7 @@ const Bg = styled.div`
 const Wrapper = styled.div`
   clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
   -webkit-clip-path: polygon(0% 100%, 4% 80%, 8% 76%, 12% 70%, 16% 66%, 22% 64%, 26% 56%, 30% 60%, 34% 59%, 38% 66%, 42% 48%, 46% 44%, 50% 44%, 54% 40%, 60% 34%, 64% 30%, 68% 31%, 72% 14%, 76% 29%, 80% 20%, 82% 26%, 84% 20%, 88% 10%, 90% 4%, 94% 10%, 96% 4%, 99% 6%, 100% 4%, 100% 100%, 0% 100%);
+
   height: 100%;
   background-color:${colors.primary};
   display:block;
@@ -54,16 +40,34 @@ const Container = styled.article`
   background-color: ${colors.primary};
   color: black;
   padding: 2rem 0rem 5rem 1rem;
+
   @media ${device.mobileM}{
     padding-left: 2rem;
   }
   @media ${device.tablet}{
     padding: 2rem 4rem;
-    
   }
   @media ${device.laptop}{
     padding-top:5rem;
     padding-bottom:5rem;
+    padding-left:10rem;
+  }
+`
+const Grid = styled.div`
+  display: grid;
+  gap: 1rem;
+  padding-right:2rem;
+  @media ${device.laptop}{
+    padding-top:1rem;
+    padding-left:5rem;
+    padding-right:5rem;
+    gap:2rem;
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  @media ${device.laptopL}{
+    gap:5rem;
+    padding-left:9rem;
+    padding-bottom:8rem;
   }
 `
 const TextContent = styled.div`
@@ -71,32 +75,36 @@ const TextContent = styled.div`
   gap: 1rem;
   padding-right:2rem;
 
+  @media ${device.laptop}{
+    padding-left:6rem;
+  }
+
   h2 {
     color: ${colors.secondary};
     margin-top:-0.7rem;
     ${fonts.lessheading};
+
     @media ${device.laptop}{
       margin-bottom:-0.3rem;
     }
   }
-
   p {
     text-align: left;
     text-justify: inter-word;
     ${fonts.paragraph};
+
     @media ${device.mobileTablet}{
       width:90%;
     }
     @media ${device.laptop}{
       max-width:80%;
     }
-        @media (max-width: ${size.mobileS}){ 
-          width:90%;
-        } 
+    @media (max-width: ${size.mobileS}){ 
+      width:90%;
+    } 
   }
 `
 const GridText = styled.div`
-
 p {
   text-align: left;
   text-justify: inter-word;
@@ -115,7 +123,6 @@ const Scrolltext = styled.div`
   font-size: 14px;
   gap: 1rem;
   color: ${colors.border};
-
   @media (min-width: ${size.mobiletablet}) {
   display: none;
   }
@@ -129,17 +136,16 @@ const ScrollContainer = styled.div`
   cursor:grab;
   scrollbar-color: ${colors.fossil} ${colors.white};
   scrollbar-width: thin;
-
-  //*IE AND FIREFOX:
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-  }}
+      &::-webkit-scrollbar {
+        display: none;
+    }
+  }
 `
 const ChartContainer = styled.div`
-cursor:grab;
+  cursor:grab;
   min-height: 40vh;
   width: 100%;
   min-width: ${size.tablet};
@@ -164,8 +170,6 @@ const Message = styled.div`
     left:130%;
     margin-left:8rem;
   }
-  
-
   @media (max-width: ${size.mobileM}){
     display:block;
     left:150%;
@@ -186,13 +190,11 @@ const Message = styled.div`
     left:70%;
     margin-top:1rem;
   }
-
   @media ${device.tablet}{
     display:block;
     left: 70%;
     gap: .6rem;
   }
-
   svg {
     transform: translate(-50px, 5px) rotate(120deg);
   }
@@ -200,18 +202,17 @@ const Message = styled.div`
 const RadioContainer = styled.fieldset`
     border: none;
     ${flex("row", 'flex-start')};
-
     @media (max-width: 490px){
       ${flex("column", 'flex-start')};
     }
-
+    @media ${device.laptop}{
+      padding-left:10rem;
+    }
     >div {
       padding: .6rem 1rem;
-
       @media (max-width: 490px){
         padding-left: 0px;
       }
-
     }
     >div:first-of-type{
       border-right: 2px solid black;
@@ -397,44 +398,64 @@ const LineChart = ({emissions, pageElements}) => {
     document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`line-chart-body2`).innerText = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`line-chart-body3`).innerText = body3.text.replaceAll(/<br\s*[/]?>/gi, "\n");
-    }, [])
+  }, [])
 
   return (
     <>
     <Bg>
       <Wrapper/>
     </Bg>
-      {show && 
+    {show && 
     <Container id='line-chart'>
       <TextContent>
         <p>{subheading.text.toUpperCase()}</p>
         <h2>{title.text}</h2>
-        <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
+        <p 
+        id="line-chart-body1">
+          {body1.text.replaceAll(/<br\s*[/]?>/gi, "")}
+        </p>
       </TextContent>  
       <RadioContainer onChange={(e) => handleRadioButtons(e)}>
         <legend>Visa</legend>
         <div>
-          <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
-          <RadioLabel both htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
+          <RadioButton defaultChecked both 
+          className="sr-only" 
+          id="fossil-biogen" 
+          name="radio-btn" />
+          <RadioLabel both 
+          htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton data-index={0} fossil className="sr-only" id="fossil" name="radio-btn" />
-          <RadioLabel fossil htmlFor='fossil'>Fossil CO2</RadioLabel>
+          <RadioButton 
+          data-index={0} fossil 
+          className="sr-only" 
+          id="fossil" 
+          name="radio-btn" />
+          <RadioLabel fossil 
+          htmlFor='fossil'>Fossil CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton data-index={1} bio className="sr-only" id="biogen" name="radio-btn" />
-          <RadioLabel bio htmlFor='biogen'>Biogen CO2</RadioLabel>
+          <RadioButton data-index={1} bio 
+          className="sr-only" 
+          id="biogen" 
+          name="radio-btn" />
+          <RadioLabel bio 
+          htmlFor='biogen'>Biogen CO2</RadioLabel>
         </div>
         </RadioContainer>
       <Scrolltext>
         <p>Swipa höger för att se utveckling</p>
-        <SmallArrow color={colors.bio} size={14} />
+        <SmallArrow 
+        color={colors.bio} 
+        size={14} />
       </Scrolltext>
         <ScrollContainer>
           {showMessage && (
             <Message>
               <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
-              <SmallArrow color={colors.secondary} size={16} />
+              <SmallArrow 
+              color={colors.secondary} 
+              size={16} />
             </Message>
           )}
           <ChartContainer>
@@ -448,13 +469,19 @@ const LineChart = ({emissions, pageElements}) => {
           </ChartContainer>
         </ScrollContainer>
         <Grid>  
-        <GridText>
-        <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-        </GridText>
-        <GridText>
-        <h3>{body3.title}</h3>
-        <p id="line-chart-body3">{body3.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
-        </GridText>
+          <GridText>
+            <p 
+            id="line-chart-body2">
+              {body2.text.replaceAll(/<br\s*[/]?>/gi, "")}
+            </p>
+          </GridText>
+          <GridText>
+            <h3>{body3.title}</h3>
+            <p 
+            id="line-chart-body3">
+              {body3.text.replaceAll(/<br\s*[/]?>/gi, "")}
+            </p>
+          </GridText>
         </Grid>
       </Container>
       } 

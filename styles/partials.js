@@ -1,7 +1,8 @@
 import {css} from "styled-components";
 
-// variables
-
+export const font ={
+    main: "'Noto Sans', sans-serif"
+}
 export const colors = {
     primary: '#f2cebd',
     secondary: '#370000',
@@ -11,7 +12,6 @@ export const colors = {
     green: '#3d873d',
     greenOpaque: '#3d873db3',
     white: "#f8f6f6",
-    
 }
 export const size = {
     mobileS: '320px',
@@ -35,12 +35,18 @@ export const device = {
     desktop: `(min-width: ${size.desktop})`,
     desktopL: `(min-width: ${size.desktop})`
 };
+
+
 export const fonts = {
     heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3rem); line-height: 120%;  
     @media screen and ${device.desktop}{
     line-height: 100%;}
     `,
     subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 1.6rem); line-height:120%; `,
+    lessheading: `
+    font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
+    line-height: 120%;
+    `,
     paragraph:`font-size: clamp(1rem, 1vw , 1.2rem); 
     line-height: 150%; `,
     footnote:`font-size: 0.8rem; line-height:150%;
@@ -48,19 +54,10 @@ export const fonts = {
         font-size:1rem;}`,
     button: `font-size: 1rem;
     `,
-    lessheading: `
-    font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
-    line-height: 120%;
-    `,
 
-}
-
-export const font ={
-    main: "'Noto Sans', sans-serif"
 }
 
 // mixins
-
 export const flex = (direction, justify, align) => css`
     display: flex;
     flex-direction: ${direction || 'column'};

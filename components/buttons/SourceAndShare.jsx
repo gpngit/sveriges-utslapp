@@ -20,6 +20,7 @@ const LinkButton = styled.a`
     padding:1.2rem;
     height: 1.5rem;
     ${fonts.button};
+
     &:hover{
         background-color: rgba(55, 0, 0, 0.3);
     }
@@ -48,23 +49,24 @@ const LinkButton = styled.a`
         
 `
 const Button = styled.button`
-${flex('row', 'center', 'center')}
-background-color: ${colors.border};
-text-decoration: none;
-color: white;
-border: 2px solid white;
-border-radius: 10px;
-width: 10%;
-min-width:80px;
-padding:1.2rem;
-height: 1.5rem;
-${fonts.button};
-@media (max-width:${size.mobileL}){ 
-    ${fonts.paragraph};
-}
-&:focus{
-    background-color: rgba(0, 0, 0, 0.2);
-}
+    ${flex('row', 'center', 'center')}
+    background-color: ${colors.border};
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 10%;
+    min-width:80px;
+    padding:1.2rem;
+    height: 1.5rem;
+    ${fonts.button};
+
+    @media (max-width:${size.mobileL}){ 
+        ${fonts.paragraph};
+    }
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 
 ${props => 
     props.secondary && 
@@ -130,7 +132,6 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
         }
     },[whiteBG])
 
-   
 
     return (
         <Container>
@@ -138,10 +139,12 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 <>
                 <LinkButton secondary
                 target="_blank"
-                href={sourceLink}>Källa
+                href={sourceLink}>
+                    Källa
                 </LinkButton>
                 <Button secondary
-                onClick={() => {modal.current.showModal()}}>Dela
+                onClick={() => {modal.current.showModal()}}>
+                    Dela
                 </Button>
                 </>
             ): (<>
@@ -150,14 +153,17 @@ const SourceAndShare = ({ whiteBG, sourceLink, shareLink, sourceText }) => {
                 href={sourceLink}>Källa
                 </LinkButton>
                 <Button 
-                onClick={() => modal.current.showModal()}>Dela
+                onClick={() => modal.current.showModal()}>
+                    Dela
                 </Button>
                 </>
             )}
 
             <ModalWrapper 
             ref={modal}>
-                <CloseButton onClick={() => modal.current.close()}>Stäng</CloseButton>
+                <CloseButton onClick={() => modal.current.close()}>
+                Stäng
+                </CloseButton>
                 <SharingModal
                 source={shareLink} 
                 text={sourceText}/>

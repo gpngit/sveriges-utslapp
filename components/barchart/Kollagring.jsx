@@ -11,6 +11,7 @@ import ChartOptions from './ChartOptions';
 //context
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+import Chevron from "../SVG's/Chevron"
 
 const Container = styled.section`
   ${flex('column')};
@@ -27,9 +28,10 @@ const ChartContainer = styled.div`
   @media ${device.laptopL}{
     max-width: 600px;
   }
-  
 `
 const Button = styled.button`
+  ${flex('row', 'flex-start', 'center')};
+  gap: .4rem;
   ${fonts.footnote};
   font-weight:500;
   padding: 0.8rem 1rem;
@@ -60,7 +62,6 @@ const Label = styled.div`
     border-radius:50%;
     margin-top:2px;
   }
-
   .fossil {
     background-color: ${colors.fossil}
   }
@@ -178,10 +179,20 @@ const Kollagring = ({ emissions }) => {
     }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showPotential])
 
     return (
-        <Container id='bar-chart'>
+        <Container 
+        id='bar-chart'>
           <Button onClick={() => setShowPotential(!showPotential)}
           aria-label="Visa olika vyer:">
-            {!showPotential ? 'Visa hur det kunnat se ut om vi inte skövlade skog' : 'Visa hur det faktiskt sett ut'}
+            {!showPotential ? 
+            <span>Visa hur det kunnat se ut om vi inte skövlade skog</span> :
+            <>
+            <Chevron 
+            color={'black'} 
+            direction={'left'} 
+            size={12} 
+            stroke={5} />
+            <span>Visa hur det faktiskt sett ut</span>
+            </>}
           </Button>
           <ChartContainer>
             {chartData && (

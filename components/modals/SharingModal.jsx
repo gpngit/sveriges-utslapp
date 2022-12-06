@@ -13,7 +13,6 @@ import {
   TwitterIcon,
   EmailShareButton,
   EmailIcon,
-
 } from 'next-share';
 
 const Content = styled.div`
@@ -41,13 +40,16 @@ const Content = styled.div`
       background-color:transparent;
       color:${colors.secondary};
       padding: 8px;
+
       &:hover{
         background-color: rgba(55, 0, 0, 0.2);
       }
+
       &:active{
         color:${colors.fossil};
         border: 2px solid ${colors.fossil};
       }
+
       &:focus{
         color:${colors.fossil};
         border: 2px solid ${colors.fossil};
@@ -85,32 +87,40 @@ const SharingModal = ({ source, text }) => {
   const correctURL = `${URL}${source}`
   
   return ( 
-    <Content>
+  <Content>
     <p>Dela detta via:</p>
     <ul>
       <FacebookShareButton
         url={correctURL} 
         quote={text}
         hashtag={'#biodrivmedel'}>
-        <FacebookIcon size={32} round></FacebookIcon>
+        <FacebookIcon 
+        size={32} 
+        round></FacebookIcon>
       </FacebookShareButton>
       <RedditShareButton 
       url={correctURL} 
       quote={text}
       hashtag={'#biodrivmedel'}>
-        <RedditIcon size={32} round></RedditIcon>
+        <RedditIcon 
+        size={32} 
+        round></RedditIcon>
       </RedditShareButton>
     <TwitterShareButton
     url={correctURL} 
     quote={text}
-    hashtag={'#biodrivmedel'}>
-      <TwitterIcon size={32} round></TwitterIcon>
+    hashtag={'#bioutsläppen'}>
+      <TwitterIcon 
+      size={32} 
+      round></TwitterIcon>
     </TwitterShareButton>
     <EmailShareButton
-     url={correctURL} 
-     quote={text}
-     hashtag={'#biodrivmedel'}>
-      <EmailIcon size={32} round></EmailIcon>
+      url={correctURL} 
+      quote={text}
+      hashtag={'#sveriges-utsläpp'}>
+      <EmailIcon 
+      size={32} 
+      round></EmailIcon>
     </EmailShareButton>
     </ul>
 
@@ -124,9 +134,11 @@ const SharingModal = ({ source, text }) => {
       value={correctURL}/>
       <button 
       aria-label="Kopiera länken"
-      onClick={copyURL}>{buttontext}</button>
+      onClick={copyURL}>
+        {buttontext}
+      </button>
     </span>
-    </Content>
+  </Content>
  
   );
 }

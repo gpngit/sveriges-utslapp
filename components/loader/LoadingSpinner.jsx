@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { colors } from '../../styles/partials'
 
 const Spinner = styled.div`
-display: inline-block;
-position: relative;
-width: 80px;
-height: 80px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
 
 div{
   position: absolute;
@@ -16,6 +16,7 @@ div{
   background: ${colors.secondary};
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);
@@ -42,20 +43,20 @@ div{
 }
 `
 const Ellipse1 = styled.div`
-left: 8px;
-animation: lds-ellipsis1 0.6s infinite;
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
 `
 const Ellipse2 = styled.div`
-left: 8px;
-animation: lds-ellipsis2 0.6s infinite;
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
 `
 const Ellipse3 = styled.div`
-left: 32px;
-animation: lds-ellipsis2 0.6s infinite;
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
 `
 const Ellipse4 = styled.div`
-left: 56px;
-animation: lds-ellipsis3 0.6s infinite;
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
 `
 
 
@@ -67,7 +68,7 @@ const LoadingSpinner = () => {
       <Ellipse3></Ellipse3>
       <Ellipse4></Ellipse4>
     </Spinner>
-   );
+  );
 }
- 
+
 export default LoadingSpinner;

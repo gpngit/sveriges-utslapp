@@ -25,12 +25,10 @@ const InnerContainer = styled.div`
 `
 const TextContent = styled.div`
     ${fonts.paragraph};
-
     span {
         cursor: pointer;
         text-decoration: underline;
     }
-
     a {
       /* color: ${colors.secondary}; */
       color: black;
@@ -104,15 +102,20 @@ const Consent = () => {
               <p>Cookies är små filer som laddas ner på din dator (eller din mobiltelefon) från webbsidor som du besöker. Cookies innehåller information som låter webbsidor komma ihåg om du har använt webbsidan förut.
               Vi använder cookies för att skapa den bästa upplevelsen för dig när du besöker vår sida. De tillåter oss att bättre förstå hur besökare interagerar med vår webbsida (genom att använda Google Analytics) så att vi kan förbättra användarupplevelsen.</p>
               <br />
-              <a href="https://policies.google.com/technologies/cookies?hl=en-US">Läs mer</a>
+              <a 
+              href="https://policies.google.com/technologies/cookies?hl=en-US">
+                Läs mer</a>
               </>
           )}
         </TextContent>
         <ButtonContainer>
-          <Button onClick={() => acceptCookie()}>Acceptera alla cookies</Button>
-          <Button secondary onClick={(e) => denyCookie()}>Avvisa alla</Button>
+          <Button onClick={() => acceptCookie()}>
+            Acceptera alla cookies
+          </Button>
+          <Button secondary onClick={(e) => denyCookie()}>
+            Avvisa alla
+          </Button>
         </ButtonContainer>
-
       </InnerContainer>
     </Container>
   );
