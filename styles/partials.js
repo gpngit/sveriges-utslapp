@@ -13,25 +13,6 @@ export const colors = {
     greenOpaque: '#3d873db3',
     white: "#f8f6f6",
 }
-export const fonts = {
-    heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3rem); line-height: 120%;  
-    @media screen and ${device.desktop}{
-    line-height: 100%;}
-    `,
-    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 1.6rem); line-height:120%; `,
-    lessheading: `
-    font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
-    line-height: 120%;
-    `,
-    paragraph:`font-size: clamp(1rem, 1vw , 1.2rem); 
-    line-height: 150%; `,
-    footnote:`font-size: 0.8rem; line-height:150%;
-    @media screen and ${device.laptopL}{
-        font-size:1rem;}`,
-    button: `font-size: 1rem;
-    `,
-
-}
 export const size = {
     mobileS: '320px',
     mobileM: '375px',
@@ -56,6 +37,25 @@ export const device = {
 };
 
 
+export const fonts = {
+    heading: `font-size: clamp(1.6rem, 2vw + 1rem, 3rem); line-height: 120%;  
+    @media screen and ${device.desktop}{
+    line-height: 100%;}
+    `,
+    subheading: `font-size: clamp(0.8rem, 1vw + 1rem, 1.6rem); line-height:120%; `,
+    lessheading: `
+    font-size:clamp(1.7rem, 1vw + 1rem, 4.2rem);
+    line-height: 120%;
+    `,
+    paragraph:`font-size: clamp(1rem, 1vw , 1.2rem); 
+    line-height: 150%; `,
+    footnote:`font-size: 0.8rem; line-height:150%;
+    @media screen and ${device.laptopL}{
+        font-size:1rem;}`,
+    button: `font-size: 1rem;
+    `,
+
+}
 
 // mixins
 export const flex = (direction, justify, align) => css`

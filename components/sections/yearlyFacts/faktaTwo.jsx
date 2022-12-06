@@ -70,5 +70,4 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     </>
     );
 }
- 
 export default FaktaTwo;
