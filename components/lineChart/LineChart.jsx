@@ -109,34 +109,6 @@ h3{
   padding-bottom:.5rem;
 }
 ` 
-const ButtonContainer = styled.div`
-  max-width: 1000px;
-  ${flex("row", 'flex-start', 'center')};
-
-  @media ${device.tablet}{
-    gap: 1rem;
-  }
-  @media ${device.laptop}{
-    margin-top:-2rem;
-    padding-left:10rem; 
-  }
-
-  .checkboxes {
-    ${flex("row")};
-    gap: 1rem;
-  }
-
-  .text {
-  color: ${colors.border};
-  font-size:12px;
-  }
-
-  @media (max-width:${size.tablet}){ 
-    ${flex("column")};
-    gap: 1rem;
-  }
-
-`
 const Scrolltext = styled.div`
   width: 100%;
   ${flex('row', 'flex-end', 'flex-end')};
@@ -176,58 +148,6 @@ cursor:grab;
     padding-right:5rem;
   }
   padding-bottom:.5rem;
-`
-const CheckboxContainer = styled.label`
-  ${flex('row-reverse', 'flex-start', 'center')};
-  gap: .5rem;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-`
-const Checkbox = styled.input.attrs({type: 'checkbox'})`
-
-  display: none;
-  cursor: pointer;
-  &:hover ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  &:checked ~ .checkmark {
-
-    ${props => props.bio && css`
-      background-color: ${colors.bio};
-    `}
-
-    ${props => props.fossil && css`
-      background-color: ${colors.fossil};
-    `}
-  }
-
-  &:checked ~ .checkmark:after {
-    display: block;
-  }
-`
-const CheckMark = styled.span`
-  ${flex('row', 'center', 'center')};
-  height: 30px;
-  width: 30px;
-  background-color: #eee;
-  border-radius: 5px;
-
-  &:after {
-    content: "";
-    display: none;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
 `
 const Message = styled.div`
   text-align: right;
@@ -276,6 +196,87 @@ const Message = styled.div`
   svg {
     transform: translate(-50px, 5px) rotate(120deg);
   }
+`
+const RadioContainer = styled.fieldset`
+    border: none;
+    ${flex("row", 'flex-start')};
+
+    @media (max-width: 490px){
+      ${flex("column", 'flex-start')};
+    }
+
+    >div {
+      padding: .6rem 1rem;
+
+      @media (max-width: 490px){
+        padding-left: 0px;
+      }
+
+    }
+    >div:first-of-type{
+      border-right: 2px solid black;
+      border-bottom: none;
+      padding-left: 0px;
+
+      @media (max-width: 490px){
+      border-bottom: 2px solid black;
+      border-right:none;
+      }
+    }
+    >div:last-of-type{
+      border-left: 2px solid black;
+      border-top: none;
+
+      @media (max-width: 490px){
+      border-top: 2px solid black;
+      border-left:none;
+      }
+    }
+`
+const RadioButton = styled.input.attrs({type: 'radio'})`
+  opacity: 0;
+	width: 0;
+  height: 0;
+
+  &:checked ~ label {
+    opacity: 1;
+    text-decoration: none;
+
+    ${props => props.both && css`
+    background: ${colors.border};
+    color: white;
+    `}
+    ${props => props.bio && css`
+      background: ${colors.bio};
+      color: white;
+    `}
+    ${props => props.fossil && css`
+      background: ${colors.fossil};
+      color: white;
+    `}
+  }
+`
+const RadioLabel = styled.label`
+  text-decoration: underline;
+  padding: .5rem 1rem;
+  ${fonts.footnote}
+  
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+
+    ${props => props.both && css`
+    background: ${colors.border};
+    color: white;
+    `}
+    ${props => props.bio && css`
+      background: ${colors.bio};
+      color: white;
+    `}
+    ${props => props.fossil && css`
+      background: ${colors.fossil};
+      color: white;
+    `}
+	}
 `
 
 const LineChart = ({emissions, pageElements}) => {
@@ -345,38 +346,21 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }, [totalEmissions, displayYear])
   
-  const handleCheckbox = (e) => {
-    let checkboxes = document.querySelectorAll('.checkbox')
-
-    if (!checkboxes[0].checked){
-      checkboxes[1].disabled = true
-    } else {
-      checkboxes[1].disabled = false
-    }
-
-    if (!checkboxes[1].checked){
-      checkboxes[0].disabled = true
-    } else {
-      checkboxes[0].disabled = false
-    }
-
+  const handleRadioButtons = (e) => {
     let clickedDatasetIndex = e.target.dataset.index
     let chartDatasets = canvas.current.legend.chart._sortedMetasets
-    let {checked} = e.target
 
-    if (checked) {
-      chartDatasets[clickedDatasetIndex].hidden = false
+    if (clickedDatasetIndex == 0){
+      chartDatasets[1].hidden = true
+      chartDatasets[0].hidden = false
+    } else if (clickedDatasetIndex == 1){
+      chartDatasets[0].hidden = true
+      chartDatasets[1].hidden = false
     } else {
-      chartDatasets[clickedDatasetIndex].hidden = true
+      chartDatasets[0].hidden = false
+      chartDatasets[1].hidden = false
     }
-
     canvas.current.legend.chart.update(); 
-
-    if (checkboxes[0].checked && checkboxes[1].checked){
-      setShowMessage(true)
-    } else {
-      setShowMessage(false)
-    }
   }
 
   const changeDisplayYear = () => {
@@ -408,7 +392,6 @@ const LineChart = ({emissions, pageElements}) => {
     }
   }
 
-  
   useEffect(() => {
     //radbryt:
     document.getElementById(`line-chart-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
@@ -428,6 +411,21 @@ const LineChart = ({emissions, pageElements}) => {
         <h2>{title.text}</h2>
         <p id="line-chart-body1">{body1.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
       </TextContent>  
+      <RadioContainer onChange={(e) => handleRadioButtons(e)}>
+        <legend>Visa</legend>
+        <div>
+          <RadioButton defaultChecked both className="sr-only" id="fossil-biogen" name="radio-btn" />
+          <RadioLabel both htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
+        </div>
+        <div>
+          <RadioButton data-index={0} fossil className="sr-only" id="fossil" name="radio-btn" />
+          <RadioLabel fossil htmlFor='fossil'>Fossil CO2</RadioLabel>
+        </div>
+        <div>
+          <RadioButton data-index={1} bio className="sr-only" id="biogen" name="radio-btn" />
+          <RadioLabel bio htmlFor='biogen'>Biogen CO2</RadioLabel>
+        </div>
+        </RadioContainer>
       <Scrolltext>
         <p>Swipa höger för att se utveckling</p>
         <SmallArrow color={colors.bio} size={14} />
@@ -449,33 +447,6 @@ const LineChart = ({emissions, pageElements}) => {
             onClick={changeDisplayYear}  />
           </ChartContainer>
         </ScrollContainer>
-
-        <ButtonContainer>
-          <p className="text">Klicka och se hur de olika utsläppen har förändrats sedan 1990: </p>
-          <div className="checkboxes">
-            <CheckboxContainer>
-              <p className="labeltext">FOSSIL <abbr>CO2</abbr></p>
-              <Checkbox 
-              role="checkbox"
-              className="checkbox" 
-              fossil onChange={(e) => handleCheckbox(e)} 
-              tabindex="1"
-              data-index={0} defaultChecked/>
-              <CheckMark className="checkmark" />
-            </CheckboxContainer>
-            <CheckboxContainer>
-              <p className="labeltext">BIOGEN <abbr>CO2</abbr></p>
-              <Checkbox 
-              role="checkbox"
-              className="checkbox" 
-              bio onChange={(e) => handleCheckbox(e)} 
-              id="biogena-checkbox" 
-              data-index={1} defaultChecked 
-              tabindex="2"/>
-              <CheckMark className="checkmark" />
-            </CheckboxContainer>
-          </div>
-        </ButtonContainer>
         <Grid>  
         <GridText>
         <p id="line-chart-body2">{body2.text.replaceAll(/<br\s*[/]?>/gi, "")}</p>
