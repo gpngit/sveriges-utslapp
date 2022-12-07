@@ -91,90 +91,89 @@ const Input = styled.input`
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
         }
-   
 `
 const Label = styled.label`
-${fonts.footnote};
-margin-bottom:2px;
-text-transform: uppercase;
+    ${fonts.footnote};
+    margin-bottom:2px;
+    text-transform: uppercase;
 `
 const ModalBackdrop = styled.div`
-position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 `
 
 const Modal = styled.div`
-background-color:${colors.primary};
-padding:2rem;
-${flex("column","center", "center")}
-gap:10px;
-z-index:4;
-margin:1rem;
-max-width:80%;
-position:relative;
-border-radius:19px;
-padding-bottom:3rem;
-&::after{
-    content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 35px solid transparent;
-	border-top-color: ${colors.primary};
-	border-bottom: 0;
-	margin-left: -35px;
-	margin-bottom: -35px;
-}
+    background-color:${colors.primary};
+    padding:2rem;
+    ${flex("column","center", "center")}
+    gap:10px;
+    z-index:4;
+    margin:1rem;
+    max-width:80%;
+    position:relative;
+    border-radius:19px;
+    padding-bottom:3rem;
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 35px solid transparent;
+        border-top-color: ${colors.primary};
+        border-bottom: 0;
+        margin-left: -35px;
+        margin-bottom: -35px;
+    }
 `
 const Validation =styled.span`
-width:80%;
-h3{
-    ${fonts.footnote};
-    margin-top:1rem;
-    color: ${colors.secondary};
-}
-p{
-    ${fonts.footnote};
-}
+    width:80%;
+    h3{
+        ${fonts.footnote};
+        margin-top:1rem;
+        color: ${colors.secondary};
+    }
+    p{
+        ${fonts.footnote};
+    }
 `
 
 const ModalButtons= styled.span`
-${flex("column", "center", "center")}
-@media screen and ${device.mobileL}{
-    ${flex("row", "center", "center")}
-}
-gap:10px;
-margin-top:1rem;
-button{
-    a{ color: white;
-        text-decoration: none;}
-    ${fonts.footnote};
-    border-radius:9px;
-    padding: 8px;
-    background-color: ${colors.bio};
-    color: white;
-    border:none;    
-    &:hover{
-        background-color:${colors.secondary};
-        box-shadow: 0 0 1px ${colors.border};
+    ${flex("column", "center", "center")}
+    @media screen and ${device.mobileL}{
+        ${flex("row", "center", "center")}
     }
-    &:focus{
-        background-color: ${colors.fossil};
+    gap:10px;
+    margin-top:1rem;
+    button{
+        a{ color: white;
+            text-decoration: none;}
+        ${fonts.footnote};
+        border-radius:9px;
+        padding: 8px;
+        background-color: ${colors.bio};
+        color: white;
+        border:none;    
+        &:hover{
+            background-color:${colors.secondary};
+            box-shadow: 0 0 1px ${colors.border};
+        }
+        &:focus{
+            background-color: ${colors.fossil};
+        }
+        &:active{
+            background-color:${colors.secondary};
+        }
     }
-    &:active{
-        background-color:${colors.secondary};
-    }
-}
 `
 
 const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }) => {
@@ -210,7 +209,6 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         
         setNewText(inputValueTxt.value)
         setNewURL("https://"+inputValueURL.value)
-      
         setModal(true)
         setEditable(!editable)
     }
@@ -222,7 +220,6 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
         sendTextEditToFirebase(inputValueTxt.value)
         sendURLEditToFirebase("https://"+inputValueURL.value)
         setLoading(true)
-        
     }
 
     const handleDiscard = (e) => {
@@ -274,23 +271,29 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
                 )}
                 {navButtons ? (  <ModalButtons>
                 <button>
-                <Link href={URLNav} 
+                <Link 
+                href={URLNav} 
                 target="_blank"
                 aria-label="Tillbaka till huvudsidan">
                 Hem</Link>
                 </button>
-                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
-                </ModalButtons>):(null)
+                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>
+                    Stäng
+                </button>
+                </ModalButtons>
+                ):(null)
             }
             </Modal>
             </ModalBackdrop>
         )}
         
         <Container key={inputIndex}>
-        {input.name !== "links" ? (null): (<>
+        {input.name !== "links" ? (null): 
+        (
             <div className="input-and-edit">
             <Label 
-            htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>Text:</Label>
+            htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>
+            Text:</Label>
                 
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.text}-${inputIndex}`}
@@ -299,29 +302,39 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
                 defaultValue={input.text} />
 
                 <Label className="urlLabel"
-                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}
-                >URL:</Label>
+                htmlFor={`${sectionName}-${input.url}-${inputIndex}`}>
+                    URL:
+                </Label>
                 <p 
-                className="input_url1">https://</p>
+                className="input_url1">
+                    https://
+                </p>
 
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.url}-${inputIndex}`}
                 className="input_url2"
                 type="url"
-                defaultValue={`${input.url}`.replace("https://", "")}/>  
-                    {!editable ? (
+                defaultValue={`${input.url}`.replace("https://", "")}/>
+
+                {!editable ? (
                     <button 
-                    onClick={(e) => handleEditClick(e)}>Redigera</button>
+                    onClick={(e) => handleEditClick(e)}>
+                        Redigera
+                    </button>
                 ) : (
                     <>
                     <button className="discard"
-                    onClick={(e) => handleDiscard(e)}>Ångra</button>
+                    onClick={(e) => handleDiscard(e)}>
+                        Ångra
+                        </button>
                     <button className="spara"
-                    onClick={(e) => handleSave(e)}>Spara</button>
+                    onClick={(e) => handleSave(e)}>
+                        Spara
+                        </button>
                     </>
                 )}
             </div>
-        </>)}
+        )}
         </Container>
         </>
     )

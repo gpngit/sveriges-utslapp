@@ -272,6 +272,8 @@ const LineChart = ({emissions, pageElements}) => {
   const body1 = sections.find(section => section.name === 'body1')
   const body2 = sections.find(section => section.name === 'body2')
   const body3 = sections.find(section => section.name === 'body3')
+  const rubrik2 = sections.find(section => section.name === 'rubrik2')
+  const rubrik3 = sections.find(section => section.name === 'rubrik3')
 
   const [labelBio, setLabelBio] = useState("FOSSIL + BIOGEN CO2")
 
@@ -460,13 +462,14 @@ const LineChart = ({emissions, pageElements}) => {
         </ScrollContainer>
         <Grid>  
           <GridText>
+          <h3>{rubrik2.text}</h3>
             <p 
             id="line-chart-body2">
               {body2.text.replaceAll(/<br\s*[/]?>/gi, "")}
             </p>
           </GridText>
           <GridText>
-            <h3>{body3.title}</h3>
+            <h3>{rubrik3.text}</h3>
             <p 
             id="line-chart-body3">
               {body3.text.replaceAll(/<br\s*[/]?>/gi, "")}

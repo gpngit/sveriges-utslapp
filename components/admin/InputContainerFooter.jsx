@@ -152,6 +152,7 @@ button{
    }
 `
 const InputContainerFooter = ({ input, inputIndex, sectionId, sectionName  }) => {
+    
     const [modal, setModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const targetId = sectionId-1

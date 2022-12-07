@@ -242,7 +242,7 @@ const InputForm = ({ pageElements }) => {
         showOrHidePage(index, !visible)
         setVisible(!visible)
     } 
-
+  
     return (
     <Form 
     className="form">
@@ -287,6 +287,7 @@ const InputForm = ({ pageElements }) => {
         ):(null)}
         </TitleAndReveal>
         {visible ? (<>
+          
             {name === "footer" ? (<>
             {showSection && <> 
             {sections.map((section, i) => {
