@@ -253,10 +253,10 @@ const BurningForest = () => {
         viewBox="0 0 1916 521" 
         role="img"
         alt="Rökmoln">
+        <title>Skogen brinner</title>
+        <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <g 
         clipPath="url(#a)">
-        <title>Skogen brinner</title>
-            <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
         <path 
         fill="#370000" 
         fillOpacity=".1" 

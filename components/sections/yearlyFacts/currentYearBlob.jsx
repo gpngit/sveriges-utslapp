@@ -12,7 +12,7 @@ const Square = styled.span`
     transform: rotate(45deg);
     ${flex("center", "center")}
 
-    h4{
+    p{
       font-size:18px;
       padding:8px;
       transform: rotate(-45deg);
@@ -22,7 +22,7 @@ const Square = styled.span`
     width:40px;
     height:40px;
 
-    h4{
+    p{
       font-size:14px;
     }
   }
@@ -37,7 +37,7 @@ const ChosenYear = ({emissions, name}) => {
   const {displayYear, setDisplayYear} = context;
   return ( 
     <Square>
-    <h4>{displayYear}</h4>
+    <p>{displayYear}</p>
     </Square>
   )
 }
