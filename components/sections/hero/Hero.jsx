@@ -152,7 +152,7 @@ const InnerContainer = styled.div`
     }
     display:block;
 `
-const TextContent = styled.div`
+const TextContent = styled.nav`
     max-width: 1200px;
     ${flex('column')};
     gap: clamp(2rem, 5vw, 10rem);
@@ -324,7 +324,7 @@ const Hero = ({ pageElements }) => {
                     color={colors.border} 
                     strokeWidth={3} 
                     alt='En pil som pekar till föregående text'/>
-                    <NavLink href="#kolcykeln">
+                    <NavLink href="#biobränsle">
                         <strong>
                         Är inte biobränslen bra för naturen?
                         </strong>
