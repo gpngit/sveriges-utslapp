@@ -188,7 +188,6 @@ const YearChanger = ({ emissions }) => {
     <Container>
         <InnerContainer>
         <Button className={reachedBeginning ? 'invisible' : ''}
-        role="button"
         onClick={() => setDisplayYear(firstYear)}>{firstYear}
         </Button>
         <Middle>
