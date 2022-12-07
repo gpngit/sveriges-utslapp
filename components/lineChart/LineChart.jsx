@@ -368,12 +368,15 @@ const LineChart = ({emissions, pageElements}) => {
     if (clickedDatasetIndex == 0){
       chartDatasets[1].hidden = true
       chartDatasets[0].hidden = false
+      setShowMessage(false)
     } else if (clickedDatasetIndex == 1){
       chartDatasets[0].hidden = true
       chartDatasets[1].hidden = false
+      setShowMessage(false)
     } else {
       chartDatasets[0].hidden = false
       chartDatasets[1].hidden = false
+      setShowMessage(true)
     }
     canvas.current.legend.chart.update(); 
   }
