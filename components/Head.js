@@ -30,7 +30,7 @@ const HeadContent = () => {
       />
       <meta
           property="og:image"
-          content="./metapicture.png"
+          content="https://sverigesutslapp.se/metapicture.png"
       />
       <meta name="twitter:image:alt" 
       content="Sveriges utsläpp"/>
@@ -39,7 +39,10 @@ const HeadContent = () => {
       <meta name="twitter:description" 
       content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."/>
       <meta name="twitter:image" 
-      content="./metapicture.png"/>
+      content="https://sverigesutslapp.se/metapicture.png"/>
+      <meta name="og:site_name" 
+      content="Sveriges Utsläpp"></meta>
+
     </Head>
     <Script 
       id='gtag'
