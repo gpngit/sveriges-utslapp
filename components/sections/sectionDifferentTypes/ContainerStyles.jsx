@@ -115,6 +115,13 @@ export const ImageWrapper = styled.div`
 
     @media (max-width: ${size.tablet}){
         padding-top:1rem;
+        width:70%;
+    }
+    @media (max-width: ${size.mobiletablet}){
+        width:80%;
+    }
+    @media (max-width: ${size.mobileL}){
+        width:100%;
     }
     .image{      
         display:block; 
@@ -129,6 +136,7 @@ export const ImageWrapper = styled.div`
     @media ${device.desktop}{
         max-width:600px;
     }
+    
 
     ${props => 
         props.first && 

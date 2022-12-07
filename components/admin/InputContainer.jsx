@@ -20,7 +20,7 @@ const Container = styled.div`
         width: 100%;
     }
     button{
-        ${fonts.footnote};
+        ${fonts.button};
         padding:4px 8px;
         border-radius:9px;
         background-color: ${colors.bio};
@@ -62,8 +62,10 @@ const Input = styled.input`
     width: 90%;
     padding: 10px;
     ${fonts.footnote};
+    background-color: ${colors.white};
     border-color: ${colors.bio};
         &:focus{
+            background-color:white;
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
@@ -73,10 +75,10 @@ const InputBody = styled.textarea`
 width: 90%;
 padding: 10px;
 ${fonts.footnote};
-
+background-color: ${colors.white};
 border-color: ${colors.bio};
-
     &:focus{
+        background-color:white;
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
@@ -138,10 +140,11 @@ ${flex("column", "center", "center")}
 }
 gap:10px;
 margin-top:1rem;
+
 button{
     a{ color: white;
         text-decoration: none;}
-    ${fonts.footnote};
+    ${fonts.button};
     border-radius:9px;
     padding: 8px;
     background-color: ${colors.bio};
@@ -157,24 +160,24 @@ button{
     &:active{
         background-color:${colors.secondary};
     }
-   }
+}
 `
 
 const ModalBackdrop = styled.div`
-position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 `
 
 const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
-
+    console.log(sectionName, "name")
     //modal:
     const [modal, setModal] = useState(false)
     const [navButtons, setNavButtons] = useState(false)
@@ -192,6 +195,7 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         e.preventDefault()
         setEditable(!editable)
     }
+
     const sendEditToFirebase = (inputValue) => {
         const db = getDatabase()
         const dbRef = ref(db, `/admin/${targetId}/sections/${inputIndex}`)
@@ -205,14 +209,14 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         let brExp = "<br/>";
         if(inputValue.value.indexOf(brExp) !== -1){
             if(input.name !== "body1" || input.name !== "body2"){
+                if(input.name !=="body3")
                 setWarning(true)
             }
-           
-           
         }
         setNewText(inputValue.value)
         setEditable(!editable)
     }
+
 
     const confirmSave=(e) => {
         e.preventDefault()
@@ -231,6 +235,8 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         setEditable(!editable)
         setDenied(false)
     }
+    
+  
     
     useEffect(() => {
     if(isLoading){
@@ -273,10 +279,10 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                 )}
                 {navButtons ? (  <ModalButtons>
                 <button>
-                <Link href={URLNav} 
-                target="_blank"
-                aria-label="Tillbaka till huvudsidan">
-                Hem</Link>
+                    <Link href={URLNav} 
+                    target="_blank"
+                    aria-label="Tillbaka till huvudsidan">
+                    Hem</Link>
                 </button>
                 <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>Stäng</button>
                 </ModalButtons>):(null)
@@ -286,58 +292,66 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         )}
         
         <Container>
-            
             <Label 
-            htmlFor={`${sectionName}-${input.name}`}>{capitalize(input.name)}
+            htmlFor={`${sectionName}-${input.name}`}>
+                {input.name ==="imgurl" ? (
+                    <p>BILDTEXT</p>
+                ):input.name ==="body1" ? ( <p>body #1</p>):input.name ==="body2" ? (<p>body #2</p>):input.name ==="body3" ?(
+                    <p>body #3</p>
+                ):input.name ==="rubrik2" ? (
+                    <p>Rubrik #2</p>
+                ):input.name ==="rubrik3" ? (   
+                    <p>Rubrik #3</p>
+                ):(<p>{input.name}</p>)}
+                
             </Label>
             <div className="input-and-edit">
-            {input.name === "body1" && 
-            <>{input.name !== "body2" && 
-                <InputBody readOnly={!editable} 
-                id={`${sectionName}-${input.name}`}
-                className="input_textarea"
-                name={`${sectionName}-${input.name}`}
-                rows="4"
-                cols="10"
-                type="textarea"
-                defaultValue={input.text} />
-
-            }</>}
-            {input.name === "body2" && 
-            <>{input.name !== "body1" && 
-            
-            <InputBody readOnly={!editable} 
-            id={`${sectionName}-${input.name}`}
-            role="textbox"
-            aria-labelledby={`${input.name}`}
-            name={`${sectionName}-${input.name}`}
-            rows="4"
-            type="textarea"
-            defaultValue={input.text}></InputBody>
-            
-            }</>
-            
-            }
-
-            {input.name !== "body1" && <>{input.name !== "body2" &&   
-                <Input readOnly={!editable} 
-                id={`${sectionName}-${input.name}`}
-                className="input_text"
-                type="text"
-                defaultValue={input.text} />}</>}
-          
+                {input.name === "body1" ?
+                    <InputBody readOnly={!editable} 
+                    id={`${sectionName}-${input.name}`}
+                    className="input_textarea"
+                    name={`${sectionName}-${input.name}`}
+                    rows="4"
+                    cols="10"
+                    type="textarea"
+                    defaultValue={input.text} />
+                :input.name === "body2" ? 
+                    <InputBody readOnly={!editable} 
+                    id={`${sectionName}-${input.name}`}
+                    className="input_textarea"
+                    name={`${sectionName}-${input.name}`}
+                    rows="4"
+                    cols="10"
+                    type="textarea"
+                    defaultValue={input.text} />
+                :input.name === "body3" ? 
+                    <InputBody readOnly={!editable} 
+                    id={`${sectionName}-${input.name}`}
+                    className="input_textarea"
+                    name={`${sectionName}-${input.name}`}
+                    rows="4"
+                    cols="10"
+                    type="textarea"
+                    defaultValue={input.text} />
+                : <Input readOnly={!editable} 
+                    id={`${sectionName}-${input.name}`}
+                    className="input_text"
+                    type="text"
+                    defaultValue={input.text} />}
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
                 ) : (
                     <>
-                    <button className="discard"
-                    onClick={(e) => handleDiscard(e)}>Ångra</button>
+                    <button 
+                    className="discard"
+                    onClick={(e) => handleDiscard(e)}>
+                        Ångra</button>
                     <button className="spara"
-                    onClick={(e) => handleSave(e)}>Spara</button>
+                    onClick={(e) => handleSave(e)}>
+                        Spara</button>
                     </>
                 )}
-                  
             </div>
         </Container>
         </>

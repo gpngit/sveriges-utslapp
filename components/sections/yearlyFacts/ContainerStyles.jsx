@@ -31,6 +31,7 @@ ${props =>
   
   @media ${device.tablet}{
     padding: 5rem;
+    padding-top:1rem;
   }
 
   @media ${device.laptop}{
@@ -106,6 +107,7 @@ export const Grid = styled.div`
 export const FirstContent = styled.div`
   p {
       ${fonts.footnote};
+      
   }
 @media ${device.mobileL}{
   padding:1rem;
@@ -118,15 +120,14 @@ ${props =>
       ${fonts.paragraph}
       text-align: left;
       text-justify: inter-word; 
-      padding: 1rem;
-      margin-top:-1rem;
+
       @media ${device.mobileS}{
       padding:0;
-      padding-top:1rem;
       }
       @media ${device.tablet}{
         max-width:90%;
         padding-left:3rem;
+        padding-bottom:1rem;
       }
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
@@ -148,6 +149,11 @@ export const SecondContent = styled.div`
   padding:1rem;
 }
 p{
+  
+  @media ${device.tablet}{
+    padding-left:3rem;
+  }
+
   padding-bottom:1rem;
   ${fonts.paragraph};
   text-align: left;
@@ -163,6 +169,9 @@ p{
   @media ${device.laptop}{
     padding-right:2rem;
     font-style:italic;
+  }
+  @media ${device.tablet}{
+    margin-left: -3rem;
   }
   a{
     color:${colors.secondary};
@@ -182,6 +191,11 @@ width:100%;
 @media (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
   ${flex("row", "center", "center")}
   gap:1rem;
+}
+@media ${device.tablet}{
+
+  padding-left:3rem;
+  padding-right:1rem;
 }
 `
 

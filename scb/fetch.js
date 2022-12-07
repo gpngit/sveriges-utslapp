@@ -3,6 +3,12 @@ import { headers, SCB_URL, sectorValueTexts, typeValueTexts } from "./SCB_header
 //firebase
 import { getDatabase, ref, set, update } from "firebase/database"
 
+const getData = async (URL, headers) => {
+    const response = await fetch(URL, headers)
+    const data = await response.json()
+    return data.data
+}
+
 const postDate = () => {
     const db = getDatabase()
     const today = new Date()
