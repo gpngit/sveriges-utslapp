@@ -162,7 +162,7 @@ const ChartContainer = styled.div`
   min-height: 40vh;
   
   width: 100%;
-  min-width: ${size.tablet}-1rem;
+  min-width: ${size.tablet};
   
   @media ${device.laptop}{
     padding-left:5rem;
@@ -181,9 +181,34 @@ const Message = styled.div`
   p {
     font-weight: bold;
   }
+  svg{
+    @media ${device.mobileL} and (max-width:800px){
+      display:none;
+    }
+
+  }
+  @media (max-width:${size.mobileS}){
+    display:block;
+    margin-left:7rem;
+    
+  }
+  @media (max-width:${size.mobileL}){
+    display:block;
+    left:130%;
+  }
+  @media ${device.mobileL}{
+    display:block;
+    left:85%;
+  }
+  @media (max-width:768px)and (min-width:620px){
+   
+    display:block;
+    left: 68%;
+  }
+
   @media ${device.tablet}{
     display:block;
-    left: 60%;
+    left: 70%;
   }
   @media ${device.laptop}{
     display:block;
@@ -205,7 +230,11 @@ const RadioContainer = styled.fieldset`
     legend{
       ${fonts.button}
       padding-left:2px;
+      @media (max-width: 490px){
+        padding-bottom:2px;
+      }
     }
+  
     >div {
       padding: .6rem 1rem;
       @media (max-width: 490px){
@@ -213,12 +242,12 @@ const RadioContainer = styled.fieldset`
       }
     }
     >div:first-of-type{
+    
       border-right: 2px solid black;
       border-bottom: none;
       padding-left: 0px;
 
       @media (max-width: 490px){
-      border-bottom: 2px solid black;
       border-right:none;
       }
     }
@@ -227,7 +256,6 @@ const RadioContainer = styled.fieldset`
       border-top: none;
 
       @media (max-width: 490px){
-      border-top: 2px solid black;
       border-left:none;
       }
     }
@@ -236,6 +264,7 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
   opacity: 0;
 	width: 0;
   height: 0;
+  
   
   &:hover, &:focus, &:active {
     text-decoration: none;
@@ -257,6 +286,7 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
       background: ${colors.fossil};
       color: white;
     `}
+    
   }
 `
 const RadioLabel = styled.label`
