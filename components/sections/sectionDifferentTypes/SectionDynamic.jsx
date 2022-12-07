@@ -9,8 +9,6 @@ import SeveralSourcesAndShare from "../../buttons/SeveralSourcesAndShare";
 
 const Paragraph = styled.p`
 `
-
-
 const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const [show, setShow] = useState(pageElements.show)
     const {id, sections, name} = pageElements

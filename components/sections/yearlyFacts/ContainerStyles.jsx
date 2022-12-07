@@ -31,6 +31,7 @@ ${props =>
   
   @media ${device.tablet}{
     padding: 5rem;
+    padding-top:1rem;
   }
 
   @media ${device.laptop}{
@@ -126,6 +127,7 @@ ${props =>
       @media ${device.tablet}{
         max-width:90%;
         padding-left:3rem;
+        padding-bottom:1rem;
       }
       @media (max-width: ${size.tablet}){
         padding-bottom:1rem; 
@@ -168,6 +170,9 @@ p{
     padding-right:2rem;
     font-style:italic;
   }
+  @media ${device.tablet}{
+    margin-left: -3rem;
+  }
   a{
     color:${colors.secondary};
   }
@@ -186,6 +191,11 @@ width:100%;
 @media (min-width: ${size.tablet}) and (max-width: ${size.laptop}){
   ${flex("row", "center", "center")}
   gap:1rem;
+}
+@media ${device.tablet}{
+
+  padding-left:3rem;
+  padding-right:1rem;
 }
 `
 

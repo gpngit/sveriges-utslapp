@@ -234,7 +234,7 @@ const LabelsContainer = styled.div`
   @media ${device.tablet}{
     ${flex('row')}
     gap:0.5rem;
-    padding-left:3rem;
+    padding-left:1.4rem;
     
   }
   @media ${device.laptop}{
