@@ -165,44 +165,13 @@ const Message = styled.div`
   p {
     font-weight: bold;
   }
-  @media (max-width: ${size.mobileS}){
-    display:block;
-    left:130%;
-    margin-left:8rem;
-  }
-  @media (max-width: ${size.mobileM}){
-    display:block;
-    left:150%;
-    margin-top:1rem;
-  }
-  @media ${device.mobileM}{
-    display:block;
-    left:120%;
-    margin-top:1rem;
-  }
-  @media ${device.mobileL}{
-    display:block;
-    left:100%;
-    margin-top:1rem;
-  }
-  @media ${device.mobileTablet}{
-    display:block;
-    left:70%;
-    margin-top:1rem;
-  }
-  @media ${device.tablet}{
-    display:block;
-    left: 75%;
-    gap: .6rem;
-  }
+
   @media ${device.laptop}{
     display:block;
     left: 72%;
-    gap: .6rem;
-    margin-top:0;
   }
   svg {
-    transform: translate(-50px, 5px) rotate(120deg);
+    transform: translate(-40px, 0px) rotate(120deg);
   }
 `
 const RadioContainer = styled.fieldset`
@@ -368,12 +337,15 @@ const LineChart = ({emissions, pageElements}) => {
     if (clickedDatasetIndex == 0){
       chartDatasets[1].hidden = true
       chartDatasets[0].hidden = false
+      setShowMessage(false)
     } else if (clickedDatasetIndex == 1){
       chartDatasets[0].hidden = true
       chartDatasets[1].hidden = false
+      setShowMessage(false)
     } else {
       chartDatasets[0].hidden = false
       chartDatasets[1].hidden = false
+      setShowMessage(true)
     }
     canvas.current.legend.chart.update(); 
   }
@@ -472,7 +444,7 @@ const LineChart = ({emissions, pageElements}) => {
             <Message>
               <p>Titta, utsläppen är på ungefär samma nivå som 1990</p>
               <SmallArrow 
-              color={colors.secondary} 
+              color={colors.border} 
               size={16} />
             </Message>
           )}
