@@ -15,24 +15,24 @@ import arrow from "../../public/arrow_down.png"
 import { useState } from "react"
 import InputContainerFooter from "./InputContainerFooter";
 import InputContainerFooterLinks from "./InputContainerFooterLinks";
-import { Tutorial } from "./Portal";
-
 
 const Form = styled.form`
   width: 100%;
-  background-color:${props => props.hide ? `#e2e2e2` : "white"};
+  background-color:${props => props.hide ? `#e2e2e2` : `${colors.white}`};
   ${flex()};
   gap: 5px;
   max-width:1200px;
   padding:1rem;
+  border-radius:9px;
 `
 
 const TitleAndReveal = styled.div`
   width:100%;
-  ${flex("column", "center", "center")}
+  ${flex("column")}
   gap:10px;
-  @media screen and ${device.tablet}{
-      ${flex("row", "space-between", "center")}
+  
+  @media ${device.mobileM}{
+    ${flex("row", "space-between", "center")}
   }
   h3{
       ${fonts.paragraph};
@@ -51,10 +51,10 @@ const TitleAndReveal = styled.div`
           box-shadow: 0 0 1px ${colors.border};
       }
       &:focus{
-          background-color: ${colors.fossil};
+          background-color: ${colors.greenOpaque};
       }
       &:active{
-          background-color:${colors.secondary};
+          background-color:${colors.green};
       }
   }
 `
@@ -63,7 +63,14 @@ const Up = styled(Image)`
 
 const Row = styled.div`
   ${flex("row", "space-between", "center")}
-  gap:1rem;
+  gap:.5rem;
+  position:absolute;
+  left:50%;
+  margin-top:2rem;
+  @media ${device.mobileM}{
+  position:absolute;
+  left:50%;
+  margin-top:0;}
   p{
       ${fonts.footnote};
   }
@@ -170,7 +177,6 @@ const Label = styled.label`
   ${fonts.footnote};
 `
 
-
 const ToggleSwitch = styled.label`
     position: relative;
     width: 60px;
@@ -221,7 +227,21 @@ const ToggleSwitch = styled.label`
     .slider.round:before {
         border-radius: 50%;
     }
+`
 
+const Info = styled.div`
+background-color: white;
+padding:1rem;
+padding-bottom:2rem;
+border-radius:9px;
+margin-top:1rem;
+align-self: center;
+
+span {
+position:relative;
+left:50%;
+
+}
 `
 
 const InputForm = ({ pageElements }) => {
@@ -319,7 +339,8 @@ const InputForm = ({ pageElements }) => {
             <>
             {showSection && <> {sections.map((section, i) => {
               return (
-              <InputContainer sectionId={id} 
+              <InputContainer 
+              sectionId={id} 
               key={i} 
               input={section} 
               inputIndex={i} 
@@ -327,9 +348,11 @@ const InputForm = ({ pageElements }) => {
             />
               )
           })}
-          <Tutorial><h4>Bra att veta:</h4>
-            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 <strong>&lt;br/&gt; </strong>Mening 2. <br/>Resultatet blir såhär:<span className="spanInsidespan"> <br/> Mening 1 <br/>Mening 2.</span><br/> <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1 eller BODY2.</p>
-            </Tutorial> </>}
+          <Info>
+            <h3>Bra att veta:</h3>
+            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 <strong>&lt;br/&gt; </strong>Mening 2. <br/>Resultatet blir såhär:
+            <span > <br/> Mening 1 <br/>Mening 2.</span><br/> <br></br><strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1, BODY2 eller BODY3.</p>
+            </Info> </>}
           </>
           ) }
             </>):(null)}

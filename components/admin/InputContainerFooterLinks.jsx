@@ -242,7 +242,7 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
     const URLNav = `https://sverigesutslapp.netlify.app/#ingress`
 
     return (
-            <>
+    <>
         {modal && (
             <ModalBackdrop onClick={() => {setModal(!modal)}}>
             <Modal 
@@ -251,35 +251,43 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
             }}>
                 <div>
                     <Validation>
-                    <h3>Ändra från:</h3>
-                    <p>text: {input.text}</p>
-                    <p>url: {input.url}</p>
+                        <h3>Ändra från:</h3>
+                        <p>text: {input.text}</p>
+                        <p>url: {input.url}</p>
                     </Validation>
                     <Validation>
-                    <h3>Ändra till:</h3>
-                    <p>text : {newText}</p>
-                    <p>url: {newURL}</p>
+                        <h3>Ändra till:</h3>
+                        <p>text : {newText}</p>
+                        <p>url: {newURL}</p>
                     </Validation>
                 </div>
-                {isLoading ? (<LoadingSpinner/> ):(
-                    <>  {navButtons ? (null): (<ModalButtons>
+            {isLoading ? (<LoadingSpinner/> ):(
+                    <>  
+                    {navButtons ? (null): (<ModalButtons>
                         <button 
-                        className="save" onClick={(e) => confirmSave(e)}>Ja, spara ändring</button>
+                        className="save" onClick={(e) => confirmSave(e)}>
+                            Ja, spara ändring
+                            </button>
                         <button 
-                        className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>Gå tillbaka</button>
-                        </ModalButtons>)} </>
+                        className="close" onClick={(e) => {e.preventDefault(); setModal(!modal)}}>
+                            Gå tillbaka
+                            </button>
+                        </ModalButtons>)} 
+                    </>
                 )}
-                {navButtons ? (  <ModalButtons>
-                <button>
-                <Link 
-                href={URLNav} 
-                target="_blank"
-                aria-label="Tillbaka till huvudsidan">
-                Hem</Link>
-                </button>
-                <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>
-                    Stäng
-                </button>
+                {navButtons ? ( 
+                <ModalButtons>
+                    <button>
+                    <Link 
+                    href={URLNav} 
+                    target="_blank"
+                    aria-label="Tillbaka till huvudsidan">
+                        Hem
+                    </Link>
+                    </button>
+                    <button onClick={(e) => {e.preventDefault(); setModal(!modal); setNavButtons(false)}}>
+                        Stäng
+                    </button>
                 </ModalButtons>
                 ):(null)
             }
@@ -287,13 +295,15 @@ const InputContainerFooterLinks = ({ input, inputIndex, sectionId, sectionName }
             </ModalBackdrop>
         )}
         
-        <Container key={inputIndex}>
+        <Container 
+        key={inputIndex}>
         {input.name !== "links" ? (null): 
         (
             <div className="input-and-edit">
             <Label 
             htmlFor={`${sectionName}-${input.text}-${inputIndex}`}>
-            Text:</Label>
+                Text:
+            </Label>
                 
                 <Input readOnly={!editable} 
                 id={`${sectionName}-${input.text}-${inputIndex}`}

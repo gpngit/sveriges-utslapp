@@ -14,17 +14,18 @@ const Container = styled.main`
     background-color:${colors.primary};
     ${flex()};
     gap: 2rem;
-    min-height: 100vh;
+
     padding: 2rem;
     padding-top:4rem;
 
     .header-and-logout {
         ${flex('column-reverse', 'space-between', 'center')}
         width: 100%;
+        gap:2rem;
         @media screen and ${device.tablet}{
+            gap:0;
             ${flex('row', 'space-between', 'center')}
         }
-
         h2{
             ${fonts.heading};
             color:${colors.secondary};
@@ -90,10 +91,11 @@ const Portal = ({ setAuthenticated }) => {
                 <h2>Adminportal</h2>
                 <span>
                     <button onClick={() => setAuthenticated(false)}>
-                    Logga ut</button>
+                    Logga ut
+                    </button>
                     <Link href="/" 
                     target="_blank"
-                    aria-label="Tillbaka till huvudsidan">
+                    >
                         <button>
                         Hem</button>
                     </Link>
@@ -117,7 +119,7 @@ const Portal = ({ setAuthenticated }) => {
             <br/>Mening 2.
             </span> 
             <br/>
-            <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1 eller BODY2.</p>
+            <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1, BODY2 eller BODY3.</p>
             </Tutorial>
         </Container>
     )

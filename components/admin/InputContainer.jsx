@@ -20,7 +20,7 @@ const Container = styled.div`
         width: 100%;
     }
     button{
-        ${fonts.footnote};
+        ${fonts.button};
         padding:4px 8px;
         border-radius:9px;
         background-color: ${colors.bio};
@@ -62,8 +62,10 @@ const Input = styled.input`
     width: 90%;
     padding: 10px;
     ${fonts.footnote};
+    background-color: ${colors.white};
     border-color: ${colors.bio};
         &:focus{
+            background-color:white;
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
@@ -73,10 +75,10 @@ const InputBody = styled.textarea`
 width: 90%;
 padding: 10px;
 ${fonts.footnote};
-
+background-color: ${colors.white};
 border-color: ${colors.bio};
-
     &:focus{
+        background-color:white;
         outline: none;
         border:2px solid ${colors.bio};
         box-shadow: 0 0 10px ${colors.border};
@@ -138,10 +140,11 @@ ${flex("column", "center", "center")}
 }
 gap:10px;
 margin-top:1rem;
+
 button{
     a{ color: white;
         text-decoration: none;}
-    ${fonts.footnote};
+    ${fonts.button};
     border-radius:9px;
     padding: 8px;
     background-color: ${colors.bio};
@@ -157,7 +160,7 @@ button{
     &:active{
         background-color:${colors.secondary};
     }
-   }
+}
 `
 
 const ModalBackdrop = styled.div`
@@ -291,9 +294,17 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
         <Container>
             <Label 
             htmlFor={`${sectionName}-${input.name}`}>
-                {input.name}
+                {input.name ==="imgurl" ? (
+                    <p>BILDTEXT</p>
+                ):input.name ==="body1" ? ( <p>body #1</p>):input.name ==="body2" ? (<p>body #2</p>):input.name ==="body3" ?(
+                    <p>body #3</p>
+                ):input.name ==="rubrik2" ? (
+                    <p>Rubrik #2</p>
+                ):input.name ==="rubrik3" ? (   
+                    <p>Rubrik #3</p>
+                ):(<p>{input.name}</p>)}
+                
             </Label>
-
             <div className="input-and-edit">
                 {input.name === "body1" ?
                     <InputBody readOnly={!editable} 
@@ -327,12 +338,10 @@ const InputContainer = ({ input, inputIndex, sectionId, sectionName  }) => {
                     className="input_text"
                     type="text"
                     defaultValue={input.text} />}
-
                     {!editable ? (
                     <button 
                     onClick={(e) => handleEditClick(e)}>Redigera</button>
                 ) : (
-                    
                     <>
                     <button 
                     className="discard"

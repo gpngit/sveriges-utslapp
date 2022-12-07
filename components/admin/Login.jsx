@@ -1,15 +1,19 @@
 //CSS
 import styled from 'styled-components'
-import { flex, fonts, colors } from '../../styles/partials'
+import { flex, fonts, colors, device, size } from '../../styles/partials'
 // react hooks
 import { useState } from 'react'
 
 const Container = styled.main`
     min-height: 100vh;
     width:100%;
-    padding: 3rem;
+    padding:1rem;
+    padding-top:5rem;
     background-color:${colors.primary};
     color:${colors.secondary};
+    @media ${device.mobileS}{
+        padding: 3rem;
+    }
 `
 const LoginForm = styled.form`
     ${flex('column', 'center', 'flex-start')};
@@ -27,7 +31,10 @@ const InputAndlabel = styled.div`
     }
     input {
         border-color: ${colors.bio};
-        width: 300px;
+        @media ${device.mobileL}{
+            width: 300px;
+        }
+        
         padding: 10px;
         ${fonts.footnote};
     }
@@ -41,14 +48,17 @@ const ErrorMessage = styled.p`
     ${fonts.footnote};
 `
 const Button = styled.button`
+    width:200px;
+    @media ${device.mobileL}{
     width: 300px;
+    }
     padding: 10px;
     background-color:${colors.bio};
     color: white;
     border-radius:19px;
     border:none;
     ${fonts.footnote};
-    
+
     &:hover {
         background-color:${colors.secondary};
         box-shadow: 0 0 1px ${colors.border};
