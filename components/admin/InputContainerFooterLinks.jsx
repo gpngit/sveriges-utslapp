@@ -13,6 +13,7 @@ const Container = styled.div`
     ${flex()};
     padding:0.3rem;
     width: 100%;
+    
     .input-and-edit {
         ${flex('row', 'space-between', 'center')};
         gap: 10px;

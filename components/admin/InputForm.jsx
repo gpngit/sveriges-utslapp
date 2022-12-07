@@ -243,6 +243,12 @@ left:50%;
 
 }
 `
+const InputFooter = styled.section`
+
+h3{
+  margin-top:-3rem;
+}
+`
 
 const InputForm = ({ pageElements }) => {
 
@@ -309,7 +315,7 @@ const InputForm = ({ pageElements }) => {
         {visible ? (<>
           
             {name === "footer" ? (<>
-            {showSection && <> 
+            {showSection && <InputFooter> 
             {sections.map((section, i) => {
             return (
                   <InputContainerFooter 
@@ -333,7 +339,7 @@ const InputForm = ({ pageElements }) => {
                   />
               )
             })}
-            </>}
+            </InputFooter>}
             </>
             ):(  
             <>
