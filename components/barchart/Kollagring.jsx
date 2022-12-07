@@ -127,8 +127,8 @@ const Kollagring = ({ emissions }) => {
             fill: true,
             backgroundColor: colors.fossil,
             hoverBackgroundColor: colors.fossil,
-            borderColor: colors.border,
-            borderWidth: 0,
+            borderColor: 'white',
+            borderWidth: 2,
             stack: 'Stack 1',
             },{
             label: 'Markanvändning',
@@ -136,8 +136,8 @@ const Kollagring = ({ emissions }) => {
             backgroundColor: colors.green,
             hoverBackgroundColor: colors.green,
             fill: true,
-            borderColor: colors.border,
-            borderWidth: 0,
+            borderColor: 'white',
+            borderWidth: 2,
             stack: 'Stack 2',
             stacked: true
             },{
@@ -145,9 +145,9 @@ const Kollagring = ({ emissions }) => {
             data: yearlyBioEmissions.map(data => Number(data.value)),
             backgroundColor: colors.greenOpaque,
             hoverBackgroundColor: colors.greenOpaque,
-            borderColor: colors.border,
+            borderColor: 'white',
             fill: true,
-            borderWidth: 0,
+            borderWidth: 2,
             stack: 'Stack 2',
             stacked : true
             }]
@@ -161,8 +161,8 @@ const Kollagring = ({ emissions }) => {
           fill: true,
           backgroundColor: colors.fossil,
           hoverBackgroundColor: colors.fossil,
-          borderColor: colors.border,
-          borderWidth: 0,
+          borderColor: 'white',
+          borderWidth: 2,
           stack: 'Stack 1',
           },{
           label: 'Markanvändning',
@@ -170,8 +170,8 @@ const Kollagring = ({ emissions }) => {
           backgroundColor: colors.green,
           hoverBackgroundColor: colors.green,
           fill: true,
-          borderColor: colors.border,
-          borderWidth: 0,
+          borderColor: 'white',
+          borderWidth: 2,
           stack: 'Stack 2',
           }]
       })
