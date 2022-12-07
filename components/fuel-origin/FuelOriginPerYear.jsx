@@ -215,6 +215,7 @@ const Label = styled.div`
   gap: .5rem;
   color: black;
   height:22px;
+  
   @media (max-width: ${size.mobileS}){ 
     gap:.3rem;
     ${flex('row-reverse', "center", "flex-start")};
@@ -307,7 +308,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
             {customLabels && customLabels.map((label, i) => {
               return (
                 <Label key={i}>
-                  <p>{label.name} ({label.percentage}%)</p>
+                  <label>{label.name} ({label.percentage}%)</label>
                   <div style={{backgroundColor: label.color}}></div>
                 </Label>
               )
