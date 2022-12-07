@@ -136,8 +136,20 @@ const ScrollContainer = styled.div`
   ${flex('row')};
   overflow-x: auto;
   cursor:grab;
+
+  width:98%;  
   scrollbar-color: ${colors.fossil} ${colors.white};
   scrollbar-width: thin;
+  ::-webkit-scrollbar{
+    
+    background-color:${colors.white};
+    border-radius:9px;
+    height:4px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color:${colors.fossil};
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.10),inset 0 -1px 0 rgba(0,0,0,0.07);
+  }
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
@@ -147,15 +159,17 @@ const ScrollContainer = styled.div`
   }
 `
 const ChartContainer = styled.div`
-  cursor:grab;
   min-height: 40vh;
+  
   width: 100%;
-  min-width: ${size.tablet};
+  min-width: ${size.tablet}-1rem;
+  
   @media ${device.laptop}{
     padding-left:5rem;
     padding-right:5rem;
   }
   padding-bottom:.5rem;
+  
 `
 const Message = styled.div`
   text-align: right;
@@ -167,7 +181,10 @@ const Message = styled.div`
   p {
     font-weight: bold;
   }
-
+  @media ${device.tablet}{
+    display:block;
+    left: 60%;
+  }
   @media ${device.laptop}{
     display:block;
     left: 72%;
