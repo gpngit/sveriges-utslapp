@@ -130,20 +130,7 @@ const Square = styled.span`
     margin-left: auto; 
     margin-right: auto; 
 `
-const Change = styled.div`
-    &:hover{
-        background-color: rgba(55, 0, 0, 0.1);
-        border-radius:9px;
-    }
-    &:focus{
-        background-color: rgba(55, 0, 0, 0.1);
-        border-radius:9px;
-    }
-    &:active{
-        background-color: rgba(55, 0, 0, 0.1);
-        border-radius:9px;
-    }
-`
+
 
 const YearChanger = ({ emissions }) => {
 
@@ -191,12 +178,11 @@ const YearChanger = ({ emissions }) => {
         onClick={() => setDisplayYear(firstYear)}>{firstYear}
         </Button>
         <Middle>
-            <Change 
-            onClick={() => decrement()}
-            onKeyDown={(e) => decrementWithArrow(e)}
-            role="button"
-            aria-label="Gå bakåt ett år">
+            <div>
                 <ChevronButts 
+                onClick={() => decrement()}
+                onKeyDown={(e) => decrementWithArrow(e)}
+                aria-label="Gå bakåt ett år"
                 className={reachedBeginning ? 'hidden' : ''}>
                     <Chevron 
                     role="img"
@@ -208,16 +194,15 @@ const YearChanger = ({ emissions }) => {
                 </ChevronButts>
                 <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}
                 </p>
-            </Change>
+            </div>
             <Year>{displayYear}</Year>
-            <Change 
-            onClick={() => increment()}
-            onKeyDown={(e) => incrementWithArrow(e)}
-            aria-label="Gå framåt ett år"
-            role="button">
+            <div>
                 <p className={reachedEnd ? 'inactive' : null}>
                 {displayYear+1}</p> 
-                <ChevronButts 
+                <ChevronButts    
+                onClick={() => increment()}
+                onKeyDown={(e) => incrementWithArrow(e)}
+                aria-label="Gå framåt ett år"
                 className={reachedEnd ? 'hidden' : ''}>
                     <Chevron 
                     role="img"
@@ -226,7 +211,7 @@ const YearChanger = ({ emissions }) => {
                     direction={'right'} 
                     stroke={10}  />
                 </ChevronButts>
-            </Change>
+            </div>
         </Middle>
         <Button className={reachedEnd ? 'invisible' : ''}
         onClick={() => setDisplayYear(latestYear)}>{latestYear}</Button>
