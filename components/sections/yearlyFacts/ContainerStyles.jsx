@@ -106,6 +106,7 @@ export const Grid = styled.div`
 export const FirstContent = styled.div`
   p {
       ${fonts.footnote};
+      
   }
 @media ${device.mobileL}{
   padding:1rem;
@@ -118,11 +119,9 @@ ${props =>
       ${fonts.paragraph}
       text-align: left;
       text-justify: inter-word; 
-      padding: 1rem;
-      margin-top:-1rem;
+
       @media ${device.mobileS}{
       padding:0;
-      padding-top:1rem;
       }
       @media ${device.tablet}{
         max-width:90%;
@@ -148,6 +147,11 @@ export const SecondContent = styled.div`
   padding:1rem;
 }
 p{
+  
+  @media ${device.tablet}{
+    padding-left:3rem;
+  }
+
   padding-bottom:1rem;
   ${fonts.paragraph};
   text-align: left;

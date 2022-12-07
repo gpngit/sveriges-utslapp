@@ -155,6 +155,7 @@ const ModalButtons= styled.span`
     }
     gap:10px;
     margin-top:1rem;
+    
     button{
         a{ color: white;
             text-decoration: none;}
