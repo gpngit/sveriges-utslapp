@@ -17,7 +17,7 @@ const LoginForm = styled.form`
     border-radius: 1rem;
 `
 const Header = styled.h1`
-${fonts.subheading};
+    ${fonts.subheading};
 `
 const InputAndlabel = styled.div`
     ${flex('column', 'center')};
@@ -29,7 +29,7 @@ const InputAndlabel = styled.div`
         border-color: ${colors.bio};
         width: 300px;
         padding: 10px;
-        ${fonts.footnote}
+        ${fonts.footnote};
     }
     input:focus{
     outline: none;
@@ -38,7 +38,7 @@ const InputAndlabel = styled.div`
     }
 `
 const ErrorMessage = styled.p`
-${fonts.footnote}
+    ${fonts.footnote};
 `
 const Button = styled.button`
     width: 300px;
@@ -47,8 +47,8 @@ const Button = styled.button`
     color: white;
     border-radius:19px;
     border:none;
-    ${fonts.footnote}
-
+    ${fonts.footnote};
+    
     &:hover {
         background-color:${colors.secondary};
         box-shadow: 0 0 1px ${colors.border};

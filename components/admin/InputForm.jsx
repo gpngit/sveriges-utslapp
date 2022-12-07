@@ -7,11 +7,9 @@ import { getDatabase, ref, update } from "firebase/database";
 
 //components
 import InputContainer from "./InputContainer"
-import LoadingSpinner from "../loader/LoadingSpinner";
 import { capitalize } from "../helpers/Capitalize";
 import Image from "next/image";
 import arrow from "../../public/arrow_down.png"
-// import ToggleSwitch from './ToggleSwitch'
 
 //react hooks
 import { useState } from "react"
@@ -21,59 +19,58 @@ import { Tutorial } from "./Portal";
 
 
 const Form = styled.form`
-width: 100%;
-background-color:${props => props.hide ? `#e2e2e2` : "white"};
-${flex()};
-gap: 5px;
-max-width:1200px;
-padding:1rem;
+  width: 100%;
+  background-color:${props => props.hide ? `#e2e2e2` : "white"};
+  ${flex()};
+  gap: 5px;
+  max-width:1200px;
+  padding:1rem;
 `
 
 const TitleAndReveal = styled.div`
-width:100%;
-${flex("column", "center", "center")}
-gap:10px;
-@media screen and ${device.tablet}{
-    ${flex("row", "space-between", "center")}
-}
-h3{
-    ${fonts.paragraph};
-}
+  width:100%;
+  ${flex("column", "center", "center")}
+  gap:10px;
+  @media screen and ${device.tablet}{
+      ${flex("row", "space-between", "center")}
+  }
+  h3{
+      ${fonts.paragraph};
+  }
 
-button{
-    position:relative;
-    right:0%;
-    ${fonts.footnote};
-    padding: 4px 6px;
-    background-color: ${colors.bio};
-    color: white;
-    border:none;    
-    &:hover{
-        background-color:${colors.secondary};
-        box-shadow: 0 0 1px ${colors.border};
-    }
-    &:focus{
-        background-color: ${colors.fossil};
-    }
-    &:active{
-        background-color:${colors.secondary};
-    }
-}
+  button{
+      position:relative;
+      right:0%;
+      ${fonts.footnote};
+      padding: 4px 6px;
+      background-color: ${colors.bio};
+      color: white;
+      border:none;    
+      &:hover{
+          background-color:${colors.secondary};
+          box-shadow: 0 0 1px ${colors.border};
+      }
+      &:focus{
+          background-color: ${colors.fossil};
+      }
+      &:active{
+          background-color:${colors.secondary};
+      }
+  }
 `
 const Up = styled(Image)`
-transform: rotate(180deg);`
+  transform: rotate(180deg);`
 
 const Row = styled.div`
-${flex("row", "space-between", "center")}
-gap:1rem;
-p{
-    ${fonts.footnote};
-}
+  ${flex("row", "space-between", "center")}
+  gap:1rem;
+  p{
+      ${fonts.footnote};
+  }
 `
 const ToggleOnOrOff = styled.div`
 position: relative;
 margin: 1rem;
-
 
 input[type='range'] {
     -webkit-appearance: none;
@@ -146,7 +143,6 @@ input[type='range'] {
     background: ${colors.white};
     border:none;
     border-radius:50%;
-   
   }
 
   input[type='range']:focus {
@@ -167,11 +163,11 @@ input[type='range'] {
   
 `
 const Label = styled.label`
-padding-right:1rem;
+  padding-right:1rem;
 
-position:relative;
+  position:relative;
 
-${fonts.footnote};
+  ${fonts.footnote};
 `
 
 
@@ -248,56 +244,53 @@ const InputForm = ({ pageElements }) => {
     } 
 
     return (
-        <Form className="form"
-        >
-            <TitleAndReveal>
-            <h3>{capitalize(type)}</h3>
-            {toggleShow ? 
-            <Row>
-
-            <ToggleSwitch 
-            role="slider"
-            id={`toggle-${id}`}
-            aria-label="Publicera / Avpublicera en sektion"
-            type="range"
-            htmlFor={`switch-${id}`}>
-                <input onChange={() => handleVisibility(id-1)} 
-                type="checkbox" 
-                id={`switch-${id}`} 
-                aria-labelledby = {`toggle-${id}`}
-                checked={visible ? true : false} />
-                <span 
-                className="slider round"></span>
-            </ToggleSwitch>
-            <p>{show ? 'Publicerat' : 'Avpublicerat'}</p>
-            </Row>
-            :(null)} 
-            {visible ? (<>
-            <button onClick={(e) => handleShowClick(e)}>
-            {showSection ? 
-                <Up alt="Visa mindre"
-                type="Button"
-                aria-label="Visa mindre" 
-                src={arrow}
-                width={20}
-                height={10}/>
-                :  (
-                <Image alt="Visa mer"
-                type="Button"
-                aria-label="Visa mer" 
-                src={arrow}
-                width={20}
-                height={10}/>)}</button></>):(null)}
-            </TitleAndReveal>
-            {visible ? (<>
-      
-            
+    <Form 
+    className="form">
+      <TitleAndReveal>
+      <h3>{capitalize(type)}</h3>
+      {toggleShow ? 
+        <Row>
+          <ToggleSwitch 
+          role="slider"
+          id={`toggle-${id}`}
+          aria-label="Publicera / Avpublicera en sektion"
+          type="range"
+          htmlFor={`switch-${id}`}>
+              <input onChange={() => handleVisibility(id-1)} 
+              type="checkbox" 
+              id={`switch-${id}`} 
+              aria-labelledby = {`toggle-${id}`}
+              checked={visible ? true : false} />
+              <span 
+              className="slider round"></span>
+          </ToggleSwitch>
+          <p>{show ? 'Publicerat' : 'Avpublicerat'}</p>
+        </Row>
+      :(null)} 
+      {visible ? (
+        <button onClick={(e) => handleShowClick(e)}>
+          {showSection ? 
+              <Up alt="Visa mindre"
+              type="Button"
+              aria-label="Visa mindre" 
+              src={arrow}
+              width={20}
+              height={10}/>
+              :  (
+              <Image alt="Visa mer"
+              type="Button"
+              aria-label="Visa mer" 
+              src={arrow}
+              width={20}
+              height={10}/>)}
+        </button>
+        ):(null)}
+        </TitleAndReveal>
+        {visible ? (<>
             {name === "footer" ? (<>
             {showSection && <> 
-            
             {sections.map((section, i) => {
-            return (<>
-            
+            return (
                   <InputContainerFooter 
                   key={`${i}${id}`}
                   sectionId={id} 
@@ -305,17 +298,11 @@ const InputForm = ({ pageElements }) => {
                   inputIndex={i} 
                   sectionName={name} 
                   />
-                
-                  </>
               )
             })}
-            
             <h3>LÄNKAR:</h3>
-            {/* <p>Viktigt: kom ihåg att ha med hela adressen, dvs &apos;&apos;https://&apos;&apos; när du skriver in URL:en.</p> */}
-         
             {sections.map((section, i) => {
-              return (<>
-
+              return (
                 <InputContainerFooterLinks
                   key={`${id}${i}`} 
                   sectionId={id} 
@@ -323,7 +310,6 @@ const InputForm = ({ pageElements }) => {
                   inputIndex={i} 
                   sectionName={name} 
                   />
-                  </>
               )
             })}
             </>}

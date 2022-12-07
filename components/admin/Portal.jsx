@@ -24,10 +24,12 @@ const Container = styled.main`
         @media screen and ${device.tablet}{
             ${flex('row', 'space-between', 'center')}
         }
+
         h2{
             ${fonts.heading};
             color:${colors.secondary};
         }
+
         button{
             background-color:${colors.bio};
             color: white;
@@ -50,19 +52,18 @@ const Container = styled.main`
     }
     @media screen and ${device.tablet}{
         padding:4rem;
-        
     }
 `
 
 export const Tutorial = styled.span`
-background-color: #e2e2e2;
-padding:1rem;
-border-radius:19px;
-.spanInsidespan{
-display: block;
-position:relative;
-left: 30%;
-}
+    background-color: #e2e2e2;
+    padding:1rem;
+    border-radius:19px;
+        .spanInsidespan{
+        display: block;
+        position:relative;
+        left: 30%;
+        }
 `
 
 
@@ -88,24 +89,34 @@ const Portal = ({ setAuthenticated }) => {
             <div className='header-and-logout'>
                 <h2>Adminportal</h2>
                 <span>
-                <button onClick={() => setAuthenticated(false)}
-                type="button"
-                aria-label="Logga ut">Logga ut</button>
-                <Link href="/" target="_blank"
-                aria-label="Tillbaka till huvudsidan"><button>Hem</button></Link>
+                    <button onClick={() => setAuthenticated(false)}>
+                    Logga ut</button>
+                    <Link href="/" 
+                    target="_blank"
+                    aria-label="Tillbaka till huvudsidan">
+                        <button>
+                        Hem</button>
+                    </Link>
                 </span>
             </div>
-           
-
             {sections && sections.map(section => {
                 return (
                     <InputForm key={section.id} pageElements={section}>
                     </InputForm>
-                    
                 )
             })}
-            <Tutorial><h3>Bra att veta:</h3>
-            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 <strong>&lt;br/&gt; </strong>Mening 2. <br/>Resultatet blir då: <span className="spanInsidespan"> <br/> Mening 1 <br/>Mening 2.</span> <br/>
+            <Tutorial>
+            <h3>Bra att veta:</h3>
+            <p>För att göra radbryt i din text, skriv kommandot &lt;br/&gt;. <br/>Till exempel: Mening 1 
+            <strong>&lt;br/&gt; </strong>
+            Mening 2. 
+            <br/>
+            Resultatet blir då: 
+            <span className="spanInsidespan"> 
+            <br/> Mening 1 
+            <br/>Mening 2.
+            </span> 
+            <br/>
             <strong>Viktigt:</strong> detta fungerar bara på fält märkta BODY1 eller BODY2.</p>
             </Tutorial>
         </Container>
