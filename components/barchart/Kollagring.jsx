@@ -60,7 +60,7 @@ const Label = styled.div`
     height: 20px;
     width: 20px;
     border-radius:50%;
-    margin-top:2px;
+    
   }
   .fossil {
     background-color: ${colors.fossil}
@@ -187,10 +187,10 @@ const Kollagring = ({ emissions }) => {
             <span>Visa hur det kunnat se ut om vi inte skövlade skog</span> :
             <>
             <Chevron 
-            color={'black'} 
+            color={`${colors.secondary}`} 
             direction={'left'} 
             size={12} 
-            stroke={5} />
+            stroke={6} />
             <span>Visa hur det faktiskt sett ut</span>
             </>}
           </Button>
@@ -207,11 +207,11 @@ const Kollagring = ({ emissions }) => {
           </ChartContainer>
           <LabelsContainer>
             <Label>
-              <p>Fossil <abbr>CO2</abbr></p>
+              <label>Fossil <abbr>CO2</abbr></label>
               <div className="fossil" />
             </Label>
             <Label>
-              <p>Markanvändning (via <abbr>LULUCF</abbr>)</p>
+              <label>Markanvändning (via <abbr>LULUCF</abbr>)</label>
               <div className="lulucf" />
             </Label>
           </LabelsContainer>
