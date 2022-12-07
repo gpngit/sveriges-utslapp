@@ -157,7 +157,7 @@ const ChartContainer = styled.div`
 `
 const Message = styled.div`
   text-align: right;
-  width: 220px;
+  width: 200px;
   position: absolute;
   display: none;
   right: 10vw;
@@ -192,8 +192,14 @@ const Message = styled.div`
   }
   @media ${device.tablet}{
     display:block;
-    left: 70%;
+    left: 75%;
     gap: .6rem;
+  }
+  @media ${device.laptop}{
+    display:block;
+    left: 72%;
+    gap: .6rem;
+    margin-top:0;
   }
   svg {
     transform: translate(-50px, 5px) rotate(120deg);
@@ -207,6 +213,10 @@ const RadioContainer = styled.fieldset`
     }
     @media ${device.laptop}{
       padding-left:10rem;
+    }
+    legend{
+      ${fonts.button}
+      padding-left:2px;
     }
     >div {
       padding: .6rem 1rem;
@@ -238,6 +248,10 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
   opacity: 0;
 	width: 0;
   height: 0;
+  
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+    }
 
   &:checked ~ label {
     opacity: 1;
@@ -258,10 +272,10 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
   }
 `
 const RadioLabel = styled.label`
+cursor:pointer;
   text-decoration: underline;
   padding: .5rem 1rem;
-  ${fonts.footnote}
-  
+  ${fonts.button};
   &:hover, &:focus, &:active {
     text-decoration: none;
 
@@ -421,6 +435,7 @@ const LineChart = ({emissions, pageElements}) => {
           <RadioButton defaultChecked both 
           className="sr-only" 
           id="fossil-biogen" 
+          tabindex="0"
           name="radio-btn" />
           <RadioLabel both 
           htmlFor='fossil-biogen'>Fossil + Biogen CO2</RadioLabel>
@@ -429,13 +444,16 @@ const LineChart = ({emissions, pageElements}) => {
           <RadioButton 
           data-index={0} fossil 
           className="sr-only" 
+          tabindex="0"
           id="fossil" 
           name="radio-btn" />
-          <RadioLabel fossil 
+          <RadioLabel fossil  
           htmlFor='fossil'>Fossil CO2</RadioLabel>
         </div>
         <div>
-          <RadioButton data-index={1} bio 
+          <RadioButton 
+          data-index={1} bio 
+          tabindex="0"
           className="sr-only" 
           id="biogen" 
           name="radio-btn" />
@@ -458,7 +476,7 @@ const LineChart = ({emissions, pageElements}) => {
               size={16} />
             </Message>
           )}
-          <ChartContainer>
+        <ChartContainer>
             <Line ref={canvas} 
             aria-label="Graf som visar hur både fossila och biobränslets utsläpp har blivit påverkade sedan 1990. Vi kan se att de fossila bränslenas utsläpp har minskat, men att biobränslet har helt fyllt upp samma summa. Därför är det 2020 lika mycket utsläpp som det är 1990, men att knappt hälften är fossila."
             role="img"
@@ -466,7 +484,7 @@ const LineChart = ({emissions, pageElements}) => {
             options={options} 
             plugins={[linePlugin, annotationPlugin]} 
             onClick={changeDisplayYear}  />
-          </ChartContainer>
+        </ChartContainer>
         </ScrollContainer>
         <Grid>  
           <GridText>
