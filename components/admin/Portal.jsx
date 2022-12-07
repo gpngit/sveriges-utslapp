@@ -85,6 +85,12 @@ const Portal = ({ setAuthenticated }) => {
         getDataFromFirebase('admin/')
     }, [])
 
+    const changePlace = (array, fromIndex, toIndex)=>{
+        let element = array[fromIndex];
+        array.splice(fromIndex, 1);
+        array.splice(toIndex, 0, element)
+    }
+
     return (
         <Container>
             <div className='header-and-logout'>
@@ -101,10 +107,16 @@ const Portal = ({ setAuthenticated }) => {
                     </Link>
                 </span>
             </div>
-            {sections && sections.map(section => {
-                return (
-                    <InputForm key={section.id} pageElements={section}>
+            {sections && sections.map((section, indx) => {
+                if(section.name ==="fossil-vs-bio"){
+                    changePlace(sections, indx, 2 )
+                }
+                return (<>
+                    <InputForm 
+                    key={section.id} 
+                    pageElements={section}>
                     </InputForm>
+                    </>
                 )
             })}
             <Tutorial>
