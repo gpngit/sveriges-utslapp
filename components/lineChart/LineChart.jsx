@@ -57,6 +57,8 @@ const Grid = styled.div`
   display: grid;
   gap: 1rem;
   padding-right:2rem;
+  padding-bottom:2rem;
+  padding-left:1rem;
   @media ${device.laptop}{
     padding-top:1rem;
     padding-left:5rem;
