@@ -9,7 +9,7 @@ import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '.
 
 const RedBg = styled.div`
     width:100%;
-    z-index:40;
+    z-index:30;
     position:absolute;
     height:10px;
     margin-top:-4px;

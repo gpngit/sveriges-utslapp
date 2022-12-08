@@ -57,6 +57,8 @@ const Grid = styled.div`
   display: grid;
   gap: 1rem;
   padding-right:2rem;
+  padding-bottom:2rem;
+  padding-left:1rem;
   @media ${device.laptop}{
     padding-top:1rem;
     padding-left:5rem;
@@ -134,8 +136,20 @@ const ScrollContainer = styled.div`
   ${flex('row')};
   overflow-x: auto;
   cursor:grab;
+
+  width:98%;  
   scrollbar-color: ${colors.fossil} ${colors.white};
   scrollbar-width: thin;
+  ::-webkit-scrollbar{
+    
+    background-color:${colors.white};
+    border-radius:9px;
+    height:4px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color:${colors.fossil};
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.10),inset 0 -1px 0 rgba(0,0,0,0.07);
+  }
   @media ${device.laptop}{
     -ms-overflow-style:none;
     scrollbar-width: none;
@@ -145,15 +159,17 @@ const ScrollContainer = styled.div`
   }
 `
 const ChartContainer = styled.div`
-  cursor:grab;
   min-height: 40vh;
+  
   width: 100%;
   min-width: ${size.tablet};
+  
   @media ${device.laptop}{
     padding-left:5rem;
     padding-right:5rem;
   }
   padding-bottom:.5rem;
+  
 `
 const Message = styled.div`
   text-align: right;
@@ -165,7 +181,35 @@ const Message = styled.div`
   p {
     font-weight: bold;
   }
+  svg{
+    @media ${device.mobileL} and (max-width:800px){
+      display:none;
+    }
 
+  }
+  @media (max-width:${size.mobileS}){
+    display:block;
+    margin-left:7rem;
+    
+  }
+  @media (max-width:${size.mobileL}){
+    display:block;
+    left:130%;
+  }
+  @media ${device.mobileL}{
+    display:block;
+    left:85%;
+  }
+  @media (max-width:768px)and (min-width:620px){
+   
+    display:block;
+    left: 68%;
+  }
+
+  @media ${device.tablet}{
+    display:block;
+    left: 70%;
+  }
   @media ${device.laptop}{
     display:block;
     left: 72%;
@@ -186,7 +230,11 @@ const RadioContainer = styled.fieldset`
     legend{
       ${fonts.button}
       padding-left:2px;
+      @media (max-width: 490px){
+        padding-bottom:2px;
+      }
     }
+  
     >div {
       padding: .6rem 1rem;
       @media (max-width: 490px){
@@ -194,12 +242,12 @@ const RadioContainer = styled.fieldset`
       }
     }
     >div:first-of-type{
+    
       border-right: 2px solid black;
       border-bottom: none;
       padding-left: 0px;
 
       @media (max-width: 490px){
-      border-bottom: 2px solid black;
       border-right:none;
       }
     }
@@ -208,7 +256,6 @@ const RadioContainer = styled.fieldset`
       border-top: none;
 
       @media (max-width: 490px){
-      border-top: 2px solid black;
       border-left:none;
       }
     }
@@ -217,6 +264,7 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
   opacity: 0;
 	width: 0;
   height: 0;
+  
   
   &:hover, &:focus, &:active {
     text-decoration: none;
@@ -238,6 +286,7 @@ const RadioButton = styled.input.attrs({type: 'radio'})`
       background: ${colors.fossil};
       color: white;
     `}
+    
   }
 `
 const RadioLabel = styled.label`

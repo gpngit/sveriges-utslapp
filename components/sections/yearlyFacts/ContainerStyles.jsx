@@ -153,6 +153,9 @@ p{
   @media ${device.tablet}{
     padding-left:3rem;
   }
+  @media ${device.laptop}{
+    padding-left:0;
+  }
 
   padding-bottom:1rem;
   ${fonts.paragraph};
@@ -169,6 +172,7 @@ p{
   @media ${device.laptop}{
     padding-right:2rem;
     font-style:italic;
+    padding-left:3rem;
   }
   @media ${device.tablet}{
     margin-left: -3rem;

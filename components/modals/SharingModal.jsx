@@ -16,13 +16,18 @@ import {
 } from 'next-share';
 
 const Content = styled.div`
-  ${flex()}
+  ${flex('column', 'flex-start', 'flex-start')}
   gap: 1rem;
   ${fonts.footnote};
 
   ul {
+    list-style-type: none;
     ${flex("row")};
     gap:6px;
+  }
+
+  p {
+    padding: 0;
   }
 
   .field {

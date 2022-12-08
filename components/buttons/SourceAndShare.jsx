@@ -93,7 +93,6 @@ const ModalWrapper = styled.dialog`
     transform: translate(-50%, -50%);
     border: none;
     padding: 2rem;
-    width: 300px;
 
     &::before {
         ${flex()}
@@ -107,6 +106,7 @@ const CloseButton = styled.button`
     right: 1rem;
     top: 1rem;
     padding:4px;
+    text-decoration: underline;
     background-color: ${colors.primary};
     border:none;
     &:hover{

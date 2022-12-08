@@ -71,9 +71,10 @@ const ChartOptions = (emissions,) => {
                   color: 'white',
                   font: {
                     family: font.main,
-                    size: '16px'
+                    size: '18px'
                   },
                   xValue: 15,
+                  yValue:20000
                 }
               },
             },

@@ -127,8 +127,8 @@ const Kollagring = ({ emissions }) => {
             fill: true,
             backgroundColor: colors.fossil,
             hoverBackgroundColor: colors.fossil,
-            borderColor: 'white',
-            borderWidth: 2,
+            borderColor: `${colors.border}`,
+            borderWidth: 0,
             stack: 'Stack 1',
             },{
             label: 'Markanvändning',
@@ -137,7 +137,7 @@ const Kollagring = ({ emissions }) => {
             hoverBackgroundColor: colors.green,
             fill: true,
             borderColor: 'white',
-            borderWidth: 2,
+            borderWidth: 3,
             stack: 'Stack 2',
             stacked: true
             },{
@@ -147,7 +147,7 @@ const Kollagring = ({ emissions }) => {
             hoverBackgroundColor: colors.greenOpaque,
             borderColor: 'white',
             fill: true,
-            borderWidth: 2,
+            borderWidth: 0,
             stack: 'Stack 2',
             stacked : true
             }]
@@ -162,7 +162,7 @@ const Kollagring = ({ emissions }) => {
           backgroundColor: colors.fossil,
           hoverBackgroundColor: colors.fossil,
           borderColor: 'white',
-          borderWidth: 2,
+          borderWidth: 0,
           stack: 'Stack 1',
           },{
           label: 'Markanvändning',
@@ -171,7 +171,7 @@ const Kollagring = ({ emissions }) => {
           hoverBackgroundColor: colors.green,
           fill: true,
           borderColor: 'white',
-          borderWidth: 2,
+          borderWidth: 0,
           stack: 'Stack 2',
           }]
       })
