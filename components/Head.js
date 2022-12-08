@@ -32,16 +32,24 @@ const HeadContent = () => {
           property="og:image"
           content="https://sverigesutslapp.se/metapicture.png"
       />
-      <meta name="twitter:image:alt" 
-      content="Sveriges utsläpp"/>
-      <meta name="twitter:title" 
-      content="Sveriges utsläpp"/>
-      <meta name="twitter:description" 
-      content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."/>
-      <meta name="twitter:image" 
-      content="https://sverigesutslapp.se/metapicture.png"/>
-      <meta name="og:site_name" 
-      content="Sveriges Utsläpp"></meta>
+      <meta 
+        name="twitter:card" 
+        content="summary"></meta>
+      <meta 
+        name="twitter:image:alt" 
+        content="Sveriges utsläpp"/>
+      <meta 
+        name="twitter:title" 
+        content="Sveriges utsläpp"/>
+      <meta 
+        name="twitter:description" 
+        content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."/>
+      <meta 
+        name="twitter:image" 
+        content="https://sverigesutslapp.se/metapicture.png"/>
+      <meta 
+        name="og:site_name" 
+        content="Sveriges Utsläpp"></meta>
 
     </Head>
     <Script 
