@@ -27,6 +27,7 @@ export default class MyDocument extends Document {
     return (
     <Html>
       <Head>
+        <html lang="sv"></html>
         <link 
         rel="preconnect" 
         href="https://fonts.googleapis.com" />
