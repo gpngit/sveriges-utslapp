@@ -48,7 +48,11 @@ const Container = styled.header`
 
         svg#forest{
             z-index: 1;
-        }
+            width: clamp(800px, 120%, 3000px);
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          
 
         svg#ember-1{
             z-index: 2;
