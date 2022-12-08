@@ -7,7 +7,7 @@ const BurningForest = () => {
         viewBox="0 0 1920 631"
         role="img"
         alt="En brinnande skog"
-        preserveAspectRatio>
+        >
             <title>Skogen brinner</title>
             <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
             <g clipPath="url(#a)">
@@ -41,7 +41,6 @@ const BurningForest = () => {
         fill="none" 
         viewBox="0 0 1920 627" 
         role="img" 
-        preserveAspectRatio
         aria-labelledby="title  desc"
         alt="Glödkol som brinner">
         <title>Skogen brinner</title>
@@ -78,7 +77,6 @@ const BurningForest = () => {
         alt="Glödkol som flyger"
         className="embers" 
         fill="none" 
-        preserveAspectRatio
         viewBox="0 0 1920 627">
         <title>Skogen brinner</title>
             <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
@@ -114,7 +112,6 @@ const BurningForest = () => {
         id="ember-3" 
         className="embers" 
         fill="none"
-        preserveAspectRatio 
         viewBox="0 0 1920 382">
               <title>Skogen brinner</title>
             <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
@@ -146,7 +143,6 @@ const BurningForest = () => {
         fill="none" 
         viewBox="0 0 1916 521" 
         role="img"
-        preserveAspectRatio
         alt="Rökmoln">
         <title>Skogen brinner</title>
         <desc>En skog med tallar brinner. I bakgrunden är det rökmoln, i förgrunden är det flygande glödkol.</desc>
@@ -172,7 +168,6 @@ const BurningForest = () => {
         alt="Röken"
         className="smoke" 
         fill="none" 
-        preserveAspectRatio
         viewBox="0 0 1916 521">
         <title>Skogen brinner</title>
             <desc>Röken i bakgrunden rör sig pulserande.</desc>
