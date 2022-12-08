@@ -20,7 +20,7 @@ const HeadContent = () => {
           content="website" />
       <meta 
           property="og:locale" 
-          content="swedish" />
+          content="sv_SE" />
       <meta 
           property="og:title" 
           content="Sveriges utsläpp" />
