@@ -34,7 +34,7 @@ const HeadContent = () => {
       />
       <meta 
         name="twitter:card" 
-        content="summary"></meta>
+        content="summary_large_image"></meta>
       <meta 
         name="twitter:image:alt" 
         content="Sveriges utsläpp"/>
