@@ -34,7 +34,7 @@ const HeadContent = () => {
       />
       <meta 
         name="twitter:card" 
-        content="summary_large_image"></meta>
+        content="summary"></meta>
       <meta 
         name="twitter:image:alt" 
         content="Sveriges utsläpp"/>
@@ -44,9 +44,9 @@ const HeadContent = () => {
       <meta 
         name="twitter:description" 
         content="Utsläppen från biobränslen har ökat lavinartat de senaste åren. I Sverige är de idag ungefär lika stora som de fossila."/>
-      <meta 
+      {/* <meta 
         name="twitter:image" 
-        content="https:%2F%2Fsverigesutslapp.se%2Fmetapicture.png"/>
+        content="https:%2F%2Fsverigesutslapp.se%2Fmetapicture.png"/> */}
       <meta 
         name="og:site_name" 
         content="Sveriges Utsläpp"></meta>
