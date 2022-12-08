@@ -8,7 +8,7 @@ import { setCookie, hasCookie, getCookie } from 'cookies-next';
 
 
 const Container = styled.div`
-    z-index: 10;
+    z-index: 40;
     height: 100vh;
     width: 100vw;
     position: fixed;

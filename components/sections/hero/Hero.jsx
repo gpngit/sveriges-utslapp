@@ -9,9 +9,9 @@ import { ArrowStyleOne, ArrowStyleTwo, ArrowStyleThree, ArrowStyleFour } from '.
 
 const RedBg = styled.div`
     width:100%;
-    z-index:40;
+    z-index:30;
     position:absolute;
-    height:10px;
+    height:6px;
     margin-top:-4px;
     background-color: ${colors.secondary};
 `
@@ -22,6 +22,7 @@ const Container = styled.header`
     .burning-forest {
         margin-top: -100vh;
         min-height: 100vh;
+        height:100%;
         position: sticky;
         overflow: hidden;
         bottom: 0;
@@ -47,7 +48,11 @@ const Container = styled.header`
 
         svg#forest{
             z-index: 1;
-        }
+            width: clamp(800px, 120%, 3000px);
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          
 
         svg#ember-1{
             z-index: 2;
