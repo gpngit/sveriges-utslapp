@@ -11,7 +11,7 @@ const RedBg = styled.div`
     width:100%;
     z-index:30;
     position:absolute;
-    height:10px;
+    height:6px;
     margin-top:-4px;
     background-color: ${colors.secondary};
 `
@@ -22,6 +22,7 @@ const Container = styled.header`
     .burning-forest {
         margin-top: -100vh;
         min-height: 100vh;
+        height:100%;
         position: sticky;
         overflow: hidden;
         bottom: 0;
