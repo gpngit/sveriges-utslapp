@@ -82,7 +82,6 @@ const ChartContainer = styled.div`
     height: 30vh;
     min-height:100px;
     @media (max-height:700px){
-     
       max-width:500px;
       min-height:300px;
       margin-bottom:1rem;
@@ -283,9 +282,11 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   })
 
   useEffect(() => {
+  
     if (yearlyData) {
         setCustomLabels(yearlyData.map((data, i) => {
-          return {
+        
+          return {   
             name: data.name,
             color: colors[i],
             value: data.value,
