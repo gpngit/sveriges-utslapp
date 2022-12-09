@@ -20,11 +20,13 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     const source = sections.find(section => section.name === 'source')
 
     useEffect(() => {
+        if (show){
     //radbryt:
     let newBody1 = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`${sectionIDname}+body1`).innerText = newBody1
     let newBody2 = body2.text.replaceAll(/<br\s*[/]?>/gi, "\n");
     document.getElementById(`${sectionIDname}+body2`).innerText = newBody2
+        } 
     }, [])
     return (
     <>
