@@ -82,7 +82,6 @@ const ChartContainer = styled.div`
     height: 30vh;
     min-height:100px;
     @media (max-height:700px){
-     
       max-width:500px;
       min-height:300px;
       margin-bottom:1rem;

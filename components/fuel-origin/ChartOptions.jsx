@@ -35,23 +35,23 @@ const ChartOptions = () => {
             backgroundColor: colors.secondary,
             titleFont: {
               family: font.main,
-              size: "18px",
+              size: "14px",
             },
             titleColor: 'white', //default(onödig?)
             titleAlign: 'left', //default(onödig?)
             titleMarginBottom: 10,
             bodyFont: {
               family: font.main,
-              size: '14px'
+              size: '12px'
             },
             bodyColor: 'white',  //default(onödig?)
             bodyAlign: 'left', //default(onödig?)
             bodySpacing: 10,
             padding: 20,
-            caretPadding: 10, //avstång från pinkt på graf
+            caretPadding: 5, //avstång från pinkt på graf
             caretSize: 10, //storlek på triangel 
             cornerRadius: 10,
-            boxWidth: 16,
+            boxWidth: 12,
             boxHeight: 16,
             boxPadding: 10, //avstånd till text
             borderWidth: 0
