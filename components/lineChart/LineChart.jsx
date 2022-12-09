@@ -167,6 +167,7 @@ const ChartContainer = styled.div`
   @media ${device.laptop}{
     padding-left:5rem;
     padding-right:5rem;
+    height:70vh;
   }
   padding-bottom:.5rem;
   
