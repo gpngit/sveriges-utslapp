@@ -240,7 +240,6 @@ align-self: center;
 span {
 position:relative;
 left:50%;
-
 }
 `
 const InputFooter = styled.section`
