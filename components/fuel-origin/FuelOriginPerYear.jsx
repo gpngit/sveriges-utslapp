@@ -282,7 +282,7 @@ const FuelOrigin = ({ energiMyndighetenData }) => {
   })
 
   useEffect(() => {
-    console.log(yearlyData)
+  
     if (yearlyData) {
         setCustomLabels(yearlyData.map((data, i) => {
         
