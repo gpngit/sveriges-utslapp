@@ -91,6 +91,8 @@ const Portal = ({ setAuthenticated }) => {
         array.splice(toIndex, 0, element)
     }
 
+    console.log(sections);
+
     return (
         <Container>
             <div className='header-and-logout'>
