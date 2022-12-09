@@ -18,8 +18,9 @@ const FaktaOne = ({pageElements, emissions}) => {
     const url = sections.find(section => section.name === 'source')
 
     useEffect(() => {
+        if (show){
     //radbryt:
-    document.getElementById(`faktaruta1-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+    document.getElementById(`faktaruta1-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");}
     }, [])
 
     return (

@@ -16,8 +16,9 @@ const FaktaTwo = ({pageElements, energiMyndighetenData}) => {
     const url = sections.find(section => section.name === 'source')
 
     useEffect(() => {
+        if (show){
         //radbryt:
-        document.getElementById(`fakta-biobransle-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");
+        document.getElementById(`fakta-biobransle-body1`).innerText = body1.text.replaceAll(/<br\s*[/]?>/gi, "\n");} 
         }, [])
 
     return (
