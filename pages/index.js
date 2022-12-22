@@ -43,7 +43,10 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
   return (
     <Main>
     <Hero 
-    pageElements={siteSections.find(elem => elem.name === 'hero')} /> 
+    pageElements={siteSections.find(elem => elem.name === 'hero')}
+    navElementStatistik={siteSections.find(elem => elem.name === 'statistik')}
+    navElementBiobransle={siteSections.find(elem => elem.name === 'biobränsle')}
+    navElementSkogen={siteSections.find(elem => elem.name === 'skogen')} /> 
     <Ingress 
     pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
     <LineChart 
