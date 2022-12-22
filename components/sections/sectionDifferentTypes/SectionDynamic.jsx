@@ -28,6 +28,8 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     document.getElementById(`${sectionIDname}+body2`).innerText = newBody2
         } 
     }, [])
+
+    console.log(imgurl, "imgurl")
     return (
     <>
     {show && 

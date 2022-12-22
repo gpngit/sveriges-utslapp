@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
   const currentYear = new Date().getFullYear()
   const [authenticated, setAuthenticated] = useState(false)
   const [displayYear, setDisplayYear] = useState(currentYear-1)
+  
   useEffect(() => {
     if(currentYear >= 2023){
       setDisplayYear(currentYear-2)
