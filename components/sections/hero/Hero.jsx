@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 //CSS
 import styled from 'styled-components'
 import { flex, colors, device, fonts, size } from '../../../styles/partials'
@@ -270,7 +272,12 @@ const Blurred = styled.div`
     }
 `
 
-const Hero = ({ pageElements }) => {
+const Hero = ({ pageElements, navElementStatistik, navElementBiobransle, navElementSkogen }) => {
+  
+    const [showStatistik, setStatistik] = useState(navElementStatistik.show)
+    const [showSkogen, setSkogen] = useState(navElementSkogen.show);
+    const [showBiobransle, setBiobransle] = useState(navElementBiobransle.show);
+
     const { sections } = pageElements
     const title = sections.find(section => section.name === 'title')
     const subheading = sections.find(section => section.name === 'subheading')
@@ -303,6 +310,7 @@ const Hero = ({ pageElements }) => {
                         </strong>
                     </NavLink>
                 </TextAndLink>
+                {showStatistik && 
                 <TextAndLink>
                     <p className="body">{body1.text}</p>
                     <ArrowStyleThree
@@ -319,6 +327,8 @@ const Hero = ({ pageElements }) => {
                             </strong>
                     </NavLink>
                 </TextAndLink>
+                }
+                {showBiobransle && 
                 <TextAndLink>
                     <p 
                     className="body">
@@ -335,6 +345,8 @@ const Hero = ({ pageElements }) => {
                         </strong>
                     </NavLink>
                 </TextAndLink>
+                }
+                {showSkogen && 
                 <TextAndLink 
                 className="arrowfour">
                     <p className="body">
@@ -352,6 +364,7 @@ const Hero = ({ pageElements }) => {
                         </strong>
                     </NavLink>
                 </TextAndLink>
+                }
             </TextContent>
         </InnerContainer>
         <Blurred className='bottom'/>
