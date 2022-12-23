@@ -86,7 +86,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     {imgurl.text}
                 </ImageDescription>
                 </ImageWrapper>
-                ): ( <>{sectionIDname === "skogen" ? (null):( 
+                ): ( 
                 <ImageWrapper 
                     key={sectionIDname}>
                     <Image
@@ -98,8 +98,8 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     <ImageDescription>
                     {imgurl.text}
                     </ImageDescription>
-                    </ImageWrapper>)} </>
-                )}
+                    </ImageWrapper>)} 
+                
                 <Mobile>
                     {sectionIDname === "biobränsle" ? (
                     <SeveralSourcesAndShare
