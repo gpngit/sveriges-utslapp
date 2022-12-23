@@ -30,6 +30,7 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
     }, [])
 
     console.log(imgurl, "imgurl")
+    console.log(sectionIDname)
     return (
     <>
     {show && 
@@ -70,10 +71,11 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                             sourceText={title.text}/>)}
                     </Desktop>
                 </TextContentGrid>
-                {sectionIDname === "statistik" ? (
+                {sectionIDname === "statistik" ? ( 
                 <ImageWrapper 
                 first
                 key={sectionIDname}>
+                
                 <Image
                     layout ="responsive"
                     src={imgurl.url}
@@ -84,19 +86,19 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
                     {imgurl.text}
                 </ImageDescription>
                 </ImageWrapper>
-                ): (
+                ): ( <>{sectionIDname === "skogen" ? (null):( 
                 <ImageWrapper 
-                key={sectionIDname}>
-                <Image
-                layout ="responsive"
-                src={imgurl.url}
-                alt={imgurl.alttext}
-                width={800}
-                height={800}/>
-                <ImageDescription>
-                {imgurl.text}
-                </ImageDescription>
-                </ImageWrapper>
+                    key={sectionIDname}>
+                    <Image
+                    layout ="responsive"
+                    src={imgurl.url}
+                    alt={imgurl.alttext}
+                    width={800}
+                    height={800}/>
+                    <ImageDescription>
+                    {imgurl.text}
+                    </ImageDescription>
+                    </ImageWrapper>)} </>
                 )}
                 <Mobile>
                     {sectionIDname === "biobränsle" ? (
