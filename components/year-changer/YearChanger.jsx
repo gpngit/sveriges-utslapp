@@ -146,6 +146,9 @@ const YearChanger = ({ emissions }) => {
         if (displayYear != latestYear){
             setDisplayYear(displayYear+1)
         }
+        if(newDisplayYear != latestYear){
+            setDisplayYear(newDisplayYear+1)
+        }
     }
 
     const incrementWithArrow = (e) => {
@@ -158,6 +161,9 @@ const YearChanger = ({ emissions }) => {
         if (displayYear != firstYear){
             setDisplayYear(displayYear-1)
         }
+        if(newDisplayYear != latestYear){
+            setDisplayYear(newDisplayYear-1)
+        }
     }
 
     const decrementWithArrow = (e) => {
@@ -169,8 +175,10 @@ const YearChanger = ({ emissions }) => {
     useEffect(() => {
         displayYear == firstYear ? setReachedBeginning(true) : setReachedBeginning(false)
         displayYear == latestYear ? setReachedEnd(true) : setReachedEnd(false)
+        
     }, [displayYear, firstYear, latestYear])
 
+   
     return (
     <Container>
         <InnerContainer>
@@ -194,6 +202,7 @@ const YearChanger = ({ emissions }) => {
                 </ChevronButts>
                 <p className={reachedBeginning ? 'inactive' : null}>{displayYear-1}
                 </p>
+              
             </div>
             <Year>{displayYear}</Year>
             <div>
