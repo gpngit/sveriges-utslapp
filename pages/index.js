@@ -39,7 +39,7 @@ export async function getServerSideProps(){
   if (daysBetween > 7) {
       getDataFromScbAndTransferToFirebase()
   }
-
+ 
   return {
     props: {
         siteSections: adminData.val(),
@@ -52,12 +52,12 @@ export async function getServerSideProps(){
 export default function Home({ siteSections, emissions, energiMyndighetenData }) {
 
 
-  // const context = useContext(AppContext)
-  //   const {displayYear, setDisplayYear} = context
+  const context = useContext(AppContext)
+  const {displayYear, setDisplayYear} = context
 
-  //   console.log(emissions.map(emission => emission.type))
+ 
     
-    // console.log(emissions.filter(emission => emission.year== displayYear).filter(emissions=> emissions.type.val == "CO2").filter(emissions => emissions.sector.val === "0.1"), "testing")
+    console.log(emissions.filter(emission => emission.year== displayYear).filter(emissions=> emissions.type.val == "CO2-BIO").filter(emissions => emissions.sector.val === "0.1"), "testing")
   return (
     <Main>
      <Hero 
@@ -69,17 +69,17 @@ export default function Home({ siteSections, emissions, energiMyndighetenData })
     <Ingress 
     pageElements={siteSections.find(elem => elem.name === 'ingress')}  />
    
-    {/* <LineChart 
+    <LineChart 
     pageElements={siteSections.find(elem => elem.name === 'fossil-vs-bio')}  
-    emissions={emissions}/> */}
-    {/* <FaktaPages 
+    emissions={emissions}/>  
+      <FaktaPages 
     pageOneElem={siteSections.find(elem => elem.name === 'faktaruta1')}
     pageTwoElem={siteSections.find(elem => elem.name === 'fakta-biobransle')}
-    emissions={emissions} energiMyndighetenData={energiMyndighetenData} /> */}
-     <Info>
+    emissions={emissions} energiMyndighetenData={energiMyndighetenData} />  
+     {/* <Info>
       <h2>Just nu är det något fel på datan från SCB.</h2>
       <p>Vi jobbar på att få ordning på problemet.</p>
-    </Info>
+    </Info> */}
     <Sections 
     pageOneElem= {siteSections.find(elem => elem.name === 'statistik')} sectionIDnameOne={"statistik"} 
     pageTwoElem ={siteSections.find(elem => elem.name === 'biobränsle')} sectionIDnameTwo={'biobränsle'}
