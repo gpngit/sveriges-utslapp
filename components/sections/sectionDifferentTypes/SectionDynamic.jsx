@@ -29,8 +29,6 @@ const SectionDynamic= ({ pageElements, sectionIDname }) => {
         } 
     }, [])
 
-    console.log(imgurl, "imgurl")
-    console.log(sectionIDname)
     return (
     <>
     {show && 
