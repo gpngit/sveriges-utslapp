@@ -118,7 +118,7 @@ const Kollagring = ({ emissions }) => {
 
     
     useEffect(() => {
-      setYearlyTotalEmissions(Number(yearlyBioEmissions.value)[0] + Number(yearlyFossilEmissions.value[0]))
+      setYearlyTotalEmissions(Number(yearlyBioEmissions.value)[0] + Number(yearlyFossilEmissions[0].value))
     }, [yearlyBioEmissions, yearlyFossilEmissions])
 
     useEffect(() => {
