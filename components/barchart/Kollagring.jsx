@@ -78,10 +78,12 @@ const Kollagring = ({ emissions }) => {
     const canvas = useRef()
     const context = useContext(AppContext)
     const {displayYear, setDisplayYear} = context
+    
     const [options, setOptions] = useState(ChartOptions())
     const [chartData, setChartData] = useState({
         datasets: [],
       })
+
     const [yearlyBioEmissions, setYearlyBioEmissions] = useState(emissions
         .filter(emission => emission.year == displayYear)
         .filter(emission => emission.type.val === 'CO2-BIO')
@@ -96,25 +98,27 @@ const Kollagring = ({ emissions }) => {
         .filter(emission => emission.sector.val === "10.0"))
     const [yearlyTotalEmissions, setYearlyTotalEmissions] = useState(null)
 
+    
     useEffect(() => {
         setYearlyBioEmissions(emissions
             .filter(emission => emission.year == displayYear)
-            .filter(emission => emission.type.val === 'CO2-BIO')
+            .filter(emission => emission.type.val == 'CO2-BIO')
             .filter(emission => emission.sector.val === "0.1"))
         setYearlyFossilEmissions(emissions
             .filter(emission => emission.year == displayYear)
-            .filter(emission => emission.type.val === 'CO2-ekv.')
+            .filter(emission => emission.type.val == 'CO2-ekv.')
             .filter(emission => emission.sector.val === "0.1"))
         setYearlyLandUse(emissions
             .filter(emission => emission.year == displayYear)
-            .filter(emission => emission.type.val === 'CO2-ekv.')
+            .filter(emission => emission.type.val == 'CO2-ekv.')
             .filter(emission => emission.sector.val === "10.0"))
-    }, [displayYear])
+    }, [displayYear, emissions])
 
     const [showPotential, setShowPotential] = useState(true)
 
+    
     useEffect(() => {
-      setYearlyTotalEmissions(Number(yearlyBioEmissions[0].value) + Number(yearlyFossilEmissions[0].value))
+      setYearlyTotalEmissions(Number(yearlyBioEmissions.value)[0] + Number(yearlyFossilEmissions.value[0]))
     }, [yearlyBioEmissions, yearlyFossilEmissions])
 
     useEffect(() => {
@@ -176,7 +180,7 @@ const Kollagring = ({ emissions }) => {
           }]
       })
       }
-    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showPotential])
+    }, [yearlyBioEmissions, yearlyFossilEmissions, yearlyTotalEmissions, showPotential, yearlyLandUse])
 
     return (
         <Container 
